@@ -20,6 +20,11 @@ const config: StorybookConfig = {
     
     return mergeConfig(config, {
       plugins: [vanillaExtractPlugin()],
+      resolve: {
+        alias: {
+          '@jetstream/core': new URL('../packages/core/src', import.meta.url).pathname,
+        },
+      },
     });
   },
 };
