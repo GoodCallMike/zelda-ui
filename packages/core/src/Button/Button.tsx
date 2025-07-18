@@ -1,8 +1,8 @@
-import type * as React from 'react';
+import type { ReactNode } from 'react';
 import { Button as AriaButton } from 'react-aria-components';
 
 interface ButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: 'primary' | 'secondary';
   onPress?: () => void;
   isDisabled?: boolean;
