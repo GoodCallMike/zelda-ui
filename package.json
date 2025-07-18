@@ -18,8 +18,9 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-aria-components": "^1.10.1",
-    "react-dom": "^19.1.0"
+    "react-aria": "^3.41.1",
+    "react-dom": "^19.1.0",
+    "react-stately": "^3.39.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
@@ -27,6 +28,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
     "@storybook/addon-docs": "^9.0.17",
+    "@storybook/addon-vitest": "^9.0.17",
     "@storybook/react-vite": "^9.0.17",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -36,9 +38,12 @@
     "@types/react-dom": "^19.1.6",
     "@vanilla-extract/vite-plugin": "^5.1.0",
     "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
     "@vitest/ui": "^3.2.4",
     "globals": "^16.3.0",
     "jsdom": "^26.1.0",
+    "playwright": "^1.54.1",
     "rollup": "^4.45.1",
     "rollup-plugin-dts": "^6.2.1",
     "storybook": "^9.0.17",

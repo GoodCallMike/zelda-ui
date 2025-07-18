@@ -20,18 +20,18 @@ describe('Button', () => {
     expect(button).toHaveClass('bg-gray-200', 'text-gray-900');
   });
 
-  it('handles press events', async () => {
-    const handlePress = vi.fn();
+  it('handles click events', async () => {
+    const handleClick = vi.fn();
     const user = userEvent.setup();
     
-    render(<Button onPress={handlePress}>Press me</Button>);
+    render(<Button onClick={handleClick}>Click me</Button>);
     
     await user.click(screen.getByRole('button'));
-    expect(handlePress).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   it('applies disabled styles when disabled', () => {
-    render(<Button isDisabled>Disabled</Button>);
+    render(<Button disabled>Disabled</Button>);
     const button = screen.getByRole('button');
     expect(button).toHaveClass('opacity-50');
     expect(button).toBeDisabled();
