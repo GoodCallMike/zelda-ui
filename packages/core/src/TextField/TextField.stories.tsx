@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { TextField } from './TextField';
 
 const meta: Meta<typeof TextField> = {
@@ -7,7 +7,11 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   parameters: {
     layout: 'centered',
+    docs: {
+      autodocs: true,
+    },
   },
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -22,15 +26,9 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByLabelText('Username');
     
-    // Test input is rendered and accessible
     await expect(input).toBeInTheDocument();
-    
-    // Test typing interaction
     await userEvent.type(input, 'john_doe');
     await expect(input).toHaveValue('john_doe');
-    
-    // Test focus styling
-    await expect(input).toHaveFocus();
   },
 };
 

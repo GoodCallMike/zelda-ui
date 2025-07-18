@@ -30,7 +30,7 @@ export const Button = ({
         variant === 'primary' &&
           'bg-yellow-500 text-blue-900 hover:bg-yellow-400 focus:ring-yellow-500',
         variant === 'secondary' &&
-          'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
+          'bg-gray-200 text-blue-900 hover:bg-gray-300 focus:ring-gray-500',
 
         // State styles
         disabled && 'opacity-50 cursor-not-allowed',

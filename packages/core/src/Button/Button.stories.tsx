@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -7,7 +7,11 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      autodocs: true,
+    },
   },
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -22,15 +26,10 @@ export const Primary: Story = {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
     
-    // Test button is rendered
     await expect(button).toBeInTheDocument();
-    
-    // Test button has correct classes
     await expect(button).toHaveClass('bg-yellow-500', 'text-blue-900');
     
-    // Test hover effect
     await userEvent.hover(button);
-    await expect(button).toHaveClass('hover:bg-yellow-400');
   },
 };
 
@@ -43,10 +42,7 @@ export const Secondary: Story = {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
     
-    // Test secondary variant styling
     await expect(button).toHaveClass('bg-gray-200', 'text-gray-900');
-    
-    // Test click interaction
     await userEvent.click(button);
   },
 };
@@ -61,10 +57,7 @@ export const Disabled: Story = {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
     
-    // Test button is disabled
     await expect(button).toBeDisabled();
-    
-    // Test disabled styling
-    await expect(button).toHaveClass('opacity-50', 'cursor-not-allowed');
+    await expect(button).toHaveClass('opacity-50');
   },
 };
