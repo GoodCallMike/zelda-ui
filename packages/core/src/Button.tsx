@@ -7,23 +7,15 @@ interface ButtonProps {
 }
 
 export const Button = ({ children, variant = 'primary', onClick }: ButtonProps) => {
-  const baseStyles = {
-    padding: '8px 16px',
-    borderRadius: '4px',
-    border: 'none',
-    fontWeight: '500',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-  };
-  
-  const variantStyles = {
-    primary: { backgroundColor: '#2563eb', color: 'white' },
-    secondary: { backgroundColor: '#e5e7eb', color: '#111827' },
+  const baseClasses = 'px-4 py-2 rounded font-medium border-none cursor-pointer';
+  const variantClasses = {
+    primary: 'bg-primary-600 text-white hover:bg-primary-700',
+    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
   };
 
   return (
     <button
-      style={{ ...baseStyles, ...variantStyles[variant] }}
+      className={`${baseClasses} ${variantClasses[variant]}`}
       onClick={onClick}
     >
       {children}
