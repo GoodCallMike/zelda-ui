@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
-import '../packages/core/src/styles.css';
+import '../packages/core/src/styles';
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +10,7 @@ const preview: Preview = {
       },
     },
   },
+
 };
 
 export default preview;

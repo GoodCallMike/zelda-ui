@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Button as AriaButton } from 'react-aria-components';
+import { cn } from '../styles';
 
 interface ButtonProps {
   children: ReactNode;
@@ -14,18 +15,24 @@ export const Button = ({
   onPress,
   isDisabled,
 }: ButtonProps) => {
-  const baseClasses =
-    'px-4 py-2 rounded font-medium border-none cursor-pointer';
-  const variantClasses = {
-    primary:
-      'bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50',
-    secondary:
-      'bg-gray-200 text-gray-900 hover:bg-gray-300 disabled:opacity-50',
-  };
-
   return (
     <AriaButton
-      className={`${baseClasses} ${variantClasses[variant]}`}
+      className={cn(
+        // Base styles
+        'inline-flex items-center justify-center',
+        'px-4 py-2 rounded font-semibold uppercase',
+        'cursor-pointer transition-colors border-none',
+        'jetstream-effect',
+
+        // Variant styles
+        variant === 'primary' &&
+          'bg-yellow-500 text-blue-900 hover:bg-yellow-400',
+        variant === 'secondary' &&
+          'bg-gray-200 text-gray-900 hover:bg-gray-300',
+
+        // State styles
+        isDisabled && 'opacity-50',
+      )}
       onPress={onPress}
       isDisabled={isDisabled}
     >
