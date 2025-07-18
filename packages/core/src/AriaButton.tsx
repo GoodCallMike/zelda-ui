@@ -9,23 +9,15 @@ interface AriaButtonProps {
 }
 
 export const AriaButton = ({ children, variant = 'primary', onPress, isDisabled }: AriaButtonProps) => {
-  const baseStyles = {
-    padding: '8px 16px',
-    borderRadius: '4px',
-    border: 'none',
-    fontWeight: '500',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-  };
-  
-  const variantStyles = {
-    primary: { backgroundColor: '#2563eb', color: 'white' },
-    secondary: { backgroundColor: '#e5e7eb', color: '#111827' },
+  const baseClasses = 'px-4 py-2 rounded font-medium border-none cursor-pointer';
+  const variantClasses = {
+    primary: 'bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50',
+    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 disabled:opacity-50',
   };
 
   return (
     <Button
-      style={{ ...baseStyles, ...variantStyles[variant] }}
+      className={`${baseClasses} ${variantClasses[variant]}`}
       onPress={onPress}
       isDisabled={isDisabled}
     >
