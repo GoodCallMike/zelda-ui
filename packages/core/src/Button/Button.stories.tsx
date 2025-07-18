@@ -8,7 +8,23 @@ const meta: Meta<typeof Button> = {
   parameters: {
     layout: 'centered',
     docs: {
-      autodocs: true,
+      description: {
+        component: `Interactive button component with Jetstream hover effects and accessibility features.
+
+## Usage
+
+\`\`\`tsx
+import { Button } from '@jetstream/core';
+
+<Button variant="primary" onClick={() => console.log('clicked')}>
+  Primary Action
+</Button>
+
+<Button variant="secondary" disabled>
+  Secondary Action
+</Button>
+\`\`\``,
+      },
     },
   },
   tags: ['autodocs'],

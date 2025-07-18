@@ -2,6 +2,7 @@
 import './fonts.css';
 import './utilities.css';
 import './animations.css';
+import './theme.css';
 
 // Export colors for consumers who need raw values
 export * from './colors.css';

@@ -203,3 +203,163 @@ colorNames.forEach(color => {
 
 // Disabled states
 globalStyle('.opacity-50:disabled', { opacity: '0.5' });
+
+// Sizing utilities
+globalStyle('.w-auto', { width: 'auto' });
+globalStyle('.w-full', { width: '100%' });
+globalStyle('.w-fit', { width: 'fit-content' });
+globalStyle('.w-screen', { width: '100vw' });
+globalStyle('.h-auto', { height: 'auto' });
+globalStyle('.h-full', { height: '100%' });
+globalStyle('.h-screen', { height: '100vh' });
+globalStyle('.min-h-0', { minHeight: '0' });
+globalStyle('.min-h-full', { minHeight: '100%' });
+globalStyle('.max-w-xs', { maxWidth: '20rem' });
+globalStyle('.max-w-sm', { maxWidth: '24rem' });
+globalStyle('.max-w-md', { maxWidth: '28rem' });
+globalStyle('.max-w-lg', { maxWidth: '32rem' });
+globalStyle('.max-w-xl', { maxWidth: '36rem' });
+globalStyle('.max-w-2xl', { maxWidth: '42rem' });
+globalStyle('.max-w-4xl', { maxWidth: '56rem' });
+globalStyle('.max-w-full', { maxWidth: '100%' });
+
+// Positioning utilities
+globalStyle('.relative', { position: 'relative' });
+globalStyle('.absolute', { position: 'absolute' });
+globalStyle('.fixed', { position: 'fixed' });
+globalStyle('.sticky', { position: 'sticky' });
+globalStyle('.static', { position: 'static' });
+globalStyle('.top-0', { top: '0' });
+globalStyle('.right-0', { right: '0' });
+globalStyle('.bottom-0', { bottom: '0' });
+globalStyle('.left-0', { left: '0' });
+globalStyle('.inset-0', { top: '0', right: '0', bottom: '0', left: '0' });
+
+// Z-index utilities
+globalStyle('.z-0', { zIndex: '0' });
+globalStyle('.z-10', { zIndex: '10' });
+globalStyle('.z-20', { zIndex: '20' });
+globalStyle('.z-30', { zIndex: '30' });
+globalStyle('.z-40', { zIndex: '40' });
+globalStyle('.z-50', { zIndex: '50' });
+
+// Overflow utilities
+globalStyle('.overflow-auto', { overflow: 'auto' });
+globalStyle('.overflow-hidden', { overflow: 'hidden' });
+globalStyle('.overflow-visible', { overflow: 'visible' });
+globalStyle('.overflow-scroll', { overflow: 'scroll' });
+globalStyle('.overflow-x-auto', { overflowX: 'auto' });
+globalStyle('.overflow-y-auto', { overflowY: 'auto' });
+
+// Text alignment utilities
+globalStyle('.text-left', { textAlign: 'left' });
+globalStyle('.text-center', { textAlign: 'center' });
+globalStyle('.text-right', { textAlign: 'right' });
+globalStyle('.text-justify', { textAlign: 'justify' });
+
+// User select utilities
+globalStyle('.select-none', { userSelect: 'none' });
+globalStyle('.select-text', { userSelect: 'text' });
+globalStyle('.select-all', { userSelect: 'all' });
+globalStyle('.select-auto', { userSelect: 'auto' });
+
+// Resize utilities
+globalStyle('.resize-none', { resize: 'none' });
+globalStyle('.resize', { resize: 'both' });
+globalStyle('.resize-x', { resize: 'horizontal' });
+globalStyle('.resize-y', { resize: 'vertical' });
+
+// Focus utilities
+globalStyle('.focus\\:outline-none:focus', { outline: '2px solid transparent', outlineOffset: '2px' });
+globalStyle('.focus\\:ring-1:focus', { 
+  '--tw-ring-offset-shadow': 'var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)',
+  '--tw-ring-shadow': 'var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)',
+  boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)'
+});
+globalStyle('.focus\\:ring-2:focus', { 
+  '--tw-ring-offset-shadow': 'var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)',
+  '--tw-ring-shadow': 'var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)',
+  boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)'
+});
+globalStyle('.focus\\:ring-offset-1:focus', { '--tw-ring-offset-width': '1px' });
+globalStyle('.focus\\:ring-offset-2:focus', { '--tw-ring-offset-width': '2px' });
+
+// Focus ring colors
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`.focus\\:ring-${color}-${shade}:focus`, {
+      '--tw-ring-color': colors[color][shade],
+    });
+    globalStyle(`.focus\\:border-${color}-${shade}:focus`, {
+      borderColor: colors[color][shade],
+    });
+  });
+});
+
+// Shadow utilities
+globalStyle('.shadow-sm', { boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)' });
+globalStyle('.shadow', { boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)' });
+globalStyle('.shadow-md', { boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' });
+globalStyle('.shadow-lg', { boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)' });
+globalStyle('.shadow-none', { boxShadow: '0 0 #0000' });
+
+// Dark mode utilities
+// Background colors
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`[data-theme="dark"] .dark\\:bg-${color}-${shade}`, {
+      backgroundColor: colors[color][shade],
+    });
+  });
+});
+
+globalStyle('[data-theme="dark"] .dark\\:bg-white', { backgroundColor: colors.white });
+globalStyle('[data-theme="dark"] .dark\\:bg-black', { backgroundColor: colors.black });
+globalStyle('[data-theme="dark"] .dark\\:bg-gray-800', { backgroundColor: colors.gray[800] });
+globalStyle('[data-theme="dark"] .dark\\:bg-gray-700', { backgroundColor: colors.gray[700] });
+
+// Text colors
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`[data-theme="dark"] .dark\\:text-${color}-${shade}`, {
+      color: colors[color][shade],
+    });
+  });
+});
+
+globalStyle('[data-theme="dark"] .dark\\:text-white', { color: colors.white });
+globalStyle('[data-theme="dark"] .dark\\:text-black', { color: colors.black });
+globalStyle('[data-theme="dark"] .dark\\:text-gray-100', { color: colors.gray[100] });
+globalStyle('[data-theme="dark"] .dark\\:text-gray-300', { color: colors.gray[300] });
+globalStyle('[data-theme="dark"] .dark\\:text-gray-400', { color: colors.gray[400] });
+globalStyle('[data-theme="dark"] .dark\\:text-gray-500', { color: colors.gray[500] });
+
+// Border colors
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`[data-theme="dark"] .dark\\:border-${color}-${shade}`, {
+      borderColor: colors[color][shade],
+    });
+  });
+});
+
+globalStyle('[data-theme="dark"] .dark\\:border-white', { borderColor: colors.white });
+globalStyle('[data-theme="dark"] .dark\\:border-black', { borderColor: colors.black });
+globalStyle('[data-theme="dark"] .dark\\:border-gray-600', { borderColor: colors.gray[600] });
+globalStyle('[data-theme="dark"] .dark\\:border-gray-700', { borderColor: colors.gray[700] });
+
+// Dark mode hover states
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`[data-theme="dark"] .dark\\:hover\\:bg-${color}-${shade}:hover`, {
+      backgroundColor: colors[color][shade],
+    });
+    globalStyle(`[data-theme="dark"] .dark\\:hover\\:text-${color}-${shade}:hover`, {
+      color: colors[color][shade],
+    });
+  });
+});
+
+globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-yellow-500:hover', { backgroundColor: colors.yellow[500] });
+globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-gray-600:hover', { backgroundColor: colors.gray[600] });
+globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-red-400:hover', { backgroundColor: colors.red[400] });
