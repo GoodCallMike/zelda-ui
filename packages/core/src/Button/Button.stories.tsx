@@ -19,8 +19,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Button',
+    children: 'Primary Button',
     variant: 'primary',
+  },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+        ],
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

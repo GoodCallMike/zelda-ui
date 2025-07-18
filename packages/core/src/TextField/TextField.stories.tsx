@@ -46,6 +46,22 @@ export const WithError: Story = {
     errorMessage: 'Password must be at least 8 characters long.',
     placeholder: 'Enter your password',
   },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-describedby',
+            enabled: true,
+          },
+          {
+            id: 'aria-invalid',
+            enabled: true,
+          },
+        ],
+      },
+    },
+  },
 };
 
 export const Required: Story = {

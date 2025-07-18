@@ -4,7 +4,8 @@ const config: StorybookConfig = {
   stories: ['../packages/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-docs',
-    '@storybook/addon-vitest'
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y'
   ],
 
   framework: {
