@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 interface ButtonProps {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
@@ -11,6 +13,7 @@ export const Button = ({ children, variant = 'primary', onClick }: ButtonProps) 
     border: 'none',
     fontWeight: '500',
     cursor: 'pointer',
+    fontFamily: 'inherit',
   };
   
   const variantStyles = {
