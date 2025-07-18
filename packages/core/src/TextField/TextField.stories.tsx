@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { TextField } from './TextField';
 
 const meta: Meta<typeof TextField> = {
@@ -16,6 +17,20 @@ export const Default: Story = {
   args: {
     label: 'Username',
     placeholder: 'Enter your username',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByLabelText('Username');
+    
+    // Test input is rendered and accessible
+    await expect(input).toBeInTheDocument();
+    
+    // Test typing interaction
+    await userEvent.type(input, 'john_doe');
+    await expect(input).toHaveValue('john_doe');
+    
+    // Test focus styling
+    await expect(input).toHaveFocus();
   },
 };
 
