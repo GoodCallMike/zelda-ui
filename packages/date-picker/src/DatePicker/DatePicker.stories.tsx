@@ -65,3 +65,26 @@ export const Disabled: Story = {
     placeholder: 'MM/DD/YYYY',
   },
 };
+
+export const WithValue: Story = {
+  args: {
+    label: 'Birth Date',
+    value: new Date(2023, 11, 25),
+    placeholder: 'MM/DD/YYYY',
+  },
+};
+
+// Visual regression test stories
+export const VisualTest: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <DatePicker label="Default" placeholder="MM/DD/YYYY" />
+      <DatePicker label="With Value" value={new Date(2023, 11, 25)} />
+      <DatePicker label="With Error" errorMessage="Invalid date" />
+      <DatePicker label="Disabled" disabled placeholder="MM/DD/YYYY" />
+    </div>
+  ),
+  parameters: {
+    chromatic: { disableSnapshot: false },
+  },
+};

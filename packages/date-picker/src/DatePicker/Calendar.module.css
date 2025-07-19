@@ -86,6 +86,7 @@
 
 [data-theme="dark"] .dayButton {
   background-color: var(--gray-800);
+  color: var(--white);
 }
 
 [data-theme="dark"] .dayButton:hover {

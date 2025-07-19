@@ -41,4 +41,50 @@ describe('DatePicker', () => {
     const input = screen.getByDisplayValue('12/25/2023');
     expect(input).toBeInTheDocument();
   });
+
+  it('opens calendar when button is clicked', async () => {
+    const user = userEvent.setup();
+    
+    render(<DatePicker label="Date" />);
+    
+    const button = screen.getByRole('button');
+    await user.click(button);
+    
+    expect(screen.getByRole('grid')).toBeInTheDocument();
+  });
+
+  it('closes calendar when clicking outside', async () => {
+    const user = userEvent.setup();
+    
+    render(
+      <div>
+        <DatePicker label="Date" />
+        <div data-testid="outside">Outside</div>
+      </div>
+    );
+    
+    const button = screen.getByRole('button');
+    await user.click(button);
+    
+    expect(screen.getByRole('grid')).toBeInTheDocument();
+    
+    await user.click(screen.getByTestId('outside'));
+    
+    expect(screen.queryByRole('grid')).not.toBeInTheDocument();
+  });
+
+  it('selects date from calendar', async () => {
+    const user = userEvent.setup();
+    const handleChange = vi.fn();
+    
+    render(<DatePicker label="Date" onChange={handleChange} />);
+    
+    const button = screen.getByRole('button');
+    await user.click(button);
+    
+    const dateButton = screen.getByText('15');
+    await user.click(dateButton);
+    
+    expect(handleChange).toHaveBeenCalledWith(expect.any(Date));
+  });
 });
