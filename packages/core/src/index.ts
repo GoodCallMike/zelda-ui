@@ -1,4 +1,7 @@
 export * from './Button';
+export * from './Checkbox';
+export * from './Radio';
+export * from './SplitButton';
 export * from './TextField';
 export * from './TextArea';
 export * from './ThemeProvider';
