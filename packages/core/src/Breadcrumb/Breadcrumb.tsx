@@ -70,7 +70,7 @@ export const Breadcrumb = ({
               )}
               
               {!isLast && (
-                <span className="mx-2 text-gray-400 dark:text-gray-500">
+                <span className="mx-2 text-gray-400 dark:text-gray-500 flex items-center">
                   {separator}
                 </span>
               )}
