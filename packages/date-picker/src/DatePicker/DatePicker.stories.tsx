@@ -12,7 +12,7 @@ console.error = (...args) => {
 };
 
 const meta: Meta<typeof DatePicker> = {
-  title: 'DatePicker/DatePicker',
+  title: 'Data Entry/DatePicker',
   component: DatePicker,
   parameters: {
     layout: 'padded',
@@ -62,25 +62,39 @@ export const Default: Story = {
 
 export const WithError: Story = {
   args: {
-    label: 'Birth Date',
-    errorMessage: 'Please enter a valid date',
-    placeholder: 'MM/DD/YYYY',
+    status: 'error',
+    placeholder: 'Select date',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    label: 'Birth Date',
     disabled: true,
-    placeholder: 'MM/DD/YYYY',
+    placeholder: 'Select date',
   },
 };
 
 export const WithValue: Story = {
   args: {
-    label: 'Birth Date',
     value: new Date(2023, 11, 25),
-    placeholder: 'MM/DD/YYYY',
+    placeholder: 'Select date',
+  },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <DatePicker size="small" placeholder="Small" />
+      <DatePicker size="middle" placeholder="Middle (default)" />
+      <DatePicker size="large" placeholder="Large" />
+    </div>
+  ),
+};
+
+export const NoClear: Story = {
+  args: {
+    allowClear: false,
+    placeholder: 'Select date',
   },
 };
 
@@ -88,10 +102,10 @@ export const WithValue: Story = {
 export const VisualTest: Story = {
   render: () => (
     <div className="space-y-4">
-      <DatePicker label="Default" placeholder="MM/DD/YYYY" />
-      <DatePicker label="With Value" value={new Date(2023, 11, 25)} />
-      <DatePicker label="With Error" errorMessage="Invalid date" />
-      <DatePicker label="Disabled" disabled placeholder="MM/DD/YYYY" />
+      <DatePicker placeholder="Default" />
+      <DatePicker value={new Date(2023, 11, 25)} placeholder="With Value" />
+      <DatePicker status="error" placeholder="With Error" />
+      <DatePicker disabled placeholder="Disabled" />
     </div>
   ),
   parameters: {

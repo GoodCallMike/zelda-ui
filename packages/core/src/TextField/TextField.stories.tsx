@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { TextField } from './TextField';
 
 const meta: Meta<typeof TextField> = {
-  title: 'Core/TextField',
+  title: 'Data Entry/Input',
   component: TextField,
   parameters: {
     layout: 'centered',

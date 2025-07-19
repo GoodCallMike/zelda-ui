@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { Save01Icon, Download01Icon, ArrowRightIcon, PlusIcon } from '@jetstream/icons';
 
 const meta: Meta<typeof Button> = {
-  title: 'Core/Button',
+  title: 'General/Button',
   component: Button,
   parameters: {
     layout: 'centered',

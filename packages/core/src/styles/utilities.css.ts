@@ -39,6 +39,8 @@ globalStyle('.p-3', { padding: '0.75rem' });
 globalStyle('.p-4', { padding: '1rem' });
 globalStyle('.p-6', { padding: '1.5rem' });
 globalStyle('.p-8', { padding: '2rem' });
+globalStyle('.p-0\\.5', { padding: '0.125rem' });
+globalStyle('.p-1\\.5', { padding: '0.375rem' });
 
 globalStyle('.px-0', { paddingLeft: '0', paddingRight: '0' });
 globalStyle('.px-1', { paddingLeft: '0.25rem', paddingRight: '0.25rem' });
@@ -71,6 +73,8 @@ globalStyle('.pr-3', { paddingRight: '0.75rem' });
 globalStyle('.pr-4', { paddingRight: '1rem' });
 globalStyle('.pr-6', { paddingRight: '1.5rem' });
 globalStyle('.pr-8', { paddingRight: '2rem' });
+globalStyle('.pr-10', { paddingRight: '2.5rem' });
+globalStyle('.pr-16', { paddingRight: '4rem' });
 
 globalStyle('.pb-0', { paddingBottom: '0' });
 globalStyle('.pb-1', { paddingBottom: '0.25rem' });
@@ -190,6 +194,29 @@ globalStyle('.gap-4', { gap: '1rem' });
 globalStyle('.gap-6', { gap: '1.5rem' });
 globalStyle('.gap-8', { gap: '2rem' });
 
+// Space utilities
+globalStyle('.space-y-0 > * + *', { marginTop: '0' });
+globalStyle('.space-y-1 > * + *', { marginTop: '0.25rem' });
+globalStyle('.space-y-2 > * + *', { marginTop: '0.5rem' });
+globalStyle('.space-y-3 > * + *', { marginTop: '0.75rem' });
+globalStyle('.space-y-4 > * + *', { marginTop: '1rem' });
+globalStyle('.space-y-6 > * + *', { marginTop: '1.5rem' });
+globalStyle('.space-y-8 > * + *', { marginTop: '2rem' });
+
+globalStyle('.space-x-0 > * + *', { marginLeft: '0' });
+globalStyle('.space-x-1 > * + *', { marginLeft: '0.25rem' });
+globalStyle('.space-x-2 > * + *', { marginLeft: '0.5rem' });
+globalStyle('.space-x-3 > * + *', { marginLeft: '0.75rem' });
+globalStyle('.space-x-4 > * + *', { marginLeft: '1rem' });
+globalStyle('.space-x-6 > * + *', { marginLeft: '1.5rem' });
+globalStyle('.space-x-8 > * + *', { marginLeft: '2rem' });
+
+// Negative space utilities
+globalStyle('.-space-x-1 > * + *', { marginLeft: '-0.25rem' });
+globalStyle('.-space-x-2 > * + *', { marginLeft: '-0.5rem' });
+globalStyle('.-space-x-3 > * + *', { marginLeft: '-0.75rem' });
+globalStyle('.-space-x-4 > * + *', { marginLeft: '-1rem' });
+
 globalStyle('.col-span-1', { gridColumn: 'span 1 / span 1' });
 globalStyle('.col-span-2', { gridColumn: 'span 2 / span 2' });
 globalStyle('.col-span-3', { gridColumn: 'span 3 / span 3' });
@@ -290,6 +317,15 @@ globalStyle('.transition-colors', {
   transitionDuration: '150ms'
 });
 
+globalStyle('.animate-pulse', {
+  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+});
+
+globalStyle('@keyframes pulse', {
+  '0%, 100%': { opacity: '1' },
+  '50%': { opacity: '0.5' }
+});
+
 // Hover states
 globalStyle('.hover\\:bg-blue-600:hover', { backgroundColor: colors.blue[600] });
 globalStyle('.hover\\:bg-gray-300:hover', { backgroundColor: colors.gray[300] });
@@ -314,8 +350,73 @@ globalStyle('.w-screen', { width: '100vw' });
 globalStyle('.h-auto', { height: 'auto' });
 globalStyle('.h-full', { height: '100%' });
 globalStyle('.h-screen', { height: '100vh' });
+// Min height utilities
 globalStyle('.min-h-0', { minHeight: '0' });
+globalStyle('.min-h-1', { minHeight: '0.25rem' }); // 4px
+globalStyle('.min-h-2', { minHeight: '0.5rem' }); // 8px
+globalStyle('.min-h-3', { minHeight: '0.75rem' }); // 12px
+globalStyle('.min-h-4', { minHeight: '1rem' }); // 16px
+globalStyle('.min-h-5', { minHeight: '1.25rem' }); // 20px
+globalStyle('.min-h-6', { minHeight: '1.5rem' }); // 24px
+globalStyle('.min-h-7', { minHeight: '1.75rem' }); // 28px
+globalStyle('.min-h-8', { minHeight: '2rem' }); // 32px
+globalStyle('.min-h-9', { minHeight: '2.25rem' }); // 36px
+globalStyle('.min-h-10', { minHeight: '2.5rem' }); // 40px
+globalStyle('.min-h-11', { minHeight: '2.75rem' }); // 44px
+globalStyle('.min-h-12', { minHeight: '3rem' }); // 48px
+globalStyle('.min-h-14', { minHeight: '3.5rem' }); // 56px
+globalStyle('.min-h-16', { minHeight: '4rem' }); // 64px
+globalStyle('.min-h-20', { minHeight: '5rem' }); // 80px
+globalStyle('.min-h-24', { minHeight: '6rem' }); // 96px
+globalStyle('.min-h-28', { minHeight: '7rem' }); // 112px
+globalStyle('.min-h-32', { minHeight: '8rem' }); // 128px
+globalStyle('.min-h-36', { minHeight: '9rem' }); // 144px
+globalStyle('.min-h-40', { minHeight: '10rem' }); // 160px
+globalStyle('.min-h-44', { minHeight: '11rem' }); // 176px
+globalStyle('.min-h-48', { minHeight: '12rem' }); // 192px
+globalStyle('.min-h-52', { minHeight: '13rem' }); // 208px
+globalStyle('.min-h-56', { minHeight: '14rem' }); // 224px
+globalStyle('.min-h-60', { minHeight: '15rem' }); // 240px
+globalStyle('.min-h-64', { minHeight: '16rem' }); // 256px
+globalStyle('.min-h-72', { minHeight: '18rem' }); // 288px
+globalStyle('.min-h-80', { minHeight: '20rem' }); // 320px
+globalStyle('.min-h-96', { minHeight: '24rem' }); // 384px
 globalStyle('.min-h-full', { minHeight: '100%' });
+globalStyle('.min-h-screen', { minHeight: '100vh' });
+
+// Min width utilities
+globalStyle('.min-w-0', { minWidth: '0' });
+globalStyle('.min-w-1', { minWidth: '0.25rem' }); // 4px
+globalStyle('.min-w-2', { minWidth: '0.5rem' }); // 8px
+globalStyle('.min-w-3', { minWidth: '0.75rem' }); // 12px
+globalStyle('.min-w-4', { minWidth: '1rem' }); // 16px
+globalStyle('.min-w-5', { minWidth: '1.25rem' }); // 20px
+globalStyle('.min-w-6', { minWidth: '1.5rem' }); // 24px
+globalStyle('.min-w-7', { minWidth: '1.75rem' }); // 28px
+globalStyle('.min-w-8', { minWidth: '2rem' }); // 32px
+globalStyle('.min-w-9', { minWidth: '2.25rem' }); // 36px
+globalStyle('.min-w-10', { minWidth: '2.5rem' }); // 40px
+globalStyle('.min-w-11', { minWidth: '2.75rem' }); // 44px
+globalStyle('.min-w-12', { minWidth: '3rem' }); // 48px
+globalStyle('.min-w-14', { minWidth: '3.5rem' }); // 56px
+globalStyle('.min-w-16', { minWidth: '4rem' }); // 64px
+globalStyle('.min-w-20', { minWidth: '5rem' }); // 80px
+globalStyle('.min-w-24', { minWidth: '6rem' }); // 96px
+globalStyle('.min-w-28', { minWidth: '7rem' }); // 112px
+globalStyle('.min-w-32', { minWidth: '8rem' }); // 128px
+globalStyle('.min-w-36', { minWidth: '9rem' }); // 144px
+globalStyle('.min-w-40', { minWidth: '10rem' }); // 160px
+globalStyle('.min-w-44', { minWidth: '11rem' }); // 176px
+globalStyle('.min-w-48', { minWidth: '12rem' }); // 192px
+globalStyle('.min-w-52', { minWidth: '13rem' }); // 208px
+globalStyle('.min-w-56', { minWidth: '14rem' }); // 224px
+globalStyle('.min-w-60', { minWidth: '15rem' }); // 240px
+globalStyle('.min-w-64', { minWidth: '16rem' }); // 256px
+globalStyle('.min-w-72', { minWidth: '18rem' }); // 288px
+globalStyle('.min-w-80', { minWidth: '20rem' }); // 320px
+globalStyle('.min-w-96', { minWidth: '24rem' }); // 384px
+globalStyle('.min-w-full', { minWidth: '100%' });
+globalStyle('.min-w-screen', { minWidth: '100vw' });
 
 // Fixed width utilities
 globalStyle('.w-px', { width: '1px' });
@@ -431,10 +532,22 @@ globalStyle('.fixed', { position: 'fixed' });
 globalStyle('.sticky', { position: 'sticky' });
 globalStyle('.static', { position: 'static' });
 globalStyle('.top-0', { top: '0' });
+globalStyle('.top-1', { top: '0.25rem' });
+globalStyle('.top-1\\.5', { top: '0.375rem' });
+globalStyle('.top-2', { top: '0.5rem' });
+globalStyle('.top-1\\/2', { top: '50%' });
 globalStyle('.right-0', { right: '0' });
+globalStyle('.right-1', { right: '0.25rem' });
+globalStyle('.right-2', { right: '0.5rem' });
 globalStyle('.bottom-0', { bottom: '0' });
+globalStyle('.bottom-1', { bottom: '0.25rem' });
+globalStyle('.bottom-1\\.5', { bottom: '0.375rem' });
+globalStyle('.bottom-2', { bottom: '0.5rem' });
 globalStyle('.left-0', { left: '0' });
 globalStyle('.inset-0', { top: '0', right: '0', bottom: '0', left: '0' });
+globalStyle('.transform', { transform: 'translateY(-50%)' });
+globalStyle('.-translate-y-1\\/2', { transform: 'translateY(-50%)' });
+globalStyle('.translate-y-1\\/2', { transform: 'translateY(50%)' });
 
 // Z-index utilities
 globalStyle('.z-0', { zIndex: '0' });
@@ -443,6 +556,7 @@ globalStyle('.z-20', { zIndex: '20' });
 globalStyle('.z-30', { zIndex: '30' });
 globalStyle('.z-40', { zIndex: '40' });
 globalStyle('.z-50', { zIndex: '50' });
+globalStyle('.-z-10', { zIndex: '-10' });
 
 // Overflow utilities
 globalStyle('.overflow-auto', { overflow: 'auto' });

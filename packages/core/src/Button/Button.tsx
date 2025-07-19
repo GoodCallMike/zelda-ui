@@ -1,4 +1,9 @@
-import type { ButtonHTMLAttributes, ReactNode, ComponentType, SVGProps } from 'react';
+import type {
+  ButtonHTMLAttributes,
+  ComponentType,
+  ReactNode,
+  SVGProps,
+} from 'react';
 import { cn } from '../styles';
 
 interface ButtonProps
@@ -17,17 +22,17 @@ interface ButtonProps
 
 /**
  * Interactive button component with Jetstream hover effects and accessibility features.
- * 
+ *
  * @example
  * <Button variant="primary" onClick={() => console.log('clicked')}>
  *   Primary Action
  * </Button>
- * 
+ *
  * @example
  * <Button variant="secondary" icon={SaveIcon} iconPosition="left">
  *   Save Document
  * </Button>
- * 
+ *
  * @example
  * <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">
  *   Continue
@@ -48,18 +53,20 @@ export const Button = ({
       className={cn(
         // Base styles
         'inline-flex items-center justify-center box-border',
-        variant === 'link' ? 'px-2 py-1' : 'px-4 py-2 rounded font-semibold uppercase',
+        variant === 'link'
+          ? 'px-2 py-1'
+          : 'px-4 py-2 rounded font-semibold uppercase',
         'cursor-pointer transition-colors',
         variant !== 'outline' && variant !== 'link' && 'border-none',
         'jetstream-effect',
         'focus:outline-none focus:ring-2 focus:ring-offset-2',
-        
+
         // Icon spacing
         Icon && 'gap-2',
 
         // Variant styles
         variant === 'primary' &&
-          'bg-yellow-500 text-blue-900 hover:bg-yellow-400 focus:ring-yellow-500 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500',
+          'bg-yellow-400 text-blue-900 hover:bg-yellow-300 focus:ring-yellow-500 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500',
         variant === 'secondary' &&
           'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
         variant === 'outline' &&

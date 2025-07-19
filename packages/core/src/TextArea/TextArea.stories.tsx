@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { TextArea } from './TextArea';
 
 const meta: Meta<typeof TextArea> = {
-  title: 'Core/TextArea',
+  title: 'Data Entry/TextArea',
   component: TextArea,
   parameters: {
     layout: 'centered',
