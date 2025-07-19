@@ -1,8 +1,8 @@
 import { TextField, cn } from '@jetstream/core';
+import { CalendarIcon } from '@jetstream/icons';
 import { format, isValid, parse } from 'date-fns';
 import { useRef, useState } from 'react';
-import { useDatePicker } from 'react-aria';
-import { useDatePickerState } from 'react-stately';
+import { useFloating, autoUpdate, offset, flip, shift } from '@floating-ui/react';
 import { Calendar } from './Calendar';
 
 interface DatePickerProps {
@@ -49,21 +49,12 @@ export const DatePicker = ({
   );
   const [isOpen, setIsOpen] = useState(false);
   
-  const state = useDatePickerState({
-    value: value ? new Date(value) : null,
-    onChange: (date) => onChange?.(date ? new Date(date) : null),
-    isDisabled: disabled,
+  const { refs, floatingStyles } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [offset(4), flip(), shift()],
+    whileElementsMounted: autoUpdate,
   });
-  
-  const ref = useRef<HTMLDivElement>(null);
-  const { groupProps, fieldProps, buttonProps, dialogProps, calendarProps } = useDatePicker(
-    {
-      'aria-label': label,
-      isDisabled: disabled,
-    },
-    state,
-    ref
-  );
 
   const handleInputChange = (newValue: string) => {
     setInputValue(newValue);
@@ -86,9 +77,9 @@ export const DatePicker = ({
   };
 
   return (
-    <div className="relative" ref={ref}>
-      <div className="flex">
-        <div className="flex-1">
+    <div className="relative">
+      <div className="relative">
+        <div className="relative">
           <TextField
             type="text"
             label={label}
@@ -98,32 +89,40 @@ export const DatePicker = ({
             onChange={handleInputChange}
             placeholder={placeholder}
             disabled={disabled}
-            {...fieldProps}
           />
+          <button
+            type="button"
+            ref={refs.setReference}
+            className={cn(
+              'absolute right-3 top-0 bottom-0',
+              'w-6 flex items-center justify-center',
+              'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300',
+              'focus:outline-none border-none',
+              disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+            )}
+            onClick={() => setIsOpen(!isOpen)}
+            disabled={disabled}
+            style={{
+              background: 'none',
+              right: '4px',
+              top: label ? '24px' : '0',
+              height: '33.5px'
+            }}
+          >
+            <CalendarIcon />
+          </button>
         </div>
-        <button
-          type="button"
-          className={cn(
-            'ml-2 mt-6 px-3 py-2 border rounded-md',
-            'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600',
-            'hover:bg-gray-50 dark:hover:bg-gray-700',
-            'focus:outline-none focus:ring-2 focus:ring-blue-500',
-            disabled && 'opacity-50 cursor-not-allowed'
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-          disabled={disabled}
-          {...buttonProps}
-        >
-          📅
-        </button>
       </div>
       
       {isOpen && (
-        <div className="absolute top-full left-0 z-50 mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg">
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          className="z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg"
+        >
           <Calendar
             value={value}
             onChange={handleCalendarSelect}
-            {...calendarProps}
           />
         </div>
       )}

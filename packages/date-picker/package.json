@@ -19,9 +19,11 @@
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "@jetstream/core": "workspace:*",
+    "@jetstream/icons": "workspace:*",
     "date-fns": "^4.1.0",
     "react-aria": "^3.41.1",
-    "react-stately": "^3.39.0"
+    "react-stately": "^3.39.0",
+    "@floating-ui/react": "^0.26.28"
   },
   "devDependencies": {
     "@types/react": "^18.3.17",
@@ -29,8 +31,10 @@
     "typescript": "^5.7.3",
     "rollup": "^4.45.1",
     "@jetstream/core": "workspace:*",
+    "@jetstream/icons": "workspace:*",
     "date-fns": "^4.1.0",
     "react-aria": "^3.41.1",
-    "react-stately": "^3.39.0"
+    "react-stately": "^3.39.0",
+    "@floating-ui/react": "^0.26.28"
   }
 }

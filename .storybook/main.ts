@@ -23,6 +23,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@jetstream/core': new URL('../packages/core/src', import.meta.url).pathname,
+          '@jetstream/icons': new URL('../packages/icons/src', import.meta.url).pathname,
         },
       },
     });
