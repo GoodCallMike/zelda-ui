@@ -5,8 +5,7 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
-    '@storybook/addon-a11y',
-    '@storybook/addon-toolbars'
+    '@storybook/addon-a11y'
   ],
 
   framework: {
@@ -25,6 +24,9 @@ const config: StorybookConfig = {
           '@jetstream/core': new URL('../packages/core/src', import.meta.url).pathname,
           '@jetstream/icons': new URL('../packages/icons/src', import.meta.url).pathname,
         },
+      },
+      optimizeDeps: {
+        include: ['react', 'react-dom', 'react/jsx-runtime']
       },
     });
   },

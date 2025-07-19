@@ -11,8 +11,8 @@ button {
   cursor: pointer;
 }
 
-/* Remove default input styling */
-input, textarea, select {
+/* Remove default input styling - but preserve borders for styled inputs */
+input:not([class*="border"]), textarea:not([class*="border"]), select:not([class*="border"]) {
   background: none;
   border: none;
   padding: 0;

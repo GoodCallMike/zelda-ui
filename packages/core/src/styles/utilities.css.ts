@@ -112,13 +112,15 @@ globalStyle('.row-span-2', { gridRow: 'span 2 / span 2' });
 globalStyle('.row-span-3', { gridRow: 'span 3 / span 3' });
 globalStyle('.row-span-4', { gridRow: 'span 4 / span 4' });
 
-// Typography utilities
-globalStyle('.text-xs', { fontSize: '0.75rem', lineHeight: '1rem' });
-globalStyle('.text-sm', { fontSize: '0.875rem', lineHeight: '1.25rem' });
-globalStyle('.text-base', { fontSize: '1rem', lineHeight: '1.5rem' });
-globalStyle('.text-lg', { fontSize: '1.125rem', lineHeight: '1.75rem' });
-globalStyle('.text-xl', { fontSize: '1.25rem', lineHeight: '1.75rem' });
-globalStyle('.text-2xl', { fontSize: '1.5rem', lineHeight: '2rem' });
+// Typography utilities - Major Third Scale (1.25 ratio)
+globalStyle('.text-xs', { fontSize: '0.64rem', lineHeight: '1rem' });     // 10.24px
+globalStyle('.text-sm', { fontSize: '0.8rem', lineHeight: '1.2rem' });     // 12.8px
+globalStyle('.text-base', { fontSize: '1rem', lineHeight: '1.5rem' });     // 16px
+globalStyle('.text-lg', { fontSize: '1.25rem', lineHeight: '1.75rem' });   // 20px
+globalStyle('.text-xl', { fontSize: '1.563rem', lineHeight: '2rem' });     // 25px
+globalStyle('.text-2xl', { fontSize: '1.953rem', lineHeight: '2.5rem' });  // 31.25px
+globalStyle('.text-3xl', { fontSize: '2.441rem', lineHeight: '3rem' });    // 39.06px
+globalStyle('.text-4xl', { fontSize: '3.052rem', lineHeight: '3.5rem' });  // 48.83px
 
 globalStyle('.font-normal', { fontWeight: '400' });
 globalStyle('.font-medium', { fontWeight: '500' });

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   autoUpdate,
   flip,
@@ -5,11 +6,9 @@ import {
   shift,
   useFloating,
 } from '@floating-ui/react';
-import { cn, TextField } from '@jetstream/core';
-import { useClickOutside } from '@jetstream/core/src';
+import { cn, TextField, useClickOutside } from '@jetstream/core';
 import { CalendarIcon } from '@jetstream/icons';
 import { format, isValid, parse } from 'date-fns';
-import { useState } from 'react';
 import { Calendar } from './Calendar';
 import styles from './DatePicker.module.css';
 

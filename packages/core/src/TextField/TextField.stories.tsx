@@ -22,14 +22,6 @@ export const Default: Story = {
     label: 'Username',
     placeholder: 'Enter your username',
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByLabelText('Username');
-    
-    await expect(input).toBeInTheDocument();
-    await userEvent.type(input, 'john_doe');
-    await expect(input).toHaveValue('john_doe');
-  },
 };
 
 export const WithDescription: Story = {

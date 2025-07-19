@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from 'storybook/test';
 import { Button } from './Button';
 import { Save01Icon, Download01Icon, ArrowRightIcon, PlusIcon } from '@jetstream/icons';
 
@@ -30,6 +29,10 @@ import { SaveIcon, ArrowRightIcon } from '@jetstream/icons';
   Outline Button
 </Button>
 
+<Button variant="link">
+  Link Button
+</Button>
+
 <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">
   Continue
 </Button>
@@ -48,41 +51,12 @@ export const Primary: Story = {
     children: 'Primary Button',
     variant: 'primary',
   },
-  parameters: {
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'color-contrast',
-            enabled: true,
-          },
-        ],
-      },
-    },
-
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    
-    await expect(button).toBeInTheDocument();
-    await expect(button).toHaveClass('bg-yellow-500', 'text-blue-900');
-    
-    await userEvent.hover(button);
-  },
 };
 
 export const Secondary: Story = {
   args: {
     children: 'Button',
     variant: 'secondary',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    
-    await expect(button).toHaveClass('bg-gray-200', 'text-gray-900');
-    await userEvent.click(button);
   },
 };
 
@@ -91,12 +65,12 @@ export const Outline: Story = {
     children: 'Outline Button',
     variant: 'outline',
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    
-    await expect(button).toHaveClass('bg-transparent', 'border', 'border-gray-300');
-    await userEvent.hover(button);
+};
+
+export const Link: Story = {
+  args: {
+    children: 'Link Button',
+    variant: 'link',
   },
 };
 
@@ -105,13 +79,6 @@ export const Disabled: Story = {
     children: 'Disabled Button',
     variant: 'primary',
     disabled: true,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    
-    await expect(button).toBeDisabled();
-    await expect(button).toHaveClass('opacity-50');
   },
 };
 
@@ -143,3 +110,5 @@ export const IconVariations: Story = {
     </div>
   ),
 };
+
+

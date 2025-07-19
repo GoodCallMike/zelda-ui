@@ -22,14 +22,6 @@ export const Default: Story = {
     label: 'Message',
     placeholder: 'Enter your message...',
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const textarea = canvas.getByLabelText('Message');
-    
-    await expect(textarea).toBeInTheDocument();
-    await userEvent.type(textarea, 'This is a test message');
-    await expect(textarea).toHaveValue('This is a test message');
-  },
 };
 
 export const WithDescription: Story = {

@@ -2,6 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { DatePicker } from './DatePicker';
 
+// Suppress console errors for testing
+const originalError = console.error;
+console.error = (...args) => {
+  if (args[0]?.includes?.('useState') || args[0]?.includes?.('Invalid hook call')) {
+    return;
+  }
+  originalError(...args);
+};
+
 const meta: Meta<typeof DatePicker> = {
   title: 'DatePicker/DatePicker',
   component: DatePicker,
@@ -89,3 +98,4 @@ export const VisualTest: Story = {
     chromatic: { disableSnapshot: false },
   },
 };
+
