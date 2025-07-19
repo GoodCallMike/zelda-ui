@@ -75,6 +75,7 @@ export const Calendar = ({ value, onChange }: CalendarProps) => {
                 isTodayDate && !isSelected && styles.dayButtonToday
               )}
               onClick={() => onChange?.(day)}
+
             >
               {format(day, 'd')}
             </button>

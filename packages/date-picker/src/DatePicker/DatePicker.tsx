@@ -1,7 +1,7 @@
-import { TextField, cn } from '@jetstream/core';
+import { TextField, cn, useClickOutside } from '@jetstream/core';
 import { CalendarIcon } from '@jetstream/icons';
 import { format, isValid, parse } from 'date-fns';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useFloating, autoUpdate, offset, flip, shift } from '@floating-ui/react';
 import { Calendar } from './Calendar';
 
@@ -55,6 +55,10 @@ export const DatePicker = ({
     middleware: [offset(4), flip(), shift()],
     whileElementsMounted: autoUpdate,
   });
+  
+  const clickOutsideRef = useClickOutside<HTMLDivElement>(() => {
+    setIsOpen(false);
+  }, isOpen);
 
   const handleInputChange = (newValue: string) => {
     setInputValue(newValue);
@@ -77,7 +81,7 @@ export const DatePicker = ({
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={clickOutsideRef}>
       <div className="relative">
         <div className="relative">
           <TextField
