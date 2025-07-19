@@ -1,9 +1,8 @@
 import type { SVGProps } from 'react';
 
-export const SwitchVertical01Icon = (props: SVGProps<SVGSVGElement>) => (
+export const SwitchVertical01Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -13,6 +12,6 @@ export const SwitchVertical01Icon = (props: SVGProps<SVGSVGElement>) => (
     aria-label="switch vertical 01 icon"
     {...props}
   >
-    <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );

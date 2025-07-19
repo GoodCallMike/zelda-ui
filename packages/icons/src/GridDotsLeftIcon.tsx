@@ -1,9 +1,8 @@
 import type { SVGProps } from 'react';
 
-export const GridDotsLeftIcon = (props: SVGProps<SVGSVGElement>) => (
+export const GridDotsLeftIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -13,6 +12,6 @@ export const GridDotsLeftIcon = (props: SVGProps<SVGSVGElement>) => (
     aria-label="grid dots left icon"
     {...props}
   >
-    <path d="M7.5 3H7.51M7.5 12H7.51M7.5 21H7.51M16.5 3H16.51M16.5 12H16.51M16.5 21H16.51M12 3H12.01M12 12H12.01M12 21H12.01M12 16.5H12.01M12 7.5H12.01M21 3H21.01M21 12H21.01M21 21H21.01M21 16.5H21.01M21 7.5H21.01M3 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.5 3H7.51M7.5 12H7.51M7.5 21H7.51M16.5 3H16.51M16.5 12H16.51M16.5 21H16.51M12 3H12.01M12 12H12.01M12 21H12.01M12 16.5H12.01M12 7.5H12.01M21 3H21.01M21 12H21.01M21 21H21.01M21 16.5H21.01M21 7.5H21.01M3 21V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );

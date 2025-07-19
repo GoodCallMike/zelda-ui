@@ -3,3 +3,4 @@ export * from './TextField';
 export * from './TextArea';
 export * from './ThemeProvider';
 export * from './styles';
+export * from './hooks/useClickOutside';

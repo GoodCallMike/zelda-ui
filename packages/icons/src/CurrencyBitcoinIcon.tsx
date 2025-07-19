@@ -1,9 +1,8 @@
 import type { SVGProps } from 'react';
 
-export const CurrencyBitcoinIcon = (props: SVGProps<SVGSVGElement>) => (
+export const CurrencyBitcoinIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -13,6 +12,6 @@ export const CurrencyBitcoinIcon = (props: SVGProps<SVGSVGElement>) => (
     aria-label="currency bitcoin icon"
     {...props}
   >
-    <path d="M9.5 2V4M9.5 20V22M13.5 2V4M13.5 20V22M7.5 4H14C16.2091 4 18 5.79086 18 8C18 10.2091 16.2091 12 14 12H7.5H15C17.2091 12 19 13.7909 19 16C19 18.2091 17.2091 20 15 20H7.5M7.5 4H5.5M7.5 4V20M7.5 20H5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.5 2V4M9.5 20V22M13.5 2V4M13.5 20V22M7.5 4H14C16.2091 4 18 5.79086 18 8C18 10.2091 16.2091 12 14 12H7.5H15C17.2091 12 19 13.7909 19 16C19 18.2091 17.2091 20 15 20H7.5M7.5 4H5.5M7.5 4V20M7.5 20H5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );

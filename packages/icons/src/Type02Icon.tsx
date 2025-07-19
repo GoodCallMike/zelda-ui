@@ -1,9 +1,8 @@
 import type { SVGProps } from 'react';
 
-export const Type02Icon = (props: SVGProps<SVGSVGElement>) => (
+export const Type02Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -14,6 +13,6 @@ export const Type02Icon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path opacity="0.12" d="M10.25 20V4H13.75V20H10.25Z" fill="currentColor"/>
-<path d="M4 7C4 6.06812 4 5.60218 4.15224 5.23463C4.35523 4.74458 4.74458 4.35523 5.23463 4.15224C5.60218 4 6.06812 4 7 4H17C17.9319 4 18.3978 4 18.7654 4.15224C19.2554 4.35523 19.6448 4.74458 19.8478 5.23463C20 5.60218 20 6.06812 20 7M8 20H16M10.25 4V20M13.75 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4 7C4 6.06812 4 5.60218 4.15224 5.23463C4.35523 4.74458 4.74458 4.35523 5.23463 4.15224C5.60218 4 6.06812 4 7 4H17C17.9319 4 18.3978 4 18.7654 4.15224C19.2554 4.35523 19.6448 4.74458 19.8478 5.23463C20 5.60218 20 6.06812 20 7M8 20H16M10.25 4V20M13.75 4V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );

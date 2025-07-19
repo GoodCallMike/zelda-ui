@@ -1,9 +1,8 @@
 import type { SVGProps } from 'react';
 
-export const ArrowCircleBrokenRightIcon = (props: SVGProps<SVGSVGElement>) => (
+export const ArrowCircleBrokenRightIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -14,6 +13,6 @@ export const ArrowCircleBrokenRightIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path opacity="0.12" d="M22.0001 12C22.0001 6.47715 17.5229 2 12.0001 2C8.29866 2 5.06694 4.01099 3.33789 7V17C5.06694 19.989 8.29866 22 12.0001 22C17.5229 22 22.0001 17.5228 22.0001 12Z" fill="currentColor"/>
-<path d="M3.33789 7C5.06694 4.01099 8.29866 2 12.0001 2C17.5229 2 22.0001 6.47715 22.0001 12C22.0001 17.5228 17.5229 22 12.0001 22C8.29866 22 5.06694 19.989 3.33789 17M12 16L16 12M16 12L12 8M16 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.33789 7C5.06694 4.01099 8.29866 2 12.0001 2C17.5229 2 22.0001 6.47715 22.0001 12C22.0001 17.5228 17.5229 22 12.0001 22C8.29866 22 5.06694 19.989 3.33789 17M12 16L16 12M16 12L12 8M16 12H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );

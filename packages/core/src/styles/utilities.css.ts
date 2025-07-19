@@ -214,6 +214,33 @@ globalStyle('.h-full', { height: '100%' });
 globalStyle('.h-screen', { height: '100vh' });
 globalStyle('.min-h-0', { minHeight: '0' });
 globalStyle('.min-h-full', { minHeight: '100%' });
+
+// Fixed width utilities
+globalStyle('.w-3', { width: '0.75rem' }); // 12px
+globalStyle('.w-4', { width: '1rem' }); // 16px
+globalStyle('.w-5', { width: '1.25rem' }); // 20px
+globalStyle('.w-6', { width: '1.5rem' }); // 24px
+globalStyle('.w-8', { width: '2rem' }); // 32px
+globalStyle('.w-10', { width: '2.5rem' }); // 40px
+globalStyle('.w-12', { width: '3rem' }); // 48px
+
+// Fixed height utilities
+globalStyle('.h-3', { height: '0.75rem' }); // 12px
+globalStyle('.h-4', { height: '1rem' }); // 16px
+globalStyle('.h-5', { height: '1.25rem' }); // 20px
+globalStyle('.h-6', { height: '1.5rem' }); // 24px
+globalStyle('.h-8', { height: '2rem' }); // 32px
+globalStyle('.h-10', { height: '2.5rem' }); // 40px
+globalStyle('.h-12', { height: '3rem' }); // 48px
+
+// Square size utilities (width and height together)
+globalStyle('.size-3', { width: '0.75rem', height: '0.75rem' }); // 12px
+globalStyle('.size-4', { width: '1rem', height: '1rem' }); // 16px
+globalStyle('.size-5', { width: '1.25rem', height: '1.25rem' }); // 20px
+globalStyle('.size-6', { width: '1.5rem', height: '1.5rem' }); // 24px
+globalStyle('.size-8', { width: '2rem', height: '2rem' }); // 32px
+globalStyle('.size-10', { width: '2.5rem', height: '2.5rem' }); // 40px
+globalStyle('.size-12', { width: '3rem', height: '3rem' }); // 48px
 globalStyle('.max-w-xs', { maxWidth: '20rem' });
 globalStyle('.max-w-sm', { maxWidth: '24rem' });
 globalStyle('.max-w-md', { maxWidth: '28rem' });

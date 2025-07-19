@@ -23,11 +23,19 @@
   --spacing-4: 1rem;
   --spacing-6: 1.5rem;
   --spacing-8: 2rem;
+  --spacing-24: 6rem;
   
   /* Sizing */
   --size-8: 2rem;
   --size-64: 16rem;
   --size-72: 18rem;
+  
+  /* Positioning */
+  --top-6: 1.5rem;
+  --top-24: 6rem;
+  
+  /* Opacity */
+  --opacity-50: 0.5;
   
   /* Border radius */
   --radius-sm: 0.125rem;

@@ -6,7 +6,7 @@ const meta: Meta<typeof DatePicker> = {
   title: 'DatePicker/DatePicker',
   component: DatePicker,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: `Date picker component with text input and validation using date-fns.
@@ -25,6 +25,7 @@ const [date, setDate] = useState<Date | null>(null);
 />
 \`\`\``,
       },
+      story: { height: '350px' },
     },
   },
   tags: ['autodocs'],

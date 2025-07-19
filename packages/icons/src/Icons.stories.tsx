@@ -42,7 +42,7 @@ export const AllIcons: Story = {
             key={name}
             className="flex flex-col items-center p-3 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
           >
-            <IconComponent className="w-6 h-6 mb-2" />
+            <IconComponent className="size-8 mb-2" />
             <span className="text-xs text-center text-gray-600 dark:text-gray-400">
               {name}
             </span>

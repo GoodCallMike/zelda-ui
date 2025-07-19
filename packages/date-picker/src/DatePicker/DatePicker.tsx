@@ -1,9 +1,17 @@
-import { TextField, cn, useClickOutside } from '@jetstream/core';
+import {
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useFloating,
+} from '@floating-ui/react';
+import { cn, TextField } from '@jetstream/core';
+import { useClickOutside } from '@jetstream/core/src';
 import { CalendarIcon } from '@jetstream/icons';
 import { format, isValid, parse } from 'date-fns';
 import { useState } from 'react';
-import { useFloating, autoUpdate, offset, flip, shift } from '@floating-ui/react';
 import { Calendar } from './Calendar';
+import styles from './DatePicker.module.css';
 
 interface DatePickerProps {
   /** Current date value */
@@ -48,14 +56,14 @@ export const DatePicker = ({
     value && isValid(value) ? format(value, dateFormat) : '',
   );
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const { refs, floatingStyles } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     middleware: [offset(4), flip(), shift()],
     whileElementsMounted: autoUpdate,
   });
-  
+
   const clickOutsideRef = useClickOutside<HTMLDivElement>(() => {
     setIsOpen(false);
   }, isOpen);
@@ -98,36 +106,26 @@ export const DatePicker = ({
             type="button"
             ref={refs.setReference}
             className={cn(
-              'absolute right-3 top-0 bottom-0',
-              'w-6 flex items-center justify-center',
-              'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300',
-              'focus:outline-none border-none',
-              disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              styles.calendarButton,
+              label
+                ? styles.calendarButtonWithLabel
+                : styles.calendarButtonNoLabel,
             )}
             onClick={() => setIsOpen(!isOpen)}
             disabled={disabled}
-            style={{
-              background: 'none',
-              right: '4px',
-              top: label ? '24px' : '0',
-              height: '33.5px'
-            }}
           >
-            <CalendarIcon />
+            <CalendarIcon className="w-5 h-5" />
           </button>
         </div>
       </div>
-      
+
       {isOpen && (
         <div
           ref={refs.setFloating}
           style={floatingStyles}
           className="z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg"
         >
-          <Calendar
-            value={value}
-            onChange={handleCalendarSelect}
-          />
+          <Calendar value={value} onChange={handleCalendarSelect} />
         </div>
       )}
     </div>

@@ -16,6 +16,26 @@ function toPascalCase(str) {
     .join('');
 }
 
+// Convert SVG attributes to React camelCase
+function convertSvgAttributes(svgContent) {
+  return svgContent
+    .replace(/fill-rule=/g, 'fillRule=')
+    .replace(/clip-rule=/g, 'clipRule=')
+    .replace(/stroke-width=/g, 'strokeWidth=')
+    .replace(/stroke-linecap=/g, 'strokeLinecap=')
+    .replace(/stroke-linejoin=/g, 'strokeLinejoin=')
+    .replace(/stroke-dasharray=/g, 'strokeDasharray=')
+    .replace(/stroke-dashoffset=/g, 'strokeDashoffset=')
+    .replace(/stroke-miterlimit=/g, 'strokeMiterlimit=')
+    .replace(/stroke-opacity=/g, 'strokeOpacity=')
+    .replace(/fill-opacity=/g, 'fillOpacity=')
+    .replace(/font-family=/g, 'fontFamily=')
+    .replace(/font-size=/g, 'fontSize=')
+    .replace(/font-weight=/g, 'fontWeight=')
+    .replace(/text-anchor=/g, 'textAnchor=')
+    .replace(/dominant-baseline=/g, 'dominantBaseline=');
+}
+
 // Generate React component from SVG
 function generateComponent(name, svgContent) {
   const componentName = `${toPascalCase(name)}Icon`;
@@ -26,15 +46,14 @@ function generateComponent(name, svgContent) {
     throw new Error(`Invalid SVG content for ${name}`);
   }
   
-  const svgInner = svgMatch[1].trim();
+  const svgInner = convertSvgAttributes(svgMatch[1].trim());
   const iconName = name.replace(/-/g, ' ');
   
   return `import type { SVGProps } from 'react';
 
-export const ${componentName} = (props: SVGProps<SVGSVGElement>) => (
+export const ${componentName} = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
   <svg
-    width="16"
-    height="16"
+    className={className}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
