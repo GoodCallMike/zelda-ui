@@ -26,6 +26,11 @@
     "react-dom": "^19.1.0",
     "react-stately": "^3.39.0"
   },
+  "pnpm": {
+    "overrides": {
+      "@vanilla-extract/vite-plugin>vite": "^7.0.0"
+    }
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
     "@playwright/test": "^1.54.1",
