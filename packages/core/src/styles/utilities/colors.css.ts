@@ -50,8 +50,11 @@ globalStyle('.border-black', { borderColor: colors.black });
 // Hover states
 colorNames.forEach(color => {
   shades.forEach(shade => {
-    globalStyle(`.hover\\\\:bg-${color}-${shade}:hover`, {
-      backgroundColor: colors[color][shade],
-    });
+    const colorVar = vars.colors[`${color}${shade}`];
+    if (colorVar) {
+      globalStyle(`.hover\\\\:bg-${color}-${shade}:hover`, {
+        backgroundColor: colorVar,
+      });
+    }
   });
 });

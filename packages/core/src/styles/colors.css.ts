@@ -1,35 +1,35 @@
-// Cyberfuturistic Southwest Airlines inspired color palette
+// Legacy color object - now uses CSS variables as source of truth
 export const colors = {
   // Base colors
-  white: '#ffffff',
-  black: '#000000',
+  white: 'var(--white)',
+  black: 'var(--black)',
   
   // Grays
   gray: {
-    50: '#f9fafb',
-    100: '#f3f4f6',
-    200: '#e5e7eb',
-    300: '#d1d5db',
-    400: '#9ca3af',
-    500: '#6b7280',
-    600: '#4b5563',
-    700: '#374151',
-    800: '#1f2937',
-    900: '#111827',
+    50: 'var(--gray-50)',
+    100: 'var(--gray-100)',
+    200: 'var(--gray-200)',
+    300: 'var(--gray-300)',
+    400: 'var(--gray-400)',
+    500: 'var(--gray-500)',
+    600: 'var(--gray-600)',
+    700: 'var(--gray-700)',
+    800: 'var(--gray-800)',
+    900: 'var(--gray-900)',
   },
   
   // Electric Blue (from Figma color ramp)
   blue: {
-    50: '#f0f9ff',
-    100: '#e0f2fe',
-    200: '#bae6fd',
-    300: '#7dd3fc',
-    400: '#38bdf8',
-    500: '#0ea5e9',
-    600: '#0284c7',
-    700: '#0369a1',
-    800: '#075985',
-    900: '#0c4a6e',
+    50: 'var(--blue-50)',
+    100: 'var(--blue-100)',
+    200: 'var(--blue-200)',
+    300: 'var(--blue-300)',
+    400: 'var(--blue-400)',
+    500: 'var(--blue-500)',
+    600: 'var(--blue-600)',
+    700: 'var(--blue-700)',
+    800: 'var(--blue-800)',
+    900: 'var(--blue-900)',
   },
   
   // Cyber Purple
@@ -62,16 +62,16 @@ export const colors = {
   
   // Red (from Figma color ramp)
   red: {
-    50: '#fef2f2',
-    100: '#fee2e2',
-    200: '#fecaca',
-    300: '#fca5a5',
-    400: '#f87171',
-    500: '#ef4444',
-    600: '#dc2626',
-    700: '#b91c1c',
-    800: '#991b1b',
-    900: '#7f1d1d',
+    50: 'var(--red-50)',
+    100: 'var(--red-100)',
+    200: 'var(--red-200)',
+    300: 'var(--red-300)',
+    400: 'var(--red-400)',
+    500: 'var(--red-500)',
+    600: 'var(--red-600)',
+    700: 'var(--red-700)',
+    800: 'var(--red-800)',
+    900: 'var(--red-900)',
   },
   
   // Neon Orange
@@ -90,30 +90,30 @@ export const colors = {
   
   // Yellow (from Figma color ramp)
   yellow: {
-    50: '#fefce8',
-    100: '#fef9c3',
-    200: '#fef08a',
-    300: '#fde047',
-    400: '#facc15',
-    500: '#eab308',
-    600: '#ca8a04',
-    700: '#a16207',
-    800: '#854d0e',
-    900: '#713f12',
+    50: 'var(--yellow-50)',
+    100: 'var(--yellow-100)',
+    200: 'var(--yellow-200)',
+    300: 'var(--yellow-300)',
+    400: 'var(--yellow-400)',
+    500: 'var(--yellow-500)',
+    600: 'var(--yellow-600)',
+    700: 'var(--yellow-700)',
+    800: 'var(--yellow-800)',
+    900: 'var(--yellow-900)',
   },
   
   // Green (from Figma color ramp)
   green: {
-    50: '#f0fdf4',
-    100: '#dcfce7',
-    200: '#bbf7d0',
-    300: '#86efac',
-    400: '#4ade80',
-    500: '#22c55e',
-    600: '#16a34a',
-    700: '#15803d',
-    800: '#166534',
-    900: '#14532d',
+    50: 'var(--green-50)',
+    100: 'var(--green-100)',
+    200: 'var(--green-200)',
+    300: 'var(--green-300)',
+    400: 'var(--green-400)',
+    500: 'var(--green-500)',
+    600: 'var(--green-600)',
+    700: 'var(--green-700)',
+    800: 'var(--green-800)',
+    900: 'var(--green-900)',
   },
   
   // Cyber Teal

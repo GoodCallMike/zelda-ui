@@ -1,31 +1,33 @@
-// Optimized utilities - imports modular files
+// Import CSS variables first
+import './variables.css';
+
+// Import optimized utility modules
 import './utilities';
 
 // Additional utilities not yet moved
 import { globalStyle } from '@vanilla-extract/css';
-import { colors } from './colors.css';
 
 // Typography utilities
-globalStyle('.text-xs', { fontSize: '0.75rem', lineHeight: '1rem' });
-globalStyle('.text-sm', { fontSize: '0.875rem', lineHeight: '1.25rem' });
-globalStyle('.text-base', { fontSize: '1rem', lineHeight: '1.5rem' });
-globalStyle('.text-lg', { fontSize: '1.125rem', lineHeight: '1.75rem' });
-globalStyle('.text-xl', { fontSize: '1.25rem', lineHeight: '1.75rem' });
-globalStyle('.text-2xl', { fontSize: '1.5rem', lineHeight: '2rem' });
+globalStyle('.text-xs', { fontSize: 'var(--text-xs)' });
+globalStyle('.text-sm', { fontSize: 'var(--text-sm)' });
+globalStyle('.text-base', { fontSize: 'var(--text-base)' });
+globalStyle('.text-lg', { fontSize: 'var(--text-lg)' });
+globalStyle('.text-xl', { fontSize: 'var(--text-xl)' });
+globalStyle('.text-2xl', { fontSize: 'var(--text-2xl)' });
 
-globalStyle('.font-normal', { fontWeight: '400' });
-globalStyle('.font-medium', { fontWeight: '500' });
-globalStyle('.font-semibold', { fontWeight: '600' });
-globalStyle('.font-bold', { fontWeight: '700' });
+globalStyle('.font-normal', { fontWeight: 'var(--font-normal)' });
+globalStyle('.font-medium', { fontWeight: 'var(--font-medium)' });
+globalStyle('.font-semibold', { fontWeight: 'var(--font-semibold)' });
+globalStyle('.font-bold', { fontWeight: 'var(--font-bold)' });
 
 globalStyle('.uppercase', { textTransform: 'uppercase' });
 globalStyle('.text-center', { textAlign: 'center' });
 
 // Border utilities
-globalStyle('.rounded', { borderRadius: '0.25rem' });
-globalStyle('.rounded-md', { borderRadius: '0.375rem' });
-globalStyle('.rounded-lg', { borderRadius: '0.5rem' });
-globalStyle('.rounded-full', { borderRadius: '9999px' });
+globalStyle('.rounded', { borderRadius: 'var(--radius-base)' });
+globalStyle('.rounded-md', { borderRadius: 'var(--radius-md)' });
+globalStyle('.rounded-lg', { borderRadius: 'var(--radius-lg)' });
+globalStyle('.rounded-full', { borderRadius: 'var(--radius-full)' });
 globalStyle('.border', { borderWidth: '1px', borderStyle: 'solid' });
 
 // Interactive utilities
@@ -44,4 +46,4 @@ globalStyle('.focus\\\\:outline-none:focus', { outline: 'none' });
 globalStyle('.focus\\\\:ring-2:focus', { boxShadow: '0 0 0 2px rgb(59 130 246)' });
 
 // Shadow utilities
-globalStyle('.shadow-lg', { boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' });
+globalStyle('.shadow-lg', { boxShadow: 'var(--shadow-lg)' });
