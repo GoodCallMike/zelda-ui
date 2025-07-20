@@ -18,18 +18,18 @@ export const colors = {
     900: '#111827',
   },
   
-  // Electric Blue (Southwest Blue reimagined)
+  // Electric Blue (from Figma color ramp)
   blue: {
-    50: '#eff6ff',
-    100: '#dbeafe',
-    200: '#bfdbfe',
-    300: '#93c5fd',
-    400: '#60a5fa',
-    500: '#3b82f6',
-    600: '#2563eb',
-    700: '#1d4ed8',
-    800: '#1e40af',
-    900: '#1e3a8a',
+    50: '#f0f9ff',
+    100: '#e0f2fe',
+    200: '#bae6fd',
+    300: '#7dd3fc',
+    400: '#38bdf8',
+    500: '#0ea5e9',
+    600: '#0284c7',
+    700: '#0369a1',
+    800: '#075985',
+    900: '#0c4a6e',
   },
   
   // Cyber Purple
@@ -60,7 +60,7 @@ export const colors = {
     900: '#831843',
   },
   
-  // Cyber Red
+  // Red (from Figma color ramp)
   red: {
     50: '#fef2f2',
     100: '#fee2e2',
@@ -88,7 +88,7 @@ export const colors = {
     900: '#7c2d12',
   },
   
-  // Electric Yellow
+  // Yellow (from Figma color ramp)
   yellow: {
     50: '#fefce8',
     100: '#fef9c3',
@@ -102,7 +102,7 @@ export const colors = {
     900: '#713f12',
   },
   
-  // Matrix Green
+  // Green (from Figma color ramp)
   green: {
     50: '#f0fdf4',
     100: '#dcfce7',

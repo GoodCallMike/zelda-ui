@@ -58,6 +58,13 @@ export const ThemeProvider = ({
       
       setResolvedTheme(resolved);
       root.setAttribute('data-theme', resolved);
+      
+      // Also add/remove dark class for CSS utilities
+      if (resolved === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
     };
 
     updateTheme();

@@ -260,20 +260,34 @@ globalStyle('.rounded-full', { borderRadius: '9999px' });
 
 // Border widths
 globalStyle('.border-0', { borderWidth: '0' });
-globalStyle('.border', { borderWidth: '1px' });
-globalStyle('.border-2', { borderWidth: '2px' });
-globalStyle('.border-4', { borderWidth: '4px' });
-globalStyle('.border-8', { borderWidth: '8px' });
+globalStyle('.border', { borderWidth: '1px', borderStyle: 'solid' });
+globalStyle('.border-2', { borderWidth: '2px', borderStyle: 'solid' });
+globalStyle('.border-4', { borderWidth: '4px', borderStyle: 'solid' });
+globalStyle('.border-8', { borderWidth: '8px', borderStyle: 'solid' });
 
 // Directional borders
-globalStyle('.border-t', { borderTopWidth: '1px' });
-globalStyle('.border-r', { borderRightWidth: '1px' });
-globalStyle('.border-b', { borderBottomWidth: '1px' });
-globalStyle('.border-l', { borderLeftWidth: '1px' });
+globalStyle('.border-t', { borderTopWidth: '1px', borderTopStyle: 'solid' });
+globalStyle('.border-r', { borderRightWidth: '1px', borderRightStyle: 'solid' });
+globalStyle('.border-b', { borderBottomWidth: '1px', borderBottomStyle: 'solid' });
+globalStyle('.border-l', { borderLeftWidth: '1px', borderLeftStyle: 'solid' });
 globalStyle('.border-t-0', { borderTopWidth: '0' });
 globalStyle('.border-r-0', { borderRightWidth: '0' });
 globalStyle('.border-b-0', { borderBottomWidth: '0' });
 globalStyle('.border-l-0', { borderLeftWidth: '0' });
+globalStyle('.border-t-2', { borderTopWidth: '2px', borderTopStyle: 'solid' });
+globalStyle('.border-r-2', { borderRightWidth: '2px', borderRightStyle: 'solid' });
+globalStyle('.border-b-2', { borderBottomWidth: '2px', borderBottomStyle: 'solid' });
+globalStyle('.border-l-2', { borderLeftWidth: '2px', borderLeftStyle: 'solid' });
+globalStyle('.border-t-4', { borderTopWidth: '4px', borderTopStyle: 'solid' });
+globalStyle('.border-r-4', { borderRightWidth: '4px', borderRightStyle: 'solid' });
+globalStyle('.border-b-4', { borderBottomWidth: '4px', borderBottomStyle: 'solid' });
+globalStyle('.border-l-4', { borderLeftWidth: '4px', borderLeftStyle: 'solid' });
+globalStyle('.border-x', { borderLeftWidth: '1px', borderRightWidth: '1px', borderLeftStyle: 'solid', borderRightStyle: 'solid' });
+globalStyle('.border-y', { borderTopWidth: '1px', borderBottomWidth: '1px', borderTopStyle: 'solid', borderBottomStyle: 'solid' });
+globalStyle('.border-x-0', { borderLeftWidth: '0', borderRightWidth: '0' });
+globalStyle('.border-y-0', { borderTopWidth: '0', borderBottomWidth: '0' });
+globalStyle('.border-x-2', { borderLeftWidth: '2px', borderRightWidth: '2px', borderLeftStyle: 'solid', borderRightStyle: 'solid' });
+globalStyle('.border-y-2', { borderTopWidth: '2px', borderBottomWidth: '2px', borderTopStyle: 'solid', borderBottomStyle: 'solid' });
 
 // Border styles
 globalStyle('.border-solid', { borderStyle: 'solid' });
@@ -319,11 +333,6 @@ globalStyle('.transition-colors', {
 
 globalStyle('.animate-pulse', {
   animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-});
-
-globalStyle('@keyframes pulse', {
-  '0%, 100%': { opacity: '1' },
-  '50%': { opacity: '0.5' }
 });
 
 // Hover states
@@ -548,6 +557,25 @@ globalStyle('.inset-0', { top: '0', right: '0', bottom: '0', left: '0' });
 globalStyle('.transform', { transform: 'translateY(-50%)' });
 globalStyle('.-translate-y-1\\/2', { transform: 'translateY(-50%)' });
 globalStyle('.translate-y-1\\/2', { transform: 'translateY(50%)' });
+globalStyle('.rotate-0', { transform: 'rotate(0deg)' });
+globalStyle('.rotate-1', { transform: 'rotate(1deg)' });
+globalStyle('.rotate-2', { transform: 'rotate(2deg)' });
+globalStyle('.rotate-3', { transform: 'rotate(3deg)' });
+globalStyle('.rotate-6', { transform: 'rotate(6deg)' });
+globalStyle('.rotate-12', { transform: 'rotate(12deg)' });
+globalStyle('.rotate-45', { transform: 'rotate(45deg)' });
+globalStyle('.rotate-90', { transform: 'rotate(90deg)' });
+globalStyle('.rotate-180', { transform: 'rotate(180deg)' });
+globalStyle('.rotate-270', { transform: 'rotate(270deg)' });
+globalStyle('.-rotate-1', { transform: 'rotate(-1deg)' });
+globalStyle('.-rotate-2', { transform: 'rotate(-2deg)' });
+globalStyle('.-rotate-3', { transform: 'rotate(-3deg)' });
+globalStyle('.-rotate-6', { transform: 'rotate(-6deg)' });
+globalStyle('.-rotate-12', { transform: 'rotate(-12deg)' });
+globalStyle('.-rotate-45', { transform: 'rotate(-45deg)' });
+globalStyle('.-rotate-90', { transform: 'rotate(-90deg)' });
+globalStyle('.-rotate-180', { transform: 'rotate(-180deg)' });
+globalStyle('.-rotate-270', { transform: 'rotate(-270deg)' });
 
 // Z-index utilities
 globalStyle('.z-0', { zIndex: '0' });
@@ -587,23 +615,17 @@ globalStyle('.resize-y', { resize: 'vertical' });
 // Focus utilities
 globalStyle('.focus\\:outline-none:focus', { outline: '2px solid transparent', outlineOffset: '2px' });
 globalStyle('.focus\\:ring-1:focus', { 
-  '--tw-ring-offset-shadow': 'var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)',
-  '--tw-ring-shadow': 'var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)',
-  boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)'
+  boxShadow: '0 0 0 1px rgb(59 130 246)'
 });
 globalStyle('.focus\\:ring-2:focus', { 
-  '--tw-ring-offset-shadow': 'var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)',
-  '--tw-ring-shadow': 'var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)',
-  boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)'
+  boxShadow: '0 0 0 2px rgb(59 130 246)'
 });
-globalStyle('.focus\\:ring-offset-1:focus', { '--tw-ring-offset-width': '1px' });
-globalStyle('.focus\\:ring-offset-2:focus', { '--tw-ring-offset-width': '2px' });
 
 // Focus ring colors
 colorNames.forEach(color => {
   shades.forEach(shade => {
     globalStyle(`.focus\\:ring-${color}-${shade}:focus`, {
-      '--tw-ring-color': colors[color][shade],
+      boxShadow: `0 0 0 2px ${colors[color][shade]}`,
     });
     globalStyle(`.focus\\:border-${color}-${shade}:focus`, {
       borderColor: colors[color][shade],
@@ -618,63 +640,72 @@ globalStyle('.shadow-md', { boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4
 globalStyle('.shadow-lg', { boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)' });
 globalStyle('.shadow-none', { boxShadow: '0 0 #0000' });
 
-// Dark mode utilities
-// Background colors
-colorNames.forEach(color => {
-  shades.forEach(shade => {
-    globalStyle(`[data-theme="dark"] .dark\\:bg-${color}-${shade}`, {
-      backgroundColor: colors[color][shade],
-    });
-  });
-});
-
-globalStyle('[data-theme="dark"] .dark\\:bg-white', { backgroundColor: colors.white });
-globalStyle('[data-theme="dark"] .dark\\:bg-black', { backgroundColor: colors.black });
-globalStyle('[data-theme="dark"] .dark\\:bg-gray-800', { backgroundColor: colors.gray[800] });
-globalStyle('[data-theme="dark"] .dark\\:bg-gray-700', { backgroundColor: colors.gray[700] });
-
+// Dark mode utilities with .dark class
 // Text colors
 colorNames.forEach(color => {
   shades.forEach(shade => {
-    globalStyle(`[data-theme="dark"] .dark\\:text-${color}-${shade}`, {
+    globalStyle(`.dark .dark\\:text-${color}-${shade}`, {
       color: colors[color][shade],
     });
   });
 });
 
-globalStyle('[data-theme="dark"] .dark\\:text-white', { color: colors.white });
-globalStyle('[data-theme="dark"] .dark\\:text-black', { color: colors.black });
-globalStyle('[data-theme="dark"] .dark\\:text-gray-100', { color: colors.gray[100] });
-globalStyle('[data-theme="dark"] .dark\\:text-gray-300', { color: colors.gray[300] });
-globalStyle('[data-theme="dark"] .dark\\:text-gray-400', { color: colors.gray[400] });
-globalStyle('[data-theme="dark"] .dark\\:text-gray-500', { color: colors.gray[500] });
+globalStyle('.dark .dark\\:text-white', { color: colors.white });
+globalStyle('.dark .dark\\:text-black', { color: colors.black });
+globalStyle('.dark .dark\\:text-gray-100', { color: colors.gray[100] });
+globalStyle('.dark .dark\\:text-gray-300', { color: colors.gray[300] });
+globalStyle('.dark .dark\\:text-gray-400', { color: colors.gray[400] });
+globalStyle('.dark .dark\\:text-gray-500', { color: colors.gray[500] });
+globalStyle('.dark .dark\\:text-gray-900', { color: colors.gray[900] });
+
+// Alternative selector for better specificity
+globalStyle('.dark h4.dark\\:text-gray-100', { color: colors.gray[100] });
+globalStyle('.dark p.dark\\:text-gray-400', { color: colors.gray[400] });
+
+// Typography component utilities
+globalStyle('.dark h1', { color: colors.gray[100] });
+globalStyle('.dark h2', { color: colors.gray[100] });
+globalStyle('.dark h3', { color: colors.gray[100] });
+globalStyle('.dark h4', { color: colors.gray[100] });
+globalStyle('.dark h5', { color: colors.gray[100] });
+globalStyle('.dark h6', { color: colors.gray[100] });
+globalStyle('.dark p', { color: colors.gray[100] });
+globalStyle('.dark span', { color: colors.gray[400] });
+globalStyle('.dark label', { color: colors.gray[400] });
+globalStyle('.dark small', { color: colors.gray[500] });
+globalStyle('.dark strong', { color: colors.gray[50] });
+globalStyle('.dark em', { color: colors.gray[300] });
+globalStyle('.dark code', { color: colors.gray[200] });
+globalStyle('.dark pre', { color: colors.gray[200] });
+globalStyle('.dark blockquote', { color: colors.gray[300] });
+globalStyle('.dark li', { color: colors.gray[300] });
+globalStyle('.dark td', { color: colors.gray[300] });
+globalStyle('.dark th', { color: colors.gray[100] });
+
+// Background colors
+colorNames.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`.dark .dark\\:bg-${color}-${shade}`, {
+      backgroundColor: colors[color][shade],
+    });
+  });
+});
+
+globalStyle('.dark .dark\\:bg-white', { backgroundColor: colors.white });
+globalStyle('.dark .dark\\:bg-black', { backgroundColor: colors.black });
+globalStyle('.dark .dark\\:bg-gray-800', { backgroundColor: colors.gray[800] });
+globalStyle('.dark .dark\\:bg-gray-700', { backgroundColor: colors.gray[700] });
 
 // Border colors
 colorNames.forEach(color => {
   shades.forEach(shade => {
-    globalStyle(`[data-theme="dark"] .dark\\:border-${color}-${shade}`, {
+    globalStyle(`.dark .dark\\:border-${color}-${shade}`, {
       borderColor: colors[color][shade],
     });
   });
 });
 
-globalStyle('[data-theme="dark"] .dark\\:border-white', { borderColor: colors.white });
-globalStyle('[data-theme="dark"] .dark\\:border-black', { borderColor: colors.black });
-globalStyle('[data-theme="dark"] .dark\\:border-gray-600', { borderColor: colors.gray[600] });
-globalStyle('[data-theme="dark"] .dark\\:border-gray-700', { borderColor: colors.gray[700] });
-
-// Dark mode hover states
-colorNames.forEach(color => {
-  shades.forEach(shade => {
-    globalStyle(`[data-theme="dark"] .dark\\:hover\\:bg-${color}-${shade}:hover`, {
-      backgroundColor: colors[color][shade],
-    });
-    globalStyle(`[data-theme="dark"] .dark\\:hover\\:text-${color}-${shade}:hover`, {
-      color: colors[color][shade],
-    });
-  });
-});
-
-globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-yellow-500:hover', { backgroundColor: colors.yellow[500] });
-globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-gray-600:hover', { backgroundColor: colors.gray[600] });
-globalStyle('[data-theme="dark"] .dark\\:hover\\:bg-red-400:hover', { backgroundColor: colors.red[400] });
+globalStyle('.dark .dark\\:border-white', { borderColor: colors.white });
+globalStyle('.dark .dark\\:border-black', { borderColor: colors.black });
+globalStyle('.dark .dark\\:border-gray-600', { borderColor: colors.gray[600] });
+globalStyle('.dark .dark\\:border-gray-700', { borderColor: colors.gray[700] });

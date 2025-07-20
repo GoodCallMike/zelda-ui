@@ -35,6 +35,8 @@ export const Divider = ({
   if (orientation === 'vertical') {
     return (
       <div
+        role="separator"
+        aria-orientation="vertical"
         className={cn(
           'inline-block w-px mx-2 h-6',
           'border-l border-solid border-gray-300 dark:border-gray-600',
@@ -49,6 +51,8 @@ export const Divider = ({
   if (children) {
     return (
       <div
+        role="separator"
+        aria-label={typeof children === 'string' ? children : undefined}
         className={cn(
           'flex items-center my-4',
           className
@@ -78,6 +82,7 @@ export const Divider = ({
 
   return (
     <div
+      role="separator"
       className={cn(
         'my-4 border-t border-solid border-gray-300 dark:border-gray-600',
         dashed && 'border-dashed',

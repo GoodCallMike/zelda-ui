@@ -1,5 +1,6 @@
 import React from 'react';
 import '../packages/core/src/styles';
+import './preview.css';
 
 const preview = {
   parameters: {
@@ -33,11 +34,17 @@ const preview = {
       const backgroundName = context.globals.backgrounds?.value;
       const theme = backgroundName === 'dark' ? 'dark' : 'light';
       
-      // Apply theme to document
-      document.documentElement.setAttribute('data-theme', theme);
+      // Apply theme to document for Tailwind dark mode
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.body.classList.remove('dark');
+      }
       
       return (
-        <div data-theme={theme}>
+        <div className={theme === 'dark' ? 'dark' : ''}>
           <Story />
         </div>
       );

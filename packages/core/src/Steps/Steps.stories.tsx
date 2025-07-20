@@ -24,13 +24,63 @@ import { Steps } from '@jetstream/core';
 </Steps>
 \`\`\`
 
+## Advanced Usage
+
+### Dynamic Steps
+\`\`\`tsx
+const [steps, setSteps] = useState([
+  { title: 'Step 1', description: 'First step' },
+  { title: 'Step 2', description: 'Second step' }
+]);
+
+// Add step dynamically
+const addStep = () => {
+  setSteps([...steps, { title: 'New Step', description: 'Added step' }]);
+};
+\`\`\`
+
+### Custom Status Management
+\`\`\`tsx
+<Steps current={2} status="error">
+  <Steps.Step title="Completed" status="finish" />
+  <Steps.Step title="Failed" status="error" />
+  <Steps.Step title="Pending" status="wait" />
+</Steps>
+\`\`\`
+
 ## Features
 
 - **Horizontal/Vertical** - Support for both orientations
 - **Status indicators** - Wait, process, finish, error states
 - **Custom icons** - Support for custom step icons
 - **Sizes** - Default and small sizes
-- **Interactive** - Can be controlled programmatically`,
+- **Interactive** - Can be controlled programmatically
+- **Accessible** - Full keyboard navigation and screen reader support
+
+## Accessibility
+
+### Keyboard Navigation
+- **Tab** - Navigate between interactive steps
+- **Enter/Space** - Activate clickable steps
+- **Arrow Keys** - Navigate between steps (when interactive)
+
+### Screen Reader Support
+- Each step announces its status and position
+- Progress information is communicated clearly
+- Error states are properly announced
+
+### ARIA Attributes
+- \`role="progressbar"\` for the container
+- \`aria-current="step"\` for the active step
+- \`aria-label\` for step descriptions
+- \`aria-describedby\` for additional context
+
+### Best Practices
+- Always provide meaningful step titles
+- Include descriptions for complex processes
+- Use appropriate status indicators
+- Ensure sufficient color contrast
+- Test with screen readers`,
       },
     },
   },

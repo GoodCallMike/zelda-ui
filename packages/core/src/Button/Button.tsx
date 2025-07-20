@@ -59,20 +59,21 @@ export const Button = ({
         'cursor-pointer transition-colors',
         variant !== 'outline' && variant !== 'link' && 'border-none',
         'jetstream-effect',
-        'focus:outline-none focus:ring-2 focus:ring-offset-2',
+        'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+        'active:scale-95 active:transition-transform active:duration-75',
 
         // Icon spacing
         Icon && 'gap-2',
 
         // Variant styles
         variant === 'primary' &&
-          'bg-yellow-400 text-blue-900 hover:bg-yellow-300 focus:ring-yellow-500 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500',
+          'bg-yellow-500 text-blue-900 hover:bg-yellow-400 focus:ring-blue-500 focus:ring-offset-2 active:bg-yellow-600',
         variant === 'secondary' &&
-          'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
+          'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-800',
         variant === 'outline' &&
-          'border border-solid border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800',
+          'border border-solid border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 active:text-white',
         variant === 'link' &&
-          'text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded underline focus:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20',
+          'text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
 
         // State styles
         disabled && 'opacity-50 cursor-not-allowed',

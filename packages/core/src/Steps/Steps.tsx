@@ -61,6 +61,11 @@ export const Steps = ({
   return (
     <StepsContext.Provider value={contextValue}>
       <div
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={contextValue.totalSteps - 1}
+        aria-valuenow={current}
+        aria-label={`Step ${current + 1} of ${contextValue.totalSteps}`}
         className={cn(
           'flex',
           direction === 'vertical' ? 'flex-col' : 'flex-row items-center',
@@ -161,6 +166,9 @@ const Step = ({
 
   return (
     <div
+      role="listitem"
+      aria-current={stepIndex === current ? 'step' : undefined}
+      aria-label={`${title}${description ? `: ${description}` : ''} - ${currentStatus}`}
       className={cn(
         'flex',
         direction === 'vertical' ? 'flex-row pb-8 last:pb-0' : 'flex-col items-center',
@@ -170,6 +178,7 @@ const Step = ({
     >
       <div className={cn('flex items-center', direction === 'vertical' ? 'flex-col mr-4' : 'mb-2')}>
         <div
+          aria-hidden="true"
           className={cn(
             'flex items-center justify-center border-2 rounded-full font-medium transition-colors bg-white dark:bg-gray-800',
             iconSize,
