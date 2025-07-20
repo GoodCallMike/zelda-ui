@@ -2,7 +2,7 @@
 import './variables.css';
 
 // Import optimized utility modules
-import './utilities';
+import './utilities/index.css';
 
 // Additional utilities not yet moved
 import { globalStyle } from '@vanilla-extract/css';
@@ -29,6 +29,10 @@ globalStyle('.rounded-md', { borderRadius: 'var(--radius-md)' });
 globalStyle('.rounded-lg', { borderRadius: 'var(--radius-lg)' });
 globalStyle('.rounded-full', { borderRadius: 'var(--radius-full)' });
 globalStyle('.border', { borderWidth: '1px', borderStyle: 'solid' });
+globalStyle('.border-t', { borderTopWidth: '1px', borderTopStyle: 'solid' });
+globalStyle('.border-l', { borderLeftWidth: '1px', borderLeftStyle: 'solid' });
+globalStyle('.border-solid', { borderStyle: 'solid' });
+globalStyle('.border-dashed', { borderStyle: 'dashed' });
 
 // Interactive utilities
 globalStyle('.cursor-pointer', { cursor: 'pointer' });

@@ -37,7 +37,7 @@ export const Label = ({ children, className, ...props }: TypographyProps) => (
 );
 
 export const ScreenReaderOnly = ({ children, className, ...props }: TypographyProps) => (
-  <span className={cn('sr-only', className)} {...props}>
+  <span className={cn('sr-only text-gray-900 dark:text-gray-100', className)} {...props}>
     {children}
   </span>
 );

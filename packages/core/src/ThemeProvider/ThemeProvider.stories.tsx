@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { ThemeProvider, useTheme } from './ThemeProvider';
 import { Button } from '../Button';
+import { TextSecondary } from '../Typography';
 
 const ThemeDemo = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -12,7 +13,7 @@ const ThemeDemo = () => {
   }, [resolvedTheme]);
   
   return (
-    <div data-theme={resolvedTheme} className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+    <div className={`${resolvedTheme === 'dark' ? 'dark' : ''} bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg border border-gray-200 dark:border-gray-700`}>
       <h3 className="text-lg font-semibold mb-4">Theme Demo</h3>
       <p className="text-muted mb-4">Current theme: {theme} (resolved: {resolvedTheme})</p>
       
@@ -38,7 +39,7 @@ const ThemeDemo = () => {
       </div>
       
       <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded">
-        <p className="text-sm">This content adapts to the current theme automatically.</p>
+        <TextSecondary className="text-sm">This content adapts to the current theme automatically.</TextSecondary>
       </div>
     </div>
   );

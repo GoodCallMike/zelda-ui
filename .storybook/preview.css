@@ -1,8 +1,6 @@
-/* Dark mode text fixes for Storybook documentation and stories */
-.dark .sbdocs-content,
-.dark .docs-story,
-.dark [data-docs-story] {
-  color: #f3f4f6 !important;
+/* Storybook documentation dark mode fixes */
+.dark .sbdocs-content {
+  color: var(--color-foreground);
 }
 
 .dark .sbdocs-content h1,
@@ -11,56 +9,5 @@
 .dark .sbdocs-content h4,
 .dark .sbdocs-content h5,
 .dark .sbdocs-content h6 {
-  color: #f9fafb !important;
+  color: var(--color-foreground);
 }
-
-.dark .sbdocs-content p,
-.dark .sbdocs-content li,
-.dark .sbdocs-content span {
-  color: #e5e7eb !important;
-}
-
-.dark .docblock-argstable-body {
-  color: #e5e7eb !important;
-}
-
-.dark .docblock-argstable-head {
-  color: #f9fafb !important;
-}
-
-/* Fix story content text */
-.dark p:not([class*="text-"]),
-.dark span:not([class*="text-"]),
-.dark div:not([class*="text-"]),
-.dark h4:not([class*="text-"]),
-.dark h5:not([class*="text-"]) {
-  color: #e5e7eb !important;
-}
-
-.dark ul li:not([class*="text-"]) {
-  color: #e5e7eb !important;
-}
-
-/* Specifically target headings that might be missed */
-.dark .font-medium:not([class*="text-gray-900"]):not([class*="text-gray-100"]) {
-  color: #f9fafb !important;
-}
-
-/* Direct dark mode text utilities */
-.dark .dark\:text-gray-100 {
-  color: #f3f4f6 !important;
-}
-
-.dark .dark\:text-gray-400 {
-  color: #9ca3af !important;
-}
-
-.dark .dark\:text-gray-500 {
-  color: #6b7280 !important;
-}
-
-/* Target specific problematic elements */
-.dark h4.text-gray-900 {
-  color: #f3f4f6 !important;
-}
-

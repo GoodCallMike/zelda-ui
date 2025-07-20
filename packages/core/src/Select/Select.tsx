@@ -1,7 +1,7 @@
+import { CheckIcon, ChevronDownIcon, XIcon } from '@jetstream/icons';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { cn, useClickOutside } from '../styles';
-import { ChevronDownIcon, XIcon, CheckIcon } from '@jetstream/icons';
 import { Tag } from '../Tag';
 
 interface SelectOption {
@@ -34,7 +34,10 @@ interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Filter option function */
   filterOption?: (input: string, option?: SelectOption) => boolean;
   /** Change handler */
-  onChange?: (value: string | number | (string | number)[], option?: SelectOption | SelectOption[]) => void;
+  onChange?: (
+    value: string | number | (string | number)[],
+    option?: SelectOption | SelectOption[],
+  ) => void;
   /** Search handler */
   onSearch?: (value: string) => void;
   /** Custom dropdown render */
@@ -94,19 +97,22 @@ export const Select = ({
     }
   };
 
-  const filteredOptions = showSearch && searchValue
-    ? options.filter(option => {
-        if (filterOption) {
-          return filterOption(searchValue, option);
-        }
-        return String(option.label).toLowerCase().includes(searchValue.toLowerCase());
-      })
-    : options;
+  const filteredOptions =
+    showSearch && searchValue
+      ? options.filter((option) => {
+          if (filterOption) {
+            return filterOption(searchValue, option);
+          }
+          return String(option.label)
+            .toLowerCase()
+            .includes(searchValue.toLowerCase());
+        })
+      : options;
 
   const getSelectedOptions = () => {
     if (!currentValue) return [];
     const values = Array.isArray(currentValue) ? currentValue : [currentValue];
-    return options.filter(option => values.includes(option.value));
+    return options.filter((option) => values.includes(option.value));
   };
 
   const handleSelect = (option: SelectOption) => {
@@ -118,11 +124,11 @@ export const Select = ({
     if (isMultiple) {
       const currentValues = Array.isArray(currentValue) ? currentValue : [];
       if (currentValues.includes(option.value)) {
-        newValue = currentValues.filter(v => v !== option.value);
+        newValue = currentValues.filter((v) => v !== option.value);
       } else {
         newValue = [...currentValues, option.value];
       }
-      newOption = options.filter(opt => newValue.includes(opt.value));
+      newOption = options.filter((opt) => newValue.includes(opt.value));
     } else {
       newValue = option.value;
       newOption = option;
@@ -145,14 +151,17 @@ export const Select = ({
     onChange?.(newValue as any, isMultiple ? [] : undefined);
   };
 
-  const handleRemoveTag = (optionValue: string | number, e: React.MouseEvent) => {
+  const handleRemoveTag = (
+    optionValue: string | number,
+    e: React.MouseEvent,
+  ) => {
     e.stopPropagation();
     if (!isMultiple) return;
-    
+
     const currentValues = Array.isArray(currentValue) ? currentValue : [];
-    const newValue = currentValues.filter(v => v !== optionValue);
-    const newOption = options.filter(opt => newValue.includes(opt.value));
-    
+    const newValue = currentValues.filter((v) => v !== optionValue);
+    const newOption = options.filter((opt) => newValue.includes(opt.value));
+
     if (value === undefined) {
       setInternalValue(newValue);
     }
@@ -176,7 +185,7 @@ export const Select = ({
     if (isMultiple) {
       return (
         <div className="flex flex-wrap gap-1">
-          {selectedOptions.map(option => (
+          {selectedOptions.map((option) => (
             <Tag
               key={option.value}
               color="blue"
@@ -195,8 +204,8 @@ export const Select = ({
 
   const dropdownContent = (
     <div className="py-1 max-h-64 overflow-auto">
-      {filteredOptions.map(option => {
-        const isSelected = isMultiple 
+      {filteredOptions.map((option) => {
+        const isSelected = isMultiple
           ? Array.isArray(currentValue) && currentValue.includes(option.value)
           : currentValue === option.value;
 
@@ -208,8 +217,8 @@ export const Select = ({
               option.disabled
                 ? 'text-gray-400 cursor-not-allowed'
                 : isSelected
-                ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                : 'hover:bg-gray-50 dark:hover:bg-gray-700'
+                  ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                  : 'hover:bg-gray-50 dark:hover:bg-gray-700',
             )}
             onClick={() => handleSelect(option)}
           >
@@ -235,7 +244,8 @@ export const Select = ({
           'flex items-center justify-between border rounded cursor-pointer transition-colors focus-within:outline-none focus-within:ring-2 focus-within:ring-opacity-50',
           getSizeClasses(),
           getStatusClasses(),
-          disabled && 'bg-gray-50 dark:bg-gray-800 cursor-not-allowed opacity-60'
+          disabled &&
+            'bg-gray-50 dark:bg-gray-800 cursor-not-allowed opacity-60',
         )}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
@@ -253,7 +263,7 @@ export const Select = ({
             renderValue()
           )}
         </div>
-        
+
         <div className="flex items-center gap-1 ml-2">
           {allowClear && hasValue && !disabled && (
             <button
@@ -264,12 +274,12 @@ export const Select = ({
               <XIcon className="w-3 h-3 text-gray-400" />
             </button>
           )}
-          
-          <ChevronDownIcon 
+
+          <ChevronDownIcon
             className={cn(
               'w-4 h-4 text-gray-400 transition-transform',
-              isOpen && 'rotate-180'
-            )} 
+              isOpen && 'rotate-180',
+            )}
           />
         </div>
       </div>

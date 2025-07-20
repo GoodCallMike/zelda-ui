@@ -39,7 +39,7 @@ export const Divider = ({
         aria-orientation="vertical"
         className={cn(
           'inline-block w-px mx-2 h-6',
-          'border-l border-solid border-gray-300 dark:border-gray-600',
+          'border-l border-solid border-gray-300',
           dashed && 'border-dashed',
           className
         )}
@@ -60,19 +60,19 @@ export const Divider = ({
         {...props}
       >
         <div className={cn(
-          'border-t border-solid border-gray-300 dark:border-gray-600',
+          'border-t border-solid border-gray-300',
           dashed && 'border-dashed',
           textAlign === 'left' ? 'w-6' : 'flex-1'
         )} />
         
         <span className={cn(
-          'px-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'
+          'px-4 text-sm text-gray-500 whitespace-nowrap'
         )}>
           {children}
         </span>
         
         <div className={cn(
-          'border-t border-solid border-gray-300 dark:border-gray-600',
+          'border-t border-solid border-gray-300',
           dashed && 'border-dashed',
           textAlign === 'right' ? 'w-6' : 'flex-1'
         )} />
@@ -84,7 +84,7 @@ export const Divider = ({
     <div
       role="separator"
       className={cn(
-        'my-4 border-t border-solid border-gray-300 dark:border-gray-600',
+        'my-4 border-t border-solid border-gray-300',
         dashed && 'border-dashed',
         className
       )}

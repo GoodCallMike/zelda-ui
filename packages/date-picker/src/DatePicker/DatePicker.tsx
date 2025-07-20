@@ -137,14 +137,14 @@ export const DatePicker = ({
     }
   };
 
-  const getIconContainerPosition = () => {
+  const getIconContainerHeight = () => {
     switch (size) {
       case 'small':
-        return 'top-1 bottom-1';
+        return 'h-6';
       case 'large':
-        return 'top-2 bottom-2';
+        return 'h-10';
       default:
-        return 'top-1.5 bottom-1.5';
+        return 'h-8';
     }
   };
 
@@ -178,7 +178,7 @@ export const DatePicker = ({
           )}
         />
         
-        <div className={cn('absolute right-2 flex items-center gap-1', getIconContainerPosition())}>
+        <div className={cn('absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1', getIconContainerHeight())}>
           {allowClear && inputValue && !disabled && (
             <button
               type="button"

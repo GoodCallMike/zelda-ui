@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
@@ -26,10 +27,17 @@
     "react-dom": "^19.1.0",
     "react-stately": "^3.39.0"
   },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "pnpm": {
     "overrides": {
       "@vanilla-extract/vite-plugin>vite": "^7.0.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",

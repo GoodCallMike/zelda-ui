@@ -1,7 +1,12 @@
+import {
+  ArrowRightIcon,
+  Download01Icon,
+  PlusIcon,
+  Save01Icon,
+} from '@jetstream/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Heading, Label, ScreenReaderOnly, TextSecondary } from '../Typography';
 import { Button } from './Button';
-import { Save01Icon, Download01Icon, ArrowRightIcon, PlusIcon } from '@jetstream/icons';
-import { Text, TextSecondary, Heading, Label, ScreenReaderOnly } from '../Typography';
 
 const meta: Meta<typeof Button> = {
   title: 'General/Button',
@@ -160,12 +165,23 @@ export const Variants: Story = {
         </div>
       </div>
       <TextSecondary className="text-sm">
-        <p><strong>Usage Guidelines:</strong></p>
+        <p>
+          <strong>Usage Guidelines:</strong>
+        </p>
         <ul className="list-disc list-inside space-y-1 mt-2">
-          <li><strong>Primary:</strong> Main actions like "Submit", "Save", "Continue"</li>
-          <li><strong>Secondary:</strong> Supporting actions like "Cancel", "Back"</li>
-          <li><strong>Outline:</strong> Alternative actions or secondary CTAs</li>
-          <li><strong>Link:</strong> Navigation or less prominent actions</li>
+          <li>
+            <strong>Primary:</strong> Main actions like "Submit", "Save",
+            "Continue"
+          </li>
+          <li>
+            <strong>Secondary:</strong> Supporting actions like "Cancel", "Back"
+          </li>
+          <li>
+            <strong>Outline:</strong> Alternative actions or secondary CTAs
+          </li>
+          <li>
+            <strong>Link:</strong> Navigation or less prominent actions
+          </li>
         </ul>
       </TextSecondary>
     </div>
@@ -173,7 +189,8 @@ export const Variants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'All available button variants with usage guidelines for each type.',
+        story:
+          'All available button variants with usage guidelines for each type.',
       },
     },
   },
@@ -185,21 +202,35 @@ export const WithIcons: Story = {
       <div>
         <Heading className="mb-2">Icon Positions</Heading>
         <div className="flex flex-wrap gap-3">
-          <Button icon={Save01Icon} iconPosition="left">Save Document</Button>
-          <Button variant="secondary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
-          <Button variant="outline" icon={Download01Icon}>Download</Button>
-          <Button variant="link" icon={PlusIcon}>Add New</Button>
+          <Button icon={Save01Icon} iconPosition="left">
+            Save Document
+          </Button>
+          <Button
+            variant="secondary"
+            icon={ArrowRightIcon}
+            iconPosition="right"
+          >
+            Continue
+          </Button>
+          <Button variant="outline" icon={Download01Icon}>
+            Download
+          </Button>
+          <Button variant="link" icon={PlusIcon}>
+            Add New
+          </Button>
         </div>
       </div>
       <TextSecondary className="text-sm">
-        Icons enhance button meaning and improve recognition. Use 16px icons (w-4 h-4) for optimal appearance.
+        Icons enhance button meaning and improve recognition. Use 16px icons
+        (w-4 h-4) for optimal appearance.
       </TextSecondary>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Buttons with icons positioned left or right of the text. Icons should enhance meaning, not replace clear labels.',
+        story:
+          'Buttons with icons positioned left or right of the text. Icons should enhance meaning, not replace clear labels.',
       },
     },
   },
@@ -222,22 +253,30 @@ export const States: Story = {
           <div>
             <Label className="mb-1">Disabled State</Label>
             <div className="flex flex-wrap gap-2">
-              <Button variant="primary" disabled>Primary</Button>
-              <Button variant="secondary" disabled>Secondary</Button>
-              <Button variant="outline" disabled>Outline</Button>
+              <Button variant="primary" disabled>
+                Primary
+              </Button>
+              <Button variant="secondary" disabled>
+                Secondary
+              </Button>
+              <Button variant="outline" disabled>
+                Outline
+              </Button>
             </div>
           </div>
         </div>
       </div>
       <TextSecondary className="text-sm">
-        Disabled buttons have reduced opacity and are not interactive. Use for unavailable actions or loading states.
+        Disabled buttons have reduced opacity and are not interactive. Use for
+        unavailable actions or loading states.
       </TextSecondary>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Button states including normal and disabled. Disabled buttons communicate unavailable actions.',
+        story:
+          'Button states including normal and disabled. Disabled buttons communicate unavailable actions.',
       },
     },
   },
@@ -249,29 +288,32 @@ export const AccessibilityDemo: Story = {
       <div>
         <Heading className="mb-2">Keyboard Navigation</Heading>
         <div className="flex flex-wrap gap-2">
-          <Button variant="primary" tabIndex={0}>Focusable Button</Button>
-          <Button variant="secondary" icon={Save01Icon} tabIndex={0}>With Icon</Button>
-          <Button variant="outline" tabIndex={0}>Outline Style</Button>
+          <Button variant="primary" tabIndex={0}>
+            Focusable Button
+          </Button>
+          <Button variant="secondary" icon={Save01Icon} tabIndex={0}>
+            With Icon
+          </Button>
+          <Button variant="outline" tabIndex={0}>
+            Outline Style
+          </Button>
         </div>
         <Label className="mt-2">
           Use Tab to navigate, Enter/Space to activate
         </Label>
       </div>
-      
+
       <div>
         <Heading className="mb-2">Screen Reader Friendly</Heading>
         <div className="flex flex-wrap gap-2">
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             aria-label="Save document to your account"
             icon={Save01Icon}
           >
             Save
           </Button>
-          <Button 
-            variant="secondary" 
-            aria-describedby="delete-help"
-          >
+          <Button variant="secondary" aria-describedby="delete-help">
             Delete
           </Button>
           <ScreenReaderOnly id="delete-help">
@@ -279,9 +321,11 @@ export const AccessibilityDemo: Story = {
           </ScreenReaderOnly>
         </div>
       </div>
-      
+
       <TextSecondary className="text-sm">
-        <p><strong>Accessibility Features:</strong></p>
+        <p>
+          <strong>Accessibility Features:</strong>
+        </p>
         <ul className="list-disc list-inside space-y-1 mt-2">
           <li>Keyboard navigation with Tab, Enter, and Space</li>
           <li>Focus indicators that meet WCAG guidelines</li>
@@ -296,7 +340,8 @@ export const AccessibilityDemo: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
+        story:
+          'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
       },
     },
   },
@@ -307,7 +352,7 @@ export const RealWorldExample: Story = {
     const handleSave = () => alert('Document saved!');
     const handleCancel = () => alert('Action cancelled');
     const handleDelete = () => alert('Item deleted');
-    
+
     return (
       <div className="space-y-6">
         <div>
@@ -321,19 +366,21 @@ export const RealWorldExample: Story = {
             </Button>
           </div>
         </div>
-        
+
         <div>
           <Heading className="mb-2">Navigation</Heading>
           <div className="flex gap-2">
-            <Button variant="outline" icon={ArrowRightIcon} iconPosition="right">
+            <Button
+              variant="outline"
+              icon={ArrowRightIcon}
+              iconPosition="right"
+            >
               Next Step
             </Button>
-            <Button variant="link">
-              Skip for now
-            </Button>
+            <Button variant="link">Skip for now</Button>
           </div>
         </div>
-        
+
         <div>
           <Heading className="mb-2">Destructive Action</Heading>
           <Button variant="outline" onClick={handleDelete}>
@@ -346,10 +393,9 @@ export const RealWorldExample: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world usage examples showing proper button hierarchy and combinations in common UI patterns.',
+        story:
+          'Real-world usage examples showing proper button hierarchy and combinations in common UI patterns.',
       },
     },
   },
 };
-
-
