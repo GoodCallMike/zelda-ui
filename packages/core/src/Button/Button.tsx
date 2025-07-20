@@ -71,7 +71,7 @@ export const Button = ({
         variant === 'secondary' &&
           'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-800',
         variant === 'outline' &&
-          'border border-solid border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 active:text-white',
+          'border border-solid border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-100 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700',
         variant === 'link' &&
           'text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
 

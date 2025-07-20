@@ -10,10 +10,7 @@ const meta: Meta<typeof Button> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `
-# Button Component
-
-Interactive button component with multiple variants, icon support, and comprehensive accessibility features.
+        component: `Interactive button component with multiple variants, icon support, and comprehensive accessibility features.
 
 ## Features
 - **4 Visual Variants**: Primary, secondary, outline, and link styles
