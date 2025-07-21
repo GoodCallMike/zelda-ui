@@ -46,11 +46,37 @@ globalStyle('.fixed', { position: 'fixed' });
 globalStyle('.sticky', { position: 'sticky' });
 globalStyle('.static', { position: 'static' });
 
-globalStyle('.top-0', { top: '0' });
-globalStyle('.right-0', { right: '0' });
-globalStyle('.bottom-0', { bottom: '0' });
-globalStyle('.left-0', { left: '0' });
+// Position values
+const positions = [0, 1, 2, 3, 4, 6, 8] as const;
+positions.forEach(value => {
+  const size = value === 0 ? '0' : `${value * 0.25}rem`;
+  globalStyle(`.top-${value}`, { top: size });
+  globalStyle(`.right-${value}`, { right: size });
+  globalStyle(`.bottom-${value}`, { bottom: size });
+  globalStyle(`.left-${value}`, { left: size });
+});
+
+// Special position values
+globalStyle('.top-1\\/2', { top: '50%' });
+globalStyle('.right-1\\/2', { right: '50%' });
+globalStyle('.bottom-1\\/2', { bottom: '50%' });
+globalStyle('.left-1\\/2', { left: '50%' });
+globalStyle('.top-full', { top: '100%' });
+globalStyle('.right-full', { right: '100%' });
+globalStyle('.bottom-full', { bottom: '100%' });
+globalStyle('.left-full', { left: '100%' });
 globalStyle('.inset-0', { top: '0', right: '0', bottom: '0', left: '0' });
+globalStyle('.inset-1\\/2', { top: '50%', right: '50%', bottom: '50%', left: '50%' });
+
+// Transform utilities
+globalStyle('.-translate-x-1\\/2', { transform: 'translateX(-50%)' });
+globalStyle('.-translate-y-1\\/2', { transform: 'translateY(-50%)' });
+globalStyle('.translate-x-1\\/2', { transform: 'translateX(50%)' });
+globalStyle('.translate-y-1\\/2', { transform: 'translateY(50%)' });
+globalStyle('.translate-x-full', { transform: 'translateX(100%)' });
+globalStyle('.translate-y-full', { transform: 'translateY(100%)' });
+globalStyle('.-translate-x-full', { transform: 'translateX(-100%)' });
+globalStyle('.-translate-y-full', { transform: 'translateY(-100%)' });
 
 // Z-index utilities
 globalStyle('.z-0', { zIndex: '0' });
