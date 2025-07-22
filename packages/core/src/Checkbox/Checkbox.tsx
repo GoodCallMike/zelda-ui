@@ -8,6 +8,8 @@ interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'typ
   description?: string;
   /** Error message to display (shows red styling) */
   errorMessage?: string;
+  /** Test identifier for automated testing */
+  testId?: string;
 }
 
 /**
@@ -28,6 +30,7 @@ export const Checkbox = ({
   required,
   id,
   className,
+  testId,
   ...props
 }: CheckboxProps) => {
   const inputId = id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
@@ -36,19 +39,20 @@ export const Checkbox = ({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex items-start gap-3">
+      <div className="flex items-center gap-3">
         <input
           id={inputId}
           type="checkbox"
           disabled={disabled}
           required={required}
+          data-testid={testId}
           aria-describedby={cn(
             descriptionId && descriptionId,
             errorId && errorId
           ) || undefined}
           aria-invalid={errorMessage ? 'true' : 'false'}
           className={cn(
-            'w-4 h-4 mt-0.5 border-2 rounded bg-white dark:bg-gray-800',
+            'w-4 h-4 border-2 rounded bg-white dark:bg-gray-800',
             'focus:outline-none focus:ring-2 focus:ring-offset-1',
             'transition-colors cursor-pointer',
             

@@ -5,13 +5,7 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
-    '@storybook/addon-a11y',
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false
-      }
-    }
+    '@storybook/addon-a11y'
   ],
 
 

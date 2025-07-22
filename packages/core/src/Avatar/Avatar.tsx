@@ -15,6 +15,10 @@ interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   icon?: ReactNode;
   /** Text to display (usually initials) */
   children?: ReactNode;
+  /** Accessible label for the avatar */
+  'aria-label'?: string;
+  /** Test identifier */
+  'data-testid'?: string;
 }
 
 /**
@@ -64,9 +68,10 @@ export const Avatar = ({
       return (
         <img
           src={src}
-          alt={alt}
+          alt={alt || 'Avatar'}
           className="w-full h-full object-cover"
           onError={handleImageError}
+          data-testid={props['data-testid'] ? `${props['data-testid']}-image` : undefined}
         />
       );
     }
@@ -93,6 +98,9 @@ export const Avatar = ({
 
   return (
     <div
+      role="img"
+      aria-label={props['aria-label'] || alt || (children ? `Avatar with initials ${children}` : 'User avatar')}
+      data-testid={props['data-testid']}
       className={cn(
         'inline-flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 overflow-hidden',
         sizeClasses,
@@ -116,6 +124,8 @@ interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
   shape?: 'circle' | 'square';
   /** Avatar components */
   children: ReactNode;
+  /** Test identifier */
+  'data-testid'?: string;
 }
 
 const AvatarGroup = ({
@@ -131,7 +141,7 @@ const AvatarGroup = ({
   const hiddenCount = maxCount ? Math.max(0, childrenArray.length - maxCount) : 0;
 
   return (
-    <div className={cn('flex -space-x-2', className)} {...props}>
+    <div className={cn('flex -space-x-2', className)} data-testid={props['data-testid']} {...props}>
       {visibleChildren.map((child, index) => (
         <div key={index} className="relative border-2 border-white dark:border-gray-800 rounded-full">
           {child}

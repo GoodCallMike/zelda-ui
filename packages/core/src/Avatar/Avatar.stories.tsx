@@ -9,25 +9,198 @@ const meta: Meta<typeof Avatar> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Avatar component for displaying user profile pictures, initials, or icons.
+        component: `Avatar component for displaying user profile pictures, initials, or icons with comprehensive accessibility and testing support.
 
-## Usage
+## Overview
+
+The Avatar component provides a flexible way to display user representations in your application. It supports multiple content types with intelligent fallback handling and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
 
 \`\`\`tsx
 import { Avatar } from '@jetstream/core';
 
-<Avatar src="/user.jpg" alt="User" />
+// Image avatar
+<Avatar src="/user.jpg" alt="John Doe" />
+
+// Text/initials avatar
 <Avatar>JD</Avatar>
+
+// Icon avatar
 <Avatar icon={<UserIcon />} />
+
+// Avatar group
+<Avatar.Group maxCount={3}>
+  <Avatar>A</Avatar>
+  <Avatar>B</Avatar>
+  <Avatar>C</Avatar>
+  <Avatar>D</Avatar>
+</Avatar.Group>
 \`\`\`
 
-## Features
+## Content Types
 
-- **Multiple content types** - Image, text, or icon
-- **Sizes** - Small, default, large, or custom number
-- **Shapes** - Circle or square
-- **Fallbacks** - Graceful fallback when image fails
-- **Avatar Group** - Display multiple avatars with overflow count`,
+### Image Avatar
+\`\`\`tsx
+<Avatar 
+  src="https://example.com/user.jpg" 
+  alt="User profile picture"
+  size="large"
+/>
+\`\`\`
+
+### Text/Initials Avatar
+\`\`\`tsx
+<Avatar size="default" shape="circle">
+  JD
+</Avatar>
+\`\`\`
+
+### Icon Avatar
+\`\`\`tsx
+<Avatar icon={<UserCircleIcon />} size="small" />
+\`\`\`
+
+### Fallback Behavior
+Avatars automatically fall back in this order:
+1. Image (if \`src\` provided and loads successfully)
+2. Icon (if \`icon\` provided)
+3. Text/initials (if \`children\` provided)
+4. Default user icon
+
+## Sizes
+
+\`\`\`tsx
+// Predefined sizes
+<Avatar size="small">S</Avatar>     // 24px (w-6 h-6)
+<Avatar size="default">M</Avatar>   // 32px (w-8 h-8)
+<Avatar size="large">L</Avatar>     // 40px (w-10 h-10)
+
+// Custom size
+<Avatar size={64}>XL</Avatar>       // 64px custom
+\`\`\`
+
+## Shapes
+
+\`\`\`tsx
+<Avatar shape="circle">JD</Avatar>   // Circular (default)
+<Avatar shape="square">JD</Avatar>   // Rounded square
+\`\`\`
+
+## Avatar Groups
+
+\`\`\`tsx
+// Basic group
+<Avatar.Group>
+  <Avatar>A</Avatar>
+  <Avatar>B</Avatar>
+  <Avatar>C</Avatar>
+</Avatar.Group>
+
+// With overflow count
+<Avatar.Group maxCount={3}>
+  <Avatar>A</Avatar>
+  <Avatar>B</Avatar>
+  <Avatar>C</Avatar>
+  <Avatar>D</Avatar>  {/* Shows as +1 */}
+  <Avatar>E</Avatar>
+</Avatar.Group>
+
+// Consistent sizing
+<Avatar.Group size="large" shape="square">
+  <Avatar src="/user1.jpg" />
+  <Avatar>AB</Avatar>
+  <Avatar icon={<UserIcon />} />
+</Avatar.Group>
+\`\`\`
+
+## Accessibility
+
+The Avatar component is fully accessible with:
+
+- **ARIA roles**: \`role="img"\` for semantic meaning
+- **ARIA labels**: Intelligent labeling based on content
+- **Alt text**: Required for images, fallbacks provided
+- **Screen reader support**: Descriptive labels for all variants
+
+\`\`\`tsx
+// Custom accessibility label
+<Avatar 
+  src="/user.jpg" 
+  alt="Profile picture"
+  aria-label="John Doe's profile picture"
+/>
+
+// Automatic labeling
+<Avatar>JD</Avatar>  // "Avatar with initials JD"
+<Avatar />           // "User avatar"
+\`\`\`
+
+## Testing
+
+Built-in testing support with \`data-testid\` attributes:
+
+\`\`\`tsx
+// Basic testing
+<Avatar data-testid="user-avatar">JD</Avatar>
+
+// Image testing (creates container + image test IDs)
+<Avatar data-testid="profile-pic" src="/user.jpg" />
+// Results in:
+// - data-testid="profile-pic" (container)
+// - data-testid="profile-pic-image" (image element)
+
+// Group testing
+<Avatar.Group data-testid="team-avatars">
+  <Avatar data-testid="member-1">A</Avatar>
+  <Avatar data-testid="member-2">B</Avatar>
+</Avatar.Group>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('user-avatar');
+screen.getByTestId('profile-pic-image');
+screen.getByTestId('team-avatars');
+screen.getAllByTestId(/member-/);
+\`\`\`
+
+## Error Handling
+
+\`\`\`tsx
+// Graceful image fallback
+<Avatar src="broken-url.jpg" alt="User">
+  FB  {/* Shows initials if image fails */}
+</Avatar>
+
+<Avatar src="broken-url.jpg" icon={<UserIcon />} />
+{/* Shows icon if image fails */}
+
+<Avatar src="broken-url.jpg" />
+{/* Shows default user icon if image fails */}
+\`\`\`
+
+## Best Practices
+
+### Do
+- Always provide \`alt\` text for image avatars
+- Use meaningful initials (first + last name)
+- Maintain consistent sizing within groups
+- Provide \`data-testid\` for testing
+- Use appropriate sizes for context
+
+### Don't
+- Use avatars as interactive buttons (wrap in button if needed)
+- Mix shapes inconsistently in the same context
+- Forget fallback content for image avatars
+- Use overly long text content
+
+## Performance
+
+- **Lazy loading**: Consider adding \`loading="lazy"\` for images
+- **Image optimization**: Use appropriate image sizes and formats
+- **Memory efficient**: Automatic cleanup of failed image loads
+- **Bundle size**: Minimal impact with tree-shaking support`,
       },
     },
   },

@@ -5,7 +5,6 @@ import {
   Save01Icon,
 } from '@jetstream/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Heading, Label, ScreenReaderOnly, TextSecondary } from '../Typography';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -15,37 +14,166 @@ const meta: Meta<typeof Button> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Interactive button component with multiple variants, icon support, and comprehensive accessibility features.
+        component: `Button component for triggering actions and navigation with comprehensive accessibility and testing support.
 
-## Features
-- **4 Visual Variants**: Primary, secondary, outline, and link styles
-- **Icon Support**: Icons can be positioned left or right of text
-- **Accessibility**: Full keyboard navigation, ARIA support, and focus management
-- **High Contrast**: WCAG AA compliant color combinations
-- **Responsive**: Works across all device sizes
-- **Loading States**: Built-in disabled state handling
+## Overview
 
-## When to Use
-- **Primary**: Main call-to-action buttons (submit forms, confirm actions)
-- **Secondary**: Supporting actions that are important but not primary
-- **Outline**: Alternative actions or when you need visual hierarchy
-- **Link**: Navigation or less prominent actions that look like links
+The Button component provides a flexible way to create interactive elements in your application. It supports multiple visual variants, icon integration, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+import { Button } from '@jetstream/core';
+import { SaveIcon } from '@jetstream/icons';
+
+// Basic button
+<Button>Click me</Button>
+
+// Primary action
+<Button variant="primary" onClick={handleSubmit}>
+  Submit Form
+</Button>
+
+// With icon
+<Button icon={SaveIcon} iconPosition="left">
+  Save Document
+</Button>
+\`\`\`
+
+## Variants
+
+### Primary Button
+\`\`\`tsx
+<Button variant="primary" onClick={handleSubmit}>
+  Submit Form
+</Button>
+\`\`\`
+
+### Secondary Button
+\`\`\`tsx
+<Button variant="secondary" onClick={handleCancel}>
+  Cancel
+</Button>
+\`\`\`
+
+### Outline Button
+\`\`\`tsx
+<Button variant="outline" onClick={handleEdit}>
+  Edit Item
+</Button>
+\`\`\`
+
+### Link Button
+\`\`\`tsx
+<Button variant="link" onClick={handleSkip}>
+  Skip for now
+</Button>
+\`\`\`
+
+## Icons
+
+\`\`\`tsx
+// Icon on left (default)
+<Button icon={SaveIcon} iconPosition="left">
+  Save Document
+</Button>
+
+// Icon on right
+<Button icon={ArrowRightIcon} iconPosition="right">
+  Continue
+</Button>
+\`\`\`
+
+## States
+
+\`\`\`tsx
+// Normal state
+<Button variant="primary">Active Button</Button>
+
+// Disabled state
+<Button variant="primary" disabled>
+  Disabled Button
+</Button>
+\`\`\`
 
 ## Accessibility
-- Buttons are keyboard accessible with Tab navigation
-- Focus indicators meet WCAG guidelines
-- Proper semantic HTML button elements
-- Screen reader friendly with clear labels
-- High contrast colors for visibility
-- Disabled state is properly communicated
+
+The Button component is fully accessible with:
+
+- **Keyboard navigation**: Tab, Enter, and Space key support
+- **Focus indicators**: Visible focus rings meeting WCAG guidelines
+- **Screen reader support**: Proper semantic HTML button elements
+- **ARIA attributes**: Support for custom labels and descriptions
+- **High contrast**: WCAG AA compliant color combinations
+- **Disabled state**: Properly communicated to assistive technologies
+
+\`\`\`tsx
+// Custom accessibility label
+<Button aria-label="Save document to your account">
+  Save
+</Button>
+
+// With description
+<Button aria-describedby="delete-help">
+  Delete
+</Button>
+\`\`\`
+
+## Testing
+
+Built-in testing support with \`testId\` prop:
+
+\`\`\`tsx
+<Button testId="submit-button" variant="primary">
+  Submit
+</Button>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('submit-button');
+screen.getByRole('button', { name: 'Submit' });
+\`\`\`
+
+## Form Integration
+
+\`\`\`tsx
+// Form submission
+<form onSubmit={handleSubmit}>
+  <Button type="submit" variant="primary">
+    Submit Form
+  </Button>
+</form>
+
+// Form reset
+<Button type="reset" variant="secondary">
+  Reset Form
+</Button>
+\`\`\`
 
 ## Best Practices
+
+### Do
 - Use clear, action-oriented labels ("Save Document" not "Save")
 - Limit primary buttons to one per section
 - Provide adequate spacing between buttons
 - Use icons to enhance meaning, not replace clear text
+- Include \`testId\` for reliable testing
 - Consider loading states for async actions
-        `,
+
+### Don't
+- Use multiple primary buttons in the same context
+- Create buttons without clear labels
+- Forget to handle disabled states
+- Use buttons for navigation (use links instead)
+- Mix button variants inconsistently
+
+## Performance
+
+- **Lightweight**: Minimal bundle impact with tree-shaking support
+- **Efficient rendering**: Optimized CSS classes and minimal re-renders
+- **Memory efficient**: Proper cleanup of event handlers
+- **Jetstream effects**: Hardware-accelerated hover animations`,
       },
     },
   },
@@ -91,11 +219,24 @@ const meta: Meta<typeof Button> = {
         type: { summary: '() => void' },
       },
     },
+    testId: {
+      control: 'text',
+      description: 'Test identifier for automated testing',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Button',
+  },
+};
 
 export const Primary: Story = {
   args: {
@@ -106,7 +247,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    children: 'Button',
+    children: 'Secondary Button',
     variant: 'secondary',
   },
 };
@@ -125,15 +266,7 @@ export const Link: Story = {
   },
 };
 
-export const Disabled: Story = {
-  args: {
-    children: 'Disabled Button',
-    variant: 'primary',
-    disabled: true,
-  },
-};
-
-export const WithIconLeft: Story = {
+export const WithIcon: Story = {
   args: {
     children: 'Save Document',
     variant: 'primary',
@@ -142,260 +275,144 @@ export const WithIconLeft: Story = {
   },
 };
 
-export const WithIconRight: Story = {
+export const Disabled: Story = {
   args: {
-    children: 'Continue',
-    variant: 'secondary',
-    icon: ArrowRightIcon,
-    iconPosition: 'right',
+    children: 'Disabled Button',
+    variant: 'primary',
+    disabled: true,
   },
 };
 
-// Comprehensive stories with enhanced documentation
 export const Variants: Story = {
   render: () => (
-    <div className="space-y-4">
-      <div>
-        <Heading className="mb-2">Button Variants</Heading>
-        <div className="flex flex-wrap gap-3">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="link">Link</Button>
-        </div>
-      </div>
-      <TextSecondary className="text-sm">
-        <p>
-          <strong>Usage Guidelines:</strong>
-        </p>
-        <ul className="list-disc list-inside space-y-1 mt-2">
-          <li>
-            <strong>Primary:</strong> Main actions like "Submit", "Save",
-            "Continue"
-          </li>
-          <li>
-            <strong>Secondary:</strong> Supporting actions like "Cancel", "Back"
-          </li>
-          <li>
-            <strong>Outline:</strong> Alternative actions or secondary CTAs
-          </li>
-          <li>
-            <strong>Link:</strong> Navigation or less prominent actions
-          </li>
-        </ul>
-      </TextSecondary>
+    <div className="flex flex-wrap gap-3">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="link">Link</Button>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'All available button variants with usage guidelines for each type.',
-      },
-    },
-  },
 };
 
 export const WithIcons: Story = {
   render: () => (
-    <div className="space-y-4">
-      <div>
-        <Heading className="mb-2">Icon Positions</Heading>
-        <div className="flex flex-wrap gap-3">
-          <Button icon={Save01Icon} iconPosition="left">
-            Save Document
-          </Button>
-          <Button
-            variant="secondary"
-            icon={ArrowRightIcon}
-            iconPosition="right"
-          >
-            Continue
-          </Button>
-          <Button variant="outline" icon={Download01Icon}>
-            Download
-          </Button>
-          <Button variant="link" icon={PlusIcon}>
-            Add New
-          </Button>
-        </div>
-      </div>
-      <TextSecondary className="text-sm">
-        Icons enhance button meaning and improve recognition. Use 16px icons
-        (w-4 h-4) for optimal appearance.
-      </TextSecondary>
+    <div className="flex flex-wrap gap-3">
+      <Button icon={Save01Icon} iconPosition="left">
+        Save Document
+      </Button>
+      <Button
+        variant="secondary"
+        icon={ArrowRightIcon}
+        iconPosition="right"
+      >
+        Continue
+      </Button>
+      <Button variant="outline" icon={Download01Icon}>
+        Download
+      </Button>
+      <Button variant="link" icon={PlusIcon}>
+        Add New
+      </Button>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Buttons with icons positioned left or right of the text. Icons should enhance meaning, not replace clear labels.',
-      },
-    },
-  },
 };
 
 export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <Heading className="mb-2">Button States</Heading>
-        <div className="space-y-3">
-          <div>
-            <Label className="mb-1">Normal State</Label>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-            </div>
-          </div>
-          <div>
-            <Label className="mb-1">Disabled State</Label>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="primary" disabled>
-                Primary
-              </Button>
-              <Button variant="secondary" disabled>
-                Secondary
-              </Button>
-              <Button variant="outline" disabled>
-                Outline
-              </Button>
-            </div>
-          </div>
+        <h3 className="text-sm font-medium mb-2">Normal State</h3>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
         </div>
       </div>
-      <TextSecondary className="text-sm">
-        Disabled buttons have reduced opacity and are not interactive. Use for
-        unavailable actions or loading states.
-      </TextSecondary>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Disabled State</h3>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="primary" disabled>
+            Primary
+          </Button>
+          <Button variant="secondary" disabled>
+            Secondary
+          </Button>
+          <Button variant="outline" disabled>
+            Outline
+          </Button>
+        </div>
+      </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Button states including normal and disabled. Disabled buttons communicate unavailable actions.',
-      },
-    },
-  },
 };
 
-export const AccessibilityDemo: Story = {
+export const Testing: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <Heading className="mb-2">Keyboard Navigation</Heading>
+        <h3 className="text-sm font-medium mb-2">With Test IDs</h3>
         <div className="flex flex-wrap gap-2">
-          <Button variant="primary" tabIndex={0}>
-            Focusable Button
+          <Button testId="submit-btn" variant="primary">
+            Submit
           </Button>
-          <Button variant="secondary" icon={Save01Icon} tabIndex={0}>
-            With Icon
+          <Button testId="cancel-btn" variant="secondary">
+            Cancel
           </Button>
-          <Button variant="outline" tabIndex={0}>
-            Outline Style
-          </Button>
-        </div>
-        <Label className="mt-2">
-          Use Tab to navigate, Enter/Space to activate
-        </Label>
-      </div>
-
-      <div>
-        <Heading className="mb-2">Screen Reader Friendly</Heading>
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant="primary"
-            aria-label="Save document to your account"
-            icon={Save01Icon}
-          >
-            Save
-          </Button>
-          <Button variant="secondary" aria-describedby="delete-help">
+          <Button testId="delete-btn" variant="outline">
             Delete
           </Button>
-          <ScreenReaderOnly id="delete-help">
-            This action cannot be undone
-          </ScreenReaderOnly>
         </div>
       </div>
-
-      <TextSecondary className="text-sm">
-        <p>
-          <strong>Accessibility Features:</strong>
-        </p>
-        <ul className="list-disc list-inside space-y-1 mt-2">
-          <li>Keyboard navigation with Tab, Enter, and Space</li>
-          <li>Focus indicators that meet WCAG guidelines</li>
-          <li>ARIA labels for additional context</li>
-          <li>High contrast colors for visibility</li>
-          <li>Semantic HTML button elements</li>
-          <li>Proper disabled state communication</li>
-        </ul>
-      </TextSecondary>
+      <div className="text-sm text-gray-600">
+        Use <code className="bg-gray-100 px-1 rounded">testId</code> prop for reliable test targeting
+      </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
-      },
-    },
-  },
 };
 
-export const RealWorldExample: Story = {
-  render: () => {
-    const handleSave = () => alert('Document saved!');
-    const handleCancel = () => alert('Action cancelled');
-    const handleDelete = () => alert('Item deleted');
-
-    return (
-      <div className="space-y-6">
-        <div>
-          <Heading className="mb-2">Form Actions</Heading>
-          <div className="flex gap-2">
-            <Button variant="primary" icon={Save01Icon} onClick={handleSave}>
+export const Examples: Story = {
+  render: () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 className="text-sm font-medium mb-2">Form Actions</h3>
+        <div className="space-y-3">
+          <div className="flex gap-2 p-3 border rounded-lg">
+            <Button variant="primary" icon={Save01Icon}>
               Save Changes
             </Button>
-            <Button variant="secondary" onClick={handleCancel}>
+            <Button variant="secondary">
               Cancel
             </Button>
           </div>
-        </div>
-
-        <div>
-          <Heading className="mb-2">Navigation</Heading>
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              icon={ArrowRightIcon}
-              iconPosition="right"
-            >
-              Next Step
+          <div className="flex gap-2 p-3 border rounded-lg">
+            <Button variant="primary" type="submit">
+              Submit Form
             </Button>
-            <Button variant="link">Skip for now</Button>
+            <Button variant="outline" type="reset">
+              Reset
+            </Button>
           </div>
         </div>
-
-        <div>
-          <Heading className="mb-2">Destructive Action</Heading>
-          <Button variant="outline" onClick={handleDelete}>
-            Delete Item
-          </Button>
+      </div>
+      
+      <div>
+        <h3 className="text-sm font-medium mb-2">Navigation</h3>
+        <div className="space-y-3">
+          <div className="flex justify-between p-3 border rounded-lg">
+            <Button variant="outline">
+              Back
+            </Button>
+            <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">
+              Continue
+            </Button>
+          </div>
+          <div className="flex justify-center p-3 border rounded-lg">
+            <Button variant="link">
+              Skip for now
+            </Button>
+          </div>
         </div>
       </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Real-world usage examples showing proper button hierarchy and combinations in common UI patterns.',
-      },
-    },
-  },
+    </div>
+  ),
 };

@@ -16,7 +16,7 @@ globalStyle(':root', {
   '--color-accent-foreground': colors.gray[900],
   '--color-destructive': colors.red[500],
   '--color-destructive-foreground': colors.white,
-});
+} as Record<string, string>);
 
 // Dark theme
 globalStyle('[data-theme="dark"]', {
@@ -33,7 +33,7 @@ globalStyle('[data-theme="dark"]', {
   '--color-accent-foreground': colors.gray[50],
   '--color-destructive': colors.red[500],
   '--color-destructive-foreground': colors.white,
-});
+} as Record<string, string>);
 
 // Semantic color utilities
 globalStyle('.bg-background', { backgroundColor: 'var(--color-background)' });

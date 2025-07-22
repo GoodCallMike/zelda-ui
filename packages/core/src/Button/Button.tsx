@@ -18,6 +18,8 @@ interface ButtonProps
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
   /** Icon position relative to text */
   iconPosition?: 'left' | 'right';
+  /** Test identifier for automated testing */
+  testId?: string;
 }
 
 /**
@@ -45,6 +47,7 @@ export const Button = ({
   disabled,
   icon: Icon,
   iconPosition = 'left',
+  testId,
   ...props
 }: ButtonProps) => {
   return (
@@ -80,6 +83,7 @@ export const Button = ({
       )}
       onClick={onClick}
       disabled={disabled}
+      data-testid={testId}
       {...props}
     >
       {Icon && iconPosition === 'left' && <Icon className="w-4 h-4" />}

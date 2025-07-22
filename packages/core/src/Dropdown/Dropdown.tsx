@@ -31,6 +31,8 @@ interface DropdownProps {
   trigger?: 'hover' | 'click';
   /** Dropdown placement */
   placement?: 'bottom' | 'bottomLeft' | 'bottomRight' | 'top' | 'topLeft' | 'topRight';
+  /** Test identifier for automated testing */
+  testId?: string;
 }
 
 /**
@@ -49,6 +51,7 @@ export const Dropdown = ({
   children,
   trigger = 'click',
   placement = 'bottomLeft',
+  testId,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -103,6 +106,7 @@ export const Dropdown = ({
   return (
     <div 
       className="relative inline-block"
+      data-testid={testId}
       {...(trigger === 'hover' ? {
         onMouseEnter: () => setIsOpen(true),
         onMouseLeave: () => setIsOpen(false)

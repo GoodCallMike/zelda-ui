@@ -109,11 +109,11 @@ export const Select = ({
   const getStatusClasses = () => {
     switch (status) {
       case 'error':
-        return 'border-red-500 focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500';
+        return 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500 focus-within:ring-opacity-50';
       case 'warning':
-        return 'border-yellow-500 focus-within:border-yellow-500 focus-within:ring-2 focus-within:ring-yellow-500';
+        return 'border-yellow-500 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 focus-within:border-yellow-500 focus-within:ring-2 focus-within:ring-yellow-500 focus-within:ring-opacity-50';
       default:
-        return 'border-gray-300 dark:border-gray-600 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500';
+        return 'border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50';
     }
   };
 
@@ -278,7 +278,7 @@ export const Select = ({
         aria-labelledby={props['aria-labelledby']}
         disabled={disabled}
         className={cn(
-          'w-full flex items-center justify-between border rounded cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50',
+          'w-full flex items-center justify-between border rounded cursor-pointer transition-all duration-200 focus:outline-none',
           getSizeClasses(),
           getStatusClasses(),
           disabled &&

@@ -7,6 +7,16 @@ if (typeof globalThis !== 'undefined') {
   globalThis.React = React;
 }
 
+// Make React available in global scope for hooks
+if (typeof global !== 'undefined') {
+  global.React = React;
+}
+
+// For browser environment
+if (typeof window !== 'undefined') {
+  window.React = React;
+}
+
 // This is an important step to apply the right configuration when testing your stories.
 // More info at: https://storybook.js.org/docs/api/portable-stories/portable-stories-vitest#setprojectannotations
 setProjectAnnotations([projectAnnotations]);
