@@ -1,6 +1,13 @@
 import { CheckIcon, ChevronDownIcon, XIcon } from '@jetstream/icons';
-import type { HTMLAttributes, ReactNode } from 'react';
-import { useRef, useState } from 'react';
+import type {
+  ChangeEvent,
+  HTMLAttributes,
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
+  SyntheticEvent,
+} from 'react';
+import { useState } from 'react';
 import { cn, useClickOutside } from '../styles';
 import { Tag } from '../Tag';
 
@@ -10,7 +17,8 @@ interface SelectOption {
   disabled?: boolean;
 }
 
-interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+interface SelectProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Options to display */
   options?: SelectOption[];
   /** Selected value(s) */
@@ -42,6 +50,10 @@ interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   onSearch?: (value: string) => void;
   /** Custom dropdown render */
   dropdownRender?: (menu: ReactNode) => ReactNode;
+  /** Accessible label */
+  'aria-label'?: string;
+  /** ID of element that labels this select */
+  'aria-labelledby'?: string;
 }
 
 /**
@@ -68,12 +80,20 @@ export const Select = ({
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [internalValue, setInternalValue] = useState(defaultValue);
-  const selectRef = useRef<HTMLDivElement>(null);
 
   const currentValue = value !== undefined ? value : internalValue;
   const isMultiple = mode === 'multiple' || mode === 'tags';
 
-  useClickOutside(selectRef, () => setIsOpen(false), isOpen);
+  const selectRef = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
+  const isArray = Array.isArray;
+
+  const handleKeyboardActivation =
+    (callback: (e: SyntheticEvent) => void) => (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        callback(e);
+      }
+    };
 
   const getSizeClasses = () => {
     switch (size) {
@@ -89,11 +109,11 @@ export const Select = ({
   const getStatusClasses = () => {
     switch (status) {
       case 'error':
-        return 'border-red-500 focus-within:border-red-500 focus-within:ring-red-500';
+        return 'border-red-500 focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500';
       case 'warning':
-        return 'border-yellow-500 focus-within:border-yellow-500 focus-within:ring-yellow-500';
+        return 'border-yellow-500 focus-within:border-yellow-500 focus-within:ring-2 focus-within:ring-yellow-500';
       default:
-        return 'border-gray-300 dark:border-gray-600 focus-within:border-blue-500 focus-within:ring-blue-500';
+        return 'border-gray-300 dark:border-gray-600 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500';
     }
   };
 
@@ -103,16 +123,18 @@ export const Select = ({
           if (filterOption) {
             return filterOption(searchValue, option);
           }
-          return String(option.label)
-            .toLowerCase()
-            .includes(searchValue.toLowerCase());
+          return (
+            `${option.label}`
+              .toLowerCase()
+              .indexOf(searchValue.toLowerCase()) !== -1
+          );
         })
       : options;
 
   const getSelectedOptions = () => {
     if (!currentValue) return [];
-    const values = Array.isArray(currentValue) ? currentValue : [currentValue];
-    return options.filter((option) => values.includes(option.value));
+    const values = isArray(currentValue) ? currentValue : [currentValue];
+    return options.filter((option) => values.indexOf(option.value) !== -1);
   };
 
   const handleSelect = (option: SelectOption) => {
@@ -122,13 +144,15 @@ export const Select = ({
     let newOption: SelectOption | SelectOption[];
 
     if (isMultiple) {
-      const currentValues = Array.isArray(currentValue) ? currentValue : [];
-      if (currentValues.includes(option.value)) {
+      const currentValues = isArray(currentValue) ? currentValue : [];
+      if (currentValues.indexOf(option.value) !== -1) {
         newValue = currentValues.filter((v) => v !== option.value);
       } else {
         newValue = [...currentValues, option.value];
       }
-      newOption = options.filter((opt) => newValue.includes(opt.value));
+      newOption = options.filter(
+        (opt) => (newValue as (string | number)[]).indexOf(opt.value) !== -1,
+      );
     } else {
       newValue = option.value;
       newOption = option;
@@ -142,25 +166,27 @@ export const Select = ({
     setSearchValue('');
   };
 
-  const handleClear = (e: React.MouseEvent) => {
+  const handleClear = (e: MouseEvent) => {
     e.stopPropagation();
     const newValue = isMultiple ? [] : undefined;
     if (value === undefined) {
       setInternalValue(newValue);
     }
-    onChange?.(newValue as any, isMultiple ? [] : undefined);
+    onChange?.(
+      newValue as string | number | (string | number)[] | undefined,
+      isMultiple ? [] : undefined,
+    );
   };
 
-  const handleRemoveTag = (
-    optionValue: string | number,
-    e: React.MouseEvent,
-  ) => {
+  const handleRemoveTag = (optionValue: string | number, e: MouseEvent) => {
     e.stopPropagation();
     if (!isMultiple) return;
 
-    const currentValues = Array.isArray(currentValue) ? currentValue : [];
+    const currentValues = isArray(currentValue) ? currentValue : [];
     const newValue = currentValues.filter((v) => v !== optionValue);
-    const newOption = options.filter((opt) => newValue.includes(opt.value));
+    const newOption = options.filter(
+      (opt) => newValue.indexOf(opt.value) !== -1,
+    );
 
     if (value === undefined) {
       setInternalValue(newValue);
@@ -168,7 +194,7 @@ export const Select = ({
     onChange?.(newValue, newOption);
   };
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setSearchValue(newValue);
     onSearch?.(newValue);
@@ -184,15 +210,16 @@ export const Select = ({
 
     if (isMultiple) {
       return (
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1 overflow-hidden">
           {selectedOptions.map((option) => (
             <Tag
               key={option.value}
               color="blue"
               closable
               onClose={(e) => handleRemoveTag(option.value, e)}
+              className="flex-shrink-0 max-w-full"
             >
-              {option.label}
+              <span className="truncate">{option.label}</span>
             </Tag>
           ))}
         </div>
@@ -206,14 +233,17 @@ export const Select = ({
     <div className="py-1 max-h-64 overflow-auto">
       {filteredOptions.map((option) => {
         const isSelected = isMultiple
-          ? Array.isArray(currentValue) && currentValue.includes(option.value)
+          ? isArray(currentValue) && currentValue.indexOf(option.value) !== -1
           : currentValue === option.value;
 
         return (
-          <div
+          <button
             key={option.value}
+            type="button"
+            aria-pressed={isSelected}
+            disabled={option.disabled}
             className={cn(
-              'px-3 py-2 cursor-pointer flex items-center justify-between transition-colors',
+              'w-full px-3 py-2 text-left flex items-center justify-between transition-colors',
               option.disabled
                 ? 'text-gray-400 cursor-not-allowed'
                 : isSelected
@@ -224,7 +254,7 @@ export const Select = ({
           >
             <span>{option.label}</span>
             {isSelected && <CheckIcon className="w-4 h-4" />}
-          </div>
+          </button>
         );
       })}
       {filteredOptions.length === 0 && (
@@ -239,9 +269,16 @@ export const Select = ({
       className={cn('relative inline-block w-64', className)}
       {...props}
     >
-      <div
+      {/** biome-ignore lint/a11y/useSemanticElements: The role="combobox" is correct for a custom Select component. While a native <select> element would be semantically better, custom Select components with advanced features (like search, tags, custom styling) require using role="combobox" for proper screen reader support. This is the standard ARIA pattern for custom select components. */}
+      <button
+        type="button"
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-label={props['aria-label'] || (isMultiple ? 'Multi-select dropdown' : 'Select dropdown')}
+        aria-labelledby={props['aria-labelledby']}
+        disabled={disabled}
         className={cn(
-          'flex items-center justify-between border rounded cursor-pointer transition-colors focus-within:outline-none focus-within:ring-2 focus-within:ring-opacity-50',
+          'w-full flex items-center justify-between border rounded cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50',
           getSizeClasses(),
           getStatusClasses(),
           disabled &&
@@ -249,7 +286,7 @@ export const Select = ({
         )}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
-        <div className="flex-1 min-w-0 max-h-20 overflow-y-auto">
+        <div className="flex-1 min-w-0">
           {showSearch && isOpen ? (
             <input
               type="text"
@@ -257,6 +294,7 @@ export const Select = ({
               onChange={handleSearchChange}
               className="w-full bg-transparent outline-none"
               placeholder={hasValue ? '' : placeholder}
+              aria-label="Search options"
               disabled={disabled}
             />
           ) : (
@@ -269,23 +307,24 @@ export const Select = ({
             <button
               type="button"
               onClick={handleClear}
+              onKeyDown={handleKeyboardActivation(handleClear)}
+              aria-label="Clear selection"
               className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
             >
-              <XIcon className="w-3 h-3 text-gray-400" />
+              <XIcon className="w-4 h-4" />
             </button>
           )}
-
           <ChevronDownIcon
             className={cn(
-              'w-4 h-4 text-gray-400 transition-transform',
-              isOpen && 'rotate-180',
+              'w-4 h-4 transition-transform',
+              isOpen && 'transform rotate-180',
             )}
           />
         </div>
-      </div>
+      </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
+        <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded shadow-lg">
           {dropdownRender ? dropdownRender(dropdownContent) : dropdownContent}
         </div>
       )}
