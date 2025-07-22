@@ -84,6 +84,7 @@ export const Default: Story = {
   args: {
     options: basicOptions,
     placeholder: 'Select a fruit',
+    'aria-label': 'Fruit selection',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -107,6 +108,7 @@ export const WithSearch: Story = {
     placeholder: 'Search and select',
     showSearch: true,
     allowClear: true,
+    'aria-label': 'Searchable fruit selection',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -136,6 +138,7 @@ export const Multiple: Story = {
     placeholder: 'Select multiple fruits',
     mode: 'multiple',
     allowClear: true,
+    'aria-label': 'Multiple fruit selection',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -162,13 +165,14 @@ export const Multiple: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="space-y-4">
-      <Select options={basicOptions} placeholder="Small" size="small" />
+      <Select options={basicOptions} placeholder="Small" size="small" aria-label="Small size select" />
       <Select
         options={basicOptions}
         placeholder="Middle (default)"
         size="middle"
+        aria-label="Medium size select"
       />
-      <Select options={basicOptions} placeholder="Large" size="large" />
+      <Select options={basicOptions} placeholder="Large" size="large" aria-label="Large size select" />
     </div>
   ),
 };
@@ -193,6 +197,7 @@ export const WithDisabledOptions: Story = {
       { value: 'elderberry', label: 'Elderberry' },
     ],
     placeholder: 'Some options disabled',
+    'aria-label': 'Fruit selection with disabled options',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -346,6 +351,7 @@ export const CustomFilter: Story = {
     ],
     placeholder: 'Search programming languages',
     showSearch: true,
+    'aria-label': 'Programming language selection with custom filter',
     filterOption: (input, option) => {
       return (
         String(option?.label).toLowerCase().includes(input.toLowerCase()) ||
