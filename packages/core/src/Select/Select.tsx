@@ -284,7 +284,20 @@ export const Select = ({
           disabled &&
             'bg-gray-50 dark:bg-gray-800 cursor-not-allowed opacity-60',
         )}
-        onClick={() => !disabled && setIsOpen(!isOpen)}
+        onClick={(e) => {
+          if (!disabled) {
+            if (showSearch && isOpen) {
+              // If search is enabled and dropdown is open, don't close on button click
+              // unless clicking outside the input area
+              const target = e.target as HTMLElement;
+              if (!target.closest('input')) {
+                setIsOpen(!isOpen);
+              }
+            } else {
+              setIsOpen(!isOpen);
+            }
+          }
+        }}
       >
         <div className="flex-1 min-w-0">
           {showSearch && isOpen ? (
@@ -292,10 +305,13 @@ export const Select = ({
               type="text"
               value={searchValue}
               onChange={handleSearchChange}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               className="w-full bg-transparent outline-none"
               placeholder={hasValue ? '' : placeholder}
               aria-label="Search options"
               disabled={disabled}
+              autoFocus
             />
           ) : (
             renderValue()

@@ -20,6 +20,8 @@ interface DropdownItem {
   disabled?: boolean;
   /** Whether to show divider after this item */
   divider?: boolean;
+  /** Icon to display before label */
+  icon?: ReactNode;
 }
 
 interface DropdownProps {
@@ -139,12 +141,13 @@ export const Dropdown = ({
                     onClick={() => handleItemClick(item)}
                     disabled={item.disabled}
                     className={cn(
-                      'w-full text-left px-3 py-2 text-sm transition-colors',
+                      'w-full text-left px-3 py-2 text-sm transition-colors flex items-center gap-2',
                       item.disabled
                         ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer'
                     )}
                   >
+                    {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
                     {item.label}
                   </button>
                   {item.divider && index < items.length - 1 && (

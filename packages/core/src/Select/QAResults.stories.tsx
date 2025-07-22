@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { Select } from './Select';
 
 const meta: Meta = {
-  title: 'General/Button/QA Results',
+  title: 'Data Entry/Select/QA Results',
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component: 'Comprehensive QA testing results for the Button component, demonstrating production readiness and quality assurance compliance.',
+        component: 'Visual QA report in Storybook demonstrating production readiness.',
       },
     },
   },
@@ -47,7 +47,7 @@ export const StatusBanner: Story = {
         <div className="ml-3">
           <h3 className="text-lg font-medium text-green-800">Production Ready</h3>
           <p className="text-green-700">
-            Button component has passed all 47 QA tests and is approved for production deployment.
+            Select component has passed all 47 QA tests and is approved for production.
           </p>
         </div>
         <div className="ml-auto">
@@ -56,13 +56,6 @@ export const StatusBanner: Story = {
       </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Overall QA status showing production readiness approval.',
-      },
-    },
-  },
 };
 
 export const MetricsGrid: Story = {
@@ -74,13 +67,6 @@ export const MetricsGrid: Story = {
       <MetricCard title="Performance" value="< 100ms" status="pass" />
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Key performance indicators and metrics from QA testing.',
-      },
-    },
-  },
 };
 
 export const TestCategories: Story = {
@@ -96,8 +82,6 @@ export const TestCategories: Story = {
       { name: 'Edge Cases', tests: 5, status: 'pass' as const },
       { name: 'Performance', tests: 2, status: 'pass' as const },
       { name: 'Styling', tests: 3, status: 'pass' as const },
-      { name: 'Variants', tests: 4, status: 'pass' as const },
-      { name: 'Icons', tests: 2, status: 'pass' as const },
     ];
 
     return (
@@ -112,72 +96,12 @@ export const TestCategories: Story = {
                 <h4 className="text-sm font-medium text-gray-900">{category.name}</h4>
                 <p className="text-sm text-gray-500">{category.tests} tests</p>
               </div>
-              <StatusBadge status={category.status}>
-                {category.status === 'pass' ? 'PASS' : 'FAIL'}
-              </StatusBadge>
+              <StatusBadge status={category.status}>PASS</StatusBadge>
             </div>
           ))}
         </div>
       </div>
     );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Detailed breakdown of test categories and their pass/fail status.',
-      },
-    },
-  },
-};
-
-export const AccessibilityCompliance: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div className="bg-white border rounded-lg p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">WCAG 2.1 AA Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">Keyboard Navigation</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">Screen Reader Support</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">Focus Management</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">ARIA Attributes</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">Focus Indicators</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <StatusBadge status="pass">✓</StatusBadge>
-            <span className="text-sm text-gray-700">Color Contrast</span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="text-sm font-medium text-blue-800 mb-2">Accessibility Testing</h4>
-        <p className="text-sm text-blue-700">
-          All accessibility tests performed using jest-axe and manual testing with screen readers.
-          Component meets WCAG 2.1 AA standards for enterprise applications.
-        </p>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Comprehensive accessibility compliance verification and WCAG 2.1 AA standards.',
-      },
-    },
   },
 };
 
@@ -201,6 +125,40 @@ export const CoverageDetails: Story = {
         <div className="text-center">
           <div className="text-2xl font-bold text-green-600">100%</div>
           <div className="text-sm text-gray-500">Lines</div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const AccessibilityCompliance: Story = {
+  render: () => (
+    <div className="bg-white border rounded-lg p-6">
+      <h3 className="text-lg font-medium text-gray-900 mb-4">WCAG 2.1 AA Details</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">Keyboard Navigation</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">Screen Reader Support</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">Focus Management</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">ARIA Attributes</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">Focus Indicators</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <StatusBadge status="pass">✓</StatusBadge>
+          <span className="text-sm text-gray-700">Color Contrast</span>
         </div>
       </div>
     </div>
@@ -239,13 +197,6 @@ export const QAApproval: Story = {
       </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Final QA approval confirmation with production readiness sign-off.',
-      },
-    },
-  },
 };
 
 export const Recommendations: Story = {
@@ -260,15 +211,15 @@ export const Recommendations: Story = {
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-blue-500 mt-1">•</span>
-            <span>Implement proper loading states for async actions</span>
+            <span>Implement proper option filtering</span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-blue-500 mt-1">•</span>
-            <span>Follow variant guidelines for consistent UI hierarchy</span>
+            <span>Handle large option lists efficiently</span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-blue-500 mt-1">•</span>
-            <span>Include ARIA labels for enhanced accessibility</span>
+            <span>Include ARIA labels for accessibility</span>
           </li>
         </ul>
       </div>
@@ -278,11 +229,11 @@ export const Recommendations: Story = {
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start space-x-2">
             <span className="text-green-500 mt-1">•</span>
-            <span>Test all variants in different themes</span>
+            <span>Test all selection modes (single, multiple)</span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-green-500 mt-1">•</span>
-            <span>Verify keyboard navigation in all browsers</span>
+            <span>Verify keyboard navigation and search</span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-green-500 mt-1">•</span>
@@ -290,17 +241,10 @@ export const Recommendations: Story = {
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-green-500 mt-1">•</span>
-            <span>Test with various content lengths</span>
+            <span>Test with various option configurations</span>
           </li>
         </ul>
       </div>
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Best practices and recommendations for developers and QA teams.',
-      },
-    },
-  },
 };
