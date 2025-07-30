@@ -33,21 +33,21 @@ export const Tag = ({
   const getColorClasses = () => {
     switch (color) {
       case 'blue':
-        return 'bg-blue-600 text-white border-blue-600';
+        return 'bg-blue-600 text-white border-blue-400';
       case 'green':
-        return 'bg-green-600 text-white border-green-600';
+        return 'bg-green-600 text-white border-green-400';
       case 'red':
-        return 'bg-red-600 text-white border-red-600';
+        return 'bg-red-600 text-white border-red-400';
       case 'yellow':
-        return 'bg-yellow-600 text-white border-yellow-600';
+        return 'bg-yellow-600 text-white border-yellow-400';
       case 'purple':
-        return 'bg-purple-600 text-white border-purple-600';
+        return 'bg-purple-600 text-white border-purple-400';
       case 'pink':
-        return 'bg-pink-600 text-white border-pink-600';
+        return 'bg-pink-600 text-white border-pink-400';
       case 'gray':
-        return 'bg-gray-600 text-white border-gray-600';
+        return 'bg-gray-600 text-white border-gray-400';
       default:
-        return 'bg-gray-600 text-white border-gray-600';
+        return 'bg-gray-600 text-white border-gray-400';
     }
   };
 

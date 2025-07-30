@@ -11,31 +11,84 @@ const meta: Meta<typeof Tag> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `
-# Tag Component
+        component: `Tag component for categorizing or markup with comprehensive accessibility and testing support.
 
-Tags are compact elements that represent an input, attribute, or action. They allow users to categorize content, add metadata, or trigger actions.
+## Overview
 
-## Features
-- **8 Color Variants**: Default, blue, green, red, yellow, purple, pink, and gray
-- **Closable Tags**: Optional close functionality with custom handlers
-- **Icon Support**: Add icons to provide visual context
-- **Bordered/Borderless**: Control border appearance
-- **Accessibility**: Full keyboard navigation and screen reader support
-- **Dark Mode**: Automatic dark mode support
+The Tag component provides compact labeling and categorization functionality. It supports 8 color variants, closable functionality, icon integration, and maintains WCAG 2.1 AA accessibility compliance.
 
-## When to Use
-- **Categorization**: Group or categorize content
-- **Status Indicators**: Show status, priority, or state
-- **Filters**: Display active filters that can be removed
-- **User Input**: Show selected options or entered tags
-- **Metadata**: Display additional information about content
+## Quick Start
+
+\`\`\`tsx
+import { Tag } from '@jetstream/core';
+
+// Basic usage
+<Tag>Default Tag</Tag>
+
+// With options
+<Tag color="blue" closable onClose={handleClose}>Closable Tag</Tag>
+\`\`\`
+
+## Color Variants
+
+### Status Colors
+\`\`\`tsx
+<Tag color="green">Success</Tag>
+<Tag color="red">Error</Tag>
+<Tag color="yellow">Warning</Tag>
+\`\`\`
+
+### Semantic Colors
+\`\`\`tsx
+<Tag color="blue">Information</Tag>
+<Tag color="purple">Premium</Tag>
+<Tag color="pink">Featured</Tag>
+\`\`\`
 
 ## Accessibility
-- Tags are focusable and keyboard navigable
-- Close buttons have proper ARIA labels
-- Color is not the only way to convey meaning
-- Screen reader friendly with semantic markup
+
+The Tag component is fully accessible with:
+
+- **Keyboard Navigation**: Full keyboard support with proper focus management
+- **Screen Reader Support**: Semantic markup with ARIA labels for interactive elements
+- **Color Independence**: Meaning conveyed through text and icons, not just color
+
+\`\`\`tsx
+// Accessibility example
+<Tag 
+  color="green" 
+  aria-label="Completed status"
+  role="status"
+  icon={<CheckIcon />}
+>
+  Completed
+</Tag>
+\`\`\`
+
+## Testing
+
+Built-in testing support with \`testId\` prop:
+
+\`\`\`tsx
+<Tag testId="tag-test">Test Tag</Tag>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('tag-test');
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use semantic colors that align with your design system
+- Provide clear, concise labels
+- Include icons for better visual context when appropriate
+
+### Don't
+- Rely solely on color to convey meaning
+- Use overly long text in tags
+- Mix bordered and borderless styles inconsistently
         `,
       },
     },
@@ -81,204 +134,18 @@ Tags are compact elements that represent an input, attribute, or action. They al
         type: { summary: '(e: React.MouseEvent) => void' },
       },
     },
+    testId: {
+      control: 'text',
+      description: 'Test identifier for automated testing',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// Additional comprehensive stories
-export const Sizes: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div>
-        <Heading className="mb-2">Tag Sizing</Heading>
-        <div className="flex flex-wrap items-center gap-2">
-          <Tag className="text-xs px-1.5 py-0.5">Extra Small</Tag>
-          <Tag>Default Size</Tag>
-          <Tag className="text-sm px-3 py-1.5">Large</Tag>
-        </div>
-      </div>
-      <p className="text-sm text-gray-600 dark:text-gray-400">
-        Customize tag sizes using className prop. Maintain consistent sizing within the same context.
-      </p>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Different tag sizes achieved through custom className styling. Adjust padding and font size as needed.',
-      },
-    },
-  },
-};
-
-export const InteractiveExample: Story = {
-  render: () => {
-    const [selectedTags, setSelectedTags] = useState<string[]>(['react']);
-    const [inputValue, setInputValue] = useState('');
-    
-    const availableTags = [
-      { id: 'react', label: 'React', color: 'blue' as const },
-      { id: 'vue', label: 'Vue', color: 'green' as const },
-      { id: 'angular', label: 'Angular', color: 'red' as const },
-      { id: 'svelte', label: 'Svelte', color: 'purple' as const },
-    ];
-    
-    const addTag = () => {
-      if (inputValue.trim() && !selectedTags.includes(inputValue.toLowerCase())) {
-        setSelectedTags([...selectedTags, inputValue.toLowerCase()]);
-        setInputValue('');
-      }
-    };
-    
-    const removeTag = (tagId: string) => {
-      setSelectedTags(selectedTags.filter(id => id !== tagId));
-    };
-    
-    const toggleTag = (tagId: string) => {
-      if (selectedTags.includes(tagId)) {
-        removeTag(tagId);
-      } else {
-        setSelectedTags([...selectedTags, tagId]);
-      }
-    };
-    
-    return (
-      <div className="space-y-4">
-        <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Selected Technologies</h4>
-          <div className="flex flex-wrap gap-2 min-h-[2rem]">
-            {selectedTags.map(tagId => {
-              const tag = availableTags.find(t => t.id === tagId);
-              return (
-                <Tag
-                  key={tagId}
-                  color={tag?.color || 'default'}
-                  closable
-                  onClose={() => removeTag(tagId)}
-                >
-                  {tag?.label || tagId}
-                </Tag>
-              );
-            })}
-            {selectedTags.length === 0 && (
-              <span className="text-gray-400 dark:text-gray-500 text-sm">No technologies selected</span>
-            )}
-          </div>
-        </div>
-        
-        <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Available Options</h4>
-          <div className="flex flex-wrap gap-2">
-            {availableTags.map(tag => (
-              <Tag
-                key={tag.id}
-                color={selectedTags.includes(tag.id) ? tag.color : 'gray'}
-                className={`cursor-pointer transition-all ${
-                  selectedTags.includes(tag.id) ? 'opacity-50' : 'hover:scale-105'
-                }`}
-                onClick={() => toggleTag(tag.id)}
-              >
-                {tag.label} {selectedTags.includes(tag.id) ? '✓' : '+'}
-              </Tag>
-            ))}
-          </div>
-        </div>
-        
-        <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Add Custom Tag</h4>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && addTag()}
-              placeholder="Enter tag name"
-              className="px-2 py-1 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
-            />
-            <button
-              onClick={addTag}
-              disabled={!inputValue.trim()}
-              className="px-3 py-1 text-sm bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Interactive example showing tags in a real-world scenario with selection, addition, and removal functionality.',
-      },
-    },
-  },
-};
-
-export const AccessibilityDemo: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Keyboard Navigation</h4>
-        <div className="flex flex-wrap gap-2">
-          <Tag tabIndex={0}>Focusable Tag</Tag>
-          <Tag color="blue" closable onClose={() => alert('Tag closed!')} tabIndex={0}>
-            Closable Tag
-          </Tag>
-          <Tag color="green" icon={<CheckIcon className="w-3 h-3" />} tabIndex={0}>
-            Icon Tag
-          </Tag>
-        </div>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-          Use Tab to navigate, Enter/Space to interact, Escape to close
-        </p>
-      </div>
-      
-      <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Screen Reader Friendly</h4>
-        <div className="flex flex-wrap gap-2">
-          <Tag 
-            color="green" 
-            aria-label="Completed status"
-            role="status"
-            icon={<CheckIcon className="w-3 h-3" />}
-          >
-            Completed
-          </Tag>
-          <Tag 
-            color="red" 
-            closable 
-            onClose={() => console.log('Error dismissed')}
-            aria-label="Error message, press to dismiss"
-          >
-            Error
-          </Tag>
-        </div>
-      </div>
-      
-      <div className="text-sm text-gray-600 dark:text-gray-400">
-        <p><strong>Accessibility Features:</strong></p>
-        <ul className="list-disc list-inside space-y-1 mt-2">
-          <li>Keyboard navigation support with tabIndex</li>
-          <li>ARIA labels for screen readers</li>
-          <li>Semantic roles for status indicators</li>
-          <li>Focus management for interactive elements</li>
-          <li>High contrast colors for visibility</li>
-        </ul>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
-      },
-    },
-  },
-};
 
 export const Default: Story = {
   args: {
@@ -462,6 +329,138 @@ export const WithIcons: Story = {
   },
 };
 
+export const Examples: Story = {
+  render: () => {
+    const [selectedTags, setSelectedTags] = useState<string[]>(['react']);
+    const [inputValue, setInputValue] = useState('');
+    
+    const availableTags = [
+      { id: 'react', label: 'React', color: 'blue' as const },
+      { id: 'vue', label: 'Vue', color: 'green' as const },
+      { id: 'angular', label: 'Angular', color: 'red' as const },
+      { id: 'svelte', label: 'Svelte', color: 'purple' as const },
+    ];
+    
+    const addTag = () => {
+      if (inputValue.trim() && !selectedTags.includes(inputValue.toLowerCase())) {
+        setSelectedTags([...selectedTags, inputValue.toLowerCase()]);
+        setInputValue('');
+      }
+    };
+    
+    const removeTag = (tagId: string) => {
+      setSelectedTags(selectedTags.filter(id => id !== tagId));
+    };
+    
+    const toggleTag = (tagId: string) => {
+      if (selectedTags.includes(tagId)) {
+        removeTag(tagId);
+      } else {
+        setSelectedTags([...selectedTags, tagId]);
+      }
+    };
+    
+    return (
+      <div className="space-y-4">
+        <div>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Selected Technologies</h4>
+          <div className="flex flex-wrap gap-2 min-h-[2rem]">
+            {selectedTags.map(tagId => {
+              const tag = availableTags.find(t => t.id === tagId);
+              return (
+                <Tag
+                  key={tagId}
+                  color={tag?.color || 'default'}
+                  closable
+                  onClose={() => removeTag(tagId)}
+                >
+                  {tag?.label || tagId}
+                </Tag>
+              );
+            })}
+            {selectedTags.length === 0 && (
+              <span className="text-gray-400 dark:text-gray-500 text-sm">No technologies selected</span>
+            )}
+          </div>
+        </div>
+        
+        <div>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Available Options</h4>
+          <div className="flex flex-wrap gap-2">
+            {availableTags.map(tag => (
+              <Tag
+                key={tag.id}
+                color={selectedTags.includes(tag.id) ? tag.color : 'gray'}
+                className={`cursor-pointer transition-all ${
+                  selectedTags.includes(tag.id) ? 'opacity-50' : 'hover:scale-105'
+                }`}
+                onClick={() => toggleTag(tag.id)}
+              >
+                {tag.label} {selectedTags.includes(tag.id) ? '✓' : '+'}
+              </Tag>
+            ))}
+          </div>
+        </div>
+        
+        <div>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Add Custom Tag</h4>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && addTag()}
+              placeholder="Enter tag name"
+              className="px-2 py-1 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+            />
+            <button
+              onClick={addTag}
+              disabled={!inputValue.trim()}
+              className="px-3 py-1 text-sm bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive example showing tags in a real-world scenario with selection, addition, and removal functionality.',
+      },
+    },
+  },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div>
+        <Heading className="mb-2">Tag Sizing</Heading>
+        <div className="flex flex-wrap items-center gap-2">
+          <Tag className="text-xs px-1.5 py-0.5">Extra Small</Tag>
+          <Tag>Default Size</Tag>
+          <Tag className="text-sm px-3 py-1.5">Large</Tag>
+        </div>
+      </div>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        Customize tag sizes using className prop. Maintain consistent sizing within the same context.
+      </p>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Different tag sizes achieved through custom className styling. Adjust padding and font size as needed.',
+      },
+    },
+  },
+};
+
+
+
 export const Borderless: Story = {
   render: () => (
     <div className="space-y-4">
@@ -518,6 +517,68 @@ export const Borderless: Story = {
     docs: {
       description: {
         story: 'Tags without borders for a cleaner, more subtle appearance. Useful in dense interfaces or when you want to reduce visual noise.',
+      },
+    },
+  },
+};
+
+export const AccessibilityDemo: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Keyboard Navigation</h4>
+        <div className="flex flex-wrap gap-2">
+          <Tag tabIndex={0}>Focusable Tag</Tag>
+          <Tag color="blue" closable onClose={() => alert('Tag closed!')} tabIndex={0}>
+            Closable Tag
+          </Tag>
+          <Tag color="green" icon={<CheckIcon className="w-3 h-3" />} tabIndex={0}>
+            Icon Tag
+          </Tag>
+        </div>
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+          Use Tab to navigate, Enter/Space to interact, Escape to close
+        </p>
+      </div>
+      
+      <div>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Screen Reader Friendly</h4>
+        <div className="flex flex-wrap gap-2">
+          <Tag 
+            color="green" 
+            aria-label="Completed status"
+            role="status"
+            icon={<CheckIcon className="w-3 h-3" />}
+          >
+            Completed
+          </Tag>
+          <Tag 
+            color="red" 
+            closable 
+            onClose={() => console.log('Error dismissed')}
+            aria-label="Error message, press to dismiss"
+          >
+            Error
+          </Tag>
+        </div>
+      </div>
+      
+      <div className="text-sm text-gray-600 dark:text-gray-400">
+        <p><strong>Accessibility Features:</strong></p>
+        <ul className="list-disc list-inside space-y-1 mt-2">
+          <li>Keyboard navigation support with tabIndex</li>
+          <li>ARIA labels for screen readers</li>
+          <li>Semantic roles for status indicators</li>
+          <li>Focus management for interactive elements</li>
+          <li>High contrast colors for visibility</li>
+        </ul>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
       },
     },
   },

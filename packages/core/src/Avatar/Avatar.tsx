@@ -140,17 +140,23 @@ const AvatarGroup = ({
   const visibleChildren = maxCount ? childrenArray.slice(0, maxCount) : childrenArray;
   const hiddenCount = maxCount ? Math.max(0, childrenArray.length - maxCount) : 0;
 
+  const getBorderShape = () => {
+    return shape === 'square' ? 'rounded-md' : 'rounded-full';
+  };
+
   return (
-    <div className={cn('flex -space-x-2', className)} data-testid={props['data-testid']} {...props}>
+    <div className={cn('flex items-center -space-x-2', className)} data-testid={props['data-testid']} {...props}>
       {visibleChildren.map((child, index) => (
-        <div key={index} className="relative border-2 border-white dark:border-gray-800 rounded-full">
+        <div key={index} className={cn('relative border-2 border-white dark:border-gray-800', getBorderShape())}>
           {child}
         </div>
       ))}
       {hiddenCount > 0 && (
-        <Avatar size={size} shape={shape} className="bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300">
-          +{hiddenCount}
-        </Avatar>
+        <div className={cn('relative border-2 border-white dark:border-gray-800', getBorderShape())}>
+          <Avatar size={size} shape={shape} className="bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300">
+            +{hiddenCount}
+          </Avatar>
+        </div>
       )}
     </div>
   );

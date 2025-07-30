@@ -209,16 +209,55 @@ screen.getAllByTestId(/member-/);
     size: {
       control: 'select',
       options: ['small', 'default', 'large'],
-      description: 'Avatar size',
+      description: 'Size of the avatar',
+      table: {
+        type: { summary: 'small | default | large | number' },
+        defaultValue: { summary: 'default' },
+      },
     },
     shape: {
       control: 'select',
       options: ['circle', 'square'],
-      description: 'Avatar shape',
+      description: 'Shape of the avatar',
+      table: {
+        type: { summary: 'circle | square' },
+        defaultValue: { summary: 'circle' },
+      },
     },
     src: {
       control: 'text',
-      description: 'Image source URL',
+      description: 'Image source URL for avatar',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    alt: {
+      control: 'text',
+      description: 'Alt text for image avatar',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    icon: {
+      control: false,
+      description: 'Icon element to display',
+      table: {
+        type: { summary: 'React.ReactNode' },
+      },
+    },
+    children: {
+      control: 'text',
+      description: 'Text content (usually initials)',
+      table: {
+        type: { summary: 'React.ReactNode' },
+      },
+    },
+    'data-testid': {
+      control: 'text',
+      description: 'Test identifier for automated testing',
+      table: {
+        type: { summary: 'string' },
+      },
     },
   },
 };
@@ -247,88 +286,152 @@ export const WithIcon: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div className="flex items-center gap-4">
-      <Avatar size="small">S</Avatar>
-      <Avatar size="default">M</Avatar>
-      <Avatar size="large">L</Avatar>
-      <Avatar size={64}>XL</Avatar>
-    </div>
-  ),
-};
-
-export const Shapes: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <Avatar shape="circle">JD</Avatar>
-      <Avatar shape="square">JD</Avatar>
-    </div>
-  ),
-};
-
-export const Fallback: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <Avatar src="invalid-url.jpg" alt="Broken">FB</Avatar>
-      <Avatar src="invalid-url.jpg" icon={<UserCircleIcon />} />
-      <Avatar src="invalid-url.jpg" />
-    </div>
-  ),
-};
-
-export const Group: Story = {
-  render: () => (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div>
-        <h3 className="text-sm font-medium mb-2">Basic Group</h3>
-        <Avatar.Group>
-          <Avatar>A</Avatar>
-          <Avatar>B</Avatar>
-          <Avatar>C</Avatar>
-          <Avatar>D</Avatar>
-        </Avatar.Group>
-      </div>
-      
-      <div>
-        <h3 className="text-sm font-medium mb-2">With Max Count</h3>
-        <Avatar.Group maxCount={3}>
-          <Avatar>A</Avatar>
-          <Avatar>B</Avatar>
-          <Avatar>C</Avatar>
-          <Avatar>D</Avatar>
-          <Avatar>E</Avatar>
-        </Avatar.Group>
-      </div>
-      
-      <div>
-        <h3 className="text-sm font-medium mb-2">Large Group</h3>
-        <Avatar.Group size="large" maxCount={4}>
-          <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
-          <Avatar>JD</Avatar>
-          <Avatar icon={<UserCircleIcon />} />
-          <Avatar>AB</Avatar>
-          <Avatar>CD</Avatar>
-          <Avatar>EF</Avatar>
-        </Avatar.Group>
+        <h3 className="text-lg font-semibold mb-4">Avatar Sizes</h3>
+        <div className="flex items-center gap-4">
+          <Avatar size="small" data-testid="small-avatar">S</Avatar>
+          <Avatar size="default" data-testid="default-avatar">M</Avatar>
+          <Avatar size="large" data-testid="large-avatar">L</Avatar>
+          <Avatar size={64} data-testid="custom-avatar">XL</Avatar>
+        </div>
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Different sizes of avatars including predefined and custom sizes.',
+      },
+    },
+  },
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Avatar Variants</h3>
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
+            <Avatar shape="circle" data-testid="circle-avatar">JD</Avatar>
+            <Avatar shape="square" data-testid="square-avatar">JD</Avatar>
+          </div>
+          <div className="flex items-center gap-4">
+            <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User" data-testid="image-avatar" />
+            <Avatar icon={<UserCircleIcon />} data-testid="icon-avatar" />
+            <Avatar data-testid="text-avatar">AB</Avatar>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Different avatar variants including shapes and content types.',
+      },
+    },
+  },
+};
+
+export const States: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Avatar States</h3>
+        <div className="space-y-4">
+          <div>
+            <h4 className="text-sm font-medium mb-2">Fallback Behavior</h4>
+            <div className="flex items-center gap-4">
+              <Avatar src="invalid-url.jpg" alt="Broken" data-testid="fallback-text">FB</Avatar>
+              <Avatar src="invalid-url.jpg" icon={<UserCircleIcon />} data-testid="fallback-icon" />
+              <Avatar src="invalid-url.jpg" data-testid="fallback-default" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Avatar fallback behavior when images fail to load.',
+      },
+    },
+  },
+};
+
+export const Features: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Avatar Features</h3>
+        <div className="space-y-4">
+          <div>
+            <h4 className="text-sm font-medium mb-2">Basic Group</h4>
+            <Avatar.Group data-testid="basic-group">
+              <Avatar data-testid="group-member-1">A</Avatar>
+              <Avatar data-testid="group-member-2">B</Avatar>
+              <Avatar data-testid="group-member-3">C</Avatar>
+              <Avatar data-testid="group-member-4">D</Avatar>
+            </Avatar.Group>
+          </div>
+          
+          <div>
+            <h4 className="text-sm font-medium mb-2">With Max Count</h4>
+            <Avatar.Group maxCount={3} data-testid="limited-group">
+              <Avatar>A</Avatar>
+              <Avatar>B</Avatar>
+              <Avatar>C</Avatar>
+              <Avatar>D</Avatar>
+              <Avatar>E</Avatar>
+            </Avatar.Group>
+          </div>
+          
+          <div>
+            <h4 className="text-sm font-medium mb-2">Large Group</h4>
+            <Avatar.Group size="large" maxCount={4} data-testid="large-group">
+              <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
+              <Avatar>JD</Avatar>
+              <Avatar icon={<UserCircleIcon />} />
+              <Avatar>AB</Avatar>
+              <Avatar>CD</Avatar>
+              <Avatar>EF</Avatar>
+            </Avatar.Group>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Advanced avatar features including grouping and overflow handling.',
+      },
+    },
+  },
 };
 
 export const Examples: Story = {
   render: () => (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="space-y-8">
       <div>
-        <h3 className="text-sm font-medium mb-2">Profile Cards</h3>
-        <div className="space-y-3">
-          <div className="flex items-center gap-3 p-3 border rounded-lg">
-            <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
+        <h3 className="text-lg font-semibold mb-4">User Profiles</h3>
+        <div className="space-y-3 p-4 border rounded-lg">
+          <div className="flex items-center gap-3">
+            <Avatar 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+              alt="John Doe"
+              data-testid="profile-john"
+            />
             <div>
               <div className="font-medium">John Doe</div>
               <div className="text-sm text-gray-500">Software Engineer</div>
             </div>
           </div>
-          <div className="flex items-center gap-3 p-3 border rounded-lg">
-            <Avatar>JA</Avatar>
+          <div className="flex items-center gap-3">
+            <Avatar data-testid="profile-jane">JA</Avatar>
             <div>
               <div className="font-medium">Jane Adams</div>
               <div className="text-sm text-gray-500">Product Manager</div>
@@ -338,18 +441,36 @@ export const Examples: Story = {
       </div>
       
       <div>
-        <h3 className="text-sm font-medium mb-2">Team Members</h3>
-        <div className="flex items-center justify-between p-3 border rounded-lg">
-          <span className="font-medium">Project Team</span>
-          <Avatar.Group maxCount={3}>
-            <Avatar size="small">A</Avatar>
-            <Avatar size="small">B</Avatar>
-            <Avatar size="small">C</Avatar>
-            <Avatar size="small">D</Avatar>
-            <Avatar size="small">E</Avatar>
-          </Avatar.Group>
+        <h3 className="text-lg font-semibold mb-4">Team Collaboration</h3>
+        <div className="space-y-4 p-4 border rounded-lg">
+          <div className="flex items-center justify-between">
+            <span className="font-medium">Project Alpha Team</span>
+            <Avatar.Group maxCount={3} data-testid="alpha-team">
+              <Avatar size="small">A</Avatar>
+              <Avatar size="small">B</Avatar>
+              <Avatar size="small">C</Avatar>
+              <Avatar size="small">D</Avatar>
+              <Avatar size="small">E</Avatar>
+            </Avatar.Group>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="font-medium">Design Team</span>
+            <Avatar.Group maxCount={4} data-testid="design-team">
+              <Avatar size="small" icon={<UserCircleIcon />} />
+              <Avatar size="small">DM</Avatar>
+              <Avatar size="small">UI</Avatar>
+              <Avatar size="small">UX</Avatar>
+            </Avatar.Group>
+          </div>
         </div>
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Real-world examples showing avatars in user profiles and team collaboration scenarios with proper testing IDs.',
+      },
+    },
+  },
 };

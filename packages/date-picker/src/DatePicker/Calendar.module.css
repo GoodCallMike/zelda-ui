@@ -72,13 +72,14 @@
   width: var(--size-8);
   font-size: var(--text-sm);
   border: none;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
+  position: relative;
 }
 
 .dayButton:hover {
@@ -129,4 +130,48 @@
 .emptyDay {
   height: var(--size-8);
   width: var(--size-8);
+}
+
+/* Range selection styles */
+.dayButtonInRange {
+  background-color: var(--blue-100) !important;
+  color: var(--blue-900) !important;
+  border-radius: 0;
+}
+
+[data-theme="dark"] .dayButtonInRange {
+  background-color: var(--blue-900) !important;
+  color: var(--blue-100) !important;
+}
+
+.dayButtonRangeStart {
+  background-color: var(--blue-500) !important;
+  color: var(--white) !important;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.dayButtonRangeEnd {
+  background-color: var(--blue-500) !important;
+  color: var(--white) !important;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dayButtonRangeStart.dayButtonRangeEnd {
+  border-radius: var(--radius-md);
+}
+
+.dayButtonInRange:hover {
+  background-color: var(--blue-200) !important;
+  color: var(--blue-900) !important;
+}
+
+[data-theme="dark"] .dayButtonInRange:hover {
+  background-color: var(--blue-800) !important;
+  color: var(--blue-100) !important;
+}
+
+.dayButtonRangeStart:hover,
+.dayButtonRangeEnd:hover {
+  background-color: var(--blue-600) !important;
+  color: var(--white) !important;
 }

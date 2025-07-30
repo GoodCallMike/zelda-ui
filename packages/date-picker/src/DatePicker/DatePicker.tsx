@@ -20,6 +20,12 @@ interface DatePickerProps {
   format?: string;
   /** Placeholder text */
   placeholder?: string;
+  /** Label for the input */
+  label?: string;
+  /** Description text */
+  description?: string;
+  /** Required field indicator */
+  required?: boolean;
   /** Disabled state */
   disabled?: boolean;
   /** Size of the input */
@@ -32,6 +38,8 @@ interface DatePickerProps {
   className?: string;
   /** Input style */
   style?: React.CSSProperties;
+  /** Test ID for testing */
+  testId?: string;
 }
 
 /**
@@ -42,12 +50,16 @@ export const DatePicker = ({
   onChange,
   format: dateFormat = 'MM/dd/yyyy',
   placeholder = 'Select date',
+  label,
+  description,
+  required = false,
   disabled = false,
   size = 'middle',
   status,
   allowClear = true,
   className,
   style,
+  testId,
 }: DatePickerProps) => {
   const [inputValue, setInputValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -104,64 +116,29 @@ export const DatePicker = ({
     setIsOpen(false);
   };
 
-  const getSizeClasses = () => {
-    switch (size) {
-      case 'small':
-        return 'px-2 py-1 text-sm';
-      case 'large':
-        return 'px-3 py-3 text-base';
-      default:
-        return 'px-3 py-2 text-sm';
-    }
-  };
 
-  const getIconSize = () => {
-    switch (size) {
-      case 'small':
-        return 'w-3 h-3';
-      case 'large':
-        return 'w-5 h-5';
-      default:
-        return 'w-4 h-4';
-    }
-  };
 
-  const getButtonSize = () => {
-    switch (size) {
-      case 'small':
-        return 'p-0.5';
-      case 'large':
-        return 'p-1.5';
-      default:
-        return 'p-1';
-    }
-  };
-
-  const getIconContainerHeight = () => {
-    switch (size) {
-      case 'small':
-        return 'h-6';
-      case 'large':
-        return 'h-10';
-      default:
-        return 'h-8';
-    }
-  };
-
-  const getStatusClasses = () => {
-    switch (status) {
-      case 'error':
-        return 'border-red-500 focus:border-red-500 focus:ring-red-500';
-      case 'warning':
-        return 'border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500';
-      default:
-        return 'border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500';
-    }
-  };
+  const inputId = `datepicker-${Math.random().toString(36).substr(2, 9)}`;
+  const descriptionId = description ? `${inputId}-description` : undefined;
 
   return (
-    <div className={cn('relative inline-block', className)} style={style} ref={clickOutsideRef}>
+    <div className={cn('flex flex-col gap-1', className)} style={style}>
+      {label && (
+        <label
+          htmlFor={inputId}
+          className={cn(
+            'text-sm font-medium text-gray-700 dark:text-gray-300',
+            disabled && 'text-gray-400 dark:text-gray-500'
+          )}
+        >
+          {label}
+          {required && <span className="text-red-500 ml-1">*</span>}
+        </label>
+      )}
+      
+      <div className="relative" ref={clickOutsideRef}>
         <input
+          id={inputId}
           ref={refs.setReference}
           type="text"
           value={inputValue}
@@ -169,23 +146,51 @@ export const DatePicker = ({
           onClick={handleInputClick}
           placeholder={placeholder}
           disabled={disabled}
+          data-testid={testId}
+          aria-describedby={descriptionId}
           className={cn(
-            'w-48 border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50',
-            getSizeClasses(),
-            getStatusClasses(),
-            disabled && 'bg-gray-50 dark:bg-gray-800 cursor-not-allowed opacity-60',
-            allowClear && inputValue ? 'pr-16' : 'pr-10' // Space for icons
+            'w-full border-2 rounded-lg bg-white dark:bg-gray-800',
+            'focus:outline-none focus:ring-4 focus:ring-opacity-20',
+            'transition-all duration-200 ease-in-out text-gray-900 dark:text-gray-100',
+            'font-medium placeholder:text-gray-400 placeholder:font-normal',
+            'shadow-sm hover:shadow-md',
+            
+            // Size variations
+            size === 'small' && 'px-3 py-2 text-sm pr-10',
+            size === 'middle' && 'px-4 py-3 text-sm pr-12',
+            size === 'large' && 'px-5 py-4 text-base pr-14',
+            
+            // States
+            !status && 'border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300',
+            status === 'error' && 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50 dark:bg-red-900/10',
+            status === 'warning' && 'border-yellow-400 focus:ring-yellow-500 focus:border-yellow-500 bg-yellow-50 dark:bg-yellow-900/10',
+            disabled && 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed border-gray-200 shadow-none'
           )}
         />
         
-        <div className={cn('absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1', getIconContainerHeight())}>
+        <div className={cn(
+          'absolute top-1/2 -translate-y-1/2 flex items-center gap-1',
+          size === 'small' && 'right-2',
+          size === 'middle' && 'right-3', 
+          size === 'large' && 'right-4'
+        )}>
           {allowClear && inputValue && !disabled && (
             <button
               type="button"
               onClick={handleClear}
-              className={cn(getButtonSize(), 'hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors')}
+              className={cn(
+                'hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-all duration-150 hover:scale-105',
+                size === 'small' && 'p-1',
+                size === 'middle' && 'p-1.5',
+                size === 'large' && 'p-2'
+              )}
             >
-              <svg className={cn(getIconSize(), 'text-gray-400')} fill="currentColor" viewBox="0 0 20 20">
+              <svg className={cn(
+                'text-gray-400 hover:text-gray-600',
+                size === 'small' && 'w-3 h-3',
+                size === 'middle' && 'w-4 h-4',
+                size === 'large' && 'w-5 h-5'
+              )} fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </button>
@@ -195,19 +200,39 @@ export const DatePicker = ({
             type="button"
             onClick={() => !disabled && setIsOpen(!isOpen)}
             disabled={disabled}
-            className={cn(getButtonSize(), 'hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors disabled:cursor-not-allowed')}
+            className={cn(
+              'rounded-md transition-all duration-150 disabled:cursor-not-allowed',
+              'hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:scale-105',
+              isOpen && 'bg-blue-100 dark:bg-blue-900/30',
+              size === 'small' && 'p-1',
+              size === 'middle' && 'p-1.5',
+              size === 'large' && 'p-2'
+            )}
           >
-            <CalendarIcon className={cn(getIconSize(), 'text-gray-400')} />
+            <CalendarIcon className={cn(
+              'transition-colors duration-150',
+              size === 'small' && 'w-4 h-4',
+              size === 'middle' && 'w-5 h-5',
+              size === 'large' && 'w-6 h-6',
+              isOpen ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400 hover:text-blue-500'
+            )} />
           </button>
         </div>
 
-      {isOpen && (
-        <div
-          ref={refs.setFloating}
-          style={floatingStyles}
-          className="z-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg"
-        >
-          <Calendar value={value} onChange={handleCalendarSelect} />
+        {isOpen && (
+          <div
+            ref={refs.setFloating}
+            style={floatingStyles}
+            className="z-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl ring-1 ring-black/5 dark:ring-white/10 animate-in fade-in-0 zoom-in-95 duration-200"
+          >
+            <Calendar value={value} onChange={handleCalendarSelect} />
+          </div>
+        )}
+      </div>
+      
+      {description && (
+        <div id={descriptionId} className="text-xs text-gray-500 dark:text-gray-400">
+          {description}
         </div>
       )}
     </div>

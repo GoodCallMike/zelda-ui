@@ -87,32 +87,33 @@ export const Card = ({
       >
         {cover && (
           <div className="aspect-video">
-            <Skeleton className="w-full h-full" />
+            <Skeleton.Image active />
           </div>
         )}
         
         {hasHeader && (
           <div className={cn('border-b border-gray-200 dark:border-gray-700', sizeClasses.headerPadding, sizeClasses.headerHeight)}>
             <div className="flex items-center justify-between">
-              <Skeleton className="h-5 w-32" />
-              <Skeleton className="h-4 w-16" />
+              <Skeleton active title={{ width: '8rem' }} paragraph={false} avatar={false} />
+              <Skeleton active title={{ width: '4rem' }} paragraph={false} avatar={false} />
             </div>
           </div>
         )}
         
         <div className={sizeClasses.padding}>
-          <div className="space-y-3">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-3/4" />
-            <Skeleton className="h-4 w-1/2" />
-          </div>
+          <Skeleton 
+            active 
+            title={{ width: '100%' }}
+            paragraph={{ rows: 2, width: ['75%', '50%'] }}
+            avatar={false}
+          />
         </div>
         
         {hasActions && (
           <div className={cn('border-t border-gray-200 dark:border-gray-700', sizeClasses.actionsPadding)}>
             <div className="flex gap-2">
-              <Skeleton className="h-8 w-16" />
-              <Skeleton className="h-8 w-16" />
+              <Skeleton.Button active size={size === 'small' ? 'small' : 'default'} />
+              <Skeleton.Button active size={size === 'small' ? 'small' : 'default'} />
             </div>
           </div>
         )}
