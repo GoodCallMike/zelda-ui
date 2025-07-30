@@ -9,36 +9,118 @@ const meta: Meta<typeof SplitButton> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `A split button combines a primary action button with a dropdown menu of related secondary actions, providing quick access to the most common action while keeping related options easily accessible.
+        component: `SplitButton component for combining primary actions with related secondary options with comprehensive accessibility and testing support.
 
-## Features
-- **Primary + Secondary Actions**: Main button for primary action, dropdown for alternatives
-- **Multiple Variants**: Primary, secondary, and outline styles
-- **Flexible Sizing**: Small, medium, and large sizes
-- **Icon Support**: Add icons to enhance visual recognition
-- **Accessibility**: Full keyboard navigation and screen reader support
-- **Disabled States**: Support for disabled primary button and individual menu items
+## Overview
 
-## When to Use
-- **Save Operations**: Save with options like "Save as Draft", "Save & Close"
-- **Export Functions**: Export with different format options
-- **Publish Actions**: Publish with scheduling or draft options
-- **Deploy Operations**: Deploy to different environments
-- **Share Features**: Share with different privacy or format settings
+The SplitButton component combines a primary action button with a dropdown menu of related secondary actions, providing quick access to the most common action while keeping related options easily accessible. It supports multiple variants, sizes, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+import { SplitButton } from '@jetstream/core';
+
+// Basic split button
+<SplitButton
+  onClick={() => handleSave()}
+  actions={[
+    { label: 'Save as Draft', onClick: () => handleDraft() },
+    { label: 'Save & Close', onClick: () => handleSaveClose() }
+  ]}
+>
+  Save
+</SplitButton>
+
+// With variant and size
+<SplitButton
+  variant="primary"
+  size="lg"
+  onClick={() => handleExport()}
+  actions={exportActions}
+>
+  Export
+</SplitButton>
+\`\`\`
+
+## Variants
+
+### Primary Variant
+\`\`\`tsx
+<SplitButton
+  variant="primary"
+  onClick={() => handleSave()}
+  actions={saveActions}
+>
+  Save Document
+</SplitButton>
+\`\`\`
+
+### Secondary Variant
+\`\`\`tsx
+<SplitButton
+  variant="secondary"
+  onClick={() => handleExport()}
+  actions={exportActions}
+>
+  Export Data
+</SplitButton>
+\`\`\`
 
 ## Accessibility
-- Keyboard navigation with Tab, Enter, Space, and Arrow keys
-- ARIA attributes for screen readers
-- Focus management between button and dropdown
-- Proper semantic markup with button roles
-- High contrast focus indicators
+
+The SplitButton component is fully accessible with:
+
+- **Keyboard navigation**: Tab, Enter, Space, and Arrow keys for full navigation
+- **Focus management**: Proper focus handling between button and dropdown
+- **Screen reader support**: ARIA attributes and semantic markup
+- **High contrast**: WCAG AA compliant focus indicators and color combinations
+- **Disabled states**: Properly communicated to assistive technologies
+
+\`\`\`tsx
+// Accessible split button with custom labels
+<SplitButton
+  onClick={() => handleSave()}
+  actions={saveActions}
+  aria-label="Save document with format options"
+>
+  Save Document
+</SplitButton>
+\`\`\`
+
+## Testing
+
+Built-in testing support with standard HTML attributes:
+
+\`\`\`tsx
+<SplitButton
+  data-testid="save-split-button"
+  onClick={() => handleSave()}
+  actions={saveActions}
+>
+  Save
+</SplitButton>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('save-split-button');
+screen.getByRole('button', { name: 'Save' });
+\`\`\`
 
 ## Best Practices
+
+### Do
 - Use the primary button for the most common action
 - Keep secondary actions related to the primary action
 - Limit dropdown items to 5-7 for optimal usability
 - Use clear, action-oriented labels
-- Group destructive actions separately
+- Include \`data-testid\` for reliable testing
+
+### Don't
+- Mix unrelated actions in the same split button
+- Use split buttons for navigation (use regular buttons or links)
+- Create overly complex dropdown menus
+- Forget to handle disabled states properly
         `,
       },
     },
@@ -96,6 +178,14 @@ const defaultActions = [
   { label: 'Save & Close', onClick: () => alert('Saved and closed') },
   { label: 'Save & New', onClick: () => alert('Saved and creating new') },
 ];
+
+export const Default: Story = {
+  args: {
+    children: 'Save',
+    onClick: () => alert('Primary save action'),
+    actions: defaultActions,
+  },
+};
 
 export const Primary: Story = {
   args: {
@@ -158,7 +248,7 @@ export const Variants: Story = {
           </SplitButton>
         </div>
       </div>
-      <TextSecondary className="text-sm">
+      <div className="text-gray-600 dark:text-gray-400 text-sm">
         <p>
           <strong>Usage Guidelines:</strong>
         </p>
@@ -173,7 +263,7 @@ export const Variants: Story = {
             <strong>Outline:</strong> Less prominent actions or secondary CTAs
           </li>
         </ul>
-      </TextSecondary>
+      </div>
     </div>
   ),
   parameters: {
@@ -223,10 +313,10 @@ export const Sizes: Story = {
           </div>
         </div>
       </div>
-      <TextSecondary className="text-sm">
+      <div className="text-gray-600 dark:text-gray-400 text-sm">
         Choose size based on context: small for compact interfaces, large for
         prominent actions.
-      </TextSecondary>
+      </div>
     </div>
   ),
   parameters: {
@@ -295,10 +385,10 @@ export const States: Story = {
           </div>
         </div>
       </div>
-      <TextSecondary className="text-sm">
+      <div className="text-gray-600 dark:text-gray-400 text-sm">
         Disabled states communicate when actions are unavailable. Individual
         menu items can be disabled independently.
-      </TextSecondary>
+      </div>
     </div>
   ),
   parameters: {
@@ -366,7 +456,7 @@ export const AccessibilityDemo: Story = {
         </div>
       </div>
 
-      <TextSecondary className="text-sm">
+      <div className="text-gray-600 dark:text-gray-400 text-sm">
         <p>
           <strong>Accessibility Features:</strong>
         </p>
@@ -378,7 +468,7 @@ export const AccessibilityDemo: Story = {
           <li>High contrast focus indicators</li>
           <li>Proper disabled state communication</li>
         </ul>
-      </TextSecondary>
+      </div>
     </div>
   ),
   parameters: {
@@ -391,7 +481,7 @@ export const AccessibilityDemo: Story = {
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => {
     const handleSave = () => alert('Document saved!');
     const handleExport = () => alert('Data exported!');

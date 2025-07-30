@@ -11,28 +11,139 @@ const meta: Meta<typeof Modal> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Modal component for displaying content in an overlay with backdrop.
+        component: `Modal component for displaying content in overlay dialogs with comprehensive accessibility and testing support.
 
-## Features
-- **Backdrop Click**: Close modal by clicking outside (configurable)
-- **Keyboard Support**: ESC key to close modal
-- **Custom Footer**: Support for custom footer content or default OK/Cancel buttons
-- **Accessibility**: Focus management and ARIA support
-- **Responsive**: Works across all device sizes
-- **Dark Mode**: Full dark mode support
+## Overview
 
-## When to Use
-- **Confirmation Dialogs**: Ask users to confirm actions
-- **Forms**: Display forms without navigating to new pages
-- **Content Display**: Show detailed information or media
-- **Alerts**: Important messages that require user attention
+The Modal component provides a way to display content in an overlay dialog that appears above the main page content. It supports various configurations, custom footers, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+import { Modal, Button } from '@jetstream/core';
+import { useState } from 'react';
+
+// Basic modal
+const [open, setOpen] = useState(false);
+
+<Button onClick={() => setOpen(true)}>Open Modal</Button>
+<Modal
+  open={open}
+  title="Basic Modal"
+  onOk={() => setOpen(false)}
+  onCancel={() => setOpen(false)}
+>
+  Modal content goes here
+</Modal>
+
+// Confirmation modal
+<Modal
+  open={confirmOpen}
+  title="Confirm Action"
+  onOk={handleConfirm}
+  onCancel={() => setConfirmOpen(false)}
+  okText="Confirm"
+  cancelText="Cancel"
+>
+  Are you sure you want to continue?
+</Modal>
+\`\`\`
+
+## Footer Types
+
+### Default Footer
+\`\`\`tsx
+<Modal
+  open={open}
+  title="Default Footer"
+  onOk={handleOk}
+  onCancel={handleCancel}
+  okText="Save"
+  cancelText="Cancel"
+>
+  Content with default OK/Cancel buttons
+</Modal>
+\`\`\`
+
+### Custom Footer
+\`\`\`tsx
+<Modal
+  open={open}
+  title="Custom Footer"
+  footer={
+    <div className="flex justify-end gap-2">
+      <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+      <Button variant="primary" onClick={handleSave}>Save</Button>
+    </div>
+  }
+  onCancel={handleCancel}
+>
+  Content with custom footer buttons
+</Modal>
+\`\`\`
 
 ## Accessibility
-- Focus is trapped within the modal when open
-- ESC key closes the modal
-- Proper ARIA labels and roles
-- Background scroll is prevented when modal is open
-        `,
+
+The Modal component is fully accessible with:
+
+- **Focus management**: Focus is trapped within the modal when open
+- **Keyboard navigation**: ESC key closes the modal, Tab cycles through interactive elements
+- **Screen reader support**: Proper ARIA labels, roles, and live regions
+- **Background interaction**: Background scroll is prevented when modal is open
+- **Focus restoration**: Focus returns to trigger element when modal closes
+
+\`\`\`tsx
+// Accessible modal with custom labels
+<Modal
+  open={open}
+  title="Delete Confirmation"
+  aria-label="Confirm item deletion"
+  onOk={handleDelete}
+  onCancel={handleCancel}
+>
+  This action cannot be undone
+</Modal>
+\`\`\`
+
+## Testing
+
+Built-in testing support with standard HTML attributes:
+
+\`\`\`tsx
+<Modal
+  data-testid="confirmation-modal"
+  open={open}
+  title="Confirm"
+  onOk={handleOk}
+  onCancel={handleCancel}
+>
+  Test content
+</Modal>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('confirmation-modal');
+screen.getByRole('dialog', { name: 'Confirm' });
+screen.getByRole('button', { name: 'OK' });
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use clear, descriptive titles that explain the modal's purpose
+- Provide obvious ways to close the modal (X button, Cancel, ESC key)
+- Keep modal content focused and concise
+- Use appropriate button labels ("Save" instead of "OK" for forms)
+- Include \`data-testid\` for reliable testing
+
+### Don't
+- Stack multiple modals on top of each other
+- Use modals for complex multi-step workflows
+- Make modals too wide or tall for mobile devices
+- Forget to handle the escape key and backdrop clicks
+- Use generic button labels like "OK" for destructive actions
+`,
       },
     },
   },
@@ -41,38 +152,73 @@ const meta: Meta<typeof Modal> = {
     open: {
       control: 'boolean',
       description: 'Whether the modal is visible',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     title: {
       control: 'text',
-      description: 'Modal title',
+      description: 'Modal title displayed in header',
+      table: {
+        type: { summary: 'string' },
+      },
     },
     okText: {
       control: 'text',
-      description: 'OK button text',
+      description: 'Text for the OK button',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'OK' },
+      },
     },
     cancelText: {
       control: 'text',
-      description: 'Cancel button text',
+      description: 'Text for the Cancel button',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Cancel' },
+      },
     },
     closable: {
       control: 'boolean',
-      description: 'Whether to show close button',
+      description: 'Whether to show the close (X) button in header',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
     },
     maskClosable: {
       control: 'boolean',
-      description: 'Whether clicking mask closes modal',
+      description: 'Whether clicking the backdrop closes the modal',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
     },
     centered: {
       control: 'boolean',
-      description: 'Whether modal is centered',
+      description: 'Whether the modal is vertically centered',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     confirmLoading: {
       control: 'boolean',
-      description: 'Loading state for OK button',
+      description: 'Loading state for the OK button',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     width: {
       control: 'number',
       description: 'Modal width in pixels',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '520' },
+      },
     },
   },
 };
@@ -80,7 +226,7 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Default: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
 
@@ -92,6 +238,7 @@ export const Basic: Story = {
           title="Basic Modal"
           onOk={() => setOpen(false)}
           onCancel={() => setOpen(false)}
+          data-testid="default-modal"
         >
           <p>Some contents...</p>
           <p>Some contents...</p>
@@ -99,6 +246,13 @@ export const Basic: Story = {
         </Modal>
       </>
     );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Basic modal with default footer containing OK and Cancel buttons.',
+      },
+    },
   },
 };
 
@@ -130,6 +284,7 @@ export const CustomFooter: Story = {
           title="Custom Footer Modal"
           footer={customFooter}
           onCancel={() => setOpen(false)}
+          data-testid="custom-footer-modal"
         >
           <p>Some contents...</p>
           <p>Some contents...</p>
@@ -139,6 +294,13 @@ export const CustomFooter: Story = {
         </Modal>
       </>
     );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Modal with custom footer containing multiple action buttons with different layouts.',
+      },
+    },
   },
 };
 
@@ -348,7 +510,7 @@ export const Variants: Story = {
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [formOpen, setFormOpen] = useState(false);
@@ -390,6 +552,7 @@ export const RealWorldExamples: Story = {
           cancelText="Cancel"
           width={416}
           centered
+          data-testid="delete-modal"
         >
           <div className="flex items-start gap-3">
             <div className="flex-shrink-0 text-red-500">
@@ -424,6 +587,7 @@ export const RealWorldExamples: Story = {
           }
           onCancel={() => setFormOpen(false)}
           width={600}
+          data-testid="form-modal"
         >
           <div className="space-y-4">
             <div>
@@ -459,6 +623,7 @@ export const RealWorldExamples: Story = {
             </Button>
           }
           onCancel={() => setInfoOpen(false)}
+          data-testid="info-modal"
         >
           <div className="space-y-3">
             <div>
@@ -477,5 +642,12 @@ export const RealWorldExamples: Story = {
         </Modal>
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Real-world examples showing modals in common scenarios like delete confirmations, forms, and information display.',
+      },
+    },
   },
 };

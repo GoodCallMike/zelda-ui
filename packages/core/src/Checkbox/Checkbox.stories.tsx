@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Checkbox } from './Checkbox';
+import { Button } from '../Button';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Data Entry/Checkbox',
@@ -339,10 +340,10 @@ export const States: Story = {
       <h3 className="text-lg font-semibold mb-4">Checkbox States</h3>
       <div className="space-y-3">
         <Checkbox label="Unchecked" />
-        <Checkbox label="Checked" checked />
-        <Checkbox label="Indeterminate" indeterminate />
+        <Checkbox label="Checked" checked readOnly />
+        <Checkbox label="Indeterminate" indeterminate readOnly />
         <Checkbox label="Disabled" disabled />
-        <Checkbox label="Disabled Checked" disabled checked />
+        <Checkbox label="Disabled Checked" disabled checked readOnly />
       </div>
     </div>
   ),
@@ -372,6 +373,7 @@ export const Validation: Story = {
         <Checkbox 
           label="Valid field" 
           checked
+          readOnly
           description="This field has been completed"
         />
       </div>
@@ -442,7 +444,7 @@ export const SelectAllPattern: Story = {
   },
 };
 
-export const FormExamples: Story = {
+export const Examples: Story = {
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
@@ -462,6 +464,7 @@ export const FormExamples: Story = {
             label="Remember my preferences" 
             description="Save settings for future visits"
             checked
+            readOnly
             testId="remember-preferences"
           />
         </div>
@@ -472,13 +475,15 @@ export const FormExamples: Story = {
         <div className="space-y-3 p-4 border rounded-lg">
           <Checkbox 
             label="Enable notifications" 
-            checked 
+            checked
+            readOnly
             description="Show desktop notifications for important updates"
             testId="enable-notifications"
           />
           <Checkbox 
             label="Auto-save documents" 
             checked
+            readOnly
             description="Automatically save changes every 30 seconds"
             testId="auto-save"
           />
@@ -565,13 +570,12 @@ export const Interactive: Story = {
           />
           
           <div className="pt-4 border-t">
-            <button
+            <Button
               onClick={handleSubmit}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              data-testid="submit-button"
+              testId="submit-button"
             >
               Submit Form
-            </button>
+            </Button>
           </div>
         </div>
         

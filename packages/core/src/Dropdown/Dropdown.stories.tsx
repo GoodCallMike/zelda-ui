@@ -1,7 +1,16 @@
+import {
+  ChevronDownIcon,
+  Copy01Icon,
+  Edit01Icon,
+  LogOut01Icon,
+  Settings01Icon,
+  Trash01Icon,
+  User01Icon,
+} from '@jetstream/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Dropdown } from './Dropdown';
-import { User01Icon, Settings01Icon, LogOut01Icon, Edit01Icon, Copy01Icon, Trash01Icon, ChevronDownIcon } from '@jetstream/icons';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'General/Dropdown',
@@ -178,7 +187,8 @@ screen.getByRole('menu');
   argTypes: {
     items: {
       control: false,
-      description: 'Array of menu items with labels, actions, and optional properties',
+      description:
+        'Array of menu items with labels, actions, and optional properties',
       table: {
         type: { summary: 'DropdownItem[]' },
       },
@@ -194,7 +204,14 @@ screen.getByRole('menu');
     },
     placement: {
       control: 'select',
-      options: ['top', 'topLeft', 'topRight', 'bottom', 'bottomLeft', 'bottomRight'],
+      options: [
+        'top',
+        'topLeft',
+        'topRight',
+        'bottom',
+        'bottomLeft',
+        'bottomRight',
+      ],
       description: 'Preferred placement of the dropdown menu',
       table: {
         type: { summary: 'string' },
@@ -221,15 +238,47 @@ const basicItems = [
 ];
 
 const iconItems = [
-  { key: '1', label: 'Edit', icon: <Edit01Icon className="w-4 h-4" />, onClick: () => alert('Edit clicked') },
-  { key: '2', label: 'Copy', icon: <Copy01Icon className="w-4 h-4" />, onClick: () => alert('Copy clicked') },
-  { key: '3', label: 'Delete', icon: <Trash01Icon className="w-4 h-4" />, onClick: () => alert('Delete clicked'), divider: true },
+  {
+    key: '1',
+    label: 'Edit',
+    icon: <Edit01Icon className="w-4 h-4" />,
+    onClick: () => alert('Edit clicked'),
+  },
+  {
+    key: '2',
+    label: 'Copy',
+    icon: <Copy01Icon className="w-4 h-4" />,
+    onClick: () => alert('Copy clicked'),
+  },
+  {
+    key: '3',
+    label: 'Delete',
+    icon: <Trash01Icon className="w-4 h-4" />,
+    onClick: () => alert('Delete clicked'),
+    divider: true,
+  },
 ];
 
 const userMenuItems = [
-  { key: '1', label: 'Profile', icon: <User01Icon className="w-4 h-4" />, onClick: () => alert('Profile clicked') },
-  { key: '2', label: 'Settings', icon: <Settings01Icon className="w-4 h-4" />, onClick: () => alert('Settings clicked') },
-  { key: '3', label: 'Logout', icon: <LogOut01Icon className="w-4 h-4" />, onClick: () => alert('Logout clicked'), divider: true },
+  {
+    key: '1',
+    label: 'Profile',
+    icon: <User01Icon className="w-4 h-4" />,
+    onClick: () => alert('Profile clicked'),
+  },
+  {
+    key: '2',
+    label: 'Settings',
+    icon: <Settings01Icon className="w-4 h-4" />,
+    onClick: () => alert('Settings clicked'),
+  },
+  {
+    key: '3',
+    label: 'Logout',
+    icon: <LogOut01Icon className="w-4 h-4" />,
+    onClick: () => alert('Logout clicked'),
+    divider: true,
+  },
 ];
 
 export const Default: Story = {
@@ -266,7 +315,12 @@ export const WithDisabled: Story = {
   args: {
     items: [
       { key: '1', label: 'Edit', onClick: () => alert('Edit clicked') },
-      { key: '2', label: 'Copy', onClick: () => alert('Copy clicked'), disabled: true },
+      {
+        key: '2',
+        label: 'Copy',
+        onClick: () => alert('Copy clicked'),
+        disabled: true,
+      },
       { key: '3', label: 'Delete', onClick: () => alert('Delete clicked') },
     ],
     children: <Button>Mixed States</Button>,
@@ -290,22 +344,34 @@ export const Placements: Story = {
   render: () => (
     <div className="grid grid-cols-3 gap-4 max-w-md">
       <Dropdown items={basicItems} placement="topLeft">
-        <Button variant="outline" className="text-xs">Top Left</Button>
+        <Button variant="outline" className="text-xs">
+          Top Left
+        </Button>
       </Dropdown>
       <Dropdown items={basicItems} placement="top">
-        <Button variant="outline" className="text-xs">Top</Button>
+        <Button variant="outline" className="text-xs">
+          Top
+        </Button>
       </Dropdown>
       <Dropdown items={basicItems} placement="topRight">
-        <Button variant="outline" className="text-xs">Top Right</Button>
+        <Button variant="outline" className="text-xs">
+          Top Right
+        </Button>
       </Dropdown>
       <Dropdown items={basicItems} placement="bottomLeft">
-        <Button variant="outline" className="text-xs">Bottom Left</Button>
+        <Button variant="outline" className="text-xs">
+          Bottom Left
+        </Button>
       </Dropdown>
       <Dropdown items={basicItems} placement="bottom">
-        <Button variant="outline" className="text-xs">Bottom</Button>
+        <Button variant="outline" className="text-xs">
+          Bottom
+        </Button>
       </Dropdown>
       <Dropdown items={basicItems} placement="bottomRight">
-        <Button variant="outline" className="text-xs">Bottom Right</Button>
+        <Button variant="outline" className="text-xs">
+          Bottom Right
+        </Button>
       </Dropdown>
     </div>
   ),
@@ -326,13 +392,12 @@ export const Testing: Story = {
         </div>
       </div>
       <div className="text-sm text-gray-600">
-        Use <code className="bg-gray-100 px-1 rounded">testId</code> prop for reliable test targeting
+        Use <code className="bg-gray-100 px-1 rounded">testId</code> prop for
+        reliable test targeting
       </div>
     </div>
   ),
 };
-
-
 
 export const Examples: Story = {
   render: () => (
@@ -341,23 +406,25 @@ export const Examples: Story = {
         <h3 className="text-sm font-medium mb-2">User Profile Menu</h3>
         <Dropdown items={userMenuItems}>
           <div className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
-            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-              JD
-            </div>
+            <Avatar className="bg-blue-700 text-white">JD</Avatar>
             <span className="text-sm font-medium">John Doe</span>
             <ChevronDownIcon className="w-4 h-4 text-gray-400" />
           </div>
         </Dropdown>
       </div>
-      
+
       <div>
         <h3 className="text-sm font-medium mb-2">Table Actions</h3>
         <div className="border border-gray-200 rounded-lg overflow-hidden">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-4 py-2 text-left text-sm font-medium">Name</th>
-                <th className="px-4 py-2 text-left text-sm font-medium">Actions</th>
+                <th className="px-4 py-2 text-left text-sm font-medium">
+                  Name
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-medium">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -365,7 +432,9 @@ export const Examples: Story = {
                 <td className="px-4 py-2 text-sm">Project Alpha</td>
                 <td className="px-4 py-2">
                   <Dropdown items={iconItems}>
-                    <Button variant="outline" className="text-xs px-2 py-1">•••</Button>
+                    <Button variant="outline" className="text-xs px-2 py-1">
+                      •••
+                    </Button>
                   </Dropdown>
                 </td>
               </tr>
@@ -376,4 +445,3 @@ export const Examples: Story = {
     </div>
   ),
 };
-

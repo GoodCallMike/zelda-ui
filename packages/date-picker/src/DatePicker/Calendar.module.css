@@ -1,5 +1,3 @@
-@import '../../../core/src/styles/variables.css';
-
 .calendarContainer {
   padding: var(--spacing-3);
   width: var(--size-72);

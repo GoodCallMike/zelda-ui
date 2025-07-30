@@ -9,34 +9,137 @@ const meta: Meta<typeof Radio> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Radio buttons allow users to select one option from a set of mutually exclusive choices, providing clear single-selection functionality with visual feedback.
+        component: `Radio component for single-selection from mutually exclusive options with comprehensive accessibility and testing support.
 
-## Features
-- **Single Selection**: Only one option can be selected at a time within a group
-- **Visual States**: Clear indication of selected, unselected, and disabled states
-- **Validation Support**: Error states with descriptive messages
-- **Accessibility**: Full keyboard navigation and screen reader support
-- **Flexible Content**: Labels, descriptions, and custom layouts
+## Overview
 
-## When to Use
-- **Exclusive Choices**: When users must select exactly one option from multiple alternatives
-- **Settings**: Configuration options where only one value is valid
-- **Forms**: Survey questions, preferences, or categorical selections
-- **Filters**: Single-value filtering options
+The Radio component allows users to select one option from a set of mutually exclusive choices, providing clear single-selection functionality with visual feedback. It supports grouping, validation, descriptions, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+import { Radio } from '@jetstream/core';
+import { useState } from 'react';
+
+// Basic radio group
+const [selected, setSelected] = useState('medium');
+
+<Radio
+  name="size"
+  value="small"
+  label="Small"
+  checked={selected === 'small'}
+  onChange={(e) => setSelected(e.target.value)}
+/>
+<Radio
+  name="size"
+  value="medium"
+  label="Medium"
+  checked={selected === 'medium'}
+  onChange={(e) => setSelected(e.target.value)}
+/>
+
+// With description
+<Radio
+  name="plan"
+  value="pro"
+  label="Pro Plan"
+  description="Best for growing teams with advanced features"
+  checked={plan === 'pro'}
+  onChange={(e) => setPlan(e.target.value)}
+/>
+\`\`\`
+
+## Radio Groups
+
+### Basic Group
+\`\`\`tsx
+const [size, setSize] = useState('medium');
+const sizes = ['small', 'medium', 'large'];
+
+{sizes.map(sizeOption => (
+  <Radio
+    key={sizeOption}
+    name="size"
+    value={sizeOption}
+    label={sizeOption}
+    checked={size === sizeOption}
+    onChange={(e) => setSize(e.target.value)}
+  />
+))}
+\`\`\`
+
+### With Descriptions
+\`\`\`tsx
+<Radio
+  name="plan"
+  value="basic"
+  label="Basic Plan"
+  description="Perfect for individuals getting started"
+  checked={plan === 'basic'}
+  onChange={handlePlanChange}
+/>
+\`\`\`
 
 ## Accessibility
-- Keyboard navigation with Tab and Arrow keys
-- ARIA attributes for proper screen reader support
-- Focus management within radio groups
-- Clear labeling and error state communication
-- Proper grouping with fieldset and legend elements
+
+The Radio component is fully accessible with:
+
+- **Keyboard navigation**: Tab and Arrow keys for navigation within groups
+- **ARIA attributes**: Proper labeling and radiogroup roles for screen readers
+- **Focus management**: Arrow keys move focus within radio groups
+- **Screen reader support**: Clear labeling and state communication
+- **Error communication**: ARIA invalid states and descriptions
+
+\`\`\`tsx
+// Accessible radio group with proper ARIA
+<div role="radiogroup" aria-labelledby="payment-label">
+  <h3 id="payment-label">Payment Method</h3>
+  <Radio
+    name="payment"
+    value="card"
+    label="Credit Card"
+    checked={payment === 'card'}
+    onChange={handlePaymentChange}
+  />
+</div>
+\`\`\`
+
+## Testing
+
+Built-in testing support with standard HTML attributes:
+
+\`\`\`tsx
+<Radio
+  data-testid="size-small"
+  name="size"
+  value="small"
+  label="Small"
+  checked={size === 'small'}
+  onChange={handleSizeChange}
+/>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('size-small');
+screen.getByRole('radio', { name: 'Small' });
+\`\`\`
 
 ## Best Practices
+
+### Do
 - Group related radio buttons with the same name attribute
 - Provide clear, descriptive labels for each option
 - Use descriptions for additional context when needed
 - Limit groups to 5-7 options for optimal usability
-- Always have one option selected by default when appropriate`,
+- Include \`data-testid\` for reliable testing
+
+### Don't
+- Use radio buttons for multiple selections (use checkboxes instead)
+- Create radio groups with only one option
+- Make labels too long or complex
+- Forget to handle keyboard navigation properly`,
       },
     },
   },
@@ -110,9 +213,9 @@ export const States: Story = {
         <h3 className="text-lg font-semibold mb-4">Radio Button States</h3>
         <div className="space-y-3">
           <Radio name="states" value="unselected" label="Unselected" />
-          <Radio name="states" value="selected" label="Selected" checked />
+          <Radio name="states" value="selected" label="Selected" checked readOnly />
           <Radio name="states" value="disabled" label="Disabled" disabled />
-          <Radio name="states" value="disabled-selected" label="Disabled Selected" disabled checked />
+          <Radio name="states" value="disabled-selected" label="Disabled Selected" disabled checked readOnly />
         </div>
       </div>
     </div>
@@ -229,7 +332,7 @@ export const WithDescriptions: Story = {
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => {
     const [paymentMethod, setPaymentMethod] = useState('card');
     const [deliverySpeed, setDeliverySpeed] = useState('standard');

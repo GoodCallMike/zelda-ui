@@ -10,30 +10,103 @@ const meta: Meta<typeof Select> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Select component for choosing from a list of options.
+        component: `Select component for choosing from dropdown lists with comprehensive accessibility and testing support.
 
-## Usage
+## Overview
+
+The Select component provides a flexible way to choose from a list of options in a dropdown interface. It supports single and multiple selection modes, search functionality, validation states, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
 
 \`\`\`tsx
 import { Select } from '@jetstream/core';
 
+// Basic select
 <Select
   options={[
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
+    { value: 'apple', label: 'Apple' },
+    { value: 'banana', label: 'Banana' }
   ]}
-  onChange={(value) => console.log(value)}
+  placeholder="Select a fruit"
+  onChange={(value) => handleChange(value)}
+/>
+
+// With search
+<Select
+  options={options}
+  showSearch
+  allowClear
+  onChange={(value) => handleChange(value)}
 />
 \`\`\`
 
-## Features
+## Selection Modes
 
-- **Single/Multiple selection** - Support for single and multiple selection modes
-- **Search functionality** - Built-in search with custom filtering
-- **Clear option** - Optional clear button
-- **Sizes** - Small, middle, and large sizes
-- **Status states** - Error and warning states
-- **Disabled options** - Individual option disable support`,
+### Single Selection
+\`\`\`tsx
+<Select
+  options={options}
+  onChange={(value) => setSingleValue(value)}
+/>
+\`\`\`
+
+### Multiple Selection
+\`\`\`tsx
+<Select
+  options={options}
+  mode="multiple"
+  onChange={(values) => setMultipleValues(values)}
+/>
+\`\`\`
+
+## Accessibility
+
+The Select component is fully accessible with:
+
+- **Keyboard navigation**: Arrow keys, Enter, Escape, and Tab support
+- **ARIA attributes**: Proper combobox role and expanded states
+- **Screen reader support**: Option announcements and selection feedback
+- **Focus management**: Clear focus indicators and logical tab order
+- **Search accessibility**: Screen reader compatible search functionality
+
+\`\`\`tsx
+// Accessible select with proper labeling
+<Select
+  options={options}
+  aria-label="Fruit selection dropdown"
+/>
+\`\`\`
+
+## Testing
+
+Built-in testing support with standard HTML attributes:
+
+\`\`\`tsx
+<Select
+  data-testid="fruit-select"
+  options={options}
+/>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('fruit-select');
+screen.getByRole('combobox');
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use clear, descriptive placeholder text
+- Provide meaningful option labels
+- Include search for lists with many options
+- Include \`data-testid\` for reliable testing
+
+### Don't
+- Use select for fewer than 4 options (use radio buttons instead)
+- Make option labels too long or complex
+- Forget to handle keyboard navigation
+- Mix single and multiple selection patterns inconsistently`,
       },
     },
   },
@@ -65,6 +138,13 @@ import { Select } from '@jetstream/core';
     showSearch: {
       control: 'boolean',
       description: 'Whether to show search input',
+    },
+    testId: {
+      control: 'text',
+      description: 'Test identifier for automated testing',
+      table: {
+        type: { summary: 'string' },
+      },
     },
   },
 };
@@ -220,7 +300,7 @@ export const Disabled: Story = {
   },
 };
 
-export const Controlled: Story = {
+export const Examples: Story = {
   render: () => {
     const [value, setValue] = useState<string | undefined>();
 
@@ -333,7 +413,7 @@ export const MultipleControlled: Story = {
   },
 };
 
-export const CustomFilter: Story = {
+export const Features: Story = {
   args: {
     options: [
       { value: 'js', label: 'JavaScript' },

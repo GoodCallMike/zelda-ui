@@ -5,13 +5,15 @@ import './utilities.css';
 import './animations.css';
 import './theme.css';
 
-// Export colors for consumers who need raw values
+export * from '../hooks/useClickOutside';
+// Export colors and design tokens for consumers
 export * from './colors.css';
 export * from './tokens.css';
 export * from './variables.css';
-export * from '../hooks/useClickOutside';
 
 // Helper function to combine classes (like clsx)
-export const cn = (...classes: (string | undefined | null | false)[]): string => {
+export const cn = (
+  ...classes: (string | undefined | null | false)[]
+): string => {
   return classes.filter(Boolean).join(' ');
 };
