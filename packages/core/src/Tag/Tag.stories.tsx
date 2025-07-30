@@ -1,8 +1,14 @@
+import {
+  AlertTriangleIcon,
+  AnnotationInfoIcon,
+  CheckIcon,
+  Star01Icon,
+  User01Icon,
+} from '@jetstream/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Heading } from '../Typography';
 import { Tag } from './Tag';
-import { User01Icon, Star01Icon, CheckIcon, AlertTriangleIcon, AnnotationInfoIcon } from '@jetstream/icons';
-import { Heading, Label, TextSecondary } from '../Typography';
 
 const meta: Meta<typeof Tag> = {
   title: 'Data Display/Tag',
@@ -97,7 +103,16 @@ screen.getByTestId('tag-test');
   argTypes: {
     color: {
       control: 'select',
-      options: ['default', 'blue', 'green', 'red', 'yellow', 'purple', 'pink', 'gray'],
+      options: [
+        'default',
+        'blue',
+        'green',
+        'red',
+        'yellow',
+        'purple',
+        'pink',
+        'gray',
+      ],
       description: 'Visual color variant of the tag',
       table: {
         type: { summary: 'string' },
@@ -154,7 +169,8 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'The basic tag with default styling. Use for general categorization or labeling.',
+        story:
+          'The basic tag with default styling. Use for general categorization or labeling.',
       },
     },
   },
@@ -174,15 +190,33 @@ export const Colors: Story = {
         <Tag color="gray">Gray</Tag>
       </div>
       <div className="text-sm text-gray-600 dark:text-gray-400">
-        <p><strong>Color Guidelines:</strong></p>
+        <p>
+          <strong>Color Guidelines:</strong>
+        </p>
         <ul className="list-disc list-inside space-y-1 mt-2">
-          <li><strong>Blue:</strong> Information, links, or primary actions</li>
-          <li><strong>Green:</strong> Success states, completed items, or positive actions</li>
-          <li><strong>Red:</strong> Errors, warnings, or destructive actions</li>
-          <li><strong>Yellow:</strong> Warnings, pending states, or attention needed</li>
-          <li><strong>Purple:</strong> Premium features, special categories</li>
-          <li><strong>Pink:</strong> Creative content, favorites, or highlights</li>
-          <li><strong>Gray:</strong> Neutral information, disabled states</li>
+          <li>
+            <strong>Blue:</strong> Information, links, or primary actions
+          </li>
+          <li>
+            <strong>Green:</strong> Success states, completed items, or positive
+            actions
+          </li>
+          <li>
+            <strong>Red:</strong> Errors, warnings, or destructive actions
+          </li>
+          <li>
+            <strong>Yellow:</strong> Warnings, pending states, or attention
+            needed
+          </li>
+          <li>
+            <strong>Purple:</strong> Premium features, special categories
+          </li>
+          <li>
+            <strong>Pink:</strong> Creative content, favorites, or highlights
+          </li>
+          <li>
+            <strong>Gray:</strong> Neutral information, disabled states
+          </li>
         </ul>
       </div>
     </div>
@@ -190,7 +224,8 @@ export const Colors: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'All available color variants. Choose colors that align with your design system and provide semantic meaning.',
+        story:
+          'All available color variants. Choose colors that align with your design system and provide semantic meaning.',
       },
     },
   },
@@ -206,7 +241,7 @@ export const Closable: Story = {
     ]);
 
     const handleClose = (id: number) => {
-      setTags(tags.filter(tag => tag.id !== id));
+      setTags(tags.filter((tag) => tag.id !== id));
     };
 
     const resetTags = () => {
@@ -221,7 +256,7 @@ export const Closable: Story = {
     return (
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <Tag
               key={tag.id}
               color={tag.color}
@@ -234,7 +269,9 @@ export const Closable: Story = {
         </div>
         {tags.length === 0 && (
           <div className="text-center py-4">
-            <p className="text-gray-500 dark:text-gray-400 mb-2">All tags have been removed</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-2">
+              All tags have been removed
+            </p>
             <button
               onClick={resetTags}
               className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
@@ -244,7 +281,8 @@ export const Closable: Story = {
           </div>
         )}
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Click the × button to remove tags. Useful for filters, selected items, or user-generated content.
+          Click the × button to remove tags. Useful for filters, selected items,
+          or user-generated content.
         </p>
       </div>
     );
@@ -252,7 +290,8 @@ export const Closable: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Tags with close functionality. Perfect for removable filters, selected options, or dynamic content management.',
+        story:
+          'Tags with close functionality. Perfect for removable filters, selected options, or dynamic content management.',
       },
     },
   },
@@ -263,12 +302,17 @@ export const WithIcons: Story = {
     <div className="space-y-4">
       <div className="space-y-3">
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Status Tags</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            Status Tags
+          </h4>
           <div className="flex flex-wrap gap-2">
             <Tag color="green" icon={<CheckIcon className="w-3 h-3" />}>
               Completed
             </Tag>
-            <Tag color="yellow" icon={<AlertTriangleIcon className="w-3 h-3" />}>
+            <Tag
+              color="yellow"
+              icon={<AlertTriangleIcon className="w-3 h-3" />}
+            >
               Warning
             </Tag>
             <Tag color="blue" icon={<AnnotationInfoIcon className="w-3 h-3" />}>
@@ -276,9 +320,11 @@ export const WithIcons: Story = {
             </Tag>
           </div>
         </div>
-        
+
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">User Tags</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            User Tags
+          </h4>
           <div className="flex flex-wrap gap-2">
             <Tag color="blue" icon={<User01Icon className="w-3 h-3" />}>
               User
@@ -291,20 +337,22 @@ export const WithIcons: Story = {
             </Tag>
           </div>
         </div>
-        
+
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Closable with Icons</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            Closable with Icons
+          </h4>
           <div className="flex flex-wrap gap-2">
-            <Tag 
-              color="green" 
+            <Tag
+              color="green"
               icon={<CheckIcon className="w-3 h-3" />}
               closable
               onClose={() => console.log('Completed tag closed')}
             >
               Task Done
             </Tag>
-            <Tag 
-              color="blue" 
+            <Tag
+              color="blue"
               icon={<User01Icon className="w-3 h-3" />}
               closable
               onClose={() => console.log('User tag closed')}
@@ -314,16 +362,18 @@ export const WithIcons: Story = {
           </div>
         </div>
       </div>
-      
+
       <p className="text-sm text-gray-600 dark:text-gray-400">
-        Icons provide visual context and improve recognition. Keep icons simple and ensure they align with the tag's meaning.
+        Icons provide visual context and improve recognition. Keep icons simple
+        and ensure they align with the tag's meaning.
       </p>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Tags enhanced with icons for better visual communication. Icons should be 12px (w-3 h-3) for optimal appearance.',
+        story:
+          'Tags enhanced with icons for better visual communication. Icons should be 12px (w-3 h-3) for optimal appearance.',
       },
     },
   },
@@ -333,25 +383,28 @@ export const Examples: Story = {
   render: () => {
     const [selectedTags, setSelectedTags] = useState<string[]>(['react']);
     const [inputValue, setInputValue] = useState('');
-    
+
     const availableTags = [
       { id: 'react', label: 'React', color: 'blue' as const },
       { id: 'vue', label: 'Vue', color: 'green' as const },
       { id: 'angular', label: 'Angular', color: 'red' as const },
       { id: 'svelte', label: 'Svelte', color: 'purple' as const },
     ];
-    
+
     const addTag = () => {
-      if (inputValue.trim() && !selectedTags.includes(inputValue.toLowerCase())) {
+      if (
+        inputValue.trim() &&
+        !selectedTags.includes(inputValue.toLowerCase())
+      ) {
         setSelectedTags([...selectedTags, inputValue.toLowerCase()]);
         setInputValue('');
       }
     };
-    
+
     const removeTag = (tagId: string) => {
-      setSelectedTags(selectedTags.filter(id => id !== tagId));
+      setSelectedTags(selectedTags.filter((id) => id !== tagId));
     };
-    
+
     const toggleTag = (tagId: string) => {
       if (selectedTags.includes(tagId)) {
         removeTag(tagId);
@@ -359,14 +412,16 @@ export const Examples: Story = {
         setSelectedTags([...selectedTags, tagId]);
       }
     };
-    
+
     return (
       <div className="space-y-4">
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Selected Technologies</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            Selected Technologies
+          </h4>
           <div className="flex flex-wrap gap-2 min-h-[2rem]">
-            {selectedTags.map(tagId => {
-              const tag = availableTags.find(t => t.id === tagId);
+            {selectedTags.map((tagId) => {
+              const tag = availableTags.find((t) => t.id === tagId);
               return (
                 <Tag
                   key={tagId}
@@ -379,20 +434,26 @@ export const Examples: Story = {
               );
             })}
             {selectedTags.length === 0 && (
-              <span className="text-gray-400 dark:text-gray-500 text-sm">No technologies selected</span>
+              <span className="text-gray-400 dark:text-gray-500 text-sm">
+                No technologies selected
+              </span>
             )}
           </div>
         </div>
-        
+
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Available Options</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            Available Options
+          </h4>
           <div className="flex flex-wrap gap-2">
-            {availableTags.map(tag => (
+            {availableTags.map((tag) => (
               <Tag
                 key={tag.id}
                 color={selectedTags.includes(tag.id) ? tag.color : 'gray'}
                 className={`cursor-pointer transition-all ${
-                  selectedTags.includes(tag.id) ? 'opacity-50' : 'hover:scale-105'
+                  selectedTags.includes(tag.id)
+                    ? 'opacity-50'
+                    : 'hover:scale-105'
                 }`}
                 onClick={() => toggleTag(tag.id)}
               >
@@ -401,9 +462,11 @@ export const Examples: Story = {
             ))}
           </div>
         </div>
-        
+
         <div>
-          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Add Custom Tag</h4>
+          <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+            Add Custom Tag
+          </h4>
           <div className="flex gap-2">
             <input
               type="text"
@@ -428,7 +491,8 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Interactive example showing tags in a real-world scenario with selection, addition, and removal functionality.',
+        story:
+          'Interactive example showing tags in a real-world scenario with selection, addition, and removal functionality.',
       },
     },
   },
@@ -446,29 +510,33 @@ export const Sizes: Story = {
         </div>
       </div>
       <p className="text-sm text-gray-600 dark:text-gray-400">
-        Customize tag sizes using className prop. Maintain consistent sizing within the same context.
+        Customize tag sizes using className prop. Maintain consistent sizing
+        within the same context.
       </p>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Different tag sizes achieved through custom className styling. Adjust padding and font size as needed.',
+        story:
+          'Different tag sizes achieved through custom className styling. Adjust padding and font size as needed.',
       },
     },
   },
 };
 
-
-
 export const Borderless: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Bordered vs Borderless</h4>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+          Bordered vs Borderless
+        </h4>
         <div className="space-y-3">
           <div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">With Borders (Default)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              With Borders (Default)
+            </p>
             <div className="flex flex-wrap gap-2">
               <Tag>Default</Tag>
               <Tag color="blue">Blue</Tag>
@@ -477,29 +545,43 @@ export const Borderless: Story = {
             </div>
           </div>
           <div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Without Borders</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              Without Borders
+            </p>
             <div className="flex flex-wrap gap-2">
               <Tag bordered={false}>Default</Tag>
-              <Tag color="blue" bordered={false}>Blue</Tag>
-              <Tag color="green" bordered={false}>Green</Tag>
-              <Tag color="red" bordered={false}>Red</Tag>
+              <Tag color="blue" bordered={false}>
+                Blue
+              </Tag>
+              <Tag color="green" bordered={false}>
+                Green
+              </Tag>
+              <Tag color="red" bordered={false}>
+                Red
+              </Tag>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Borderless with Features</h4>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+          Borderless with Features
+        </h4>
         <div className="flex flex-wrap gap-2">
-          <Tag color="purple" bordered={false} icon={<Star01Icon className="w-3 h-3" />}>
+          <Tag
+            color="purple"
+            bordered={false}
+            icon={<Star01Icon className="w-3 h-3" />}
+          >
             Featured
           </Tag>
           <Tag color="green" bordered={false} closable>
             Removable
           </Tag>
-          <Tag 
-            color="blue" 
-            bordered={false} 
+          <Tag
+            color="blue"
+            bordered={false}
             icon={<User01Icon className="w-3 h-3" />}
             closable
           >
@@ -507,16 +589,18 @@ export const Borderless: Story = {
           </Tag>
         </div>
       </div>
-      
+
       <p className="text-sm text-gray-600 dark:text-gray-400">
-        Borderless tags provide a cleaner, more minimal appearance. Use when you want less visual weight or in dense layouts.
+        Borderless tags provide a cleaner, more minimal appearance. Use when you
+        want less visual weight or in dense layouts.
       </p>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Tags without borders for a cleaner, more subtle appearance. Useful in dense interfaces or when you want to reduce visual noise.',
+        story:
+          'Tags without borders for a cleaner, more subtle appearance. Useful in dense interfaces or when you want to reduce visual noise.',
       },
     },
   },
@@ -526,13 +610,24 @@ export const AccessibilityDemo: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Keyboard Navigation</h4>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+          Keyboard Navigation
+        </h4>
         <div className="flex flex-wrap gap-2">
           <Tag tabIndex={0}>Focusable Tag</Tag>
-          <Tag color="blue" closable onClose={() => alert('Tag closed!')} tabIndex={0}>
+          <Tag
+            color="blue"
+            closable
+            onClose={() => alert('Tag closed!')}
+            tabIndex={0}
+          >
             Closable Tag
           </Tag>
-          <Tag color="green" icon={<CheckIcon className="w-3 h-3" />} tabIndex={0}>
+          <Tag
+            color="green"
+            icon={<CheckIcon className="w-3 h-3" />}
+            tabIndex={0}
+          >
             Icon Tag
           </Tag>
         </div>
@@ -540,21 +635,23 @@ export const AccessibilityDemo: Story = {
           Use Tab to navigate, Enter/Space to interact, Escape to close
         </p>
       </div>
-      
+
       <div>
-        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">Screen Reader Friendly</h4>
+        <h4 className="text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
+          Screen Reader Friendly
+        </h4>
         <div className="flex flex-wrap gap-2">
-          <Tag 
-            color="green" 
+          <Tag
+            color="green"
             aria-label="Completed status"
             role="status"
             icon={<CheckIcon className="w-3 h-3" />}
           >
             Completed
           </Tag>
-          <Tag 
-            color="red" 
-            closable 
+          <Tag
+            color="red"
+            closable
             onClose={() => console.log('Error dismissed')}
             aria-label="Error message, press to dismiss"
           >
@@ -562,9 +659,11 @@ export const AccessibilityDemo: Story = {
           </Tag>
         </div>
       </div>
-      
+
       <div className="text-sm text-gray-600 dark:text-gray-400">
-        <p><strong>Accessibility Features:</strong></p>
+        <p>
+          <strong>Accessibility Features:</strong>
+        </p>
         <ul className="list-disc list-inside space-y-1 mt-2">
           <li>Keyboard navigation support with tabIndex</li>
           <li>ARIA labels for screen readers</li>
@@ -578,7 +677,8 @@ export const AccessibilityDemo: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
+        story:
+          'Accessibility features including keyboard navigation, ARIA labels, and screen reader support.',
       },
     },
   },

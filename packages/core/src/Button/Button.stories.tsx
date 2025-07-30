@@ -18,82 +18,64 @@ const meta: Meta<typeof Button> = {
 
 ## Overview
 
-The Button component provides a flexible way to create interactive elements in your application. It supports multiple visual variants, icon integration, and maintains WCAG 2.1 AA accessibility compliance.
+The Button component provides interactive elements for user actions. It supports multiple visual variants, icon integration, and maintains WCAG 2.1 AA accessibility compliance.
 
 ## Quick Start
 
 \`\`\`tsx
 import { Button } from '@jetstream/core';
-import { SaveIcon } from '@jetstream/icons';
 
-// Basic button
+// Basic usage
 <Button>Click me</Button>
 
-// Primary action
-<Button variant="primary" onClick={handleSubmit}>
-  Submit Form
-</Button>
-
-// With icon
-<Button icon={SaveIcon} iconPosition="left">
-  Save Document
-</Button>
+// With options
+<Button variant="primary" icon={SaveIcon}>Save Document</Button>
 \`\`\`
 
 ## Variants
 
-### Primary Button
+### Primary
 \`\`\`tsx
-<Button variant="primary" onClick={handleSubmit}>
-  Submit Form
-</Button>
+<Button variant="primary">Submit Form</Button>
 \`\`\`
 
-### Secondary Button
+### Secondary
 \`\`\`tsx
-<Button variant="secondary" onClick={handleCancel}>
-  Cancel
-</Button>
+<Button variant="secondary">Cancel</Button>
 \`\`\`
 
-### Outline Button
+### Outline
 \`\`\`tsx
-<Button variant="outline" onClick={handleEdit}>
-  Edit Item
-</Button>
+<Button variant="outline">Edit Item</Button>
 \`\`\`
 
-### Link Button
+### Link
 \`\`\`tsx
-<Button variant="link" onClick={handleSkip}>
-  Skip for now
-</Button>
-\`\`\`
-
-## Icons
-
-\`\`\`tsx
-// Icon on left (default)
-<Button icon={SaveIcon} iconPosition="left">
-  Save Document
-</Button>
-
-// Icon on right
-<Button icon={ArrowRightIcon} iconPosition="right">
-  Continue
-</Button>
+<Button variant="link">Skip for now</Button>
 \`\`\`
 
 ## States
 
+### Normal
 \`\`\`tsx
-// Normal state
 <Button variant="primary">Active Button</Button>
+\`\`\`
 
-// Disabled state
-<Button variant="primary" disabled>
-  Disabled Button
-</Button>
+### Disabled
+\`\`\`tsx
+<Button variant="primary" disabled>Disabled Button</Button>
+\`\`\`
+
+## Icons
+
+### Left Position
+\`\`\`tsx
+<Button icon={SaveIcon} iconPosition="left">Save Document</Button>
+\`\`\`
+
+### Right Position
+\`\`\`tsx
+<Button icon={ArrowRightIcon} iconPosition="right">Continue</Button>
 \`\`\`
 
 ## Accessibility
@@ -103,20 +85,9 @@ The Button component is fully accessible with:
 - **Keyboard navigation**: Tab, Enter, and Space key support
 - **Focus indicators**: Visible focus rings meeting WCAG guidelines
 - **Screen reader support**: Proper semantic HTML button elements
-- **ARIA attributes**: Support for custom labels and descriptions
-- **High contrast**: WCAG AA compliant color combinations
-- **Disabled state**: Properly communicated to assistive technologies
 
 \`\`\`tsx
-// Custom accessibility label
-<Button aria-label="Save document to your account">
-  Save
-</Button>
-
-// With description
-<Button aria-describedby="delete-help">
-  Delete
-</Button>
+<Button aria-label="Save document to your account">Save</Button>
 \`\`\`
 
 ## Testing
@@ -124,56 +95,26 @@ The Button component is fully accessible with:
 Built-in testing support with \`testId\` prop:
 
 \`\`\`tsx
-<Button testId="submit-button" variant="primary">
-  Submit
-</Button>
+<Button testId="submit-button">Submit</Button>
 \`\`\`
 
 \`\`\`tsx
 // Test queries
 screen.getByTestId('submit-button');
-screen.getByRole('button', { name: 'Submit' });
-\`\`\`
-
-## Form Integration
-
-\`\`\`tsx
-// Form submission
-<form onSubmit={handleSubmit}>
-  <Button type="submit" variant="primary">
-    Submit Form
-  </Button>
-</form>
-
-// Form reset
-<Button type="reset" variant="secondary">
-  Reset Form
-</Button>
 \`\`\`
 
 ## Best Practices
 
 ### Do
-- Use clear, action-oriented labels ("Save Document" not "Save")
+- Use clear, action-oriented labels
 - Limit primary buttons to one per section
-- Provide adequate spacing between buttons
-- Use icons to enhance meaning, not replace clear text
 - Include \`testId\` for reliable testing
-- Consider loading states for async actions
 
 ### Don't
 - Use multiple primary buttons in the same context
 - Create buttons without clear labels
-- Forget to handle disabled states
 - Use buttons for navigation (use links instead)
-- Mix button variants inconsistently
-
-## Performance
-
-- **Lightweight**: Minimal bundle impact with tree-shaking support
-- **Efficient rendering**: Optimized CSS classes and minimal re-renders
-- **Memory efficient**: Proper cleanup of event handlers
-- **Jetstream effects**: Hardware-accelerated hover animations`,
+`,
       },
     },
   },

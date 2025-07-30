@@ -1,14 +1,102 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta = {
+// Dummy component for documentation purposes
+const DesignSystem = () => null;
+
+const meta: Meta<typeof DesignSystem> = {
   title: 'Foundation/Design System',
+  component: DesignSystem,
   parameters: {
     docs: {
       description: {
-        component: `
-# Jetstream Design System
+        component: `Design System component for comprehensive UI development with accessibility and testing support.
 
-A comprehensive, production-ready design system built with CSS-in-JS utilities and CSS variables for consistent, scalable, and maintainable UI development across web applications.
+## Overview
+
+The Design System provides a complete foundation for building consistent, scalable, and maintainable user interfaces. It supports utility-first development, responsive design, dark mode, and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+import { cn } from '@jetstream/core';
+import { Button, Card } from '@jetstream/core';
+
+// Basic usage
+<div className="flex items-center gap-4 p-6 bg-white rounded-lg">
+  <span className="text-lg font-semibold">Hello World</span>
+</div>
+
+// With conditional styling
+<button className={cn(
+  'px-4 py-2 rounded-md transition-colors',
+  isActive ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'
+)}>
+  Button
+</button>
+\`\`\`
+
+## System Architecture
+
+### Design Tokens
+\`\`\`tsx
+// CSS Variables for consistent theming
+:root {
+  --blue-500: #3b82f6;
+  --spacing-4: 1rem;
+  --text-lg: 1.125rem;
+}
+\`\`\`
+
+### Utility Classes
+\`\`\`tsx
+// Atomic CSS classes for rapid development
+<div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
+  Content
+</div>
+\`\`\`
+
+## Accessibility
+
+The Design System is fully accessible with:
+
+- **Focus Management**: Visible focus indicators on all interactive elements
+- **Color Contrast**: WCAG AA compliant color combinations
+- **Responsive Design**: Mobile-first approach with proper touch targets
+
+\`\`\`tsx
+// Accessibility example
+<button className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+  Accessible Button
+</button>
+\`\`\`
+
+## Testing
+
+Built-in testing support with utility classes:
+
+\`\`\`tsx
+<div className="flex items-center" data-testid="component">
+  Content
+</div>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('component');
+expect(element).toHaveClass('flex items-center');
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use utility-first approach for rapid development
+- Follow mobile-first responsive design patterns
+- Include focus states for all interactive elements
+
+### Don't
+- Write custom CSS when utilities exist
+- Ignore accessibility requirements
+- Use dynamic class names that break purging
 
 ## Philosophy
 
@@ -181,7 +269,7 @@ import { Button, Card, Stack } from '@jetstream/core';
 export default meta;
 type Story = StoryObj;
 
-export const Overview: Story = {
+export const Default: Story = {
   render: () => (
     <div className="p-6 space-y-8">
       <div className="prose max-w-4xl">
@@ -226,7 +314,7 @@ export const Overview: Story = {
   ),
 };
 
-export const UtilityClasses: Story = {
+export const Utilities: Story = {
   render: () => (
     <div className="p-6 space-y-8">
       <h2 className="text-2xl font-bold mb-6">Utility Classes Reference</h2>
@@ -358,7 +446,7 @@ export const UtilityClasses: Story = {
   ),
 };
 
-export const CSSVariables: Story = {
+export const Tokens: Story = {
   render: () => (
     <div className="p-6 space-y-8">
       <h2 className="text-2xl font-bold mb-6">CSS Variables Reference</h2>
@@ -439,7 +527,7 @@ export const CSSVariables: Story = {
   ),
 };
 
-export const LayoutPatterns: Story = {
+export const Patterns: Story = {
   render: () => (
     <div className="p-6 space-y-8">
       <h2 className="text-2xl font-bold mb-6">Common Layout Patterns</h2>
@@ -853,7 +941,7 @@ active:bg-gray-200 dark:active:bg-gray-600`}
   ),
 };
 
-export const BestPractices: Story = {
+export const Examples: Story = {
   render: () => (
     <div className="p-6 space-y-8">
       <h2 className="text-2xl font-bold mb-6">Best Practices & Guidelines</h2>
