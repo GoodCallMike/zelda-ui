@@ -190,21 +190,20 @@ export const RangePicker = ({
         <div
           ref={refs.setReference}
           className={cn(
-            'flex items-center w-full border-2 rounded-lg bg-white dark:bg-gray-800',
-            'focus-within:outline-none focus-within:ring-4 focus-within:ring-opacity-20',
-            'transition-all duration-200 ease-in-out text-gray-900 dark:text-gray-100',
-            'shadow-sm hover:shadow-md',
+            'flex items-center w-full border rounded-md bg-white dark:bg-gray-800',
+            'focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-1',
+            'transition-colors text-gray-900 dark:text-gray-100',
             
             // Size variations
             size === 'small' && 'px-3 py-2 text-sm',
-            size === 'middle' && 'px-4 py-3 text-sm',
-            size === 'large' && 'px-5 py-4 text-base',
+            size === 'middle' && 'px-3 py-2 text-sm',
+            size === 'large' && 'px-3 py-2 text-base',
             
             // States
-            !status && 'border-gray-200 dark:border-gray-600 focus-within:ring-blue-500 focus-within:border-blue-500 hover:border-gray-300',
-            status === 'error' && 'border-red-400 focus-within:ring-red-500 focus-within:border-red-500 bg-red-50 dark:bg-red-900/10',
-            status === 'warning' && 'border-yellow-400 focus-within:ring-yellow-500 focus-within:border-yellow-500 bg-yellow-50 dark:bg-yellow-900/10',
-            (isStartDisabled && isEndDisabled) && 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed border-gray-200 shadow-none'
+            !status && 'border-gray-300 dark:border-gray-600 focus-within:ring-blue-500 focus-within:border-blue-500',
+            status === 'error' && 'border-red-500 focus-within:ring-red-500 focus-within:border-red-500',
+            status === 'warning' && 'border-yellow-500 focus-within:ring-yellow-500 focus-within:border-yellow-500',
+            (isStartDisabled && isEndDisabled) && 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
           )}
           data-testid={testId}
         >

@@ -149,22 +149,20 @@ export const DatePicker = ({
           data-testid={testId}
           aria-describedby={descriptionId}
           className={cn(
-            'w-full border-2 rounded-lg bg-white dark:bg-gray-800',
-            'focus:outline-none focus:ring-4 focus:ring-opacity-20',
-            'transition-all duration-200 ease-in-out text-gray-900 dark:text-gray-100',
-            'font-medium placeholder:text-gray-400 placeholder:font-normal',
-            'shadow-sm hover:shadow-md',
+            'w-full border rounded-md bg-white dark:bg-gray-800',
+            'focus:outline-none focus:ring-2 focus:ring-offset-1',
+            'transition-colors text-gray-900 dark:text-gray-100',
             
             // Size variations
             size === 'small' && 'px-3 py-2 text-sm pr-10',
-            size === 'middle' && 'px-4 py-3 text-sm pr-12',
-            size === 'large' && 'px-5 py-4 text-base pr-14',
+            size === 'middle' && 'px-3 py-2 text-sm pr-12',
+            size === 'large' && 'px-3 py-2 text-base pr-14',
             
             // States
-            !status && 'border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300',
-            status === 'error' && 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50 dark:bg-red-900/10',
-            status === 'warning' && 'border-yellow-400 focus:ring-yellow-500 focus:border-yellow-500 bg-yellow-50 dark:bg-yellow-900/10',
-            disabled && 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed border-gray-200 shadow-none'
+            !status && 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500',
+            status === 'error' && 'border-red-500 focus:ring-red-500 focus:border-red-500',
+            status === 'warning' && 'border-yellow-500 focus:ring-yellow-500 focus:border-yellow-500',
+            disabled && 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
           )}
         />
         
