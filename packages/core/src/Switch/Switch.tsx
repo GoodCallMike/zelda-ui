@@ -20,49 +20,42 @@ export const Switch = ({
   testId,
   ...props
 }: SwitchProps) => {
-  const handleClick = () => {
-    if (!disabled) {
-      onChange?.(!checked);
-    }
-  };
-
   return (
     <button
       type="button"
       role="switch"
       aria-checked={checked}
-      onClick={handleClick}
+      onClick={() => !disabled && onChange?.(!checked)}
       disabled={disabled}
       data-testid={testId}
       className={cn(
-        'relative inline-flex items-center rounded-full transition-colors duration-200',
+        'relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
         'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
         
-        // Size variants
-        size === 'small' ? 'h-5 w-9 p-0.5' : 'h-6 w-11 p-0.5',
+        // Size variants - make them bigger and more visible
+        size === 'small' ? 'h-6 w-11' : 'h-8 w-14',
         
-        // State colors
+        // State colors - stronger contrast
         checked 
           ? 'bg-blue-600' 
-          : 'bg-gray-300 dark:bg-gray-600',
+          : 'bg-gray-400 dark:bg-gray-600',
         
-        disabled && 'cursor-not-allowed opacity-50',
-        !disabled && 'cursor-pointer'
+        disabled && 'cursor-not-allowed opacity-50'
       )}
       {...props}
     >
-      <div
+      <span
         className={cn(
-          'rounded-full bg-white shadow-sm transition-transform duration-200',
+          'pointer-events-none inline-block rounded-full bg-white shadow-lg transform ring-0 transition duration-200 ease-in-out',
           
-          // Size variants
+          // Size variants - make thumb bigger
           size === 'small' 
-            ? 'h-4 w-4' 
-            : 'h-5 w-5',
+            ? 'h-5 w-5' 
+            : 'h-7 w-7',
           
           // Position based on checked state
           checked 
-            ? 'translate-x-4' 
+            ? (size === 'small' ? 'translate-x-5' : 'translate-x-6')
             : 'translate-x-0'
         )}
       />
