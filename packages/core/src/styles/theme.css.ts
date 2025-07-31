@@ -1,5 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { colors } from './tokens/colors.css';
+import { colors } from './tokens.css';
 
 // Default light theme
 globalStyle(':root', {
