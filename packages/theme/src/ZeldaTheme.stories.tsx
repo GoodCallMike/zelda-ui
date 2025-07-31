@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button';
-import { Switch } from '../Switch';
-import { Slider } from '../Slider';
-import { TextField } from '../TextField';
-import { Card } from '../Card';
+import { Button } from '@zelda/core';
+import { Switch } from '@zelda/core';
+import { Slider } from '@zelda/core';
+import { TextField } from '@zelda/core';
+import { Card } from '@zelda/core';
 
 const meta: Meta = {
   title: '🗡️ Secret/Hyrule Theme',
