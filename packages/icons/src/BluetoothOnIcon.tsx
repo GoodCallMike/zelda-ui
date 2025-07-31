@@ -12,7 +12,6 @@ export const BluetoothOnIcon = ({ className = 'size-4', ...props }: SVGProps<SVG
     aria-label="bluetooth on icon"
     {...props}
   >
-    <path opacity="0.12" d="M18 17L12 22V12V2L18 7L12 12L18 17Z" fill="currentColor"/>
-<path d="M6 7L18 17L12 22V2L18 7L6 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M6 7L18 17L12 22V2L18 7L6 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
