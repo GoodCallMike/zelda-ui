@@ -100,17 +100,17 @@ export const Slider = ({
         
         {/* Thumb */}
         <div
-          className={cn(
-            'absolute w-5 h-5 rounded-full shadow-md transition-all duration-100',
-            disabled ? 'bg-gray-400' : 'bg-blue-600',
-            isDragging && 'transition-none scale-110'
-          )}
-          style={{ 
-            left: `calc(${percentage}% - 10px)`,
-            top: '50%',
-            transform: 'translateY(-50%)'
-          }}
-        />
+          className="absolute top-1/2 w-0 h-0 -translate-y-1/2 transition-all duration-100"
+          style={{ left: `${percentage}%` }}
+        >
+          <div
+            className={cn(
+              'w-5 h-5 rounded-full shadow-md -translate-x-1/2 transition-all duration-100',
+              disabled ? 'bg-gray-400' : 'bg-blue-600',
+              isDragging && 'transition-none scale-110'
+            )}
+          />
+        </div>
         
         {/* Tooltip */}
         {tooltip && (
