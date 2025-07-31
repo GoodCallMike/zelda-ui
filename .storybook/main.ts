@@ -33,6 +33,8 @@ const config: StorybookConfig = {
             .pathname,
           '@zelda/hyrule': new URL('../packages/hyrule/src', import.meta.url)
             .pathname,
+          '@zelda/theme': new URL('../packages/theme/src', import.meta.url)
+            .pathname,
         },
       },
       optimizeDeps: {

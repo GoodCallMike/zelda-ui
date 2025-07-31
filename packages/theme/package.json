@@ -1,0 +1,27 @@
+{
+  "name": "@zelda/theme",
+  "version": "0.1.0",
+  "description": "Theme system and design tokens for the Zelda UI library",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.14.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "theme",
+    "design-tokens",
+    "css",
+    "vanilla-extract",
+    "zelda"
+  ]
+}

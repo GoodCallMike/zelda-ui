@@ -1,0 +1,49 @@
+/* CSS Reset for consistent cross-browser styling */
+
+/* Remove default button styling */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Remove default input styling - but preserve borders for styled inputs */
+input:not([class*="border"]), textarea:not([class*="border"]), select:not([class*="border"]) {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* Box sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default focus outline (components will add their own) */
+*:focus {
+  outline: none;
+}

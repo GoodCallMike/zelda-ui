@@ -23,6 +23,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.28",
     "@zelda/icons": "workspace:*",
+    "@zelda/theme": "workspace:*",
     "web-vitals": "^4.2.4"
   },
   "peerDependencies": {
