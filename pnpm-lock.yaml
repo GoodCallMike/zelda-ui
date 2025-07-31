@@ -235,6 +235,12 @@ importers:
 
   packages/theme:
     dependencies:
+      '@vanilla-extract/css':
+        specifier: ^1.17.4
+        version: 1.17.4
+      '@vanilla-extract/recipes':
+        specifier: ^0.5.7
+        version: 0.5.7(@vanilla-extract/css@1.17.4)
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
@@ -242,12 +248,6 @@ importers:
         specifier: ^2.2.0
         version: 2.6.0
     devDependencies:
-      '@vanilla-extract/css':
-        specifier: ^1.17.4
-        version: 1.17.4
-      '@vanilla-extract/recipes':
-        specifier: ^0.5.7
-        version: 0.5.7(@vanilla-extract/css@1.17.4)
       tsup:
         specifier: ^8.0.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.6)(typescript@5.8.3)
