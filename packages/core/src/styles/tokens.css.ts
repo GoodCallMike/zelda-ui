@@ -1,5 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { colors } from './colors.css';
+import { colors } from './tokens/colors.css';
 
 // Import the shared CSS variables
 import './variables.css';
@@ -37,3 +37,6 @@ export const fontWeight = {
   medium: 'var(--font-medium)',
   semibold: 'var(--font-semibold)',
 } as const;
+
+// Re-export colors for convenience
+export { colors };

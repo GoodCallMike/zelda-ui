@@ -1,17 +1,19 @@
-// Import fonts and utilities to ensure they're loaded
+// Import base styles
 import './reset.css';
 import './fonts.css';
+import './variables.css';
 import './utilities.css';
 import './animations.css';
 import './theme.css';
 
-export * from '../hooks/useClickOutside';
-// Export colors and design tokens for consumers
-export * from './colors.css';
+// Export design tokens
+export * from './tokens';
 export * from './tokens.css';
-export * from './variables.css';
 
-// Helper function to combine classes (like clsx)
+// Export utilities
+export * from '../hooks/useClickOutside';
+
+// Helper function to combine classes
 export const cn = (
   ...classes: (string | undefined | null | false)[]
 ): string => {

@@ -1,10 +1,10 @@
 // Import CSS variables first
 import './variables.css';
 
-// Import optimized utility modules
+// Import organized utility modules
 import './utilities/index.css';
 
-// Additional utilities not yet moved
+// Additional utilities
 import { globalStyle } from '@vanilla-extract/css';
 
 // Typography utilities

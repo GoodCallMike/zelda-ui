@@ -22,24 +22,6 @@ interface ButtonProps
   testId?: string;
 }
 
-/**
- * Interactive button component with Jetstream hover effects and accessibility features.
- *
- * @example
- * <Button variant="primary" onClick={() => console.log('clicked')}>
- *   Primary Action
- * </Button>
- *
- * @example
- * <Button variant="secondary" icon={SaveIcon} iconPosition="left">
- *   Save Document
- * </Button>
- *
- * @example
- * <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">
- *   Continue
- * </Button>
- */
 export const Button = ({
   children,
   variant = 'primary',

@@ -1,5 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { colors } from './colors.css';
+import { colors } from './tokens/colors.css';
 
 // Default light theme
 globalStyle(':root', {
@@ -20,7 +20,7 @@ globalStyle(':root', {
 
 // Dark theme
 globalStyle('[data-theme="dark"]', {
-  '--color-background': colors.gray[950] || colors.gray[900],
+  '--color-background': colors.gray[900],
   '--color-foreground': colors.gray[50],
   '--color-muted': colors.gray[400],
   '--color-border': colors.gray[700],

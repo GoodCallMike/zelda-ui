@@ -1,4 +1,4 @@
-// Legacy color object - now uses CSS variables as source of truth
+// Consolidated color tokens - single source of truth
 export const colors = {
   // Base colors
   white: 'var(--white)',
@@ -18,7 +18,7 @@ export const colors = {
     900: 'var(--gray-900)',
   },
   
-  // Electric Blue (from Figma color ramp)
+  // Electric Blue
   blue: {
     50: 'var(--blue-50)',
     100: 'var(--blue-100)',
@@ -32,35 +32,7 @@ export const colors = {
     900: 'var(--blue-900)',
   },
   
-  // Cyber Purple
-  purple: {
-    50: '#faf5ff',
-    100: '#f3e8ff',
-    200: '#e9d5ff',
-    300: '#d8b4fe',
-    400: '#c084fc',
-    500: '#a855f7',
-    600: '#9333ea',
-    700: '#7c3aed',
-    800: '#6b21a8',
-    900: '#581c87',
-  },
-  
-  // Neon Pink
-  pink: {
-    50: '#fdf2f8',
-    100: '#fce7f3',
-    200: '#fbcfe8',
-    300: '#f9a8d4',
-    400: '#f472b6',
-    500: '#ec4899',
-    600: '#db2777',
-    700: '#be185d',
-    800: '#9d174d',
-    900: '#831843',
-  },
-  
-  // Red (from Figma color ramp)
+  // Red
   red: {
     50: 'var(--red-50)',
     100: 'var(--red-100)',
@@ -74,21 +46,7 @@ export const colors = {
     900: 'var(--red-900)',
   },
   
-  // Neon Orange
-  orange: {
-    50: '#fff7ed',
-    100: '#ffedd5',
-    200: '#fed7aa',
-    300: '#fdba74',
-    400: '#fb923c',
-    500: '#f97316',
-    600: '#ea580c',
-    700: '#c2410c',
-    800: '#9a3412',
-    900: '#7c2d12',
-  },
-  
-  // Yellow (from Figma color ramp)
+  // Yellow
   yellow: {
     50: 'var(--yellow-50)',
     100: 'var(--yellow-100)',
@@ -102,7 +60,7 @@ export const colors = {
     900: 'var(--yellow-900)',
   },
   
-  // Green (from Figma color ramp)
+  // Green
   green: {
     50: 'var(--green-50)',
     100: 'var(--green-100)',
@@ -116,7 +74,49 @@ export const colors = {
     900: 'var(--green-900)',
   },
   
-  // Cyber Teal
+  // Purple
+  purple: {
+    50: '#faf5ff',
+    100: '#f3e8ff',
+    200: '#e9d5ff',
+    300: '#d8b4fe',
+    400: '#c084fc',
+    500: '#a855f7',
+    600: '#9333ea',
+    700: '#7c3aed',
+    800: '#6b21a8',
+    900: '#581c87',
+  },
+  
+  // Pink
+  pink: {
+    50: '#fdf2f8',
+    100: '#fce7f3',
+    200: '#fbcfe8',
+    300: '#f9a8d4',
+    400: '#f472b6',
+    500: '#ec4899',
+    600: '#db2777',
+    700: '#be185d',
+    800: '#9d174d',
+    900: '#831843',
+  },
+  
+  // Orange
+  orange: {
+    50: '#fff7ed',
+    100: '#ffedd5',
+    200: '#fed7aa',
+    300: '#fdba74',
+    400: '#fb923c',
+    500: '#f97316',
+    600: '#ea580c',
+    700: '#c2410c',
+    800: '#9a3412',
+    900: '#7c2d12',
+  },
+  
+  // Teal
   teal: {
     50: '#f0fdfa',
     100: '#ccfbf1',
@@ -130,7 +130,7 @@ export const colors = {
     900: '#134e4a',
   },
   
-  // Electric Cyan
+  // Cyan
   cyan: {
     50: '#ecfeff',
     100: '#cffafe',

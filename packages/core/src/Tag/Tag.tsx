@@ -1,14 +1,22 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import { cn } from '../styles';
 import { XIcon } from '@jetstream/icons';
+import type { HTMLAttributes, MouseEvent, ReactNode } from 'react';
+import { cn } from '../styles';
 
 interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   /** Tag color */
-  color?: 'default' | 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'pink' | 'gray';
+  color?:
+    | 'default'
+    | 'blue'
+    | 'green'
+    | 'red'
+    | 'yellow'
+    | 'purple'
+    | 'pink'
+    | 'gray';
   /** Whether the tag can be closed */
   closable?: boolean;
   /** Close handler */
-  onClose?: (e: React.MouseEvent) => void;
+  onClose?: (e: MouseEvent) => void;
   /** Tag icon */
   icon?: ReactNode;
   /** Whether the tag is bordered */
@@ -62,7 +70,7 @@ export const Tag = ({
         'inline-flex items-center gap-1 px-2 py-1 text-xs rounded transition-colors',
         bordered && 'border',
         getColorClasses(),
-        className
+        className,
       )}
       {...props}
     >
