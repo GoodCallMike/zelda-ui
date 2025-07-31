@@ -101,13 +101,14 @@ export const Slider = ({
         {/* Thumb */}
         <div
           className={cn(
-            'absolute top-1/2 w-5 h-5 rounded-full shadow-md transition-all duration-100',
+            'absolute w-5 h-5 rounded-full shadow-md transition-all duration-100',
             disabled ? 'bg-gray-400' : 'bg-blue-600',
             isDragging && 'transition-none scale-110'
           )}
           style={{ 
-            left: `${percentage}%`, 
-            transform: 'translate(-50%, -50%)'
+            left: `calc(${percentage}% - 10px)`,
+            top: '50%',
+            transform: 'translateY(-50%)'
           }}
         />
         
