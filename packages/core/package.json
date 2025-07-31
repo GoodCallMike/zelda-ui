@@ -21,6 +21,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.28",
     "@zelda/icons": "workspace:*",
     "web-vitals": "^4.2.4"
   },
