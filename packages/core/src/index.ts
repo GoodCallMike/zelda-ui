@@ -14,6 +14,7 @@ export * from './Skeleton';
 export * from './SplitButton';
 export * from './Statistic';
 export * from './Steps';
+export * from './Switch';
 export * from './Tag';
 export * from './TextField';
 export * from './TextArea';
