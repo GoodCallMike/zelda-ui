@@ -1,0 +1,37 @@
+{
+  "name": "@zelda/hyrule",
+  "version": "0.1.0",
+  "description": "Secret Zelda-themed components for the Zelda UI library",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@zelda/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "zelda",
+    "hyrule",
+    "secret",
+    "theme"
+  ]
+}
