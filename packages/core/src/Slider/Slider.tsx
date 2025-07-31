@@ -81,17 +81,17 @@ export const Slider = ({
         ref={sliderRef}
         onMouseDown={handleMouseDown}
         className={cn(
-          'relative h-5 w-full',
+          'relative h-6 w-full flex items-center',
           disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
         )}
       >
         {/* Track */}
-        <div className="absolute top-1/2 left-0 right-0 h-2 bg-gray-400 dark:bg-gray-600 rounded-full transform -translate-y-1/2" />
+        <div className="absolute left-0 right-0 h-2 bg-gray-400 dark:bg-gray-600 rounded-full" />
         
         {/* Fill */}
         <div 
           className={cn(
-            'absolute top-1/2 left-0 h-2 rounded-full transform -translate-y-1/2 transition-all duration-100',
+            'absolute left-0 h-2 rounded-full transition-all duration-100',
             disabled ? 'bg-gray-500' : 'bg-blue-600',
             isDragging && 'transition-none'
           )}
@@ -101,13 +101,13 @@ export const Slider = ({
         {/* Thumb */}
         <div
           className={cn(
-            'absolute top-1/2 w-5 h-5 rounded-full shadow-md transition-all duration-100',
+            'absolute w-5 h-5 rounded-full shadow-md transition-all duration-100',
             disabled ? 'bg-gray-400' : 'bg-blue-600',
             isDragging && 'transition-none scale-110'
           )}
           style={{ 
             left: `${percentage}%`,
-            transform: 'translate(-50%, -50%)'
+            transform: 'translateX(-50%)'
           }}
         />
         
