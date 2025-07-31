@@ -7,7 +7,6 @@ import './animations.css';
 import './theme.css';
 
 // Export design tokens
-export * from './tokens';
 export * from './tokens.css';
 
 // Export utilities

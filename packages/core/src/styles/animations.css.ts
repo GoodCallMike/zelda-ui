@@ -1,28 +1,12 @@
 import { globalStyle, keyframes } from '@vanilla-extract/css';
 
-// Define standard animations first
-const pulse = keyframes({
-  '0%, 100%': { opacity: 1 },
-  '50%': { opacity: 0.5 },
+// Custom jetstream-specific animations (not in standard Tailwind)
+const jetstreamShimmer = keyframes({
+  '0%': { transform: 'translateX(-100%)' },
+  '100%': { transform: 'translateX(100%)' },
 });
 
-const bounce = keyframes({
-  '0%, 100%': {
-    transform: 'translateY(-25%)',
-    animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
-  },
-  '50%': {
-    transform: 'translateY(0)',
-    animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
-  },
-});
-
-const spin = keyframes({
-  from: { transform: 'rotate(0deg)' },
-  to: { transform: 'rotate(360deg)' },
-});
-
-// CSS-only jetstream effect
+// CSS-only jetstream effect (custom to this design system)
 globalStyle('.jetstream-effect', {
   position: 'relative',
   overflow: 'hidden',
@@ -45,15 +29,7 @@ globalStyle('.jetstream-effect:hover::before', {
   transform: 'translateX(100%)',
 });
 
-// Animation utilities
-globalStyle('.animate-pulse', {
-  animation: `${pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
-});
-
-globalStyle('.animate-bounce', {
-  animation: `${bounce} 1s infinite`,
-});
-
-globalStyle('.animate-spin', {
-  animation: `${spin} 1s linear infinite`,
+// Animated jetstream effect
+globalStyle('.animate-jetstream', {
+  animation: `${jetstreamShimmer} 2s ease-in-out infinite`,
 });
