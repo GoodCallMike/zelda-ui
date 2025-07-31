@@ -54,6 +54,11 @@ import { Button } from '@zelda/core';
 <Button variant="link">Skip for now</Button>
 \`\`\`
 
+### Destructive
+\`\`\`tsx
+<Button variant="destructive">Delete Item</Button>
+\`\`\`
+
 ## States
 
 ### Normal
@@ -122,7 +127,7 @@ screen.getByTestId('submit-button');
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'link'],
+      options: ['primary', 'secondary', 'outline', 'link', 'destructive'],
       description: 'Visual style variant of the button',
       table: {
         type: { summary: 'string' },
@@ -207,6 +212,13 @@ export const Link: Story = {
   },
 };
 
+export const Destructive: Story = {
+  args: {
+    children: 'Delete Item',
+    variant: 'destructive',
+  },
+};
+
 export const WithIcon: Story = {
   args: {
     children: 'Save Document',
@@ -231,6 +243,7 @@ export const Variants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="link">Link</Button>
+      <Button variant="destructive">Destructive</Button>
     </div>
   ),
 };
