@@ -52,7 +52,7 @@ export const Button = ({
 
         // Variant styles
         variant === 'primary' &&
-          'bg-blue-500 text-white hover:bg-blue-400 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-600',
+          'bg-blue-700 text-white hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800',
         variant === 'secondary' &&
           'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-800',
         variant === 'outline' &&
