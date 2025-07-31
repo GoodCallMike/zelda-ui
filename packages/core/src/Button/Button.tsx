@@ -11,7 +11,7 @@ interface ButtonProps
   /** Button content */
   children: ReactNode;
   /** Visual style variant */
-  variant?: 'primary' | 'secondary' | 'outline' | 'link';
+  variant?: 'primary' | 'secondary' | 'outline' | 'link' | 'destructive';
   /** Click handler function */
   onClick?: () => void;
   /** Icon component to display before text */
@@ -59,6 +59,8 @@ export const Button = ({
           'border border-solid border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-100 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700',
         variant === 'link' &&
           'text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
+        variant === 'destructive' &&
+          'bg-red-600 text-white hover:bg-red-500 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700',
 
         // State styles
         disabled && 'opacity-50 cursor-not-allowed',
