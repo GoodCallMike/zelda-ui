@@ -19,7 +19,7 @@ interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onCha
 }
 
 export const Slider = ({
-  value = 0,
+  value = 50,
   onChange,
   min = 0,
   max = 100,

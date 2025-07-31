@@ -128,7 +128,7 @@ screen.getByRole('slider', { name: 'Volume level' });
       description: 'Current value of the slider',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: '0' },
+        defaultValue: { summary: '50' },
       },
     },
     onChange: {
