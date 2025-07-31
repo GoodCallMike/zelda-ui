@@ -1,43 +1,46 @@
-import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
-const require = createRequire(import.meta.url);
+const customRequire = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: ['../packages/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    getAbsolutePath("@storybook/addon-docs"),
-    getAbsolutePath("@storybook/addon-vitest")
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-vitest'),
+    getAbsolutePath('@storybook/a11y-addon'),
   ],
 
-
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
 
-
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
-    const { vanillaExtractPlugin } = await import('@vanilla-extract/vite-plugin');
-    
+    const { vanillaExtractPlugin } = await import(
+      '@vanilla-extract/vite-plugin'
+    );
+
     return mergeConfig(config, {
       plugins: [vanillaExtractPlugin()],
       resolve: {
         alias: {
-          '@zelda/core': new URL('../packages/core/src', import.meta.url).pathname,
-          '@zelda/icons': new URL('../packages/icons/src', import.meta.url).pathname,
+          '@zelda/core': new URL('../packages/core/src', import.meta.url)
+            .pathname,
+          '@zelda/icons': new URL('../packages/icons/src', import.meta.url)
+            .pathname,
         },
       },
       optimizeDeps: {
-        include: ['react', 'react-dom', 'react/jsx-runtime']
+        include: ['react', 'react-dom', 'react/jsx-runtime'],
       },
     });
   },
 };
 export default config;
 
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+function getAbsolutePath(value: string): string {
+  return dirname(customRequire.resolve(join(value, 'package.json')));
 }
