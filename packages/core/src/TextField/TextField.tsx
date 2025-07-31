@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
 
-interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'type'> {
   /** Field label text */
   label?: string;
   /** Helper text displayed below the field */
@@ -10,6 +10,8 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'on
   errorMessage?: string;
   /** Current input value */
   value?: string;
+  /** Input type variant */
+  type?: 'text' | 'email' | 'password' | 'number' | 'search' | 'url' | 'tel';
   /** Change handler that receives the new value */
   onChange?: (value: string) => void;
 }
@@ -40,6 +42,7 @@ export const TextField = ({
   onChange,
   disabled,
   required,
+  type = 'text',
   id,
   ...props
 }: TextFieldProps) => {
@@ -64,6 +67,7 @@ export const TextField = ({
       
       <input
         id={inputId}
+        type={type}
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         disabled={disabled}

@@ -188,7 +188,7 @@ screen.getByPlaceholderText('Enter username');
     },
     type: {
       control: 'select',
-      options: ['text', 'email', 'password', 'number', 'tel', 'url'],
+      options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
       description: 'Input type attribute',
       table: {
         type: { summary: 'string' },
@@ -343,6 +343,12 @@ export const InputTypes: Story = {
             type="url"
             placeholder="https://example.com"
             testId="url-input"
+          />
+          <TextField
+            label="Search Input"
+            type="search"
+            placeholder="Search..."
+            testId="search-input"
           />
         </div>
       </div>
