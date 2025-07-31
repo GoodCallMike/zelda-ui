@@ -54,17 +54,17 @@ export const Switch = ({
       >
         <span
           className={cn(
-            'inline-block rounded-full bg-white shadow transform transition-transform duration-200',
+            'absolute inline-block rounded-full bg-white shadow-sm transform transition-transform duration-200',
             
             // Size variants
             size === 'small' 
-              ? 'h-4 w-4' 
-              : 'h-5 w-5',
+              ? 'h-4 w-4 top-0.5' 
+              : 'h-5 w-5 top-0.5',
             
             // Position based on checked state
             checked 
-              ? (size === 'small' ? 'translate-x-4' : 'translate-x-5')
-              : 'translate-x-0.5'
+              ? (size === 'small' ? 'left-4' : 'left-5')
+              : 'left-0.5'
           )}
         />
       </div>
