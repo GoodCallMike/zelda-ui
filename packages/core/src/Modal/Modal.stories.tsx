@@ -543,13 +543,20 @@ export const Examples: Story = {
         <Modal
           open={deleteOpen}
           title="Delete Item"
-          onOk={() => {
-            alert('Item deleted!');
-            setDeleteOpen(false);
-          }}
+          footer={
+            <div className="flex justify-end gap-2">
+              <Button variant="outline" onClick={() => setDeleteOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="destructive" onClick={() => {
+                alert('Item deleted!');
+                setDeleteOpen(false);
+              }}>
+                Delete
+              </Button>
+            </div>
+          }
           onCancel={() => setDeleteOpen(false)}
-          okText="Delete"
-          cancelText="Cancel"
           width={416}
           centered
           data-testid="delete-modal"
