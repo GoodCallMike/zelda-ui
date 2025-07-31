@@ -86,13 +86,13 @@ export const Slider = ({
         )}
       >
         {/* Track */}
-        <div className="absolute top-1/2 left-0 right-0 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full transform -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 right-0 h-2 bg-gray-400 dark:bg-gray-600 rounded-full transform -translate-y-1/2" />
         
         {/* Fill */}
         <div 
           className={cn(
-            'absolute top-1/2 left-0 h-1.5 rounded-full transform -translate-y-1/2 transition-all duration-100',
-            disabled ? 'bg-gray-400' : 'bg-blue-600',
+            'absolute top-1/2 left-0 h-2 rounded-full transform -translate-y-1/2 transition-all duration-100',
+            disabled ? 'bg-gray-500' : 'bg-blue-600',
             isDragging && 'transition-none'
           )}
           style={{ width: `${percentage}%` }}
