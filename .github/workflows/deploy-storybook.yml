@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm build-storybook
       - uses: actions/upload-pages-artifact@v3
         with:
