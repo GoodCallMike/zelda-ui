@@ -28,34 +28,35 @@ export const Switch = ({
       onClick={() => !disabled && onChange?.(!checked)}
       disabled={disabled}
       data-testid={testId}
-      style={{
-        position: 'relative',
-        display: 'inline-flex',
-        alignItems: 'center',
-        width: size === 'small' ? '44px' : '56px',
-        height: size === 'small' ? '24px' : '32px',
-        backgroundColor: checked ? '#2563eb' : '#9ca3af',
-        borderRadius: '9999px',
-        border: 'none',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
-        transition: 'background-color 0.2s',
-        padding: '2px',
-      }}
+      className={cn(
+        'relative inline-flex items-center rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+        
+        // Size variants
+        size === 'small' ? 'h-6 w-11' : 'h-8 w-14',
+        
+        // State colors
+        checked 
+          ? 'bg-blue-600' 
+          : 'bg-gray-300 dark:bg-gray-600',
+        
+        disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+      )}
       {...props}
     >
       <div
-        style={{
-          width: size === 'small' ? '20px' : '28px',
-          height: size === 'small' ? '20px' : '28px',
-          backgroundColor: 'white',
-          borderRadius: '50%',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          transform: checked 
-            ? `translateX(${size === 'small' ? '20px' : '24px'})` 
-            : 'translateX(0)',
-          transition: 'transform 0.2s',
-        }}
+        className={cn(
+          'inline-block rounded-full bg-white shadow-lg transform transition duration-200',
+          
+          // Size variants
+          size === 'small' 
+            ? 'h-5 w-5' 
+            : 'h-7 w-7',
+          
+          // Position based on checked state
+          checked 
+            ? (size === 'small' ? 'translate-x-5' : 'translate-x-6')
+            : 'translate-x-0'
+        )}
       />
     </button>
   );
