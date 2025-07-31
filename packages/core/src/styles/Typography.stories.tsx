@@ -6,60 +6,82 @@ const meta: Meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Typography system for the Jetstream design system with consistent text sizes, weights, and spacing.
+        component: `Typography system for consistent text styling with comprehensive accessibility and testing support.
+
+## Overview
+
+The Typography system provides consistent text sizes, weights, and colors based on a Major Third scale (1.25 ratio). It supports responsive design and maintains WCAG 2.1 AA accessibility compliance.
+
+## Quick Start
+
+\`\`\`tsx
+// Basic text styling
+<h1 className="text-2xl font-bold">Main Heading</h1>
+<p className="text-base text-gray-700">Body text content</p>
+\`\`\`
 
 ## Text Sizes
 
-Use utility classes for consistent text sizing based on Major Third scale (1.25 ratio):
-
+### Scale
 \`\`\`tsx
-<p className="text-xs">Extra small text (10.24px)</p>
-<p className="text-sm">Small text (12.8px)</p>
-<p className="text-base">Base text (16px - default)</p>
-<p className="text-lg">Large text (20px)</p>
-<p className="text-xl">Extra large text (25px)</p>
-<p className="text-2xl">2X large text (31.25px)</p>
-<p className="text-3xl">3X large text (39.06px)</p>
-<p className="text-4xl">4X large text (48.83px)</p>
+<p className="text-xs">Extra small (10.24px)</p>
+<p className="text-sm">Small (12.8px)</p>
+<p className="text-base">Base (16px)</p>
+<p className="text-lg">Large (20px)</p>
+<p className="text-xl">Extra large (25px)</p>
+<p className="text-2xl">2X large (31.25px)</p>
 \`\`\`
 
-## Font Weights
-
-Control text weight with utility classes:
-
+### Font Weights
 \`\`\`tsx
-<p className="font-normal">Normal weight (400)</p>
-<p className="font-medium">Medium weight (500)</p>
-<p className="font-semibold">Semibold weight (600)</p>
-<p className="font-bold">Bold weight (700)</p>
+<p className="font-normal">Normal (400)</p>
+<p className="font-medium">Medium (500)</p>
+<p className="font-semibold">Semibold (600)</p>
+<p className="font-bold">Bold (700)</p>
 \`\`\`
 
-## Text Colors
+## Accessibility
 
-Use semantic color classes that adapt to theme:
+The Typography system is fully accessible with:
+
+- **Contrast ratios**: WCAG AA compliant color combinations
+- **Reading flow**: Consistent line heights and spacing
+- **Scalability**: Supports browser zoom up to 200%
 
 \`\`\`tsx
-<p className="text-gray-900 dark:text-gray-100">Primary text</p>
-<p className="text-gray-600 dark:text-gray-400">Secondary text</p>
-<p className="text-gray-500 dark:text-gray-500">Muted text</p>
-<p className="text-blue-600 dark:text-blue-400">Link text</p>
+// Accessible text combinations
+<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+  High contrast heading
+</h2>
 \`\`\`
 
-## CSS Variables
+## Testing
 
-Use CSS variables in custom components:
+Built-in testing support with typography utilities:
 
-\`\`\`css
-.heading {
-  font-size: var(--text-xl);
-  font-weight: var(--font-semibold);
-  color: var(--gray-900);
-}
+\`\`\`tsx
+<h1 className="text-2xl font-bold" data-testid="page-title">
+  Page Title
+</h1>
+\`\`\`
 
-[data-theme="dark"] .heading {
-  color: var(--gray-100);
-}
-\`\`\``,
+\`\`\`tsx
+// Test typography
+expect(screen.getByTestId('page-title')).toHaveClass('text-2xl', 'font-bold');
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use semantic heading hierarchy (h1, h2, h3)
+- Maintain consistent line heights for readability
+- Test text at different zoom levels
+
+### Don't
+- Skip heading levels in hierarchy
+- Use color alone to convey information
+- Set font sizes below 12px for body text
+`,
       },
     },
   },
@@ -69,7 +91,7 @@ Use CSS variables in custom components:
 export default meta;
 type Story = StoryObj;
 
-export const TextSizes: Story = {
+export const Default: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="text-xs">Extra small text (10.24px) - text-xs</div>
@@ -109,28 +131,30 @@ export const TextColors: Story = {
   ),
 };
 
-export const TypographyScale: Story = {
+export const Examples: Story = {
   render: () => (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-        Heading 1 - Main page title
-      </h1>
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-        Heading 2 - Section title
-      </h2>
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-        Heading 3 - Subsection title
-      </h3>
-      <p className="text-base text-gray-700 dark:text-gray-300">
-        Body text - This is the standard paragraph text used throughout the application. 
-        It provides good readability and comfortable line spacing.
-      </p>
-      <p className="text-sm text-gray-600 dark:text-gray-400">
-        Small text - Used for captions, helper text, and secondary information.
-      </p>
-      <p className="text-xs text-gray-500 dark:text-gray-500">
-        Extra small text - Used for timestamps, metadata, and fine print.
-      </p>
+      <article className="max-w-2xl">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          Article Title - Semantic Heading Structure
+        </h1>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+          Section Heading
+        </h2>
+        <p className="text-base text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+          This is body text with proper line height and spacing. It demonstrates 
+          how typography creates readable content with good visual hierarchy.
+        </p>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          Subsection
+        </h3>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          Supporting text with smaller size for secondary information.
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-500">
+          Fine print or metadata information.
+        </p>
+      </article>
     </div>
   ),
 };

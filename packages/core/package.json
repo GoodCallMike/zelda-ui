@@ -21,7 +21,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@jetstream/icons": "workspace:*"
+    "@jetstream/icons": "workspace:*",
+    "web-vitals": "^4.2.4"
   },
   "peerDependencies": {
     "react": "^19.1.0",

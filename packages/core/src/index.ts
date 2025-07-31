@@ -21,3 +21,4 @@ export * from './ThemeProvider';
 export * from './Typography';
 export * from './styles';
 export * from './hooks/useClickOutside';
+export * from './utils';
