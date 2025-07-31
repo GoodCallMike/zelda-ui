@@ -9,7 +9,7 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-vitest'),
-    getAbsolutePath('@storybook/a11y-addon'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
 
   framework: {
