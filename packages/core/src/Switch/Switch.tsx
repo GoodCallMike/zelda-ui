@@ -20,33 +20,40 @@ export const Switch = ({
   testId,
   ...props
 }: SwitchProps) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onChange?.(!checked);
+    }
+  };
+
   return (
     <button
       type="button"
       role="switch"
       aria-checked={checked}
-      onClick={() => !disabled && onChange?.(!checked)}
+      onClick={handleClick}
       disabled={disabled}
       data-testid={testId}
       className={cn(
-        'relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
+        'relative inline-flex items-center rounded-full transition-colors duration-200',
         'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
         
         // Size variants
-        size === 'small' ? 'h-5 w-9' : 'h-6 w-11',
+        size === 'small' ? 'h-5 w-9 p-0.5' : 'h-6 w-11 p-0.5',
         
         // State colors
         checked 
           ? 'bg-blue-600' 
-          : 'bg-gray-200 dark:bg-gray-600',
+          : 'bg-gray-300 dark:bg-gray-600',
         
-        disabled && 'cursor-not-allowed opacity-50'
+        disabled && 'cursor-not-allowed opacity-50',
+        !disabled && 'cursor-pointer'
       )}
       {...props}
     >
-      <span
+      <div
         className={cn(
-          'pointer-events-none inline-block rounded-full bg-white shadow transform ring-0 transition duration-200 ease-in-out',
+          'rounded-full bg-white shadow-sm transition-transform duration-200',
           
           // Size variants
           size === 'small' 
@@ -55,10 +62,10 @@ export const Switch = ({
           
           // Position based on checked state
           checked 
-            ? (size === 'small' ? 'translate-x-4' : 'translate-x-5')
+            ? 'translate-x-4' 
             : 'translate-x-0'
         )}
       />
     </button>
   );
-};}
+};
