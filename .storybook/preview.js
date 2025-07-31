@@ -1,5 +1,5 @@
-import '@zelda/theme/src/theme.css.ts';
-import '@zelda/theme/src/tokens.css.ts';
+import '../packages/theme/src/theme.css.ts';
+import '../packages/theme/src/tokens.css.ts';
 import './preview.css';
 
 export const parameters = {
