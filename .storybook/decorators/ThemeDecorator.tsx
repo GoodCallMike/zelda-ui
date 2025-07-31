@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import type { Decorator } from '@storybook/react';
-import { ThemeProvider } from '@jetstream/core';
+import { ThemeProvider } from '@zelda/core';
 
 const DARK_BACKGROUND = 'var(--gray-900)';
 

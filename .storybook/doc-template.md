@@ -12,7 +12,7 @@ The [Component] component provides [main functionality]. It supports [key featur
 ## Quick Start
 
 \`\`\`tsx
-import { [Component] } from '@jetstream/core';
+import { [Component] } from '@zelda/core';
 
 // Basic usage
 <[Component] [basicProps]>[content]</[Component]>

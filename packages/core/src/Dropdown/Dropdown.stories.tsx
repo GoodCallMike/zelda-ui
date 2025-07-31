@@ -6,7 +6,7 @@ import {
   Settings01Icon,
   Trash01Icon,
   User01Icon,
-} from '@jetstream/icons';
+} from '@zelda/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
@@ -28,8 +28,8 @@ The Dropdown component provides a flexible way to display contextual actions and
 ## Quick Start
 
 \`\`\`tsx
-import { Dropdown } from '@jetstream/core';
-import { Button } from '@jetstream/core';
+import { Dropdown } from '@zelda/core';
+import { Button } from '@zelda/core';
 
 // Basic dropdown
 <Dropdown items={[

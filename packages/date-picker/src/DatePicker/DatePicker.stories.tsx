@@ -28,7 +28,7 @@ The DatePicker component provides an intuitive way to select dates with text inp
 ## Quick Start
 
 \`\`\`tsx
-import { DatePicker } from '@jetstream/date-picker';
+import { DatePicker } from '@zelda/date-picker';
 
 // Basic date picker
 const [date, setDate] = useState<Date | null>(null);

@@ -18,7 +18,7 @@ The TextArea component provides a way to collect multi-line text input from user
 ## Quick Start
 
 \`\`\`tsx
-import { TextArea } from '@jetstream/core';
+import { TextArea } from '@zelda/core';
 
 // Basic textarea
 <TextArea

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Button } from './Button';
-import { Save01Icon } from '@jetstream/icons';
+import { Save01Icon } from '@zelda/icons';
 
 expect.extend(toHaveNoViolations);
 

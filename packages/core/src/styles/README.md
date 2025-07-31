@@ -1,4 +1,4 @@
-# Jetstream Design System
+# Zelda Design System
 
 ## Overview
 
@@ -49,7 +49,7 @@ export const spacing = {
 
 ### In Components
 ```tsx
-import { cn } from '@jetstream/core';
+import { cn } from '@zelda/core';
 
 // Use utility classes
 <div className={cn('bg-blue-500', 'text-white', 'p-4')}>

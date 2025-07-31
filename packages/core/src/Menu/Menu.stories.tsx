@@ -18,7 +18,7 @@ The Menu component provides flexible navigation functionality. It supports verti
 ## Quick Start
 
 \`\`\`tsx
-import { Menu } from '@jetstream/core';
+import { Menu } from '@zelda/core';
 
 // Basic usage
 <Menu selectedKeys={['1']} onSelect={handleSelect}>

@@ -319,7 +319,7 @@ describe('Button', () => {
     it('applies CSS classes correctly', () => {
       render(<Button variant="primary">Styled</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-yellow-500', 'text-blue-900', 'jetstream-effect');
+      expect(button).toHaveClass('bg-yellow-500', 'text-blue-900', 'zelda-effect');
     });
 
     it('supports theme variations', () => {

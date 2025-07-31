@@ -20,7 +20,7 @@ The Modal component provides a way to display content in an overlay dialog that 
 ## Quick Start
 
 \`\`\`tsx
-import { Modal, Button } from '@jetstream/core';
+import { Modal, Button } from '@zelda/core';
 import { useState } from 'react';
 
 // Basic modal

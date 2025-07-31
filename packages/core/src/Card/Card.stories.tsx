@@ -4,7 +4,7 @@ import { Card } from './Card';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Tag } from '../Tag';
-import { HeartIcon, Share01Icon, DotsHorizontalIcon, Settings01Icon } from '@jetstream/icons';
+import { HeartIcon, Share01Icon, DotsHorizontalIcon, Settings01Icon } from '@zelda/icons';
 
 const meta: Meta<typeof Card> = {
   title: 'Data Display/Card',
@@ -22,7 +22,7 @@ The Card component provides a flexible container for displaying content with opt
 ## Quick Start
 
 \`\`\`tsx
-import { Card } from '@jetstream/core';
+import { Card } from '@zelda/core';
 
 // Basic card
 <Card title="Card Title">

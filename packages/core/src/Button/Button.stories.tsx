@@ -3,7 +3,7 @@ import {
   Download01Icon,
   PlusIcon,
   Save01Icon,
-} from '@jetstream/icons';
+} from '@zelda/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
@@ -23,7 +23,7 @@ The Button component provides interactive elements for user actions. It supports
 ## Quick Start
 
 \`\`\`tsx
-import { Button } from '@jetstream/core';
+import { Button } from '@zelda/core';
 
 // Basic usage
 <Button>Click me</Button>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from './Avatar';
-import { UserCircleIcon } from '@jetstream/icons';
+import { UserCircleIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Data Display/Avatar',
@@ -18,7 +18,7 @@ The Avatar component provides a flexible way to display user representations in 
 ## Quick Start
 
 \`\`\`tsx
-import { Avatar } from '@jetstream/core';
+import { Avatar } from '@zelda/core';
 
 // Image avatar
 <Avatar src="/user.jpg" alt="John Doe" />

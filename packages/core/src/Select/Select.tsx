@@ -1,4 +1,4 @@
-import { CheckIcon, ChevronDownIcon, XIcon } from '@jetstream/icons';
+import { CheckIcon, ChevronDownIcon, XIcon } from '@zelda/icons';
 import type {
   ChangeEvent,
   HTMLAttributes,

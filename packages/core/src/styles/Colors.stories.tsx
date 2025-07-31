@@ -15,7 +15,7 @@ The Colors component provides a systematic color palette with semantic naming an
 ## Quick Start
 
 \`\`\`tsx
-import { Colors } from '@jetstream/core';
+import { Colors } from '@zelda/core';
 
 // Basic usage
 <div className="bg-blue-500 text-white">Primary Blue</div>

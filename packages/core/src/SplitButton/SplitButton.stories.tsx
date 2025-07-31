@@ -18,7 +18,7 @@ The SplitButton component combines a primary action button with a dropdown menu 
 ## Quick Start
 
 \`\`\`tsx
-import { SplitButton } from '@jetstream/core';
+import { SplitButton } from '@zelda/core';
 
 // Basic split button
 <SplitButton

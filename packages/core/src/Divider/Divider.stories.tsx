@@ -17,7 +17,7 @@ The Divider component provides visual separation between content sections. It su
 ## Quick Start
 
 \`\`\`tsx
-import { Divider } from '@jetstream/core';
+import { Divider } from '@zelda/core';
 
 // Basic usage
 <Divider />

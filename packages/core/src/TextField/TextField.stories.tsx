@@ -18,7 +18,7 @@ The TextField component provides a way to collect single-line text input from us
 ## Quick Start
 
 \`\`\`tsx
-import { TextField } from '@jetstream/core';
+import { TextField } from '@zelda/core';
 
 // Basic text field
 <TextField

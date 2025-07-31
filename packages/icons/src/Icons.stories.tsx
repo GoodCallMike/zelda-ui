@@ -16,7 +16,7 @@ The Icon library provides ${Object.keys(Icons).length} SVG icons optimized for w
 ## Quick Start
 
 \`\`\`tsx
-import { CalendarIcon, SearchLgIcon, UserCircleIcon } from '@jetstream/icons';
+import { CalendarIcon, SearchLgIcon, UserCircleIcon } from '@zelda/icons';
 
 // Basic usage
 <CalendarIcon />

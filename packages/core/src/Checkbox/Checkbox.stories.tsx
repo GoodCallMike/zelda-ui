@@ -19,7 +19,7 @@ The Checkbox component provides a flexible way to handle binary choices and mult
 ## Quick Start
 
 \`\`\`tsx
-import { Checkbox } from '@jetstream/core';
+import { Checkbox } from '@zelda/core';
 
 // Basic checkbox
 <Checkbox label="Accept terms and conditions" />

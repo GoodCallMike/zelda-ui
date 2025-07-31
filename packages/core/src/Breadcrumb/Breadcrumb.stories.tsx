@@ -17,7 +17,7 @@ The Breadcrumb component provides a way to show users their current location wit
 ## Quick Start
 
 \`\`\`tsx
-import { Breadcrumb } from '@jetstream/core';
+import { Breadcrumb } from '@zelda/core';
 
 // Basic breadcrumb
 <Breadcrumb items={[

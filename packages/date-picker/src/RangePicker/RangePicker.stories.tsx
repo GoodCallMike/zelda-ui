@@ -18,7 +18,7 @@ The RangePicker component provides an intuitive way to select date ranges with d
 ## Quick Start
 
 \`\`\`tsx
-import { RangePicker, type DateRange } from '@jetstream/date-picker';
+import { RangePicker, type DateRange } from '@zelda/date-picker';
 
 // Basic range picker
 const [range, setRange] = useState<DateRange | null>(null);

@@ -6,8 +6,8 @@ import {
   shift,
   useFloating,
 } from '@floating-ui/react';
-import { cn, useClickOutside } from '@jetstream/core';
-import { CalendarIcon } from '@jetstream/icons';
+import { cn, useClickOutside } from '@zelda/core';
+import { CalendarIcon } from '@zelda/icons';
 import { format, isValid, parse } from 'date-fns';
 import { Calendar } from './Calendar';
 

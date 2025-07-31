@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Button } from './Button';
-import { Save01Icon } from '@jetstream/icons';
+import { Save01Icon } from '@zelda/icons';
 
 describe('Button Interactions', () => {
   it('handles click events correctly', async () => {
@@ -91,11 +91,11 @@ describe('Button Interactions', () => {
     
     // Test hover
     await user.hover(button);
-    expect(button).toHaveClass('jetstream-effect');
+    expect(button).toHaveClass('zelda-effect');
     
     // Test unhover
     await user.unhover(button);
-    expect(button).toHaveClass('jetstream-effect'); // Class remains for CSS transitions
+    expect(button).toHaveClass('zelda-effect'); // Class remains for CSS transitions
   });
 
   it('handles icon button interactions', async () => {

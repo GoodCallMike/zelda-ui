@@ -19,7 +19,7 @@ The Select component provides a flexible way to choose from a list of options in
 ## Quick Start
 
 \`\`\`tsx
-import { Select } from '@jetstream/core';
+import { Select } from '@zelda/core';
 
 // Basic select
 <Select

@@ -4,7 +4,7 @@ import {
   CheckIcon,
   Star01Icon,
   User01Icon,
-} from '@jetstream/icons';
+} from '@zelda/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Heading } from '../Typography';
@@ -26,7 +26,7 @@ The Tag component provides compact labeling and categorization functionality. It
 ## Quick Start
 
 \`\`\`tsx
-import { Tag } from '@jetstream/core';
+import { Tag } from '@zelda/core';
 
 // Basic usage
 <Tag>Default Tag</Tag>

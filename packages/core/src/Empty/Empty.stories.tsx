@@ -19,7 +19,7 @@ The Empty component provides user-friendly empty state displays when content is 
 ## Quick Start
 
 \`\`\`tsx
-import { Empty } from '@jetstream/core';
+import { Empty } from '@zelda/core';
 
 // Basic usage
 <Empty description="No items found" />

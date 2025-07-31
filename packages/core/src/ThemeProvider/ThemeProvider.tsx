@@ -15,7 +15,7 @@ interface ThemeProviderProps {
   children: ReactNode;
   /** Initial theme setting. Defaults to 'system' which detects OS preference */
   defaultTheme?: Theme;
-  /** localStorage key for persisting theme choice. Defaults to 'jetstream-theme' */
+  /** localStorage key for persisting theme choice. Defaults to 'zelda-theme' */
   storageKey?: string;
 }
 
@@ -31,7 +31,7 @@ interface ThemeProviderProps {
 export const ThemeProvider = ({
   children,
   defaultTheme = 'system',
-  storageKey = 'jetstream-theme',
+  storageKey = 'zelda-theme',
 }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');

@@ -9,7 +9,7 @@ Track Core Web Vitals metrics using the web-vitals library.
 ### Quick Start
 
 ```tsx
-import { trackPerformance } from '@jetstream/core';
+import { trackPerformance } from '@zelda/core';
 
 // Basic usage
 trackPerformance();
@@ -43,7 +43,7 @@ interface PerformanceConfig {
 ### Advanced Usage
 
 ```tsx
-import { PerformanceTracker } from '@jetstream/core';
+import { PerformanceTracker } from '@zelda/core';
 
 const tracker = new PerformanceTracker({
   endpoint: 'https://analytics.example.com/metrics',

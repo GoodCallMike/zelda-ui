@@ -1,4 +1,4 @@
-import { cn } from '@jetstream/core';
+import { cn } from '@zelda/core';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, isToday, isAfter, isBefore, isWithinInterval } from 'date-fns';
 import { useState } from 'react';
 import styles from './Calendar.module.css';

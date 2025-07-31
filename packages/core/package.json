@@ -1,5 +1,5 @@
 {
-  "name": "@jetstream/core",
+  "name": "@zelda/core",
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -21,7 +21,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@jetstream/icons": "workspace:*",
+    "@zelda/icons": "workspace:*",
     "web-vitals": "^4.2.4"
   },
   "peerDependencies": {

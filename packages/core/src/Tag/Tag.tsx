@@ -1,4 +1,4 @@
-import { XIcon } from '@jetstream/icons';
+import { XIcon } from '@zelda/icons';
 import type { HTMLAttributes, MouseEvent, ReactNode } from 'react';
 import { cn } from '../styles';
 

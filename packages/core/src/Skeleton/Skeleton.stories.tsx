@@ -19,7 +19,7 @@ The Skeleton component provides loading placeholders while content is being fetc
 ## Quick Start
 
 \`\`\`tsx
-import { Skeleton } from '@jetstream/core';
+import { Skeleton } from '@zelda/core';
 
 // Basic usage
 <Skeleton loading={isLoading}>

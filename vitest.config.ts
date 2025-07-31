@@ -11,8 +11,8 @@ export default defineConfig({
   plugins: [vanillaExtractPlugin()],
   resolve: {
     alias: {
-      '@jetstream/core': path.resolve(dirname, 'packages/core/src'),
-      '@jetstream/icons': path.resolve(dirname, 'packages/icons/src'),
+      '@zelda/core': path.resolve(dirname, 'packages/core/src'),
+      '@zelda/icons': path.resolve(dirname, 'packages/icons/src'),
     },
   },
   test: {

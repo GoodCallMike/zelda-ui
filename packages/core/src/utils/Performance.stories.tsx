@@ -16,7 +16,7 @@ The Performance utility provides real-time tracking of Core Web Vitals metrics i
 ## Quick Start
 
 \`\`\`tsx
-import { trackPerformance } from '@jetstream/core';
+import { trackPerformance } from '@zelda/core';
 
 // Basic usage
 trackPerformance();

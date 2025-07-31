@@ -18,7 +18,7 @@ The Radio component allows users to select one option from a set of mutually exc
 ## Quick Start
 
 \`\`\`tsx
-import { Radio } from '@jetstream/core';
+import { Radio } from '@zelda/core';
 import { useState } from 'react';
 
 // Basic radio group

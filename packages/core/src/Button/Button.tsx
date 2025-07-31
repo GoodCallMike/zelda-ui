@@ -43,7 +43,7 @@ export const Button = ({
           : 'px-4 py-2 rounded font-semibold uppercase',
         'cursor-pointer transition-colors',
         variant !== 'outline' && variant !== 'link' && 'border-none',
-        'jetstream-effect',
+        'zelda-effect',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
         'active:scale-95 active:transition-transform active:duration-75',
 

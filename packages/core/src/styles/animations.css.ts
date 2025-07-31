@@ -1,18 +1,18 @@
 import { globalStyle, keyframes } from '@vanilla-extract/css';
 
-// Custom jetstream-specific animations (not in standard Tailwind)
-const jetstreamShimmer = keyframes({
+// Custom zelda-specific animations (not in standard Tailwind)
+const zeldaShimmer = keyframes({
   '0%': { transform: 'translateX(-100%)' },
   '100%': { transform: 'translateX(100%)' },
 });
 
-// CSS-only jetstream effect (custom to this design system)
-globalStyle('.jetstream-effect', {
+// CSS-only zelda effect (custom to this design system)
+globalStyle('.zelda-effect', {
   position: 'relative',
   overflow: 'hidden',
 });
 
-globalStyle('.jetstream-effect::before', {
+globalStyle('.zelda-effect::before', {
   content: '""',
   position: 'absolute',
   top: 0,
@@ -25,11 +25,11 @@ globalStyle('.jetstream-effect::before', {
   transition: 'transform 0.2s ease-out',
 });
 
-globalStyle('.jetstream-effect:hover::before', {
+globalStyle('.zelda-effect:hover::before', {
   transform: 'translateX(100%)',
 });
 
-// Animated jetstream effect
-globalStyle('.animate-jetstream', {
-  animation: `${jetstreamShimmer} 2s ease-in-out infinite`,
+// Animated zelda effect
+globalStyle('.animate-zelda', {
+  animation: `${zeldaShimmer} 2s ease-in-out infinite`,
 });

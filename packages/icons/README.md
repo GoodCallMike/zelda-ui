@@ -1,11 +1,11 @@
-# @jetstream/icons
+# @zelda/icons
 
-Icon components for the Jetstream design system.
+Icon components for the Zelda design system.
 
 ## Usage
 
 ```tsx
-import { CalendarIcon } from '@jetstream/icons';
+import { CalendarIcon } from '@zelda/icons';
 
 <CalendarIcon className="w-4 h-4" />
 ```

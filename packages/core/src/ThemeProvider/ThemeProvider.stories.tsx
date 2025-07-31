@@ -60,7 +60,7 @@ The ThemeProvider component provides theme management with light/dark mode suppo
 ## Quick Start
 
 \`\`\`tsx
-import { ThemeProvider, useTheme } from '@jetstream/core';
+import { ThemeProvider, useTheme } from '@zelda/core';
 
 // Basic usage
 <ThemeProvider defaultTheme="system">
@@ -162,7 +162,7 @@ act(() => setTheme('dark'));
       description: 'localStorage key for persisting theme choice',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'jetstream-theme' },
+        defaultValue: { summary: 'zelda-theme' },
       },
     },
     testId: {

@@ -19,7 +19,7 @@ The Design System provides a complete foundation for building consistent, scalab
 ## Quick Start
 
 \`\`\`tsx
-import { cn } from '@jetstream/core';
+import { cn } from '@zelda/core';
 
 // Basic usage with utilities
 <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
@@ -183,14 +183,14 @@ expect(button).toHaveClass('btn-primary');
 - Mix utility classes with inline styles
 - Hardcode values that should use design tokens
 
-# Jetstream Design System
+# Zelda Design System
 
 A comprehensive design system with **100% Tailwind CSS parity**, built on Vanilla Extract for zero-runtime CSS-in-JS. Provides atomic utilities, design tokens, and responsive design capabilities.
 
 ## Quick Start
 
 \`\`\`tsx
-import { cn } from '@jetstream/core';
+import { cn } from '@zelda/core';
 
 // Basic usage
 <div className="flex items-center gap-4 p-6 bg-white rounded-lg">
@@ -262,8 +262,8 @@ The Design System provides a complete foundation for building consistent, scalab
 ## Quick Start
 
 \`\`\`tsx
-import { cn } from '@jetstream/core';
-import { Button, Card } from '@jetstream/core';
+import { cn } from '@zelda/core';
+import { Button, Card } from '@zelda/core';
 
 // Basic usage
 <div className="flex items-center gap-4 p-6 bg-white rounded-lg">
@@ -388,14 +388,14 @@ The design system follows a layered architecture approach:
 ### Installation & Setup
 
 \`\`\`bash
-npm install @jetstream/core @jetstream/icons
+npm install @zelda/core @zelda/icons
 \`\`\`
 
 ### Basic Usage
 
 \`\`\`tsx
-import { cn } from '@jetstream/core';
-import { Button, Card, Stack } from '@jetstream/core';
+import { cn } from '@zelda/core';
+import { Button, Card, Stack } from '@zelda/core';
 
 // Using utility classes directly
 <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">

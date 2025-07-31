@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Statistic } from './Statistic';
-import { ArrowUpIcon, ArrowDownIcon, CurrencyDollarIcon } from '@jetstream/icons';
+import { ArrowUpIcon, ArrowDownIcon, CurrencyDollarIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Statistic> = {
   title: 'Data Display/Statistic',
@@ -18,7 +18,7 @@ The Statistic component provides a flexible way to display numerical data, metri
 ## Quick Start
 
 \`\`\`tsx
-import { Statistic } from '@jetstream/core';
+import { Statistic } from '@zelda/core';
 
 // Basic statistic
 <Statistic title="Active Users" value={2048} />

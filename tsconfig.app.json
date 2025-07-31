@@ -23,8 +23,8 @@
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "@jetstream/core": ["./packages/core/src"],
-      "@jetstream/icons": ["./packages/icons/src"]
+      "@zelda/core": ["./packages/core/src"],
+      "@zelda/icons": ["./packages/icons/src"]
     }
   },
   "include": ["src", "packages/*/src", "vitest.d.ts", "**/*.test.tsx"]

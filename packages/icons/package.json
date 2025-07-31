@@ -1,5 +1,5 @@
 {
-  "name": "@jetstream/icons",
+  "name": "@zelda/icons",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",

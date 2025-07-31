@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Steps } from './Steps';
-import { User01Icon, CurrencyDollarIcon, CheckIcon } from '@jetstream/icons';
+import { User01Icon, CurrencyDollarIcon, CheckIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Steps> = {
   title: 'Navigation/Steps',
@@ -19,7 +19,7 @@ The Steps component provides visual progress indication through multi-step proce
 ## Quick Start
 
 \`\`\`tsx
-import { Steps } from '@jetstream/core';
+import { Steps } from '@zelda/core';
 
 // Basic usage
 <Steps current={1}>
