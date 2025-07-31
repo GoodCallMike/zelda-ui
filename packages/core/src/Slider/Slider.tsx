@@ -15,6 +15,8 @@ interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onCha
   step?: number;
   /** Whether to show value tooltip */
   tooltip?: boolean;
+  /** Tooltip position relative to thumb */
+  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
   /** Test identifier */
   testId?: string;
 }
@@ -27,6 +29,7 @@ export const Slider = ({
   step = 1,
   disabled = false,
   tooltip = false,
+  tooltipPosition = 'top',
   testId,
   ...props
 }: SliderProps) => {
@@ -91,9 +94,9 @@ export const Slider = ({
         {/* Fill */}
         <div 
           className={cn(
-            'absolute left-0 h-2 rounded-full transition-all duration-100',
+            'absolute left-0 h-2 rounded-full',
             disabled ? 'bg-gray-500' : 'bg-blue-600',
-            isDragging && 'transition-none'
+            !isDragging && 'transition-all duration-75'
           )}
           style={{ width: `${percentage}%` }}
         />
@@ -101,9 +104,9 @@ export const Slider = ({
         {/* Thumb */}
         <div
           className={cn(
-            'absolute w-5 h-5 rounded-full shadow-md transition-all duration-100',
+            'absolute w-5 h-5 rounded-full shadow-md',
             disabled ? 'bg-gray-400' : 'bg-blue-600',
-            isDragging && 'transition-none scale-110'
+            isDragging ? 'scale-110' : 'transition-all duration-75'
           )}
           style={{ 
             left: `${percentage}%`,
@@ -115,10 +118,18 @@ export const Slider = ({
         {tooltip && (
           <div
             className={cn(
-              'absolute -top-9 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap transform -translate-x-1/2 transition-opacity duration-200',
+              'absolute bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap transition-opacity duration-200 pointer-events-none',
               isDragging ? 'opacity-100' : 'opacity-0'
             )}
-            style={{ left: `${percentage}%` }}
+            style={{
+              left: `${percentage}%`,
+              transform: cn(
+                tooltipPosition === 'top' && 'translate(-50%, -100%) translateY(-8px)',
+                tooltipPosition === 'bottom' && 'translate(-50%, 0%) translateY(28px)',
+                tooltipPosition === 'left' && 'translate(-100%, -50%) translateX(-8px)',
+                tooltipPosition === 'right' && 'translate(0%, -50%) translateX(12px)'
+              )
+            }}
           >
             {value}
           </div>

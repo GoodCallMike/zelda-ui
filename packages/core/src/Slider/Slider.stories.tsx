@@ -170,6 +170,15 @@ screen.getByRole('slider', { name: 'Volume level' });
         defaultValue: { summary: 'false' },
       },
     },
+    tooltipPosition: {
+      control: 'select',
+      options: ['top', 'bottom', 'left', 'right'],
+      description: 'Position of the tooltip relative to thumb',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'top' },
+      },
+    },
     disabled: {
       control: 'boolean',
       description: 'Whether the slider is disabled',
@@ -201,6 +210,36 @@ export const WithTooltip: Story = {
   args: {
     value: 75,
     tooltip: true,
+  },
+};
+
+export const TooltipPositions: Story = {
+  render: () => (
+    <div className="w-64 space-y-8">
+      <div>
+        <label className="block text-sm font-medium mb-2">Top (default)</label>
+        <Slider value={60} tooltip tooltipPosition="top" testId="tooltip-top" />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-2">Bottom</label>
+        <Slider value={40} tooltip tooltipPosition="bottom" testId="tooltip-bottom" />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-2">Left</label>
+        <Slider value={70} tooltip tooltipPosition="left" testId="tooltip-left" />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-2">Right</label>
+        <Slider value={30} tooltip tooltipPosition="right" testId="tooltip-right" />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Different tooltip positions around the slider thumb.',
+      },
+    },
   },
 };
 
