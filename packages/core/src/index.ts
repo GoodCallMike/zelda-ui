@@ -11,6 +11,7 @@ export * from './Modal';
 export * from './Radio';
 export * from './Select';
 export * from './Skeleton';
+export * from './Slider';
 export * from './SplitButton';
 export * from './Statistic';
 export * from './Steps';
