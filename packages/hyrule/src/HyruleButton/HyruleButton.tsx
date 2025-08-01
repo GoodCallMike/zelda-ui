@@ -61,23 +61,23 @@ export const HyruleButton = ({
       case 'primary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-yellow-400 to-amber-500 text-amber-900',
-          'border-yellow-300 hover:from-yellow-300 hover:to-amber-400',
-          'active:from-yellow-500 active:to-amber-600 focus:ring-yellow-400'
+          'bg-gradient-to-br from-yellow-400 to-orange-500 text-yellow-900',
+          'border-yellow-300 hover:from-yellow-300 hover:to-orange-400',
+          'active:from-yellow-500 active:to-orange-600 focus:ring-yellow-400'
         );
       case 'secondary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white',
-          'border-emerald-400 hover:from-emerald-400 hover:to-teal-500',
-          'active:from-emerald-600 active:to-teal-700 focus:ring-emerald-400'
+          'bg-gradient-to-br from-green-500 to-teal-600 text-white',
+          'border-green-400 hover:from-green-400 hover:to-teal-500',
+          'active:from-green-600 active:to-teal-700 focus:ring-green-400'
         );
       case 'tertiary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-blue-500 to-indigo-600 text-white',
-          'border-blue-400 hover:from-blue-400 hover:to-indigo-500',
-          'active:from-blue-600 active:to-indigo-700 focus:ring-blue-400'
+          'bg-gradient-to-br from-blue-500 to-purple-600 text-white',
+          'border-blue-400 hover:from-blue-400 hover:to-purple-500',
+          'active:from-blue-600 active:to-purple-700 focus:ring-blue-400'
         );
       case 'link':
         return cn(
