@@ -299,22 +299,24 @@ export const primaryPixel = style({
   }
 });
 
-// Secondary variant (green rupee style)
+// Secondary variant (Link's green tunic style)
 export const secondaryPixel = style({
-  background: '#00cc66',
-  border: '3px solid #004422',
+  background: `
+    linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%)
+  `,
+  border: '3px solid #fbbf24',
   borderRadius: '0px',
   boxShadow: `
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    inset -2px -2px 0px rgba(0,0,0,0.3),
-    4px 4px 0px #002211,
-    0 0 20px rgba(0, 204, 102, 0.5)
+    inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+    inset -2px -2px 0px rgba(21, 128, 61, 0.8),
+    4px 4px 0px #92400e,
+    0 0 20px rgba(34, 197, 94, 0.6)
   `,
-  color: '#ffffff',
+  color: '#fef3c7',
   fontFamily: 'monospace',
   fontSize: '12px',
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px rgba(0,0,0,0.8)',
+  textShadow: '1px 1px 0px rgba(21, 128, 61, 0.8), 0 0 8px rgba(251, 191, 36, 0.6)',
   textTransform: 'uppercase',
   letterSpacing: '2px',
   padding: '12px 24px',
@@ -322,23 +324,27 @@ export const secondaryPixel = style({
   cursor: 'pointer',
   
   ':hover': {
-    background: '#00dd77',
+    background: `
+      linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%)
+    `,
     boxShadow: `
-      inset 2px 2px 0px rgba(255,255,255,0.4),
-      inset -2px -2px 0px rgba(0,0,0,0.2),
-      3px 3px 0px #002211,
-      0 0 25px rgba(0, 204, 102, 0.7)
+      inset 2px 2px 0px rgba(255, 255, 255, 0.5),
+      inset -2px -2px 0px rgba(21, 128, 61, 0.6),
+      3px 3px 0px #92400e,
+      0 0 25px rgba(34, 197, 94, 0.8)
     `,
     transform: 'translate(1px, 1px)',
   },
   
   ':active': {
-    background: '#009944',
+    background: `
+      linear-gradient(135deg, #16a34a 0%, #15803d 50%, #166534 100%)
+    `,
     boxShadow: `
-      inset -2px -2px 0px rgba(255,255,255,0.2),
-      inset 2px 2px 0px rgba(0,0,0,0.4),
-      2px 2px 0px #002211,
-      0 0 15px rgba(0, 204, 102, 0.3)
+      inset -2px -2px 0px rgba(255, 255, 255, 0.3),
+      inset 2px 2px 0px rgba(21, 128, 61, 0.9),
+      2px 2px 0px #92400e,
+      0 0 15px rgba(34, 197, 94, 0.4)
     `,
     transform: 'translate(2px, 2px)',
   }
