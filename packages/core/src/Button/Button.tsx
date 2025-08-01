@@ -42,7 +42,8 @@ export const Button = ({
           ? 'px-2 py-1'
           : 'px-4 py-2 rounded font-semibold uppercase',
         'cursor-pointer transition-colors',
-        variant !== 'outline' && variant !== 'link' && 'border-none',
+        variant !== 'outline' && 'border-none',
+        variant === 'link' && 'bg-transparent',
         'zelda-effect',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
         'active:scale-95 active:transition-transform active:duration-75',
