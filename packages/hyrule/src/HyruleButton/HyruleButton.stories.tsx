@@ -68,11 +68,11 @@ Special retro styling options that override the default rectangular styling:
   argTypes: {
     variant: {
       control: 'select',
-      options: ['triforce', 'rupee', 'master-sword', 'heart', 'sheikah'],
-      description: 'Hyrule-themed color variant (all use rectangular special styling)',
+      options: ['primary', 'secondary', 'tertiary', 'link', 'destructive'],
+      description: 'Button variant (all use rectangular special styling except link)',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'triforce' },
+        defaultValue: { summary: 'primary' },
       },
     },
     retro: {
@@ -110,11 +110,11 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <HyruleButton variant="triforce">⚡ Triforce</HyruleButton>
-      <HyruleButton variant="rupee">💎 Rupee</HyruleButton>
-      <HyruleButton variant="master-sword">⚔️ Master Sword</HyruleButton>
-      <HyruleButton variant="heart">❤️ Heart</HyruleButton>
-      <HyruleButton variant="sheikah">👁️ Sheikah</HyruleButton>
+      <HyruleButton variant="primary">Primary</HyruleButton>
+      <HyruleButton variant="secondary">Secondary</HyruleButton>
+      <HyruleButton variant="tertiary">Tertiary</HyruleButton>
+      <HyruleButton variant="link">Link</HyruleButton>
+      <HyruleButton variant="destructive">Destructive</HyruleButton>
     </div>
   ),
 };
@@ -123,12 +123,12 @@ export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex gap-4">
-        <HyruleButton variant="triforce">Normal</HyruleButton>
-        <HyruleButton variant="triforce" disabled>Disabled</HyruleButton>
+        <HyruleButton variant="primary">Normal</HyruleButton>
+        <HyruleButton variant="primary" disabled>Disabled</HyruleButton>
       </div>
       <div className="flex gap-4">
-        <HyruleButton variant="rupee">Normal</HyruleButton>
-        <HyruleButton variant="rupee" disabled>Disabled</HyruleButton>
+        <HyruleButton variant="secondary">Normal</HyruleButton>
+        <HyruleButton variant="secondary" disabled>Disabled</HyruleButton>
       </div>
     </div>
   ),
@@ -174,26 +174,26 @@ export const HyruleInterface: Story = {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-3">
-          <HyruleButton variant="triforce" testId="triforce-btn">
-            ⚡ Claim Triforce
+          <HyruleButton variant="primary" testId="primary-btn">
+            ⚡ Primary Action
           </HyruleButton>
-          <HyruleButton variant="master-sword" testId="sword-btn">
-            ⚔️ Draw Master Sword
+          <HyruleButton variant="tertiary" testId="tertiary-btn">
+            ⚔️ Tertiary Action
           </HyruleButton>
-          <HyruleButton variant="heart" testId="heart-btn">
-            ❤️ Restore Health
+          <HyruleButton variant="destructive" testId="destructive-btn">
+            ❤️ Destructive Action
           </HyruleButton>
         </div>
         
         <div className="space-y-3">
-          <HyruleButton variant="rupee" testId="rupee-btn">
-            💎 Collect Rupees
+          <HyruleButton variant="secondary" testId="secondary-btn">
+            💎 Secondary Action
           </HyruleButton>
-          <HyruleButton variant="sheikah" testId="sheikah-btn">
-            👁️ Activate Sheikah Slate
+          <HyruleButton variant="link" testId="link-btn">
+            👁️ Link Action
           </HyruleButton>
-          <HyruleButton variant="triforce" disabled testId="sealed-btn">
-            🔒 Sealed Power
+          <HyruleButton variant="primary" disabled testId="disabled-btn">
+            🔒 Disabled
           </HyruleButton>
         </div>
       </div>

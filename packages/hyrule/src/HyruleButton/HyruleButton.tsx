@@ -5,8 +5,8 @@ import { retro24Bit, retro32Bit, triforcePixel, rupeeGem } from '@zelda/theme';
 interface HyruleButtonProps {
   /** Button content */
   children: ReactNode;
-  /** Hyrule-themed variant */
-  variant?: 'triforce' | 'rupee' | 'master-sword' | 'heart' | 'sheikah';
+  /** Button variant */
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'destructive';
   /** Retro style variant */
   retro?: '24bit' | '32bit' | 'triforce-pixel' | 'rupee-gem';
   /** Click handler function */
@@ -23,7 +23,7 @@ interface HyruleButtonProps {
 
 export const HyruleButton = ({
   children,
-  variant = 'triforce',
+  variant = 'primary',
   retro,
   onClick,
   disabled,
@@ -52,46 +52,46 @@ export const HyruleButton = ({
     
     // Base rectangular special styling for all variants
     const baseStyles = cn(
-      'font-bold text-white shadow-lg border-2',
+      'font-bold shadow-lg border-2',
       'hover:shadow-xl active:scale-95',
       'focus:ring-2 focus:ring-offset-2'
     );
     
     switch (variant) {
-      case 'triforce':
+      case 'primary':
         return cn(
           baseStyles,
           'bg-gradient-to-br from-yellow-400 to-amber-500 text-amber-900',
           'border-yellow-300 hover:from-yellow-300 hover:to-amber-400',
           'active:from-yellow-500 active:to-amber-600 focus:ring-yellow-400'
         );
-      case 'rupee':
+      case 'secondary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-emerald-500 to-teal-600',
+          'bg-gradient-to-br from-emerald-500 to-teal-600 text-white',
           'border-emerald-400 hover:from-emerald-400 hover:to-teal-500',
           'active:from-emerald-600 active:to-teal-700 focus:ring-emerald-400'
         );
-      case 'master-sword':
+      case 'tertiary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-blue-500 to-indigo-600',
+          'bg-gradient-to-br from-blue-500 to-indigo-600 text-white',
           'border-blue-400 hover:from-blue-400 hover:to-indigo-500',
           'active:from-blue-600 active:to-indigo-700 focus:ring-blue-400'
         );
-      case 'heart':
+      case 'link':
+        return cn(
+          'font-bold text-blue-600 hover:text-blue-700 underline',
+          'bg-transparent border-none shadow-none',
+          'hover:bg-blue-50 active:text-blue-800',
+          'focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+        );
+      case 'destructive':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-red-500 to-pink-600',
+          'bg-gradient-to-br from-red-500 to-pink-600 text-white',
           'border-red-400 hover:from-red-400 hover:to-pink-500',
           'active:from-red-600 active:to-pink-700 focus:ring-red-400'
-        );
-      case 'sheikah':
-        return cn(
-          baseStyles,
-          'bg-gradient-to-br from-purple-600 to-indigo-700',
-          'border-purple-400 hover:from-purple-500 hover:to-indigo-600',
-          'active:from-purple-700 active:to-indigo-800 focus:ring-purple-400'
         );
       default:
         return baseStyles;
