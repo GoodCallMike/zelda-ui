@@ -51,51 +51,43 @@ export const HyruleButton = ({
     if (retro) return ''; // Skip variant styles if retro is used
     
     // Base rectangular special styling (triforcePixel inspired)
-    const baseStyles = {
-      fontFamily: 'monospace',
-      fontSize: '12px',
-      fontWeight: 'bold',
-      textTransform: 'uppercase' as const,
-      letterSpacing: '2px',
-      padding: '12px 24px',
-      position: 'relative' as const,
-      border: '3px solid',
-      borderRadius: '0px',
-      cursor: 'pointer',
-      boxShadow: 'inset 2px 2px 0px rgba(255,255,255,0.3), inset -2px -2px 0px rgba(0,0,0,0.3), 4px 4px 0px rgba(0,0,0,0.8)',
-    };
+    const baseStyles = cn(
+      'font-bold font-mono text-xs uppercase tracking-wider',
+      'border-2 border-solid relative px-6 py-3',
+      'shadow-triforce hover:shadow-triforce-hover active:shadow-triforce-active',
+      'hover:translate-x-0.5 hover:translate-y-0.5',
+      'active:translate-x-1 active:translate-y-1',
+      'focus:outline-none'
+    );
     
     switch (variant) {
       case 'primary':
-        return {
-          ...baseStyles,
-          background: '#ffd700',
-          borderColor: '#b8860b',
-          color: '#8b4513',
-        };
+        return cn(
+          baseStyles,
+          'bg-yellow-500 border-yellow-600 text-yellow-900'
+        );
       case 'secondary':
-        return {
-          ...baseStyles,
-          background: '#00ff88',
-          borderColor: '#004422',
-          color: '#ffffff',
-        };
+        return cn(
+          baseStyles,
+          'bg-green-500 border-green-600 text-white'
+        );
       case 'tertiary':
-        return {
-          ...baseStyles,
-          background: '#4a90e2',
-          borderColor: '#ffffff',
-          color: '#ffffff',
-        };
+        return cn(
+          baseStyles,
+          'bg-blue-500 border-blue-600 text-white'
+        );
       case 'link':
-        return 'font-bold text-blue-600 hover:text-blue-700 underline bg-transparent border-none shadow-none hover:bg-blue-50 active:text-blue-800 focus:outline-none';
+        return cn(
+          'font-bold text-blue-600 hover:text-blue-700 underline',
+          'bg-transparent border-none shadow-none',
+          'hover:bg-blue-50 active:text-blue-800',
+          'focus:outline-none'
+        );
       case 'destructive':
-        return {
-          ...baseStyles,
-          background: '#ff4444',
-          borderColor: '#cc0000',
-          color: '#ffffff',
-        };
+        return cn(
+          baseStyles,
+          'bg-red-500 border-red-600 text-white'
+        );
       default:
         return baseStyles;
     }
@@ -108,10 +100,9 @@ export const HyruleButton = ({
         'inline-flex items-center justify-center',
         icon && 'gap-2',
         getRetroStyles(),
-        typeof getVariantStyles() === 'string' && getVariantStyles(),
+        getVariantStyles(),
         disabled && 'opacity-50 cursor-not-allowed'
       )}
-      style={typeof getVariantStyles() === 'object' ? getVariantStyles() : undefined}
       onClick={onClick}
       disabled={disabled}
       data-testid={testId}

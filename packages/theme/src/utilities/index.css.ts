@@ -18,3 +18,4 @@ import './print.css';
 import './content.css';
 import './container-queries.css';
 import './gradients.css';
+import './shadows.css';
