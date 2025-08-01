@@ -125,7 +125,7 @@ globalStyle('.shadow-rupee-active', {
 });
 
 // Hover state shadows
-globalStyle('.hover\\:shadow-triforce:hover', {
+globalStyle('.hover\\\\:shadow-triforce-hover:hover', {
   boxShadow: `
     inset 2px 2px 0px #ffffcc,
     inset -2px -2px 0px #b8860b,
@@ -134,7 +134,7 @@ globalStyle('.hover\\:shadow-triforce:hover', {
   `,
 });
 
-globalStyle('.hover\\:shadow-retro-24:hover', {
+globalStyle('.hover\\\\:shadow-retro-24:hover', {
   boxShadow: `
     inset 2px 2px 0px #97defb,
     inset -2px -2px 0px #2e4a9a,
@@ -143,7 +143,7 @@ globalStyle('.hover\\:shadow-retro-24:hover', {
 });
 
 // Active state shadows
-globalStyle('.active\\:shadow-triforce:active', {
+globalStyle('.active\\\\:shadow-triforce-active:active', {
   boxShadow: `
     inset -2px -2px 0px #ffff8d,
     inset 2px 2px 0px #996f08,
@@ -152,10 +152,35 @@ globalStyle('.active\\:shadow-triforce:active', {
   `,
 });
 
-globalStyle('.active\\:shadow-retro-24:active', {
+globalStyle('.active\\\\:shadow-retro-24:active', {
   boxShadow: `
     inset -2px -2px 0px #87ceeb,
     inset 2px 2px 0px #0f1f5a,
     1px 1px 0px #000000
   `,
+});
+
+// Transform utilities for hover/active states
+globalStyle('.hover\\\\:translate-x-0\\.5:hover', {
+  transform: 'translateX(2px)',
+});
+
+globalStyle('.hover\\\\:translate-y-0\\.5:hover', {
+  transform: 'translateY(2px)',
+});
+
+globalStyle('.hover\\\\:translate-x-0\\.5.hover\\\\:translate-y-0\\.5:hover', {
+  transform: 'translate(2px, 2px)',
+});
+
+globalStyle('.active\\\\:translate-x-1:active', {
+  transform: 'translateX(4px)',
+});
+
+globalStyle('.active\\\\:translate-y-1:active', {
+  transform: 'translateY(4px)',
+});
+
+globalStyle('.active\\\\:translate-x-1.active\\\\:translate-y-1:active', {
+  transform: 'translate(4px, 4px)',
 });
