@@ -1,14 +1,13 @@
 import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '@zelda/core/styles';
-import { retro24Bit, retro32Bit, triforcePixel, rupeeGem, primaryPixel, secondaryPixel, tertiaryPixel, destructivePixel } from '@zelda/theme';
+import { primaryPixel, secondaryPixel, tertiaryPixel, destructivePixel } from '@zelda/theme';
 
 interface HyruleButtonProps {
   /** Button content */
   children: ReactNode;
   /** Button variant */
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'destructive';
-  /** Retro style variant */
-  retro?: '24bit' | '32bit' | 'triforce-pixel' | 'rupee-gem';
+
   /** Click handler function */
   onClick?: () => void;
   /** Whether button is disabled */
@@ -24,7 +23,7 @@ interface HyruleButtonProps {
 export const HyruleButton = ({
   children,
   variant = 'primary',
-  retro,
+
   onClick,
   disabled,
   icon,
@@ -32,23 +31,7 @@ export const HyruleButton = ({
   testId,
   ...props
 }: HyruleButtonProps) => {
-  const getRetroStyles = () => {
-    switch (retro) {
-      case '24bit':
-        return retro24Bit;
-      case '32bit':
-        return retro32Bit;
-      case 'triforce-pixel':
-        return triforcePixel;
-      case 'rupee-gem':
-        return rupeeGem;
-      default:
-        return null;
-    }
-  };
-
   const getVariantStyles = () => {
-    if (retro) return ''; // Skip variant styles if retro is used
     
     // Use specific colored variants with triforcePixel styling
     switch (variant) {
@@ -78,8 +61,7 @@ export const HyruleButton = ({
       className={cn(
         'inline-flex items-center justify-center',
         icon && 'gap-2',
-        getRetroStyles(),
-        !retro && getVariantStyles(),
+        getVariantStyles(),
         disabled && 'opacity-50 cursor-not-allowed'
       )}
       onClick={onClick}

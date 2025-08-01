@@ -28,8 +28,8 @@ import { HyruleButton } from '@zelda/hyrule';
 // Link variant
 <HyruleButton variant="link">Link Action</HyruleButton>
 
-// Retro styling
-<HyruleButton retro="24bit">ADVENTURE</HyruleButton>
+// Destructive variant
+<HyruleButton variant="destructive">Delete</HyruleButton>
 \`\`\`
 
 ## Styling
@@ -57,13 +57,13 @@ Clean text-only style with hover effects.
 ### Destructive
 Red heart-inspired gradient for destructive actions.
 
-## Retro Variants
+## Features
 
-Special retro styling options that override the default rectangular styling:
-- **24bit**: SNES-era pixelated styling
-- **32bit**: N64-era sophisticated gradients
-- **triforce-pixel**: Pixelated Triforce styling
-- **rupee-gem**: Gem-shaped rupee styling`,
+All variants use the same rectangular special styling with:
+- Chunky inset shadows and borders
+- Monospace font with wide letter spacing
+- Hover and active press effects
+- Proper cursor pointer feedback`,
       },
     },
   },
@@ -78,14 +78,7 @@ Special retro styling options that override the default rectangular styling:
         defaultValue: { summary: 'primary' },
       },
     },
-    retro: {
-      control: 'select',
-      options: ['24bit', '32bit', 'triforce-pixel', 'rupee-gem'],
-      description: 'Retro styling variant that overrides default rectangular styling',
-      table: {
-        type: { summary: 'string' },
-      },
-    },
+
     children: {
       control: 'text',
       description: 'Button content',
