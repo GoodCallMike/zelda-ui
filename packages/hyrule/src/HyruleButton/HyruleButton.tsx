@@ -1,6 +1,6 @@
 import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '@zelda/core/styles';
-import { retro24Bit, retro32Bit, triforcePixel, rupeeGem } from '@zelda/theme/src/hyrule-button.css';
+import { retro24Bit, retro32Bit, triforcePixel, rupeeGem } from '@zelda/theme/src/hyrule-button.css.ts';
 
 interface HyruleButtonProps {
   /** Button content */
