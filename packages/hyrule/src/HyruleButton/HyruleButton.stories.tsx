@@ -8,22 +8,25 @@ const meta: Meta<typeof HyruleButton> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `HyruleButton component with rectangular special styling and Zelda-themed variants.
+        component: `HyruleButton component with rectangular special styling and standard button variants.
 
 ## Overview
 
-The HyruleButton features premium rectangular special styling with gradient backgrounds, enhanced hover effects, and Zelda-themed color variants. All buttons use consistent rectangular special styling with variant-specific colors.
+The HyruleButton provides standard button variants (primary, secondary, tertiary, link, destructive) all using premium rectangular special styling with Zelda-inspired colors and effects.
 
 ## Quick Start
 
 \`\`\`tsx
 import { HyruleButton } from '@zelda/hyrule';
 
-// Default triforce styling
-<HyruleButton>Collect Triforce</HyruleButton>
+// Primary button (default)
+<HyruleButton>Primary Action</HyruleButton>
 
-// Rupee variant
-<HyruleButton variant="rupee">Collect Rupees</HyruleButton>
+// Secondary variant
+<HyruleButton variant="secondary">Secondary Action</HyruleButton>
+
+// Link variant
+<HyruleButton variant="link">Link Action</HyruleButton>
 
 // Retro styling
 <HyruleButton retro="24bit">ADVENTURE</HyruleButton>
@@ -31,7 +34,7 @@ import { HyruleButton } from '@zelda/hyrule';
 
 ## Styling
 
-All variants use rectangular special styling with:
+All variants (except link) use rectangular special styling with:
 - Gradient backgrounds with borders
 - Enhanced hover scaling effects
 - Consistent padding and typography
@@ -39,20 +42,20 @@ All variants use rectangular special styling with:
 
 ## Variants
 
-### Triforce (Default)
-Golden gradient with amber text and yellow borders.
+### Primary (Default)
+Golden Triforce-inspired gradient with amber text.
 
-### Rupee
-Emerald to teal gradient with white text.
+### Secondary
+Emerald rupee-inspired gradient with white text.
 
-### Master Sword
-Blue to indigo gradient representing the Master Sword.
+### Tertiary
+Blue Master Sword-inspired gradient with white text.
 
-### Heart
-Red to pink gradient inspired by heart containers.
+### Link
+Clean text-only style with hover effects.
 
-### Sheikah
-Purple to indigo gradient for Sheikah technology.
+### Destructive
+Red heart-inspired gradient for destructive actions.
 
 ## Retro Variants
 
@@ -103,7 +106,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Triforce Power',
+    children: 'Primary Button',
+    variant: 'primary',
   },
 };
 
