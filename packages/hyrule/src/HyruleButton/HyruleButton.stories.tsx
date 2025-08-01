@@ -8,62 +8,88 @@ const meta: Meta<typeof HyruleButton> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `HyruleButton component with rectangular special styling and standard button variants.
+        component: `HyruleButton component for Zelda-themed interfaces with comprehensive accessibility and testing support.
 
 ## Overview
 
-The HyruleButton provides standard button variants (primary, secondary, tertiary, link, destructive) all using premium rectangular special styling with Zelda-inspired colors and effects.
+The HyruleButton component provides standard button variants with rectangular special styling inspired by classic Zelda games. It supports all standard button patterns and maintains WCAG 2.1 AA accessibility compliance.
 
 ## Quick Start
 
 \`\`\`tsx
 import { HyruleButton } from '@zelda/hyrule';
 
-// Primary button (default)
-<HyruleButton>Primary Action</HyruleButton>
+// Basic usage
+<HyruleButton>Adventure</HyruleButton>
 
-// Secondary variant
-<HyruleButton variant="secondary">Secondary Action</HyruleButton>
-
-// Link variant
-<HyruleButton variant="link">Link Action</HyruleButton>
-
-// Destructive variant
-<HyruleButton variant="destructive">Delete</HyruleButton>
+// With variants
+<HyruleButton variant="secondary">Collect Rupees</HyruleButton>
 \`\`\`
-
-## Styling
-
-All variants (except link) use rectangular special styling with:
-- Gradient backgrounds with borders
-- Enhanced hover scaling effects
-- Consistent padding and typography
-- Premium shadow effects
 
 ## Variants
 
-### Primary (Default)
-Golden Triforce-inspired gradient with amber text.
+### Primary
+\`\`\`tsx
+<HyruleButton variant="primary">Primary Action</HyruleButton>
+\`\`\`
 
 ### Secondary
-Emerald rupee-inspired gradient with white text.
+\`\`\`tsx
+<HyruleButton variant="secondary">Secondary Action</HyruleButton>
+\`\`\`
 
 ### Tertiary
-Blue Master Sword-inspired gradient with white text.
+\`\`\`tsx
+<HyruleButton variant="tertiary">Tertiary Action</HyruleButton>
+\`\`\`
 
 ### Link
-Clean text-only style with hover effects.
+\`\`\`tsx
+<HyruleButton variant="link">Link Action</HyruleButton>
+\`\`\`
 
 ### Destructive
-Red heart-inspired gradient for destructive actions.
+\`\`\`tsx
+<HyruleButton variant="destructive">Delete</HyruleButton>
+\`\`\`
 
-## Features
+## Accessibility
 
-All variants use the same rectangular special styling with:
-- Chunky inset shadows and borders
-- Monospace font with wide letter spacing
-- Hover and active press effects
-- Proper cursor pointer feedback`,
+The HyruleButton component is fully accessible with:
+
+- **Keyboard Navigation**: Full keyboard support with proper focus management
+- **Screen Reader Support**: Semantic button element with proper labeling
+- **Focus Indicators**: Clear visual focus states for keyboard users
+
+\`\`\`tsx
+// Accessibility example
+<HyruleButton testId="adventure-btn">Start Adventure</HyruleButton>
+\`\`\`
+
+## Testing
+
+Built-in testing support with \`testId\` prop:
+
+\`\`\`tsx
+<HyruleButton testId="adventure-button">Adventure</HyruleButton>
+\`\`\`
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('adventure-button');
+\`\`\`
+
+## Best Practices
+
+### Do
+- Use primary for main actions
+- Use destructive for dangerous actions
+- Provide clear, action-oriented labels
+
+### Don't
+- Use multiple primary buttons in the same context
+- Use destructive variant for non-destructive actions
+- Make button text too long`,
       },
     },
   },
