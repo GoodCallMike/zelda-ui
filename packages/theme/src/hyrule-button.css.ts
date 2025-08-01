@@ -402,11 +402,11 @@ export const destructivePixel = style({
     4px 4px 0px #000000,
     0 0 20px rgba(220, 38, 38, 0.6)
   `,
-  color: '#dc2626',
+  color: '#ef4444',
   fontFamily: 'monospace',
   fontSize: '12px',
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px #000000, 0 0 10px rgba(220, 38, 38, 0.8)',
+  textShadow: '1px 1px 0px #000000, 0 0 10px rgba(239, 68, 68, 0.9)',
   textTransform: 'uppercase',
   letterSpacing: '2px',
   padding: '12px 24px',
