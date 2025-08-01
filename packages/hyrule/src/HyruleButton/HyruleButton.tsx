@@ -53,10 +53,11 @@ export const HyruleButton = ({
     // Base rectangular special styling (triforcePixel inspired)
     const baseStyles = cn(
       'font-bold font-mono text-xs uppercase tracking-wider',
-      'border-2 border-solid relative px-6 py-3',
+      'border-2 border-solid relative px-6 py-3 cursor-pointer',
       'shadow-triforce hover:shadow-triforce-hover active:shadow-triforce-active',
       'hover:translate-x-0.5 hover:translate-y-0.5',
       'active:translate-x-1 active:translate-y-1',
+      'transition-all duration-75',
       'focus:outline-none'
     );
     
