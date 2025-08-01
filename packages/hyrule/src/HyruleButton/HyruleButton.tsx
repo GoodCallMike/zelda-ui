@@ -50,33 +50,14 @@ export const HyruleButton = ({
   const getVariantStyles = () => {
     if (retro) return ''; // Skip variant styles if retro is used
     
-    // Base rectangular special styling (triforcePixel inspired)
-    const baseStyles = cn(
-      'font-bold font-mono text-xs uppercase tracking-wider',
-      'border-2 border-solid relative px-6 py-3 cursor-pointer',
-      'shadow-triforce hover:shadow-triforce-hover active:shadow-triforce-active',
-      'hover:translate-x-0.5 hover:translate-y-0.5',
-      'active:translate-x-1 active:translate-y-1',
-      'transition-all duration-75',
-      'focus:outline-none'
-    );
-    
+    // Use the exact triforcePixel styling for all variants
     switch (variant) {
       case 'primary':
-        return cn(
-          baseStyles,
-          'bg-yellow-500 border-yellow-600 text-yellow-900'
-        );
+        return triforcePixel;
       case 'secondary':
-        return cn(
-          baseStyles,
-          'bg-green-500 border-green-600 text-white'
-        );
+        return triforcePixel;
       case 'tertiary':
-        return cn(
-          baseStyles,
-          'bg-blue-500 border-blue-600 text-white'
-        );
+        return triforcePixel;
       case 'link':
         return cn(
           'font-bold text-blue-600 hover:text-blue-700 underline',
@@ -85,12 +66,9 @@ export const HyruleButton = ({
           'focus:outline-none'
         );
       case 'destructive':
-        return cn(
-          baseStyles,
-          'bg-red-500 border-red-600 text-white'
-        );
+        return triforcePixel;
       default:
-        return baseStyles;
+        return triforcePixel;
     }
   };
 
@@ -101,7 +79,7 @@ export const HyruleButton = ({
         'inline-flex items-center justify-center',
         icon && 'gap-2',
         getRetroStyles(),
-        getVariantStyles(),
+        !retro && getVariantStyles(),
         disabled && 'opacity-50 cursor-not-allowed'
       )}
       onClick={onClick}
