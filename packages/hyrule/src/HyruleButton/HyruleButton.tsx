@@ -52,7 +52,7 @@ export const HyruleButton = ({
     
     // Base rectangular special styling for all variants
     const baseStyles = cn(
-      'font-bold shadow-lg border-2',
+      'font-bold text-white shadow-lg border-2',
       'hover:shadow-xl active:scale-95',
       'focus:ring-2 focus:ring-offset-2'
     );
@@ -61,23 +61,20 @@ export const HyruleButton = ({
       case 'primary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-yellow-400 to-orange-500 text-yellow-900',
-          'border-yellow-300 hover:from-yellow-300 hover:to-orange-400',
-          'active:from-yellow-500 active:to-orange-600 focus:ring-yellow-400'
+          'bg-yellow-500 text-yellow-900 border-yellow-400',
+          'hover:bg-yellow-400 active:bg-yellow-600 focus:ring-yellow-400'
         );
       case 'secondary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-green-500 to-teal-600 text-white',
-          'border-green-400 hover:from-green-400 hover:to-teal-500',
-          'active:from-green-600 active:to-teal-700 focus:ring-green-400'
+          'bg-green-600 border-green-500',
+          'hover:bg-green-500 active:bg-green-700 focus:ring-green-400'
         );
       case 'tertiary':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-blue-500 to-purple-600 text-white',
-          'border-blue-400 hover:from-blue-400 hover:to-purple-500',
-          'active:from-blue-600 active:to-purple-700 focus:ring-blue-400'
+          'bg-blue-600 border-blue-500',
+          'hover:bg-blue-500 active:bg-blue-700 focus:ring-blue-400'
         );
       case 'link':
         return cn(
@@ -89,9 +86,8 @@ export const HyruleButton = ({
       case 'destructive':
         return cn(
           baseStyles,
-          'bg-gradient-to-br from-red-500 to-pink-600 text-white',
-          'border-red-400 hover:from-red-400 hover:to-pink-500',
-          'active:from-red-600 active:to-pink-700 focus:ring-red-400'
+          'bg-red-600 border-red-500',
+          'hover:bg-red-500 active:bg-red-700 focus:ring-red-400'
         );
       default:
         return baseStyles;
