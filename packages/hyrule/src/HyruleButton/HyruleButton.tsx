@@ -50,44 +50,46 @@ export const HyruleButton = ({
   const getVariantStyles = () => {
     if (retro) return ''; // Skip variant styles if retro is used
     
-    // Base rectangular special styling for all variants
+    // Base rectangular special styling (retro24Bit inspired)
     const baseStyles = cn(
-      'font-bold text-white shadow-lg border-2',
-      'hover:shadow-xl active:scale-95',
-      'focus:ring-2 focus:ring-offset-2'
+      'font-bold text-white border-2 border-solid',
+      'shadow-[3px_3px_0px_#000000]',
+      'hover:shadow-[2px_2px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5',
+      'active:shadow-[1px_1px_0px_#000000] active:translate-x-1 active:translate-y-1',
+      'focus:outline-none'
     );
     
     switch (variant) {
       case 'primary':
         return cn(
           baseStyles,
-          'bg-yellow-500 text-yellow-900 border-yellow-400',
-          'hover:bg-yellow-400 active:bg-yellow-600 focus:ring-yellow-400'
+          'bg-blue-600 border-white text-white',
+          'hover:bg-blue-500 active:bg-blue-700'
         );
       case 'secondary':
         return cn(
           baseStyles,
-          'bg-green-600 border-green-500',
-          'hover:bg-green-500 active:bg-green-700 focus:ring-green-400'
+          'bg-green-600 border-white text-white',
+          'hover:bg-green-500 active:bg-green-700'
         );
       case 'tertiary':
         return cn(
           baseStyles,
-          'bg-blue-600 border-blue-500',
-          'hover:bg-blue-500 active:bg-blue-700 focus:ring-blue-400'
+          'bg-purple-600 border-white text-white',
+          'hover:bg-purple-500 active:bg-purple-700'
         );
       case 'link':
         return cn(
           'font-bold text-blue-600 hover:text-blue-700 underline',
           'bg-transparent border-none shadow-none',
           'hover:bg-blue-50 active:text-blue-800',
-          'focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+          'focus:outline-none'
         );
       case 'destructive':
         return cn(
           baseStyles,
-          'bg-red-600 border-red-500',
-          'hover:bg-red-500 active:bg-red-700 focus:ring-red-400'
+          'bg-red-600 border-white text-white',
+          'hover:bg-red-500 active:bg-red-700'
         );
       default:
         return baseStyles;
@@ -98,11 +100,11 @@ export const HyruleButton = ({
     <button
       type="button"
       className={cn(
-        // Base rectangular special styling
-        'inline-flex items-center justify-center px-6 py-3',
-        'cursor-pointer transition-all duration-200',
-        'focus:outline-none uppercase tracking-wide',
-        'transform hover:scale-105 active:scale-95',
+        // Rectangular special styling (retro24Bit inspired)
+        'inline-flex items-center justify-center px-4 py-2',
+        'cursor-pointer font-bold uppercase tracking-wide',
+        'focus:outline-none border-2 border-solid',
+        'transform active:translate-x-0.5 active:translate-y-0.5',
         // Retro overrides
         retro && 'px-4 py-2',
         icon && 'gap-2',
