@@ -350,22 +350,22 @@ export const secondaryPixel = style({
   }
 });
 
-// Tertiary variant (blue style)
+// Tertiary variant (outline style with Hylian theme)
 export const tertiaryPixel = style({
-  background: '#4a90e2',
-  border: '3px solid #ffffff',
+  background: 'transparent',
+  border: '3px solid #3b82f6',
   borderRadius: '0px',
   boxShadow: `
-    inset 2px 2px 0px #87ceeb,
-    inset -2px -2px 0px #1e3a8a,
-    4px 4px 0px #000000,
-    0 0 20px rgba(74, 144, 226, 0.5)
+    inset 2px 2px 0px rgba(59, 130, 246, 0.2),
+    inset -2px -2px 0px rgba(30, 58, 138, 0.3),
+    4px 4px 0px rgba(30, 58, 138, 0.8),
+    0 0 20px rgba(59, 130, 246, 0.4)
   `,
-  color: '#ffffff',
+  color: '#3b82f6',
   fontFamily: 'monospace',
   fontSize: '12px',
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px #000000',
+  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.8), 0 0 8px rgba(59, 130, 246, 0.6)',
   textTransform: 'uppercase',
   letterSpacing: '2px',
   padding: '12px 24px',
@@ -373,24 +373,28 @@ export const tertiaryPixel = style({
   cursor: 'pointer',
   
   ':hover': {
-    background: '#5ba0f2',
+    background: 'rgba(59, 130, 246, 0.1)',
+    border: '3px solid #60a5fa',
     boxShadow: `
-      inset 2px 2px 0px #97defb,
-      inset -2px -2px 0px #2e4a9a,
-      3px 3px 0px #000000,
-      0 0 25px rgba(74, 144, 226, 0.7)
+      inset 2px 2px 0px rgba(96, 165, 250, 0.3),
+      inset -2px -2px 0px rgba(30, 58, 138, 0.2),
+      3px 3px 0px rgba(30, 58, 138, 0.8),
+      0 0 25px rgba(59, 130, 246, 0.6)
     `,
+    color: '#60a5fa',
     transform: 'translate(1px, 1px)',
   },
   
   ':active': {
-    background: '#2c5aa0',
+    background: 'rgba(59, 130, 246, 0.2)',
+    border: '3px solid #1d4ed8',
     boxShadow: `
-      inset -2px -2px 0px #87ceeb,
-      inset 2px 2px 0px #0f1f5a,
-      2px 2px 0px #000000,
-      0 0 15px rgba(74, 144, 226, 0.3)
+      inset -2px -2px 0px rgba(96, 165, 250, 0.2),
+      inset 2px 2px 0px rgba(30, 58, 138, 0.4),
+      2px 2px 0px rgba(30, 58, 138, 0.8),
+      0 0 15px rgba(59, 130, 246, 0.3)
     `,
+    color: '#1d4ed8',
     transform: 'translate(2px, 2px)',
   }
 });
