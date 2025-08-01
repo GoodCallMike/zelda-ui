@@ -389,22 +389,24 @@ export const tertiaryPixel = style({
   }
 });
 
-// Destructive variant (red style)
+// Destructive variant (Ganon-inspired dark style)
 export const destructivePixel = style({
-  background: '#dc2626',
-  border: '3px solid #ffffff',
+  background: `
+    linear-gradient(135deg, #4c1d95 0%, #7c2d12 50%, #1f2937 100%)
+  `,
+  border: '3px solid #dc2626',
   borderRadius: '0px',
   boxShadow: `
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    inset -2px -2px 0px rgba(0,0,0,0.3),
-    4px 4px 0px #7f1d1d,
-    0 0 20px rgba(220, 38, 38, 0.5)
+    inset 2px 2px 0px rgba(139, 69, 19, 0.3),
+    inset -2px -2px 0px rgba(0, 0, 0, 0.8),
+    4px 4px 0px #000000,
+    0 0 20px rgba(220, 38, 38, 0.6)
   `,
-  color: '#ffffff',
+  color: '#dc2626',
   fontFamily: 'monospace',
   fontSize: '12px',
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px rgba(0,0,0,0.8)',
+  textShadow: '1px 1px 0px #000000, 0 0 10px rgba(220, 38, 38, 0.8)',
   textTransform: 'uppercase',
   letterSpacing: '2px',
   padding: '12px 24px',
@@ -412,23 +414,27 @@ export const destructivePixel = style({
   cursor: 'pointer',
   
   ':hover': {
-    background: '#ef4444',
+    background: `
+      linear-gradient(135deg, #5b21b6 0%, #92400e 50%, #374151 100%)
+    `,
     boxShadow: `
-      inset 2px 2px 0px rgba(255,255,255,0.4),
-      inset -2px -2px 0px rgba(0,0,0,0.2),
-      3px 3px 0px #7f1d1d,
-      0 0 25px rgba(220, 38, 38, 0.7)
+      inset 2px 2px 0px rgba(139, 69, 19, 0.4),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.6),
+      3px 3px 0px #000000,
+      0 0 25px rgba(220, 38, 38, 0.8)
     `,
     transform: 'translate(1px, 1px)',
   },
   
   ':active': {
-    background: '#991b1b',
+    background: `
+      linear-gradient(135deg, #3730a3 0%, #451a03 50%, #111827 100%)
+    `,
     boxShadow: `
-      inset -2px -2px 0px rgba(255,255,255,0.2),
-      inset 2px 2px 0px rgba(0,0,0,0.4),
-      2px 2px 0px #7f1d1d,
-      0 0 15px rgba(220, 38, 38, 0.3)
+      inset -2px -2px 0px rgba(139, 69, 19, 0.2),
+      inset 2px 2px 0px rgba(0, 0, 0, 0.9),
+      2px 2px 0px #000000,
+      0 0 15px rgba(220, 38, 38, 0.4)
     `,
     transform: 'translate(2px, 2px)',
   }

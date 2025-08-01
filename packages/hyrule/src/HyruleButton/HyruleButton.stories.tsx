@@ -157,36 +157,6 @@ export const States: Story = {
   ),
 };
 
-export const RetroVariants: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div>
-        <h3 className="text-lg font-semibold mb-3">24-bit Retro (SNES Era)</h3>
-        <div className="flex gap-4">
-          <HyruleButton retro="24bit">ADVENTURE</HyruleButton>
-          <HyruleButton retro="24bit" disabled>DISABLED</HyruleButton>
-        </div>
-      </div>
-      
-      <div>
-        <h3 className="text-lg font-semibold mb-3">32-bit Retro (N64 Era)</h3>
-        <div className="flex gap-4">
-          <HyruleButton retro="32bit">QUEST</HyruleButton>
-          <HyruleButton retro="32bit" disabled>LOCKED</HyruleButton>
-        </div>
-      </div>
-      
-      <div>
-        <h3 className="text-lg font-semibold mb-3">Special Retro Variants</h3>
-        <div className="flex gap-4">
-          <HyruleButton retro="triforce-pixel">TRIFORCE</HyruleButton>
-          <HyruleButton retro="rupee-gem">RUPEE</HyruleButton>
-        </div>
-      </div>
-    </div>
-  ),
-};
-
 export const HyruleInterface: Story = {
   render: () => (
     <div className="bg-slate-900 p-8 rounded-lg space-y-6">
