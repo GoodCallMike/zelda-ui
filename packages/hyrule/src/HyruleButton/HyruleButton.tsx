@@ -1,11 +1,14 @@
 import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '@zelda/core/styles';
+import { retro24Bit, retro32Bit, triforcePixel, rupeeGem } from './HyruleButton.css';
 
 interface HyruleButtonProps {
   /** Button content */
   children: ReactNode;
   /** Hyrule-themed variant */
   variant?: 'triforce' | 'rupee' | 'master-sword' | 'heart' | 'sheikah';
+  /** Retro style variant */
+  retro?: '24bit' | '32bit' | 'triforce-pixel' | 'rupee-gem';
   /** Click handler function */
   onClick?: () => void;
   /** Whether button is disabled */
@@ -21,6 +24,7 @@ interface HyruleButtonProps {
 export const HyruleButton = ({
   children,
   variant = 'triforce',
+  retro,
   onClick,
   disabled,
   icon,
@@ -28,7 +32,24 @@ export const HyruleButton = ({
   testId,
   ...props
 }: HyruleButtonProps) => {
+  const getRetroStyles = () => {
+    switch (retro) {
+      case '24bit':
+        return retro24Bit;
+      case '32bit':
+        return retro32Bit;
+      case 'triforce-pixel':
+        return triforcePixel;
+      case 'rupee-gem':
+        return rupeeGem;
+      default:
+        return null;
+    }
+  };
+
   const getVariantStyles = () => {
+    if (retro) return ''; // Skip variant styles if retro is used
+    
     switch (variant) {
       case 'triforce':
         return cn(
@@ -79,11 +100,13 @@ export const HyruleButton = ({
     <button
       type="button"
       className={cn(
-        'inline-flex items-center justify-center px-4 py-2 rounded font-semibold uppercase',
-        'cursor-pointer transition-all duration-200',
-        'focus:outline-none focus:ring-2 focus:ring-offset-2',
-        'active:scale-95 active:transition-transform active:duration-75',
+        !retro && 'inline-flex items-center justify-center px-4 py-2 rounded font-semibold uppercase',
+        !retro && 'cursor-pointer transition-all duration-200',
+        !retro && 'focus:outline-none focus:ring-2 focus:ring-offset-2',
+        !retro && 'active:scale-95 active:transition-transform active:duration-75',
+        retro && 'inline-flex items-center justify-center cursor-pointer',
         icon && 'gap-2',
+        getRetroStyles(),
         getVariantStyles(),
         disabled && 'opacity-50 cursor-not-allowed'
       )}
