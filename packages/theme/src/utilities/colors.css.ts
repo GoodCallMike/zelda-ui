@@ -15,6 +15,7 @@ colorNames.forEach(color => {
 
 globalStyle('.bg-white', { backgroundColor: colors.white });
 globalStyle('.bg-black', { backgroundColor: colors.black });
+globalStyle('.bg-transparent', { backgroundColor: 'transparent' });
 
 // Text colors
 colorNames.forEach(color => {

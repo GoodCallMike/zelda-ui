@@ -43,7 +43,7 @@ export const Button = ({
           : 'px-4 py-2 rounded font-semibold uppercase',
         'cursor-pointer transition-colors',
         variant !== 'outline' && 'border-none',
-        variant === 'link' && 'bg-transparent',
+        variant === 'link' && 'bg-transparent hover:bg-blue-50',
         'zelda-effect',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
         'active:scale-95 active:transition-transform active:duration-75',
@@ -59,7 +59,7 @@ export const Button = ({
         variant === 'outline' &&
           'border border-solid border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-100 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700',
         variant === 'link' &&
-          'text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
+          'text-blue-600 hover:text-blue-700 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
         variant === 'destructive' &&
           'bg-red-600 text-white hover:bg-red-500 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700',
 
