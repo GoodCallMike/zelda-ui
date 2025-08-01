@@ -8,40 +8,59 @@ const meta: Meta<typeof HyruleButton> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `HyruleButton component with Zelda-themed variants for mystical interfaces.
+        component: `HyruleButton component with rectangular special styling and Zelda-themed variants.
 
 ## Overview
 
-The HyruleButton provides Zelda-themed button variants inspired by the world of Hyrule. Each variant represents different elements from the Zelda universe with unique styling and effects.
+The HyruleButton features premium rectangular special styling with gradient backgrounds, enhanced hover effects, and Zelda-themed color variants. All buttons use consistent rectangular special styling with variant-specific colors.
 
 ## Quick Start
 
 \`\`\`tsx
 import { HyruleButton } from '@zelda/hyrule';
 
-// Triforce button
-<HyruleButton variant="triforce">Collect Triforce</HyruleButton>
+// Default triforce styling
+<HyruleButton>Collect Triforce</HyruleButton>
 
-// Rupee button  
+// Rupee variant
 <HyruleButton variant="rupee">Collect Rupees</HyruleButton>
+
+// Retro styling
+<HyruleButton retro="24bit">ADVENTURE</HyruleButton>
 \`\`\`
+
+## Styling
+
+All variants use rectangular special styling with:
+- Gradient backgrounds with borders
+- Enhanced hover scaling effects
+- Consistent padding and typography
+- Premium shadow effects
 
 ## Variants
 
-### Triforce
-Golden button representing the legendary Triforce.
+### Triforce (Default)
+Golden gradient with amber text and yellow borders.
 
 ### Rupee
-Emerald green button inspired by rupee gems.
+Emerald to teal gradient with white text.
 
 ### Master Sword
-Blue gradient button representing the Master Sword.
+Blue to indigo gradient representing the Master Sword.
 
 ### Heart
-Red gradient button inspired by heart containers.
+Red to pink gradient inspired by heart containers.
 
 ### Sheikah
-Purple gradient button representing Sheikah technology.`,
+Purple to indigo gradient for Sheikah technology.
+
+## Retro Variants
+
+Special retro styling options that override the default rectangular styling:
+- **24bit**: SNES-era pixelated styling
+- **32bit**: N64-era sophisticated gradients
+- **triforce-pixel**: Pixelated Triforce styling
+- **rupee-gem**: Gem-shaped rupee styling`,
       },
     },
   },
@@ -50,10 +69,18 @@ Purple gradient button representing Sheikah technology.`,
     variant: {
       control: 'select',
       options: ['triforce', 'rupee', 'master-sword', 'heart', 'sheikah'],
-      description: 'Hyrule-themed visual variant',
+      description: 'Hyrule-themed color variant (all use rectangular special styling)',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'triforce' },
+      },
+    },
+    retro: {
+      control: 'select',
+      options: ['24bit', '32bit', 'triforce-pixel', 'rupee-gem'],
+      description: 'Retro styling variant that overrides default rectangular styling',
+      table: {
+        type: { summary: 'string' },
       },
     },
     children: {
