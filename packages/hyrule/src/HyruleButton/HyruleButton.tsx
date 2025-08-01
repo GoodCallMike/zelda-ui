@@ -1,6 +1,6 @@
 import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '@zelda/core/styles';
-import { retro24Bit, retro32Bit, triforcePixel, rupeeGem } from '@zelda/theme';
+import { retro24Bit, retro32Bit, triforcePixel, rupeeGem, primaryPixel, secondaryPixel, tertiaryPixel, destructivePixel } from '@zelda/theme';
 
 interface HyruleButtonProps {
   /** Button content */
@@ -50,14 +50,14 @@ export const HyruleButton = ({
   const getVariantStyles = () => {
     if (retro) return ''; // Skip variant styles if retro is used
     
-    // Use the exact triforcePixel styling for all variants
+    // Use specific colored variants with triforcePixel styling
     switch (variant) {
       case 'primary':
-        return triforcePixel;
+        return primaryPixel;
       case 'secondary':
-        return triforcePixel;
+        return secondaryPixel;
       case 'tertiary':
-        return triforcePixel;
+        return tertiaryPixel;
       case 'link':
         return cn(
           'font-bold text-blue-600 hover:text-blue-700 underline',
@@ -66,9 +66,9 @@ export const HyruleButton = ({
           'focus:outline-none'
         );
       case 'destructive':
-        return triforcePixel;
+        return destructivePixel;
       default:
-        return triforcePixel;
+        return primaryPixel;
     }
   };
 

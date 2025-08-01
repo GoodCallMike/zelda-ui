@@ -130,6 +130,7 @@ export const triforcePixel = style({
   letterSpacing: '2px',
   padding: '12px 24px',
   position: 'relative',
+  cursor: 'pointer',
   
   ':before': {
     content: '""',
@@ -238,5 +239,197 @@ export const rupeeGem = style({
       0 0 0 1px #002211
     `,
     transform: 'scale(0.98)',
+  }
+});
+
+// Primary variant (golden triforce style)
+export const primaryPixel = style({
+  background: `
+    conic-gradient(from 0deg at 50% 50%, 
+      #ffd700 0deg, #ffed4e 60deg, #ffc107 120deg, 
+      #ff8f00 180deg, #ffb300 240deg, #ffd700 360deg)
+  `,
+  border: '3px solid #b8860b',
+  borderRadius: '0px',
+  boxShadow: `
+    inset 2px 2px 0px #ffff8d,
+    inset -2px -2px 0px #cc8400,
+    4px 4px 0px #8b4513,
+    0 0 20px rgba(255, 215, 0, 0.5)
+  `,
+  color: '#8b4513',
+  fontFamily: 'monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  textShadow: '1px 1px 0px #ffff8d, -1px -1px 0px #cc8400',
+  textTransform: 'uppercase',
+  letterSpacing: '2px',
+  padding: '12px 24px',
+  position: 'relative',
+  cursor: 'pointer',
+  
+  ':hover': {
+    background: `
+      conic-gradient(from 0deg at 50% 50%, 
+        #ffed4e 0deg, #ffff8d 60deg, #ffd700 120deg, 
+        #ffa000 180deg, #ffc107 240deg, #ffed4e 360deg)
+    `,
+    boxShadow: `
+      inset 2px 2px 0px #ffffcc,
+      inset -2px -2px 0px #b8860b,
+      3px 3px 0px #8b4513,
+      0 0 25px rgba(255, 215, 0, 0.7)
+    `,
+    transform: 'translate(1px, 1px)',
+  },
+  
+  ':active': {
+    background: `
+      conic-gradient(from 0deg at 50% 50%, 
+        #cc8400 0deg, #daa520 60deg, #b8860b 120deg, 
+        #996f08 180deg, #cc8400 240deg, #cc8400 360deg)
+    `,
+    boxShadow: `
+      inset -2px -2px 0px #ffff8d,
+      inset 2px 2px 0px #996f08,
+      2px 2px 0px #8b4513,
+      0 0 15px rgba(255, 215, 0, 0.3)
+    `,
+    transform: 'translate(2px, 2px)',
+  }
+});
+
+// Secondary variant (green rupee style)
+export const secondaryPixel = style({
+  background: '#00cc66',
+  border: '3px solid #004422',
+  borderRadius: '0px',
+  boxShadow: `
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    inset -2px -2px 0px rgba(0,0,0,0.3),
+    4px 4px 0px #002211,
+    0 0 20px rgba(0, 204, 102, 0.5)
+  `,
+  color: '#ffffff',
+  fontFamily: 'monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  textShadow: '1px 1px 0px rgba(0,0,0,0.8)',
+  textTransform: 'uppercase',
+  letterSpacing: '2px',
+  padding: '12px 24px',
+  position: 'relative',
+  cursor: 'pointer',
+  
+  ':hover': {
+    background: '#00dd77',
+    boxShadow: `
+      inset 2px 2px 0px rgba(255,255,255,0.4),
+      inset -2px -2px 0px rgba(0,0,0,0.2),
+      3px 3px 0px #002211,
+      0 0 25px rgba(0, 204, 102, 0.7)
+    `,
+    transform: 'translate(1px, 1px)',
+  },
+  
+  ':active': {
+    background: '#009944',
+    boxShadow: `
+      inset -2px -2px 0px rgba(255,255,255,0.2),
+      inset 2px 2px 0px rgba(0,0,0,0.4),
+      2px 2px 0px #002211,
+      0 0 15px rgba(0, 204, 102, 0.3)
+    `,
+    transform: 'translate(2px, 2px)',
+  }
+});
+
+// Tertiary variant (blue style)
+export const tertiaryPixel = style({
+  background: '#4a90e2',
+  border: '3px solid #ffffff',
+  borderRadius: '0px',
+  boxShadow: `
+    inset 2px 2px 0px #87ceeb,
+    inset -2px -2px 0px #1e3a8a,
+    4px 4px 0px #000000,
+    0 0 20px rgba(74, 144, 226, 0.5)
+  `,
+  color: '#ffffff',
+  fontFamily: 'monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  textShadow: '1px 1px 0px #000000',
+  textTransform: 'uppercase',
+  letterSpacing: '2px',
+  padding: '12px 24px',
+  position: 'relative',
+  cursor: 'pointer',
+  
+  ':hover': {
+    background: '#5ba0f2',
+    boxShadow: `
+      inset 2px 2px 0px #97defb,
+      inset -2px -2px 0px #2e4a9a,
+      3px 3px 0px #000000,
+      0 0 25px rgba(74, 144, 226, 0.7)
+    `,
+    transform: 'translate(1px, 1px)',
+  },
+  
+  ':active': {
+    background: '#2c5aa0',
+    boxShadow: `
+      inset -2px -2px 0px #87ceeb,
+      inset 2px 2px 0px #0f1f5a,
+      2px 2px 0px #000000,
+      0 0 15px rgba(74, 144, 226, 0.3)
+    `,
+    transform: 'translate(2px, 2px)',
+  }
+});
+
+// Destructive variant (red style)
+export const destructivePixel = style({
+  background: '#dc2626',
+  border: '3px solid #ffffff',
+  borderRadius: '0px',
+  boxShadow: `
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    inset -2px -2px 0px rgba(0,0,0,0.3),
+    4px 4px 0px #7f1d1d,
+    0 0 20px rgba(220, 38, 38, 0.5)
+  `,
+  color: '#ffffff',
+  fontFamily: 'monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  textShadow: '1px 1px 0px rgba(0,0,0,0.8)',
+  textTransform: 'uppercase',
+  letterSpacing: '2px',
+  padding: '12px 24px',
+  position: 'relative',
+  cursor: 'pointer',
+  
+  ':hover': {
+    background: '#ef4444',
+    boxShadow: `
+      inset 2px 2px 0px rgba(255,255,255,0.4),
+      inset -2px -2px 0px rgba(0,0,0,0.2),
+      3px 3px 0px #7f1d1d,
+      0 0 25px rgba(220, 38, 38, 0.7)
+    `,
+    transform: 'translate(1px, 1px)',
+  },
+  
+  ':active': {
+    background: '#991b1b',
+    boxShadow: `
+      inset -2px -2px 0px rgba(255,255,255,0.2),
+      inset 2px 2px 0px rgba(0,0,0,0.4),
+      2px 2px 0px #7f1d1d,
+      0 0 15px rgba(220, 38, 38, 0.3)
+    `,
+    transform: 'translate(2px, 2px)',
   }
 });
