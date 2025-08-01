@@ -76,7 +76,7 @@ const opacities = [10, 20, 30, 40, 50, 60, 70, 80, 90] as const;
 opacities.forEach(opacity => {
   globalStyle(`.bg-opacity-${opacity}`, {
     '--tw-bg-opacity': `${opacity / 100}`,
-  });
+  } as any);
   globalStyle(`.bg-black\\.bg-opacity-${opacity}`, {
     backgroundColor: `rgba(0, 0, 0, ${opacity / 100})`,
   });

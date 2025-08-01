@@ -81,8 +81,8 @@ globalStyle('.snap-none', { scrollSnapType: 'none' });
 globalStyle('.snap-x', { scrollSnapType: 'x var(--tw-scroll-snap-strictness)' });
 globalStyle('.snap-y', { scrollSnapType: 'y var(--tw-scroll-snap-strictness)' });
 globalStyle('.snap-both', { scrollSnapType: 'both var(--tw-scroll-snap-strictness)' });
-globalStyle('.snap-mandatory', { '--tw-scroll-snap-strictness': 'mandatory' });
-globalStyle('.snap-proximity', { '--tw-scroll-snap-strictness': 'proximity' });
+globalStyle('.snap-mandatory', { '--tw-scroll-snap-strictness': 'mandatory' } as any);
+globalStyle('.snap-proximity', { '--tw-scroll-snap-strictness': 'proximity' } as any);
 
 globalStyle('.snap-start', { scrollSnapAlign: 'start' });
 globalStyle('.snap-end', { scrollSnapAlign: 'end' });
