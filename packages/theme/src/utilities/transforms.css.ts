@@ -10,6 +10,14 @@ globalStyle('.cursor-not-allowed', {
 });
 
 // Transform utilities
+globalStyle('.transform', {
+  transform: 'var(--tw-transform)',
+});
+
+globalStyle('.-translate-y-1\\/2', {
+  transform: 'translateY(-50%)',
+});
+
 globalStyle('.translate-x-0\\.5', {
   transform: 'translateX(2px)',
 });

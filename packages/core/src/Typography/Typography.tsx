@@ -57,7 +57,7 @@ export const Typography = ({
 
   return (
     <Component
-      className={cn(getVariantStyles(), getColorStyles())}
+      className={cn('font-sans', getVariantStyles(), getColorStyles())}
       data-testid={testId}
       {...props}
     >

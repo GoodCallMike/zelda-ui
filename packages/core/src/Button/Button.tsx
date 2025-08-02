@@ -1,6 +1,8 @@
-import type { ComponentType, ReactNode, SVGProps } from 'react';
+import type { ReactNode } from 'react';
 import { cn } from '../styles';
 import styles from './Button.module.css';
+
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 export interface ButtonProps {
   /** Button content */
@@ -12,7 +14,7 @@ export interface ButtonProps {
   /** Whether button is disabled */
   disabled?: boolean;
   /** Icon component to display */
-  icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  icon?: IconComponent;
   /** Icon position */
   iconPosition?: 'left' | 'right';
   /** Test identifier */

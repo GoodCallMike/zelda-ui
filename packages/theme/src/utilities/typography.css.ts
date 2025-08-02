@@ -1,5 +1,16 @@
 import { globalStyle } from '@vanilla-extract/css';
 
+// Font family utilities
+globalStyle('.font-sans', { 
+  fontFamily: '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+});
+globalStyle('.font-serif', { 
+  fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif'
+});
+globalStyle('.font-mono', { 
+  fontFamily: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+});
+
 // Font size utilities
 globalStyle('.text-xs', { fontSize: 'var(--text-xs)' });
 globalStyle('.text-sm', { fontSize: 'var(--text-sm)' });

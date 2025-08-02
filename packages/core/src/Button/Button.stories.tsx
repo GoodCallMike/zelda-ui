@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Button> = {
   title: 'General/Button',
@@ -285,6 +286,26 @@ export const DarkMode: Story = {
   },
 };
 
+export const WithIcons: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-3">
+        <Button variant="primary" icon={SearchLgIcon}>Search</Button>
+        <Button variant="default" icon={PlusIcon}>Add Item</Button>
+        <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
+        <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Buttons with icons from the @zelda/icons package, showing left and right positioning.',
+      },
+    },
+  },
+};
+
 export const Examples: Story = {
   name: 'Adventure Examples',
   render: () => (
@@ -312,7 +333,7 @@ export const Examples: Story = {
         <div className="flex gap-2">
           <Button variant="primary">Save Game</Button>
           <Button variant="default">Quick Save</Button>
-          <Button variant="destructive">Delete Save</Button>
+          <Button variant="destructive" icon={Trash01Icon}>Delete Save</Button>
         </div>
       </div>
     </div>
