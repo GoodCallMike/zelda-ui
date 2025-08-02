@@ -5,7 +5,10 @@ import type { StorybookConfig } from '@storybook/react-vite';
 const customRequire = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
-  stories: ['../packages/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../packages/core/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../packages/theme/src/Colors.stories.tsx',
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-vitest'),

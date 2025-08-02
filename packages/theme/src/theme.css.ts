@@ -8,13 +8,13 @@ globalStyle(':root', {
   '--color-muted': colors.gray[500],
   '--color-border': colors.gray[300],
   '--color-input': colors.white,
-  '--color-primary': colors.blue[600],
+  '--color-primary': colors.hyrule[600],
   '--color-primary-foreground': colors.white,
   '--color-secondary': colors.gray[100],
   '--color-secondary-foreground': colors.gray[900],
   '--color-accent': colors.gray[100],
   '--color-accent-foreground': colors.gray[900],
-  '--color-destructive': colors.red[500],
+  '--color-destructive': colors.ganon[500],
   '--color-destructive-foreground': colors.white,
 } as Record<string, string>);
 
@@ -25,13 +25,13 @@ globalStyle('[data-theme="dark"]', {
   '--color-muted': colors.gray[400],
   '--color-border': colors.gray[700],
   '--color-input': colors.gray[800],
-  '--color-primary': colors.blue[500],
+  '--color-primary': colors.hyrule[500],
   '--color-primary-foreground': colors.white,
   '--color-secondary': colors.gray[800],
   '--color-secondary-foreground': colors.gray[50],
   '--color-accent': colors.gray[800],
   '--color-accent-foreground': colors.gray[50],
-  '--color-destructive': colors.red[500],
+  '--color-destructive': colors.ganon[500],
   '--color-destructive-foreground': colors.white,
 } as Record<string, string>);
 

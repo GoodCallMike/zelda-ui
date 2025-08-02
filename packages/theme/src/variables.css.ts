@@ -1,6 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-// Define CSS variables globally
 globalStyle(':root', {
   vars: {
     // Base Colors
@@ -19,7 +18,7 @@ globalStyle(':root', {
     '--gray-800': '#1f2937',
     '--gray-900': '#111827',
     
-    // Triforce (Golden Yellow) - Primary theme color
+    // Triforce (Golden Yellow)
     '--triforce-50': '#fffbeb',
     '--triforce-100': '#fef3c7',
     '--triforce-200': '#fde68a',
@@ -31,7 +30,7 @@ globalStyle(':root', {
     '--triforce-800': '#78350f',
     '--triforce-900': '#451a03',
     
-    // Hyrule (Royal Blue) - Kingdom colors
+    // Hyrule (Royal Blue)
     '--hyrule-50': '#f0f9ff',
     '--hyrule-100': '#e0f2fe',
     '--hyrule-200': '#bae6fd',
@@ -43,7 +42,7 @@ globalStyle(':root', {
     '--hyrule-800': '#075985',
     '--hyrule-900': '#0c4a6e',
     
-    // Rupee (Emerald Green) - Currency and nature
+    // Rupee (Emerald Green)
     '--rupee-50': '#f0fdf4',
     '--rupee-100': '#dcfce7',
     '--rupee-200': '#bbf7d0',
@@ -55,7 +54,7 @@ globalStyle(':root', {
     '--rupee-800': '#166534',
     '--rupee-900': '#14532d',
     
-    // Ganon (Crimson Red) - Danger and destruction
+    // Ganon (Crimson Red)
     '--ganon-50': '#fef2f2',
     '--ganon-100': '#fee2e2',
     '--ganon-200': '#fecaca',
@@ -66,102 +65,6 @@ globalStyle(':root', {
     '--ganon-700': '#b91c1c',
     '--ganon-800': '#991b1b',
     '--ganon-900': '#7f1d1d',
-    
-    // Sheikah (Mystic Purple) - Ancient technology
-    '--sheikah-50': '#faf5ff',
-    '--sheikah-100': '#f3e8ff',
-    '--sheikah-200': '#e9d5ff',
-    '--sheikah-300': '#d8b4fe',
-    '--sheikah-400': '#c084fc',
-    '--sheikah-500': '#a855f7',
-    '--sheikah-600': '#9333ea',
-    '--sheikah-700': '#7c3aed',
-    '--sheikah-800': '#6b21a8',
-    '--sheikah-900': '#581c87',
-    
-    // Kokiri (Forest Green) - Nature and forest
-    '--kokiri-50': '#f7fee7',
-    '--kokiri-100': '#ecfccb',
-    '--kokiri-200': '#d9f99d',
-    '--kokiri-300': '#bef264',
-    '--kokiri-400': '#a3e635',
-    '--kokiri-500': '#84cc16',
-    '--kokiri-600': '#65a30d',
-    '--kokiri-700': '#4d7c0f',
-    '--kokiri-800': '#365314',
-    '--kokiri-900': '#1a2e05',
-    
-    // Zora (Aqua Blue) - Water domain
-    '--zora-50': '#ecfeff',
-    '--zora-100': '#cffafe',
-    '--zora-200': '#a5f3fc',
-    '--zora-300': '#67e8f9',
-    '--zora-400': '#22d3ee',
-    '--zora-500': '#06b6d4',
-    '--zora-600': '#0891b2',
-    '--zora-700': '#0e7490',
-    '--zora-800': '#155e75',
-    '--zora-900': '#164e63',
-    
-    // Goron (Volcanic Orange) - Fire and mountains
-    '--goron-50': '#fff7ed',
-    '--goron-100': '#ffedd5',
-    '--goron-200': '#fed7aa',
-    '--goron-300': '#fdba74',
-    '--goron-400': '#fb923c',
-    '--goron-500': '#f97316',
-    '--goron-600': '#ea580c',
-    '--goron-700': '#c2410c',
-    '--goron-800': '#9a3412',
-    '--goron-900': '#7c2d12',
-    
-    // Fairy (Magical Pink) - Healing and magic
-    '--fairy-50': '#fdf2f8',
-    '--fairy-100': '#fce7f3',
-    '--fairy-200': '#fbcfe8',
-    '--fairy-300': '#f9a8d4',
-    '--fairy-400': '#f472b6',
-    '--fairy-500': '#ec4899',
-    '--fairy-600': '#db2777',
-    '--fairy-700': '#be185d',
-    '--fairy-800': '#9d174d',
-    '--fairy-900': '#831843',
-    
-    // Spacing
-    '--spacing-0': '0',
-    '--spacing-1': '0.25rem',
-    '--spacing-2': '0.5rem',
-    '--spacing-3': '0.75rem',
-    '--spacing-4': '1rem',
-    '--spacing-5': '1.25rem',
-    '--spacing-6': '1.5rem',
-    '--spacing-8': '2rem',
-    '--spacing-10': '2.5rem',
-    '--spacing-12': '3rem',
-    '--spacing-16': '4rem',
-    '--spacing-20': '5rem',
-    '--spacing-24': '6rem',
-    '--spacing-32': '8rem',
-    
-    // Sizing
-    '--size-8': '2rem',
-    '--size-64': '16rem',
-    '--size-72': '18rem',
-    
-    // Positioning
-    '--top-6': '1.5rem',
-    '--top-24': '6rem',
-    
-    // Opacity
-    '--opacity-50': '0.5',
-    
-    // Border Radius
-    '--radius-none': '0',
-    '--radius-sm': '0.125rem',
-    '--radius-base': '0.25rem',
-    '--radius-md': '0.375rem',
-    '--radius-lg': '0.5rem',
-    '--radius-full': '9999px',
     
     // Typography
     '--text-xs': '0.75rem',
@@ -179,6 +82,13 @@ globalStyle(':root', {
     '--font-semibold': '600',
     '--font-bold': '700',
     
+    // Border Radius
+    '--radius-sm': '0.125rem',
+    '--radius-base': '0.25rem',
+    '--radius-md': '0.375rem',
+    '--radius-lg': '0.5rem',
+    '--radius-full': '9999px',
+    
     // Box Shadows
     '--shadow-sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
     '--shadow-base': '0 1px 3px 0 rgb(0 0 0 / 0.1)',
@@ -186,182 +96,3 @@ globalStyle(':root', {
     '--shadow-lg': '0 10px 15px -3px rgb(0 0 0 / 0.1)',
   }
 });
-
-// Export JS objects for consumers who need raw values
-export const cssVariables = {
-  colors: {
-    white: 'var(--white)',
-    black: 'var(--black)',
-    gray: {
-      50: 'var(--gray-50)',
-      100: 'var(--gray-100)',
-      200: 'var(--gray-200)',
-      300: 'var(--gray-300)',
-      400: 'var(--gray-400)',
-      500: 'var(--gray-500)',
-      600: 'var(--gray-600)',
-      700: 'var(--gray-700)',
-      800: 'var(--gray-800)',
-      900: 'var(--gray-900)',
-    },
-    triforce: {
-      50: 'var(--triforce-50)',
-      100: 'var(--triforce-100)',
-      200: 'var(--triforce-200)',
-      300: 'var(--triforce-300)',
-      400: 'var(--triforce-400)',
-      500: 'var(--triforce-500)',
-      600: 'var(--triforce-600)',
-      700: 'var(--triforce-700)',
-      800: 'var(--triforce-800)',
-      900: 'var(--triforce-900)',
-    },
-    hyrule: {
-      50: 'var(--hyrule-50)',
-      100: 'var(--hyrule-100)',
-      200: 'var(--hyrule-200)',
-      300: 'var(--hyrule-300)',
-      400: 'var(--hyrule-400)',
-      500: 'var(--hyrule-500)',
-      600: 'var(--hyrule-600)',
-      700: 'var(--hyrule-700)',
-      800: 'var(--hyrule-800)',
-      900: 'var(--hyrule-900)',
-    },
-    rupee: {
-      50: 'var(--rupee-50)',
-      100: 'var(--rupee-100)',
-      200: 'var(--rupee-200)',
-      300: 'var(--rupee-300)',
-      400: 'var(--rupee-400)',
-      500: 'var(--rupee-500)',
-      600: 'var(--rupee-600)',
-      700: 'var(--rupee-700)',
-      800: 'var(--rupee-800)',
-      900: 'var(--rupee-900)',
-    },
-    ganon: {
-      50: 'var(--ganon-50)',
-      100: 'var(--ganon-100)',
-      200: 'var(--ganon-200)',
-      300: 'var(--ganon-300)',
-      400: 'var(--ganon-400)',
-      500: 'var(--ganon-500)',
-      600: 'var(--ganon-600)',
-      700: 'var(--ganon-700)',
-      800: 'var(--ganon-800)',
-      900: 'var(--ganon-900)',
-    },
-    sheikah: {
-      50: 'var(--sheikah-50)',
-      100: 'var(--sheikah-100)',
-      200: 'var(--sheikah-200)',
-      300: 'var(--sheikah-300)',
-      400: 'var(--sheikah-400)',
-      500: 'var(--sheikah-500)',
-      600: 'var(--sheikah-600)',
-      700: 'var(--sheikah-700)',
-      800: 'var(--sheikah-800)',
-      900: 'var(--sheikah-900)',
-    },
-    kokiri: {
-      50: 'var(--kokiri-50)',
-      100: 'var(--kokiri-100)',
-      200: 'var(--kokiri-200)',
-      300: 'var(--kokiri-300)',
-      400: 'var(--kokiri-400)',
-      500: 'var(--kokiri-500)',
-      600: 'var(--kokiri-600)',
-      700: 'var(--kokiri-700)',
-      800: 'var(--kokiri-800)',
-      900: 'var(--kokiri-900)',
-    },
-    zora: {
-      50: 'var(--zora-50)',
-      100: 'var(--zora-100)',
-      200: 'var(--zora-200)',
-      300: 'var(--zora-300)',
-      400: 'var(--zora-400)',
-      500: 'var(--zora-500)',
-      600: 'var(--zora-600)',
-      700: 'var(--zora-700)',
-      800: 'var(--zora-800)',
-      900: 'var(--zora-900)',
-    },
-    goron: {
-      50: 'var(--goron-50)',
-      100: 'var(--goron-100)',
-      200: 'var(--goron-200)',
-      300: 'var(--goron-300)',
-      400: 'var(--goron-400)',
-      500: 'var(--goron-500)',
-      600: 'var(--goron-600)',
-      700: 'var(--goron-700)',
-      800: 'var(--goron-800)',
-      900: 'var(--goron-900)',
-    },
-    fairy: {
-      50: 'var(--fairy-50)',
-      100: 'var(--fairy-100)',
-      200: 'var(--fairy-200)',
-      300: 'var(--fairy-300)',
-      400: 'var(--fairy-400)',
-      500: 'var(--fairy-500)',
-      600: 'var(--fairy-600)',
-      700: 'var(--fairy-700)',
-      800: 'var(--fairy-800)',
-      900: 'var(--fairy-900)',
-    },
-  },
-  spacing: {
-    0: 'var(--spacing-0)',
-    1: 'var(--spacing-1)',
-    2: 'var(--spacing-2)',
-    3: 'var(--spacing-3)',
-    4: 'var(--spacing-4)',
-    5: 'var(--spacing-5)',
-    6: 'var(--spacing-6)',
-    8: 'var(--spacing-8)',
-    10: 'var(--spacing-10)',
-    12: 'var(--spacing-12)',
-    16: 'var(--spacing-16)',
-    20: 'var(--spacing-20)',
-    24: 'var(--spacing-24)',
-    32: 'var(--spacing-32)',
-  },
-  sizing: {
-    8: 'var(--size-8)',
-    64: 'var(--size-64)',
-    72: 'var(--size-72)',
-  },
-  borderRadius: {
-    none: 'var(--radius-none)',
-    sm: 'var(--radius-sm)',
-    base: 'var(--radius-base)',
-    md: 'var(--radius-md)',
-    lg: 'var(--radius-lg)',
-    full: 'var(--radius-full)',
-  },
-  fontSize: {
-    xs: 'var(--text-xs)',
-    sm: 'var(--text-sm)',
-    base: 'var(--text-base)',
-    lg: 'var(--text-lg)',
-    xl: 'var(--text-xl)',
-    '2xl': 'var(--text-2xl)',
-    '3xl': 'var(--text-3xl)',
-    '4xl': 'var(--text-4xl)',
-  },
-  fontWeight: {
-    normal: 'var(--font-normal)',
-    medium: 'var(--font-medium)',
-    semibold: 'var(--font-semibold)',
-    bold: 'var(--font-bold)',
-  },
-  boxShadow: {
-    sm: 'var(--shadow-sm)',
-    base: 'var(--shadow-base)',
-    md: 'var(--shadow-md)',
-    lg: 'var(--shadow-lg)',
-  },
-} as const;

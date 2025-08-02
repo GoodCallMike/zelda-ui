@@ -2,11 +2,11 @@ import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '../styles';
 
 
-interface ButtonProps {
+export interface ButtonProps {
   /** Button content */
   children: ReactNode;
   /** Button variant */
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'destructive';
+  variant?: 'triforce' | 'hyrule' | 'rupee' | 'ganon';
   /** Click handler function */
   onClick?: () => void;
   /** Whether button is disabled */
@@ -21,7 +21,7 @@ interface ButtonProps {
 
 export const Button = ({
   children,
-  variant = 'primary',
+  variant = 'triforce',
   onClick,
   disabled,
   icon: Icon,
@@ -31,16 +31,14 @@ export const Button = ({
 }: ButtonProps) => {
   const getVariantStyles = () => {
     switch (variant) {
-      case 'primary':
+      case 'triforce':
         return 'bg-gradient-to-br from-triforce-400 via-triforce-500 to-triforce-600 border-2 border-triforce-700 border-t-triforce-300 border-l-triforce-300 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.triforce.700)] hover:from-triforce-300 hover:via-triforce-400 hover:to-triforce-500 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none';
-      case 'secondary':
-        return 'bg-gradient-to-br from-rupee-500 via-rupee-600 to-green-600 border-2 border-rupee-700 border-t-rupee-400 border-l-rupee-400 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.rupee.700)] hover:from-rupee-400 hover:via-rupee-500 hover:to-green-500 active:translate-y-1 active:shadow-sm';
-      case 'tertiary':
-        return 'bg-transparent border-2 border-hyrule-500 text-hyrule-600 font-bold text-sm hover:bg-hyrule-50 hover:text-hyrule-700 hover:border-hyrule-600 active:bg-hyrule-100 active:text-hyrule-800 active:border-hyrule-700';
-      case 'link':
-        return 'font-bold text-hyrule-600 hover:text-hyrule-700 underline bg-transparent border-none shadow-none hover:bg-hyrule-50 active:text-hyrule-800 focus:outline-none';
-      case 'destructive':
-        return 'bg-gradient-to-br from-ganon-600 via-red-800 to-gray-800 border-2 border-ganon-800 border-t-ganon-300 border-l-ganon-400 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.indigo.900)] hover:from-ganon-700 hover:via-red-900 hover:to-gray-900 active:border-t-gray-800 active:border-l-indigo-800 active:shadow-none';
+      case 'hyrule':
+        return 'bg-gradient-to-br from-hyrule-400 via-hyrule-500 to-hyrule-600 border-2 border-hyrule-700 border-t-hyrule-300 border-l-hyrule-300 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.hyrule.700)] hover:from-hyrule-300 hover:via-hyrule-400 hover:to-hyrule-500 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none';
+      case 'rupee':
+        return 'bg-gradient-to-br from-rupee-400 via-rupee-500 to-rupee-600 border-2 border-rupee-700 border-t-rupee-300 border-l-rupee-300 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.rupee.700)] hover:from-rupee-300 hover:via-rupee-400 hover:to-rupee-500 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none';
+      case 'ganon':
+        return 'bg-gradient-to-br from-ganon-400 via-ganon-500 to-ganon-600 border-2 border-ganon-700 border-t-ganon-300 border-l-ganon-300 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.ganon.700)] hover:from-ganon-300 hover:via-ganon-400 hover:to-ganon-500 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none';
       default:
         return 'bg-gradient-to-br from-triforce-400 via-triforce-500 to-triforce-600 border-2 border-triforce-700 border-t-triforce-300 border-l-triforce-300 text-white font-bold text-sm shadow-[2px_2px_0_theme(colors.triforce.700)] hover:from-triforce-300 hover:via-triforce-400 hover:to-triforce-500 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none';
     }
