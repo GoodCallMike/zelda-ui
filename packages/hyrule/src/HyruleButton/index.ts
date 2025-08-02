@@ -1,1 +1,0 @@
-export { HyruleButton } from './HyruleButton';
