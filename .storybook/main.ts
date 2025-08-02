@@ -17,6 +17,8 @@ const config: StorybookConfig = {
     options: {},
   },
 
+  staticDirs: ['../public'],
+
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
     const { vanillaExtractPlugin } = await import(
@@ -24,6 +26,7 @@ const config: StorybookConfig = {
     );
 
     return mergeConfig(config, {
+      base: process.env.BASE_PATH || '/',
       plugins: [vanillaExtractPlugin()],
       resolve: {
         alias: {
