@@ -306,10 +306,9 @@
   text-shadow: none;
   border-radius: 8px;
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 20%, transparent),
-    inset -2px -2px 0 var(--black),
-    4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, var(--ganon-600) 50%, transparent);
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
+    inset -2px -2px 0 var(--ganon-900),
+    4px 4px 0 var(--black);
 }
 
 .destructive:hover {
@@ -317,17 +316,15 @@
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
     inset -2px -2px 0 var(--ganon-900),
-    3px 3px 0 var(--black),
-    0 0 25px color-mix(in srgb, var(--ganon-600) 70%, transparent);
+    3px 3px 0 var(--black);
 }
 
 .destructive:active {
   background: linear-gradient(135deg, var(--ganon-600) 0%, var(--ganon-700) 50%, var(--ganon-800) 100%);
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 20%, transparent),
-    inset -2px -2px 0 var(--black),
-    4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, var(--ganon-600) 50%, transparent);
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
+    inset -2px -2px 0 var(--ganon-900),
+    4px 4px 0 var(--black);
   transform: scale(0.98);
 }
 
@@ -342,10 +339,9 @@
   color: var(--white);
   text-shadow: none;
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 20%, transparent),
-    inset -2px -2px 0 var(--black),
-    4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, var(--ganon-600) 50%, transparent);
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
+    inset -2px -2px 0 var(--ganon-900),
+    4px 4px 0 var(--black);
 }
 
 :global(.dark) .destructive:hover {
@@ -353,8 +349,7 @@
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
     inset -2px -2px 0 var(--ganon-900),
-    3px 3px 0 var(--black),
-    0 0 25px color-mix(in srgb, var(--ganon-600) 70%, transparent);
+    3px 3px 0 var(--black);
 }
 
 :global(.dark) .destructive:focus-visible {
@@ -364,10 +359,9 @@
 :global(.dark) .destructive:active {
   background: linear-gradient(135deg, var(--ganon-600) 0%, var(--ganon-700) 50%, var(--ganon-800) 100%);
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 20%, transparent),
-    inset -2px -2px 0 var(--black),
-    4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, var(--ganon-600) 50%, transparent);
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
+    inset -2px -2px 0 var(--ganon-900),
+    4px 4px 0 var(--black);
   transform: scale(0.98);
 }
 
