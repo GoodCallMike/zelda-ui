@@ -25,3 +25,9 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+# Build and test artifacts
+coverage
+test-results
+playwright-report
+.turbo
