@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['triforce', 'hyrule', 'rupee', 'ganon'],
+      options: ['primary', 'secondary', 'tertiary', 'destructive'],
       description: 'Visual style variant of the button',
     },
     disabled: {
@@ -24,38 +24,38 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Triforce: Story = {
+export const Primary: Story = {
   args: {
-    children: 'Start Adventure',
-    variant: 'triforce',
+    children: 'Primary Action',
+    variant: 'primary',
   },
 };
 
-export const Hyrule: Story = {
+export const Secondary: Story = {
   args: {
-    children: 'Visit Kingdom',
-    variant: 'hyrule',
+    children: 'Secondary Action',
+    variant: 'secondary',
   },
 };
 
-export const Rupee: Story = {
+export const Tertiary: Story = {
   args: {
-    children: 'Collect Rupees',
-    variant: 'rupee',
+    children: 'Tertiary Action',
+    variant: 'tertiary',
   },
 };
 
-export const Ganon: Story = {
+export const Destructive: Story = {
   args: {
-    children: 'Face Ganon',
-    variant: 'ganon',
+    children: 'Delete Item',
+    variant: 'destructive',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: 'Quest Locked',
-    variant: 'triforce',
+    children: 'Disabled Button',
+    variant: 'primary',
     disabled: true,
   },
 };
@@ -63,10 +63,10 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-3">
-      <Button variant="triforce">Triforce</Button>
-      <Button variant="hyrule">Hyrule</Button>
-      <Button variant="rupee">Rupee</Button>
-      <Button variant="ganon">Ganon</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="tertiary">Tertiary</Button>
+      <Button variant="destructive">Destructive</Button>
     </div>
   ),
 };

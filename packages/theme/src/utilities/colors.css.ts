@@ -45,10 +45,10 @@ globalStyle('.border-black', { borderColor: colors.black });
 // Hover states for Zelda colors
 zeldaColors.forEach(color => {
   shades.forEach(shade => {
-    globalStyle(`.hover\\\\:bg-${color}-${shade}:hover`, {
+    globalStyle(`.hover\\:bg-${color}-${shade}:hover`, {
       backgroundColor: colors[color][shade],
     });
-    globalStyle(`.hover\\\\:text-${color}-${shade}:hover`, {
+    globalStyle(`.hover\\:text-${color}-${shade}:hover`, {
       color: colors[color][shade],
     });
   });

@@ -91,3 +91,7 @@ globalStyle('.overflow-auto', { overflow: 'auto' });
 globalStyle('.overflow-hidden', { overflow: 'hidden' });
 globalStyle('.overflow-visible', { overflow: 'visible' });
 globalStyle('.overflow-scroll', { overflow: 'scroll' });
+
+// Cursor utilities
+globalStyle('.cursor-pointer', { cursor: 'pointer' });
+globalStyle('.cursor-not-allowed', { cursor: 'not-allowed' });
