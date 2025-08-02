@@ -292,21 +292,21 @@ const ComponentShowcaseDemo = () => {
         <div className="flex gap-2">
           <Button 
             size="sm"
-            variant={theme === 'light' ? 'primary' : 'outline'}
+            variant={theme === 'light' ? 'primary' : 'tertiary'}
             onClick={() => setTheme('light')}
           >
             Light
           </Button>
           <Button 
             size="sm"
-            variant={theme === 'dark' ? 'primary' : 'outline'}
+            variant={theme === 'dark' ? 'primary' : 'tertiary'}
             onClick={() => setTheme('dark')}
           >
             Dark
           </Button>
           <Button 
             size="sm"
-            variant={theme === 'system' ? 'primary' : 'outline'}
+            variant={theme === 'system' ? 'primary' : 'tertiary'}
             onClick={() => setTheme('system')}
           >
             System

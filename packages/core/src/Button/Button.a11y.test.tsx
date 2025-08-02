@@ -18,8 +18,8 @@ describe('Button Accessibility', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('should not have accessibility violations - outline variant', async () => {
-    const { container } = render(<Button variant="outline">Outline Button</Button>);
+  it('should not have accessibility violations - tertiary variant', async () => {
+    const { container } = render(<Button variant="tertiary">Tertiary Button</Button>);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

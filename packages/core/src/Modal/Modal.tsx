@@ -2,6 +2,15 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { cn, useClickOutside } from '../styles';
 import { Button } from '../Button';
+import {
+  modalBackdrop,
+  modalContainer,
+  modalHeader,
+  modalTitle,
+  modalCloseButton,
+  modalBody,
+  modalFooter,
+} from '@zelda/theme/hyrule-modal.css';
 
 interface ModalProps {
   /** Whether the modal is visible */
@@ -96,9 +105,9 @@ export const Modal = ({
   if (!open) return null;
 
   const defaultFooter = (
-    <div className="flex justify-end gap-2">
+    <>
       {onCancel && (
-        <Button variant="outline" onClick={onCancel}>
+        <Button variant="tertiary" onClick={onCancel}>
           {cancelText}
         </Button>
       )}
@@ -111,36 +120,32 @@ export const Modal = ({
           {confirmLoading ? 'Loading...' : okText}
         </Button>
       )}
-    </div>
+    </>
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black bg-opacity-30 transition-opacity" />
-      
+    <div className={modalBackdrop}>
       {/* Modal */}
       <div
         ref={modalRef}
         className={cn(
-          'relative bg-white dark:bg-gray-800 rounded-lg shadow-xl',
-          'max-h-[90vh] overflow-hidden',
-          centered ? 'mx-4' : 'mx-4 mt-16'
+          modalContainer,
+          centered ? '' : 'mt-16'
         )}
         style={{ width: typeof width === 'number' ? `${width}px` : width }}
       >
         {/* Header */}
         {(title || closable) && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <div className={modalHeader}>
             {title && (
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h2 className={modalTitle}>
                 {title}
               </h2>
             )}
             {closable && (
               <button
                 onClick={onCancel}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className={modalCloseButton}
                 aria-label="Close modal"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,16 +158,14 @@ export const Modal = ({
 
         {/* Body */}
         {children && (
-          <div className="px-6 py-4 max-h-96 overflow-y-auto">
-            <div className="text-gray-700 dark:text-gray-300">
-              {children}
-            </div>
+          <div className={modalBody}>
+            {children}
           </div>
         )}
 
         {/* Footer */}
         {footer !== null && (
-          <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className={modalFooter}>
             {footer || defaultFooter}
           </div>
         )}

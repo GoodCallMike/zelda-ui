@@ -91,11 +91,11 @@ describe('Button Interactions', () => {
     
     // Test hover
     await user.hover(button);
-    expect(button).toHaveClass('zelda-effect');
+    expect(button).toHaveClass('inline-flex');
     
     // Test unhover
     await user.unhover(button);
-    expect(button).toHaveClass('zelda-effect'); // Class remains for CSS transitions
+    expect(button).toHaveClass('inline-flex'); // Base class remains
   });
 
   it('handles icon button interactions', async () => {

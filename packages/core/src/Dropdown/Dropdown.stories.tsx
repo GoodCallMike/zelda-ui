@@ -19,11 +19,11 @@ const meta: Meta<typeof Dropdown> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Dropdown component for displaying contextual menus and actions with comprehensive accessibility and testing support.
+        component: `Dropdown component for displaying contextual quest menus and hero actions with comprehensive accessibility and testing support.
 
 ## Overview
 
-The Dropdown component provides a flexible way to display contextual actions and options in your application. It supports multiple trigger methods, positioning options, and maintains WCAG 2.1 AA accessibility compliance.
+The Dropdown component provides a flexible way to display contextual actions and options in your Hyrule adventure interface. It supports multiple trigger methods, positioning options, and maintains WCAG 2.1 AA accessibility compliance.
 
 ## Quick Start
 
@@ -31,21 +31,21 @@ The Dropdown component provides a flexible way to display contextual actions and
 import { Dropdown } from '@zelda/core';
 import { Button } from '@zelda/core';
 
-// Basic dropdown
+// Basic quest dropdown
 <Dropdown items={[
-  { key: '1', label: 'Edit', onClick: () => edit() },
-  { key: '2', label: 'Delete', onClick: () => delete() }
+  { key: '1', label: 'Edit Quest', onClick: () => editQuest() },
+  { key: '2', label: 'Abandon Quest', onClick: () => abandonQuest() }
 ]}>
-  <Button>Actions</Button>
+  <Button>Quest Actions</Button>
 </Dropdown>
 
 // With icons and dividers
 <Dropdown items={[
-  { key: '1', label: 'Edit', icon: <EditIcon />, onClick: () => edit() },
-  { key: '2', label: 'Copy', icon: <CopyIcon />, onClick: () => copy() },
-  { key: '3', label: 'Delete', icon: <DeleteIcon />, onClick: () => delete(), divider: true }
+  { key: '1', label: 'Equip Item', icon: <EquipIcon />, onClick: () => equip() },
+  { key: '2', label: 'Store Item', icon: <StoreIcon />, onClick: () => store() },
+  { key: '3', label: 'Discard Item', icon: <DiscardIcon />, onClick: () => discard(), divider: true }
 ]}>
-  <Button>More Actions</Button>
+  <Button>Inventory Actions</Button>
 </Dropdown>
 \`\`\`
 
@@ -53,15 +53,15 @@ import { Button } from '@zelda/core';
 
 ### Click Trigger (Default)
 \`\`\`tsx
-<Dropdown trigger="click" items={menuItems}>
-  <Button>Click to Open</Button>
+<Dropdown trigger="click" items={questItems}>
+  <Button>Click to Open Quest Menu</Button>
 </Dropdown>
 \`\`\`
 
 ### Hover Trigger
 \`\`\`tsx
-<Dropdown trigger="hover" items={menuItems}>
-  <Button>Hover to Open</Button>
+<Dropdown trigger="hover" items={questItems}>
+  <Button>Hover for Quick Actions</Button>
 </Dropdown>
 \`\`\`
 
@@ -69,31 +69,31 @@ import { Button } from '@zelda/core';
 
 \`\`\`tsx
 // Bottom placement (default)
-<Dropdown placement="bottomLeft" items={menuItems}>
-  <Button>Bottom Left</Button>
+<Dropdown placement="bottomLeft" items={questItems}>
+  <Button>Bottom Left Menu</Button>
 </Dropdown>
 
 // Top placement
-<Dropdown placement="topRight" items={menuItems}>
-  <Button>Top Right</Button>
+<Dropdown placement="topRight" items={questItems}>
+  <Button>Top Right Menu</Button>
 </Dropdown>
 \`\`\`
 
 ## Menu Items
 
 \`\`\`tsx
-const menuItems = [
+const questItems = [
   // Basic item
-  { key: '1', label: 'Edit', onClick: () => handleEdit() },
+  { key: '1', label: 'Edit Quest', onClick: () => handleEditQuest() },
   
   // With icon
-  { key: '2', label: 'Copy', icon: <CopyIcon />, onClick: () => handleCopy() },
+  { key: '2', label: 'Share Map', icon: <MapIcon />, onClick: () => handleShareMap() },
   
   // Disabled item
-  { key: '3', label: 'Archive', disabled: true, onClick: () => handleArchive() },
+  { key: '3', label: 'Cast Spell', disabled: true, onClick: () => handleCastSpell() },
   
   // With divider
-  { key: '4', label: 'Delete', divider: true, onClick: () => handleDelete() }
+  { key: '4', label: 'Abandon Quest', divider: true, onClick: () => handleAbandonQuest() }
 ];
 \`\`\`
 
@@ -111,11 +111,11 @@ The Dropdown component is fully accessible with:
 \`\`\`tsx
 // Custom accessibility labels
 <Dropdown 
-  items={menuItems}
-  aria-label="More actions menu"
+  items={questItems}
+  aria-label="Quest actions menu"
 >
-  <Button aria-label="Open actions menu">
-    Actions
+  <Button aria-label="Open quest menu">
+    Quest Actions
   </Button>
 </Dropdown>
 \`\`\`
@@ -125,15 +125,15 @@ The Dropdown component is fully accessible with:
 Built-in testing support with \`testId\` prop:
 
 \`\`\`tsx
-<Dropdown testId="actions-dropdown" items={menuItems}>
-  <Button>Actions</Button>
+<Dropdown testId="quest-dropdown" items={questItems}>
+  <Button>Quest Actions</Button>
 </Dropdown>
 \`\`\`
 
 \`\`\`tsx
 // Test queries
-screen.getByTestId('actions-dropdown');
-screen.getByRole('button', { name: 'Actions' });
+screen.getByTestId('quest-dropdown');
+screen.getByRole('button', { name: 'Quest Actions' });
 screen.getByRole('menu');
 \`\`\`
 
@@ -141,17 +141,17 @@ screen.getByRole('menu');
 
 \`\`\`tsx
 // Any element can be a trigger
-<Dropdown items={menuItems}>
+<Dropdown items={questItems}>
   <div className="cursor-pointer p-2 border rounded">
-    Custom Trigger
+    Custom Quest Trigger
   </div>
 </Dropdown>
 
-// User profile trigger
-<Dropdown items={userMenuItems}>
+// Hero profile trigger
+<Dropdown items={heroMenuItems}>
   <div className="flex items-center gap-2 cursor-pointer">
-    <Avatar>JD</Avatar>
-    <span>John Doe</span>
+    <Avatar>⚡</Avatar>
+    <span>Hero of Hyrule</span>
     <ChevronDownIcon />
   </div>
 </Dropdown>
@@ -185,22 +185,10 @@ screen.getByRole('menu');
   },
   tags: ['autodocs'],
   argTypes: {
-    items: {
-      control: false,
-      description:
-        'Array of menu items with labels, actions, and optional properties',
-      table: {
-        type: { summary: 'DropdownItem[]' },
-      },
-    },
     trigger: {
       control: 'select',
       options: ['click', 'hover'],
       description: 'How the dropdown is triggered',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'click' },
-      },
     },
     placement: {
       control: 'select',
@@ -213,17 +201,6 @@ screen.getByRole('menu');
         'bottomRight',
       ],
       description: 'Preferred placement of the dropdown menu',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'bottom' },
-      },
-    },
-    testId: {
-      control: 'text',
-      description: 'Test identifier for automated testing',
-      table: {
-        type: { summary: 'string' },
-      },
     },
   },
 };
@@ -231,110 +208,113 @@ screen.getByRole('menu');
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const basicItems = [
-  { key: '1', label: 'Edit', onClick: () => alert('Edit clicked') },
-  { key: '2', label: 'Copy', onClick: () => alert('Copy clicked') },
-  { key: '3', label: 'Delete', onClick: () => alert('Delete clicked') },
+const questItems = [
+  { key: '1', label: 'Edit Quest', onClick: () => alert('Quest edited') },
+  { key: '2', label: 'Share Map', onClick: () => alert('Map shared') },
+  { key: '3', label: 'Abandon Quest', onClick: () => alert('Quest abandoned') },
 ];
 
-const iconItems = [
+const inventoryItems = [
   {
     key: '1',
-    label: 'Edit',
+    label: 'Equip Item',
     icon: <Edit01Icon className="w-4 h-4" />,
-    onClick: () => alert('Edit clicked'),
+    onClick: () => alert('Item equipped'),
   },
   {
     key: '2',
-    label: 'Copy',
+    label: 'Store Item',
     icon: <Copy01Icon className="w-4 h-4" />,
-    onClick: () => alert('Copy clicked'),
+    onClick: () => alert('Item stored'),
   },
   {
     key: '3',
-    label: 'Delete',
+    label: 'Discard Item',
     icon: <Trash01Icon className="w-4 h-4" />,
-    onClick: () => alert('Delete clicked'),
+    onClick: () => alert('Item discarded'),
     divider: true,
   },
 ];
 
-const userMenuItems = [
+const heroMenuItems = [
   {
     key: '1',
-    label: 'Profile',
+    label: 'Hero Profile',
     icon: <User01Icon className="w-4 h-4" />,
-    onClick: () => alert('Profile clicked'),
+    onClick: () => alert('Profile opened'),
   },
   {
     key: '2',
-    label: 'Settings',
+    label: 'Game Settings',
     icon: <Settings01Icon className="w-4 h-4" />,
-    onClick: () => alert('Settings clicked'),
+    onClick: () => alert('Settings opened'),
   },
   {
     key: '3',
-    label: 'Logout',
+    label: 'Return to Title',
     icon: <LogOut01Icon className="w-4 h-4" />,
-    onClick: () => alert('Logout clicked'),
+    onClick: () => alert('Returned to title'),
     divider: true,
   },
 ];
 
 export const Default: Story = {
-  args: {
-    items: basicItems,
-    children: <Button>Actions</Button>,
-  },
+  render: () => (
+    <Dropdown items={questItems}>
+      <Button>Quest Actions</Button>
+    </Dropdown>
+  ),
 };
 
 export const ClickTrigger: Story = {
-  args: {
-    items: basicItems,
-    trigger: 'click',
-    children: <Button>Click Trigger</Button>,
-  },
+  render: () => (
+    <Dropdown items={questItems} trigger="click">
+      <Button>Click to Open</Button>
+    </Dropdown>
+  ),
 };
 
 export const HoverTrigger: Story = {
-  args: {
-    items: basicItems,
-    trigger: 'hover',
-    children: <Button variant="secondary">Hover Trigger</Button>,
-  },
+  render: () => (
+    <Dropdown items={questItems} trigger="hover">
+      <Button variant="secondary">Hover to Open</Button>
+    </Dropdown>
+  ),
 };
 
 export const WithIcons: Story = {
-  args: {
-    items: iconItems,
-    children: <Button>With Icons</Button>,
-  },
+  render: () => (
+    <Dropdown items={inventoryItems}>
+      <Button>Inventory Actions</Button>
+    </Dropdown>
+  ),
 };
 
 export const WithDisabled: Story = {
-  args: {
-    items: [
-      { key: '1', label: 'Edit', onClick: () => alert('Edit clicked') },
+  render: () => (
+    <Dropdown items={[
+      { key: '1', label: 'Use Potion', onClick: () => alert('Potion used') },
       {
         key: '2',
-        label: 'Copy',
-        onClick: () => alert('Copy clicked'),
+        label: 'Cast Spell',
+        onClick: () => alert('Spell cast'),
         disabled: true,
       },
-      { key: '3', label: 'Delete', onClick: () => alert('Delete clicked') },
-    ],
-    children: <Button>Mixed States</Button>,
-  },
+      { key: '3', label: 'Equip Sword', onClick: () => alert('Sword equipped') },
+    ]}>
+      <Button>Item Actions</Button>
+    </Dropdown>
+  ),
 };
 
 export const Triggers: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Dropdown items={basicItems} trigger="click">
-        <Button>Click Trigger</Button>
+      <Dropdown items={questItems} trigger="click">
+        <Button>Quest Menu</Button>
       </Dropdown>
-      <Dropdown items={basicItems} trigger="hover">
-        <Button variant="secondary">Hover Trigger</Button>
+      <Dropdown items={questItems} trigger="hover">
+        <Button variant="secondary">Quick Actions</Button>
       </Dropdown>
     </div>
   ),
@@ -343,34 +323,34 @@ export const Triggers: Story = {
 export const Placements: Story = {
   render: () => (
     <div className="grid grid-cols-3 gap-4 max-w-md">
-      <Dropdown items={basicItems} placement="topLeft">
-        <Button variant="outline" className="text-xs">
-          Top Left
+      <Dropdown items={questItems} placement="topLeft">
+        <Button variant="tertiary" className="text-xs">
+          ↖ Top Left
         </Button>
       </Dropdown>
-      <Dropdown items={basicItems} placement="top">
-        <Button variant="outline" className="text-xs">
-          Top
+      <Dropdown items={questItems} placement="top">
+        <Button variant="tertiary" className="text-xs">
+          ↑ Top
         </Button>
       </Dropdown>
-      <Dropdown items={basicItems} placement="topRight">
-        <Button variant="outline" className="text-xs">
-          Top Right
+      <Dropdown items={questItems} placement="topRight">
+        <Button variant="tertiary" className="text-xs">
+          ↗ Top Right
         </Button>
       </Dropdown>
-      <Dropdown items={basicItems} placement="bottomLeft">
-        <Button variant="outline" className="text-xs">
-          Bottom Left
+      <Dropdown items={questItems} placement="bottomLeft">
+        <Button variant="tertiary" className="text-xs">
+          ↙ Bottom Left
         </Button>
       </Dropdown>
-      <Dropdown items={basicItems} placement="bottom">
-        <Button variant="outline" className="text-xs">
-          Bottom
+      <Dropdown items={questItems} placement="bottom">
+        <Button variant="tertiary" className="text-xs">
+          ↓ Bottom
         </Button>
       </Dropdown>
-      <Dropdown items={basicItems} placement="bottomRight">
-        <Button variant="outline" className="text-xs">
-          Bottom Right
+      <Dropdown items={questItems} placement="bottomRight">
+        <Button variant="tertiary" className="text-xs">
+          ↘ Bottom Right
         </Button>
       </Dropdown>
     </div>
@@ -383,11 +363,11 @@ export const Testing: Story = {
       <div>
         <h3 className="text-sm font-medium mb-2">With Test IDs</h3>
         <div className="flex flex-wrap gap-2">
-          <Dropdown testId="actions-dropdown" items={basicItems}>
-            <Button>Actions Menu</Button>
+          <Dropdown testId="quest-dropdown" items={questItems}>
+            <Button>Quest Menu</Button>
           </Dropdown>
-          <Dropdown testId="user-dropdown" items={userMenuItems}>
-            <Button variant="secondary">User Menu</Button>
+          <Dropdown testId="hero-dropdown" items={heroMenuItems}>
+            <Button variant="secondary">Hero Menu</Button>
           </Dropdown>
         </div>
       </div>
@@ -403,24 +383,24 @@ export const Examples: Story = {
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
-        <h3 className="text-sm font-medium mb-2">User Profile Menu</h3>
-        <Dropdown items={userMenuItems}>
+        <h3 className="text-sm font-medium mb-2">Hero Profile Menu</h3>
+        <Dropdown items={heroMenuItems}>
           <div className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
-            <Avatar className="bg-blue-700 text-white">JD</Avatar>
-            <span className="text-sm font-medium">John Doe</span>
+            <Avatar className="bg-triforce-600 text-white">⚡</Avatar>
+            <span className="text-sm font-medium">Hero of Hyrule</span>
             <ChevronDownIcon className="w-4 h-4 text-gray-400" />
           </div>
         </Dropdown>
       </div>
 
       <div>
-        <h3 className="text-sm font-medium mb-2">Table Actions</h3>
+        <h3 className="text-sm font-medium mb-2">Quest Log Actions</h3>
         <div className="border border-gray-200 rounded-lg overflow-hidden">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-4 py-2 text-left text-sm font-medium">
-                  Name
+                  Quest
                 </th>
                 <th className="px-4 py-2 text-left text-sm font-medium">
                   Actions
@@ -429,10 +409,10 @@ export const Examples: Story = {
             </thead>
             <tbody>
               <tr className="border-t border-gray-200">
-                <td className="px-4 py-2 text-sm">Project Alpha</td>
+                <td className="px-4 py-2 text-sm">🏰 Rescue Princess Zelda</td>
                 <td className="px-4 py-2">
-                  <Dropdown items={iconItems}>
-                    <Button variant="outline" className="text-xs px-2 py-1">
+                  <Dropdown items={inventoryItems}>
+                    <Button variant="tertiary" className="text-xs px-2 py-1">
                       •••
                     </Button>
                   </Dropdown>

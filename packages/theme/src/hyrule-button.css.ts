@@ -1,451 +1,222 @@
 import { style } from '@vanilla-extract/css';
+import { cssVariables } from './variables.css';
 
-// 24-bit retro Zelda button styles (SNES era)
-export const retro24Bit = style({
-  background: 'linear-gradient(135deg, #4a90e2 0%, #2c5aa0 50%, #1e3a8a 100%)',
-  border: '3px solid #ffffff',
-  borderRadius: '0px', // Sharp corners for retro feel
-  boxShadow: `
-    inset 2px 2px 0px #87ceeb,
-    inset -2px -2px 0px #1e3a8a,
-    3px 3px 0px #000000
-  `,
-  color: '#ffffff',
-  fontFamily: 'monospace',
-  fontSize: '14px',
-  fontWeight: 'bold',
-  textShadow: '1px 1px 0px #000000',
-  textTransform: 'uppercase',
-  letterSpacing: '1px',
-  padding: '8px 16px',
-  position: 'relative',
-  
-  ':hover': {
-    background: 'linear-gradient(135deg, #5ba0f2 0%, #3c6ab0 50%, #2e4a9a 100%)',
-    boxShadow: `
-      inset 2px 2px 0px #97defb,
-      inset -2px -2px 0px #2e4a9a,
-      2px 2px 0px #000000
-    `,
-    transform: 'translate(1px, 1px)',
-  },
-  
-  ':active': {
-    background: 'linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 50%, #0f1f5a 100%)',
-    boxShadow: `
-      inset -2px -2px 0px #87ceeb,
-      inset 2px 2px 0px #0f1f5a,
-      1px 1px 0px #000000
-    `,
-    transform: 'translate(2px, 2px)',
-  }
-});
-
-// 32-bit retro Zelda button styles (N64/GameCube era)
-export const retro32Bit = style({
-  background: `
-    radial-gradient(ellipse at top, #ffd700 0%, #ffb347 30%, #ff8c00 100%),
-    linear-gradient(45deg, #b8860b 0%, #daa520 100%)
-  `,
-  border: '2px solid #8b4513',
-  borderRadius: '4px',
-  boxShadow: `
-    inset 0 2px 4px rgba(255, 255, 255, 0.3),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
-    0 4px 8px rgba(0, 0, 0, 0.4),
-    0 0 0 1px #654321
-  `,
-  color: '#2f1b14',
-  fontFamily: 'serif',
-  fontSize: '16px',
-  fontWeight: 'bold',
-  textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.5px',
-  padding: '10px 20px',
-  position: 'relative',
-  
-  ':before': {
-    content: '""',
-    position: 'absolute',
-    top: '1px',
-    left: '1px',
-    right: '1px',
-    height: '50%',
-    background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent)',
-    borderRadius: '2px 2px 0 0',
-    pointerEvents: 'none',
-  },
-  
-  ':hover': {
-    background: `
-      radial-gradient(ellipse at top, #ffed4e 0%, #ffc947 30%, #ff9500 100%),
-      linear-gradient(45deg, #c8960b 0%, #eab520 100%)
-    `,
-    boxShadow: `
-      inset 0 2px 4px rgba(255, 255, 255, 0.4),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.2),
-      0 6px 12px rgba(0, 0, 0, 0.3),
-      0 0 0 1px #654321
-    `,
-    transform: 'translateY(-1px)',
-  },
-  
-  ':active': {
-    background: `
-      radial-gradient(ellipse at top, #e6c200 0%, #cc8400 30%, #b8860b 100%),
-      linear-gradient(45deg, #996f08 0%, #b8860b 100%)
-    `,
-    boxShadow: `
-      inset 0 -2px 4px rgba(255, 255, 255, 0.2),
-      inset 0 2px 4px rgba(0, 0, 0, 0.4),
-      0 2px 4px rgba(0, 0, 0, 0.3),
-      0 0 0 1px #654321
-    `,
-    transform: 'translateY(1px)',
-  }
-});
-
-// Triforce variant with pixelated effect
-export const triforcePixel = style({
-  background: `
-    conic-gradient(from 0deg at 50% 50%, 
-      #ffd700 0deg, #ffed4e 60deg, #ffc107 120deg, 
-      #ff8f00 180deg, #ffb300 240deg, #ffd700 360deg)
-  `,
-  border: '3px solid #b8860b',
-  borderRadius: '0px',
-  boxShadow: `
-    inset 2px 2px 0px #ffff8d,
-    inset -2px -2px 0px #cc8400,
-    4px 4px 0px #8b4513,
-    0 0 20px rgba(255, 215, 0, 0.5)
-  `,
-  color: '#8b4513',
-  fontFamily: 'monospace',
-  fontSize: '12px',
-  fontWeight: 'bold',
-  textShadow: '1px 1px 0px #ffff8d, -1px -1px 0px #cc8400',
-  textTransform: 'uppercase',
-  letterSpacing: '2px',
-  padding: '12px 24px',
-  position: 'relative',
-  cursor: 'pointer',
-  
-  ':before': {
-    content: '""',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    width: '0',
-    height: '0',
-    borderLeft: '8px solid transparent',
-    borderRight: '8px solid transparent',
-    borderBottom: '12px solid rgba(255, 255, 255, 0.3)',
-    transform: 'translate(-50%, -50%)',
-    pointerEvents: 'none',
-  },
-  
-  ':hover': {
-    background: `
-      conic-gradient(from 0deg at 50% 50%, 
-        #ffed4e 0deg, #ffff8d 60deg, #ffd700 120deg, 
-        #ffa000 180deg, #ffc107 240deg, #ffed4e 360deg)
-    `,
-    boxShadow: `
-      inset 2px 2px 0px #ffffcc,
-      inset -2px -2px 0px #b8860b,
-      3px 3px 0px #8b4513,
-      0 0 25px rgba(255, 215, 0, 0.7)
-    `,
-    transform: 'translate(1px, 1px)',
-  },
-  
-  ':active': {
-    background: `
-      conic-gradient(from 0deg at 50% 50%, 
-        #cc8400 0deg, #daa520 60deg, #b8860b 120deg, 
-        #996f08 180deg, #cc8400 240deg, #cc8400 360deg)
-    `,
-    boxShadow: `
-      inset -2px -2px 0px #ffff8d,
-      inset 2px 2px 0px #996f08,
-      2px 2px 0px #8b4513,
-      0 0 15px rgba(255, 215, 0, 0.3)
-    `,
-    transform: 'translate(2px, 2px)',
-  }
-});
-
-// Rupee variant with gem-like effect
-export const rupeeGem = style({
-  background: `
-    radial-gradient(ellipse at 30% 30%, #00ff88 0%, #00cc66 40%, #009944 100%),
-    linear-gradient(135deg, #00ff88 0%, #00aa55 50%, #006633 100%)
-  `,
-  border: '2px solid #004422',
-  borderRadius: '50% 50% 50% 0%',
-  boxShadow: `
-    inset 2px 2px 8px rgba(255, 255, 255, 0.4),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 153, 68, 0.5),
-    0 0 0 1px #002211
-  `,
-  color: '#ffffff',
-  fontFamily: 'fantasy',
-  fontSize: '14px',
-  fontWeight: 'bold',
-  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
-  textTransform: 'uppercase',
-  letterSpacing: '1px',
-  padding: '10px 18px',
-  position: 'relative',
-  
-  ':before': {
-    content: '""',
-    position: 'absolute',
-    top: '20%',
-    left: '20%',
-    width: '30%',
-    height: '30%',
-    background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.8) 0%, transparent 70%)',
-    borderRadius: '50%',
-    pointerEvents: 'none',
-  },
-  
-  ':hover': {
-    background: `
-      radial-gradient(ellipse at 30% 30%, #33ffaa 0%, #00dd77 40%, #00aa55 100%),
-      linear-gradient(135deg, #33ffaa 0%, #00bb66 50%, #007744 100%)
-    `,
-    boxShadow: `
-      inset 2px 2px 8px rgba(255, 255, 255, 0.5),
-      inset -2px -2px 8px rgba(0, 0, 0, 0.2),
-      0 6px 16px rgba(0, 153, 68, 0.6),
-      0 0 0 1px #002211
-    `,
-    transform: 'scale(1.05)',
-  },
-  
-  ':active': {
-    background: `
-      radial-gradient(ellipse at 30% 30%, #00cc66 0%, #009944 40%, #006633 100%),
-      linear-gradient(135deg, #00cc66 0%, #008844 50%, #005522 100%)
-    `,
-    boxShadow: `
-      inset -2px -2px 8px rgba(255, 255, 255, 0.3),
-      inset 2px 2px 8px rgba(0, 0, 0, 0.4),
-      0 2px 8px rgba(0, 153, 68, 0.4),
-      0 0 0 1px #002211
-    `,
-    transform: 'scale(0.98)',
-  }
-});
-
-// Primary variant (golden triforce style)
+// Primary variant (Princess Zelda style)
 export const primaryPixel = style({
-  background: `
-    conic-gradient(from 0deg at 50% 50%, 
-      #ffd700 0deg, #ffed4e 60deg, #ffc107 120deg, 
-      #ff8f00 180deg, #ffb300 240deg, #ffd700 360deg)
-  `,
-  border: '3px solid #b8860b',
-  borderRadius: '0px',
-  boxShadow: `
-    inset 2px 2px 0px #ffff8d,
-    inset -2px -2px 0px #cc8400,
-    4px 4px 0px #8b4513,
-    0 0 20px rgba(255, 215, 0, 0.5)
-  `,
-  color: '#8b4513',
-  fontFamily: 'monospace',
-  fontSize: '12px',
+  background: `linear-gradient(315deg, #fbbf24 0%, #f59e0b 30%, #d97706 60%, #92400e 100%)`,
+  border: `2px solid #92400e`,
+  borderTop: `2px solid #fde047`,
+  borderLeft: `2px solid #facc15`,
+  borderRight: `2px solid #a16207`,
+  borderBottom: `2px solid #78350f`,
+  borderRadius: '3px',
+  color: cssVariables.colors.white,
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px #ffff8d, -1px -1px 0px #cc8400',
-  textTransform: 'uppercase',
-  letterSpacing: '2px',
-  padding: '12px 24px',
-  position: 'relative',
+  fontSize: '14px',
+  textShadow: `1px 1px 0px rgba(0, 0, 0, 0.8), 0 0 6px #f59e0b`,
+  boxShadow: `2px 2px 0px #78350f`,
+  padding: '10px 20px',
+  transition: 'none',
   cursor: 'pointer',
-  
+
   ':hover': {
-    background: `
-      conic-gradient(from 0deg at 50% 50%, 
-        #ffed4e 0deg, #ffff8d 60deg, #ffd700 120deg, 
-        #ffa000 180deg, #ffc107 240deg, #ffed4e 360deg)
-    `,
-    boxShadow: `
-      inset 2px 2px 0px #ffffcc,
-      inset -2px -2px 0px #b8860b,
-      3px 3px 0px #8b4513,
-      0 0 25px rgba(255, 215, 0, 0.7)
-    `,
-    transform: 'translate(1px, 1px)',
+    background: `linear-gradient(315deg, #fde047 0%, #fbbf24 30%, #f59e0b 60%, #d97706 100%)`,
   },
-  
+
   ':active': {
-    background: `
-      conic-gradient(from 0deg at 50% 50%, 
-        #cc8400 0deg, #daa520 60deg, #b8860b 120deg, 
-        #996f08 180deg, #cc8400 240deg, #cc8400 360deg)
-    `,
-    boxShadow: `
-      inset -2px -2px 0px #ffff8d,
-      inset 2px 2px 0px #996f08,
-      2px 2px 0px #8b4513,
-      0 0 15px rgba(255, 215, 0, 0.3)
-    `,
     transform: 'translate(2px, 2px)',
-  }
+    boxShadow: 'none',
+    borderTop: `2px solid ${cssVariables.colors.triforce[700]}`,
+    borderLeft: `2px solid ${cssVariables.colors.triforce[700]}`,
+    borderRight: `2px solid ${cssVariables.colors.triforce[300]}`,
+    borderBottom: `2px solid ${cssVariables.colors.triforce[300]}`,
+  },
+
+  ':disabled': {
+    background: cssVariables.colors.gray[400],
+    border: `2px solid ${cssVariables.colors.gray[500]}`,
+    color: cssVariables.colors.gray[600],
+    cursor: 'not-allowed',
+    boxShadow: `
+      0 2px 0 ${cssVariables.colors.gray[500]},
+      0 3px 4px rgba(0, 0, 0, 0.1)
+    `,
+    transform: 'none',
+  },
 });
 
-// Secondary variant (Link's green tunic style)
+// Secondary variant (Link's tunic style)
 export const secondaryPixel = style({
-  background: `
-    linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%)
-  `,
-  border: '3px solid #fbbf24',
-  borderRadius: '0px',
-  boxShadow: `
-    inset 2px 2px 0px rgba(255, 255, 255, 0.4),
-    inset -2px -2px 0px rgba(21, 128, 61, 0.8),
-    4px 4px 0px #92400e,
-    0 0 20px rgba(34, 197, 94, 0.6)
-  `,
-  color: '#fef3c7',
-  fontFamily: 'monospace',
-  fontSize: '12px',
+  background: `linear-gradient(45deg, ${cssVariables.colors.rupee[500]} 0%, ${cssVariables.colors.rupee[600]} 50%, #16a34a 100%)`,
+  border: `2px solid ${cssVariables.colors.rupee[700]}`,
+  borderTop: `2px solid ${cssVariables.colors.rupee[400]}`,
+  borderLeft: `2px solid ${cssVariables.colors.rupee[400]}`,
+  borderRadius: '3px',
+  color: cssVariables.colors.white,
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px rgba(21, 128, 61, 0.8), 0 0 8px rgba(251, 191, 36, 0.6)',
-  textTransform: 'uppercase',
-  letterSpacing: '2px',
-  padding: '12px 24px',
-  position: 'relative',
+  fontSize: '14px',
+  textShadow: `1px 1px 0px rgba(0, 0, 0, 0.8)`,
+  boxShadow: `2px 2px 0px ${cssVariables.colors.rupee[700]}`,
+  padding: '10px 20px',
+  transition: 'none',
   cursor: 'pointer',
-  
+
   ':hover': {
-    background: `
-      linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%)
-    `,
-    boxShadow: `
-      inset 2px 2px 0px rgba(255, 255, 255, 0.5),
-      inset -2px -2px 0px rgba(21, 128, 61, 0.6),
-      3px 3px 0px #92400e,
-      0 0 25px rgba(34, 197, 94, 0.8)
-    `,
-    transform: 'translate(1px, 1px)',
+    background: `linear-gradient(45deg, ${cssVariables.colors.rupee[400]} 0%, ${cssVariables.colors.rupee[500]} 50%, #22c55e 100%)`,
   },
-  
+
   ':active': {
-    background: `
-      linear-gradient(135deg, #16a34a 0%, #15803d 50%, #166534 100%)
-    `,
+    background: `linear-gradient(135deg, ${cssVariables.colors.rupee[600]} 0%, ${cssVariables.colors.rupee[700]} 50%, ${cssVariables.colors.rupee[800]} 100%)`,
+    transform: 'translateY(4px)',
     boxShadow: `
-      inset -2px -2px 0px rgba(255, 255, 255, 0.3),
-      inset 2px 2px 0px rgba(21, 128, 61, 0.9),
-      2px 2px 0px #92400e,
-      0 0 15px rgba(34, 197, 94, 0.4)
+      0 0 0 ${cssVariables.colors.rupee[700]},
+      0 2px 4px rgba(0, 0, 0, 0.4),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3)
     `,
-    transform: 'translate(2px, 2px)',
-  }
+  },
+
+  ':disabled': {
+    background: cssVariables.colors.gray[400],
+    border: `2px solid ${cssVariables.colors.gray[500]}`,
+    color: cssVariables.colors.gray[600],
+    cursor: 'not-allowed',
+    boxShadow: `
+      0 2px 0 ${cssVariables.colors.gray[500]},
+      0 3px 4px rgba(0, 0, 0, 0.1)
+    `,
+    transform: 'none',
+  },
 });
 
-// Tertiary variant (outline style with Hylian theme)
+// Tertiary variant (Hyrule royal style)
 export const tertiaryPixel = style({
   background: 'transparent',
-  border: '3px solid #3b82f6',
-  borderRadius: '0px',
-  boxShadow: `
-    inset 2px 2px 0px rgba(59, 130, 246, 0.2),
-    inset -2px -2px 0px rgba(30, 58, 138, 0.3),
-    4px 4px 0px rgba(30, 58, 138, 0.8),
-    0 0 20px rgba(59, 130, 246, 0.4)
-  `,
-  color: '#3b82f6',
-  fontFamily: 'monospace',
-  fontSize: '12px',
+  border: `2px solid ${cssVariables.colors.hyrule[500]}`,
+  borderRadius: '3px',
+  color: cssVariables.colors.hyrule[600],
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.8), 0 0 8px rgba(59, 130, 246, 0.6)',
-  textTransform: 'uppercase',
-  letterSpacing: '2px',
-  padding: '12px 24px',
-  position: 'relative',
+  fontSize: '14px',
+  textShadow: `1px 1px 0px rgba(255, 255, 255, 0.8)`,
+  boxShadow: 'none',
+  padding: '10px 20px',
+  transition: 'none',
   cursor: 'pointer',
-  
+
   ':hover': {
-    background: 'rgba(59, 130, 246, 0.1)',
-    border: '3px solid #60a5fa',
-    boxShadow: `
-      inset 2px 2px 0px rgba(96, 165, 250, 0.3),
-      inset -2px -2px 0px rgba(30, 58, 138, 0.2),
-      3px 3px 0px rgba(30, 58, 138, 0.8),
-      0 0 25px rgba(59, 130, 246, 0.6)
-    `,
-    color: '#60a5fa',
-    transform: 'translate(1px, 1px)',
+    background: cssVariables.colors.hyrule[50],
+    color: cssVariables.colors.hyrule[700],
+    borderColor: cssVariables.colors.hyrule[600],
   },
-  
+
   ':active': {
-    background: 'rgba(59, 130, 246, 0.2)',
-    border: '3px solid #1d4ed8',
+    background: cssVariables.colors.hyrule[100],
+    color: cssVariables.colors.hyrule[800],
+    borderColor: cssVariables.colors.hyrule[700],
+  },
+
+  ':disabled': {
+    background: cssVariables.colors.gray[400],
+    border: `2px solid ${cssVariables.colors.gray[500]}`,
+    color: cssVariables.colors.gray[600],
+    cursor: 'not-allowed',
     boxShadow: `
-      inset -2px -2px 0px rgba(96, 165, 250, 0.2),
-      inset 2px 2px 0px rgba(30, 58, 138, 0.4),
-      2px 2px 0px rgba(30, 58, 138, 0.8),
-      0 0 15px rgba(59, 130, 246, 0.3)
+      0 2px 0 ${cssVariables.colors.gray[500]},
+      0 3px 4px rgba(0, 0, 0, 0.1)
     `,
-    color: '#1d4ed8',
-    transform: 'translate(2px, 2px)',
-  }
+    transform: 'none',
+  },
 });
 
-// Destructive variant (Ganon-inspired dark style)
+// Destructive variant (ganon red style)
 export const destructivePixel = style({
-  background: `
-    linear-gradient(135deg, #4c1d95 0%, #7c2d12 50%, #1f2937 100%)
-  `,
-  border: '3px solid #dc2626',
-  borderRadius: '0px',
-  boxShadow: `
-    inset 2px 2px 0px rgba(139, 69, 19, 0.3),
-    inset -2px -2px 0px rgba(0, 0, 0, 0.8),
-    4px 4px 0px #000000,
-    0 0 20px rgba(220, 38, 38, 0.6)
-  `,
-  color: '#ef4444',
-  fontFamily: 'monospace',
-  fontSize: '12px',
+  background: `linear-gradient(135deg, ${cssVariables.colors.ganon[600]} 0%, #7c2d12 40%, #1f2937 70%, #4c1d95 100%)`,
+  border: `2px solid ${cssVariables.colors.ganon[800]}`,
+  borderTop: `2px solid ${cssVariables.colors.ganon[300]}`,
+  borderLeft: `2px solid ${cssVariables.colors.ganon[400]}`,
+  borderRight: `2px solid #4c1d95`,
+  borderBottom: `2px solid #1f2937`,
+  borderRadius: '3px',
+  color: cssVariables.colors.white,
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px #000000, 0 0 10px rgba(239, 68, 68, 0.9)',
-  textTransform: 'uppercase',
-  letterSpacing: '2px',
-  padding: '12px 24px',
-  position: 'relative',
+  fontSize: '14px',
+  textShadow: `1px 1px 0px ${cssVariables.colors.black}, 0 0 4px #7c2d12`,
+  boxShadow: `2px 2px 0px #1e1b4b`,
+  padding: '10px 20px',
+  transition: 'none',
   cursor: 'pointer',
   
+  '@keyframes slide': {
+    '0%': { left: '-100%' },
+    '100%': { left: '100%' },
+  },
+
   ':hover': {
-    background: `
-      linear-gradient(135deg, #5b21b6 0%, #92400e 50%, #374151 100%)
-    `,
-    boxShadow: `
-      inset 2px 2px 0px rgba(139, 69, 19, 0.4),
-      inset -2px -2px 0px rgba(0, 0, 0, 0.6),
-      3px 3px 0px #000000,
-      0 0 25px rgba(220, 38, 38, 0.8)
-    `,
-    transform: 'translate(1px, 1px)',
+    background: `linear-gradient(135deg, ${cssVariables.colors.ganon[700]} 0%, #451a03 40%, #0f172a 70%, #312e81 100%)`,
+    position: 'relative',
+    overflow: 'hidden',
   },
   
+  ':hover::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.3), transparent)',
+    animation: 'slide 2s ease-in-out infinite',
+  },
+
   ':active': {
-    background: `
-      linear-gradient(135deg, #3730a3 0%, #451a03 50%, #111827 100%)
-    `,
+    borderTop: `2px solid #1f2937`,
+    borderLeft: `2px solid #4c1d95`,
+    borderRight: `2px solid ${cssVariables.colors.ganon[400]}`,
+    borderBottom: `2px solid ${cssVariables.colors.ganon[300]}`,
+    boxShadow: 'none',
+  },
+
+  ':disabled': {
+    background: cssVariables.colors.gray[400],
+    border: `2px solid ${cssVariables.colors.gray[500]}`,
+    color: cssVariables.colors.gray[600],
+    cursor: 'not-allowed',
     boxShadow: `
-      inset -2px -2px 0px rgba(139, 69, 19, 0.2),
-      inset 2px 2px 0px rgba(0, 0, 0, 0.9),
-      2px 2px 0px #000000,
-      0 0 15px rgba(220, 38, 38, 0.4)
+      0 2px 0 ${cssVariables.colors.gray[500]},
+      0 3px 4px rgba(0, 0, 0, 0.1)
     `,
-    transform: 'translate(2px, 2px)',
-  }
+    transform: 'none',
+  },
+});
+
+// Link variant (subtle link style)
+export const linkPixel = style({
+  fontWeight: 'bold',
+  color: cssVariables.colors.triforce[600],
+  textDecoration: 'underline',
+  textDecorationColor: cssVariables.colors.triforce[500],
+  cursor: 'pointer',
+  background: 'transparent',
+  border: 'none',
+  padding: '2px 4px',
+  borderRadius: '4px',
+  display: 'inline-flex',
+  alignItems: 'center',
+  transition: 'all 0.2s ease',
+
+  ':hover': {
+    color: cssVariables.colors.triforce[500],
+    backgroundColor: cssVariables.colors.triforce[50],
+    textDecorationColor: cssVariables.colors.triforce[400],
+    transform: 'scale(1.05)',
+  },
+
+  ':active': {
+    color: cssVariables.colors.triforce[700],
+    transform: 'scale(0.95)',
+  },
+
+  ':focus': {
+    outline: 'none',
+    boxShadow: `0 0 0 2px ${cssVariables.colors.triforce[400]}`,
+  },
 });

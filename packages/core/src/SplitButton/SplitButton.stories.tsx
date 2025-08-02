@@ -234,7 +234,7 @@ export const Variants: Story = {
             Export
           </SplitButton>
           <SplitButton
-            variant="outline"
+            variant="tertiary"
             onClick={() => alert('Outline share')}
             actions={[
               { label: 'Share Link', onClick: () => alert('Link shared') },
@@ -513,7 +513,7 @@ export const Examples: Story = {
               Save
             </SplitButton>
             <SplitButton
-              variant="outline"
+              variant="tertiary"
               onClick={handleExport}
               actions={[
                 {

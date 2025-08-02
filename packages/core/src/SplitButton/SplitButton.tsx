@@ -17,7 +17,7 @@ interface SplitButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>,
   /** Dropdown menu actions */
   actions: SplitButtonAction[];
   /** Button variant */
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /** Button size */
   size?: 'sm' | 'md' | 'lg';
 }
@@ -58,7 +58,7 @@ export const SplitButton = ({
   const variantClasses = {
     primary: 'bg-blue-500 hover:bg-blue-600 text-white focus:ring-blue-500',
     secondary: 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 focus:ring-blue-500',
-    outline: 'bg-transparent hover:bg-gray-50 text-gray-700 border border-gray-300 focus:ring-blue-500'
+    tertiary: 'bg-transparent hover:bg-gray-50 text-gray-700 border border-gray-300 focus:ring-blue-500'
   };
 
   const sizeClasses = {

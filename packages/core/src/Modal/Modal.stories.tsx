@@ -72,7 +72,7 @@ const [open, setOpen] = useState(false);
   title="Custom Footer"
   footer={
     <div className="flex justify-end gap-2">
-      <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+      <Button variant="tertiary" onClick={handleCancel}>Cancel</Button>
       <Button variant="primary" onClick={handleSave}>Save</Button>
     </div>
   }
@@ -266,7 +266,7 @@ export const CustomFooter: Story = {
           Return
         </Button>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => setOpen(false)}>
+          <Button variant="tertiary" onClick={() => setOpen(false)}>
             Submit
           </Button>
           <Button variant="primary" onClick={() => window.open('https://google.com', '_blank')}>
@@ -492,7 +492,7 @@ export const Variants: Story = {
                 Skip
               </Button>
               <div className="flex gap-2">
-                <Button variant="outline" onClick={() => setCustomOpen(false)}>
+                <Button variant="tertiary" onClick={() => setCustomOpen(false)}>
                   Save Draft
                 </Button>
                 <Button variant="primary" onClick={() => setCustomOpen(false)}>
@@ -520,7 +520,7 @@ export const Examples: Story = {
       <div className="space-y-6">
         <div>
           <Heading className="mb-2">Delete Confirmation</Heading>
-          <Button variant="outline" onClick={() => setDeleteOpen(true)}>
+          <Button variant="tertiary" onClick={() => setDeleteOpen(true)}>
             Delete Item
           </Button>
         </div>
@@ -545,7 +545,7 @@ export const Examples: Story = {
           title="Delete Item"
           footer={
             <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setDeleteOpen(false)}>
+              <Button variant="tertiary" onClick={() => setDeleteOpen(false)}>
                 Cancel
               </Button>
               <Button variant="destructive" onClick={() => {
@@ -581,7 +581,7 @@ export const Examples: Story = {
           title="Add New Item"
           footer={
             <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setFormOpen(false)}>
+              <Button variant="tertiary" onClick={() => setFormOpen(false)}>
                 Cancel
               </Button>
               <Button variant="primary" onClick={() => {

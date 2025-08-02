@@ -224,7 +224,7 @@ export const WithActions: Story = {
           children={
             <div className="space-x-2">
               <Button variant="primary" size="sm">Import Data</Button>
-              <Button variant="outline" size="sm">Create Manually</Button>
+              <Button variant="tertiary" size="sm">Create Manually</Button>
             </div>
           }
         />
@@ -263,7 +263,7 @@ export const States: Story = {
         <Empty 
           imageStyle="simple"
           description="No records found"
-          children={<Button variant="outline" size="sm">Add Record</Button>}
+          children={<Button variant="tertiary" size="sm">Add Record</Button>}
         />
       </div>
     </div>
@@ -292,7 +292,7 @@ export const Examples: Story = {
                 description="No search results found"
                 children={
                   <div className="space-x-2">
-                    <Button variant="outline" size="sm">Clear Filters</Button>
+                    <Button variant="tertiary" size="sm">Clear Filters</Button>
                     <Button variant="primary" size="sm">Browse All</Button>
                   </div>
                 }
@@ -326,7 +326,7 @@ export const Examples: Story = {
                   </div>
                 ))}
                 <Button 
-                  variant="outline" 
+                  variant="tertiary" 
                   onClick={() => setProjects([])}
                 >
                   Clear Projects
@@ -353,7 +353,7 @@ export const Examples: Story = {
                     <Empty
                       imageStyle="simple"
                       description="No records found"
-                      children={<Button variant="outline" size="sm">Add Record</Button>}
+                      children={<Button variant="tertiary" size="sm">Add Record</Button>}
                     />
                   </td>
                 </tr>

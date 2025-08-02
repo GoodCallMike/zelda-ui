@@ -1,24 +1,21 @@
-import type {
-  ButtonHTMLAttributes,
-  ComponentType,
-  ReactNode,
-  SVGProps,
-} from 'react';
+import type { ComponentType, ReactNode, SVGProps } from 'react';
 import { cn } from '../styles';
+import { primaryPixel, secondaryPixel, tertiaryPixel, destructivePixel, linkPixel } from '@zelda/theme';
 
-interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
+interface ButtonProps {
   /** Button content */
   children: ReactNode;
-  /** Visual style variant */
-  variant?: 'primary' | 'secondary' | 'outline' | 'link' | 'destructive';
+  /** Button variant */
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'destructive';
   /** Click handler function */
   onClick?: () => void;
-  /** Icon component to display before text */
+  /** Whether button is disabled */
+  disabled?: boolean;
+  /** Icon component to display */
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
-  /** Icon position relative to text */
+  /** Icon position */
   iconPosition?: 'left' | 'right';
-  /** Test identifier for automated testing */
+  /** Test identifier */
   testId?: string;
 }
 
@@ -32,38 +29,30 @@ export const Button = ({
   testId,
   ...props
 }: ButtonProps) => {
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'primary':
+        return primaryPixel;
+      case 'secondary':
+        return secondaryPixel;
+      case 'tertiary':
+        return tertiaryPixel;
+      case 'link':
+        return linkPixel;
+      case 'destructive':
+        return destructivePixel;
+      default:
+        return primaryPixel;
+    }
+  };
+
   return (
     <button
       type="button"
       className={cn(
-        // Base styles
-        'inline-flex items-center justify-center box-border',
-        variant === 'link'
-          ? 'px-2 py-1'
-          : 'px-4 py-2 rounded font-semibold uppercase',
-        'cursor-pointer transition-colors',
-        variant !== 'outline' && 'border-none',
-        variant === 'link' && 'bg-transparent hover:bg-blue-50',
-        'zelda-effect',
-        'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
-        'active:scale-95 active:transition-transform active:duration-75',
-
-        // Icon spacing
+        'inline-flex items-center justify-center',
         Icon && 'gap-2',
-
-        // Variant styles
-        variant === 'primary' &&
-          'bg-blue-700 text-white hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800',
-        variant === 'secondary' &&
-          'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-800',
-        variant === 'outline' &&
-          'border border-solid border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-100 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700',
-        variant === 'link' &&
-          'text-blue-600 hover:text-blue-700 rounded underline focus:ring-blue-500 focus:ring-offset-1 active:text-blue-800',
-        variant === 'destructive' &&
-          'bg-red-600 text-white hover:bg-red-500 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700',
-
-        // State styles
+        getVariantStyles(),
         disabled && 'opacity-50 cursor-not-allowed',
       )}
       onClick={onClick}

@@ -1,13 +1,13 @@
-# Storybook Documentation Template
+# 🗡️ Zelda UI Documentation Template
 
 ## Component Description Structure
 
 ```tsx
-component: `[Component] component for [primary purpose] with comprehensive accessibility and testing support.
+component: `[Component] component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
 
 ## Overview
 
-The [Component] component provides [main functionality]. It supports [key features] and maintains WCAG 2.1 AA accessibility compliance.
+The [Component] component provides [main functionality] with authentic Zelda-inspired styling. It supports [key features] and maintains WCAG 2.1 AA accessibility compliance.
 
 ## Quick Start
 
@@ -17,33 +17,43 @@ import { [Component] } from '@zelda/core';
 // Basic usage
 <[Component] [basicProps]>[content]</[Component]>
 
-// With options
+// With Hyrule theming
 <[Component] [commonProps]>[content]</[Component]>
 \`\`\`
 
-## [Feature Categories]
+## Variants
 
-### [Feature 1]
+### Primary (Triforce Gold)
 \`\`\`tsx
-<[Component] [feature1Props]>[content]</[Component]>
+<[Component] variant="primary">[content]</[Component]>
 \`\`\`
 
-### [Feature 2]
+### Secondary (Rupee Green)
 \`\`\`tsx
-<[Component] [feature2Props]>[content]</[Component]>
+<[Component] variant="secondary">[content]</[Component]>
+\`\`\`
+
+### Tertiary (Hyrule Blue)
+\`\`\`tsx
+<[Component] variant="tertiary">[content]</[Component]>
+\`\`\`
+
+### Destructive (Ganon Red)
+\`\`\`tsx
+<[Component] variant="destructive">[content]</[Component]>
 \`\`\`
 
 ## Accessibility
 
 The [Component] component is fully accessible with:
 
-- **[Accessibility feature 1]**: [Description]
-- **[Accessibility feature 2]**: [Description]
-- **[Accessibility feature 3]**: [Description]
+- **Keyboard Navigation**: Full keyboard support with proper focus management
+- **Screen Reader Support**: Semantic elements with proper labeling
+- **Focus Indicators**: Clear visual focus states for keyboard users
 
 \`\`\`tsx
 // Accessibility example
-<[Component] [accessibilityProps]>[content]</[Component]>
+<[Component] testId="adventure-btn">[content]</[Component]>
 \`\`\`
 
 ## Testing
@@ -62,36 +72,45 @@ screen.getByTestId('component-test');
 ## Best Practices
 
 ### Do
-- [Best practice 1]
-- [Best practice 2]
-- [Best practice 3]
+- Use primary for main actions (like "Start Adventure")
+- Use destructive for dangerous actions (like "Delete Save")
+- Provide clear, action-oriented labels
+- Include \`testId\` for reliable testing
 
 ### Don't
-- [Anti-pattern 1]
-- [Anti-pattern 2]
-- [Anti-pattern 3]
+- Use multiple primary variants in the same context
+- Use destructive variant for non-destructive actions
+- Make component text too long for the pixel-art styling
 `,
 ```
 
 ## Required Stories
 
-1. **Default** - Basic component usage
-2. **[Variants]** - Different visual variants
-3. **[States]** - Different component states
-4. **[Features]** - Key feature demonstrations
-5. **Examples** - Real-world usage examples
+1. **Default** - Basic component usage with primary variant
+2. **Variants** - All Hyrule-themed variants (primary, secondary, tertiary, destructive)
+3. **States** - Normal, hover, active, and disabled states
+4. **Hyrule Interface** - Real-world Zelda-themed usage examples
+5. **Examples** - Adventure-themed component demonstrations
 
 ## ArgTypes Template
 
 ```tsx
 argTypes: {
-  [prop]: {
-    control: '[controlType]',
-    options: ['option1', 'option2'], // for select
-    description: '[Prop description]',
+  variant: {
+    control: 'select',
+    options: ['primary', 'secondary', 'tertiary', 'destructive'],
+    description: 'Hyrule-themed visual variant',
     table: {
-      type: { summary: '[type]' },
-      defaultValue: { summary: '[default]' },
+      type: { summary: 'string' },
+      defaultValue: { summary: 'primary' },
+    },
+  },
+  disabled: {
+    control: 'boolean',
+    description: 'Whether the component is disabled',
+    table: {
+      type: { summary: 'boolean' },
+      defaultValue: { summary: 'false' },
     },
   },
   testId: {
@@ -103,3 +122,15 @@ argTypes: {
   },
 },
 ```
+
+## Zelda Color Palette Reference
+
+- **triforce-*** - Golden yellow (primary theme)
+- **hyrule-*** - Royal blue (kingdom colors)
+- **rupee-*** - Emerald green (currency/nature)
+- **ganon-*** - Crimson red (danger/destruction)
+- **sheikah-*** - Mystic purple (ancient tech)
+- **kokiri-*** - Forest green (nature/success)
+- **zora-*** - Aqua blue (water domain)
+- **goron-*** - Volcanic orange (fire/warnings)
+- **fairy-*** - Magical pink (healing/magic)

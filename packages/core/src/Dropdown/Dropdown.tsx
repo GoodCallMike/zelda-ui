@@ -8,6 +8,13 @@ import {
   useFloating,
 } from '@floating-ui/react';
 import { cn } from '../styles';
+import {
+  dropdownMenu,
+  dropdownItem,
+  dropdownItemDisabled,
+  dropdownDivider,
+  dropdownIcon,
+} from '@zelda/theme/hyrule-dropdown.css';
 
 interface DropdownItem {
   /** Item label */
@@ -132,30 +139,26 @@ export const Dropdown = ({
           <div
             ref={refs.setFloating}
             style={floatingStyles}
-            className="z-50 min-w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg"
+            className={cn('z-50', dropdownMenu)}
           >
-            <div className="py-1">
-              {items.map((item, index) => (
-                <div key={item.key}>
-                  <button
-                    onClick={() => handleItemClick(item)}
-                    disabled={item.disabled}
-                    className={cn(
-                      'w-full text-left px-3 py-2 text-sm transition-colors flex items-center gap-2',
-                      item.disabled
-                        ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer'
-                    )}
-                  >
-                    {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
-                    {item.label}
-                  </button>
-                  {item.divider && index < items.length - 1 && (
-                    <div className="border-t border-gray-200 dark:border-gray-600 my-1" />
+            {items.map((item, index) => (
+              <div key={item.key}>
+                <button
+                  onClick={() => handleItemClick(item)}
+                  disabled={item.disabled}
+                  className={cn(
+                    dropdownItem,
+                    item.disabled && dropdownItemDisabled
                   )}
-                </div>
-              ))}
-            </div>
+                >
+                  {item.icon && <span className={dropdownIcon}>{item.icon}</span>}
+                  {item.label}
+                </button>
+                {item.divider && index < items.length - 1 && (
+                  <div className={dropdownDivider} />
+                )}
+              </div>
+            ))}
           </div>
         </>
       )}
