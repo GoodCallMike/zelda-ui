@@ -11,7 +11,7 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['h1', 'h2', 'h3', 'body', 'caption'],
+      options: ['h1', 'h2', 'h3', 'body', 'caption', 'label'],
     },
     color: {
       control: { type: 'select' },
@@ -61,6 +61,13 @@ export const Caption: Story = {
   args: {
     variant: 'caption',
     children: 'Nintendo Switch Exclusive',
+  },
+};
+
+export const Label: Story = {
+  args: {
+    variant: 'label',
+    children: 'Form Label',
   },
 };
 

@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
+import { Typography } from '../Typography';
 import styles from './Checkbox.module.css';
 
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -19,7 +20,7 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   return (
-    <label className={cn('inline-flex items-center gap-2 cursor-pointer', className)}>
+    <label className={cn('inline-flex items-center gap-2 cursor-pointer p-2', className)}>
       <input
         type="checkbox"
         className={cn(
@@ -31,7 +32,7 @@ export const Checkbox = ({
         {...props}
       />
       {label && (
-        <span className="text-base font-medium select-none">{label}</span>
+        <Typography variant="label" className="select-none">{label}</Typography>
       )}
     </label>
   );

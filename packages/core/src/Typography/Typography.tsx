@@ -5,7 +5,7 @@ export interface TypographyProps {
   /** Typography content */
   children: ReactNode;
   /** Typography variant */
-  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'caption';
+  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'label';
   /** Text color theme */
   color?: 'default' | 'muted' | 'triforce' | 'hyrule' | 'rupee' | 'ganon';
   /** Test identifier */
@@ -31,6 +31,8 @@ export const Typography = ({
         return 'text-base leading-relaxed';
       case 'caption':
         return 'text-sm leading-normal';
+      case 'label':
+        return 'text-base font-medium leading-normal';
       default:
         return 'text-base leading-relaxed';
     }

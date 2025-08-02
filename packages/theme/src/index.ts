@@ -1,3 +1,4 @@
+export * from './fonts.css';
 export * from './tokens.css';
 export * from './theme.css';
 export * from './utilities/index.css';
