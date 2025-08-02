@@ -1,9 +1,9 @@
-/* Primary - Triforce Gold */
+/* Primary - Filled button with Triforce gold */
 .primary {
   background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
   border: 3px solid var(--triforce-700);
-  color: var(--triforce-900);
-  text-shadow: 1px 1px 0 var(--triforce-100), -1px -1px 0 var(--triforce-700);
+  color: var(--white);
+  text-shadow: 1px 1px 0 var(--triforce-700), -1px -1px 0 var(--triforce-900);
   box-shadow: 
     inset 2px 2px 0 var(--triforce-100),
     inset -2px -2px 0 var(--triforce-700),
@@ -35,90 +35,226 @@
   outline-color: var(--triforce-400);
 }
 
-/* Secondary - Rupee Green */
-.secondary {
-  background: linear-gradient(135deg, var(--rupee-500) 0%, var(--rupee-600) 50%, var(--rupee-700) 100%);
-  border: 3px solid var(--rupee-800);
-  color: var(--rupee-50);
-  text-shadow: 1px 1px 0 color-mix(in srgb, var(--black) 50%, transparent), 0 0 8px color-mix(in srgb, var(--rupee-500) 30%, transparent);
+/* Dark mode - Ganon primary */
+:global(.dark) .primary {
+  background: linear-gradient(135deg, var(--ganon-600) 0%, var(--ganon-700) 50%, var(--ganon-800) 100%);
+  border-color: var(--ganon-900);
+  color: var(--ganon-100);
+  text-shadow: 1px 1px 0 var(--ganon-900), -1px -1px 0 var(--black);
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 30%, transparent),
-    inset -2px -2px 0 var(--rupee-900),
+    inset 2px 2px 0 var(--ganon-400),
+    inset -2px -2px 0 var(--ganon-900),
     4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, var(--rupee-500) 40%, transparent);
+    0 0 20px color-mix(in srgb, var(--ganon-600) 50%, transparent);
 }
 
-.secondary:hover {
-  background: linear-gradient(135deg, var(--rupee-400) 0%, var(--rupee-500) 50%, var(--rupee-600) 100%);
+:global(.dark) .primary:hover {
+  background: linear-gradient(135deg, var(--ganon-500) 0%, var(--ganon-600) 50%, var(--ganon-700) 100%);
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--white) 40%, transparent),
-    inset -2px -2px 0 var(--rupee-800),
+    inset 2px 2px 0 var(--ganon-300),
+    inset -2px -2px 0 var(--black),
     3px 3px 0 var(--black),
-    0 0 25px color-mix(in srgb, var(--rupee-500) 60%, transparent);
-  transform: translate(1px, 1px);
+    0 0 25px color-mix(in srgb, var(--ganon-600) 70%, transparent);
 }
 
-.secondary:active {
-  background: linear-gradient(135deg, var(--rupee-600) 0%, var(--rupee-700) 50%, var(--rupee-800) 100%);
-  box-shadow: 
-    inset -2px -2px 0 color-mix(in srgb, var(--white) 20%, transparent),
-    inset 2px 2px 0 var(--black),
-    2px 2px 0 var(--black),
-    0 0 15px color-mix(in srgb, var(--rupee-500) 30%, transparent);
-  transform: translate(2px, 2px);
+:global(.dark) .primary:focus-visible {
+  outline-color: var(--ganon-500);
 }
 
-.secondary:focus-visible {
-  outline-color: var(--rupee-500);
-}
-
-/* Tertiary - Hyrule Blue */
-.tertiary {
+/* Default - Outlined button */
+.default {
   background: transparent;
-  border: 3px solid var(--hyrule-500);
-  color: var(--hyrule-700);
-  text-shadow: 1px 1px 0 color-mix(in srgb, var(--white) 80%, transparent), 0 0 8px color-mix(in srgb, var(--hyrule-500) 40%, transparent);
+  border: 3px solid var(--gray-400);
+  color: var(--gray-700);
+  text-shadow: none;
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--hyrule-500) 10%, transparent),
-    inset -2px -2px 0 color-mix(in srgb, var(--hyrule-800) 20%, transparent),
-    4px 4px 0 color-mix(in srgb, var(--hyrule-800) 60%, transparent),
-    0 0 20px color-mix(in srgb, var(--hyrule-500) 30%, transparent);
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-600) 40%, transparent);
 }
 
-.tertiary:hover {
-  background: color-mix(in srgb, var(--hyrule-500) 10%, transparent);
-  border-color: var(--hyrule-600);
-  color: var(--hyrule-800);
+.default:hover {
+  background: var(--gray-50);
+  border-color: var(--triforce-500);
+  color: var(--triforce-600);
   box-shadow: 
-    inset 2px 2px 0 color-mix(in srgb, var(--hyrule-400) 20%, transparent),
-    inset -2px -2px 0 color-mix(in srgb, var(--hyrule-800) 30%, transparent),
-    3px 3px 0 color-mix(in srgb, var(--hyrule-800) 60%, transparent),
-    0 0 25px color-mix(in srgb, var(--hyrule-500) 50%, transparent);
+    inset 2px 2px 0 var(--white),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
+    3px 3px 0 color-mix(in srgb, var(--triforce-600) 40%, transparent),
+    0 0 15px color-mix(in srgb, var(--triforce-400) 30%, transparent);
   transform: translate(1px, 1px);
 }
 
-.tertiary:active {
-  background: color-mix(in srgb, var(--hyrule-500) 20%, transparent);
-  border-color: var(--hyrule-800);
-  color: var(--hyrule-900);
+.default:active {
+  background: var(--gray-100);
+  border-color: var(--triforce-600);
+  color: var(--triforce-700);
   box-shadow: 
-    inset -2px -2px 0 color-mix(in srgb, var(--hyrule-400) 10%, transparent),
-    inset 2px 2px 0 color-mix(in srgb, var(--hyrule-800) 40%, transparent),
-    2px 2px 0 color-mix(in srgb, var(--hyrule-800) 60%, transparent),
-    0 0 15px color-mix(in srgb, var(--hyrule-500) 20%, transparent);
+    inset -2px -2px 0 var(--white),
+    inset 2px 2px 0 color-mix(in srgb, var(--triforce-700) 30%, transparent),
+    2px 2px 0 color-mix(in srgb, var(--triforce-700) 40%, transparent);
   transform: translate(2px, 2px);
 }
 
-.tertiary:focus-visible {
-  outline-color: var(--hyrule-500);
+.default:focus-visible {
+  outline-color: var(--triforce-500);
 }
 
-/* Destructive - Ganon Red */
+/* Dark mode - Default */
+:global(.dark) .default {
+  border-color: var(--gray-600);
+  color: var(--gray-300);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--gray-400) 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-900) 60%, transparent);
+}
+
+:global(.dark) .default:hover {
+  background: var(--gray-800);
+  border-color: var(--ganon-500);
+  color: var(--ganon-300);
+  box-shadow: 
+    inset 2px 2px 0 var(--gray-700),
+    inset -2px -2px 0 color-mix(in srgb, var(--ganon-700) 40%, transparent),
+    3px 3px 0 color-mix(in srgb, var(--ganon-800) 60%, transparent),
+    0 0 15px color-mix(in srgb, var(--ganon-500) 40%, transparent);
+}
+
+:global(.dark) .default:focus-visible {
+  outline-color: var(--ganon-500);
+}
+
+/* Dashed - Dashed border button */
+.dashed {
+  background: transparent;
+  border: 3px dashed var(--gray-400);
+  color: var(--gray-600);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.dashed:hover {
+  background: var(--gray-50);
+  border-color: var(--triforce-500);
+  color: var(--triforce-600);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+}
+
+.dashed:active {
+  background: var(--gray-100);
+  border-color: var(--triforce-600);
+  color: var(--triforce-700);
+}
+
+.dashed:focus-visible {
+  outline-color: var(--triforce-500);
+}
+
+/* Dark mode - Dashed */
+:global(.dark) .dashed {
+  border-color: var(--gray-600);
+  color: var(--gray-400);
+}
+
+:global(.dark) .dashed:hover {
+  background: var(--gray-800);
+  border-color: var(--ganon-500);
+  color: var(--ganon-300);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--ganon-500) 30%, transparent);
+}
+
+:global(.dark) .dashed:focus-visible {
+  outline-color: var(--ganon-500);
+}
+
+/* Text - Minimal text button */
+.text {
+  background: transparent;
+  border: 3px solid transparent;
+  color: var(--gray-600);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.text:hover {
+  background: var(--gray-100);
+  color: var(--triforce-600);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+}
+
+.text:active {
+  background: var(--gray-200);
+  color: var(--triforce-700);
+}
+
+.text:focus-visible {
+  outline-color: var(--triforce-500);
+}
+
+/* Dark mode - Text */
+:global(.dark) .text {
+  color: var(--gray-400);
+}
+
+:global(.dark) .text:hover {
+  background: var(--gray-800);
+  color: var(--ganon-300);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--ganon-500) 20%, transparent);
+}
+
+:global(.dark) .text:focus-visible {
+  outline-color: var(--ganon-500);
+}
+
+/* Link - Link-style button */
+.link {
+  background: transparent;
+  border: 3px solid transparent;
+  color: var(--triforce-600);
+  text-shadow: none;
+  box-shadow: none;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--triforce-600) 60%, transparent);
+}
+
+.link:hover {
+  color: var(--triforce-500);
+  text-decoration-color: var(--triforce-500);
+  background: color-mix(in srgb, var(--triforce-100) 50%, transparent);
+}
+
+.link:active {
+  color: var(--triforce-700);
+  text-decoration-color: var(--triforce-700);
+}
+
+.link:focus-visible {
+  outline-color: var(--triforce-500);
+}
+
+/* Dark mode - Link */
+:global(.dark) .link {
+  color: var(--ganon-400);
+  text-decoration-color: color-mix(in srgb, var(--ganon-400) 60%, transparent);
+}
+
+:global(.dark) .link:hover {
+  color: var(--ganon-300);
+  text-decoration-color: var(--ganon-300);
+  background: color-mix(in srgb, var(--ganon-900) 50%, transparent);
+}
+
+:global(.dark) .link:focus-visible {
+  outline-color: var(--ganon-400);
+}
+
+/* Destructive - Ganon red for dangerous actions */
 .destructive {
   background: linear-gradient(135deg, var(--ganon-600) 0%, var(--ganon-700) 50%, var(--ganon-800) 100%);
   border: 3px solid var(--ganon-900);
-  color: var(--ganon-200);
-  text-shadow: 1px 1px 0 color-mix(in srgb, var(--black) 80%, transparent), 0 0 10px color-mix(in srgb, var(--ganon-600) 60%, transparent);
+  color: var(--white);
+  text-shadow: 1px 1px 0 var(--ganon-800), -1px -1px 0 var(--black);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 20%, transparent),
     inset -2px -2px 0 var(--black),
@@ -148,4 +284,30 @@
 
 .destructive:focus-visible {
   outline-color: var(--ganon-600);
+}
+
+/* Dark mode - Destructive (inverted to Triforce gold) */
+:global(.dark) .destructive {
+  background: linear-gradient(135deg, var(--triforce-600) 0%, var(--triforce-700) 50%, var(--triforce-800) 100%);
+  border-color: var(--triforce-900);
+  color: var(--white);
+  text-shadow: 1px 1px 0 var(--triforce-800), -1px -1px 0 var(--black);
+  box-shadow: 
+    inset 2px 2px 0 var(--triforce-400),
+    inset -2px -2px 0 var(--black),
+    4px 4px 0 var(--black),
+    0 0 20px color-mix(in srgb, var(--triforce-600) 50%, transparent);
+}
+
+:global(.dark) .destructive:hover {
+  background: linear-gradient(135deg, var(--triforce-500) 0%, var(--triforce-600) 50%, var(--triforce-700) 100%);
+  box-shadow: 
+    inset 2px 2px 0 var(--triforce-300),
+    inset -2px -2px 0 var(--triforce-900),
+    3px 3px 0 var(--black),
+    0 0 25px color-mix(in srgb, var(--triforce-600) 70%, transparent);
+}
+
+:global(.dark) .destructive:focus-visible {
+  outline-color: var(--triforce-500);
 }

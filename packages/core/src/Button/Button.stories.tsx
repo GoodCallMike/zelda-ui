@@ -11,8 +11,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'destructive'],
-      description: 'Visual style variant of the button',
+      options: ['primary', 'default', 'dashed', 'text', 'link', 'destructive'],
+      description: 'Functional style variant of the button',
     },
     disabled: {
       control: 'boolean',
@@ -31,17 +31,31 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const Default: Story = {
   args: {
-    children: 'Secondary Action',
-    variant: 'secondary',
+    children: 'Default Action',
+    variant: 'default',
   },
 };
 
-export const Tertiary: Story = {
+export const Dashed: Story = {
   args: {
-    children: 'Tertiary Action',
-    variant: 'tertiary',
+    children: 'Dashed Action',
+    variant: 'dashed',
+  },
+};
+
+export const Text: Story = {
+  args: {
+    children: 'Text Action',
+    variant: 'text',
+  },
+};
+
+export const Link: Story = {
+  args: {
+    children: 'Link Action',
+    variant: 'link',
   },
 };
 
@@ -64,9 +78,33 @@ export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-3">
       <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="tertiary">Tertiary</Button>
+      <Button variant="default">Default</Button>
+      <Button variant="dashed">Dashed</Button>
+      <Button variant="text">Text</Button>
+      <Button variant="link">Link</Button>
       <Button variant="destructive">Destructive</Button>
     </div>
   ),
+};
+
+export const DarkMode: Story = {
+  render: () => (
+    <div className="dark bg-gray-900 p-6 rounded">
+      <div className="flex flex-wrap gap-3">
+        <Button variant="primary">Primary</Button>
+        <Button variant="default">Default</Button>
+        <Button variant="dashed">Dashed</Button>
+        <Button variant="text">Text</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="destructive">Destructive</Button>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Dark mode transforms the theme from Zelda/Triforce-focused to Ganon-focused with crimson accents.',
+      },
+    },
+  },
 };

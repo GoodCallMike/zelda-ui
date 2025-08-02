@@ -6,7 +6,7 @@ export interface ButtonProps {
   /** Button content */
   children: ReactNode;
   /** Button variant */
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'destructive';
+  variant?: 'primary' | 'default' | 'dashed' | 'text' | 'link' | 'destructive';
   /** Click handler function */
   onClick?: () => void;
   /** Whether button is disabled */
