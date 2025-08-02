@@ -8,13 +8,7 @@ import {
   useFloating,
 } from '@floating-ui/react';
 import { cn } from '../styles';
-import {
-  dropdownMenu,
-  dropdownItem,
-  dropdownItemDisabled,
-  dropdownDivider,
-  dropdownIcon,
-} from '@zelda/theme/hyrule-dropdown.css';
+import { cn } from '@zelda/core/styles';
 
 interface DropdownItem {
   /** Item label */
@@ -139,7 +133,7 @@ export const Dropdown = ({
           <div
             ref={refs.setFloating}
             style={floatingStyles}
-            className={cn('z-50', dropdownMenu)}
+            className="z-50 bg-white border-2 border-triforce-300 rounded-md shadow-lg p-1 min-w-48 overflow-hidden"
           >
             {items.map((item, index) => (
               <div key={item.key}>
@@ -147,15 +141,15 @@ export const Dropdown = ({
                   onClick={() => handleItemClick(item)}
                   disabled={item.disabled}
                   className={cn(
-                    dropdownItem,
-                    item.disabled && dropdownItemDisabled
+                    'flex items-center gap-2 w-full p-2 text-sm font-medium text-gray-700 bg-transparent border-none cursor-pointer text-left transition-all duration-150 hover:bg-triforce-100 hover:text-triforce-800 hover:translate-x-0.5',
+                    item.disabled && 'text-gray-400 cursor-not-allowed hover:bg-transparent hover:text-gray-400 hover:translate-x-0'
                   )}
                 >
-                  {item.icon && <span className={dropdownIcon}>{item.icon}</span>}
+                  {item.icon && <span className="flex-shrink-0 w-4 h-4 text-triforce-600">{item.icon}</span>}
                   {item.label}
                 </button>
                 {item.divider && index < items.length - 1 && (
-                  <div className={dropdownDivider} />
+                  <div className="h-px bg-triforce-200 mx-3 my-1" />
                 )}
               </div>
             ))}

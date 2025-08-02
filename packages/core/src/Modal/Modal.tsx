@@ -2,15 +2,7 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { cn, useClickOutside } from '../styles';
 import { Button } from '../Button';
-import {
-  modalBackdrop,
-  modalContainer,
-  modalHeader,
-  modalTitle,
-  modalCloseButton,
-  modalBody,
-  modalFooter,
-} from '@zelda/theme/hyrule-modal.css';
+
 
 interface ModalProps {
   /** Whether the modal is visible */
@@ -124,28 +116,28 @@ export const Modal = ({
   );
 
   return (
-    <div className={modalBackdrop}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
       {/* Modal */}
       <div
         ref={modalRef}
         className={cn(
-          modalContainer,
+          'relative bg-white rounded-lg shadow-2xl max-h-[90vh] overflow-hidden m-4',
           centered ? '' : 'mt-16'
         )}
         style={{ width: typeof width === 'number' ? `${width}px` : width }}
       >
         {/* Header */}
         {(title || closable) && (
-          <div className={modalHeader}>
+          <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200">
             {title && (
-              <h2 className={modalTitle}>
+              <h2 className="text-xl font-bold text-gray-900">
                 {title}
               </h2>
             )}
             {closable && (
               <button
                 onClick={onCancel}
-                className={modalCloseButton}
+                className="flex items-center justify-center w-8 h-8 p-0 bg-ganon-500 border border-ganon-700 border-t-ganon-400 border-l-ganon-400 text-white cursor-pointer hover:bg-ganon-600 active:border-t-ganon-700 active:border-l-ganon-700 active:border-r-ganon-400 active:border-b-ganon-400 shadow-[1px_1px_0_theme(colors.ganon.700)]"
                 aria-label="Close modal"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,14 +150,14 @@ export const Modal = ({
 
         {/* Body */}
         {children && (
-          <div className={modalBody}>
+          <div className="p-6 max-h-96 overflow-y-auto text-gray-700 leading-relaxed">
             {children}
           </div>
         )}
 
         {/* Footer */}
         {footer !== null && (
-          <div className={modalFooter}>
+          <div className="flex justify-end gap-3 p-4 px-6 pb-6 border-t border-gray-200 bg-gray-50">
             {footer || defaultFooter}
           </div>
         )}
