@@ -2,14 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';
 import { cn } from '../styles';
 import { useClickOutside } from '../hooks/useClickOutside';
-import { 
-  menuContainer, 
-  menuItem, 
-  menuItemSelected, 
-  subMenuContainer, 
-  subMenuTitle, 
-  menuItemDisabled 
-} from '@zelda/theme';
+
 
 interface MenuContextValue {
   selectedKeys: string[];
@@ -82,8 +75,7 @@ export const Menu = ({
     <MenuContext.Provider value={contextValue}>
       <ul
         className={cn(
-          'list-none m-0 p-2',
-          menuContainer,
+          'list-none m-0 p-2 bg-gray-50 border-r border-gray-200 min-h-screen w-60',
           mode === 'horizontal' && 'flex',
           className
         )}
@@ -122,11 +114,10 @@ const MenuItem = ({ id, disabled = false, children, className, onClick, ...props
   return (
     <li
       className={cn(
-        'block',
-        menuItem,
+        'block bg-transparent border border-transparent rounded-none m-0.5 px-2 py-1.5 text-gray-900 font-medium text-sm cursor-pointer hover:bg-green-50 hover:border-green-500 hover:border-t-green-300 hover:border-l-green-300 hover:shadow-[1px_1px_0_theme(colors.green.600)] hover:text-green-800',
         mode === 'horizontal' && !context.inSubmenu && 'inline-block',
-        disabled && menuItemDisabled,
-        isSelected && menuItemSelected,
+        disabled && 'text-gray-400 cursor-not-allowed opacity-60 hover:bg-transparent hover:text-gray-400',
+        isSelected && 'bg-green-500 border-green-600 border-t-green-400 border-l-green-400 text-white font-semibold shadow-[1px_1px_0_theme(colors.green.700)] hover:bg-green-600 hover:text-white',
         className
       )}
       onClick={handleClick}
@@ -172,8 +163,8 @@ const SubMenu = ({ id, title, disabled = false, children, className, ...props }:
     >
       <div
         className={cn(
-          subMenuTitle,
-          disabled && menuItemDisabled
+          'bg-transparent p-2 m-1 rounded-md text-gray-900 font-medium text-sm cursor-pointer transition-all duration-150 flex items-center justify-between hover:bg-green-100 hover:text-green-600',
+          disabled && 'text-gray-400 cursor-not-allowed hover:bg-transparent hover:text-gray-400'
         )}
         onClick={handleTitleClick}
       >
@@ -195,7 +186,7 @@ const SubMenu = ({ id, title, disabled = false, children, className, ...props }:
           <ul
             className={cn(
               'list-none m-0 p-2',
-              mode === 'horizontal' ? cn(subMenuContainer, 'absolute top-full left-0 min-w-48 z-50') : 'bg-gradient-to-b from-amber-50 to-amber-100'
+              mode === 'horizontal' ? 'bg-white border border-gray-200 rounded-md shadow-lg absolute top-full left-0 min-w-48 z-50' : 'bg-gradient-to-b from-amber-50 to-amber-100'
             )}
           >
             {children}

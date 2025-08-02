@@ -1,5 +1,5 @@
 // Import the shared CSS variables
-import './variables.css';
+import './variables.css.ts';
 
 // Consolidated color tokens
 export const colors = {

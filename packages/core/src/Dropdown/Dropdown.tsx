@@ -8,7 +8,6 @@ import {
   useFloating,
 } from '@floating-ui/react';
 import { cn } from '../styles';
-import { cn } from '@zelda/core/styles';
 
 interface DropdownItem {
   /** Item label */
