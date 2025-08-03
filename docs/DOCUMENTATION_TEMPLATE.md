@@ -114,6 +114,36 @@ The [Component] component automatically adapts to dark mode with Hyrule's mystic
 </div>
 \`\`\`
 
+### Dark Mode Real World Examples
+\`\`\`tsx
+// Night mode adventure interface
+<div className="dark p-6 bg-gray-900 space-y-6">
+  <div className="adventure-menu space-y-4">
+    <Typography variant="h2" className="text-purple-300">🌙 Night Adventure</Typography>
+    <[Component] variant="primary">Continue Quest</[Component]>
+    <[Component] variant="secondary">Rest at Inn</[Component]>
+    <[Component] variant="tertiary">Check Map</[Component]>
+  </div>
+  
+  <div className="inventory-panel space-y-4">
+    <Typography variant="h3" className="text-purple-300">🎒 Night Inventory</Typography>
+    <div className="item-actions space-x-2">
+      <[Component] size="small">Use Lantern</[Component]>
+      <[Component] size="small" variant="destructive">Drop Item</[Component]>
+    </div>
+  </div>
+  
+  <div className="dialog-box space-y-4">
+    <Typography variant="body" className="text-gray-300">"The night is dark and full of mysteries..."</Typography>
+    <div className="dialog-choices space-x-2">
+      <[Component] variant="primary">Investigate</[Component]>
+      <[Component] variant="secondary">Stay Safe</[Component]>
+      <[Component] variant="tertiary">Return</[Component]>
+    </div>
+  </div>
+</div>
+\`\`\`
+
 ## Accessibility
 
 The [Component] component is fully accessible with:

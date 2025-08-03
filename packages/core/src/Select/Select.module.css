@@ -40,6 +40,10 @@
     inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent);
 }
 
+:global(.dark) .default span {
+  color: var(--gray-100) !important;
+}
+
 :global(.dark) .default:hover {
   border-color: #7c3aed;
   box-shadow: 
@@ -104,6 +108,10 @@
     inset -2px -2px 0 color-mix(in srgb, var(--gray-900) 60%, transparent);
 }
 
+:global(.dark) .filled span {
+  color: var(--gray-100) !important;
+}
+
 :global(.dark) .filled:hover {
   background: var(--gray-600);
   border-color: #7c3aed;
@@ -156,6 +164,10 @@
   color: var(--gray-300);
 }
 
+:global(.dark) .borderless span {
+  color: var(--gray-100) !important;
+}
+
 :global(.dark) .borderless:hover {
   background: var(--gray-800);
   box-shadow: 0 0 10px color-mix(in srgb, #7c3aed 20%, transparent);
@@ -174,11 +186,14 @@
 /* Error state */
 .error {
   border-color: var(--ganon-600) !important;
-  color: var(--ganon-700);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--ganon-700) 30%, transparent),
     0 0 8px color-mix(in srgb, var(--ganon-500) 20%, transparent) !important;
+}
+
+.error span {
+  color: var(--gray-900) !important;
 }
 
 .error:focus-visible {
@@ -188,11 +203,14 @@
 /* Dark mode - Error */
 :global(.dark) .error {
   border-color: var(--ganon-600) !important;
-  color: var(--ganon-300) !important;
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--ganon-400) 30%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--ganon-800) 50%, transparent),
     0 0 15px color-mix(in srgb, var(--ganon-500) 40%, transparent) !important;
+}
+
+:global(.dark) .error span {
+  color: var(--gray-100) !important;
 }
 
 :global(.dark) .error:focus-visible {
@@ -202,11 +220,14 @@
 /* Warning state */
 .warning {
   border-color: var(--triforce-600) !important;
-  color: var(--triforce-700);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-700) 30%, transparent),
     0 0 8px color-mix(in srgb, var(--triforce-500) 20%, transparent) !important;
+}
+
+.warning span {
+  color: var(--gray-900) !important;
 }
 
 .warning:focus-visible {
@@ -216,11 +237,14 @@
 /* Dark mode - Warning */
 :global(.dark) .warning {
   border-color: var(--triforce-600) !important;
-  color: var(--triforce-300);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--triforce-400) 30%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-800) 50%, transparent),
     0 0 15px color-mix(in srgb, var(--triforce-500) 40%, transparent) !important;
+}
+
+:global(.dark) .warning span {
+  color: var(--gray-100) !important;
 }
 
 :global(.dark) .warning:focus-visible {
@@ -251,6 +275,28 @@
 .dropdown {
   animation: dropdownOpen 0.15s ease-out;
   transform-origin: top;
+}
+
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown ul li {
+  color: var(--gray-900) !important;
+}
+
+:global(.dark) .dropdown ul li {
+  color: var(--gray-100) !important;
+}
+
+:global(.dark) .dropdown ul li:hover {
+  background-color: #6b21a8 !important; /* purple-800 */
+}
+
+:global(.dark) .dropdown ul li[aria-selected="true"] {
+  background-color: #7c3aed !important; /* purple-700 */
 }
 
 @keyframes dropdownOpen {

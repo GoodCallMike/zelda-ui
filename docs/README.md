@@ -8,7 +8,7 @@ This folder contains context files and templates for maintaining consistency acr
 **Need to know what colors to use?** → [THEME_CONTEXT.md](./THEME_CONTEXT.md)  
 **Confused about CSS/styling approach?** → [STYLING_CONTEXT.md](./STYLING_CONTEXT.md)  
 **Looking for icons?** → [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)  
-**Writing component documentation?** → [doc-template.md](./doc-template.md)
+**Writing component documentation?** → [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)
 
 ## Context Files
 
@@ -51,7 +51,7 @@ Comprehensive icon reference and usage guide:
 - Icon sizing guidelines and usage patterns
 - Common mistakes and how to avoid them
 
-### 📝 [doc-template.md](./doc-template.md)
+### 📝 [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)
 **When to use:** Writing Storybook stories, documenting components
 
 Template for consistent component documentation:
@@ -69,6 +69,6 @@ Template for consistent component documentation:
 | **Writing component styles** | STYLING_CONTEXT.md | THEME_CONTEXT.md |
 | **Choosing colors/themes** | THEME_CONTEXT.md | - |
 | **Adding icons to components** | ICONS_CONTEXT.md | - |
-| **Writing Storybook docs** | doc-template.md | THEME_CONTEXT.md |
+| **Writing Storybook docs** | DOCUMENTATION_TEMPLATE.md | THEME_CONTEXT.md |
 | **Debugging CSS issues** | STYLING_CONTEXT.md | - |
 | **Understanding theme system** | THEME_CONTEXT.md | - |

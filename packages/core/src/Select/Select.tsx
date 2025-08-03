@@ -196,10 +196,10 @@ export const Select = ({
                 role="option"
                 aria-selected={option.value === currentValue}
                 className={cn(
-                  'px-4 py-2 cursor-pointer transition-colors duration-150',
-                  'hover:bg-triforce-100 dark:hover:bg-triforce-900',
-                  option.value === currentValue && 'bg-triforce-200 dark:bg-triforce-800 text-triforce-900 dark:text-triforce-100',
-                  focusedIndex === index && 'bg-triforce-100 dark:bg-triforce-900',
+                  'px-4 py-2 cursor-pointer transition-colors duration-150 text-gray-900 dark:text-gray-100',
+                  'hover:bg-gray-100 dark:hover:bg-purple-800',
+                  option.value === currentValue && 'bg-gray-200 dark:bg-purple-700 text-gray-900 dark:text-gray-100',
+                  focusedIndex === index && 'bg-gray-100 dark:bg-purple-800',
                   option.disabled && 'opacity-50 cursor-not-allowed'
                 )}
                 onClick={() => !option.disabled && handleSelect(option.value)}
