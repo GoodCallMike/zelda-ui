@@ -1,10 +1,13 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
+import { Typography } from '../Typography';
 import styles from './Input.module.css';
 
 type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /** Input label */
+  label?: string;
   /** Input variant */
   variant?: 'default' | 'filled' | 'borderless';
   /** Input size */
@@ -20,6 +23,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 }
 
 export const Input = ({
+  label,
   variant = 'default',
   size = 'medium',
   error,
@@ -30,12 +34,16 @@ export const Input = ({
   ...props
 }: InputProps) => {
   return (
-    <div className={cn(
-      'relative w-full font-medium text-base border-0 outline-none transition-all duration-100 ease-linear',
-      styles[variant],
-      error && styles.error,
-      className
-    )}>
+    <div className="space-y-1">
+      {label && (
+        <Typography variant="label">{label}</Typography>
+      )}
+      <div className={cn(
+        'relative w-full font-medium text-base border-0 outline-none transition-all duration-100 ease-linear',
+        styles[variant],
+        error && styles.error,
+        className
+      )}>
       {Icon && iconPosition === 'left' && (
         <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none z-10" />
       )}
@@ -51,6 +59,7 @@ export const Input = ({
       {Icon && iconPosition === 'right' && (
         <Icon className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none z-10" />
       )}
+      </div>
     </div>
   );
 };

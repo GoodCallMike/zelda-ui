@@ -1,0 +1,225 @@
+/* Radio Button Base */
+.radioButton {
+  background: transparent;
+  border: 3px solid var(--gray-400);
+  color: var(--gray-700);
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-600) 40%, transparent);
+}
+
+.radioButton:hover {
+  background: var(--gray-50);
+  border-color: var(--triforce-500);
+  color: var(--triforce-600);
+  box-shadow: 
+    inset 2px 2px 0 var(--white),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
+    3px 3px 0 color-mix(in srgb, var(--triforce-600) 40%, transparent),
+    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+}
+
+.radioButton:has(input:checked) {
+  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+  border-color: var(--triforce-700);
+  color: var(--white);
+  box-shadow: 
+    inset 2px 2px 0 var(--triforce-100),
+    inset -2px -2px 0 var(--triforce-700),
+    4px 4px 0 var(--triforce-900),
+    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+}
+
+.radioButton:has(input:focus-visible) {
+  outline: 2px solid var(--triforce-400);
+  outline-offset: 2px;
+}
+
+/* Button Styles */
+.outline {
+  /* Default outline style already defined above */
+}
+
+.solid {
+  background: var(--gray-100);
+  border-color: var(--gray-300);
+  color: var(--gray-700);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 70%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-400) 40%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-500) 30%, transparent);
+}
+
+.solid:hover {
+  background: var(--gray-200);
+  border-color: var(--triforce-500);
+  color: var(--triforce-600);
+  box-shadow: 
+    inset 2px 2px 0 var(--white),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
+    3px 3px 0 color-mix(in srgb, var(--triforce-600) 40%, transparent),
+    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+}
+
+.solid:has(input:checked) {
+  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+  border-color: var(--triforce-700);
+  color: var(--white);
+  box-shadow: 
+    inset 2px 2px 0 var(--triforce-100),
+    inset -2px -2px 0 var(--triforce-700),
+    4px 4px 0 var(--triforce-900),
+    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+}
+
+/* Sizes */
+.small {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  min-height: 24px;
+  margin-left: -1px;
+}
+
+.small:first-child {
+  margin-left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.small:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.small:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.middle {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  min-height: 32px;
+  margin-left: -1px;
+}
+
+.middle:first-child {
+  margin-left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.middle:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.middle:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.large {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  min-height: 40px;
+  margin-left: -1px;
+}
+
+.large:first-child {
+  margin-left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.large:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.large:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+/* Error state */
+.error {
+  border-color: var(--ganon-600) !important;
+  box-shadow: 
+    inset 1px 1px 0 color-mix(in srgb, var(--white) 50%, transparent),
+    inset -1px -1px 0 color-mix(in srgb, var(--ganon-700) 30%, transparent),
+    0 0 6px color-mix(in srgb, var(--ganon-500) 20%, transparent) !important;
+}
+
+.error:has(input:focus-visible) {
+  outline-color: var(--ganon-600) !important;
+}
+
+/* Dark mode */
+:global(.dark) .radioButton {
+  background: transparent;
+  border-color: var(--gray-600);
+  color: var(--gray-300);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--gray-400) 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-900) 60%, transparent);
+}
+
+:global(.dark) .radioButton:hover {
+  background: var(--gray-800);
+  border-color: #7c3aed;
+  color: #c4b5fd;
+  box-shadow: 
+    inset 2px 2px 0 var(--gray-700),
+    inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
+    3px 3px 0 color-mix(in srgb, #44337a 60%, transparent),
+    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
+}
+
+:global(.dark) .radioButton:has(input:checked) {
+  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+  border-color: #312e81;
+  color: #e0e7ff;
+  box-shadow: 
+    inset 2px 2px 0 #a78bfa,
+    inset -2px -2px 0 #312e81,
+    4px 4px 0 var(--black),
+    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+}
+
+:global(.dark) .solid {
+  background: var(--gray-700);
+  border-color: var(--gray-600);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--gray-500) 40%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 60%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-900) 70%, transparent);
+}
+
+:global(.dark) .solid:hover {
+  background: var(--gray-600);
+  border-color: #7c3aed;
+  color: #c4b5fd;
+  box-shadow: 
+    inset 2px 2px 0 var(--gray-500),
+    inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
+    3px 3px 0 color-mix(in srgb, #44337a 60%, transparent),
+    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
+}
+
+:global(.dark) .solid:has(input:checked) {
+  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+  border-color: #312e81;
+  color: #e0e7ff;
+  box-shadow: 
+    inset 2px 2px 0 #a78bfa,
+    inset -2px -2px 0 #312e81,
+    4px 4px 0 var(--black),
+    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+}

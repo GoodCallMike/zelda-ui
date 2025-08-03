@@ -79,13 +79,30 @@ export const Disabled: Story = {
   },
 };
 
+export const WithLabels: Story = {
+  render: () => (
+    <div className="space-y-4 max-w-md">
+      <Input label="Username" placeholder="Enter your username" />
+      <Input label="Email" placeholder="Enter your email" type="email" />
+      <Input label="Password" placeholder="Enter your password" type="password" />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Inputs with labels using the Typography component.',
+      },
+    },
+  },
+};
+
 export const WithIcons: Story = {
   render: () => (
     <div className="space-y-4 max-w-md">
-      <Input icon={SearchLgIcon} placeholder="Search items..." />
-      <Input icon={User01Icon} placeholder="Enter username" />
-      <Input icon={Mail01Icon} placeholder="Enter email" type="email" />
-      <Input icon={EyeIcon} iconPosition="right" placeholder="Password" type="password" />
+      <Input label="Search" icon={SearchLgIcon} placeholder="Search items..." />
+      <Input label="Username" icon={User01Icon} placeholder="Enter username" />
+      <Input label="Email" icon={Mail01Icon} placeholder="Enter email" type="email" />
+      <Input label="Password" icon={EyeIcon} iconPosition="right" placeholder="Password" type="password" />
     </div>
   ),
   parameters: {

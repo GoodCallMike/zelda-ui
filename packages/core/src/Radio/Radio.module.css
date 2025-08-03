@@ -1,88 +1,77 @@
-/* Default checkbox */
-.checkbox {
+/* Default radio */
+.radio {
   width: 26.4px;
   height: 26.4px;
   appearance: none;
-  background: transparent;
+  background: var(--white);
   border: 3px solid var(--gray-400);
-  border-radius: 4px;
+  border-radius: 50%;
   position: relative;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
-    inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent),
-    4px 4px 0 color-mix(in srgb, var(--gray-600) 40%, transparent);
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent);
 }
 
-.checkbox:hover {
-  background: var(--gray-50);
+.radio:hover {
   border-color: var(--triforce-500);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
-    3px 3px 0 color-mix(in srgb, var(--triforce-600) 40%, transparent),
     0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
 }
 
-.checkbox:checked {
-  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
-  border-color: var(--triforce-700);
+.radio:checked {
+  background: var(--triforce-500);
+  border-color: var(--triforce-600);
   box-shadow: 
-    inset 2px 2px 0 var(--triforce-100),
+    inset 2px 2px 0 var(--triforce-300),
     inset -2px -2px 0 var(--triforce-700),
-    4px 4px 0 var(--triforce-900),
-    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
 }
 
-.checkbox:checked::after {
-  content: '✓';
+.radio:checked::after {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--white);
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
+  width: 8px;
+  height: 8px;
+  background: var(--white);
+  border-radius: 50%;
 }
 
-.checkbox:focus-visible {
+.radio:focus-visible {
   outline-color: var(--triforce-400);
 }
 
 /* Dark mode */
-:global(.dark) .checkbox {
-  background: transparent;
+:global(.dark) .radio {
+  background: var(--gray-800);
   border-color: var(--gray-600);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--gray-400) 30%, transparent),
-    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent),
-    4px 4px 0 color-mix(in srgb, var(--gray-900) 60%, transparent);
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent);
 }
 
-:global(.dark) .checkbox:hover {
-  background: var(--gray-800);
+:global(.dark) .radio:hover {
   border-color: #7c3aed;
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
-    3px 3px 0 color-mix(in srgb, #44337a 60%, transparent),
     0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
 }
 
-:global(.dark) .checkbox:checked {
+:global(.dark) .radio:checked {
   background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
   border-color: #312e81;
   box-shadow: 
     inset 2px 2px 0 #a78bfa,
     inset -2px -2px 0 #312e81,
-    4px 4px 0 var(--black),
     0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
 }
 
-:global(.dark) .checkbox:focus-visible {
+:global(.dark) .radio:focus-visible {
   outline-color: #7c3aed;
 }
 
@@ -110,4 +99,35 @@
 
 :global(.dark) .error:focus-visible {
   outline-color: var(--ganon-600) !important;
+}
+
+/* Size variants */
+.small {
+  width: 20px;
+  height: 20px;
+}
+
+.small:checked::after {
+  width: 6px;
+  height: 6px;
+}
+
+.middle {
+  width: 26.4px;
+  height: 26.4px;
+}
+
+.middle:checked::after {
+  width: 8px;
+  height: 8px;
+}
+
+.large {
+  width: 32px;
+  height: 32px;
+}
+
+.large:checked::after {
+  width: 10px;
+  height: 10px;
 }
