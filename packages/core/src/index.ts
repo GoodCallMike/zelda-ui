@@ -4,6 +4,8 @@ export { Checkbox } from './Checkbox/Checkbox';
 export type { CheckboxProps } from './Checkbox/Checkbox';
 export { Input } from './Input/Input';
 export type { InputProps } from './Input/Input';
+export { Select } from './Select/Select';
+export type { SelectProps, SelectOption } from './Select/Select';
 export { Radio } from './Radio/Radio';
 export type { RadioProps } from './Radio/Radio';
 export { RadioButton } from './Radio/RadioButton';
