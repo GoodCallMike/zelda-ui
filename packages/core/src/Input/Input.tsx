@@ -15,10 +15,14 @@ interface BaseInputProps {
   size?: 'small' | 'medium' | 'large';
   /** Status state */
   status?: 'error' | 'warning';
-  /** Prefix content (icon or text) */
+  /** Prefix content (icon or text) inside input */
   prefix?: ReactNode;
-  /** Suffix content (icon or text) */
+  /** Suffix content (icon or text) inside input */
   suffix?: ReactNode;
+  /** Addon before input (outside border) */
+  addonBefore?: ReactNode;
+  /** Addon after input (outside border) */
+  addonAfter?: ReactNode;
   /** Show clear button when input has value */
   allowClear?: boolean;
   /** Show character count */
@@ -53,6 +57,8 @@ export const Input = (props: InputProps) => {
     status,
     prefix,
     suffix,
+    addonBefore,
+    addonAfter,
     allowClear,
     showCount,
     maxLength,
@@ -88,38 +94,98 @@ export const Input = (props: InputProps) => {
     onChange?.(event as any);
   };
 
-  const hasPrefix = !!prefix;
-  const hasSuffix = !!suffix || allowClear || showCount;
   const showClearButton = allowClear && currentValue;
   const characterCount = String(currentValue).length;
+  
+  // Build suffix content array to maintain stable DOM structure
+  const suffixContent = [];
+  if (showCount && maxLength) {
+    suffixContent.push(
+      <span key="count" className={cn(
+        'text-xs whitespace-nowrap',
+        characterCount > maxLength ? 'text-ganon-600' : 'text-gray-500'
+      )}>
+        {characterCount}/{maxLength}
+      </span>
+    );
+  }
+  if (showClearButton) {
+    suffixContent.push(
+      <button
+        key="clear"
+        type="button"
+        onClick={handleClear}
+        className="w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0"
+        aria-label="Clear input"
+      >
+        ×
+      </button>
+    );
+  }
+  if (suffix) {
+    suffixContent.push(<span key="suffix" className="flex-shrink-0">{suffix}</span>);
+  }
+  
+  const hasPrefix = !!prefix;
+  const hasSuffix = suffixContent.length > 0;
+  const hasAddonBefore = !!addonBefore;
+  const hasAddonAfter = !!addonAfter;
 
   return (
     <div className={cn('space-y-1', className)}>
       {label && (
         <Typography variant="label">{label}</Typography>
       )}
-      <div className={cn(
-        'relative w-full font-medium text-base border-0 outline-none transition-all duration-100 ease-linear',
-        styles[variant],
-        status === 'error' && styles.error,
-        status === 'warning' && styles.warning,
-        isTextarea && styles.textarea
-      )}>
-        {hasPrefix && (
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center text-gray-500 pointer-events-none z-10">
-            {prefix}
+      <div className="flex w-full items-stretch">
+        {hasAddonBefore && (
+          <div className={cn(
+            'flex items-center px-3 text-sm font-medium whitespace-nowrap rounded-l-lg',
+            'bg-gray-100 text-gray-700',
+            'dark:bg-gray-700 dark:text-gray-300',
+            'image-rendering-pixelated image-rendering-moz-crisp-edges image-rendering-crisp-edges',
+            styles.addon,
+            styles.addonBefore,
+            status === 'error' && 'text-ganon-700 dark:text-ganon-300',
+            status === 'warning' && 'text-triforce-700 dark:text-triforce-300'
+          )}>
+            {addonBefore}
           </div>
         )}
+        <div className={cn(
+          'relative flex-1 font-medium text-base border-0 outline-none transition-all duration-100 ease-linear overflow-hidden',
+          styles[variant],
+          status === 'error' && styles.error,
+          status === 'warning' && styles.warning,
+          isTextarea && styles.textarea,
+          hasAddonBefore && hasAddonAfter && styles.roundedBoth,
+          hasAddonBefore && !hasAddonAfter && styles.roundedLeft,
+          !hasAddonBefore && hasAddonAfter && styles.roundedRight,
+          hasAddonBefore && 'border-l-0',
+          hasAddonAfter && 'border-r-0'
+        )}>
+        {/* Always render prefix container for stable DOM */}
+        <div className={cn(
+          styles.prefix,
+          !hasPrefix && 'opacity-0 pointer-events-none w-0'
+        )}>
+          {prefix || <span />}
+        </div>
         
         {isTextarea ? (
           <textarea
             className={cn(
-              'w-full bg-transparent border-0 outline-none py-2 focus-visible:outline-2 focus-visible:outline-offset-2 resize-vertical',
-              hasPrefix ? 'pl-10' : 'pl-4',
-              hasSuffix ? 'pr-16' : 'pr-4',
+              'w-full bg-transparent border-0 outline-none py-2 focus-visible:outline-2 focus-visible:outline-offset-2 resize-vertical overflow-x-hidden',
+              hasPrefix ? 'pl-12' : 'pl-4',
+              (showClearButton || suffix) ? 'pr-12' : 'pr-4',
               styles[size],
               (props as TextareaModeProps).resize && styles[(props as TextareaModeProps).resize]
             )}
+            style={{
+              color: 'inherit',
+              wordWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
+              overflowWrap: 'break-word'
+            }}
             value={currentValue}
             onChange={handleChange}
             maxLength={maxLength}
@@ -131,11 +197,14 @@ export const Input = (props: InputProps) => {
           <input
             type={type}
             className={cn(
-              'w-full bg-transparent border-0 outline-none py-2 focus-visible:outline-2 focus-visible:outline-offset-2',
-              hasPrefix ? 'pl-10' : 'pl-4',
-              hasSuffix ? 'pr-16' : 'pr-4',
+              'w-full bg-transparent border-0 outline-none py-2 focus-visible:outline-2 focus-visible:outline-offset-2 whitespace-nowrap overflow-hidden text-ellipsis',
+              hasPrefix ? 'pl-12' : 'pl-4',
+              hasSuffix ? styles.withSuffix : 'pr-4',
               styles[size]
             )}
+            style={{
+              color: 'inherit'
+            }}
             value={currentValue}
             onChange={handleChange}
             maxLength={maxLength}
@@ -144,30 +213,56 @@ export const Input = (props: InputProps) => {
           />
         )}
         
-        {hasSuffix && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 text-gray-500 z-10">
-            {showCount && maxLength && (
-              <span className={cn(
-                'text-xs',
-                characterCount > maxLength ? 'text-ganon-600' : 'text-gray-500'
-              )}>
-                {characterCount}/{maxLength}
-              </span>
-            )}
+        {/* Suffix container inside input for regular inputs */}
+        {!isTextarea && hasSuffix && (
+          <div className="absolute right-3 flex items-center gap-2 text-gray-500 z-10 top-1/2 -translate-y-1/2 pointer-events-auto">
+            {suffixContent}
+          </div>
+        )}
+        {/* Textarea suffix content (clear button, custom suffix) inside textarea */}
+        {isTextarea && (showClearButton || suffix) && (
+          <div className="absolute right-3 top-3 flex items-center gap-2 text-gray-500 z-10">
             {showClearButton && (
               <button
                 type="button"
                 onClick={handleClear}
-                className="w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none pointer-events-auto"
+                className="w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0"
                 aria-label="Clear input"
               >
                 ×
               </button>
             )}
-            {suffix}
+            {suffix && <span className="flex-shrink-0">{suffix}</span>}
+          </div>
+        )}
+        </div>
+        {hasAddonAfter && (
+          <div className={cn(
+            'flex items-center px-3 text-sm font-medium whitespace-nowrap rounded-r-lg',
+            'bg-gray-100 text-gray-700',
+            'dark:bg-gray-700 dark:text-gray-300',
+            'image-rendering-pixelated image-rendering-moz-crisp-edges image-rendering-crisp-edges',
+            styles.addon,
+            styles.addonAfter,
+            status === 'error' && 'text-ganon-700 dark:text-ganon-300',
+            status === 'warning' && 'text-triforce-700 dark:text-triforce-300'
+          )}>
+            {addonAfter}
           </div>
         )}
       </div>
+      {isTextarea && showCount && maxLength && (
+        <div className="text-right mt-1">
+          <div className="inline-flex items-center gap-2 text-gray-500 text-xs">
+            <span className={cn(
+              'text-xs whitespace-nowrap',
+              characterCount > maxLength ? 'text-ganon-600' : 'text-gray-500'
+            )}>
+              {characterCount}/{maxLength}
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

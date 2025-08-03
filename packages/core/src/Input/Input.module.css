@@ -1,7 +1,7 @@
 /* Default - Outlined input */
 .default {
   background: var(--white);
-  border: 3px solid var(--gray-400);
+  border: 3px solid var(--gray-300);
   color: var(--gray-700);
   border-radius: 8px;
   box-shadow: 
@@ -32,7 +32,7 @@
 /* Dark mode - Default */
 :global(.dark) .default {
   background: var(--gray-800);
-  border-color: var(--gray-600);
+  border-color: var(--gray-500);
   color: var(--gray-300);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--gray-400) 30%, transparent),
@@ -185,7 +185,7 @@
 /* Dark mode - Error */
 :global(.dark) .error {
   border-color: var(--ganon-600) !important;
-  color: var(--ganon-300);
+  color: var(--ganon-300) !important;
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--ganon-400) 30%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--ganon-800) 50%, transparent),
@@ -227,6 +227,7 @@
 /* Textarea specific styles */
 .textarea {
   min-height: 80px;
+  overflow: hidden;
 }
 
 /* Resize options */
@@ -246,6 +247,25 @@
   resize: both !important;
 }
 
+
+
+/* Prefix positioning */
+.prefix {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: var(--gray-500);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 6rem;
+}
+
 /* Size variants */
 .small {
   font-size: 14px;
@@ -257,4 +277,75 @@
 
 .large {
   font-size: 18px;
+}
+
+/* Addon styling */
+.addon {
+  background: var(--gray-100);
+  border: 3px solid var(--gray-300);
+  color: var(--gray-700);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-500) 40%, transparent);
+}
+
+/* Dark mode - Addon */
+:global(.dark) .addon {
+  background: var(--gray-700);
+  border-color: var(--gray-500);
+  color: var(--gray-300);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--gray-600) 50%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 60%, transparent);
+}
+
+/* Border radius variants for addon connections */
+.roundedLeft {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.roundedRight {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.roundedBoth {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.addonBefore {
+  border-right: 0;
+}
+
+.addonAfter {
+  border-left: 0;
+}
+
+/* Input with suffix content padding */
+.withSuffix {
+  padding-right: 2.5rem !important;
+  box-sizing: border-box !important;
+  width: calc(100% - 2.5rem) !important;
+  max-width: calc(100% - 2.5rem) !important;
+}
+
+.withSuffix:focus {
+  padding-right: 2.5rem !important;
+  width: calc(100% - 2.5rem) !important;
+  max-width: calc(100% - 2.5rem) !important;
+}
+
+.withSuffix:hover {
+  padding-right: 2.5rem !important;
+  width: calc(100% - 2.5rem) !important;
+  max-width: calc(100% - 2.5rem) !important;
 }
