@@ -1,10 +1,19 @@
 # ⚛️ Zelda UI Component Development Guide
 
+## 📚 Available Components
+
+### Form Components
+- **Button** - Primary actions with variants (default, destructive, outline, ghost, link)
+- **Checkbox** - Boolean input with indeterminate state
+- **Input** - Comprehensive text input supporting textarea mode, prefix/suffix, clear functionality, and character count (Ant Design style)
+- **Radio/RadioButton/RadioGroup** - Single selection with connected button groups
+- **Typography** - Text display with semantic variants
+
 ## Component Creation Workflow
 
 ### 1. Planning Phase
 - **Check existing components** - Avoid duplicating functionality
-- **Review Ant Design patterns** - Use as reference for API design
+- **Review Ant Design patterns** - Use as reference for API design (see Input component example)
 - **Define component variants** - Consider all states and sizes
 - **Plan accessibility** - WCAG 2.1 AA compliance from start
 
@@ -286,6 +295,50 @@ describe('ComponentName', () => {
 - ArgTypes configuration
 - Story parameters
 - Accessibility examples
+
+## 🎯 Enhanced Input Example
+The Input component demonstrates comprehensive form input patterns:
+
+```tsx
+// Supports multiple modes
+<Input type="text" />           // Standard input
+<Input type="textarea" />       // Multiline textarea
+<Input type="password" />       // Password input
+
+// Prefix/suffix support
+<Input prefix={<SearchLgIcon className="w-4 h-4" />} />
+<Input suffix="USD" />
+
+// Advanced features
+<Input allowClear showCount maxLength={100} />
+<Input status="error" />        // Error state
+<Input status="warning" />      // Warning state
+```
+
+## 🎨 Icon Integration
+
+**📖 Reference:** See [ICONS_CONTEXT.md](./ICONS_CONTEXT.md) for complete icon guide
+
+```tsx
+import { SearchLgIcon, User01Icon, Mail01Icon } from '@zelda/icons';
+
+// In form inputs (new prefix/suffix pattern)
+<Input 
+  prefix={<SearchLgIcon className="w-4 h-4" />}
+  placeholder="Search..." 
+/>
+<Input 
+  prefix={<Mail01Icon className="w-4 h-4" />}
+  type="email"
+  placeholder="Email"
+/>
+
+// In buttons
+<Button>
+  <User01Icon className="w-4 h-4 mr-2" />
+  Profile
+</Button>
+```
 
 ## Common Patterns
 

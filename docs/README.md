@@ -7,6 +7,7 @@ This folder contains context files and templates for maintaining consistency acr
 **Building a new component?** → [COMPONENT_DEVELOPMENT.md](./COMPONENT_DEVELOPMENT.md)  
 **Need to know what colors to use?** → [THEME_CONTEXT.md](./THEME_CONTEXT.md)  
 **Confused about CSS/styling approach?** → [STYLING_CONTEXT.md](./STYLING_CONTEXT.md)  
+**Looking for icons?** → [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)  
 **Writing component documentation?** → [doc-template.md](./doc-template.md)
 
 ## Context Files
@@ -41,6 +42,15 @@ Styling architecture and implementation guide:
 - Common styling mistakes and how to avoid them
 - File structure and build process
 
+### 🎯 [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)
+**When to use:** Adding icons to components, finding the right icon names
+
+Comprehensive icon reference and usage guide:
+- Common icons organized by category (search, user, actions, etc.)
+- Correct icon names and import patterns
+- Icon sizing guidelines and usage patterns
+- Common mistakes and how to avoid them
+
 ### 📝 [doc-template.md](./doc-template.md)
 **When to use:** Writing Storybook stories, documenting components
 
@@ -58,6 +68,7 @@ Template for consistent component documentation:
 | **Implementing dark mode** | THEME_CONTEXT.md | STYLING_CONTEXT.md |
 | **Writing component styles** | STYLING_CONTEXT.md | THEME_CONTEXT.md |
 | **Choosing colors/themes** | THEME_CONTEXT.md | - |
+| **Adding icons to components** | ICONS_CONTEXT.md | - |
 | **Writing Storybook docs** | doc-template.md | THEME_CONTEXT.md |
 | **Debugging CSS issues** | STYLING_CONTEXT.md | - |
 | **Understanding theme system** | THEME_CONTEXT.md | - |

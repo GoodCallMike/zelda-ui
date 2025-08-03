@@ -196,6 +196,56 @@
   outline-color: var(--ganon-600) !important;
 }
 
+/* Warning state */
+.warning {
+  border-color: var(--triforce-600) !important;
+  color: var(--triforce-700);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-700) 30%, transparent),
+    0 0 8px color-mix(in srgb, var(--triforce-500) 20%, transparent) !important;
+}
+
+.warning:focus-visible {
+  outline-color: var(--triforce-600) !important;
+}
+
+/* Dark mode - Warning */
+:global(.dark) .warning {
+  border-color: var(--triforce-600) !important;
+  color: var(--triforce-300);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--triforce-400) 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-800) 50%, transparent),
+    0 0 15px color-mix(in srgb, var(--triforce-500) 40%, transparent) !important;
+}
+
+:global(.dark) .warning:focus-visible {
+  outline-color: var(--triforce-600) !important;
+}
+
+/* Textarea specific styles */
+.textarea {
+  min-height: 80px;
+}
+
+/* Resize options */
+.none {
+  resize: none !important;
+}
+
+.vertical {
+  resize: vertical !important;
+}
+
+.horizontal {
+  resize: horizontal !important;
+}
+
+.both {
+  resize: both !important;
+}
+
 /* Size variants */
 .small {
   font-size: 14px;
