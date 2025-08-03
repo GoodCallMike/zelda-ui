@@ -189,12 +189,44 @@ export const RealWorldExamples: Story = {
           <Button variant="primary" disabled>Begin Adventure</Button>
         </div>
       </div>
+      
+      {/* Dark Mode Complex Examples */}
+      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
+        <Typography variant="h2">🌙 Night Mode Interface</Typography>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">⚔️ Combat Preferences</Typography>
+          <div className="space-y-2">
+            <Checkbox label="Auto-target enemies" defaultChecked />
+            <Checkbox label="Show critical hit indicators" />
+            <Checkbox label="Enable combo notifications" />
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🎒 Inventory Options</Typography>
+          <div className="space-y-2">
+            <Checkbox label="Auto-sort items" />
+            <Checkbox label="Show item durability" defaultChecked />
+            <Checkbox label="Quick-use consumables" defaultChecked />
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🗺️ Map Features</Typography>
+          <div className="space-y-2">
+            <Checkbox label="Show discovered locations" defaultChecked />
+            <Checkbox label="Mark treasure chests" />
+            <Checkbox label="Display fast travel points" defaultChecked />
+          </div>
+        </div>
+      </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Checkbox components integrated with other Zelda UI components in settings forms, quest tracking, and agreement flows.',
+        story: 'Real-world examples showing Checkbox components integrated with other Zelda UI components in settings forms, quest tracking, agreement flows, and complex dark mode interfaces.',
       },
     },
   },

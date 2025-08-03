@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { Typography } from '../Typography';
 import { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Button> = {
@@ -380,12 +381,50 @@ export const RealWorldExamples: Story = {
           <Button variant="link">Backup First</Button>
         </div>
       </div>
+      
+      {/* Dark Mode Complex Examples */}
+      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
+        <Typography variant="h2">🌙 Night Mode Interface</Typography>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">⚔️ Combat Actions</Typography>
+          <div className="grid grid-cols-2 gap-4">
+            <Button variant="primary">Attack</Button>
+            <Button variant="default">Defend</Button>
+            <Button variant="dashed">Use Item</Button>
+            <Button variant="destructive">Flee</Button>
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🎒 Quick Actions</Typography>
+          <div className="space-y-3">
+            <div className="flex gap-2">
+              <Button variant="text">Equip Weapon</Button>
+              <Button variant="link">View Stats</Button>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="default">Save Game</Button>
+              <Button variant="destructive">Delete Save</Button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🗺️ Navigation</Typography>
+          <div className="grid grid-cols-1 gap-3">
+            <Button variant="primary">Continue Quest</Button>
+            <Button variant="default">Open Map</Button>
+            <Button variant="text">Settings</Button>
+          </div>
+        </div>
+      </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Button components in game menus, inventory management, and confirmation dialogs.',
+        story: 'Real-world examples showing Button components in game menus, inventory management, confirmation dialogs, and complex dark mode interfaces.',
       },
     },
   },

@@ -327,12 +327,44 @@ export const RealWorldExamples: Story = {
           <Button variant="primary" size="small">Continue</Button>
         </div>
       </div>
+      
+      {/* Dark Mode Complex Examples */}
+      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
+        <Typography variant="h2">🌙 Night Mode Interface</Typography>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">⚔️ Combat Style</Typography>
+          <RadioGroup defaultValue="aggressive">
+            <Radio label="Aggressive - High damage, high risk" value="aggressive" />
+            <Radio label="Defensive - Balanced approach" value="defensive" />
+            <Radio label="Stealth - Avoid direct combat" value="stealth" />
+          </RadioGroup>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🎒 Equipment Loadout</Typography>
+          <div className="flex">
+            <RadioButton name="loadout" value="light">Light</RadioButton>
+            <RadioButton name="loadout" value="medium" defaultChecked>Medium</RadioButton>
+            <RadioButton name="loadout" value="heavy">Heavy</RadioButton>
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">🗺️ Quest Priority</Typography>
+          <RadioGroup defaultValue="main">
+            <Radio label="Main Quest - Follow the story" value="main" />
+            <Radio label="Side Quests - Explore and discover" value="side" />
+            <Radio label="Free Roam - No specific goals" value="roam" />
+          </RadioGroup>
+        </div>
+      </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Radio components integrated with other Zelda UI components in character creation, settings, and dialog systems.',
+        story: 'Real-world examples showing Radio components integrated with other Zelda UI components in character creation, settings, dialog systems, and complex dark mode interfaces.',
       },
     },
   },

@@ -1,5 +1,9 @@
 # 📚 Zelda UI Documentation
 
+> ⚠️ **CRITICAL: This project uses Vanilla Extract, NOT Tailwind CSS!**  
+> Do not use Tailwind classes like `text-gray-900` or `dark:text-gray-100`.  
+> Use Vanilla Extract utilities and CSS modules instead. See [STYLING_CONTEXT.md](./STYLING_CONTEXT.md) for details.
+
 This folder contains context files and templates for maintaining consistency across the Zelda UI design system.
 
 ## Quick Reference Guide

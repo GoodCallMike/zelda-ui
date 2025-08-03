@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './Select';
+import { Typography } from '../Typography';
 
 const meta: Meta<typeof Select> = {
   title: 'Data Entry/Select',
@@ -67,7 +68,9 @@ The Select component automatically adapts to dark mode with Hyrule's mystical ni
 ### Dark Mode Colors
 - **Default**: Deep borders with ethereal glow on focus
 - **Filled**: Shadow backgrounds with moonlight accents
+- **Dropdown Options**: Purple backgrounds with light text for optimal contrast
 - **Error/Warning**: Ganon red and Triforce gold with shadow effects
+- **Text Colors**: Light gray text ensures readability on dark backgrounds
 
 ## Accessibility
 
@@ -77,6 +80,8 @@ The Select component is fully accessible with:
 - **Screen Reader Support**: Proper ARIA attributes and roles
 - **Focus Management**: Clear visual focus states and focus trapping
 - **High Contrast**: Maintains accessibility in both light and dark modes
+- **Visual Clarity**: Removed list bullets and optimized text/background contrast
+- **Dark Mode Compliance**: Purple backgrounds ensure WCAG contrast standards
 
 \`\`\`tsx
 // Accessibility example
@@ -493,12 +498,102 @@ export const RealWorldExamples: Story = {
           defaultValue="bow"
         />
       </div>
+      
+      {/* Dark Mode Complex Examples */}
+      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
+        <Typography variant="h3">🌙 Night Mode Interface</Typography>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">
+            ⚔️ Combat Settings
+          </Typography>
+          <div className="grid grid-cols-2 gap-4">
+            <Select 
+              label="Difficulty" 
+              options={[
+                { value: 'easy', label: 'Peaceful' },
+                { value: 'normal', label: 'Normal' },
+                { value: 'hard', label: 'Master Mode' },
+              ]}
+              placeholder="Choose difficulty"
+              defaultValue="normal"
+              variant="filled"
+            />
+            <Select 
+              label="Auto-Target" 
+              options={[
+                { value: 'off', label: 'Disabled' },
+                { value: 'hold', label: 'Hold to Target' },
+                { value: 'toggle', label: 'Toggle Target' },
+              ]}
+              placeholder="Target mode"
+              defaultValue="hold"
+            />
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">
+            🎒 Quick Inventory
+          </Typography>
+          <div className="space-y-3">
+            <Select 
+              label="Quick Slot 1" 
+              status="warning"
+              options={[
+                { value: 'sword', label: 'Master Sword' },
+                { value: 'bow', label: 'Bow of Light' },
+                { value: 'bomb', label: 'Remote Bomb' },
+              ]}
+              defaultValue="sword"
+              variant="borderless"
+            />
+            <Select 
+              label="Quick Slot 2" 
+              status="error"
+              options={[
+                { value: 'shield', label: 'Hylian Shield' },
+                { value: 'food', label: 'Hearty Meal' },
+                { value: 'potion', label: 'Elixir' },
+              ]}
+              placeholder="Empty slot"
+            />
+          </div>
+        </div>
+        
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+          <Typography variant="h4">
+            🗺️ Map Settings
+          </Typography>
+          <div className="grid grid-cols-1 gap-3">
+            <Select 
+              label="Map Style" 
+              options={[
+                { value: 'detailed', label: 'Detailed View' },
+                { value: 'simple', label: 'Simple View' },
+                { value: 'satellite', label: 'Satellite View' },
+              ]}
+              defaultValue="detailed"
+              variant="filled"
+            />
+            <Select 
+              label="Show Markers" 
+              options={[
+                { value: 'all', label: 'All Markers' },
+                { value: 'important', label: 'Important Only' },
+                { value: 'none', label: 'No Markers' },
+              ]}
+              defaultValue="important"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Real-world usage examples showing game settings, inventory management, and validation states with Hyrule theming.',
+        story: 'Real-world usage examples showing game settings, inventory management, validation states, and complex dark mode interfaces with multiple components.',
       },
     },
   },

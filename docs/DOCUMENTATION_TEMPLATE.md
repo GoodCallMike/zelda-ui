@@ -116,29 +116,40 @@ The [Component] component automatically adapts to dark mode with Hyrule's mystic
 
 ### Dark Mode Real World Examples
 \`\`\`tsx
-// Night mode adventure interface
+// Complex night mode interface with themed panels
 <div className="dark p-6 bg-gray-900 space-y-6">
-  <div className="adventure-menu space-y-4">
-    <Typography variant="h2" className="text-purple-300">🌙 Night Adventure</Typography>
-    <[Component] variant="primary">Continue Quest</[Component]>
-    <[Component] variant="secondary">Rest at Inn</[Component]>
-    <[Component] variant="tertiary">Check Map</[Component]>
-  </div>
+  <Typography variant="h2" className="text-purple-300">🌙 Night Mode Interface</Typography>
   
-  <div className="inventory-panel space-y-4">
-    <Typography variant="h3" className="text-purple-300">🎒 Night Inventory</Typography>
-    <div className="item-actions space-x-2">
-      <[Component] size="small">Use Lantern</[Component]>
-      <[Component] size="small" variant="destructive">Drop Item</[Component]>
+  {/* Purple-themed panel */}
+  <div className="space-y-4 p-4 border border-purple-700 rounded-lg bg-purple-950">
+    <Typography variant="h4" className="text-purple-300 flex items-center gap-2">
+      ⚔️ Combat Settings
+    </Typography>
+    <div className="grid grid-cols-2 gap-4">
+      <[Component] variant="primary">Attack Mode</[Component]>
+      <[Component] variant="secondary">Defend</[Component]>
     </div>
   </div>
   
-  <div className="dialog-box space-y-4">
-    <Typography variant="body" className="text-gray-300">"The night is dark and full of mysteries..."</Typography>
-    <div className="dialog-choices space-x-2">
-      <[Component] variant="primary">Investigate</[Component]>
-      <[Component] variant="secondary">Stay Safe</[Component]>
-      <[Component] variant="tertiary">Return</[Component]>
+  {/* Gray-themed panel with validation states */}
+  <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+    <Typography variant="h4" className="text-gray-300 flex items-center gap-2">
+      🎒 Quick Inventory
+    </Typography>
+    <div className="space-y-3">
+      <[Component] status="warning" variant="primary">Equipped Item</[Component]>
+      <[Component] status="error" variant="destructive">Broken Item</[Component]>
+    </div>
+  </div>
+  
+  {/* Blue-themed panel */}
+  <div className="space-y-4 p-4 border border-blue-700 rounded-lg bg-blue-950">
+    <Typography variant="h4" className="text-blue-300 flex items-center gap-2">
+      🗺️ Map Settings
+    </Typography>
+    <div className="grid grid-cols-1 gap-3">
+      <[Component] variant="tertiary">Detailed View</[Component]>
+      <[Component] variant="primary">Show Markers</[Component]>
     </div>
   </div>
 </div>

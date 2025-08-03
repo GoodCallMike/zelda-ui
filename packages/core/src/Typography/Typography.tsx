@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '../styles';
+import styles from './Typography.module.css';
 
 export interface TypographyProps {
   /** Typography content */
@@ -8,6 +9,8 @@ export interface TypographyProps {
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'label';
   /** Text color theme */
   color?: 'default' | 'muted' | 'triforce' | 'hyrule' | 'rupee' | 'ganon';
+  /** Additional CSS classes */
+  className?: string;
   /** Test identifier */
   testId?: string;
 }
@@ -16,6 +19,7 @@ export const Typography = ({
   children,
   variant = 'body',
   color = 'default',
+  className,
   testId,
   ...props
 }: TypographyProps) => {
@@ -41,17 +45,17 @@ export const Typography = ({
   const getColorStyles = () => {
     switch (color) {
       case 'muted':
-        return 'text-muted';
+        return 'text-gray-500';
       case 'triforce':
-        return 'text-triforce';
+        return 'text-triforce-600';
       case 'hyrule':
-        return 'text-hyrule';
+        return 'text-hyrule-600';
       case 'rupee':
-        return 'text-rupee';
+        return 'text-rupee-600';
       case 'ganon':
-        return 'text-ganon';
+        return 'text-ganon-600';
       default:
-        return 'text-foreground';
+        return ''; // Use CSS module for default colors
     }
   };
 
@@ -59,7 +63,7 @@ export const Typography = ({
 
   return (
     <Component
-      className={cn('font-sans', getVariantStyles(), getColorStyles())}
+      className={cn('font-sans', getVariantStyles(), getColorStyles(), styles.typography, className)}
       data-testid={testId}
       {...props}
     >
