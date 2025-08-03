@@ -43,13 +43,13 @@ export const Typography = ({
       case 'muted':
         return 'text-muted';
       case 'triforce':
-        return 'text-triforce-600';
+        return 'text-triforce';
       case 'hyrule':
-        return 'text-hyrule-600';
+        return 'text-hyrule';
       case 'rupee':
-        return 'text-rupee-600';
+        return 'text-rupee';
       case 'ganon':
-        return 'text-ganon-600';
+        return 'text-ganon';
       default:
         return 'text-foreground';
     }

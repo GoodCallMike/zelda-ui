@@ -187,6 +187,13 @@ argTypes: {
       defaultValue: { summary: 'false' },
     },
   },
+  className: {
+    control: 'text',
+    description: 'Additional CSS classes for styling with utilities',
+    table: {
+      type: { summary: 'string' },
+    },
+  },
   testId: {
     control: 'text',
     description: 'Test identifier for automated testing',

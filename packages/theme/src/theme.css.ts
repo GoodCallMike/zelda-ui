@@ -83,3 +83,19 @@ globalStyle('.bg-rupee-blue', { backgroundColor: 'var(--color-rupee-blue)' });
 globalStyle('.bg-rupee-red', { backgroundColor: 'var(--color-rupee-red)' });
 globalStyle('.bg-rupee-purple', { backgroundColor: 'var(--color-rupee-purple)' });
 globalStyle('.text-heart', { color: 'var(--color-heart)' });
+
+/* Themed text colors */
+globalStyle('.text-triforce', { color: 'var(--triforce-600)' });
+globalStyle('.text-hyrule', { color: 'var(--hyrule-600)' });
+globalStyle('.text-rupee', { color: 'var(--rupee-600)' });
+globalStyle('.text-ganon', { color: 'var(--ganon-600)' });
+
+/* Dark mode themed text colors */
+globalStyle('[data-theme="dark"] .text-triforce, .dark .text-triforce', { color: 'var(--triforce-400)' });
+globalStyle('[data-theme="dark"] .text-hyrule, .dark .text-hyrule', { color: 'var(--hyrule-400)' });
+globalStyle('[data-theme="dark"] .text-rupee, .dark .text-rupee', { color: 'var(--rupee-400)' });
+globalStyle('[data-theme="dark"] .text-ganon, .dark .text-ganon', { color: 'var(--ganon-400)' });
+
+/* Dark mode default text colors */
+globalStyle('[data-theme="dark"] .text-foreground, .dark .text-foreground', { color: '#e0e7ff' });
+globalStyle('[data-theme="dark"] .text-muted, .dark .text-muted', { color: 'var(--gray-400)' });

@@ -17,6 +17,8 @@ export interface ButtonProps {
   icon?: IconComponent;
   /** Icon position */
   iconPosition?: 'left' | 'right';
+  /** Additional CSS classes */
+  className?: string;
   /** Test identifier */
   testId?: string;
 }
@@ -28,6 +30,7 @@ export const Button = ({
   disabled,
   icon: Icon,
   iconPosition = 'left',
+  className,
   testId,
   ...props
 }: ButtonProps) => {
@@ -39,6 +42,7 @@ export const Button = ({
         Icon && 'gap-2',
         styles[variant],
         disabled && 'opacity-60 cursor-not-allowed pointer-events-none',
+        className
       )}
       onClick={onClick}
       disabled={disabled}

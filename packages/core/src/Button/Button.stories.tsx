@@ -306,34 +306,78 @@ export const WithIcons: Story = {
   },
 };
 
-export const Examples: Story = {
-  name: 'Adventure Examples',
+export const RealWorldExamples: Story = {
   render: () => (
-    <div className="space-y-6">
-      <div className="space-y-3">
-        <h4 className="font-semibold text-gray-900">Combat Actions</h4>
-        <div className="flex gap-2">
-          <Button variant="primary">Attack</Button>
-          <Button variant="default">Defend</Button>
-          <Button variant="text">Flee</Button>
+    <div className="space-y-8 max-w-4xl">
+      {/* Game Menu Interface */}
+      <div className="p-6 border rounded-lg">
+        <h2 className="text-xl font-bold mb-6">Main Menu</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Adventure Awaits</h3>
+            <p className="text-gray-600 mb-4">
+              Begin your legendary journey through the kingdom of Hyrule. Face ancient evils, solve mystical puzzles, and become the hero of legend.
+            </p>
+            <div className="flex gap-3">
+              <Button variant="primary">New Game</Button>
+              <Button variant="default">Continue</Button>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Game Options</h3>
+            <div className="space-y-2">
+              <Button variant="text" className="w-full justify-start">Settings</Button>
+              <Button variant="text" className="w-full justify-start">Load Game</Button>
+              <Button variant="text" className="w-full justify-start">Achievements</Button>
+              <Button variant="link" className="w-full justify-start">Credits</Button>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div className="space-y-3">
-        <h4 className="font-semibold text-gray-900">Shop Interface</h4>
-        <div className="flex gap-2">
-          <Button variant="primary">Buy Item</Button>
-          <Button variant="default">Sell Item</Button>
-          <Button variant="link">View Details</Button>
+
+      {/* Inventory Management */}
+      <div className="p-6 border rounded-lg">
+        <h2 className="text-xl font-bold mb-4">Inventory Management</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <h3 className="text-lg font-semibold mb-3">Items</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {['Master Sword', 'Hylian Shield', 'Bow of Light', 'Triforce Shard'].map((item) => (
+                <div key={item} className="p-3 border rounded text-center">
+                  <p className="text-sm mb-2">{item}</p>
+                  <div className="flex gap-1">
+                    <Button variant="text" className="text-xs p-1">Use</Button>
+                    <Button variant="text" className="text-xs p-1">Drop</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Actions</h3>
+            <div className="space-y-2">
+              <Button variant="default" className="w-full">Sort Items</Button>
+              <Button variant="dashed" className="w-full">Quick Use</Button>
+              <Button variant="text" className="w-full">Item Details</Button>
+              <Button variant="destructive" className="w-full">Drop All Junk</Button>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div className="space-y-3">
-        <h4 className="font-semibold text-gray-900">Save Management</h4>
-        <div className="flex gap-2">
-          <Button variant="primary">Save Game</Button>
-          <Button variant="default">Quick Save</Button>
-          <Button variant="destructive" icon={Trash01Icon}>Delete Save</Button>
+
+      {/* Confirmation Dialog */}
+      <div className="p-6 border-2 border-red-200 rounded-lg bg-red-50">
+        <h3 className="text-lg font-semibold text-red-800 mb-2">⚠️ Dangerous Action</h3>
+        <p className="text-gray-700 mb-4">
+          Are you sure you want to delete this save file? This action cannot be undone. All progress, items, and achievements will be permanently lost.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">
+          Save file: "Hero of Time" - 45 hours played - Last saved: Temple of Time
+        </p>
+        <div className="flex gap-3">
+          <Button variant="destructive">Yes, Delete Forever</Button>
+          <Button variant="default">Cancel</Button>
+          <Button variant="link">Backup First</Button>
         </div>
       </div>
     </div>
@@ -341,7 +385,7 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Adventure-themed examples demonstrating proper button usage in game interface contexts.',
+        story: 'Real-world examples showing Button components in game menus, inventory management, and confirmation dialogs.',
       },
     },
   },

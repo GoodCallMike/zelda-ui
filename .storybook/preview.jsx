@@ -1,5 +1,6 @@
 import React from 'react';
 import '../packages/core/src/styles';
+import '../packages/theme/src';
 import './preview.css';
 import { ThemeDecorator } from './decorators/ThemeDecorator';
 
