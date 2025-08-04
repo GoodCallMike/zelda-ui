@@ -288,16 +288,22 @@ export const DarkMode: Story = {
 };
 
 export const WithIcons: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-3">
-        <Button variant="primary" icon={SearchLgIcon}>Search</Button>
-        <Button variant="default" icon={PlusIcon}>Add Item</Button>
-        <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
-        <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
+  render: () => {
+    console.log('Icons:', { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon });
+    return (
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-3">
+          <Button variant="primary" icon={SearchLgIcon}>Search</Button>
+          <Button variant="default" icon={PlusIcon}>Add Item</Button>
+          <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
+          <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
+        </div>
+        <div className="text-sm text-gray-500 mt-2">
+          Icons loaded: {[SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon].map(icon => icon?.name || 'unnamed').join(', ')}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
   parameters: {
     docs: {
       description: {
