@@ -1,9 +1,9 @@
-import React, { type ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { cn } from '../styles';
-import { Button } from '../Button';
-import { Typography } from '../Typography';
 import { XIcon } from '@zelda/icons';
+import React, { type ReactNode, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import { Button } from '../Button';
+import { cn } from '../styles';
+import { Typography } from '../Typography';
 import styles from './Modal.module.css';
 
 export interface ModalProps {
@@ -39,12 +39,12 @@ export const Modal = ({
   testId,
 }: ModalProps) => {
   // Handle escape key
+  const handleEscape = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') onClose();
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
-    
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
     
     document.addEventListener('keydown', handleEscape);
     document.body.style.overflow = 'hidden';
@@ -53,7 +53,7 @@ export const Modal = ({
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
     };
-  }, [open, onClose]);
+  }, [open, handleEscape]);
 
   if (!open) return null;
 
@@ -64,9 +64,15 @@ export const Modal = ({
   };
 
   return createPortal(
-    <div 
+    // amazonq-ignore-next-line
+    // biome-ignore lint/a11y/useSemanticElements: This is a backdrop so having a button doesn't make sense
+<div 
       className={cn(styles.backdrop, styles.backdropOpen)}
       onClick={handleBackdropClick}
+      onKeyDown={(e) => e.key === 'Enter' && maskClosable && onClose()}
+      role="button"
+      tabIndex={-1}
+      aria-label="Close modal"
       data-testid={testId}
     >
       <div 

@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 import { cn } from '../styles';
 import styles from './Typography.module.css';
 
-export interface TypographyProps {
+export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   /** Typography content */
   children: ReactNode;
   /** Typography variant */

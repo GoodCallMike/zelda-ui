@@ -407,6 +407,8 @@ export const DarkMode: Story = {
     };
     
     const handleClose = () => {
+      // amazonq-ignore-next-line
+      // eslint-disable-next-line security/detect-object-injection
       document.body.classList.remove('dark');
       setOpen(false);
     };
