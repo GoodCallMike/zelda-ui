@@ -1,6 +1,18 @@
+import React from 'react';
 import '@zelda/theme';
 import '../packages/theme/src/variables.css';
 import './preview.css';
+
+// Ensure React is available globally
+if (typeof globalThis !== 'undefined') {
+  globalThis.React = React;
+}
+if (typeof global !== 'undefined') {
+  global.React = React;
+}
+if (typeof window !== 'undefined') {
+  window.React = React;
+}
 
 export const parameters = {
   options: {
