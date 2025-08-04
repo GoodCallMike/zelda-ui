@@ -62,6 +62,7 @@ export default defineConfig({
           logHeapUsage: false,
           outputFile: false,
           onTaskUpdate: () => {},
+          onUnhandledRejection: () => {},
         },
       },
     ],
