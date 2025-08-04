@@ -18,7 +18,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm test:run
-      - run: pnpm biome check
+      - run: pnpm lint
 
   build:
     runs-on: ubuntu-latest
