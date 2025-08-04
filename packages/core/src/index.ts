@@ -21,7 +21,9 @@ export type { RadioGroupProps } from './Radio/RadioGroup';
 
 export { Toast } from './Toast/Toast';
 export { ToastContainer } from './Toast/ToastContainer';
-export type { ToastProps } from './Toast/Toast';
+export { ToastProvider, useToast } from './Toast/ToastManager';
+export type { ToastProps, ToastAction } from './Toast/Toast';
 export type { ToastContainerProps } from './Toast/ToastContainer';
+export type { ToastProviderProps } from './Toast/ToastManager';
 export { Typography } from './Typography/Typography';
 export type { TypographyProps } from './Typography/Typography';

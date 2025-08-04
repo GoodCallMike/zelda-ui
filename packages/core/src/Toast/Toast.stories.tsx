@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Toast } from './Toast';
 import { ToastContainer } from './ToastContainer';
+import { ToastProvider, useToast } from './ToastManager';
 import { Button } from '../Button';
 import { Typography } from '../Typography';
 
@@ -128,13 +129,15 @@ export const Default: Story = {
           Show Toast
         </Button>
         
-        {visible && (
-          <Toast
-            message="This is a default toast notification"
-            visible={true}
-            onClose={() => setVisible(false)}
-          />
-        )}
+        <ToastContainer position="top-right">
+          {visible && (
+            <Toast
+              message="This is a default toast notification"
+              visible={true}
+              onClose={() => setVisible(false)}
+            />
+          )}
+        </ToastContainer>
       </div>
     );
   },
@@ -143,16 +146,16 @@ export const Default: Story = {
 export const Types: Story = {
   render: () => {
     const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
-    let nextId = 1;
+    const nextIdRef = useRef(1);
 
-    const showToast = (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      const id = nextId++;
+    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+      const id = nextIdRef.current++;
       setToasts(prev => [...prev, { id, type, message }]);
-    };
+    }, []);
 
-    const hideToast = (id: number) => {
+    const hideToast = useCallback((id: number) => {
       setToasts(prev => prev.filter(toast => toast.id !== id));
-    };
+    }, []);
 
     return (
       <div className="space-y-4">
@@ -227,15 +230,16 @@ export const Positions: Story = {
           ))}
         </div>
         
-        {activePosition && (
-          <Toast
-            message={`Toast positioned at ${activePosition}`}
-            type="info"
-            position={activePosition as any}
-            visible={true}
-            onClose={() => setActivePosition(null)}
-          />
-        )}
+        <ToastContainer position={activePosition as any}>
+          {activePosition && (
+            <Toast
+              message={`Toast positioned at ${activePosition}`}
+              type="info"
+              visible={true}
+              onClose={() => setActivePosition(null)}
+            />
+          )}
+        </ToastContainer>
       </div>
     );
   },
@@ -293,15 +297,17 @@ export const AutoDismiss: Story = {
 
 export const DarkMode: Story = {
   render: () => {
-    const [activeToast, setActiveToast] = useState<{ type: 'success' | 'error' | 'warning' | 'info'; message: string } | null>(null);
+    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const nextIdRef = useRef(1);
 
-    const showToast = (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      setActiveToast({ type, message });
-    };
+    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+      const id = nextIdRef.current++;
+      setToasts(prev => [...prev, { id, type, message }]);
+    }, []);
 
-    const hideToast = () => {
-      setActiveToast(null);
-    };
+    const hideToast = useCallback((id: number) => {
+      setToasts(prev => prev.filter(toast => toast.id !== id));
+    }, []);
 
     return (
       <div className="dark bg-gray-900 p-6 rounded space-y-6">
@@ -322,16 +328,18 @@ export const DarkMode: Story = {
           </Button>
         </div>
         
-        {activeToast && (
-          <Toast
-            message={activeToast.message}
-            type={activeToast.type}
-            visible={true}
-            onClose={hideToast}
-            position="top-right"
-            duration={4000}
-          />
-        )}
+        <ToastContainer position="top-right">
+          {toasts.map(toast => (
+            <Toast
+              key={toast.id}
+              message={toast.message}
+              type={toast.type}
+              visible={true}
+              onClose={() => hideToast(toast.id)}
+              duration={4000}
+            />
+          ))}
+        </ToastContainer>
       </div>
     );
   },
@@ -344,17 +352,73 @@ export const DarkMode: Story = {
   },
 };
 
+export const WithProvider: Story = {
+  render: () => {
+    const TestComponent = () => {
+      const { showToast } = useToast();
+      
+      return (
+        <div className="space-y-4">
+          <div className="flex gap-2 flex-wrap">
+            <Button onClick={() => showToast({ message: '✅ Success toast!', type: 'success', duration: 3000 })}>
+              Success
+            </Button>
+            <Button onClick={() => showToast({ message: '❌ Error toast!', type: 'error', duration: 4000 })}>
+              Error
+            </Button>
+            <Button onClick={() => showToast({ message: '⚠️ Warning toast!', type: 'warning', duration: 5000 })}>
+              Warning
+            </Button>
+            <Button onClick={() => showToast({ message: 'ℹ️ Info toast!', type: 'info', duration: 2000 })}>
+              Info
+            </Button>
+          </div>
+          <Button 
+            onClick={() => showToast({ 
+              message: 'File uploaded successfully! What would you like to do next?', 
+              type: 'success', 
+              duration: 0,
+              actions: [
+                { label: 'View File', onClick: () => alert('Viewing file...') },
+                { label: 'Share', onClick: () => alert('Sharing file...') }
+              ]
+            })}
+            variant="outline"
+          >
+            Toast with Actions
+          </Button>
+        </div>
+      );
+    };
+    
+    return (
+      <ToastProvider position="top-right" maxToasts={3}>
+        <TestComponent />
+      </ToastProvider>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Using ToastProvider for proper toast management with independent timers.',
+      },
+    },
+  },
+};
+
 export const RealWorldExamples: Story = {
   render: () => {
-    const [activeToast, setActiveToast] = useState<{ type: 'success' | 'error' | 'warning' | 'info'; message: string } | null>(null);
+    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const nextIdRef = useRef(1);
 
-    const showToast = (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      setActiveToast({ type, message });
-    };
+    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+      const id = nextIdRef.current++;
+      setToasts(prev => [...prev, { id, type, message }]);
+    }, []);
 
-    const hideToast = () => {
-      setActiveToast(null);
-    };
+    const hideToast = useCallback((id: number) => {
+      setToasts(prev => prev.filter(toast => toast.id !== id));
+    }, []);
 
     return (
       <div className="space-y-8 max-w-2xl">
@@ -448,16 +512,18 @@ export const RealWorldExamples: Story = {
           </div>
         </div>
         
-        {activeToast && (
-          <Toast
-            message={activeToast.message}
-            type={activeToast.type}
-            visible={true}
-            onClose={hideToast}
-            position="top-right"
-            duration={4000}
-          />
-        )}
+        <ToastContainer position="top-right">
+          {toasts.map(toast => (
+            <Toast
+              key={toast.id}
+              message={toast.message}
+              type={toast.type}
+              visible={true}
+              onClose={() => hideToast(toast.id)}
+              duration={4000}
+            />
+          ))}
+        </ToastContainer>
       </div>
     );
   },

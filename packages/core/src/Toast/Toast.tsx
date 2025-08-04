@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 import { XIcon, CheckCircleIcon, AlertTriangleIcon, InfoCircleIcon, XCircleIcon } from '@zelda/icons';
 import styles from './Toast.module.css';
+
+export interface ToastAction {
+  /** Action button label */
+  label: string;
+  /** Action handler */
+  onClick: () => void;
+}
 
 export interface ToastProps {
   /** Toast message */
@@ -19,6 +26,8 @@ export interface ToastProps {
   visible?: boolean;
   /** Close handler */
   onClose?: () => void;
+  /** Action buttons */
+  actions?: ToastAction[];
   /** Custom className */
   className?: string;
   /** Test identifier */
@@ -39,6 +48,7 @@ export const Toast = ({
   duration = 5000,
   visible = true,
   onClose,
+  actions,
   className,
   testId,
 }: ToastProps) => {
@@ -46,6 +56,14 @@ export const Toast = ({
   const [isEntering, setIsEntering] = useState(true);
 
   const IconComponent = typeIcons[type];
+
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+
+  const handleClose = useCallback(() => {
+    setIsExiting(true);
+    onCloseRef.current?.();
+  }, []);
 
   useEffect(() => {
     // Start enter animation
@@ -63,21 +81,14 @@ export const Toast = ({
       }, duration);
       return () => clearTimeout(timer);
     }
-  }, [visible, duration]);
-
-  const handleClose = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      onClose?.();
-    }, 300); // Match exit animation duration
-  };
+  }, [visible, duration, handleClose]);
 
   if (!visible) return null;
 
   return (
     <div
       className={cn(
-        'pointer-events-auto max-w-sm w-full',
+        'pointer-events-auto w-96',
         styles.toast,
         styles[type],
         isEntering && styles.entering,
@@ -86,22 +97,39 @@ export const Toast = ({
       )}
       data-testid={testId}
     >
-      <div className="flex items-center gap-3 p-4">
-        <IconComponent className={cn('w-5 h-5 flex-shrink-0', styles.icon)} />
-        <div className="flex-1 min-w-0">
-          <Typography variant="body2" className={styles.message}>
-            {message}
-          </Typography>
+      <div className="p-4">
+        <div className="flex items-center gap-3">
+          <IconComponent className={cn('w-5 h-5 flex-shrink-0', styles.icon)} />
+          <div className="flex-1 min-w-0">
+            <Typography variant="body2" className={styles.message}>
+              {message}
+            </Typography>
+          </div>
+          <Button
+            variant="text"
+            size="small"
+            onClick={handleClose}
+            className={styles.closeButton}
+            aria-label="Close notification"
+          >
+            <XIcon className="w-4 h-4" />
+          </Button>
         </div>
-        <Button
-          variant="text"
-          size="small"
-          onClick={handleClose}
-          className={styles.closeButton}
-          aria-label="Close notification"
-        >
-          <XIcon className="w-4 h-4" />
-        </Button>
+        {actions && actions.length > 0 && (
+          <div className="flex gap-2 mt-3 ml-8">
+            {actions.map((action, index) => (
+              <Button
+                key={index}
+                variant="text"
+                size="small"
+                onClick={action.onClick}
+                className="text-xs"
+              >
+                {action.label}
+              </Button>
+            ))}
+          </div>
+        )}
       </div>
       {duration > 0 && (
         <div 
