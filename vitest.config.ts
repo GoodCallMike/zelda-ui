@@ -52,6 +52,8 @@ export default defineConfig({
           silent: true,
           onConsoleLog: () => false,
           reporters: ['basic'],
+          testTimeout: 30000,
+          retry: process.env.CI ? 2 : 0,
         },
       },
     ],

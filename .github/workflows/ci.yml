@@ -18,8 +18,10 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - run: pnpm exec playwright install --with-deps
+      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:run
+        env:
+          CI: true
       - run: pnpm lint
 
   build:
