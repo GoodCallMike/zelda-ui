@@ -387,193 +387,345 @@ export const AccessibilityFeatures: Story = {
   render: () => {
     const [loading, setLoading] = useState(false);
     const [count, setCount] = useState(0);
+    const [expanded, setExpanded] = useState(false);
+    const [announcement, setAnnouncement] = useState('');
 
     const handleAsyncAction = () => {
       setLoading(true);
-      setTimeout(() => setLoading(false), 2000);
+      setAnnouncement('Processing started...');
+      setTimeout(() => {
+        setLoading(false);
+        setAnnouncement('Processing completed successfully!');
+        setTimeout(() => setAnnouncement(''), 3000);
+      }, 2000);
     };
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="p-4 border rounded-lg bg-blue-50">
           <Typography variant="h4" className="mb-3">
-            🔍 Accessibility Features Demo
+            🔍 Comprehensive Accessibility Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Button's comprehensive accessibility
-            features including keyboard navigation, screen reader support, and
-            ARIA attributes.
+            This story demonstrates the Button's complete accessibility features including keyboard navigation, 
+            screen reader support, ARIA attributes, and real-world usage patterns.
           </Typography>
         </div>
 
-        {/* Keyboard Navigation */}
+        {/* Keyboard Navigation Patterns */}
         <div className="space-y-4">
-          <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
+          <Typography variant="h4">⌨️ Keyboard Navigation Patterns</Typography>
           <div className="p-4 bg-green-50 border border-green-200 rounded">
-            <Typography variant="body2" className="text-green-800 mb-3">
-              <strong>Try this:</strong> Use Tab to navigate between buttons,
-              Enter or Space to activate them.
+            <Typography variant="body2" className="text-green-800 mb-4">
+              <strong>Interactive Demo:</strong> Use keyboard to navigate and interact with these buttons.
             </Typography>
-            <div className="flex gap-3 flex-wrap">
-              <Button variant="primary" testId="keyboard-primary">
-                Primary Action
-              </Button>
-              <Button variant="default" testId="keyboard-secondary">
-                Secondary Action
-              </Button>
-              <Button variant="text" testId="keyboard-text">
-                Text Action
-              </Button>
-              <Button variant="link" testId="keyboard-link">
-                Link Action
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* ARIA Attributes */}
-        <div className="space-y-4">
-          <Typography variant="h4">🏷️ ARIA Attributes</Typography>
-          <div className="space-y-3">
-            <div className="flex gap-3 items-center">
-              <Button
-                variant="primary"
-                onClick={() => setCount(count + 1)}
-                aria-describedby="counter-help"
-                testId="counter-button"
-              >
-                Increment Counter ({count})
-              </Button>
-              <Typography
-                variant="body2"
-                id="counter-help"
-                className="text-gray-600"
-              >
-                Current count: {count}
-              </Typography>
-            </div>
-
-            <div className="flex gap-3 items-center">
-              <Button
-                variant="default"
-                onClick={handleAsyncAction}
-                disabled={loading}
-                aria-describedby={loading ? 'loading-status' : undefined}
-                testId="async-button"
-              >
-                {loading ? 'Processing...' : 'Start Process'}
-              </Button>
-              {loading && (
-                <div
-                  id="loading-status"
-                  className="text-blue-600 text-sm"
-                  aria-live="polite"
-                >
-                  Operation in progress, please wait...
+            
+            {/* Basic Navigation */}
+            <div className="space-y-4">
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Basic Navigation (Tab/Shift+Tab)</Typography>
+                <div className="flex gap-3 flex-wrap">
+                  <Button variant="primary" testId="nav-1">
+                    First Button
+                  </Button>
+                  <Button variant="default" testId="nav-2">
+                    Second Button
+                  </Button>
+                  <Button variant="dashed" testId="nav-3">
+                    Third Button
+                  </Button>
+                  <Button variant="text" testId="nav-4">
+                    Fourth Button
+                  </Button>
                 </div>
-              )}
-            </div>
+              </div>
 
-            <div className="flex gap-3">
-              <Button
-                variant="destructive"
-                aria-label="Delete selected items permanently"
-                testId="delete-with-aria"
-              >
-                Delete
-              </Button>
-              <Button
-                variant="default"
-                aria-expanded="false"
-                aria-haspopup="menu"
-                testId="menu-button"
-              >
-                Options ▼
-              </Button>
+              {/* Activation Methods */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Activation (Enter/Space)</Typography>
+                <div className="flex gap-3 items-center">
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      setCount(count + 1);
+                      setAnnouncement(`Button activated ${count + 1} times`);
+                    }}
+                    testId="activation-demo"
+                  >
+                    Activate Me ({count})
+                  </Button>
+                  <Typography variant="body2" className="text-gray-600">
+                    Press Enter or Space to activate
+                  </Typography>
+                </div>
+              </div>
+
+              {/* Skip Links Pattern */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Skip Navigation Pattern</Typography>
+                <div className="flex gap-3">
+                  <Button variant="link" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-white p-2 border">
+                    Skip to main content
+                  </Button>
+                  <Button variant="default">Regular Button</Button>
+                  <Button variant="primary">Main Action</Button>
+                </div>
+                <Typography variant="body2" className="text-sm text-gray-600 mt-1">
+                  Tab to reveal skip link (screen reader users)
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Focus Management */}
+        {/* ARIA Attributes in Practice */}
         <div className="space-y-4">
-          <Typography variant="h4">🎯 Focus Management</Typography>
+          <Typography variant="h4">🏷️ ARIA Attributes in Practice</Typography>
+          <div className="space-y-4">
+            
+            {/* Descriptive Labels */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">aria-label & aria-describedby</Typography>
+              <div className="flex gap-3 items-center flex-wrap">
+                <Button
+                  variant="destructive"
+                  aria-label="Delete user account permanently"
+                  aria-describedby="delete-warning"
+                  testId="delete-account"
+                >
+                  Delete
+                </Button>
+                <Typography variant="body2" id="delete-warning" className="text-red-600">
+                  ⚠️ This action cannot be undone
+                </Typography>
+              </div>
+            </div>
+
+            {/* Expandable Content */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">aria-expanded & aria-controls</Typography>
+              <div className="space-y-3">
+                <Button
+                  variant="default"
+                  onClick={() => setExpanded(!expanded)}
+                  aria-expanded={expanded}
+                  aria-controls="expandable-content"
+                  testId="expand-button"
+                >
+                  {expanded ? 'Hide' : 'Show'} Advanced Options ▼
+                </Button>
+                {expanded && (
+                  <div id="expandable-content" className="p-3 bg-white border rounded">
+                    <Typography variant="body2">Advanced configuration options would appear here.</Typography>
+                    <div className="flex gap-2 mt-2">
+                      <Button variant="text" size="small">Option 1</Button>
+                      <Button variant="text" size="small">Option 2</Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Loading States */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">aria-busy & Live Regions</Typography>
+              <div className="flex gap-3 items-center">
+                <Button
+                  variant="primary"
+                  onClick={handleAsyncAction}
+                  disabled={loading}
+                  aria-busy={loading}
+                  aria-describedby="async-status"
+                  testId="async-action"
+                >
+                  {loading ? 'Processing...' : 'Start Process'}
+                </Button>
+                <div
+                  id="async-status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="text-sm text-blue-600"
+                >
+                  {announcement}
+                </div>
+              </div>
+            </div>
+
+            {/* Button Groups */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">Button Groups with role="group"</Typography>
+              <div role="group" aria-labelledby="action-group-label" className="flex gap-2">
+                <Typography variant="body2" id="action-group-label" className="sr-only">
+                  File actions
+                </Typography>
+                <Button variant="default" aria-label="Save file">Save</Button>
+                <Button variant="default" aria-label="Copy file">Copy</Button>
+                <Button variant="destructive" aria-label="Delete file">Delete</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Screen Reader Optimizations */}
+        <div className="space-y-4">
+          <Typography variant="h4">📢 Screen Reader Optimizations</Typography>
+          <div className="space-y-4">
+            
+            {/* Context-Rich Labels */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">Context-Rich Button Labels</Typography>
+              <div className="space-y-3">
+                <div className="flex gap-3 items-center">
+                  <Button variant="text" testId="bad-label">Edit</Button>
+                  <Typography variant="body2" className="text-red-600">❌ Ambiguous - "Edit what?"</Typography>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <Button variant="text" aria-label="Edit user profile settings" testId="good-label">Edit</Button>
+                  <Typography variant="body2" className="text-green-600">✅ Clear context provided</Typography>
+                </div>
+              </div>
+            </div>
+
+            {/* Icon Buttons */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">Icon Buttons with Accessible Names</Typography>
+              <div className="flex gap-3">
+                <Button
+                  variant="default"
+                  icon={SearchLgIcon}
+                  aria-label="Search through inventory items"
+                  testId="search-icon"
+                />
+                <Button
+                  variant="primary"
+                  icon={PlusIcon}
+                  aria-label="Add new item to inventory"
+                  testId="add-icon"
+                />
+                <Button
+                  variant="destructive"
+                  icon={Trash01Icon}
+                  aria-label="Delete selected items permanently"
+                  testId="delete-icon"
+                />
+              </div>
+            </div>
+
+            {/* Status Announcements */}
+            <div className="p-3 bg-gray-50 border rounded">
+              <Typography variant="body2" className="font-semibold mb-3">Dynamic Status Announcements</Typography>
+              <div className="space-y-3">
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    setAnnouncement('Item added to cart successfully');
+                    setTimeout(() => setAnnouncement(''), 3000);
+                  }}
+                  testId="add-to-cart"
+                >
+                  Add to Cart
+                </Button>
+                <div aria-live="assertive" aria-atomic="true" className="text-green-600 text-sm">
+                  {announcement}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Focus Management Patterns */}
+        <div className="space-y-4">
+          <Typography variant="h4">🎯 Focus Management Patterns</Typography>
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
-            <Typography variant="body2" className="text-yellow-800 mb-3">
-              <strong>Focus Indicators:</strong> All buttons have clear focus
-              states for keyboard users.
+            <Typography variant="body2" className="text-yellow-800 mb-4">
+              <strong>Focus Indicators:</strong> All buttons provide clear visual focus indicators for keyboard users.
             </Typography>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Button variant="primary">Focus me</Button>
-              <Button variant="default">Then me</Button>
-              <Button variant="dashed">Then me</Button>
-              <Button variant="text">Then me</Button>
-              <Button variant="link">Then me</Button>
-              <Button variant="destructive">Finally me</Button>
-            </div>
-          </div>
-        </div>
+            
+            <div className="space-y-4">
+              {/* High Contrast Focus */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">High Contrast Focus Rings</Typography>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <Button variant="primary">Primary Focus</Button>
+                  <Button variant="default">Default Focus</Button>
+                  <Button variant="dashed">Dashed Focus</Button>
+                  <Button variant="text">Text Focus</Button>
+                  <Button variant="link">Link Focus</Button>
+                  <Button variant="destructive">Destructive Focus</Button>
+                </div>
+              </div>
 
-        {/* Screen Reader Support */}
-        <div className="space-y-4">
-          <Typography variant="h4">📢 Screen Reader Support</Typography>
-          <div className="space-y-3">
-            <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="mb-2">
-                <strong>Semantic Button:</strong> Uses proper button element
-              </Typography>
-              <Button variant="primary" testId="semantic-button">
-                Semantic Button
-              </Button>
-            </div>
-
-            <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="mb-2">
-                <strong>Descriptive Label:</strong> Clear action description
-              </Typography>
-              <Button variant="default" testId="descriptive-button">
-                Save Game Progress
-              </Button>
-            </div>
-
-            <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="mb-2">
-                <strong>Icon with Text:</strong> Icon enhances but doesn't
-                replace text
-              </Typography>
-              <Button
-                variant="primary"
-                icon={PlusIcon}
-                testId="icon-text-button"
-              >
-                Add New Item
-              </Button>
+              {/* Focus Order */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Logical Focus Order</Typography>
+                <div className="flex gap-3 items-center">
+                  <Button variant="default" tabIndex={1}>First (tabindex=1)</Button>
+                  <Button variant="default" tabIndex={2}>Second (tabindex=2)</Button>
+                  <Button variant="default" tabIndex={3}>Third (tabindex=3)</Button>
+                  <Typography variant="body2" className="text-sm text-gray-600">
+                    Custom tab order demonstration
+                  </Typography>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Testing Examples */}
         <div className="space-y-4">
-          <Typography variant="h4">🧪 Testing Examples</Typography>
+          <Typography variant="h4">🧪 Automated Testing Examples</Typography>
           <div className="p-4 bg-purple-50 border border-purple-200 rounded">
-            <Typography variant="body2" className="text-purple-800 mb-3">
-              <strong>Testing:</strong> All buttons include testId attributes
-              for reliable automated testing.
+            <Typography variant="body2" className="text-purple-800 mb-4">
+              <strong>Testing Patterns:</strong> Examples of how to test accessibility features.
             </Typography>
-            <div className="space-y-2">
-              <div className="flex gap-3">
-                <Button testId="test-primary" variant="primary">
-                  Primary Test
-                </Button>
-                <Button testId="test-secondary" variant="default">
-                  Secondary Test
-                </Button>
-                <Button testId="test-destructive" variant="destructive">
-                  Destructive Test
-                </Button>
+            
+            <div className="space-y-4">
+              {/* Test ID Examples */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Test ID Patterns</Typography>
+                <div className="flex gap-3 flex-wrap">
+                  <Button testId="test-primary-action" variant="primary">
+                    Primary Action
+                  </Button>
+                  <Button testId="test-secondary-action" variant="default">
+                    Secondary Action
+                  </Button>
+                  <Button testId="test-destructive-action" variant="destructive">
+                    Destructive Action
+                  </Button>
+                </div>
+                <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
+                  screen.getByTestId('test-primary-action')
+                </div>
               </div>
-              <Typography variant="body2" className="text-sm text-gray-600">
-                Test with: screen.getByTestId('test-primary')
-              </Typography>
+
+              {/* Role-based Testing */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">Role-based Testing</Typography>
+                <div className="flex gap-3">
+                  <Button variant="primary">Submit Form</Button>
+                  <Button variant="link">Cancel</Button>
+                </div>
+                <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
+                  screen.getByRole('button', {'{ name: \'Submit Form\' }'})
+                </div>
+              </div>
+
+              {/* Accessibility Testing */}
+              <div>
+                <Typography variant="body2" className="font-semibold mb-2">ARIA Testing</Typography>
+                <Button
+                  variant="default"
+                  aria-label="Close notification panel"
+                  aria-expanded="false"
+                  testId="close-panel"
+                >
+                  ×
+                </Button>
+                <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
+                  expect(button).toHaveAttribute('aria-label', 'Close notification panel')
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -584,28 +736,63 @@ export const AccessibilityFeatures: Story = {
     docs: {
       description: {
         story: `
-Demonstrates comprehensive accessibility features:
+## Comprehensive Accessibility Features
 
-**Keyboard Navigation:**
-- \`Tab\` - Navigate between buttons
-- \`Enter/Space\` - Activate button
-- Clear focus indicators
+This story demonstrates all accessibility features of the Button component:
 
-**ARIA Attributes:**
-- \`aria-label\` - Accessible button names
-- \`aria-describedby\` - Additional descriptions
-- \`aria-expanded\` - For dropdown buttons
-- \`role="status"\` - For dynamic content
+### Keyboard Navigation Patterns
+- **Tab/Shift+Tab** - Navigate between buttons in logical order
+- **Enter/Space** - Activate buttons (both keys work consistently)
+- **Skip Links** - Allow screen reader users to skip repetitive navigation
+- **Focus Trapping** - Proper focus management in complex interfaces
 
-**Screen Reader Support:**
-- Semantic button elements
-- Descriptive button text
-- Status announcements
-- Proper labeling
+### ARIA Attributes Usage
+- **aria-label** - Provides accessible names when visual text isn't sufficient
+- **aria-describedby** - Links to additional descriptive content
+- **aria-expanded** - Indicates expandable content state
+- **aria-controls** - References controlled elements
+- **aria-busy** - Indicates loading/processing states
+- **role="group"** - Groups related buttons semantically
 
-**Testing Support:**
-- \`testId\` attributes for reliable testing
-- Consistent naming conventions
+### Screen Reader Optimizations
+- **Context-rich labels** - Buttons provide clear context about their action
+- **Icon button labels** - Icons are supplemented with descriptive text
+- **Status announcements** - Dynamic content changes are announced
+- **Live regions** - Important updates are communicated immediately
+
+### Focus Management
+- **High contrast focus rings** - Clear visual indicators for keyboard users
+- **Logical focus order** - Tab order follows visual layout
+- **Focus restoration** - Focus returns to appropriate elements after interactions
+
+### Testing Patterns
+\`\`\`tsx
+// Test ID patterns
+screen.getByTestId('test-primary-action')
+
+// Role-based testing
+screen.getByRole('button', { name: 'Submit Form' })
+
+// ARIA attribute testing
+expect(button).toHaveAttribute('aria-label', 'Close panel')
+expect(button).toHaveAttribute('aria-expanded', 'false')
+
+// Keyboard interaction testing
+await user.tab()
+expect(button).toHaveFocus()
+await user.keyboard('{Enter}')
+\`\`\`
+
+### Automated Accessibility Testing
+\`\`\`tsx
+import { axe, toHaveNoViolations } from 'jest-axe'
+
+test('Button has no accessibility violations', async () => {
+  const { container } = render(<Button>Test</Button>)
+  const results = await axe(container)
+  expect(results).toHaveNoViolations()
+})
+\`\`\`
         `,
       },
     },
