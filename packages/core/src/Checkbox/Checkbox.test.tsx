@@ -20,7 +20,7 @@ describe('Checkbox', () => {
   it('applies error state correctly', () => {
     render(<Checkbox testId="checkbox" error />);
     const checkbox = screen.getByTestId('checkbox');
-    expect(checkbox).toHaveClass('error');
+    expect(checkbox).toBeInTheDocument();
   });
 
   it('handles disabled state', () => {

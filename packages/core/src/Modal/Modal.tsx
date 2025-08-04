@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import React, { type ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../styles';
 import { Button } from '../Button';

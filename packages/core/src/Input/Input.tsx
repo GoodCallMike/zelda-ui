@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type InputHTMLAttributes, type TextareaHTMLAttributes } from 'react';
+import React, { useState, type ChangeEvent, type InputHTMLAttributes, type TextareaHTMLAttributes } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';

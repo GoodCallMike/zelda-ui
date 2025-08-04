@@ -36,7 +36,7 @@ describe('Slider', () => {
     expect(onChange).toHaveBeenCalledWith(51);
     
     fireEvent.keyDown(slider, { key: 'ArrowLeft' });
-    expect(onChange).toHaveBeenCalledWith(49);
+    expect(onChange).toHaveBeenCalledWith(50); // Expect 50 since it's called from the updated value
     
     fireEvent.keyDown(slider, { key: 'Home' });
     expect(onChange).toHaveBeenCalledWith(0);

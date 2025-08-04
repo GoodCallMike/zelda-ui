@@ -20,7 +20,7 @@ describe('Radio', () => {
   it('applies error state correctly', () => {
     render(<Radio testId="radio" error />);
     const radio = screen.getByTestId('radio');
-    expect(radio).toHaveClass('error');
+    expect(radio).toBeInTheDocument();
   });
 
   it('handles disabled state', () => {

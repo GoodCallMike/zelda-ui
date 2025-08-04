@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useFloating, autoUpdate, offset, flip, shift, size as floatingSize } from '@floating-ui/react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';

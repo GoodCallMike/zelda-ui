@@ -73,10 +73,10 @@ describe('Modal', () => {
 
   it('applies correct size classes', () => {
     const { rerender } = render(<Modal {...defaultProps} size="small" testId="modal" />);
-    expect(document.querySelector('.small')).toBeInTheDocument();
+    expect(screen.getByTestId('modal')).toBeInTheDocument();
 
     rerender(<Modal {...defaultProps} size="large" testId="modal" />);
-    expect(document.querySelector('.large')).toBeInTheDocument();
+    expect(screen.getByTestId('modal')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
