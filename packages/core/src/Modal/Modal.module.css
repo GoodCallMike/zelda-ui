@@ -1,0 +1,227 @@
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--black) 60%, transparent);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdropOpen {
+  opacity: 1;
+  animation: magicalBackdrop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Modal container */
+.modal {
+  background: var(--white);
+  border: 4px solid var(--triforce-600);
+  border-radius: 12px;
+  box-shadow: 
+    inset 3px 3px 0 var(--triforce-100),
+    inset -3px -3px 0 var(--triforce-700),
+    8px 8px 0 var(--triforce-900),
+    0 0 20px color-mix(in srgb, var(--triforce-400) 30%, transparent),
+    0 0 40px color-mix(in srgb, var(--triforce-300) 15%, transparent),
+    0 0 60px color-mix(in srgb, var(--rupee-400) 8%, transparent);
+  max-height: calc(100vh - 32px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transform: scale(0.8) translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modalOpen {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  animation: magicalModal 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 3px solid var(--triforce-200);
+  background: linear-gradient(135deg, 
+    var(--triforce-50) 0%, 
+    color-mix(in srgb, var(--triforce-100) 80%, var(--rupee-50) 20%) 50%,
+    var(--triforce-100) 100%
+  );
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--triforce-400) 0%, 
+    var(--rupee-400) 20%, 
+    var(--triforce-500) 40%, 
+    var(--rupee-500) 60%, 
+    var(--triforce-400) 100%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.title {
+  color: var(--triforce-800);
+  text-shadow: 1px 1px 0 var(--triforce-100);
+  margin: 0;
+}
+
+.closeButton {
+  color: var(--triforce-700);
+  padding: 8px;
+  min-width: auto;
+  height: auto;
+}
+
+.closeButton:hover {
+  color: var(--triforce-800);
+  background: var(--triforce-100);
+}
+
+/* Content */
+.content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Size variants */
+.small {
+  width: 400px;
+  max-width: calc(100vw - 32px);
+}
+
+.medium {
+  width: 600px;
+  max-width: calc(100vw - 32px);
+}
+
+.large {
+  width: 800px;
+  max-width: calc(100vw - 32px);
+}
+
+.fullscreen {
+  width: calc(100vw - 32px);
+  height: calc(100vh - 32px);
+}
+
+/* Dark mode */
+:global(.dark) .backdrop {
+  background: color-mix(in srgb, var(--black) 80%, transparent);
+}
+
+:global(.dark) .modal {
+  background: var(--gray-800);
+  border-color: #6b46c1;
+  box-shadow: 
+    inset 3px 3px 0 #a78bfa,
+    inset -3px -3px 0 #312e81,
+    8px 8px 0 var(--black),
+    0 0 30px color-mix(in srgb, #6b46c1 50%, transparent),
+    0 0 60px color-mix(in srgb, #7c3aed 25%, transparent);
+}
+
+:global(.dark) .header {
+  background: linear-gradient(135deg, 
+    #312e81 0%, 
+    color-mix(in srgb, #44337a 80%, #14532d 20%) 50%,
+    #44337a 100%
+  );
+  border-bottom-color: #553c9a;
+}
+
+:global(.dark) .header::after {
+  background: linear-gradient(90deg, 
+    #6b46c1 0%, 
+    #22c55e 20%, 
+    #7c3aed 40%, 
+    #16a34a 60%, 
+    #6b46c1 100%
+  );
+}
+
+:global(.dark) .title {
+  color: #e0e7ff;
+  text-shadow: 1px 1px 0 #312e81;
+}
+
+:global(.dark) .closeButton {
+  color: #c4b5fd;
+}
+
+:global(.dark) .closeButton:hover {
+  color: #e0e7ff;
+  background: #553c9a;
+}
+
+:global(.dark) .content {
+  color: var(--gray-100);
+}
+
+/* Animations */
+@keyframes magicalBackdrop {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes magicalModal {
+  0% {
+    transform: scale(0.3) translateY(50px) rotateX(-15deg);
+    opacity: 0;
+    filter: brightness(2) blur(3px);
+  }
+  30% {
+    transform: scale(1.05) translateY(-10px) rotateX(5deg);
+    opacity: 0.8;
+    filter: brightness(1.5) blur(1px);
+  }
+  60% {
+    transform: scale(0.98) translateY(5px) rotateX(-2deg);
+    opacity: 0.95;
+    filter: brightness(1.2) blur(0.5px);
+  }
+  100% {
+    transform: scale(1) translateY(0) rotateX(0deg);
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}

@@ -26,7 +26,8 @@
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
     3px 3px 0 color-mix(in srgb, var(--triforce-600) 40%, transparent),
-    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent),
+    0 0 12px color-mix(in srgb, var(--rupee-400) 8%, transparent);
 }
 
 .checkbox:checked {
@@ -53,24 +54,34 @@
   }
   50% {
     transform: scale(1.2);
-    background: linear-gradient(135deg, var(--triforce-300) 0%, var(--triforce-400) 50%, var(--triforce-500) 100%);
+    background: linear-gradient(135deg, 
+      var(--triforce-300) 0%, 
+      color-mix(in srgb, var(--triforce-400) 85%, var(--rupee-400) 15%) 50%, 
+      var(--triforce-500) 100%
+    );
     border-color: var(--triforce-600);
     box-shadow: 
       inset 2px 2px 0 var(--triforce-100),
       inset -2px -2px 0 var(--triforce-700),
       4px 4px 0 var(--triforce-900),
       0 0 25px color-mix(in srgb, var(--triforce-400) 80%, transparent),
-      0 0 35px color-mix(in srgb, var(--triforce-300) 60%, transparent);
+      0 0 35px color-mix(in srgb, var(--triforce-300) 60%, transparent),
+      0 0 45px color-mix(in srgb, var(--rupee-400) 25%, transparent);
   }
   100% {
     transform: scale(1.1);
-    background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+    background: linear-gradient(135deg, 
+      var(--triforce-400) 0%, 
+      color-mix(in srgb, var(--triforce-500) 90%, var(--rupee-400) 10%) 50%, 
+      var(--triforce-600) 100%
+    );
     border-color: var(--triforce-700);
     box-shadow: 
       inset 2px 2px 0 var(--triforce-100),
       inset -2px -2px 0 var(--triforce-700),
       4px 4px 0 var(--triforce-900),
-      0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+      0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent),
+      0 0 16px color-mix(in srgb, var(--rupee-400) 8%, transparent);
   }
 }
 
@@ -112,7 +123,8 @@
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
     3px 3px 0 color-mix(in srgb, #44337a 60%, transparent),
-    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
+    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent),
+    0 0 25px color-mix(in srgb, #22c55e 10%, transparent);
 }
 
 :global(.dark) .checkbox:checked {
@@ -139,24 +151,34 @@
   }
   50% {
     transform: scale(1.2);
-    background: linear-gradient(135deg, #7c3aed 0%, #6b46c1 50%, #553c9a 100%);
+    background: linear-gradient(135deg, 
+      #7c3aed 0%, 
+      color-mix(in srgb, #6b46c1 85%, #22c55e 15%) 50%, 
+      #553c9a 100%
+    );
     border-color: #44337a;
     box-shadow: 
       inset 2px 2px 0 #a78bfa,
       inset -2px -2px 0 #312e81,
       4px 4px 0 var(--black),
       0 0 35px color-mix(in srgb, #6b46c1 90%, transparent),
-      0 0 45px color-mix(in srgb, #7c3aed 70%, transparent);
+      0 0 45px color-mix(in srgb, #7c3aed 70%, transparent),
+      0 0 55px color-mix(in srgb, #22c55e 30%, transparent);
   }
   100% {
     transform: scale(1.1);
-    background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+    background: linear-gradient(135deg, 
+      #6b46c1 0%, 
+      color-mix(in srgb, #553c9a 90%, #22c55e 10%) 50%, 
+      #44337a 100%
+    );
     border-color: #312e81;
     box-shadow: 
       inset 2px 2px 0 #a78bfa,
       inset -2px -2px 0 #312e81,
       4px 4px 0 var(--black),
-      0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+      0 0 20px color-mix(in srgb, #6b46c1 50%, transparent),
+      0 0 30px color-mix(in srgb, #22c55e 12%, transparent);
   }
 }
 

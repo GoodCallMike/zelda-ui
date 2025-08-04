@@ -14,15 +14,17 @@
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
-    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent),
+    0 0 12px color-mix(in srgb, var(--rupee-400) 8%, transparent);
 }
 
 .default:focus {
-  border-color: var(--triforce-600);
+  border-color: color-mix(in srgb, var(--triforce-600) 85%, var(--rupee-500) 15%);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
-    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent),
+    0 0 16px color-mix(in srgb, var(--rupee-400) 12%, transparent);
 }
 
 .default:focus-visible {
@@ -44,15 +46,17 @@
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
-    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
+    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent),
+    0 0 25px color-mix(in srgb, #22c55e 10%, transparent);
 }
 
 :global(.dark) .default:focus {
-  border-color: #7c3aed;
+  border-color: color-mix(in srgb, #7c3aed 85%, #22c55e 15%);
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
-    0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
+    0 0 20px color-mix(in srgb, #7c3aed 50%, transparent),
+    0 0 30px color-mix(in srgb, #22c55e 15%, transparent);
 }
 
 :global(.dark) .default:focus-visible {
@@ -76,16 +80,18 @@
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
-    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent);
+    0 0 6px color-mix(in srgb, var(--triforce-400) 15%, transparent),
+    0 0 12px color-mix(in srgb, var(--rupee-400) 8%, transparent);
 }
 
 .filled:focus {
-  background: var(--white);
-  border-color: var(--triforce-600);
+  background: color-mix(in srgb, var(--white) 97%, var(--rupee-50) 3%);
+  border-color: color-mix(in srgb, var(--triforce-600) 85%, var(--rupee-500) 15%);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
-    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent),
+    0 0 16px color-mix(in srgb, var(--rupee-400) 12%, transparent);
 }
 
 .filled:focus-visible {
@@ -108,16 +114,18 @@
   box-shadow: 
     inset 2px 2px 0 var(--gray-500),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
-    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent);
+    0 0 15px color-mix(in srgb, #7c3aed 40%, transparent),
+    0 0 25px color-mix(in srgb, #22c55e 10%, transparent);
 }
 
 :global(.dark) .filled:focus {
-  background: var(--gray-800);
-  border-color: #7c3aed;
+  background: color-mix(in srgb, var(--gray-800) 97%, #14532d 3%);
+  border-color: color-mix(in srgb, #7c3aed 85%, #22c55e 15%);
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
-    0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
+    0 0 20px color-mix(in srgb, #7c3aed 50%, transparent),
+    0 0 30px color-mix(in srgb, #22c55e 15%, transparent);
 }
 
 :global(.dark) .filled:focus-visible {
@@ -135,13 +143,17 @@
 
 .borderless:hover {
   background: var(--gray-50);
-  box-shadow: 0 0 4px color-mix(in srgb, var(--triforce-400) 8%, transparent);
+  box-shadow: 
+    0 0 4px color-mix(in srgb, var(--triforce-400) 8%, transparent),
+    0 0 8px color-mix(in srgb, var(--rupee-400) 5%, transparent);
 }
 
 .borderless:focus {
-  background: var(--white);
-  border-color: var(--triforce-600);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+  background: color-mix(in srgb, var(--white) 97%, var(--rupee-50) 3%);
+  border-color: color-mix(in srgb, var(--triforce-600) 85%, var(--rupee-500) 15%);
+  box-shadow: 
+    0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent),
+    0 0 16px color-mix(in srgb, var(--rupee-400) 12%, transparent);
 }
 
 .borderless:focus-visible {
@@ -155,13 +167,17 @@
 
 :global(.dark) .borderless:hover {
   background: var(--gray-800);
-  box-shadow: 0 0 10px color-mix(in srgb, #7c3aed 20%, transparent);
+  box-shadow: 
+    0 0 10px color-mix(in srgb, #7c3aed 20%, transparent),
+    0 0 20px color-mix(in srgb, #22c55e 8%, transparent);
 }
 
 :global(.dark) .borderless:focus {
-  background: var(--gray-800);
-  border-color: #7c3aed;
-  box-shadow: 0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
+  background: color-mix(in srgb, var(--gray-800) 97%, #14532d 3%);
+  border-color: color-mix(in srgb, #7c3aed 85%, #22c55e 15%);
+  box-shadow: 
+    0 0 20px color-mix(in srgb, #7c3aed 50%, transparent),
+    0 0 30px color-mix(in srgb, #22c55e 15%, transparent);
 }
 
 :global(.dark) .borderless:focus-visible {

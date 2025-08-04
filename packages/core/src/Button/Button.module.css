@@ -1,6 +1,10 @@
 /* Primary - Filled button with Triforce gold */
 .primary {
-  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+  background: linear-gradient(135deg, 
+    var(--triforce-400) 0%, 
+    color-mix(in srgb, var(--triforce-500) 85%, var(--rupee-400) 15%) 50%, 
+    var(--triforce-600) 100%
+  );
   border: 3px solid var(--triforce-700);
   color: var(--white);
   text-shadow: none;
@@ -8,29 +12,42 @@
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   border-radius: 8px;
+  position: relative;
+  overflow: hidden;
   box-shadow: 
     inset 2px 2px 0 var(--triforce-100),
     inset -2px -2px 0 var(--triforce-700),
     4px 4px 0 var(--triforce-900),
-    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent),
+    0 0 16px color-mix(in srgb, var(--rupee-400) 8%, transparent);
 }
 
 .primary:hover {
-  background: linear-gradient(135deg, var(--triforce-300) 0%, var(--triforce-400) 50%, var(--triforce-500) 100%);
+  background: linear-gradient(135deg, 
+    var(--triforce-300) 0%, 
+    color-mix(in srgb, var(--triforce-400) 80%, var(--rupee-400) 20%) 50%, 
+    var(--triforce-500) 100%
+  );
   box-shadow: 
     inset 2px 2px 0 var(--triforce-100),
     inset -2px -2px 0 var(--triforce-700),
     3px 3px 0 var(--triforce-900),
-    0 0 10px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+    0 0 10px color-mix(in srgb, var(--triforce-400) 25%, transparent),
+    0 0 20px color-mix(in srgb, var(--rupee-400) 12%, transparent);
 }
 
 .primary:active {
-  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+  background: linear-gradient(135deg, 
+    var(--triforce-400) 0%, 
+    color-mix(in srgb, var(--triforce-500) 85%, var(--rupee-400) 15%) 50%, 
+    var(--triforce-600) 100%
+  );
   box-shadow: 
     inset 2px 2px 0 var(--triforce-100),
     inset -2px -2px 0 var(--triforce-700),
     4px 4px 0 var(--triforce-900),
-    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent);
+    0 0 8px color-mix(in srgb, var(--triforce-400) 20%, transparent),
+    0 0 16px color-mix(in srgb, var(--rupee-400) 8%, transparent);
   transform: scale(0.98);
 }
 
@@ -40,24 +57,36 @@
 
 /* Dark mode - Dark purple primary */
 :global(.dark) .primary {
-  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+  background: linear-gradient(135deg, 
+    #6b46c1 0%, 
+    color-mix(in srgb, #553c9a 85%, #22c55e 15%) 50%, 
+    #44337a 100%
+  );
   border-color: #312e81;
   color: #e0e7ff;
   text-shadow: none;
+  position: relative;
+  overflow: hidden;
   box-shadow: 
     inset 2px 2px 0 #a78bfa,
     inset -2px -2px 0 #312e81,
     4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent),
+    0 0 30px color-mix(in srgb, #22c55e 10%, transparent);
 }
 
 :global(.dark) .primary:hover {
-  background: linear-gradient(135deg, #7c3aed 0%, #6b46c1 50%, #553c9a 100%);
+  background: linear-gradient(135deg, 
+    #7c3aed 0%, 
+    color-mix(in srgb, #6b46c1 80%, #22c55e 20%) 50%, 
+    #553c9a 100%
+  );
   box-shadow: 
     inset 2px 2px 0 #c4b5fd,
     inset -2px -2px 0 #312e81,
     3px 3px 0 var(--black),
-    0 0 25px color-mix(in srgb, #6b46c1 70%, transparent);
+    0 0 25px color-mix(in srgb, #6b46c1 70%, transparent),
+    0 0 35px color-mix(in srgb, #22c55e 15%, transparent);
 }
 
 :global(.dark) .primary:focus-visible {
@@ -65,12 +94,17 @@
 }
 
 :global(.dark) .primary:active {
-  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+  background: linear-gradient(135deg, 
+    #6b46c1 0%, 
+    color-mix(in srgb, #553c9a 85%, #22c55e 15%) 50%, 
+    #44337a 100%
+  );
   box-shadow: 
     inset 2px 2px 0 #a78bfa,
     inset -2px -2px 0 #312e81,
     4px 4px 0 var(--black),
-    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+    0 0 20px color-mix(in srgb, #6b46c1 50%, transparent),
+    0 0 30px color-mix(in srgb, #22c55e 10%, transparent);
   transform: scale(0.98);
 }
 
