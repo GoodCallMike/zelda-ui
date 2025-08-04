@@ -14,6 +14,13 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [vanillaExtractPlugin()],
+  optimizeDeps: {
+    include: [
+      '@mdx-js/react',
+      'markdown-to-jsx',
+      'react/jsx-dev-runtime'
+    ]
+  },
   resolve: {
     alias: {
       '@zelda/core': path.resolve(dirname, 'packages/core/src'),
