@@ -1,5 +1,5 @@
 import * as React from 'react';
-const { useState } = React;
+import { useState } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';
@@ -24,12 +24,12 @@ const TextInput = (props: InputProps) => {
     className,
     type = 'text',
     value,
-    defaultValue,
+    defaultValue = "",
     onChange,
     disabled
   } = props;
   
-  const [internalValue, setInternalValue] = useState(defaultValue ?? '');
+  const [internalValue, setInternalValue] = useState(defaultValue);
   const currentValue = value !== undefined ? value : internalValue;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
