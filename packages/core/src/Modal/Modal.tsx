@@ -81,32 +81,34 @@ export const Modal = ({
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
       >
-        {(title || closable) && (
-          <div className={styles.header}>
-            {title && (
-              <Typography 
-                variant="h3" 
-                id="modal-title"
-                className={styles.title}
-              >
-                {title}
-              </Typography>
-            )}
-            {closable && (
-              <Button
-                variant="text"
-                size="small"
-                onClick={onClose}
-                className={styles.closeButton}
-                aria-label="Close modal"
-              >
-                <XIcon className="w-5 h-5" />
-              </Button>
-            )}
-          </div>
-        )}
         <div className={styles.content}>
-          {children}
+          {(title || closable) && (
+            <div className={styles.titleRow}>
+              {title && (
+                <Typography 
+                  variant="h3" 
+                  id="modal-title"
+                  className={styles.title}
+                >
+                  {title}
+                </Typography>
+              )}
+              {closable && (
+                <Button
+                  variant="text"
+                  size="small"
+                  onClick={onClose}
+                  className={styles.closeButton}
+                  aria-label="Close modal"
+                >
+                  <XIcon className="w-5 h-5" />
+                </Button>
+              )}
+            </div>
+          )}
+          <div className={styles.body}>
+            {children}
+          </div>
         </div>
       </div>
     </div>,

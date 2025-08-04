@@ -51,28 +51,31 @@
   animation: magicalModal 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Header */
-.header {
+/* Content container */
+.content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Title row within content */
+.titleRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 3px solid var(--triforce-200);
-  background: linear-gradient(135deg, 
-    var(--triforce-50) 0%, 
-    color-mix(in srgb, var(--triforce-100) 80%, var(--rupee-50) 20%) 50%,
-    var(--triforce-100) 100%
-  );
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--gray-200);
   position: relative;
 }
 
-.header::after {
+.titleRow::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -2px;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, 
     var(--triforce-400) 0%, 
     var(--rupee-400) 20%, 
@@ -84,28 +87,25 @@
 }
 
 .title {
-  color: var(--triforce-800);
-  text-shadow: 1px 1px 0 var(--triforce-100);
+  color: var(--gray-900);
   margin: 0;
 }
 
 .closeButton {
-  color: var(--triforce-700);
+  color: var(--gray-600);
   padding: 8px;
   min-width: auto;
   height: auto;
 }
 
 .closeButton:hover {
-  color: var(--triforce-800);
-  background: var(--triforce-100);
+  color: var(--gray-900);
+  background: var(--gray-100);
 }
 
-/* Content */
-.content {
-  padding: 24px;
-  overflow-y: auto;
-  flex: 1;
+/* Body content */
+.body {
+  /* Content flows naturally */
 }
 
 /* Size variants */
@@ -145,16 +145,11 @@
     0 0 60px color-mix(in srgb, #7c3aed 25%, transparent);
 }
 
-:global(.dark) .header {
-  background: linear-gradient(135deg, 
-    #312e81 0%, 
-    color-mix(in srgb, #44337a 80%, #14532d 20%) 50%,
-    #44337a 100%
-  );
-  border-bottom-color: #553c9a;
+:global(.dark) .titleRow {
+  border-bottom-color: var(--gray-700);
 }
 
-:global(.dark) .header::after {
+:global(.dark) .titleRow::after {
   background: linear-gradient(90deg, 
     #6b46c1 0%, 
     #22c55e 20%, 
@@ -165,17 +160,16 @@
 }
 
 :global(.dark) .title {
-  color: #e0e7ff;
-  text-shadow: 1px 1px 0 #312e81;
+  color: var(--gray-100);
 }
 
 :global(.dark) .closeButton {
-  color: #c4b5fd;
+  color: var(--gray-400);
 }
 
 :global(.dark) .closeButton:hover {
-  color: #e0e7ff;
-  background: #553c9a;
+  color: var(--gray-100);
+  background: var(--gray-700);
 }
 
 :global(.dark) .content {

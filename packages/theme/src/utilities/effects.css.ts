@@ -78,3 +78,21 @@ globalStyle('.backdrop-blur-lg', { backdropFilter: 'blur(16px)' });
 globalStyle('.backdrop-blur-xl', { backdropFilter: 'blur(24px)' });
 globalStyle('.backdrop-blur-2xl', { backdropFilter: 'blur(40px)' });
 globalStyle('.backdrop-blur-3xl', { backdropFilter: 'blur(64px)' });
+
+// Z-index utilities
+globalStyle('.z-0', { zIndex: '0' });
+globalStyle('.z-10', { zIndex: '10' });
+globalStyle('.z-20', { zIndex: '20' });
+globalStyle('.z-30', { zIndex: '30' });
+globalStyle('.z-40', { zIndex: '40' });
+globalStyle('.z-50', { zIndex: '50' });
+globalStyle('.z-auto', { zIndex: 'auto' });
+globalStyle('.z-dropdown', { zIndex: '1000' });
+globalStyle('.z-sticky', { zIndex: '1020' });
+globalStyle('.z-fixed', { zIndex: '1030' });
+globalStyle('.z-modal-backdrop', { zIndex: '1040' });
+globalStyle('.z-offcanvas', { zIndex: '1050' });
+globalStyle('.z-modal', { zIndex: '1055' });
+globalStyle('.z-popover', { zIndex: '1070' });
+globalStyle('.z-tooltip', { zIndex: '1080' });
+globalStyle('.z-toast', { zIndex: '1090' });

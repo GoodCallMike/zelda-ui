@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Modal } from './Modal';
 import { Button } from '../Button';
 import { Typography } from '../Typography';
+import { Input } from '../Input';
+import { Select } from '../Select';
 
 const meta: Meta<typeof Modal> = {
   title: 'General/Modal',
@@ -501,26 +503,24 @@ export const RealWorldExamples: Story = {
           <form className="space-y-6">
             <div>
               <label className="block text-sm font-medium mb-2">Hero Name</label>
-              <input
-                type="text"
+              <Input
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-triforce-500 focus:outline-none"
                 placeholder="Enter your hero's name"
               />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Character Class</label>
-              <select
+              <Select
                 value={formData.class}
-                onChange={(e) => setFormData(prev => ({ ...prev, class: e.target.value }))}
-                className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-triforce-500 focus:outline-none"
-              >
-                <option value="warrior">⚔️ Warrior - Master of combat</option>
-                <option value="mage">🔮 Mage - Wielder of magic</option>
-                <option value="archer">🏹 Archer - Expert marksman</option>
-                <option value="rogue">🗡️ Rogue - Shadow assassin</option>
-              </select>
+                onChange={(value) => setFormData(prev => ({ ...prev, class: value }))}
+                options={[
+                  { value: 'warrior', label: '⚔️ Warrior - Master of combat' },
+                  { value: 'mage', label: '🔮 Mage - Wielder of magic' },
+                  { value: 'archer', label: '🏹 Archer - Expert marksman' },
+                  { value: 'rogue', label: '🗡️ Rogue - Shadow assassin' }
+                ]}
+              />
             </div>
             <div className="flex gap-3 justify-end pt-4">
               <Button variant="default" onClick={() => setActiveModal(null)}>
