@@ -40,7 +40,7 @@ describe('Radio', () => {
       <div>
         <Radio testId="radio1" name="group" value="1" />
         <Radio testId="radio2" name="group" value="2" />
-      </div>
+      </div>,
     );
     const radio1 = screen.getByTestId('radio1');
     const radio2 = screen.getByTestId('radio2');

@@ -1,4 +1,4 @@
-import type { ReactNode, ComponentPropsWithoutRef, ElementType } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 // Base component props
 export interface BaseComponentProps {
@@ -62,7 +62,12 @@ export type Placement = `${Position}-${Alignment}` | Position;
 
 // Animation types
 export type AnimationDuration = 'fast' | 'normal' | 'slow';
-export type AnimationEasing = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
+export type AnimationEasing =
+  | 'linear'
+  | 'ease'
+  | 'ease-in'
+  | 'ease-out'
+  | 'ease-in-out';
 
 // Responsive breakpoints
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';

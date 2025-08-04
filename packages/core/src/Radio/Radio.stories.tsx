@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '../Button';
+import { Input } from '../Input';
+import { Typography } from '../Typography';
 import { Radio } from './Radio';
 import { RadioButton } from './RadioButton';
 import { RadioGroup } from './RadioGroup';
-import { Typography } from '../Typography';
-import { Input } from '../Input';
-import { Button } from '../Button';
 
 const meta: Meta<typeof Radio> = {
   title: 'Data Entry/Radio',
@@ -144,14 +144,31 @@ export const ButtonStyle: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex">
-        <RadioButton name="style1" value="option1">Option 1</RadioButton>
-        <RadioButton name="style1" value="option2" defaultChecked>Option 2</RadioButton>
-        <RadioButton name="style1" value="option3">Option 3</RadioButton>
+        <RadioButton name="style1" value="option1">
+          Option 1
+        </RadioButton>
+        <RadioButton name="style1" value="option2" defaultChecked>
+          Option 2
+        </RadioButton>
+        <RadioButton name="style1" value="option3">
+          Option 3
+        </RadioButton>
       </div>
       <div className="flex">
-        <RadioButton name="style2" value="solid1" buttonStyle="solid">Solid 1</RadioButton>
-        <RadioButton name="style2" value="solid2" buttonStyle="solid" defaultChecked>Solid 2</RadioButton>
-        <RadioButton name="style2" value="solid3" buttonStyle="solid">Solid 3</RadioButton>
+        <RadioButton name="style2" value="solid1" buttonStyle="solid">
+          Solid 1
+        </RadioButton>
+        <RadioButton
+          name="style2"
+          value="solid2"
+          buttonStyle="solid"
+          defaultChecked
+        >
+          Solid 2
+        </RadioButton>
+        <RadioButton name="style2" value="solid3" buttonStyle="solid">
+          Solid 3
+        </RadioButton>
       </div>
     </div>
   ),
@@ -203,16 +220,28 @@ export const ButtonSizes: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center">
-        <RadioButton name="btnSmall" value="1" size="small">Small</RadioButton>
-        <RadioButton name="btnSmall" value="2" size="small">Small</RadioButton>
+        <RadioButton name="btnSmall" value="1" size="small">
+          Small
+        </RadioButton>
+        <RadioButton name="btnSmall" value="2" size="small">
+          Small
+        </RadioButton>
       </div>
       <div className="flex items-center">
-        <RadioButton name="btnMiddle" value="1" size="middle">Middle</RadioButton>
-        <RadioButton name="btnMiddle" value="2" size="middle">Middle</RadioButton>
+        <RadioButton name="btnMiddle" value="1" size="middle">
+          Middle
+        </RadioButton>
+        <RadioButton name="btnMiddle" value="2" size="middle">
+          Middle
+        </RadioButton>
       </div>
       <div className="flex items-center">
-        <RadioButton name="btnLarge" value="1" size="large">Large</RadioButton>
-        <RadioButton name="btnLarge" value="2" size="large">Large</RadioButton>
+        <RadioButton name="btnLarge" value="1" size="large">
+          Large
+        </RadioButton>
+        <RadioButton name="btnLarge" value="2" size="large">
+          Large
+        </RadioButton>
       </div>
     </div>
   ),
@@ -229,7 +258,9 @@ export const DarkMode: Story = {
   render: () => (
     <div className="space-y-6">
       <div className="dark p-6 bg-gray-900 rounded-lg">
-        <Typography variant="h3" className="text-white mb-4">Dark Mode</Typography>
+        <Typography variant="h3" className="text-white mb-4">
+          Dark Mode
+        </Typography>
         <div className="space-y-4 text-white">
           <RadioGroup defaultValue="mystic">
             <Radio label="Mystic Power" value="mystic" />
@@ -237,19 +268,25 @@ export const DarkMode: Story = {
             <Radio label="Ancient Wisdom" value="ancient" />
           </RadioGroup>
           <div className="flex">
-            <RadioButton name="darkBtn" value="night" defaultChecked>Night Theme</RadioButton>
-            <RadioButton name="darkBtn" value="twilight">Twilight</RadioButton>
-            <RadioButton name="darkBtn" value="shadow">Shadow</RadioButton>
+            <RadioButton name="darkBtn" value="night" defaultChecked>
+              Night Theme
+            </RadioButton>
+            <RadioButton name="darkBtn" value="twilight">
+              Twilight
+            </RadioButton>
+            <RadioButton name="darkBtn" value="shadow">
+              Shadow
+            </RadioButton>
           </div>
         </div>
       </div>
-
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Radio components automatically adapt to dark mode with mystical purple theming. Use the `dark` CSS class to enable dark mode styling.',
+        story:
+          'Radio components automatically adapt to dark mode with mystical purple theming. Use the `dark` CSS class to enable dark mode styling.',
       },
     },
   },
@@ -260,25 +297,42 @@ export const RealWorldExamples: Story = {
     <div className="space-y-8 max-w-2xl">
       {/* Character Creation Form */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">Character Creation</Typography>
+        <Typography variant="h3" className="mb-4">
+          Character Creation
+        </Typography>
         <form className="space-y-4">
           <Input label="Hero Name" placeholder="Enter your name" />
           <div>
-            <Typography variant="label" className="block mb-2">Choose your class:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Choose your class:
+            </Typography>
             <RadioGroup defaultValue="warrior">
-              <Radio label="Warrior - Master of sword and shield" value="warrior" />
+              <Radio
+                label="Warrior - Master of sword and shield"
+                value="warrior"
+              />
               <Radio label="Mage - Wielder of ancient magic" value="mage" />
               <Radio label="Archer - Swift and precise hunter" value="archer" />
               <Radio label="Rogue - Silent shadow assassin" value="rogue" />
             </RadioGroup>
           </div>
           <div>
-            <Typography variant="label" className="block mb-2">Difficulty:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Difficulty:
+            </Typography>
             <div className="flex">
-              <RadioButton name="difficulty" value="easy">Easy</RadioButton>
-              <RadioButton name="difficulty" value="normal" defaultChecked>Normal</RadioButton>
-              <RadioButton name="difficulty" value="hard">Hard</RadioButton>
-              <RadioButton name="difficulty" value="master">Master</RadioButton>
+              <RadioButton name="difficulty" value="easy">
+                Easy
+              </RadioButton>
+              <RadioButton name="difficulty" value="normal" defaultChecked>
+                Normal
+              </RadioButton>
+              <RadioButton name="difficulty" value="hard">
+                Hard
+              </RadioButton>
+              <RadioButton name="difficulty" value="master">
+                Master
+              </RadioButton>
             </div>
           </div>
           <div className="flex gap-2 pt-4">
@@ -290,19 +344,33 @@ export const RealWorldExamples: Story = {
 
       {/* Game Settings */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">Game Settings</Typography>
+        <Typography variant="h3" className="mb-4">
+          Game Settings
+        </Typography>
         <div className="space-y-4">
           <div>
-            <Typography variant="label" className="block mb-2">Graphics Quality:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Graphics Quality:
+            </Typography>
             <div className="flex">
-              <RadioButton name="graphics" value="low">Low</RadioButton>
-              <RadioButton name="graphics" value="medium" defaultChecked>Medium</RadioButton>
-              <RadioButton name="graphics" value="high">High</RadioButton>
-              <RadioButton name="graphics" value="ultra">Ultra</RadioButton>
+              <RadioButton name="graphics" value="low">
+                Low
+              </RadioButton>
+              <RadioButton name="graphics" value="medium" defaultChecked>
+                Medium
+              </RadioButton>
+              <RadioButton name="graphics" value="high">
+                High
+              </RadioButton>
+              <RadioButton name="graphics" value="ultra">
+                Ultra
+              </RadioButton>
             </div>
           </div>
           <div>
-            <Typography variant="label" className="block mb-2">Audio Output:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Audio Output:
+            </Typography>
             <RadioGroup defaultValue="stereo">
               <Radio label="Mono" value="mono" />
               <Radio label="Stereo" value="stereo" />
@@ -315,41 +383,56 @@ export const RealWorldExamples: Story = {
 
       {/* NPC Dialog */}
       <div className="p-6 border rounded-lg bg-gray-50">
-        <Typography variant="h3" className="mb-4">NPC Interaction</Typography>
+        <Typography variant="h3" className="mb-4">
+          NPC Interaction
+        </Typography>
         <div className="space-y-4">
-          <Typography variant="body" className="italic">"Greetings, traveler! I have a quest for you. What say you?"</Typography>
+          <Typography variant="body" className="italic">
+            "Greetings, traveler! I have a quest for you. What say you?"
+          </Typography>
           <RadioGroup>
             <Radio label="Accept the quest eagerly" value="accept" />
             <Radio label="Ask for more details" value="details" />
             <Radio label="Politely decline" value="decline" />
             <Radio label="Ignore and walk away" value="ignore" />
           </RadioGroup>
-          <Button variant="primary" size="small">Continue</Button>
+          <Button variant="primary" size="small">
+            Continue
+          </Button>
         </div>
       </div>
-      
+
       {/* Dark Mode Complex Examples */}
       <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
         <Typography variant="h2">🌙 Night Mode Interface</Typography>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">⚔️ Combat Style</Typography>
           <RadioGroup defaultValue="aggressive">
-            <Radio label="Aggressive - High damage, high risk" value="aggressive" />
+            <Radio
+              label="Aggressive - High damage, high risk"
+              value="aggressive"
+            />
             <Radio label="Defensive - Balanced approach" value="defensive" />
             <Radio label="Stealth - Avoid direct combat" value="stealth" />
           </RadioGroup>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">🎒 Equipment Loadout</Typography>
           <div className="flex">
-            <RadioButton name="loadout" value="light">Light</RadioButton>
-            <RadioButton name="loadout" value="medium" defaultChecked>Medium</RadioButton>
-            <RadioButton name="loadout" value="heavy">Heavy</RadioButton>
+            <RadioButton name="loadout" value="light">
+              Light
+            </RadioButton>
+            <RadioButton name="loadout" value="medium" defaultChecked>
+              Medium
+            </RadioButton>
+            <RadioButton name="loadout" value="heavy">
+              Heavy
+            </RadioButton>
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">🗺️ Quest Priority</Typography>
           <RadioGroup defaultValue="main">
@@ -364,7 +447,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Radio components integrated with other Zelda UI components in character creation, settings, dialog systems, and complex dark mode interfaces.',
+        story:
+          'Real-world examples showing Radio components integrated with other Zelda UI components in character creation, settings, dialog systems, and complex dark mode interfaces.',
       },
     },
   },

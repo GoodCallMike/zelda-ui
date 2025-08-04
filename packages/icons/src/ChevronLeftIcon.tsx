@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const ChevronLeftIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const ChevronLeftIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const ChevronLeftIcon = ({ className = 'size-4', ...props }: SVGProps<SVG
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="chevron left icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Chevron Left'}
   >
-    <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M15 18L9 12L15 6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

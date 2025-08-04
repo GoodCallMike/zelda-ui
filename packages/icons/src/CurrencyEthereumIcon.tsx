@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const CurrencyEthereumIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const CurrencyEthereumIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const CurrencyEthereumIcon = ({ className = 'size-4', ...props }: SVGProp
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="currency ethereum icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Currency Ethereum'}
   >
-    <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

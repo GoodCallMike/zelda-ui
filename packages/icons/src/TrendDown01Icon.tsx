@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const TrendDown01Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const TrendDown01Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const TrendDown01Icon = ({ className = 'size-4', ...props }: SVGProps<SVG
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="trend down 01 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Trend Down01'}
   >
-    <path d="M22 17L14.1314 9.13137C13.7354 8.73535 13.5373 8.53735 13.309 8.46316C13.1082 8.3979 12.8918 8.3979 12.691 8.46316C12.4627 8.53735 12.2646 8.73535 11.8686 9.13137L9.13137 11.8686C8.73535 12.2646 8.53735 12.4627 8.30902 12.5368C8.10817 12.6021 7.89183 12.6021 7.69098 12.5368C7.46265 12.4627 7.26465 12.2646 6.86863 11.8686L2 7M22 17H15M22 17V10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M22 17L14.1314 9.13137C13.7354 8.73535 13.5373 8.53735 13.309 8.46316C13.1082 8.3979 12.8918 8.3979 12.691 8.46316C12.4627 8.53735 12.2646 8.73535 11.8686 9.13137L9.13137 11.8686C8.73535 12.2646 8.53735 12.4627 8.30902 12.5368C8.10817 12.6021 7.89183 12.6021 7.69098 12.5368C7.46265 12.4627 7.26465 12.2646 6.86863 11.8686L2 7M22 17H15M22 17V10"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

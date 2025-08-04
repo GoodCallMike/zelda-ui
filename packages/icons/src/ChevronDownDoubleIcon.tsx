@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const ChevronDownDoubleIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const ChevronDownDoubleIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const ChevronDownDoubleIcon = ({ className = 'size-4', ...props }: SVGPro
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="chevron down double icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Chevron Down Double'}
   >
-    <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M7 13L12 18L17 13M7 6L12 11L17 6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

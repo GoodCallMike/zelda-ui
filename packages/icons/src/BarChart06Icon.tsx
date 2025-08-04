@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const BarChart06Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const BarChart06Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const BarChart06Icon = ({ className = 'size-4', ...props }: SVGProps<SVGS
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="bar chart 06 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Bar Chart06'}
   >
-    <path d="M9 8V21M21 17V21M3 3V21M15 13V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M9 8V21M21 17V21M3 3V21M15 13V21"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

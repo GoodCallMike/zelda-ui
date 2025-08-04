@@ -1,9 +1,14 @@
-import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@zelda/theme';
+import type { ButtonHTMLAttributes } from 'react';
 import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 
-export interface ButtonProps extends BaseButtonProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type' | 'children'> {}
+export interface ButtonProps
+  extends BaseButtonProps,
+    Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      'size' | 'type' | 'children'
+    > {}
 
 export const Button = ({
   children,
@@ -19,11 +24,11 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const isDisabled = disabled || loading;
-  
+
   const sizeClasses = {
     small: 'px-4 py-2 text-xs min-h-8',
-    medium: 'px-6 py-3 text-sm min-h-10', 
-    large: 'px-8 py-4 text-base min-h-12'
+    medium: 'px-6 py-3 text-sm min-h-10',
+    large: 'px-8 py-4 text-base min-h-12',
   };
 
   return (
@@ -36,16 +41,31 @@ export const Button = ({
         styles[variant],
         isDisabled && 'opacity-60 cursor-not-allowed pointer-events-none',
         loading && 'cursor-wait',
-        className
+        className,
       )}
       disabled={isDisabled}
       data-testid={testId}
       {...props}
     >
-      {Icon && iconPosition === 'left' && !loading && <Icon className="w-4 h-4 flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
-      {loading && <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
+      {Icon && iconPosition === 'left' && !loading && (
+        <Icon
+          className="w-4 h-4 flex-shrink-0"
+          style={{ width: '1rem', height: '1rem' }}
+        />
+      )}
+      {loading && (
+        <span
+          className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin flex-shrink-0"
+          style={{ width: '1rem', height: '1rem' }}
+        />
+      )}
       {children}
-      {Icon && iconPosition === 'right' && !loading && <Icon className="w-4 h-4 flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
+      {Icon && iconPosition === 'right' && !loading && (
+        <Icon
+          className="w-4 h-4 flex-shrink-0"
+          style={{ width: '1rem', height: '1rem' }}
+        />
+      )}
     </button>
   );
 };

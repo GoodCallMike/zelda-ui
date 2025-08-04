@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const Italic02Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const Italic02Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const Italic02Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVG
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="italic 02 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Italic02'}
   >
-    <path d="M13.25 4L7.25 20M16.75 4L10.75 20M19.5 4L9.5 4M14.5 20H4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M13.25 4L7.25 20M16.75 4L10.75 20M19.5 4L9.5 4M14.5 20H4.5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

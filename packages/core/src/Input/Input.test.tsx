@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Input } from './Input';
 
@@ -57,23 +57,36 @@ describe('Input', () => {
 
   it('clears input when clear button is clicked', () => {
     const onChange = vi.fn();
-    render(<Input allowClear defaultValue="test" onChange={onChange} testId="input" />);
-    
+    render(
+      <Input
+        allowClear
+        defaultValue="test"
+        onChange={onChange}
+        testId="input"
+      />,
+    );
+
     const clearButton = screen.getByLabelText('Clear input');
     fireEvent.click(clearButton);
-    
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
-      target: expect.objectContaining({ value: '' })
-    }));
+
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: '' }),
+      }),
+    );
   });
 
   it('shows character count when showCount is true', () => {
-    render(<Input showCount maxLength={10} defaultValue="test" testId="input" />);
+    render(
+      <Input showCount maxLength={10} defaultValue="test" testId="input" />,
+    );
     expect(screen.getByText('4/10')).toBeInTheDocument();
   });
 
   it('highlights character count in red when over limit', () => {
-    render(<Input showCount maxLength={3} defaultValue="test" testId="input" />);
+    render(
+      <Input showCount maxLength={3} defaultValue="test" testId="input" />,
+    );
     const count = screen.getByText('4/3');
     expect(count).toHaveClass('text-ganon-600');
   });
@@ -81,10 +94,10 @@ describe('Input', () => {
   it('handles controlled value', () => {
     const onChange = vi.fn();
     render(<Input value="controlled" onChange={onChange} testId="input" />);
-    
+
     const input = screen.getByTestId('input');
     expect(input).toHaveValue('controlled');
-    
+
     fireEvent.change(input, { target: { value: 'new value' } });
     expect(onChange).toHaveBeenCalled();
   });

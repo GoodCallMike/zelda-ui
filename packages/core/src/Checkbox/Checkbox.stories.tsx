@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox';
-import { Typography } from '../Typography';
-import { Input } from '../Input';
 import { Button } from '../Button';
+import { Input } from '../Input';
+import { Typography } from '../Typography';
+import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Data Entry/Checkbox',
@@ -105,7 +105,9 @@ export const DarkMode: Story = {
   render: () => (
     <div className="space-y-6">
       <div className="dark p-6 bg-gray-900 rounded-lg">
-        <Typography variant="h3" className="text-white mb-4">Dark Mode</Typography>
+        <Typography variant="h3" className="text-white mb-4">
+          Dark Mode
+        </Typography>
         <div className="space-y-4 text-white">
           <Checkbox label="Enable mystical powers" defaultChecked />
           <Checkbox label="Collect ancient artifacts" />
@@ -117,7 +119,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Checkbox components automatically adapt to dark mode with mystical purple theming.',
+        story:
+          'Checkbox components automatically adapt to dark mode with mystical purple theming.',
       },
     },
   },
@@ -128,11 +131,15 @@ export const RealWorldExamples: Story = {
     <div className="space-y-8 max-w-2xl">
       {/* Settings Form */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">Game Settings</Typography>
+        <Typography variant="h3" className="mb-4">
+          Game Settings
+        </Typography>
         <form className="space-y-4">
           <Input label="Player Name" placeholder="Enter your hero name" />
           <div>
-            <Typography variant="label" className="block mb-2">Audio Options:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Audio Options:
+            </Typography>
             <div className="space-y-2">
               <Checkbox label="Enable background music" defaultChecked />
               <Checkbox label="Enable sound effects" defaultChecked />
@@ -140,7 +147,9 @@ export const RealWorldExamples: Story = {
             </div>
           </div>
           <div>
-            <Typography variant="label" className="block mb-2">Gameplay Features:</Typography>
+            <Typography variant="label" className="block mb-2">
+              Gameplay Features:
+            </Typography>
             <div className="space-y-2">
               <Checkbox label="Show damage numbers" />
               <Checkbox label="Auto-save progress" defaultChecked />
@@ -157,15 +166,21 @@ export const RealWorldExamples: Story = {
 
       {/* Quest Checklist */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">Quest Progress</Typography>
+        <Typography variant="h3" className="mb-4">
+          Quest Progress
+        </Typography>
         <div className="space-y-3">
-          <Typography variant="label" className="block mb-2">Main Quests:</Typography>
+          <Typography variant="label" className="block mb-2">
+            Main Quests:
+          </Typography>
           <div className="space-y-2">
             <Checkbox label="Rescue Princess Zelda" defaultChecked />
             <Checkbox label="Collect Master Sword" defaultChecked />
             <Checkbox label="Defeat Ganon" />
           </div>
-          <Typography variant="label" className="block mb-2 mt-4">Side Quests:</Typography>
+          <Typography variant="label" className="block mb-2 mt-4">
+            Side Quests:
+          </Typography>
           <div className="space-y-2">
             <Checkbox label="Find all Korok Seeds" />
             <Checkbox label="Complete all Shrines" />
@@ -177,23 +192,29 @@ export const RealWorldExamples: Story = {
 
       {/* Terms and Conditions */}
       <div className="p-6 border rounded-lg bg-gray-50">
-        <Typography variant="h3" className="mb-4">Adventure Agreement</Typography>
+        <Typography variant="h3" className="mb-4">
+          Adventure Agreement
+        </Typography>
         <div className="space-y-4">
-          <Typography variant="body">Before beginning your quest, please review and accept the following:</Typography>
+          <Typography variant="body">
+            Before beginning your quest, please review and accept the following:
+          </Typography>
           <div className="space-y-3">
             <Checkbox label="I understand that this adventure may be dangerous" />
             <Checkbox label="I agree to help NPCs in need" />
             <Checkbox label="I will not use cheats or exploits" />
             <Checkbox label="I accept the terms of service" error />
           </div>
-          <Button variant="primary" disabled>Begin Adventure</Button>
+          <Button variant="primary" disabled>
+            Begin Adventure
+          </Button>
         </div>
       </div>
-      
+
       {/* Dark Mode Complex Examples */}
       <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
         <Typography variant="h2">🌙 Night Mode Interface</Typography>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">⚔️ Combat Preferences</Typography>
           <div className="space-y-2">
@@ -202,7 +223,7 @@ export const RealWorldExamples: Story = {
             <Checkbox label="Enable combo notifications" />
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">🎒 Inventory Options</Typography>
           <div className="space-y-2">
@@ -211,7 +232,7 @@ export const RealWorldExamples: Story = {
             <Checkbox label="Quick-use consumables" defaultChecked />
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
           <Typography variant="h4">🗺️ Map Features</Typography>
           <div className="space-y-2">
@@ -226,7 +247,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Checkbox components integrated with other Zelda UI components in settings forms, quest tracking, agreement flows, and complex dark mode interfaces.',
+        story:
+          'Real-world examples showing Checkbox components integrated with other Zelda UI components in settings forms, quest tracking, agreement flows, and complex dark mode interfaces.',
       },
     },
   },

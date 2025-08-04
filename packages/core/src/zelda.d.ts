@@ -7,7 +7,7 @@ declare module '@zelda/core' {
   export * from './types/theme';
   export * from './types/utilities';
   export * from './types/validation';
-  
+
   // Component exports
   export { Button } from './Button/Button';
   export { Checkbox } from './Checkbox/Checkbox';
@@ -23,10 +23,10 @@ declare module '@zelda/core' {
 
 declare module '@zelda/icons' {
   import type { IconProps, IconComponent } from './types';
-  
+
   // Re-export icon types
   export type { IconProps, IconComponent };
-  
+
   // All icon components follow the same pattern
   export const AlertCircleIcon: IconComponent;
   export const ArrowDownIcon: IconComponent;
@@ -38,12 +38,12 @@ declare module '@zelda/icons' {
 
 declare module '@zelda/theme' {
   import type { ThemeTokens, ThemeConfig } from './types';
-  
+
   // Re-export theme types
   export type { ThemeTokens, ThemeConfig };
-  
+
   // Utility function
-  export function cn(...inputs: any[]): string;
+  export function cn(...inputs: (string | undefined | null | false)[]): string;
 }
 
 // CSS Module declarations
@@ -88,7 +88,7 @@ declare global {
 
 // Extend React types for better component prop inference
 declare module 'react' {
-  interface HTMLAttributes<T> {
+  interface HTMLAttributes<_T> {
     // Add common data attributes
     'data-testid'?: string;
     'data-theme'?: 'light' | 'dark';
@@ -96,7 +96,7 @@ declare module 'react' {
     'data-size'?: 'small' | 'medium' | 'large';
     'data-status'?: 'error' | 'warning' | 'success' | 'info';
   }
-  
+
   interface AriaAttributes {
     // Extend ARIA attributes for better accessibility
     'aria-invalid'?: boolean | 'false' | 'true' | 'grammar' | 'spelling';

@@ -4,7 +4,7 @@ import './variables.css.ts';
 export const colors = {
   white: 'var(--white)',
   black: 'var(--black)',
-  
+
   gray: {
     50: 'var(--gray-50)',
     100: 'var(--gray-100)',
@@ -17,7 +17,7 @@ export const colors = {
     800: 'var(--gray-800)',
     900: 'var(--gray-900)',
   },
-  
+
   triforce: {
     50: 'var(--triforce-50)',
     100: 'var(--triforce-100)',
@@ -30,7 +30,7 @@ export const colors = {
     800: 'var(--triforce-800)',
     900: 'var(--triforce-900)',
   },
-  
+
   hyrule: {
     50: 'var(--hyrule-50)',
     100: 'var(--hyrule-100)',
@@ -43,7 +43,7 @@ export const colors = {
     800: 'var(--hyrule-800)',
     900: 'var(--hyrule-900)',
   },
-  
+
   rupee: {
     50: 'var(--rupee-50)',
     100: 'var(--rupee-100)',
@@ -56,7 +56,7 @@ export const colors = {
     800: 'var(--rupee-800)',
     900: 'var(--rupee-900)',
   },
-  
+
   ganon: {
     50: 'var(--ganon-50)',
     100: 'var(--ganon-100)',

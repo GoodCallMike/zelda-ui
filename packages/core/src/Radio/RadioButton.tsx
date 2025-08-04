@@ -1,9 +1,10 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
-import { useRadioGroup } from './RadioGroup';
 import styles from './RadioButton.module.css';
+import { useRadioGroup } from './RadioGroup';
 
-export interface RadioButtonProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+export interface RadioButtonProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /** Radio button label */
   children: React.ReactNode;
   /** Button style variant */
@@ -30,7 +31,7 @@ export const RadioButton = ({
   const finalError = error || groupContext.error;
   const finalButtonStyle = buttonStyle || groupContext.buttonStyle || 'outline';
   const finalName = props.name || groupContext.name;
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.onChange?.(e);
     if (groupContext.onChange && props.value) {
@@ -39,19 +40,25 @@ export const RadioButton = ({
   };
 
   return (
-    <label className={cn(
-      'inline-flex items-center justify-center cursor-pointer transition-all duration-100 ease-linear border font-medium select-none',
-      styles.radioButton,
-      styles[finalButtonStyle],
-      styles[finalSize],
-      finalError && styles.error,
-      className
-    )}>
+    <label
+      className={cn(
+        'inline-flex items-center justify-center cursor-pointer transition-all duration-100 ease-linear border font-medium select-none',
+        styles.radioButton,
+        styles[finalButtonStyle],
+        styles[finalSize],
+        finalError && styles.error,
+        className,
+      )}
+    >
       <input
         type="radio"
         className="absolute opacity-0 w-0 h-0"
         name={finalName}
-        checked={groupContext.value !== undefined ? props.value === groupContext.value : props.checked}
+        checked={
+          groupContext.value !== undefined
+            ? props.value === groupContext.value
+            : props.checked
+        }
         onChange={handleChange}
         data-testid={testId}
         {...props}

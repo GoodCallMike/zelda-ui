@@ -1,4 +1,4 @@
-import type { ReactNode, HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '../styles';
 import styles from './Typography.module.css';
 
@@ -59,11 +59,18 @@ export const Typography = ({
     }
   };
 
-  const Component = (variant === 'h1' || variant === 'h2' || variant === 'h3') ? variant : 'p';
+  const Component =
+    variant === 'h1' || variant === 'h2' || variant === 'h3' ? variant : 'p';
 
   return (
     <Component
-      className={cn('font-sans', getVariantStyles(), getColorStyles(), styles.typography, className)}
+      className={cn(
+        'font-sans',
+        getVariantStyles(),
+        getColorStyles(),
+        styles.typography,
+        className,
+      )}
       data-testid={testId}
       {...props}
     >

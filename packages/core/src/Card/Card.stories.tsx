@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Card } from './Card';
-import { Typography } from '../Typography';
 import { Button } from '../Button';
+import { Typography } from '../Typography';
+import { Card } from './Card';
 
 const meta: Meta<typeof Card> = {
   title: 'Layout/Card',
@@ -130,7 +129,9 @@ export const DarkMode: Story = {
   render: () => (
     <div className="dark bg-gray-900 p-6 rounded">
       <div className="space-y-4">
-        <Typography variant="h3" className="text-white mb-4">Ganon's Domain (Dark Mode)</Typography>
+        <Typography variant="h3" className="text-white mb-4">
+          Ganon's Domain (Dark Mode)
+        </Typography>
         <div className="flex gap-4">
           <Card>
             <Typography>Default</Typography>
@@ -148,7 +149,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms cards with darker backgrounds and borders for night-time interfaces.',
+        story:
+          'Dark mode transforms cards with darker backgrounds and borders for night-time interfaces.',
       },
     },
   },
@@ -158,28 +160,46 @@ export const RealWorldExamples: Story = {
   render: () => (
     <div className="space-y-6">
       <Card className="max-w-sm">
-        <Typography variant="h3" className="mb-2">🏆 Quest Complete</Typography>
-        <Typography className="mb-4">You have successfully completed the Temple of Time quest!</Typography>
+        <Typography variant="h3" className="mb-2">
+          🏆 Quest Complete
+        </Typography>
+        <Typography className="mb-4">
+          You have successfully completed the Temple of Time quest!
+        </Typography>
         <div className="flex gap-2">
-          <Button variant="primary" size="small">Claim Reward</Button>
-          <Button variant="default" size="small">View Details</Button>
+          <Button variant="primary" size="small">
+            Claim Reward
+          </Button>
+          <Button variant="default" size="small">
+            View Details
+          </Button>
         </div>
       </Card>
-      
+
       <Card variant="outlined" className="max-w-sm">
-        <Typography variant="h3" className="mb-2">🎒 Hero's Inventory</Typography>
-        <Typography className="mb-4">Master Sword, Hylian Shield, 50 Rupees</Typography>
-        <Button variant="text" size="small">Manage Items</Button>
+        <Typography variant="h3" className="mb-2">
+          🎒 Hero's Inventory
+        </Typography>
+        <Typography className="mb-4">
+          Master Sword, Hylian Shield, 50 Rupees
+        </Typography>
+        <Button variant="text" size="small">
+          Manage Items
+        </Button>
       </Card>
-      
+
       <Card variant="elevated" className="max-w-sm">
-        <Typography variant="h3" className="mb-2">⚔️ Combat Stats</Typography>
+        <Typography variant="h3" className="mb-2">
+          ⚔️ Combat Stats
+        </Typography>
         <div className="space-y-2 mb-4">
           <Typography>Attack: 45</Typography>
           <Typography>Defense: 32</Typography>
           <Typography>Magic: 28</Typography>
         </div>
-        <Button variant="secondary" size="small">Level Up</Button>
+        <Button variant="secondary" size="small">
+          Level Up
+        </Button>
       </Card>
     </div>
   ),

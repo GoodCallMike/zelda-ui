@@ -1,10 +1,24 @@
-import type { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
-import type { BaseComponentProps, Size, Status, IconComponent, Option, ChangeHandler, FormFieldProps } from './index';
+import type {
+  ButtonHTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+  TextareaHTMLAttributes,
+} from 'react';
+import type {
+  BaseComponentProps,
+  ChangeHandler,
+  FormFieldProps,
+  IconComponent,
+  Option,
+  Size,
+} from './index';
 
 export type { Option };
 
 // Button types
-export interface ButtonProps extends BaseComponentProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
+export interface ButtonProps
+  extends BaseComponentProps,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
   /** Button content */
   children: ReactNode;
   /** Button variant */
@@ -43,12 +57,16 @@ interface BaseInputProps extends FormFieldProps {
   maxLength?: number;
 }
 
-export interface InputProps extends BaseInputProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
+export interface InputProps
+  extends BaseInputProps,
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   /** Input type */
   type?: 'text' | 'password' | 'email' | 'search' | 'url' | 'tel' | 'number';
 }
 
-export interface TextareaProps extends BaseInputProps, Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix'> {
+export interface TextareaProps
+  extends BaseInputProps,
+    Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix'> {
   /** Input type - use 'textarea' for multiline input */
   type: 'textarea';
   /** Number of visible text lines */
@@ -84,7 +102,9 @@ export interface SelectProps<T = string> extends FormFieldProps {
 }
 
 // Checkbox types
-export interface CheckboxProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
+export interface CheckboxProps
+  extends BaseComponentProps,
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
   /** Checkbox label */
   children?: ReactNode;
   /** Whether checkbox is checked */
@@ -96,13 +116,18 @@ export interface CheckboxProps extends BaseComponentProps, Omit<InputHTMLAttribu
   /** Whether checkbox is disabled */
   disabled?: boolean;
   /** Change handler */
-  onChange?: (checked: boolean, event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    checked: boolean,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void;
   /** Checkbox size */
   size?: Size;
 }
 
 // Radio types
-export interface RadioProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface RadioProps
+  extends BaseComponentProps,
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** Radio label */
   children?: ReactNode;
   /** Radio value */
@@ -184,7 +209,9 @@ export interface ToastProps extends BaseComponentProps {
 }
 
 // Slider types
-export interface SliderProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
+export interface SliderProps
+  extends BaseComponentProps,
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
   /** Slider value */
   value?: number | number[];
   /** Default value */
@@ -214,7 +241,18 @@ export interface SliderProps extends BaseComponentProps, Omit<InputHTMLAttribute
 // Typography types
 export interface TypographyProps extends BaseComponentProps {
   /** Typography variant */
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2' | 'caption' | 'label' | 'code';
+  variant?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'body1'
+    | 'body2'
+    | 'caption'
+    | 'label'
+    | 'code';
   /** Text content */
   children: ReactNode;
   /** Text color */
@@ -224,7 +262,18 @@ export interface TypographyProps extends BaseComponentProps {
   /** Whether text should truncate */
   truncate?: boolean;
   /** HTML element to render */
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'label' | 'code';
+  as?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span'
+    | 'div'
+    | 'label'
+    | 'code';
 }
 
 // Divider types

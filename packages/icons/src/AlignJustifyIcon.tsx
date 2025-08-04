@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const AlignJustifyIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const AlignJustifyIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const AlignJustifyIcon = ({ className = 'size-4', ...props }: SVGProps<SV
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="align justify icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Align Justify'}
   >
-    <path d="M21 10H3M21 18H3M21 6H3M21 14H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M21 10H3M21 18H3M21 6H3M21 14H3"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

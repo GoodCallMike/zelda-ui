@@ -16,7 +16,7 @@ Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
 
 // Make vi available globally for tests that use jest.fn()
 // @ts-ignore
-globalThis.jest = { 
+globalThis.jest = {
   fn: vi.fn,
-  clearAllMocks: vi.clearAllMocks
+  clearAllMocks: vi.clearAllMocks,
 };

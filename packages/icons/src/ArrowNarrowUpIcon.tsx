@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const ArrowNarrowUpIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const ArrowNarrowUpIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const ArrowNarrowUpIcon = ({ className = 'size-4', ...props }: SVGProps<S
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="arrow narrow up icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Arrow Narrow Up'}
   >
-    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M12 20V4M12 4L6 10M12 4L18 10"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

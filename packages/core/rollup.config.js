@@ -4,7 +4,6 @@ import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import postcss from 'rollup-plugin-postcss';
 
-
 export default [
   {
     input: 'src/index.ts',
@@ -32,7 +31,13 @@ export default [
         declaration: false,
       }),
     ],
-    external: ['react', 'react-dom', 'react-aria-components', '@zelda/theme', '@zelda/icons'],
+    external: [
+      'react',
+      'react-dom',
+      'react-aria-components',
+      '@zelda/theme',
+      '@zelda/icons',
+    ],
   },
   {
     input: 'src/index.ts',

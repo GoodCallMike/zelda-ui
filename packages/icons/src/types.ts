@@ -16,7 +16,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 export type IconComponent = React.ComponentType<IconProps>;
 
 // Icon categories for organization
-export type IconCategory = 
+export type IconCategory =
   | 'actions'
   | 'arrows'
   | 'charts'

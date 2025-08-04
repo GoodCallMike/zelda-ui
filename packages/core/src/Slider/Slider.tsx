@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { cn } from '../styles';
 import styles from './Slider.module.css';
 
@@ -37,24 +37,30 @@ export const Slider = ({
   const [internalValue, setInternalValue] = useState(defaultValue);
   const [isDragging, setIsDragging] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
-  
+
   const currentValue = value !== undefined ? value : internalValue;
   const percentage = ((currentValue - min) / (max - min)) * 100;
 
-  const updateValue = useCallback((clientX: number) => {
-    if (!sliderRef.current || disabled) return;
-    
-    const rect = sliderRef.current.getBoundingClientRect();
-    const percentage = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
-    const newValue = min + (percentage / 100) * (max - min);
-    const steppedValue = Math.round(newValue / step) * step;
-    const clampedValue = Math.max(min, Math.min(max, steppedValue));
-    
-    if (value === undefined) {
-      setInternalValue(clampedValue);
-    }
-    onChange?.(clampedValue);
-  }, [min, max, step, disabled, value, onChange]);
+  const updateValue = useCallback(
+    (clientX: number) => {
+      if (!sliderRef.current || disabled) return;
+
+      const rect = sliderRef.current.getBoundingClientRect();
+      const percentage = Math.max(
+        0,
+        Math.min(100, ((clientX - rect.left) / rect.width) * 100),
+      );
+      const newValue = min + (percentage / 100) * (max - min);
+      const steppedValue = Math.round(newValue / step) * step;
+      const clampedValue = Math.max(min, Math.min(max, steppedValue));
+
+      if (value === undefined) {
+        setInternalValue(clampedValue);
+      }
+      onChange?.(clampedValue);
+    },
+    [min, max, step, disabled, value, onChange],
+  );
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (disabled) return;
@@ -62,11 +68,14 @@ export const Slider = ({
     updateValue(e.clientX);
   };
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (isDragging) {
-      updateValue(e.clientX);
-    }
-  }, [isDragging, updateValue]);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (isDragging) {
+        updateValue(e.clientX);
+      }
+    },
+    [isDragging, updateValue],
+  );
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
@@ -86,7 +95,7 @@ export const Slider = ({
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return;
-    
+
     let newValue = currentValue;
     switch (e.key) {
       case 'ArrowLeft':
@@ -110,7 +119,7 @@ export const Slider = ({
       default:
         return;
     }
-    
+
     if (value === undefined) {
       setInternalValue(newValue);
     }
@@ -123,33 +132,35 @@ export const Slider = ({
       className={cn(
         'relative w-full h-6 flex items-center cursor-pointer',
         disabled && 'cursor-not-allowed opacity-60',
-        className
+        className,
       )}
       onMouseDown={handleMouseDown}
+      role="slider"
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={currentValue}
+      tabIndex={disabled ? -1 : 0}
       data-testid={testId}
     >
       {/* Track */}
       <div className={cn('w-full h-2 rounded-full', styles.track)} />
-      
+
       {/* Filled track */}
-      <div 
+      <div
         className={cn('absolute h-2 rounded-full', styles.filledTrack)}
         style={{ width: `${percentage}%` }}
       />
-      
+
       {/* Thumb */}
       <div
         className={cn(
           'absolute w-6 h-6 rounded-full transform -translate-x-1/2 transition-all duration-200',
           styles.thumb,
-          isDragging && styles.thumbActive
+          isDragging && styles.thumbActive,
         )}
         style={{ left: `${percentage}%` }}
+        role="button"
         tabIndex={disabled ? -1 : 0}
-        role="slider"
-        aria-valuemin={min}
-        aria-valuemax={max}
-        aria-valuenow={currentValue}
         aria-disabled={disabled}
         onKeyDown={handleKeyDown}
       />

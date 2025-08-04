@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Divider } from './Divider';
-import { Typography } from '../Typography';
-import { Select } from '../Select';
 import { Checkbox } from '../Checkbox';
+import { Select } from '../Select';
 import { Slider } from '../Slider';
+import { Typography } from '../Typography';
+import { Divider } from './Divider';
 
 const meta: Meta<typeof Divider> = {
   title: 'General/Divider',
@@ -95,15 +95,21 @@ export const Variants: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <Typography variant="h4" className="mb-4">Solid</Typography>
+        <Typography variant="h4" className="mb-4">
+          Solid
+        </Typography>
         <Divider variant="solid" />
       </div>
       <div>
-        <Typography variant="h4" className="mb-4">Dashed</Typography>
+        <Typography variant="h4" className="mb-4">
+          Dashed
+        </Typography>
         <Divider variant="dashed" />
       </div>
       <div>
-        <Typography variant="h4" className="mb-4">Magical</Typography>
+        <Typography variant="h4" className="mb-4">
+          Magical
+        </Typography>
         <Divider variant="magical" />
       </div>
     </div>
@@ -111,7 +117,8 @@ export const Variants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different visual styles: solid for clean separation, dashed for subtle breaks, and magical for the signature Link-Zelda shimmer effect.',
+        story:
+          'Different visual styles: solid for clean separation, dashed for subtle breaks, and magical for the signature Link-Zelda shimmer effect.',
       },
     },
   },
@@ -136,7 +143,8 @@ export const WithText: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dividers with text labels for section headings and content organization.',
+        story:
+          'Dividers with text labels for section headings and content organization.',
       },
     },
   },
@@ -153,7 +161,8 @@ export const TextAlignment: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Text can be aligned to the left, center, or right of the divider.',
+        story:
+          'Text can be aligned to the left, center, or right of the divider.',
       },
     },
   },
@@ -181,23 +190,32 @@ export const Vertical: Story = {
 export const DarkMode: Story = {
   render: () => (
     <div className="dark bg-gray-900 p-6 rounded space-y-6">
-      <Typography variant="h3" className="mb-4">🌙 Dark Mode Dividers</Typography>
+      <Typography variant="h3" className="mb-4">
+        🌙 Dark Mode Dividers
+      </Typography>
       <div>
         <Typography variant="body1">Solid divider in dark mode</Typography>
         <Divider variant="solid" />
-        <Typography variant="body1">Clean separation with proper contrast</Typography>
+        <Typography variant="body1">
+          Clean separation with proper contrast
+        </Typography>
       </div>
       <div>
-        <Typography variant="body1">Magical shimmer transforms to purple-green</Typography>
+        <Typography variant="body1">
+          Magical shimmer transforms to purple-green
+        </Typography>
         <Divider variant="magical">✨ Mystical Separation</Divider>
-        <Typography variant="body1">Enhanced glow effects in Ganon's domain</Typography>
+        <Typography variant="body1">
+          Enhanced glow effects in Ganon's domain
+        </Typography>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms dividers with proper contrast and the magical variant becomes purple-green mystical effects.',
+        story:
+          'Dark mode transforms dividers with proper contrast and the magical variant becomes purple-green mystical effects.',
       },
     },
   },
@@ -207,38 +225,60 @@ export const RealWorldExamples: Story = {
   render: () => (
     <div className="space-y-8 max-w-2xl">
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">🎮 Game Interface</Typography>
-        
+        <Typography variant="h3" className="mb-4">
+          🎮 Game Interface
+        </Typography>
+
         <div className="space-y-4">
           <Typography variant="h4">Character Stats</Typography>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <Typography variant="body2" className="text-gray-600">Health</Typography>
-              <Typography variant="h4" className="text-ganon-600">❤️ 20/20</Typography>
+              <Typography variant="body2" className="text-gray-600">
+                Health
+              </Typography>
+              <Typography variant="h4" className="text-ganon-600">
+                ❤️ 20/20
+              </Typography>
             </div>
             <div>
-              <Typography variant="body2" className="text-gray-600">Magic</Typography>
-              <Typography variant="h4" className="text-hyrule-600">🔮 15/15</Typography>
+              <Typography variant="body2" className="text-gray-600">
+                Magic
+              </Typography>
+              <Typography variant="h4" className="text-hyrule-600">
+                🔮 15/15
+              </Typography>
             </div>
             <div>
-              <Typography variant="body2" className="text-gray-600">Rupees</Typography>
-              <Typography variant="h4" className="text-rupee-600">💎 999</Typography>
+              <Typography variant="body2" className="text-gray-600">
+                Rupees
+              </Typography>
+              <Typography variant="h4" className="text-rupee-600">
+                💎 999
+              </Typography>
             </div>
           </div>
-          
+
           <Divider variant="magical" />
-          
+
           <Typography variant="h4">Inventory</Typography>
           <div className="grid grid-cols-4 gap-2">
-            {['⚔️ Master Sword', '🛡️ Hylian Shield', '🏹 Bow of Light', '🗝️ Small Key'].map((item) => (
-              <div key={item} className="p-2 border rounded text-center text-sm">
+            {[
+              '⚔️ Master Sword',
+              '🛡️ Hylian Shield',
+              '🏹 Bow of Light',
+              '🗝️ Small Key',
+            ].map((item) => (
+              <div
+                key={item}
+                className="p-2 border rounded text-center text-sm"
+              >
                 {item}
               </div>
             ))}
           </div>
-          
+
           <Divider>Quest Progress</Divider>
-          
+
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>🗡️ The Master Sword</span>
@@ -251,10 +291,12 @@ export const RealWorldExamples: Story = {
           </div>
         </div>
       </div>
-      
+
       <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">📋 Settings Panel</Typography>
-        
+        <Typography variant="h3" className="mb-4">
+          📋 Settings Panel
+        </Typography>
+
         <div className="space-y-6">
           <div>
             <Typography variant="h4">Audio Settings</Typography>
@@ -269,9 +311,9 @@ export const RealWorldExamples: Story = {
               </div>
             </div>
           </div>
-          
+
           <Divider variant="dashed" />
-          
+
           <div>
             <Typography variant="h4">Graphics Settings</Typography>
             <div className="space-y-3 mt-3">
@@ -281,7 +323,7 @@ export const RealWorldExamples: Story = {
                   options={[
                     { value: 'high', label: 'High' },
                     { value: 'medium', label: 'Medium' },
-                    { value: 'low', label: 'Low' }
+                    { value: 'low', label: 'Low' },
                   ]}
                   defaultValue="high"
                   className="w-32"
@@ -293,20 +335,20 @@ export const RealWorldExamples: Story = {
               </div>
             </div>
           </div>
-          
+
           <Divider variant="magical">⚙️ Advanced</Divider>
-          
+
           <div>
             <Typography variant="h4">Developer Options</Typography>
             <div className="space-y-2 mt-3">
-              <label className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Checkbox />
                 <span>Show FPS Counter</span>
-              </label>
-              <label className="flex items-center gap-2">
+              </div>
+              <div className="flex items-center gap-2">
                 <Checkbox />
                 <span>Debug Mode</span>
-              </label>
+              </div>
             </div>
           </div>
         </div>
@@ -316,7 +358,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Divider components in game interfaces and settings panels with different variants for different content hierarchy.',
+        story:
+          'Real-world examples showing Divider components in game interfaces and settings panels with different variants for different content hierarchy.',
       },
     },
   },

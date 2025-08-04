@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const SearchMdIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const SearchMdIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const SearchMdIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVG
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="search md icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Search Md'}
   >
-    <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

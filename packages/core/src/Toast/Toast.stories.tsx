@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import { Button } from '../Button';
+import { Typography } from '../Typography';
 import { Toast } from './Toast';
 import { ToastContainer } from './ToastContainer';
 import { ToastProvider, useToast } from './ToastManager';
-import { Button } from '../Button';
-import { Typography } from '../Typography';
 
 const meta: Meta<typeof Toast> = {
   title: 'Feedback/Toast',
@@ -90,7 +90,14 @@ import { Toast } from '@zelda/core';
     },
     position: {
       control: 'select',
-      options: ['top-right', 'top-left', 'bottom-right', 'bottom-left', 'top-center', 'bottom-center'],
+      options: [
+        'top-right',
+        'top-left',
+        'bottom-right',
+        'bottom-left',
+        'top-center',
+        'bottom-center',
+      ],
       description: 'Toast position on screen',
       table: {
         type: { summary: 'string' },
@@ -122,13 +129,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => {
     const [visible, setVisible] = useState(true);
-    
+
     return (
       <div className="space-y-4">
-        <Button onClick={() => setVisible(true)}>
-          Show Toast
-        </Button>
-        
+        <Button onClick={() => setVisible(true)}>Show Toast</Button>
+
         <ToastContainer position="top-right">
           {visible && (
             <Toast
@@ -145,25 +150,40 @@ export const Default: Story = {
 
 export const Types: Story = {
   render: () => {
-    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const [toasts, setToasts] = useState<
+      Array<{
+        id: number;
+        type: 'success' | 'error' | 'warning' | 'info';
+        message: string;
+      }>
+    >([]);
     const nextIdRef = useRef(1);
 
-    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      const id = nextIdRef.current++;
-      setToasts(prev => [...prev, { id, type, message }]);
-    }, []);
+    const showToast = useCallback(
+      (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+        const id = nextIdRef.current++;
+        setToasts((prev) => [...prev, { id, type, message }]);
+      },
+      [],
+    );
 
     const hideToast = useCallback((id: number) => {
-      setToasts(prev => prev.filter(toast => toast.id !== id));
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, []);
 
     return (
       <div className="space-y-4">
         <div className="flex gap-2 flex-wrap">
-          <Button onClick={() => showToast('success', '✅ Quest completed successfully!')}>
+          <Button
+            onClick={() =>
+              showToast('success', '✅ Quest completed successfully!')
+            }
+          >
             Success Toast
           </Button>
-          <Button onClick={() => showToast('error', '❌ Failed to save progress')}>
+          <Button
+            onClick={() => showToast('error', '❌ Failed to save progress')}
+          >
             Error Toast
           </Button>
           <Button onClick={() => showToast('warning', '⚠️ Low health warning')}>
@@ -173,9 +193,9 @@ export const Types: Story = {
             Info Toast
           </Button>
         </div>
-        
+
         <ToastContainer position="top-right">
-          {toasts.map(toast => (
+          {toasts.map((toast) => (
             <Toast
               key={toast.id}
               message={toast.message}
@@ -192,7 +212,8 @@ export const Types: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different toast types with appropriate colors and icons for various message contexts.',
+        story:
+          'Different toast types with appropriate colors and icons for various message contexts.',
       },
     },
   },
@@ -219,7 +240,7 @@ export const Positions: Story = {
     return (
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-2">
-          {positions.map(pos => (
+          {positions.map((pos) => (
             <Button
               key={pos.key}
               onClick={() => showToast(pos.key)}
@@ -229,8 +250,19 @@ export const Positions: Story = {
             </Button>
           ))}
         </div>
-        
-        <ToastContainer position={activePosition as any}>
+
+        <ToastContainer
+          position={
+            activePosition as
+              | 'top-right'
+              | 'top-left'
+              | 'bottom-right'
+              | 'bottom-left'
+              | 'top-center'
+              | 'bottom-center'
+              | null
+          }
+        >
           {activePosition && (
             <Toast
               message={`Toast positioned at ${activePosition}`}
@@ -246,7 +278,8 @@ export const Positions: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Toast can be positioned in six different locations on the screen.',
+        story:
+          'Toast can be positioned in six different locations on the screen.',
       },
     },
   },
@@ -254,7 +287,10 @@ export const Positions: Story = {
 
 export const AutoDismiss: Story = {
   render: () => {
-    const [toast, setToast] = useState<{ visible: boolean; duration: number } | null>(null);
+    const [toast, setToast] = useState<{
+      visible: boolean;
+      duration: number;
+    } | null>(null);
 
     const showToast = (duration: number) => {
       setToast({ visible: true, duration });
@@ -263,17 +299,11 @@ export const AutoDismiss: Story = {
     return (
       <div className="space-y-4">
         <div className="flex gap-2">
-          <Button onClick={() => showToast(2000)}>
-            2 Second Toast
-          </Button>
-          <Button onClick={() => showToast(5000)}>
-            5 Second Toast
-          </Button>
-          <Button onClick={() => showToast(0)}>
-            Manual Close Only
-          </Button>
+          <Button onClick={() => showToast(2000)}>2 Second Toast</Button>
+          <Button onClick={() => showToast(5000)}>5 Second Toast</Button>
+          <Button onClick={() => showToast(0)}>Manual Close Only</Button>
         </div>
-        
+
         {toast && (
           <Toast
             message={`Auto-dismiss in ${toast.duration === 0 ? 'manual close only' : `${toast.duration / 1000} seconds`}`}
@@ -289,7 +319,8 @@ export const AutoDismiss: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Toasts can auto-dismiss after a specified duration or require manual closing.',
+        story:
+          'Toasts can auto-dismiss after a specified duration or require manual closing.',
       },
     },
   },
@@ -297,39 +328,58 @@ export const AutoDismiss: Story = {
 
 export const DarkMode: Story = {
   render: () => {
-    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const [toasts, setToasts] = useState<
+      Array<{
+        id: number;
+        type: 'success' | 'error' | 'warning' | 'info';
+        message: string;
+      }>
+    >([]);
     const nextIdRef = useRef(1);
 
-    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      const id = nextIdRef.current++;
-      setToasts(prev => [...prev, { id, type, message }]);
-    }, []);
+    const showToast = useCallback(
+      (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+        const id = nextIdRef.current++;
+        setToasts((prev) => [...prev, { id, type, message }]);
+      },
+      [],
+    );
 
     const hideToast = useCallback((id: number) => {
-      setToasts(prev => prev.filter(toast => toast.id !== id));
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, []);
 
     return (
       <div className="dark bg-gray-900 p-6 rounded space-y-6">
-        <Typography variant="h3" className="mb-4">🌙 Mystical Notifications</Typography>
-        
+        <Typography variant="h3" className="mb-4">
+          🌙 Mystical Notifications
+        </Typography>
+
         <div className="flex gap-2 flex-wrap">
-          <Button onClick={() => showToast('success', '🌿 Nature magic restored!')}>
+          <Button
+            onClick={() => showToast('success', '🌿 Nature magic restored!')}
+          >
             Success
           </Button>
-          <Button onClick={() => showToast('error', '💀 Shadow curse activated')}>
+          <Button
+            onClick={() => showToast('error', '💀 Shadow curse activated')}
+          >
             Error
           </Button>
-          <Button onClick={() => showToast('warning', '⚡ Mystical energy low')}>
+          <Button
+            onClick={() => showToast('warning', '⚡ Mystical energy low')}
+          >
             Warning
           </Button>
-          <Button onClick={() => showToast('info', '🔮 Ancient rune discovered')}>
+          <Button
+            onClick={() => showToast('info', '🔮 Ancient rune discovered')}
+          >
             Info
           </Button>
         </div>
-        
+
         <ToastContainer position="top-right">
-          {toasts.map(toast => (
+          {toasts.map((toast) => (
             <Toast
               key={toast.id}
               message={toast.message}
@@ -346,7 +396,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms toasts with mystical purple theming and enhanced magical glow effects.',
+        story:
+          'Dark mode transforms toasts with mystical purple theming and enhanced magical glow effects.',
       },
     },
   },
@@ -356,33 +407,71 @@ export const WithProvider: Story = {
   render: () => {
     const TestComponent = () => {
       const { showToast } = useToast();
-      
+
       return (
         <div className="space-y-4">
           <div className="flex gap-2 flex-wrap">
-            <Button onClick={() => showToast({ message: '✅ Success toast!', type: 'success', duration: 3000 })}>
+            <Button
+              onClick={() =>
+                showToast({
+                  message: '✅ Success toast!',
+                  type: 'success',
+                  duration: 3000,
+                })
+              }
+            >
               Success
             </Button>
-            <Button onClick={() => showToast({ message: '❌ Error toast!', type: 'error', duration: 4000 })}>
+            <Button
+              onClick={() =>
+                showToast({
+                  message: '❌ Error toast!',
+                  type: 'error',
+                  duration: 4000,
+                })
+              }
+            >
               Error
             </Button>
-            <Button onClick={() => showToast({ message: '⚠️ Warning toast!', type: 'warning', duration: 5000 })}>
+            <Button
+              onClick={() =>
+                showToast({
+                  message: '⚠️ Warning toast!',
+                  type: 'warning',
+                  duration: 5000,
+                })
+              }
+            >
               Warning
             </Button>
-            <Button onClick={() => showToast({ message: 'ℹ️ Info toast!', type: 'info', duration: 2000 })}>
+            <Button
+              onClick={() =>
+                showToast({
+                  message: 'ℹ️ Info toast!',
+                  type: 'info',
+                  duration: 2000,
+                })
+              }
+            >
               Info
             </Button>
           </div>
-          <Button 
-            onClick={() => showToast({ 
-              message: 'File uploaded successfully! What would you like to do next?', 
-              type: 'success', 
-              duration: 0,
-              actions: [
-                { label: 'View File', onClick: () => alert('Viewing file...') },
-                { label: 'Share', onClick: () => alert('Sharing file...') }
-              ]
-            })}
+          <Button
+            onClick={() =>
+              showToast({
+                message:
+                  'File uploaded successfully! What would you like to do next?',
+                type: 'success',
+                duration: 0,
+                actions: [
+                  {
+                    label: 'View File',
+                    onClick: () => alert('Viewing file...'),
+                  },
+                  { label: 'Share', onClick: () => alert('Sharing file...') },
+                ],
+              })
+            }
             variant="outline"
           >
             Toast with Actions
@@ -390,7 +479,7 @@ export const WithProvider: Story = {
         </div>
       );
     };
-    
+
     return (
       <ToastProvider position="top-right" maxToasts={3}>
         <TestComponent />
@@ -400,7 +489,8 @@ export const WithProvider: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Using ToastProvider for proper toast management with independent timers.',
+        story:
+          'Using ToastProvider for proper toast management with independent timers.',
       },
     },
   },
@@ -408,112 +498,179 @@ export const WithProvider: Story = {
 
 export const RealWorldExamples: Story = {
   render: () => {
-    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const [toasts, setToasts] = useState<
+      Array<{
+        id: number;
+        type: 'success' | 'error' | 'warning' | 'info';
+        message: string;
+      }>
+    >([]);
     const nextIdRef = useRef(1);
 
-    const showToast = useCallback((type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-      const id = nextIdRef.current++;
-      setToasts(prev => [...prev, { id, type, message }]);
-    }, []);
+    const showToast = useCallback(
+      (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
+        const id = nextIdRef.current++;
+        setToasts((prev) => [...prev, { id, type, message }]);
+      },
+      [],
+    );
 
     const hideToast = useCallback((id: number) => {
-      setToasts(prev => prev.filter(toast => toast.id !== id));
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, []);
 
     return (
       <div className="space-y-8 max-w-2xl">
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-6">🎮 Game Actions</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            🎮 Game Actions
+          </Typography>
+
           <div className="space-y-4">
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('success', 'Game saved successfully!')}>
+              <Button
+                onClick={() => showToast('success', 'Game saved successfully!')}
+              >
                 Save Game
               </Button>
               <Button onClick={() => showToast('success', 'Settings updated!')}>
                 Save Settings
               </Button>
-              <Button onClick={() => showToast('info', 'Connecting to server...')}>
+              <Button
+                onClick={() => showToast('info', 'Connecting to server...')}
+              >
                 Connect Online
               </Button>
             </div>
-            
+
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('error', 'Failed to load save file')}>
+              <Button
+                onClick={() => showToast('error', 'Failed to load save file')}
+              >
                 Load Error
               </Button>
-              <Button onClick={() => showToast('warning', 'Connection unstable')}>
+              <Button
+                onClick={() => showToast('warning', 'Connection unstable')}
+              >
                 Network Warning
               </Button>
-              <Button onClick={() => showToast('info', 'Achievement unlocked: First Steps!')}>
+              <Button
+                onClick={() =>
+                  showToast('info', 'Achievement unlocked: First Steps!')
+                }
+              >
                 Achievement
               </Button>
             </div>
           </div>
         </div>
-        
+
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-6">⚔️ Combat System</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            ⚔️ Combat System
+          </Typography>
+
           <div className="space-y-4">
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('success', 'Critical hit! +50 damage')}>
+              <Button
+                onClick={() => showToast('success', 'Critical hit! +50 damage')}
+              >
                 Critical Hit
               </Button>
-              <Button onClick={() => showToast('success', 'Enemy defeated! +100 XP')}>
+              <Button
+                onClick={() => showToast('success', 'Enemy defeated! +100 XP')}
+              >
                 Victory
               </Button>
-              <Button onClick={() => showToast('info', 'Level up! You are now level 15')}>
+              <Button
+                onClick={() =>
+                  showToast('info', 'Level up! You are now level 15')
+                }
+              >
                 Level Up
               </Button>
             </div>
-            
+
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('warning', 'Health low! Find a healing potion')}>
+              <Button
+                onClick={() =>
+                  showToast('warning', 'Health low! Find a healing potion')
+                }
+              >
                 Low Health
               </Button>
-              <Button onClick={() => showToast('warning', 'Weapon durability critical')}>
+              <Button
+                onClick={() =>
+                  showToast('warning', 'Weapon durability critical')
+                }
+              >
                 Weapon Warning
               </Button>
-              <Button onClick={() => showToast('error', 'You have been defeated!')}>
+              <Button
+                onClick={() => showToast('error', 'You have been defeated!')}
+              >
                 Defeat
               </Button>
             </div>
           </div>
         </div>
-        
+
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-6">🏪 Inventory & Trading</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            🏪 Inventory & Trading
+          </Typography>
+
           <div className="space-y-4">
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('success', 'Item purchased: Master Sword')}>
+              <Button
+                onClick={() =>
+                  showToast('success', 'Item purchased: Master Sword')
+                }
+              >
                 Purchase
               </Button>
-              <Button onClick={() => showToast('success', 'Item sold: Old Shield (+50 rupees)')}>
+              <Button
+                onClick={() =>
+                  showToast('success', 'Item sold: Old Shield (+50 rupees)')
+                }
+              >
                 Sell Item
               </Button>
-              <Button onClick={() => showToast('info', 'New item found: Magic Potion')}>
+              <Button
+                onClick={() =>
+                  showToast('info', 'New item found: Magic Potion')
+                }
+              >
                 Item Found
               </Button>
             </div>
-            
+
             <div className="flex gap-2 flex-wrap">
-              <Button onClick={() => showToast('warning', 'Inventory full! Cannot pick up item')}>
+              <Button
+                onClick={() =>
+                  showToast('warning', 'Inventory full! Cannot pick up item')
+                }
+              >
                 Inventory Full
               </Button>
-              <Button onClick={() => showToast('error', 'Insufficient rupees for purchase')}>
+              <Button
+                onClick={() =>
+                  showToast('error', 'Insufficient rupees for purchase')
+                }
+              >
                 No Money
               </Button>
-              <Button onClick={() => showToast('info', 'Rare item discovered!')}>
+              <Button
+                onClick={() => showToast('info', 'Rare item discovered!')}
+              >
                 Rare Find
               </Button>
             </div>
           </div>
         </div>
-        
+
         <ToastContainer position="top-right">
-          {toasts.map(toast => (
+          {toasts.map((toast) => (
             <Toast
               key={toast.id}
               message={toast.message}
@@ -530,7 +687,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Toast components in game interfaces for various user feedback scenarios including combat, inventory, and system notifications.',
+        story:
+          'Real-world examples showing Toast components in game interfaces for various user feedback scenarios including combat, inventory, and system notifications.',
       },
     },
   },

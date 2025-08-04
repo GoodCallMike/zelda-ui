@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Modal } from './Modal';
 import { Button } from '../Button';
-import { Typography } from '../Typography';
 import { Input } from '../Input';
 import { Select } from '../Select';
+import { Typography } from '../Typography';
+import { Modal } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   title: 'General/Modal',
@@ -133,24 +133,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open Modal</Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title="Basic Modal"
-        >
-          <Typography variant="body1">
-            Some contents...
-          </Typography>
-          <Typography variant="body1">
-            Some contents...
-          </Typography>
-          <Typography variant="body1">
-            Some contents...
-          </Typography>
+        <Modal open={open} onClose={() => setOpen(false)} title="Basic Modal">
+          <Typography variant="body1">Some contents...</Typography>
+          <Typography variant="body1">Some contents...</Typography>
+          <Typography variant="body1">Some contents...</Typography>
         </Modal>
       </>
     );
@@ -160,7 +150,7 @@ export const Default: Story = {
 export const Basic: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open Modal</Button>
@@ -170,7 +160,8 @@ export const Basic: Story = {
           title="Adventure Awaits"
         >
           <Typography variant="body1" className="mb-4">
-            Your journey through Hyrule begins with a single step. Are you ready to face the challenges ahead?
+            Your journey through Hyrule begins with a single step. Are you ready
+            to face the challenges ahead?
           </Typography>
           <div className="flex gap-2 justify-end">
             <Button variant="default" onClick={() => setOpen(false)}>
@@ -195,16 +186,46 @@ export const Basic: Story = {
 
 export const Sizes: Story = {
   render: () => {
-    const [size, setSize] = useState<'small' | 'medium' | 'large' | 'fullscreen'>('medium');
+    const [size, setSize] = useState<
+      'small' | 'medium' | 'large' | 'fullscreen'
+    >('medium');
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
         <div className="flex gap-2 mb-4">
-          <Button onClick={() => { setSize('small'); setOpen(true); }}>Small</Button>
-          <Button onClick={() => { setSize('medium'); setOpen(true); }}>Medium</Button>
-          <Button onClick={() => { setSize('large'); setOpen(true); }}>Large</Button>
-          <Button onClick={() => { setSize('fullscreen'); setOpen(true); }}>Fullscreen</Button>
+          <Button
+            onClick={() => {
+              setSize('small');
+              setOpen(true);
+            }}
+          >
+            Small
+          </Button>
+          <Button
+            onClick={() => {
+              setSize('medium');
+              setOpen(true);
+            }}
+          >
+            Medium
+          </Button>
+          <Button
+            onClick={() => {
+              setSize('large');
+              setOpen(true);
+            }}
+          >
+            Large
+          </Button>
+          <Button
+            onClick={() => {
+              setSize('fullscreen');
+              setOpen(true);
+            }}
+          >
+            Fullscreen
+          </Button>
         </div>
         <Modal
           open={open}
@@ -213,7 +234,8 @@ export const Sizes: Story = {
           size={size}
         >
           <Typography variant="body1">
-            This is a {size} modal demonstrating different size options for various use cases.
+            This is a {size} modal demonstrating different size options for
+            various use cases.
           </Typography>
         </Modal>
       </>
@@ -222,7 +244,8 @@ export const Sizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Different modal sizes: small for confirmations, medium for standard content, large for complex forms, and fullscreen for maximum display.',
+        story:
+          'Different modal sizes: small for confirmations, medium for standard content, large for complex forms, and fullscreen for maximum display.',
       },
     },
   },
@@ -231,10 +254,12 @@ export const Sizes: Story = {
 export const Confirmation: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
-        <Button variant="destructive" onClick={() => setOpen(true)}>Delete Save File</Button>
+        <Button variant="destructive" onClick={() => setOpen(true)}>
+          Delete Save File
+        </Button>
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -243,7 +268,8 @@ export const Confirmation: Story = {
           maskClosable={false}
         >
           <Typography variant="body1" className="mb-4">
-            Are you sure you want to delete "Hero's Journey"? This action cannot be undone.
+            Are you sure you want to delete "Hero's Journey"? This action cannot
+            be undone.
           </Typography>
           <div className="flex gap-2 justify-end">
             <Button variant="default" onClick={() => setOpen(false)}>
@@ -260,7 +286,8 @@ export const Confirmation: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Confirmation modal for destructive actions. Uses small size and prevents accidental closure.',
+        story:
+          'Confirmation modal for destructive actions. Uses small size and prevents accidental closure.',
       },
     },
   },
@@ -270,7 +297,7 @@ export const AsyncClose: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    
+
     const handleSave = () => {
       setLoading(true);
       setTimeout(() => {
@@ -278,7 +305,7 @@ export const AsyncClose: Story = {
         setLoading(false);
       }, 2000);
     };
-    
+
     return (
       <>
         <Button onClick={() => setOpen(true)}>Save Game Progress</Button>
@@ -290,10 +317,15 @@ export const AsyncClose: Story = {
           maskClosable={!loading}
         >
           <Typography variant="body1" className="mb-4">
-            Your progress will be saved to the selected slot. This may take a moment.
+            Your progress will be saved to the selected slot. This may take a
+            moment.
           </Typography>
           <div className="flex gap-2 justify-end">
-            <Button variant="default" onClick={() => setOpen(false)} disabled={loading}>
+            <Button
+              variant="default"
+              onClick={() => setOpen(false)}
+              disabled={loading}
+            >
               Cancel
             </Button>
             <Button variant="primary" onClick={handleSave} disabled={loading}>
@@ -307,7 +339,8 @@ export const AsyncClose: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Modal with async operations. Prevents closure during loading state.',
+        story:
+          'Modal with async operations. Prevents closure during loading state.',
       },
     },
   },
@@ -316,10 +349,12 @@ export const AsyncClose: Story = {
 export const Information: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
-        <Button variant="default" onClick={() => setOpen(true)}>Quest Details</Button>
+        <Button variant="default" onClick={() => setOpen(true)}>
+          Quest Details
+        </Button>
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -328,13 +363,17 @@ export const Information: Story = {
         >
           <div className="space-y-4">
             <Typography variant="body1">
-              <strong>Objective:</strong> Retrieve the legendary Master Sword from the Lost Woods
+              <strong>Objective:</strong> Retrieve the legendary Master Sword
+              from the Lost Woods
             </Typography>
             <Typography variant="body2">
-              The Master Sword has been sleeping in the Lost Woods for centuries, waiting for a hero worthy enough to wield it. Only one pure of heart can draw the blade from its pedestal.
+              The Master Sword has been sleeping in the Lost Woods for
+              centuries, waiting for a hero worthy enough to wield it. Only one
+              pure of heart can draw the blade from its pedestal.
             </Typography>
             <Typography variant="body2">
-              <strong>Requirements:</strong> Complete the three trials of courage, wisdom, and power.
+              <strong>Requirements:</strong> Complete the three trials of
+              courage, wisdom, and power.
             </Typography>
           </div>
           <div className="flex justify-end mt-6">
@@ -349,7 +388,8 @@ export const Information: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Information modal for displaying detailed content with single action.',
+        story:
+          'Information modal for displaying detailed content with single action.',
       },
     },
   },
@@ -358,7 +398,7 @@ export const Information: Story = {
 export const CustomizedFooter: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <>
         <Button onClick={() => setOpen(true)}>Inventory Actions</Button>
@@ -391,7 +431,8 @@ export const CustomizedFooter: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Modal with multiple action buttons showing different variants and purposes.',
+        story:
+          'Modal with multiple action buttons showing different variants and purposes.',
       },
     },
   },
@@ -400,22 +441,24 @@ export const CustomizedFooter: Story = {
 export const DarkMode: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     const handleOpen = () => {
       document.body.classList.add('dark');
       setOpen(true);
     };
-    
+
     const handleClose = () => {
       // amazonq-ignore-next-line
       // eslint-disable-next-line security/detect-object-injection
       document.body.classList.remove('dark');
       setOpen(false);
     };
-    
+
     return (
       <div className="dark bg-gray-900 p-6 rounded">
-        <Typography variant="h3" className="mb-4">🌙 Ganon's Domain</Typography>
+        <Typography variant="h3" className="mb-4">
+          🌙 Ganon's Domain
+        </Typography>
         <Button onClick={handleOpen}>Enter Shadow Realm</Button>
         <Modal
           open={open}
@@ -425,10 +468,12 @@ export const DarkMode: Story = {
         >
           <div className="space-y-4">
             <Typography variant="body1">
-              You stand before a portal crackling with dark energy. The air itself seems to whisper with malevolent power.
+              You stand before a portal crackling with dark energy. The air
+              itself seems to whisper with malevolent power.
             </Typography>
             <Typography variant="body2">
-              Entering this realm will test your courage against Ganon's minions. Are you prepared for the darkness ahead?
+              Entering this realm will test your courage against Ganon's
+              minions. Are you prepared for the darkness ahead?
             </Typography>
           </div>
           <div className="flex gap-2 justify-end mt-6">
@@ -446,7 +491,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms the modal with purple mystical theming and enhanced glow effects.',
+        story:
+          'Dark mode transforms the modal with purple mystical theming and enhanced glow effects.',
       },
     },
   },
@@ -456,35 +502,52 @@ export const RealWorldExamples: Story = {
   render: () => {
     const [activeModal, setActiveModal] = useState<string | null>(null);
     const [formData, setFormData] = useState({ name: '', class: 'warrior' });
-    
+
     return (
       <div className="space-y-8 max-w-4xl">
         {/* Character Creation */}
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-4">🎮 Game Interface Examples</Typography>
+          <Typography variant="h3" className="mb-4">
+            🎮 Game Interface Examples
+          </Typography>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <Typography variant="h4">Character Management</Typography>
               <div className="space-y-2">
-                <Button variant="primary" onClick={() => setActiveModal('character')}>
+                <Button
+                  variant="primary"
+                  onClick={() => setActiveModal('character')}
+                >
                   Create New Character
                 </Button>
-                <Button variant="default" onClick={() => setActiveModal('inventory')}>
+                <Button
+                  variant="default"
+                  onClick={() => setActiveModal('inventory')}
+                >
                   Manage Inventory
                 </Button>
-                <Button variant="destructive" onClick={() => setActiveModal('delete')}>
+                <Button
+                  variant="destructive"
+                  onClick={() => setActiveModal('delete')}
+                >
                   Delete Character
                 </Button>
               </div>
             </div>
-            
+
             <div className="space-y-4">
               <Typography variant="h4">Game Actions</Typography>
               <div className="space-y-2">
-                <Button variant="default" onClick={() => setActiveModal('quest')}>
+                <Button
+                  variant="default"
+                  onClick={() => setActiveModal('quest')}
+                >
                   View Quest Log
                 </Button>
-                <Button variant="dashed" onClick={() => setActiveModal('settings')}>
+                <Button
+                  variant="dashed"
+                  onClick={() => setActiveModal('settings')}
+                >
                   Game Settings
                 </Button>
                 <Button variant="text" onClick={() => setActiveModal('help')}>
@@ -504,23 +567,27 @@ export const RealWorldExamples: Story = {
         >
           <form className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Hero Name</label>
               <Input
+                label="Hero Name"
                 value={formData.name}
-                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, name: e.target.value }))
+                }
                 placeholder="Enter your hero's name"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Character Class</label>
               <Select
+                label="Character Class"
                 value={formData.class}
-                onChange={(value) => setFormData(prev => ({ ...prev, class: value }))}
+                onChange={(value) =>
+                  setFormData((prev) => ({ ...prev, class: value }))
+                }
                 options={[
                   { value: 'warrior', label: '⚔️ Warrior - Master of combat' },
                   { value: 'mage', label: '🔮 Mage - Wielder of magic' },
                   { value: 'archer', label: '🏹 Archer - Expert marksman' },
-                  { value: 'rogue', label: '🗡️ Rogue - Shadow assassin' }
+                  { value: 'rogue', label: '🗡️ Rogue - Shadow assassin' },
                 ]}
               />
             </div>
@@ -544,14 +611,29 @@ export const RealWorldExamples: Story = {
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
-              <Typography variant="h4" className="mb-4">Items</Typography>
+              <Typography variant="h4" className="mb-4">
+                Items
+              </Typography>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {['Master Sword', 'Hylian Shield', 'Bow of Light', 'Triforce Shard', 'Health Potion', 'Magic Scroll'].map((item) => (
+                {[
+                  'Master Sword',
+                  'Hylian Shield',
+                  'Bow of Light',
+                  'Triforce Shard',
+                  'Health Potion',
+                  'Magic Scroll',
+                ].map((item) => (
                   <div key={item} className="p-3 border rounded text-center">
-                    <Typography variant="body2" className="mb-2">{item}</Typography>
+                    <Typography variant="body2" className="mb-2">
+                      {item}
+                    </Typography>
                     <div className="flex gap-1 justify-center">
-                      <Button variant="text" className="text-xs p-1">Use</Button>
-                      <Button variant="text" className="text-xs p-1">Drop</Button>
+                      <Button variant="text" className="text-xs p-1">
+                        Use
+                      </Button>
+                      <Button variant="text" className="text-xs p-1">
+                        Drop
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -560,9 +642,15 @@ export const RealWorldExamples: Story = {
             <div className="space-y-4">
               <Typography variant="h4">Quick Actions</Typography>
               <div className="space-y-2">
-                <Button variant="default" className="w-full">Sort Items</Button>
-                <Button variant="dashed" className="w-full">Auto-Organize</Button>
-                <Button variant="destructive" className="w-full">Drop Junk</Button>
+                <Button variant="default" className="w-full">
+                  Sort Items
+                </Button>
+                <Button variant="dashed" className="w-full">
+                  Auto-Organize
+                </Button>
+                <Button variant="destructive" className="w-full">
+                  Drop Junk
+                </Button>
               </div>
             </div>
           </div>
@@ -611,16 +699,24 @@ export const RealWorldExamples: Story = {
           <div className="space-y-4">
             <div className="p-4 border rounded">
               <Typography variant="h4">🗡️ The Master Sword</Typography>
-              <Typography variant="body2">Find the legendary blade in the Lost Woods</Typography>
+              <Typography variant="body2">
+                Find the legendary blade in the Lost Woods
+              </Typography>
               <div className="mt-2">
-                <span className="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">In Progress</span>
+                <span className="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+                  In Progress
+                </span>
               </div>
             </div>
             <div className="p-4 border rounded">
               <Typography variant="h4">🏰 Rescue Princess Zelda</Typography>
-              <Typography variant="body2">Infiltrate Ganon's castle and save the princess</Typography>
+              <Typography variant="body2">
+                Infiltrate Ganon's castle and save the princess
+              </Typography>
               <div className="mt-2">
-                <span className="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded">Not Started</span>
+                <span className="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                  Not Started
+                </span>
               </div>
             </div>
           </div>
@@ -634,7 +730,9 @@ export const RealWorldExamples: Story = {
         >
           <div className="space-y-6">
             <div>
-              <Typography variant="h4" className="mb-3">Audio</Typography>
+              <Typography variant="h4" className="mb-3">
+                Audio
+              </Typography>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span>Master Volume</span>
@@ -647,7 +745,9 @@ export const RealWorldExamples: Story = {
               </div>
             </div>
             <div>
-              <Typography variant="h4" className="mb-3">Graphics</Typography>
+              <Typography variant="h4" className="mb-3">
+                Graphics
+              </Typography>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span>Quality</span>
@@ -678,14 +778,19 @@ export const RealWorldExamples: Story = {
         >
           <div className="space-y-6">
             <div>
-              <Typography variant="h4" className="mb-3">Getting Started</Typography>
+              <Typography variant="h4" className="mb-3">
+                Getting Started
+              </Typography>
               <Typography variant="body1" className="mb-4">
-                Welcome to the world of Hyrule! Here are some basic controls to get you started on your adventure.
+                Welcome to the world of Hyrule! Here are some basic controls to
+                get you started on your adventure.
               </Typography>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <Typography variant="h4" className="mb-3">Movement</Typography>
+                <Typography variant="h4" className="mb-3">
+                  Movement
+                </Typography>
                 <ul className="space-y-2 text-sm">
                   <li>• WASD or Arrow Keys - Move</li>
                   <li>• Space - Jump</li>
@@ -694,7 +799,9 @@ export const RealWorldExamples: Story = {
                 </ul>
               </div>
               <div>
-                <Typography variant="h4" className="mb-3">Combat</Typography>
+                <Typography variant="h4" className="mb-3">
+                  Combat
+                </Typography>
                 <ul className="space-y-2 text-sm">
                   <li>• Left Click - Attack</li>
                   <li>• Right Click - Block</li>
@@ -711,7 +818,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Modal components in game interfaces including character creation, inventory management, confirmations, and settings.',
+        story:
+          'Real-world examples showing Modal components in game interfaces including character creation, inventory management, confirmations, and settings.',
       },
     },
   },

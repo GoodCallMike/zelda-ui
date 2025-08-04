@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Typography } from './Typography';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Radio, RadioGroup } from '../Radio';
+import { Typography } from './Typography';
 
 const meta: Meta<typeof Typography> = {
   title: 'General/Typography',
@@ -115,7 +115,9 @@ export const Label: Story = {
 export const ThemedColors: Story = {
   render: () => (
     <div className="space-y-4">
-      <Typography color="triforce">Triforce Gold - Primary theme color</Typography>
+      <Typography color="triforce">
+        Triforce Gold - Primary theme color
+      </Typography>
       <Typography color="hyrule">Hyrule Blue - Kingdom colors</Typography>
       <Typography color="rupee">Rupee Green - Currency and nature</Typography>
       <Typography color="ganon">Ganon Red - Danger and destruction</Typography>
@@ -125,7 +127,8 @@ export const ThemedColors: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Typography with Zelda-themed color variants for different contexts.',
+        story:
+          'Typography with Zelda-themed color variants for different contexts.',
       },
     },
   },
@@ -139,14 +142,28 @@ export const DarkMode: Story = {
           <Typography variant="h1">Dark Mode Typography</Typography>
           <Typography variant="h2">Mystical Night Theme</Typography>
           <Typography variant="h3">Enhanced Readability</Typography>
-          <Typography variant="body">Body text maintains excellent contrast in dark mode with purple-tinted whites for better readability during long gaming sessions.</Typography>
-          <Typography variant="caption">Caption text remains clear and accessible</Typography>
+          <Typography variant="body">
+            Body text maintains excellent contrast in dark mode with
+            purple-tinted whites for better readability during long gaming
+            sessions.
+          </Typography>
+          <Typography variant="caption">
+            Caption text remains clear and accessible
+          </Typography>
           <Typography variant="label">Form labels stay prominent</Typography>
           <div className="space-y-2 mt-4">
-            <Typography color="triforce">Triforce elements glow with mystical energy</Typography>
-            <Typography color="hyrule">Hyrule symbols shine with ethereal light</Typography>
-            <Typography color="rupee">Rupee text maintains its magical essence</Typography>
-            <Typography color="ganon">Ganon warnings remain clearly visible</Typography>
+            <Typography color="triforce">
+              Triforce elements glow with mystical energy
+            </Typography>
+            <Typography color="hyrule">
+              Hyrule symbols shine with ethereal light
+            </Typography>
+            <Typography color="rupee">
+              Rupee text maintains its magical essence
+            </Typography>
+            <Typography color="ganon">
+              Ganon warnings remain clearly visible
+            </Typography>
           </div>
         </div>
       </div>
@@ -155,7 +172,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Typography automatically adapts to dark mode with enhanced contrast and purple-tinted colors.',
+        story:
+          'Typography automatically adapts to dark mode with enhanced contrast and purple-tinted colors.',
       },
     },
   },
@@ -166,18 +184,31 @@ export const RealWorldExamples: Story = {
     <div className="space-y-8 max-w-4xl">
       {/* Game Interface */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h1" color="triforce" className="mb-4">The Legend of Zelda</Typography>
-        <Typography variant="h2" className="mb-4">Choose Your Adventure</Typography>
+        <Typography variant="h1" color="triforce" className="mb-4">
+          The Legend of Zelda
+        </Typography>
+        <Typography variant="h2" className="mb-4">
+          Choose Your Adventure
+        </Typography>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3">
             <Typography variant="h3">New Game</Typography>
-            <Typography variant="body">Begin your journey as Link, the legendary hero of Hyrule. Explore vast kingdoms, solve ancient puzzles, and save Princess Zelda from the forces of darkness.</Typography>
+            <Typography variant="body">
+              Begin your journey as Link, the legendary hero of Hyrule. Explore
+              vast kingdoms, solve ancient puzzles, and save Princess Zelda from
+              the forces of darkness.
+            </Typography>
             <Button variant="primary">Start Adventure</Button>
           </div>
           <div className="space-y-3">
             <Typography variant="h3">Continue</Typography>
-            <Typography variant="body">Resume your quest from where you left off. Your progress has been saved at the last shrine you visited.</Typography>
-            <Typography variant="caption" color="muted">Last played: Temple of Time</Typography>
+            <Typography variant="body">
+              Resume your quest from where you left off. Your progress has been
+              saved at the last shrine you visited.
+            </Typography>
+            <Typography variant="caption" color="muted">
+              Last played: Temple of Time
+            </Typography>
             <Button variant="secondary">Load Game</Button>
           </div>
         </div>
@@ -185,17 +216,28 @@ export const RealWorldExamples: Story = {
 
       {/* Character Creation */}
       <div className="p-6 border rounded-lg bg-gray-50">
-        <Typography variant="h2" className="mb-4">Create Your Hero</Typography>
+        <Typography variant="h2" className="mb-4">
+          Create Your Hero
+        </Typography>
         <form className="space-y-4">
           <div>
-            <Typography variant="label" className="block mb-2">Hero Name</Typography>
+            <Typography variant="label" className="block mb-2">
+              Hero Name
+            </Typography>
             <Input placeholder="Enter your hero's name" />
-            <Typography variant="caption" color="muted">Choose a name worthy of legend</Typography>
+            <Typography variant="caption" color="muted">
+              Choose a name worthy of legend
+            </Typography>
           </div>
           <div>
-            <Typography variant="label" className="block mb-2">Starting Region</Typography>
+            <Typography variant="label" className="block mb-2">
+              Starting Region
+            </Typography>
             <RadioGroup defaultValue="central">
-              <Radio label="Central Hyrule - Balanced adventure" value="central" />
+              <Radio
+                label="Central Hyrule - Balanced adventure"
+                value="central"
+              />
               <Radio label="Hebra Region - Icy challenges" value="hebra" />
               <Radio label="Gerudo Desert - Scorching trials" value="gerudo" />
             </RadioGroup>
@@ -209,16 +251,26 @@ export const RealWorldExamples: Story = {
 
       {/* Story Content */}
       <div className="p-6 border rounded-lg">
-        <Typography variant="h2" color="hyrule" className="mb-4">The Ancient Prophecy</Typography>
+        <Typography variant="h2" color="hyrule" className="mb-4">
+          The Ancient Prophecy
+        </Typography>
         <div className="space-y-4">
           <Typography variant="body">
-            Long ago, when the world was young and magic flowed freely through the land, three golden goddesses descended upon the chaos that was Hyrule. Din, the goddess of power, with her strong flaming arms, cultivated the land and created the red earth.
+            Long ago, when the world was young and magic flowed freely through
+            the land, three golden goddesses descended upon the chaos that was
+            Hyrule. Din, the goddess of power, with her strong flaming arms,
+            cultivated the land and created the red earth.
           </Typography>
           <Typography variant="body">
-            Nayru, the goddess of wisdom, poured her wisdom onto the earth and gave the spirit of law to the world. Farore, the goddess of courage, with her rich soul, produced all life forms who would uphold the law.
+            Nayru, the goddess of wisdom, poured her wisdom onto the earth and
+            gave the spirit of law to the world. Farore, the goddess of courage,
+            with her rich soul, produced all life forms who would uphold the
+            law.
           </Typography>
           <Typography variant="body" color="triforce">
-            These three great goddesses left behind the Triforce - three sacred golden triangles that represent the essence of the goddesses. When united, the Triforce grants the wish of whoever touches it.
+            These three great goddesses left behind the Triforce - three sacred
+            golden triangles that represent the essence of the goddesses. When
+            united, the Triforce grants the wish of whoever touches it.
           </Typography>
           <Typography variant="caption" color="muted" className="italic">
             - From the Ancient Texts of Hyrule
@@ -228,9 +280,13 @@ export const RealWorldExamples: Story = {
 
       {/* Warning Message */}
       <div className="p-6 border-2 border-red-200 rounded-lg bg-red-50">
-        <Typography variant="h3" color="ganon" className="mb-2">⚠️ Danger Ahead</Typography>
+        <Typography variant="h3" color="ganon" className="mb-2">
+          ⚠️ Danger Ahead
+        </Typography>
         <Typography variant="body" color="ganon">
-          The path you have chosen leads through the Shadow Temple. Ancient evils lurk within its cursed halls. Only the bravest heroes dare to enter.
+          The path you have chosen leads through the Shadow Temple. Ancient
+          evils lurk within its cursed halls. Only the bravest heroes dare to
+          enter.
         </Typography>
         <Typography variant="caption" color="ganon" className="mt-2 block">
           Recommended level: 45+ | Required items: Hover Boots, Silver Gauntlets
@@ -241,7 +297,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Typography integrated with other Zelda UI components in game interfaces, character creation, story content, and warning messages.',
+        story:
+          'Real-world examples showing Typography integrated with other Zelda UI components in game interfaces, character creation, story content, and warning messages.',
       },
     },
   },
@@ -250,11 +307,21 @@ export const RealWorldExamples: Story = {
 export const ZeldaColors: Story = {
   render: () => (
     <div className="space-y-4">
-      <Typography variant="h2" color="triforce">Triforce Golden</Typography>
-      <Typography variant="h2" color="hyrule">Hyrule Royal Blue</Typography>
-      <Typography variant="h2" color="rupee">Rupee Emerald</Typography>
-      <Typography variant="h2" color="ganon">Ganon Crimson</Typography>
-      <Typography variant="body" color="muted">Muted text for descriptions</Typography>
+      <Typography variant="h2" color="triforce">
+        Triforce Golden
+      </Typography>
+      <Typography variant="h2" color="hyrule">
+        Hyrule Royal Blue
+      </Typography>
+      <Typography variant="h2" color="rupee">
+        Rupee Emerald
+      </Typography>
+      <Typography variant="h2" color="ganon">
+        Ganon Crimson
+      </Typography>
+      <Typography variant="body" color="muted">
+        Muted text for descriptions
+      </Typography>
     </div>
   ),
 };

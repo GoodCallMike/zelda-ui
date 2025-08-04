@@ -1,6 +1,6 @@
 import { create } from 'storybook/theming/create';
 
-const lightTheme = create({
+const _lightTheme = create({
   base: 'light',
   brandTitle: 'Zelda',
   brandUrl: 'https://github.com/your-org/zelda',

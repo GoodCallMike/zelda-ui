@@ -19,7 +19,7 @@ globalStyle('.row-span-6', { gridRow: 'span 6 / span 6' });
 globalStyle('.row-span-full', { gridRow: '1 / -1' });
 
 // Row start/end
-[1, 2, 3, 4, 5, 6, 7].forEach(value => {
+[1, 2, 3, 4, 5, 6, 7].forEach((value) => {
   globalStyle(`.row-start-${value}`, { gridRowStart: `${value}` });
   globalStyle(`.row-end-${value}`, { gridRowEnd: `${value}` });
 });

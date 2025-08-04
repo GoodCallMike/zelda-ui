@@ -21,7 +21,9 @@ describe('Divider', () => {
   });
 
   it('applies orientation classes', () => {
-    const { rerender } = render(<Divider orientation="horizontal" testId="divider" />);
+    const { rerender } = render(
+      <Divider orientation="horizontal" testId="divider" />,
+    );
     expect(screen.getByTestId('divider')).toBeInTheDocument();
 
     rerender(<Divider orientation="vertical" testId="divider" />);
@@ -34,7 +36,11 @@ describe('Divider', () => {
   });
 
   it('renders text with proper alignment', () => {
-    render(<Divider textAlign="left" testId="divider">Left Text</Divider>);
+    render(
+      <Divider textAlign="left" testId="divider">
+        Left Text
+      </Divider>,
+    );
     expect(screen.getByText('Left Text')).toBeInTheDocument();
   });
 
@@ -45,13 +51,21 @@ describe('Divider', () => {
   });
 
   it('renders single line for left-aligned text', () => {
-    render(<Divider textAlign="left" testId="divider">Left Text</Divider>);
+    render(
+      <Divider textAlign="left" testId="divider">
+        Left Text
+      </Divider>,
+    );
     const container = screen.getByTestId('divider');
     expect(container.children).toHaveLength(2); // text, right line
   });
 
   it('renders single line for right-aligned text', () => {
-    render(<Divider textAlign="right" testId="divider">Right Text</Divider>);
+    render(
+      <Divider textAlign="right" testId="divider">
+        Right Text
+      </Divider>,
+    );
     const container = screen.getByTestId('divider');
     expect(container.children).toHaveLength(2); // left line, text
   });

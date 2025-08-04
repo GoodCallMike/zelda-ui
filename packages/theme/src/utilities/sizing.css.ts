@@ -1,11 +1,13 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-const sizeValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96] as const;
+const sizeValues = [
+  0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96,
+] as const;
 
 // Generate size utilities efficiently
-sizeValues.forEach(value => {
+sizeValues.forEach((value) => {
   const size = value === 0 ? '0' : `${value * 0.25}rem`;
-  
+
   globalStyle(`.w-${value}`, { width: size });
   globalStyle(`.h-${value}`, { height: size });
   globalStyle(`.size-${value}`, { width: size, height: size });

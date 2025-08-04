@@ -1,6 +1,6 @@
-import * as a11yAddonAnnotations from "@storybook/addon-a11y/preview";
-import React from 'react';
+import * as a11yAddonAnnotations from '@storybook/addon-a11y/preview';
 import { setProjectAnnotations } from '@storybook/react-vite';
+import React from 'react';
 import * as projectAnnotations from './preview';
 import '@testing-library/jest-dom';
 import { expect, vi } from 'vitest';

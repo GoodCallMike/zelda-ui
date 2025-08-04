@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select } from './Select';
 import { Typography } from '../Typography';
+import { Select } from './Select';
 
 const meta: Meta<typeof Select> = {
   title: 'Data Entry/Select',
@@ -253,16 +253,16 @@ export const Large: Story = {
 export const WithStatus: Story = {
   render: () => (
     <div className="space-y-4 max-w-md">
-      <Select 
-        status="error" 
-        options={basicOptions} 
-        placeholder="Error state" 
+      <Select
+        status="error"
+        options={basicOptions}
+        placeholder="Error state"
         defaultValue="sword"
       />
-      <Select 
-        status="warning" 
-        options={basicOptions} 
-        placeholder="Warning state" 
+      <Select
+        status="warning"
+        options={basicOptions}
+        placeholder="Warning state"
         defaultValue="bow"
       />
     </div>
@@ -287,20 +287,20 @@ export const Disabled: Story = {
 export const WithLabels: Story = {
   render: () => (
     <div className="space-y-4 max-w-md">
-      <Select 
-        label="Weapon Type" 
-        options={basicOptions} 
+      <Select
+        label="Weapon Type"
+        options={basicOptions}
         placeholder="Choose your weapon"
       />
-      <Select 
-        label="Region" 
-        options={regionOptions} 
+      <Select
+        label="Region"
+        options={regionOptions}
         placeholder="Select region"
       />
-      <Select 
-        label="Required Field" 
+      <Select
+        label="Required Field"
         required
-        options={basicOptions} 
+        options={basicOptions}
         placeholder="This field is required"
       />
     </div>
@@ -317,12 +317,41 @@ export const WithLabels: Story = {
 export const DarkMode: Story = {
   render: () => (
     <div className="dark p-6 bg-gray-900 space-y-4 max-w-md">
-      <Select label="Default" options={basicOptions} placeholder="Choose weapon..." />
-      <Select label="Filled" variant="filled" options={basicOptions} placeholder="Choose weapon..." />
-      <Select label="Borderless" variant="borderless" options={basicOptions} placeholder="Choose weapon..." />
-      <Select label="Error State" status="error" options={basicOptions} defaultValue="sword" />
-      <Select label="Warning State" status="warning" options={basicOptions} defaultValue="bow" />
-      <Select label="Disabled" disabled options={basicOptions} placeholder="Disabled select" />
+      <Select
+        label="Default"
+        options={basicOptions}
+        placeholder="Choose weapon..."
+      />
+      <Select
+        label="Filled"
+        variant="filled"
+        options={basicOptions}
+        placeholder="Choose weapon..."
+      />
+      <Select
+        label="Borderless"
+        variant="borderless"
+        options={basicOptions}
+        placeholder="Choose weapon..."
+      />
+      <Select
+        label="Error State"
+        status="error"
+        options={basicOptions}
+        defaultValue="sword"
+      />
+      <Select
+        label="Warning State"
+        status="warning"
+        options={basicOptions}
+        defaultValue="bow"
+      />
+      <Select
+        label="Disabled"
+        disabled
+        options={basicOptions}
+        placeholder="Disabled select"
+      />
     </div>
   ),
   parameters: {
@@ -341,8 +370,8 @@ export const HyruleInterface: Story = {
         <h3 className="text-lg font-semibold text-triforce-700 dark:text-triforce-300 flex items-center gap-2">
           ⚔️ Hero's Arsenal
         </h3>
-        <Select 
-          label="Primary Weapon" 
+        <Select
+          label="Primary Weapon"
           options={[
             { value: 'master-sword', label: 'Master Sword' },
             { value: 'bow-light', label: 'Bow of Light' },
@@ -352,8 +381,8 @@ export const HyruleInterface: Story = {
           placeholder="Select your primary weapon"
           variant="filled"
         />
-        <Select 
-          label="Shield Type" 
+        <Select
+          label="Shield Type"
           options={[
             { value: 'hylian', label: 'Hylian Shield' },
             { value: 'ancient', label: 'Ancient Shield' },
@@ -363,19 +392,19 @@ export const HyruleInterface: Story = {
           placeholder="Choose your shield"
         />
       </div>
-      
+
       <div className="space-y-4 p-4 border border-rupee-200 dark:border-rupee-700 rounded-lg bg-rupee-50 dark:bg-rupee-950">
         <h3 className="text-lg font-semibold text-rupee-700 dark:text-rupee-300 flex items-center gap-2">
           🗺️ Adventure Planning
         </h3>
-        <Select 
-          label="Destination Region" 
+        <Select
+          label="Destination Region"
           options={regionOptions}
           placeholder="Where will you explore?"
           variant="filled"
         />
-        <Select 
-          label="Difficulty Level" 
+        <Select
+          label="Difficulty Level"
           options={[
             { value: 'easy', label: 'Peaceful Plains' },
             { value: 'medium', label: 'Challenging Peaks' },
@@ -386,13 +415,13 @@ export const HyruleInterface: Story = {
           variant="borderless"
         />
       </div>
-      
+
       <div className="space-y-4 p-4 border border-sheikah-200 dark:border-sheikah-700 rounded-lg bg-sheikah-50 dark:bg-sheikah-950">
         <h3 className="text-lg font-semibold text-sheikah-700 dark:text-sheikah-300 flex items-center gap-2">
           🔮 Ancient Technology
         </h3>
-        <Select 
-          label="Rune Type" 
+        <Select
+          label="Rune Type"
           options={[
             { value: 'bomb', label: 'Remote Bomb' },
             { value: 'magnesis', label: 'Magnesis' },
@@ -402,8 +431,8 @@ export const HyruleInterface: Story = {
           placeholder="Select rune ability"
           variant="filled"
         />
-        <Select 
-          label="Shrine Reward" 
+        <Select
+          label="Shrine Reward"
           options={[
             { value: 'spirit-orb', label: 'Spirit Orb' },
             { value: 'weapon', label: 'Ancient Weapon' },
@@ -418,7 +447,8 @@ export const HyruleInterface: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Adventure-themed interface examples showing weapon selection, region planning, and ancient technology controls with authentic Hyrule styling.',
+        story:
+          'Adventure-themed interface examples showing weapon selection, region planning, and ancient technology controls with authentic Hyrule styling.',
       },
     },
   },
@@ -428,9 +458,11 @@ export const RealWorldExamples: Story = {
   render: () => (
     <div className="space-y-8 max-w-md">
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-triforce-600 dark:text-triforce-400">🎮 Game Settings</h3>
-        <Select 
-          label="Graphics Quality" 
+        <h3 className="text-lg font-semibold text-triforce-600 dark:text-triforce-400">
+          🎮 Game Settings
+        </h3>
+        <Select
+          label="Graphics Quality"
           options={[
             { value: 'low', label: 'Low (Better Performance)' },
             { value: 'medium', label: 'Medium (Balanced)' },
@@ -440,8 +472,8 @@ export const RealWorldExamples: Story = {
           placeholder="Select graphics quality"
           defaultValue="medium"
         />
-        <Select 
-          label="Language" 
+        <Select
+          label="Language"
           options={[
             { value: 'en', label: 'English' },
             { value: 'ja', label: '日本語 (Japanese)' },
@@ -453,11 +485,13 @@ export const RealWorldExamples: Story = {
           defaultValue="en"
         />
       </div>
-      
+
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-rupee-600 dark:text-rupee-400">📦 Inventory Management</h3>
-        <Select 
-          label="Sort Items By" 
+        <h3 className="text-lg font-semibold text-rupee-600 dark:text-rupee-400">
+          📦 Inventory Management
+        </h3>
+        <Select
+          label="Sort Items By"
           options={[
             { value: 'name', label: 'Name (A-Z)' },
             { value: 'type', label: 'Item Type' },
@@ -468,8 +502,8 @@ export const RealWorldExamples: Story = {
           placeholder="Sort by..."
           variant="filled"
         />
-        <Select 
-          label="Filter Category" 
+        <Select
+          label="Filter Category"
           options={[
             { value: 'all', label: 'All Items' },
             { value: 'weapons', label: 'Weapons' },
@@ -482,34 +516,34 @@ export const RealWorldExamples: Story = {
           defaultValue="all"
         />
       </div>
-      
+
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-ganon-600 dark:text-ganon-400">⚠️ Validation States</h3>
-        <Select 
-          label="Invalid Selection" 
-          status="error" 
+        <h3 className="text-lg font-semibold text-ganon-600 dark:text-ganon-400">
+          ⚠️ Validation States
+        </h3>
+        <Select
+          label="Invalid Selection"
+          status="error"
           options={basicOptions}
           defaultValue="sword"
         />
-        <Select 
-          label="Warning Selection" 
-          status="warning" 
+        <Select
+          label="Warning Selection"
+          status="warning"
           options={basicOptions}
           defaultValue="bow"
         />
       </div>
-      
+
       {/* Dark Mode Complex Examples */}
       <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
         <Typography variant="h3">🌙 Night Mode Interface</Typography>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">
-            ⚔️ Combat Settings
-          </Typography>
+          <Typography variant="h4">⚔️ Combat Settings</Typography>
           <div className="grid grid-cols-2 gap-4">
-            <Select 
-              label="Difficulty" 
+            <Select
+              label="Difficulty"
               options={[
                 { value: 'easy', label: 'Peaceful' },
                 { value: 'normal', label: 'Normal' },
@@ -519,8 +553,8 @@ export const RealWorldExamples: Story = {
               defaultValue="normal"
               variant="filled"
             />
-            <Select 
-              label="Auto-Target" 
+            <Select
+              label="Auto-Target"
               options={[
                 { value: 'off', label: 'Disabled' },
                 { value: 'hold', label: 'Hold to Target' },
@@ -531,14 +565,12 @@ export const RealWorldExamples: Story = {
             />
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">
-            🎒 Quick Inventory
-          </Typography>
+          <Typography variant="h4">🎒 Quick Inventory</Typography>
           <div className="space-y-3">
-            <Select 
-              label="Quick Slot 1" 
+            <Select
+              label="Quick Slot 1"
               status="warning"
               options={[
                 { value: 'sword', label: 'Master Sword' },
@@ -548,8 +580,8 @@ export const RealWorldExamples: Story = {
               defaultValue="sword"
               variant="borderless"
             />
-            <Select 
-              label="Quick Slot 2" 
+            <Select
+              label="Quick Slot 2"
               status="error"
               options={[
                 { value: 'shield', label: 'Hylian Shield' },
@@ -560,14 +592,12 @@ export const RealWorldExamples: Story = {
             />
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">
-            🗺️ Map Settings
-          </Typography>
+          <Typography variant="h4">🗺️ Map Settings</Typography>
           <div className="grid grid-cols-1 gap-3">
-            <Select 
-              label="Map Style" 
+            <Select
+              label="Map Style"
               options={[
                 { value: 'detailed', label: 'Detailed View' },
                 { value: 'simple', label: 'Simple View' },
@@ -576,8 +606,8 @@ export const RealWorldExamples: Story = {
               defaultValue="detailed"
               variant="filled"
             />
-            <Select 
-              label="Show Markers" 
+            <Select
+              label="Show Markers"
               options={[
                 { value: 'all', label: 'All Markers' },
                 { value: 'important', label: 'Important Only' },
@@ -593,7 +623,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world usage examples showing game settings, inventory management, validation states, and complex dark mode interfaces with multiple components.',
+        story:
+          'Real-world usage examples showing game settings, inventory management, validation states, and complex dark mode interfaces with multiple components.',
       },
     },
   },
@@ -604,8 +635,8 @@ export const FormIntegration: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">🏰 Character Creation</h3>
-        <Select 
-          label="Character Class" 
+        <Select
+          label="Character Class"
           required
           options={[
             { value: 'warrior', label: 'Warrior' },
@@ -616,14 +647,14 @@ export const FormIntegration: Story = {
           placeholder="Choose your class"
           testId="character-class"
         />
-        <Select 
-          label="Starting Region" 
+        <Select
+          label="Starting Region"
           options={regionOptions}
           placeholder="Where will you begin?"
           defaultValue="central"
         />
-        <Select 
-          label="Difficulty Mode" 
+        <Select
+          label="Difficulty Mode"
           options={[
             { value: 'normal', label: 'Normal Mode' },
             { value: 'hard', label: 'Hard Mode' },
@@ -633,11 +664,11 @@ export const FormIntegration: Story = {
           defaultValue="normal"
         />
       </div>
-      
+
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">⚙️ Preferences</h3>
-        <Select 
-          label="Theme" 
+        <Select
+          label="Theme"
           options={[
             { value: 'light', label: 'Light Theme' },
             { value: 'dark', label: 'Dark Theme' },
@@ -646,8 +677,8 @@ export const FormIntegration: Story = {
           placeholder="Choose theme"
           defaultValue="auto"
         />
-        <Select 
-          label="Auto-Save Frequency" 
+        <Select
+          label="Auto-Save Frequency"
           options={[
             { value: '1', label: 'Every 1 minute' },
             { value: '5', label: 'Every 5 minutes' },
@@ -663,7 +694,8 @@ export const FormIntegration: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Form integration examples showing character creation and preference forms with proper validation and user experience patterns.',
+        story:
+          'Form integration examples showing character creation and preference forms with proper validation and user experience patterns.',
       },
     },
   },

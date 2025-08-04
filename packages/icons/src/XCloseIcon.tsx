@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const XCloseIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const XCloseIcon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const XCloseIcon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGEl
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="x close icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'X Close'}
   >
-    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M18 6L6 18M6 6L18 18"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

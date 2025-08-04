@@ -1,10 +1,11 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
-import { useRadioGroup } from './RadioGroup';
 import styles from './Radio.module.css';
+import { useRadioGroup } from './RadioGroup';
 
-export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+export interface RadioProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /** Radio label */
   label?: string;
   /** Radio size */
@@ -53,7 +54,7 @@ export const Radio = ({
   const finalSize = size || groupContext.size || 'middle';
   const finalError = error || groupContext.error;
   const finalName = props.name || groupContext.name;
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.onChange?.(e);
     if (groupContext.onChange && props.value) {
@@ -61,23 +62,34 @@ export const Radio = ({
     }
   };
   return (
-    <label className={cn('inline-flex items-center gap-2 cursor-pointer p-2', className)}>
+    <label
+      className={cn(
+        'inline-flex items-center gap-2 cursor-pointer p-2',
+        className,
+      )}
+    >
       <input
         type="radio"
         className={cn(
           'border-0 outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2',
           styles.radio,
           styles[finalSize],
-          finalError && styles.error
+          finalError && styles.error,
         )}
         name={finalName}
-        checked={groupContext.value !== undefined ? props.value === groupContext.value : props.checked}
+        checked={
+          groupContext.value !== undefined
+            ? props.value === groupContext.value
+            : props.checked
+        }
         onChange={handleChange}
         data-testid={testId}
         {...props}
       />
       {label && (
-        <Typography variant="label" className="select-none">{label}</Typography>
+        <Typography variant="label" className="select-none">
+          {label}
+        </Typography>
       )}
     </label>
   );

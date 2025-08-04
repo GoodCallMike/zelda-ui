@@ -4,13 +4,22 @@
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 // Make specific properties required
-export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+export type RequiredBy<T, K extends keyof T> = Omit<T, K> &
+  Required<Pick<T, K>>;
 
 // Extract function parameters
-export type Parameters<T extends (...args: any[]) => any> = T extends (...args: infer P) => any ? P : never;
+export type Parameters<T extends (...args: unknown[]) => unknown> = T extends (
+  ...args: infer P
+) => unknown
+  ? P
+  : never;
 
 // Extract function return type
-export type ReturnType<T extends (...args: any[]) => any> = T extends (...args: any[]) => infer R ? R : any;
+export type ReturnType<T extends (...args: unknown[]) => unknown> = T extends (
+  ...args: unknown[]
+) => infer R
+  ? R
+  : unknown;
 
 // Create a union of all values in an object
 export type ValueOf<T> = T[keyof T];
@@ -29,7 +38,9 @@ export type DeepRequired<T> = {
 };
 
 // Flatten nested object types
-export type Flatten<T> = T extends object ? { [K in keyof T]: Flatten<T[K]> } : T;
+export type Flatten<T> = T extends object
+  ? { [K in keyof T]: Flatten<T[K]> }
+  : T;
 
 // Create a type that excludes null and undefined
 export type NonNullable<T> = T extends null | undefined ? never : T;
@@ -56,15 +67,24 @@ export type ComponentRef<T> = React.Ref<T>;
 export type ForwardedRef<T> = React.ForwardedRef<T>;
 
 // Create a type for component with forwarded ref
-export type ComponentWithRef<T, P = {}> = React.ForwardRefExoticComponent<P & React.RefAttributes<T>>;
+export type ComponentWithRef<
+  T,
+  P = Record<string, never>,
+> = React.ForwardRefExoticComponent<P & React.RefAttributes<T>>;
 
 // Create a type for polymorphic components
-export type PolymorphicComponentProps<T extends React.ElementType, P = {}> = P & {
+export type PolymorphicComponentProps<
+  T extends React.ElementType,
+  P = Record<string, never>,
+> = P & {
   as?: T;
 } & Omit<React.ComponentPropsWithoutRef<T>, keyof P | 'as'>;
 
 // Create a type for polymorphic components with ref
-export type PolymorphicComponentPropsWithRef<T extends React.ElementType, P = {}> = PolymorphicComponentProps<T, P> & {
+export type PolymorphicComponentPropsWithRef<
+  T extends React.ElementType,
+  P = Record<string, never>,
+> = PolymorphicComponentProps<T, P> & {
   ref?: React.ComponentPropsWithRef<T>['ref'];
 };
 
@@ -93,7 +113,9 @@ export type ChangeHandler<T> = (value: T) => void;
 export type AsyncChangeHandler<T> = (value: T) => Promise<void>;
 
 // Create a type for validation functions
-export type Validator<T> = (value: T) => boolean | string | Promise<boolean | string>;
+export type Validator<T> = (
+  value: T,
+) => boolean | string | Promise<boolean | string>;
 
 // Create a type for transform functions
 export type Transform<T, U> = (value: T) => U;
@@ -126,14 +148,14 @@ export interface Cache<K, V> {
 }
 
 // Create a type for debounced functions
-export type DebouncedFunction<T extends (...args: any[]) => any> = {
+export type DebouncedFunction<T extends (...args: unknown[]) => unknown> = {
   (...args: Parameters<T>): void;
   cancel(): void;
   flush(): ReturnType<T> | undefined;
 };
 
 // Create a type for throttled functions
-export type ThrottledFunction<T extends (...args: any[]) => any> = {
+export type ThrottledFunction<T extends (...args: unknown[]) => unknown> = {
   (...args: Parameters<T>): ReturnType<T> | undefined;
   cancel(): void;
   flush(): ReturnType<T> | undefined;

@@ -1,14 +1,16 @@
 import { globalStyle } from '@vanilla-extract/css';
 
 // Font family utilities
-globalStyle('.font-sans', { 
-  fontFamily: '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+globalStyle('.font-sans', {
+  fontFamily:
+    '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
 });
-globalStyle('.font-serif', { 
-  fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif'
+globalStyle('.font-serif', {
+  fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
 });
-globalStyle('.font-mono', { 
-  fontFamily: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+globalStyle('.font-mono', {
+  fontFamily:
+    'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 });
 
 // Font size utilities
@@ -93,10 +95,10 @@ globalStyle('.capitalize', { textTransform: 'capitalize' });
 globalStyle('.normal-case', { textTransform: 'none' });
 
 // Text overflow
-globalStyle('.truncate', { 
+globalStyle('.truncate', {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 });
 globalStyle('.text-ellipsis', { textOverflow: 'ellipsis' });
 globalStyle('.text-clip', { textOverflow: 'clip' });

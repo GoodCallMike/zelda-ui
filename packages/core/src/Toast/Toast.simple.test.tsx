@@ -1,21 +1,37 @@
-import React from 'react';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { ToastProvider, useToast } from './ToastManager';
 
 // Mock the dependencies to avoid theme issues
 vi.mock('../styles', () => ({
-  cn: (...classes: any[]) => classes.filter(Boolean).join(' ')
+  cn: (...classes: (string | undefined | null | false)[]) =>
+    classes.filter(Boolean).join(' '),
 }));
 
 vi.mock('../Typography', () => ({
-  Typography: ({ children, ...props }: any) => <div {...props}>{children}</div>
+  Typography: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => <div {...props}>{children}</div>,
 }));
 
 vi.mock('../Button', () => ({
-  Button: ({ children, onClick, ...props }: any) => (
-    <button onClick={onClick} {...props}>{children}</button>
-  )
+  Button: ({
+    children,
+    onClick,
+    ...props
+  }: {
+    children: React.ReactNode;
+    onClick?: () => void;
+    [key: string]: unknown;
+  }) => (
+    <button onClick={onClick} {...props}>
+      {children}
+    </button>
+  ),
 }));
 
 vi.mock('@zelda/icons', () => ({
@@ -40,23 +56,29 @@ vi.mock('./Toast.module.css', () => ({
     errorProgress: 'errorProgress',
     warningProgress: 'warningProgress',
     infoProgress: 'infoProgress',
-  }
+  },
 }));
 
 describe('ToastProvider - Multiple Toast Behavior', () => {
   const TestComponent = () => {
     const { showToast } = useToast();
-    
+
     return (
       <div>
-        <button 
-          onClick={() => showToast({ message: 'Toast 1', duration: 1000, testId: 'toast-1' })}
+        <button
+          type="button"
+          onClick={() =>
+            showToast({ message: 'Toast 1', duration: 1000, testId: 'toast-1' })
+          }
           data-testid="show-toast-1"
         >
           Show Toast 1 (1s)
         </button>
-        <button 
-          onClick={() => showToast({ message: 'Toast 2', duration: 3000, testId: 'toast-2' })}
+        <button
+          type="button"
+          onClick={() =>
+            showToast({ message: 'Toast 2', duration: 3000, testId: 'toast-2' })
+          }
           data-testid="show-toast-2"
         >
           Show Toast 2 (3s)
@@ -79,7 +101,7 @@ describe('ToastProvider - Multiple Toast Behavior', () => {
     render(
       <ToastProvider>
         <TestComponent />
-      </ToastProvider>
+      </ToastProvider>,
     );
 
     // Show both toasts

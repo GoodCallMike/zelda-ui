@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const MagicWand02Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const MagicWand02Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const MagicWand02Icon = ({ className = 'size-4', ...props }: SVGProps<SVG
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="magic wand 02 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Magic Wand02'}
   >
-    <path d="M15 4V2M15 16V14M8 9H10M20 9H22M17.8 11.8L19 13M17.8 6.2L19 5M3 21L12 12M12.2 6.2L11 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M15 4V2M15 16V14M8 9H10M20 9H22M17.8 11.8L19 13M17.8 6.2L19 5M3 21L12 12M12.2 6.2L11 5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

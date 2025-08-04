@@ -53,11 +53,17 @@ globalStyle('.scroll-auto', { scrollBehavior: 'auto' });
 globalStyle('.scroll-smooth', { scrollBehavior: 'smooth' });
 
 // Scroll margin
-[0, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24].forEach(value => {
+[0, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24].forEach((value) => {
   const size = value === 0 ? '0' : `${value * 0.25}rem`;
   globalStyle(`.scroll-m-${value}`, { scrollMargin: size });
-  globalStyle(`.scroll-mx-${value}`, { scrollMarginLeft: size, scrollMarginRight: size });
-  globalStyle(`.scroll-my-${value}`, { scrollMarginTop: size, scrollMarginBottom: size });
+  globalStyle(`.scroll-mx-${value}`, {
+    scrollMarginLeft: size,
+    scrollMarginRight: size,
+  });
+  globalStyle(`.scroll-my-${value}`, {
+    scrollMarginTop: size,
+    scrollMarginBottom: size,
+  });
   globalStyle(`.scroll-mt-${value}`, { scrollMarginTop: size });
   globalStyle(`.scroll-mr-${value}`, { scrollMarginRight: size });
   globalStyle(`.scroll-mb-${value}`, { scrollMarginBottom: size });
@@ -65,11 +71,17 @@ globalStyle('.scroll-smooth', { scrollBehavior: 'smooth' });
 });
 
 // Scroll padding
-[0, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24].forEach(value => {
+[0, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24].forEach((value) => {
   const size = value === 0 ? '0' : `${value * 0.25}rem`;
   globalStyle(`.scroll-p-${value}`, { scrollPadding: size });
-  globalStyle(`.scroll-px-${value}`, { scrollPaddingLeft: size, scrollPaddingRight: size });
-  globalStyle(`.scroll-py-${value}`, { scrollPaddingTop: size, scrollPaddingBottom: size });
+  globalStyle(`.scroll-px-${value}`, {
+    scrollPaddingLeft: size,
+    scrollPaddingRight: size,
+  });
+  globalStyle(`.scroll-py-${value}`, {
+    scrollPaddingTop: size,
+    scrollPaddingBottom: size,
+  });
   globalStyle(`.scroll-pt-${value}`, { scrollPaddingTop: size });
   globalStyle(`.scroll-pr-${value}`, { scrollPaddingRight: size });
   globalStyle(`.scroll-pb-${value}`, { scrollPaddingBottom: size });
@@ -78,11 +90,21 @@ globalStyle('.scroll-smooth', { scrollBehavior: 'smooth' });
 
 // Scroll snap
 globalStyle('.snap-none', { scrollSnapType: 'none' });
-globalStyle('.snap-x', { scrollSnapType: 'x var(--tw-scroll-snap-strictness)' });
-globalStyle('.snap-y', { scrollSnapType: 'y var(--tw-scroll-snap-strictness)' });
-globalStyle('.snap-both', { scrollSnapType: 'both var(--tw-scroll-snap-strictness)' });
-globalStyle('.snap-mandatory', { '--tw-scroll-snap-strictness': 'mandatory' } as any);
-globalStyle('.snap-proximity', { '--tw-scroll-snap-strictness': 'proximity' } as any);
+globalStyle('.snap-x', {
+  scrollSnapType: 'x var(--tw-scroll-snap-strictness)',
+});
+globalStyle('.snap-y', {
+  scrollSnapType: 'y var(--tw-scroll-snap-strictness)',
+});
+globalStyle('.snap-both', {
+  scrollSnapType: 'both var(--tw-scroll-snap-strictness)',
+});
+globalStyle('.snap-mandatory', {
+  '--tw-scroll-snap-strictness': 'mandatory',
+} as any);
+globalStyle('.snap-proximity', {
+  '--tw-scroll-snap-strictness': 'proximity',
+} as any);
 
 globalStyle('.snap-start', { scrollSnapAlign: 'start' });
 globalStyle('.snap-end', { scrollSnapAlign: 'end' });
@@ -118,6 +140,12 @@ globalStyle('.will-change-transform', { willChange: 'transform' });
 
 // Focus utilities
 globalStyle('.focus\\\\:outline-none:focus', { outline: 'none' });
-globalStyle('.focus\\\\:ring-2:focus', { boxShadow: '0 0 0 2px rgb(59 130 246)' });
-globalStyle('.focus\\\\:ring-4:focus', { boxShadow: '0 0 0 4px rgb(59 130 246)' });
-globalStyle('.focus\\\\:ring-offset-2:focus', { boxShadow: '0 0 0 2px var(--tw-ring-offset-color), 0 0 0 4px rgb(59 130 246)' });
+globalStyle('.focus\\\\:ring-2:focus', {
+  boxShadow: '0 0 0 2px rgb(59 130 246)',
+});
+globalStyle('.focus\\\\:ring-4:focus', {
+  boxShadow: '0 0 0 4px rgb(59 130 246)',
+});
+globalStyle('.focus\\\\:ring-offset-2:focus', {
+  boxShadow: '0 0 0 2px var(--tw-ring-offset-color), 0 0 0 4px rgb(59 130 246)',
+});

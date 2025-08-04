@@ -1,5 +1,5 @@
 import { XIcon } from '@zelda/icons';
-import React, { type ReactNode, useEffect, useCallback } from 'react';
+import React, { type ReactNode, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../Button';
 import { cn } from '../styles';
@@ -39,16 +39,19 @@ export const Modal = ({
   testId,
 }: ModalProps) => {
   // Handle escape key
-  const handleEscape = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') onClose();
-  }, [onClose]);
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    },
+    [onClose],
+  );
 
   useEffect(() => {
     if (!open) return;
-    
+
     document.addEventListener('keydown', handleEscape);
     document.body.style.overflow = 'hidden';
-    
+
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
@@ -66,7 +69,7 @@ export const Modal = ({
   return createPortal(
     // amazonq-ignore-next-line
     // biome-ignore lint/a11y/useSemanticElements: This is a backdrop so having a button doesn't make sense
-<div 
+    <div
       className={cn(styles.backdrop, styles.backdropOpen)}
       onClick={handleBackdropClick}
       onKeyDown={(e) => e.key === 'Enter' && maskClosable && onClose()}
@@ -75,13 +78,8 @@ export const Modal = ({
       aria-label="Close modal"
       data-testid={testId}
     >
-      <div 
-        className={cn(
-          styles.modal,
-          styles[size],
-          styles.modalOpen,
-          className
-        )}
+      <div
+        className={cn(styles.modal, styles[size], styles.modalOpen, className)}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
@@ -90,8 +88,8 @@ export const Modal = ({
           {(title || closable) && (
             <div className={styles.titleRow}>
               {title && (
-                <Typography 
-                  variant="h3" 
+                <Typography
+                  variant="h3"
                   id="modal-title"
                   className={styles.title}
                 >
@@ -110,12 +108,10 @@ export const Modal = ({
               )}
             </div>
           )}
-          <div className={styles.body}>
-            {children}
-          </div>
+          <div className={styles.body}>{children}</div>
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };

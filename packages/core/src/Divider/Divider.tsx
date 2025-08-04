@@ -27,32 +27,39 @@ export const Divider = ({
 }: DividerProps) => {
   if (children) {
     return (
-      <div 
+      <div
         className={cn(
           'flex items-center gap-4 my-4',
           orientation === 'vertical' && 'flex-col h-full',
-          className
+          className,
         )}
         data-testid={testId}
       >
         {textAlign !== 'left' && (
-          <div className={cn(
-            'flex-1',
-            styles.divider,
-            styles[variant],
-            styles[orientation]
-          )} />
+          <div
+            className={cn(
+              'flex-1',
+              styles.divider,
+              styles[variant],
+              styles[orientation],
+            )}
+          />
         )}
-        <Typography variant="body2" className="text-gray-500 dark:text-gray-400 whitespace-nowrap">
+        <Typography
+          variant="body2"
+          className="text-gray-500 dark:text-gray-400 whitespace-nowrap"
+        >
           {children}
         </Typography>
         {textAlign !== 'right' && (
-          <div className={cn(
-            'flex-1',
-            styles.divider,
-            styles[variant],
-            styles[orientation]
-          )} />
+          <div
+            className={cn(
+              'flex-1',
+              styles.divider,
+              styles[variant],
+              styles[orientation],
+            )}
+          />
         )}
       </div>
     );
@@ -65,7 +72,7 @@ export const Divider = ({
         styles[variant],
         styles[orientation],
         'my-4',
-        className
+        className,
       )}
       data-testid={testId}
     />

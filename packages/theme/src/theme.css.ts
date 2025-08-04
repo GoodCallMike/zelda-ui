@@ -67,21 +67,31 @@ globalStyle('.text-muted', { color: 'var(--color-muted)' });
 globalStyle('.border-border', { borderColor: 'var(--color-border)' });
 globalStyle('.bg-input', { backgroundColor: 'var(--color-input)' });
 globalStyle('.bg-primary', { backgroundColor: 'var(--color-primary)' });
-globalStyle('.text-primary-foreground', { color: 'var(--color-primary-foreground)' });
+globalStyle('.text-primary-foreground', {
+  color: 'var(--color-primary-foreground)',
+});
 globalStyle('.bg-secondary', { backgroundColor: 'var(--color-secondary)' });
-globalStyle('.text-secondary-foreground', { color: 'var(--color-secondary-foreground)' });
+globalStyle('.text-secondary-foreground', {
+  color: 'var(--color-secondary-foreground)',
+});
 globalStyle('.bg-destructive', { backgroundColor: 'var(--color-destructive)' });
-globalStyle('.text-destructive-foreground', { color: 'var(--color-destructive-foreground)' });
+globalStyle('.text-destructive-foreground', {
+  color: 'var(--color-destructive-foreground)',
+});
 
 // Zelda theme utilities
 globalStyle('.bg-triforce', { backgroundColor: 'var(--color-triforce)' });
 globalStyle('.text-triforce', { color: 'var(--color-triforce)' });
-globalStyle('.bg-master-sword', { backgroundColor: 'var(--color-master-sword)' });
+globalStyle('.bg-master-sword', {
+  backgroundColor: 'var(--color-master-sword)',
+});
 globalStyle('.text-master-sword', { color: 'var(--color-master-sword)' });
 globalStyle('.bg-rupee-green', { backgroundColor: 'var(--color-rupee-green)' });
 globalStyle('.bg-rupee-blue', { backgroundColor: 'var(--color-rupee-blue)' });
 globalStyle('.bg-rupee-red', { backgroundColor: 'var(--color-rupee-red)' });
-globalStyle('.bg-rupee-purple', { backgroundColor: 'var(--color-rupee-purple)' });
+globalStyle('.bg-rupee-purple', {
+  backgroundColor: 'var(--color-rupee-purple)',
+});
 globalStyle('.text-heart', { color: 'var(--color-heart)' });
 
 /* Themed text colors */
@@ -91,11 +101,23 @@ globalStyle('.text-rupee', { color: 'var(--rupee-600)' });
 globalStyle('.text-ganon', { color: 'var(--ganon-600)' });
 
 /* Dark mode themed text colors */
-globalStyle('[data-theme="dark"] .text-triforce, .dark .text-triforce', { color: 'var(--triforce-400)' });
-globalStyle('[data-theme="dark"] .text-hyrule, .dark .text-hyrule', { color: 'var(--hyrule-400)' });
-globalStyle('[data-theme="dark"] .text-rupee, .dark .text-rupee', { color: 'var(--rupee-400)' });
-globalStyle('[data-theme="dark"] .text-ganon, .dark .text-ganon', { color: 'var(--ganon-400)' });
+globalStyle('[data-theme="dark"] .text-triforce, .dark .text-triforce', {
+  color: 'var(--triforce-400)',
+});
+globalStyle('[data-theme="dark"] .text-hyrule, .dark .text-hyrule', {
+  color: 'var(--hyrule-400)',
+});
+globalStyle('[data-theme="dark"] .text-rupee, .dark .text-rupee', {
+  color: 'var(--rupee-400)',
+});
+globalStyle('[data-theme="dark"] .text-ganon, .dark .text-ganon', {
+  color: 'var(--ganon-400)',
+});
 
 /* Dark mode default text colors */
-globalStyle('[data-theme="dark"] .text-foreground, .dark .text-foreground', { color: '#e0e7ff' });
-globalStyle('[data-theme="dark"] .text-muted, .dark .text-muted', { color: 'var(--gray-400)' });
+globalStyle('[data-theme="dark"] .text-foreground, .dark .text-foreground', {
+  color: '#e0e7ff',
+});
+globalStyle('[data-theme="dark"] .text-muted, .dark .text-muted', {
+  color: 'var(--gray-400)',
+});

@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
-import { Typography } from '../Typography';
-import { Divider } from '../Divider';
+import {
+  ArrowRightIcon,
+  PlusIcon,
+  SearchLgIcon,
+  Trash01Icon,
+} from '@zelda/icons';
 import { Card } from '../Card';
-import { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon } from '@zelda/icons';
+import { Divider } from '../Divider';
+import { Typography } from '../Typography';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'General/Button',
@@ -191,7 +196,8 @@ export const Variants: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'All button variants showcasing the functional hierarchy from high to low emphasis.',
+        story:
+          'All button variants showcasing the functional hierarchy from high to low emphasis.',
       },
     },
   },
@@ -202,22 +208,29 @@ export const States: Story = {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-3">
         <Button variant="primary">Normal</Button>
-        <Button variant="primary" disabled>Disabled</Button>
+        <Button variant="primary" disabled>
+          Disabled
+        </Button>
       </div>
       <div className="flex flex-wrap gap-3">
         <Button variant="default">Normal</Button>
-        <Button variant="default" disabled>Disabled</Button>
+        <Button variant="default" disabled>
+          Disabled
+        </Button>
       </div>
       <div className="flex flex-wrap gap-3">
         <Button variant="destructive">Normal</Button>
-        <Button variant="destructive" disabled>Disabled</Button>
+        <Button variant="destructive" disabled>
+          Disabled
+        </Button>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Button states including normal and disabled variations across different variants.',
+        story:
+          'Button states including normal and disabled variations across different variants.',
       },
     },
   },
@@ -235,7 +248,7 @@ export const HyruleInterface: Story = {
           <Button variant="text">Load Save</Button>
         </div>
       </div>
-      
+
       <div className="space-y-3">
         <h3 className="text-lg font-bold text-gray-900">Inventory Actions</h3>
         <div className="flex flex-wrap gap-3">
@@ -244,7 +257,7 @@ export const HyruleInterface: Story = {
           <Button variant="destructive">Drop Item</Button>
         </div>
       </div>
-      
+
       <div className="space-y-3">
         <h3 className="text-lg font-bold text-gray-900">Navigation</h3>
         <div className="flex flex-wrap gap-3">
@@ -258,7 +271,8 @@ export const HyruleInterface: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world Zelda-themed interface examples showing proper button usage in different contexts.',
+        story:
+          'Real-world Zelda-themed interface examples showing proper button usage in different contexts.',
       },
     },
   },
@@ -268,7 +282,9 @@ export const DarkMode: Story = {
   render: () => (
     <div className="dark bg-gray-900 p-6 rounded">
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-white mb-4">Ganon's Domain (Dark Mode)</h3>
+        <h3 className="text-lg font-bold text-white mb-4">
+          Ganon's Domain (Dark Mode)
+        </h3>
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
           <Button variant="default">Default</Button>
@@ -283,7 +299,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms the theme from Zelda/Triforce-focused to Ganon-focused with purple primary and red destructive variants.',
+        story:
+          'Dark mode transforms the theme from Zelda/Triforce-focused to Ganon-focused with purple primary and red destructive variants.',
       },
     },
   },
@@ -293,17 +310,26 @@ export const WithIcons: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-3">
-        <Button variant="primary" icon={SearchLgIcon}>Search</Button>
-        <Button variant="default" icon={PlusIcon}>Add Item</Button>
-        <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
-        <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
+        <Button variant="primary" icon={SearchLgIcon}>
+          Search
+        </Button>
+        <Button variant="default" icon={PlusIcon}>
+          Add Item
+        </Button>
+        <Button variant="destructive" icon={Trash01Icon}>
+          Delete
+        </Button>
+        <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">
+          Continue
+        </Button>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Buttons with icons from the @zelda/icons package, showing left and right positioning.',
+        story:
+          'Buttons with icons from the @zelda/icons package, showing left and right positioning.',
       },
     },
   },
@@ -319,7 +345,9 @@ export const RealWorldExamples: Story = {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Adventure Awaits</h3>
             <p className="text-gray-600 mb-4">
-              Begin your legendary journey through the kingdom of Hyrule. Face ancient evils, solve mystical puzzles, and become the hero of legend.
+              Begin your legendary journey through the kingdom of Hyrule. Face
+              ancient evils, solve mystical puzzles, and become the hero of
+              legend.
             </p>
             <div className="flex gap-4">
               <Button variant="primary">New Game</Button>
@@ -329,10 +357,18 @@ export const RealWorldExamples: Story = {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Game Options</h3>
             <div className="space-y-2">
-              <Button variant="text" className="w-full justify-start">Settings</Button>
-              <Button variant="text" className="w-full justify-start">Load Game</Button>
-              <Button variant="text" className="w-full justify-start">Achievements</Button>
-              <Button variant="link" className="w-full justify-start">Credits</Button>
+              <Button variant="text" className="w-full justify-start">
+                Settings
+              </Button>
+              <Button variant="text" className="w-full justify-start">
+                Load Game
+              </Button>
+              <Button variant="text" className="w-full justify-start">
+                Achievements
+              </Button>
+              <Button variant="link" className="w-full justify-start">
+                Credits
+              </Button>
             </div>
           </div>
         </div>
@@ -347,12 +383,24 @@ export const RealWorldExamples: Story = {
           <div className="lg:col-span-2">
             <h3 className="text-lg font-semibold mb-3">Items</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {['Master Sword', 'Hylian Shield', 'Bow of Light', 'Triforce Shard'].map((item) => (
-                <div key={item} className="p-3 border border-gray-200 rounded bg-gray-50 text-center">
+              {[
+                'Master Sword',
+                'Hylian Shield',
+                'Bow of Light',
+                'Triforce Shard',
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="p-3 border border-gray-200 rounded bg-gray-50 text-center"
+                >
                   <p className="text-sm mb-2">{item}</p>
                   <div className="flex gap-1">
-                    <Button variant="text" className="text-xs p-1">Use</Button>
-                    <Button variant="text" className="text-xs p-1">Drop</Button>
+                    <Button variant="text" className="text-xs p-1">
+                      Use
+                    </Button>
+                    <Button variant="text" className="text-xs p-1">
+                      Drop
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -374,12 +422,17 @@ export const RealWorldExamples: Story = {
 
       {/* Confirmation Dialog */}
       <Card className="border-2 border-red-200 bg-red-50">
-        <h3 className="text-lg font-semibold text-red-800 mb-2">⚠️ Dangerous Action</h3>
+        <h3 className="text-lg font-semibold text-red-800 mb-2">
+          ⚠️ Dangerous Action
+        </h3>
         <p className="text-gray-700 mb-4">
-          Are you sure you want to delete this save file? This action cannot be undone. All progress, items, and achievements will be permanently lost.
+          Are you sure you want to delete this save file? This action cannot be
+          undone. All progress, items, and achievements will be permanently
+          lost.
         </p>
         <p className="text-sm text-gray-500 mb-4">
-          Save file: "Hero of Time" - 45 hours played - Last saved: Temple of Time
+          Save file: "Hero of Time" - 45 hours played - Last saved: Temple of
+          Time
         </p>
         <div className="flex gap-4">
           <Button variant="destructive">Yes, Delete Forever</Button>
@@ -387,13 +440,16 @@ export const RealWorldExamples: Story = {
           <Button variant="link">Backup First</Button>
         </div>
       </Card>
-      
+
       <Divider className="my-8" />
-      
+
       {/* Dark Mode Complex Examples */}
-      <Card className="dark bg-gray-900 border-gray-700 space-y-6" variant="elevated">
+      <Card
+        className="dark bg-gray-900 border-gray-700 space-y-6"
+        variant="elevated"
+      >
         <Typography variant="h2">🌙 Night Mode Interface</Typography>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">⚔️ Combat Actions</Typography>
           <div className="grid grid-cols-2 gap-4">
@@ -403,7 +459,7 @@ export const RealWorldExamples: Story = {
             <Button variant="destructive">Flee</Button>
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">🎒 Quick Actions</Typography>
           <div className="space-y-3">
@@ -417,7 +473,7 @@ export const RealWorldExamples: Story = {
             </div>
           </div>
         </div>
-        
+
         <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">🗺️ Navigation</Typography>
           <div className="grid grid-cols-1 gap-3">
@@ -432,11 +488,9 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Button components in game menus, inventory management, confirmation dialogs, and complex dark mode interfaces.',
+        story:
+          'Real-world examples showing Button components in game menus, inventory management, confirmation dialogs, and complex dark mode interfaces.',
       },
     },
   },
 };
-
-
-

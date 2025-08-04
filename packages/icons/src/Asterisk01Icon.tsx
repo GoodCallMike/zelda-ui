@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const Asterisk01Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const Asterisk01Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const Asterisk01Icon = ({ className = 'size-4', ...props }: SVGProps<SVGS
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="asterisk 01 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Asterisk01'}
   >
-    <path d="M12 2V22M19.0711 4.92893L4.92893 19.0711M22 12H2M19.0711 19.0711L4.92893 4.92893" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M12 2V22M19.0711 4.92893L4.92893 19.0711M22 12H2M19.0711 19.0711L4.92893 4.92893"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

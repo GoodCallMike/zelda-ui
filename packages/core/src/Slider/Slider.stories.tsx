@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Slider } from './Slider';
 import { Typography } from '../Typography';
+import { Slider } from './Slider';
 
 const meta: Meta<typeof Slider> = {
   title: 'General/Slider',
@@ -121,7 +121,7 @@ export const Default: Story = {
 export const Controlled: Story = {
   render: () => {
     const [value, setValue] = useState(25);
-    
+
     return (
       <div className="space-y-4">
         <Typography variant="body1">
@@ -134,7 +134,8 @@ export const Controlled: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Controlled slider with state management showing the current value.',
+        story:
+          'Controlled slider with state management showing the current value.',
       },
     },
   },
@@ -144,15 +145,21 @@ export const CustomRange: Story = {
   render: () => (
     <div className="space-y-6">
       <div>
-        <Typography variant="h4" className="mb-2">Volume (0-10)</Typography>
+        <Typography variant="h4" className="mb-2">
+          Volume (0-10)
+        </Typography>
         <Slider min={0} max={10} defaultValue={7} step={1} />
       </div>
       <div>
-        <Typography variant="h4" className="mb-2">Temperature (-20°C to 40°C)</Typography>
+        <Typography variant="h4" className="mb-2">
+          Temperature (-20°C to 40°C)
+        </Typography>
         <Slider min={-20} max={40} defaultValue={22} step={0.5} />
       </div>
       <div>
-        <Typography variant="h4" className="mb-2">Percentage (0% to 100%)</Typography>
+        <Typography variant="h4" className="mb-2">
+          Percentage (0% to 100%)
+        </Typography>
         <Slider min={0} max={100} defaultValue={75} step={5} />
       </div>
     </div>
@@ -160,7 +167,8 @@ export const CustomRange: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Sliders with different ranges and step values for various use cases.',
+        story:
+          'Sliders with different ranges and step values for various use cases.',
       },
     },
   },
@@ -185,13 +193,19 @@ export const Disabled: Story = {
 export const DarkMode: Story = {
   render: () => (
     <div className="dark bg-gray-900 p-6 rounded space-y-6">
-      <Typography variant="h3" className="mb-4">🌙 Mystical Controls</Typography>
+      <Typography variant="h3" className="mb-4">
+        🌙 Mystical Controls
+      </Typography>
       <div>
-        <Typography variant="body1" className="mb-2">Magic Power</Typography>
+        <Typography variant="body1" className="mb-2">
+          Magic Power
+        </Typography>
         <Slider defaultValue={80} />
       </div>
       <div>
-        <Typography variant="body1" className="mb-2">Shadow Intensity</Typography>
+        <Typography variant="body1" className="mb-2">
+          Shadow Intensity
+        </Typography>
         <Slider defaultValue={45} />
       </div>
     </div>
@@ -199,7 +213,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Dark mode transforms the slider with purple mystical theming and enhanced green accents.',
+        story:
+          'Dark mode transforms the slider with purple mystical theming and enhanced green accents.',
       },
     },
   },
@@ -213,115 +228,152 @@ export const RealWorldExamples: Story = {
       effects: 80,
       voice: 70,
     });
-    
+
     const [gameSettings, setGameSettings] = useState({
       difficulty: 3,
       brightness: 50,
       mouseSensitivity: 25,
     });
-    
+
     return (
       <div className="space-y-8 max-w-2xl">
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-6">🎵 Audio Settings</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            🎵 Audio Settings
+          </Typography>
+
           <div className="space-y-6">
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Master Volume</Typography>
-                <Typography variant="body2" className="text-gray-600">{audioSettings.master}%</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {audioSettings.master}%
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={audioSettings.master}
-                onChange={(value) => setAudioSettings(prev => ({ ...prev, master: value }))}
+                onChange={(value) =>
+                  setAudioSettings((prev) => ({ ...prev, master: value }))
+                }
                 min={0}
                 max={100}
               />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Music Volume</Typography>
-                <Typography variant="body2" className="text-gray-600">{audioSettings.music}%</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {audioSettings.music}%
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={audioSettings.music}
-                onChange={(value) => setAudioSettings(prev => ({ ...prev, music: value }))}
+                onChange={(value) =>
+                  setAudioSettings((prev) => ({ ...prev, music: value }))
+                }
                 min={0}
                 max={100}
               />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Sound Effects</Typography>
-                <Typography variant="body2" className="text-gray-600">{audioSettings.effects}%</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {audioSettings.effects}%
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={audioSettings.effects}
-                onChange={(value) => setAudioSettings(prev => ({ ...prev, effects: value }))}
+                onChange={(value) =>
+                  setAudioSettings((prev) => ({ ...prev, effects: value }))
+                }
                 min={0}
                 max={100}
               />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Voice Volume</Typography>
-                <Typography variant="body2" className="text-gray-600">{audioSettings.voice}%</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {audioSettings.voice}%
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={audioSettings.voice}
-                onChange={(value) => setAudioSettings(prev => ({ ...prev, voice: value }))}
+                onChange={(value) =>
+                  setAudioSettings((prev) => ({ ...prev, voice: value }))
+                }
                 min={0}
                 max={100}
               />
             </div>
           </div>
         </div>
-        
+
         <div className="p-6 border rounded-lg">
-          <Typography variant="h3" className="mb-6">⚙️ Game Settings</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            ⚙️ Game Settings
+          </Typography>
+
           <div className="space-y-6">
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Difficulty</Typography>
                 <Typography variant="body2" className="text-gray-600">
-                  {['Easy', 'Normal', 'Hard', 'Expert', 'Master'][gameSettings.difficulty - 1]}
+                  {
+                    ['Easy', 'Normal', 'Hard', 'Expert', 'Master'][
+                      gameSettings.difficulty - 1
+                    ]
+                  }
                 </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={gameSettings.difficulty}
-                onChange={(value) => setGameSettings(prev => ({ ...prev, difficulty: value }))}
+                onChange={(value) =>
+                  setGameSettings((prev) => ({ ...prev, difficulty: value }))
+                }
                 min={1}
                 max={5}
                 step={1}
               />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Brightness</Typography>
-                <Typography variant="body2" className="text-gray-600">{gameSettings.brightness}%</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {gameSettings.brightness}%
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={gameSettings.brightness}
-                onChange={(value) => setGameSettings(prev => ({ ...prev, brightness: value }))}
+                onChange={(value) =>
+                  setGameSettings((prev) => ({ ...prev, brightness: value }))
+                }
                 min={0}
                 max={100}
                 step={5}
               />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Mouse Sensitivity</Typography>
-                <Typography variant="body2" className="text-gray-600">{gameSettings.mouseSensitivity / 10}</Typography>
+                <Typography variant="body2" className="text-gray-600">
+                  {gameSettings.mouseSensitivity / 10}
+                </Typography>
               </div>
-              <Slider 
+              <Slider
                 value={gameSettings.mouseSensitivity}
-                onChange={(value) => setGameSettings(prev => ({ ...prev, mouseSensitivity: value }))}
+                onChange={(value) =>
+                  setGameSettings((prev) => ({
+                    ...prev,
+                    mouseSensitivity: value,
+                  }))
+                }
                 min={1}
                 max={50}
                 step={1}
@@ -329,10 +381,12 @@ export const RealWorldExamples: Story = {
             </div>
           </div>
         </div>
-        
+
         <div className="dark p-6 bg-gray-900 rounded-lg">
-          <Typography variant="h3" className="mb-6">🌙 Night Mode Settings</Typography>
-          
+          <Typography variant="h3" className="mb-6">
+            🌙 Night Mode Settings
+          </Typography>
+
           <div className="space-y-6">
             <div>
               <div className="flex justify-between items-center mb-2">
@@ -341,7 +395,7 @@ export const RealWorldExamples: Story = {
               </div>
               <Slider defaultValue={80} />
             </div>
-            
+
             <div>
               <div className="flex justify-between items-center mb-2">
                 <Typography variant="body1">Mystical Effects</Typography>
@@ -357,7 +411,8 @@ export const RealWorldExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real-world examples showing Slider components in audio settings, game configuration, and dark mode interfaces with proper labeling and value display.',
+        story:
+          'Real-world examples showing Slider components in audio settings, game configuration, and dark mode interfaces with proper labeling and value display.',
       },
     },
   },

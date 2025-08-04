@@ -16,16 +16,16 @@ export interface ColorTokens {
   // Brand colors
   primary: ColorScale;
   secondary: ColorScale;
-  
+
   // Semantic colors
   success: ColorScale;
   warning: ColorScale;
   error: ColorScale;
   info: ColorScale;
-  
+
   // Neutral colors
   gray: ColorScale;
-  
+
   // Surface colors
   background: {
     primary: string;
@@ -34,7 +34,7 @@ export interface ColorTokens {
     inverse: string;
     overlay: string;
   };
-  
+
   // Text colors
   text: {
     primary: string;
@@ -43,7 +43,7 @@ export interface ColorTokens {
     inverse: string;
     disabled: string;
   };
-  
+
   // Border colors
   border: {
     primary: string;
@@ -77,7 +77,7 @@ export interface TypographyTokens {
     serif: string;
     mono: string;
   };
-  
+
   fontSize: {
     xs: string;
     sm: string;
@@ -90,7 +90,7 @@ export interface TypographyTokens {
     '5xl': string;
     '6xl': string;
   };
-  
+
   fontWeight: {
     thin: number;
     light: number;
@@ -101,7 +101,7 @@ export interface TypographyTokens {
     extrabold: number;
     black: number;
   };
-  
+
   lineHeight: {
     none: number;
     tight: number;
@@ -110,7 +110,7 @@ export interface TypographyTokens {
     relaxed: number;
     loose: number;
   };
-  
+
   letterSpacing: {
     tighter: string;
     tight: string;
@@ -182,7 +182,7 @@ export interface BorderTokens {
     4: string;
     8: string;
   };
-  
+
   style: {
     solid: string;
     dashed: string;
@@ -240,7 +240,7 @@ export interface AnimationTokens {
     normal: string;
     slow: string;
   };
-  
+
   easing: {
     linear: string;
     ease: string;
@@ -248,7 +248,7 @@ export interface AnimationTokens {
     'ease-out': string;
     'ease-in-out': string;
   };
-  
+
   keyframes: {
     fadeIn: string;
     fadeOut: string;
@@ -313,4 +313,6 @@ export type CSSVariableMap = Record<CSSVariable, string>;
 
 // Utility types for theme consumption
 export type ThemeValue<T> = T | ((theme: ThemeTokens) => T);
-export type ResponsiveThemeValue<T> = T | Partial<Record<keyof BreakpointTokens, T>>;
+export type ResponsiveThemeValue<T> =
+  | T
+  | Partial<Record<keyof BreakpointTokens, T>>;

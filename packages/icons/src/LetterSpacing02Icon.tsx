@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-export const LetterSpacing02Icon = ({ className = 'size-4', ...props }: SVGProps<SVGSVGElement>) => (
+export const LetterSpacing02Icon = ({
+  className = 'size-4',
+  ...props
+}: SVGProps<SVGSVGElement>) => (
   <svg
     className={className}
     viewBox="0 0 24 24"
@@ -9,9 +12,16 @@ export const LetterSpacing02Icon = ({ className = 'size-4', ...props }: SVGProps
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-label="letter spacing 02 icon"
+    role="img"
     {...props}
+    aria-label={props['aria-label'] || 'Letter Spacing02'}
   >
-    <path d="M2 18H22M2 18L5 15M2 18L5 21M22 18L19 15M22 18L19 21M7 3H17M12 3V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M2 18H22M2 18L5 15M2 18L5 21M22 18L19 15M22 18L19 21M7 3H17M12 3V14"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

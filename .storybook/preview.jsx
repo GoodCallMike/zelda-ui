@@ -1,4 +1,3 @@
-import React from 'react';
 import '@zelda/theme';
 import './preview.css';
 import { ThemeDecorator } from './decorators/ThemeDecorator';
@@ -11,7 +10,6 @@ const preview = {
         date: /Date$/i,
       },
     },
-
   },
   decorators: [ThemeDecorator],
   globalTypes: {

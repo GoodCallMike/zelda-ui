@@ -1,9 +1,14 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import {
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  InfoCircleIcon,
+  XCircleIcon,
+  XIcon,
+} from '@zelda/icons';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Button } from '../Button';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
-import { Button } from '../Button';
-import { XIcon, CheckCircleIcon, AlertTriangleIcon, InfoCircleIcon, XCircleIcon } from '@zelda/icons';
 import styles from './Toast.module.css';
 
 export interface ToastAction {
@@ -19,7 +24,13 @@ export interface ToastProps {
   /** Toast type */
   type?: 'success' | 'error' | 'warning' | 'info';
   /** Toast position */
-  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+  position?:
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'top-center'
+    | 'bottom-center';
   /** Auto dismiss duration in ms (0 to disable) */
   duration?: number;
   /** Whether toast is visible */
@@ -44,7 +55,6 @@ const typeIcons = {
 export const Toast = ({
   message,
   type = 'info',
-  position = 'top-right',
   duration = 5000,
   visible = true,
   onClose,
@@ -93,7 +103,7 @@ export const Toast = ({
         styles[type],
         isEntering && styles.entering,
         isExiting && styles.exiting,
-        className
+        className,
       )}
       data-testid={testId}
     >
@@ -117,9 +127,9 @@ export const Toast = ({
         </div>
         {actions && actions.length > 0 && (
           <div className="flex gap-2 mt-3 ml-8">
-            {actions.map((action, index) => (
+            {actions.map((action) => (
               <Button
-                key={index}
+                key={action.label}
                 variant="text"
                 size="small"
                 onClick={action.onClick}
@@ -132,8 +142,8 @@ export const Toast = ({
         )}
       </div>
       {duration > 0 && (
-        <div 
-          className={cn(styles.progressBar, styles[type + 'Progress'])} 
+        <div
+          className={cn(styles.progressBar, styles[`${type}Progress`])}
           style={{ animationDuration: `${duration}ms` }}
         />
       )}

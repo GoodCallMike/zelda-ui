@@ -24,11 +24,13 @@ export const Checkbox = ({
   };
 
   return (
-    <label className={cn(
-      'inline-flex items-center gap-2 cursor-pointer p-2',
-      loading && 'opacity-60 cursor-not-allowed',
-      className
-    )}>
+    <label
+      className={cn(
+        'inline-flex items-center gap-2 cursor-pointer p-2',
+        loading && 'opacity-60 cursor-not-allowed',
+        className,
+      )}
+    >
       <input
         type="checkbox"
         className={cn(
@@ -36,7 +38,7 @@ export const Checkbox = ({
           styles.checkbox,
           styles[size],
           error && styles.error,
-          loading && 'pointer-events-none'
+          loading && 'pointer-events-none',
         )}
         data-testid={testId}
         onChange={handleChange}
@@ -44,7 +46,9 @@ export const Checkbox = ({
         {...props}
       />
       {label && (
-        <Typography variant="label" className="select-none">{label}</Typography>
+        <Typography variant="label" className="select-none">
+          {label}
+        </Typography>
       )}
     </label>
   );

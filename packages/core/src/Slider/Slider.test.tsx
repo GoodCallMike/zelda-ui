@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Slider } from './Slider';
 
 describe('Slider', () => {
@@ -31,25 +31,32 @@ describe('Slider', () => {
     const onChange = jest.fn();
     render(<Slider {...defaultProps} defaultValue={50} onChange={onChange} />);
     const slider = screen.getByRole('slider');
-    
+
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChange).toHaveBeenCalledWith(51);
-    
+
     fireEvent.keyDown(slider, { key: 'ArrowLeft' });
     expect(onChange).toHaveBeenCalledWith(50); // Expect 50 since it's called from the updated value
-    
+
     fireEvent.keyDown(slider, { key: 'Home' });
     expect(onChange).toHaveBeenCalledWith(0);
-    
+
     fireEvent.keyDown(slider, { key: 'End' });
     expect(onChange).toHaveBeenCalledWith(100);
   });
 
   it('respects step value', () => {
     const onChange = jest.fn();
-    render(<Slider {...defaultProps} defaultValue={50} step={5} onChange={onChange} />);
+    render(
+      <Slider
+        {...defaultProps}
+        defaultValue={50}
+        step={5}
+        onChange={onChange}
+      />,
+    );
     const slider = screen.getByRole('slider');
-    
+
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChange).toHaveBeenCalledWith(55);
   });
@@ -58,10 +65,10 @@ describe('Slider', () => {
     const onChange = jest.fn();
     render(<Slider {...defaultProps} disabled onChange={onChange} />);
     const slider = screen.getByRole('slider');
-    
+
     expect(slider).toHaveAttribute('aria-disabled', 'true');
     expect(slider).toHaveAttribute('tabIndex', '-1');
-    
+
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChange).not.toHaveBeenCalled();
   });
@@ -73,9 +80,17 @@ describe('Slider', () => {
 
   it('clamps values to min/max range', () => {
     const onChange = jest.fn();
-    render(<Slider {...defaultProps} min={10} max={90} defaultValue={90} onChange={onChange} />);
+    render(
+      <Slider
+        {...defaultProps}
+        min={10}
+        max={90}
+        defaultValue={90}
+        onChange={onChange}
+      />,
+    );
     const slider = screen.getByRole('slider');
-    
+
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChange).toHaveBeenCalledWith(90); // Should not exceed max
   });
@@ -84,7 +99,7 @@ describe('Slider', () => {
     const { rerender } = render(<Slider {...defaultProps} defaultValue={30} />);
     let slider = screen.getByRole('slider');
     expect(slider).toHaveAttribute('aria-valuenow', '30');
-    
+
     // Switch to controlled
     rerender(<Slider {...defaultProps} value={70} />);
     slider = screen.getByRole('slider');

@@ -1,5 +1,12 @@
-import React, { createContext, useContext, useState, useCallback, useRef } from 'react';
-import { Toast, ToastProps } from './Toast';
+import type React from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from 'react';
+import { Toast, type ToastProps } from './Toast';
 import { ToastContainer } from './ToastContainer';
 
 interface ToastItem extends Omit<ToastProps, 'visible' | 'onClose'> {
@@ -30,21 +37,28 @@ export interface ToastProviderProps {
   maxToasts?: number;
 }
 
-export const ToastProvider = ({ children, position = 'top-right', maxToasts = 5 }: ToastProviderProps) => {
+export const ToastProvider = ({
+  children,
+  position = 'top-right',
+  maxToasts = 5,
+}: ToastProviderProps) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const nextIdRef = useRef(1);
   const closeCallbacksRef = useRef<Map<string, () => void>>(new Map());
 
-  const showToast = useCallback((toast: Omit<ToastItem, 'id'>) => {
-    const id = `toast-${nextIdRef.current++}`;
-    setToasts(prev => {
-      const newToasts = [...prev, { ...toast, id }];
-      return newToasts.slice(-maxToasts);
-    });
-  }, [maxToasts]);
+  const showToast = useCallback(
+    (toast: Omit<ToastItem, 'id'>) => {
+      const id = `toast-${nextIdRef.current++}`;
+      setToasts((prev) => {
+        const newToasts = [...prev, { ...toast, id }];
+        return newToasts.slice(-maxToasts);
+      });
+    },
+    [maxToasts],
+  );
 
   const hideToast = useCallback((id: string) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
     closeCallbacksRef.current.delete(id);
   }, []);
 
@@ -52,7 +66,7 @@ export const ToastProvider = ({ children, position = 'top-right', maxToasts = 5 
     <ToastContext.Provider value={{ showToast, hideToast }}>
       {children}
       <ToastContainer position={position}>
-        {toasts.map(toast => {
+        {toasts.map((toast) => {
           if (!closeCallbacksRef.current.has(toast.id)) {
             closeCallbacksRef.current.set(toast.id, () => hideToast(toast.id));
           }
@@ -61,7 +75,10 @@ export const ToastProvider = ({ children, position = 'top-right', maxToasts = 5 
               key={toast.id}
               {...toast}
               visible={true}
-              onClose={closeCallbacksRef.current.get(toast.id)!}
+              onClose={
+                closeCallbacksRef.current.get(toast.id) ||
+                (() => hideToast(toast.id))
+              }
             />
           );
         })}

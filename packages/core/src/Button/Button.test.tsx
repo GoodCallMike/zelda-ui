@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Button } from './Button';
@@ -25,7 +25,7 @@ describe('Button', () => {
           testId="test-button"
         >
           Button
-        </Button>
+        </Button>,
       );
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('Button', () => {
     it('renders with conditional icon display', () => {
       const { rerender } = render(<Button icon={MockIcon}>With Icon</Button>);
       expect(screen.getByTestId('mock-icon')).toBeInTheDocument();
-      
+
       rerender(<Button>Without Icon</Button>);
       expect(screen.queryByTestId('mock-icon')).not.toBeInTheDocument();
     });
@@ -55,7 +55,11 @@ describe('Button', () => {
     it('has correct default state', () => {
       render(<Button>Default</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('inline-flex', 'items-center', 'justify-center');
+      expect(button).toHaveClass(
+        'inline-flex',
+        'items-center',
+        'justify-center',
+      );
       expect(button).not.toBeDisabled();
     });
 
@@ -63,7 +67,7 @@ describe('Button', () => {
       const { rerender } = render(<Button>Toggle</Button>);
       const button = screen.getByRole('button');
       expect(button).not.toBeDisabled();
-      
+
       rerender(<Button disabled>Toggle</Button>);
       expect(button).toBeDisabled();
     });
@@ -78,16 +82,21 @@ describe('Button', () => {
       const { rerender } = render(<Button variant="primary">Persist</Button>);
       const button = screen.getByRole('button');
       expect(button).toHaveClass('inline-flex');
-      
+
       rerender(<Button variant="primary">Persist</Button>);
       expect(button).toHaveClass('inline-flex');
     });
 
     it('handles complex state combinations', () => {
       render(
-        <Button variant="tertiary" disabled icon={MockIcon} iconPosition="right">
+        <Button
+          variant="tertiary"
+          disabled
+          icon={MockIcon}
+          iconPosition="right"
+        >
           Complex
-        </Button>
+        </Button>,
       );
       const button = screen.getByRole('button');
       expect(button).toHaveClass('opacity-60');
@@ -101,7 +110,7 @@ describe('Button', () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
       render(<Button onClick={handleClick}>Click me</Button>);
-      
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -110,12 +119,12 @@ describe('Button', () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
       render(<Button onClick={handleClick}>Keyboard</Button>);
-      
+
       const button = screen.getByRole('button');
       button.focus();
       await user.keyboard('{Enter}');
       expect(handleClick).toHaveBeenCalledTimes(1);
-      
+
       await user.keyboard('{Space}');
       expect(handleClick).toHaveBeenCalledTimes(1); // Space might not trigger in test environment
     });
@@ -146,8 +155,12 @@ describe('Button', () => {
     it('prevents interaction when disabled', async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
-      render(<Button onClick={handleClick} disabled>Disabled</Button>);
-      
+      render(
+        <Button onClick={handleClick} disabled>
+          Disabled
+        </Button>,
+      );
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).not.toHaveBeenCalled();
     });
@@ -201,7 +214,11 @@ describe('Button', () => {
     });
 
     it('applies optional props behavior', () => {
-      render(<Button variant="secondary" disabled>Optional</Button>);
+      render(
+        <Button variant="secondary" disabled>
+          Optional
+        </Button>,
+      );
       const button = screen.getByRole('button');
       expect(button).toHaveClass('opacity-60');
       expect(button).toBeDisabled();
@@ -215,7 +232,11 @@ describe('Button', () => {
     });
 
     it('handles edge case prop values', () => {
-      render(<Button variant="link" iconPosition="right">Edge Case</Button>);
+      render(
+        <Button variant="link" iconPosition="right">
+          Edge Case
+        </Button>,
+      );
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
     });
@@ -234,7 +255,7 @@ describe('Button', () => {
       render(
         <form onSubmit={handleSubmit}>
           <Button type="submit">Submit</Button>
-        </form>
+        </form>,
       );
       const button = screen.getByRole('button');
       fireEvent.click(button);
@@ -283,7 +304,9 @@ describe('Button', () => {
 
     it('handles special characters in content', () => {
       render(<Button>Save & Continue → ★</Button>);
-      expect(screen.getByRole('button')).toHaveTextContent('Save & Continue → ★');
+      expect(screen.getByRole('button')).toHaveTextContent(
+        'Save & Continue → ★',
+      );
     });
 
     it('handles very long content', () => {
@@ -319,7 +342,11 @@ describe('Button', () => {
     it('applies CSS classes correctly', () => {
       render(<Button variant="primary">Styled</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('inline-flex', 'items-center', 'justify-center');
+      expect(button).toHaveClass(
+        'inline-flex',
+        'items-center',
+        'justify-center',
+      );
     });
 
     it('supports theme variations', () => {
@@ -372,7 +399,11 @@ describe('Button', () => {
     });
 
     it('renders icon on right when specified', () => {
-      render(<Button icon={MockIcon} iconPosition="right">Right Icon</Button>);
+      render(
+        <Button icon={MockIcon} iconPosition="right">
+          Right Icon
+        </Button>,
+      );
       const icon = screen.getByTestId('mock-icon');
       expect(icon).toBeInTheDocument();
     });
