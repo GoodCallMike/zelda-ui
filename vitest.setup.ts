@@ -27,7 +27,10 @@ console.error = (...args) => {
   if (
     message.includes('Warning: An update to') ||
     message.includes('Invalid hook call') ||
-    message.includes('Consider adding an error boundary')
+    message.includes('Consider adding an error boundary') ||
+    message.includes('was not wrapped in act') ||
+    message.includes('An error occurred in the') ||
+    message.includes('react.dev/link')
   ) {
     return;
   }
@@ -36,7 +39,10 @@ console.error = (...args) => {
 
 console.warn = (...args) => {
   const message = args[0]?.toString() || '';
-  if (message.includes('Warning:')) {
+  if (
+    message.includes('Warning:') ||
+    message.includes('act()')
+  ) {
     return;
   }
   originalWarn(...args);
