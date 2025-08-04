@@ -166,6 +166,7 @@ export const Select = <T extends string = string>({
         role="button"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        aria-required={required}
         data-testid={testId}
       >
         <div className="flex items-center justify-between px-4 py-2">
@@ -196,7 +197,7 @@ export const Select = <T extends string = string>({
             styles.dropdown,
           )}
         >
-          <ul ref={listRef} className="py-2">
+          <ul ref={listRef} role="listbox" className="py-2">
             {options.map((option, index) => (
               <li
                 key={option.value as string}

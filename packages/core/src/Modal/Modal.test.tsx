@@ -29,19 +29,19 @@ describe('Modal', () => {
 
   it('renders close button by default', () => {
     render(<Modal {...defaultProps} title="Test Modal" />);
-    expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Close modal' })).toBeInTheDocument();
   });
 
   it('hides close button when closable is false', () => {
     render(<Modal {...defaultProps} title="Test Modal" closable={false} />);
-    expect(screen.queryByLabelText('Close modal')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Close modal' })).not.toBeInTheDocument();
   });
 
   it('calls onClose when close button is clicked', () => {
     const onClose = jest.fn();
     render(<Modal {...defaultProps} onClose={onClose} title="Test Modal" />);
 
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByRole('button', { name: 'Close modal' }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

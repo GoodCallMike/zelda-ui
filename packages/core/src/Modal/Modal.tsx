@@ -75,7 +75,7 @@ export const Modal = ({
       onKeyDown={(e) => e.key === 'Enter' && maskClosable && onClose()}
       role="button"
       tabIndex={-1}
-      aria-label="Close modal"
+      aria-label="Modal backdrop"
       data-testid={testId}
     >
       <div

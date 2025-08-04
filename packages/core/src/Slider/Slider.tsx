@@ -139,7 +139,9 @@ export const Slider = ({
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={currentValue}
+      aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
+      onKeyDown={handleKeyDown}
       data-testid={testId}
     >
       {/* Track */}
