@@ -24,11 +24,11 @@ const TextInput = (props: InputProps) => {
     className,
     type = 'text',
     value,
-    defaultValue = "",
+    defaultValue = '',
     onChange,
-    disabled
+    disabled,
   } = props;
-  
+
   const [internalValue, setInternalValue] = useState(defaultValue);
   const currentValue = value !== undefined ? value : internalValue;
 
@@ -77,7 +77,8 @@ const TextInput = (props: InputProps) => {
             key: 'clear',
             type: 'button',
             onClick: handleClear,
-            className: 'w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0',
+            className:
+              'w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0',
             'aria-label': 'Clear input',
           },
           '×',
@@ -112,7 +113,8 @@ const TextInput = (props: InputProps) => {
               styles.addon,
               styles.addonBefore,
               status === 'error' && 'text-ganon-700 dark:text-ganon-300',
-              status === 'warning' && 'text-triforce-700 dark:text-triforce-300',
+              status === 'warning' &&
+                'text-triforce-700 dark:text-triforce-300',
             )}
           >
             {addonBefore}
@@ -171,7 +173,8 @@ const TextInput = (props: InputProps) => {
               styles.addon,
               styles.addonAfter,
               status === 'error' && 'text-ganon-700 dark:text-ganon-300',
-              status === 'warning' && 'text-triforce-700 dark:text-triforce-300',
+              status === 'warning' &&
+                'text-triforce-700 dark:text-triforce-300',
             )}
           >
             {addonAfter}
@@ -198,8 +201,9 @@ const Textarea = (props: TextareaProps) => {
     defaultValue,
     onChange,
     rows = 4,
-    resize = 'vertical'  } = props;
-  
+    resize = 'vertical',
+  } = props;
+
   const [internalValue, setInternalValue] = useState(defaultValue ?? '');
   const currentValue = value !== undefined ? value : internalValue;
 
@@ -249,7 +253,14 @@ const Textarea = (props: TextareaProps) => {
             wordWrap: 'break-word',
             whiteSpace: 'pre-wrap',
             overflowWrap: 'break-word',
-            resize: resize === 'none' ? 'none' : resize === 'horizontal' ? 'horizontal' : resize === 'both' ? 'both' : 'vertical',
+            resize:
+              resize === 'none'
+                ? 'none'
+                : resize === 'horizontal'
+                  ? 'horizontal'
+                  : resize === 'both'
+                    ? 'both'
+                    : 'vertical',
           },
           value: currentValue,
           onChange: handleChange,
@@ -260,12 +271,18 @@ const Textarea = (props: TextareaProps) => {
 
         {(showClearButton || suffix) && (
           <div className="absolute right-3 top-3 flex items-center gap-2 text-gray-500 z-10">
-            {showClearButton && React.createElement('button', {
-              type: 'button',
-              onClick: handleClear,
-              className: 'w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0',
-              'aria-label': 'Clear input',
-            }, '×')}
+            {showClearButton &&
+              React.createElement(
+                'button',
+                {
+                  type: 'button',
+                  onClick: handleClear,
+                  className:
+                    'w-4 h-4 rounded-full bg-gray-400 hover:bg-gray-500 flex items-center justify-center text-white text-xs leading-none flex-shrink-0',
+                  'aria-label': 'Clear input',
+                },
+                '×',
+              )}
             {suffix && <span className="flex-shrink-0">{suffix}</span>}
           </div>
         )}

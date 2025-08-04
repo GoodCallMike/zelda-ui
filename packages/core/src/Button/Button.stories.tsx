@@ -407,8 +407,9 @@ export const AccessibilityFeatures: Story = {
             🔍 Comprehensive Accessibility Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Button's complete accessibility features including keyboard navigation, 
-            screen reader support, ARIA attributes, and real-world usage patterns.
+            This story demonstrates the Button's complete accessibility features
+            including keyboard navigation, screen reader support, ARIA
+            attributes, and real-world usage patterns.
           </Typography>
         </div>
 
@@ -417,13 +418,16 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">⌨️ Keyboard Navigation Patterns</Typography>
           <div className="p-4 bg-green-50 border border-green-200 rounded">
             <Typography variant="body2" className="text-green-800 mb-4">
-              <strong>Interactive Demo:</strong> Use keyboard to navigate and interact with these buttons.
+              <strong>Interactive Demo:</strong> Use keyboard to navigate and
+              interact with these buttons.
             </Typography>
-            
+
             {/* Basic Navigation */}
             <div className="space-y-4">
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Basic Navigation (Tab/Shift+Tab)</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Basic Navigation (Tab/Shift+Tab)
+                </Typography>
                 <div className="flex gap-3 flex-wrap">
                   <Button variant="primary" testId="nav-1">
                     First Button
@@ -442,7 +446,9 @@ export const AccessibilityFeatures: Story = {
 
               {/* Activation Methods */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Activation (Enter/Space)</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Activation (Enter/Space)
+                </Typography>
                 <div className="flex gap-3 items-center">
                   <Button
                     variant="primary"
@@ -462,15 +468,23 @@ export const AccessibilityFeatures: Story = {
 
               {/* Skip Links Pattern */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Skip Navigation Pattern</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Skip Navigation Pattern
+                </Typography>
                 <div className="flex gap-3">
-                  <Button variant="link" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-white p-2 border">
+                  <Button
+                    variant="link"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-white p-2 border"
+                  >
                     Skip to main content
                   </Button>
                   <Button variant="default">Regular Button</Button>
                   <Button variant="primary">Main Action</Button>
                 </div>
-                <Typography variant="body2" className="text-sm text-gray-600 mt-1">
+                <Typography
+                  variant="body2"
+                  className="text-sm text-gray-600 mt-1"
+                >
                   Tab to reveal skip link (screen reader users)
                 </Typography>
               </div>
@@ -482,10 +496,11 @@ export const AccessibilityFeatures: Story = {
         <div className="space-y-4">
           <Typography variant="h4">🏷️ ARIA Attributes in Practice</Typography>
           <div className="space-y-4">
-            
             {/* Descriptive Labels */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">aria-label & aria-describedby</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                aria-label & aria-describedby
+              </Typography>
               <div className="flex gap-3 items-center flex-wrap">
                 <Button
                   variant="destructive"
@@ -495,7 +510,11 @@ export const AccessibilityFeatures: Story = {
                 >
                   Delete
                 </Button>
-                <Typography variant="body2" id="delete-warning" className="text-red-600">
+                <Typography
+                  variant="body2"
+                  id="delete-warning"
+                  className="text-red-600"
+                >
                   ⚠️ This action cannot be undone
                 </Typography>
               </div>
@@ -503,7 +522,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Expandable Content */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">aria-expanded & aria-controls</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                aria-expanded & aria-controls
+              </Typography>
               <div className="space-y-3">
                 <Button
                   variant="default"
@@ -515,11 +536,20 @@ export const AccessibilityFeatures: Story = {
                   {expanded ? 'Hide' : 'Show'} Advanced Options ▼
                 </Button>
                 {expanded && (
-                  <div id="expandable-content" className="p-3 bg-white border rounded">
-                    <Typography variant="body2">Advanced configuration options would appear here.</Typography>
+                  <div
+                    id="expandable-content"
+                    className="p-3 bg-white border rounded"
+                  >
+                    <Typography variant="body2">
+                      Advanced configuration options would appear here.
+                    </Typography>
                     <div className="flex gap-2 mt-2">
-                      <Button variant="text" size="small">Option 1</Button>
-                      <Button variant="text" size="small">Option 2</Button>
+                      <Button variant="text" size="small">
+                        Option 1
+                      </Button>
+                      <Button variant="text" size="small">
+                        Option 2
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -528,7 +558,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Loading States */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">aria-busy & Live Regions</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                aria-busy & Live Regions
+              </Typography>
               <div className="flex gap-3 items-center">
                 <Button
                   variant="primary"
@@ -553,15 +585,21 @@ export const AccessibilityFeatures: Story = {
 
             {/* Button Groups */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Button Groups with role="group"</Typography>
-              <div role="group" aria-labelledby="action-group-label" className="flex gap-2">
-                <Typography variant="body2" id="action-group-label" className="sr-only">
-                  File actions
-                </Typography>
-                <Button variant="default" aria-label="Save file">Save</Button>
-                <Button variant="default" aria-label="Copy file">Copy</Button>
-                <Button variant="destructive" aria-label="Delete file">Delete</Button>
-              </div>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Button Groups with role="group"
+              </Typography>
+              <fieldset className="flex gap-2">
+                <legend className="sr-only">File actions</legend>
+                <Button variant="default" aria-label="Save file">
+                  Save
+                </Button>
+                <Button variant="default" aria-label="Copy file">
+                  Copy
+                </Button>
+                <Button variant="destructive" aria-label="Delete file">
+                  Delete
+                </Button>
+              </fieldset>
             </div>
           </div>
         </div>
@@ -570,25 +608,40 @@ export const AccessibilityFeatures: Story = {
         <div className="space-y-4">
           <Typography variant="h4">📢 Screen Reader Optimizations</Typography>
           <div className="space-y-4">
-            
             {/* Context-Rich Labels */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Context-Rich Button Labels</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Context-Rich Button Labels
+              </Typography>
               <div className="space-y-3">
                 <div className="flex gap-3 items-center">
-                  <Button variant="text" testId="bad-label">Edit</Button>
-                  <Typography variant="body2" className="text-red-600">❌ Ambiguous - "Edit what?"</Typography>
+                  <Button variant="text" testId="bad-label">
+                    Edit
+                  </Button>
+                  <Typography variant="body2" className="text-red-600">
+                    ❌ Ambiguous - "Edit what?"
+                  </Typography>
                 </div>
                 <div className="flex gap-3 items-center">
-                  <Button variant="text" aria-label="Edit user profile settings" testId="good-label">Edit</Button>
-                  <Typography variant="body2" className="text-green-600">✅ Clear context provided</Typography>
+                  <Button
+                    variant="text"
+                    aria-label="Edit user profile settings"
+                    testId="good-label"
+                  >
+                    Edit
+                  </Button>
+                  <Typography variant="body2" className="text-green-600">
+                    ✅ Clear context provided
+                  </Typography>
                 </div>
               </div>
             </div>
 
             {/* Icon Buttons */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Icon Buttons with Accessible Names</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Icon Buttons with Accessible Names
+              </Typography>
               <div className="flex gap-3">
                 <Button
                   variant="default"
@@ -613,7 +666,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Status Announcements */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Dynamic Status Announcements</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Dynamic Status Announcements
+              </Typography>
               <div className="space-y-3">
                 <Button
                   variant="primary"
@@ -625,7 +680,11 @@ export const AccessibilityFeatures: Story = {
                 >
                   Add to Cart
                 </Button>
-                <div aria-live="assertive" aria-atomic="true" className="text-green-600 text-sm">
+                <div
+                  aria-live="assertive"
+                  aria-atomic="true"
+                  className="text-green-600 text-sm"
+                >
                   {announcement}
                 </div>
               </div>
@@ -638,13 +697,16 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🎯 Focus Management Patterns</Typography>
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
             <Typography variant="body2" className="text-yellow-800 mb-4">
-              <strong>Focus Indicators:</strong> All buttons provide clear visual focus indicators for keyboard users.
+              <strong>Focus Indicators:</strong> All buttons provide clear
+              visual focus indicators for keyboard users.
             </Typography>
-            
+
             <div className="space-y-4">
               {/* High Contrast Focus */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">High Contrast Focus Rings</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  High Contrast Focus Rings
+                </Typography>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <Button variant="primary">Primary Focus</Button>
                   <Button variant="default">Default Focus</Button>
@@ -657,11 +719,19 @@ export const AccessibilityFeatures: Story = {
 
               {/* Focus Order */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Logical Focus Order</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Logical Focus Order
+                </Typography>
                 <div className="flex gap-3 items-center">
-                  <Button variant="default" tabIndex={1}>First (tabindex=1)</Button>
-                  <Button variant="default" tabIndex={2}>Second (tabindex=2)</Button>
-                  <Button variant="default" tabIndex={3}>Third (tabindex=3)</Button>
+                  <Button variant="default" tabIndex="0">
+                    First (tabindex=1)
+                  </Button>
+                  <Button variant="default" tabIndex="0">
+                    Second (tabindex=2)
+                  </Button>
+                  <Button variant="default" tabIndex="0">
+                    Third (tabindex=3)
+                  </Button>
                   <Typography variant="body2" className="text-sm text-gray-600">
                     Custom tab order demonstration
                   </Typography>
@@ -676,13 +746,16 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🧪 Automated Testing Examples</Typography>
           <div className="p-4 bg-purple-50 border border-purple-200 rounded">
             <Typography variant="body2" className="text-purple-800 mb-4">
-              <strong>Testing Patterns:</strong> Examples of how to test accessibility features.
+              <strong>Testing Patterns:</strong> Examples of how to test
+              accessibility features.
             </Typography>
-            
+
             <div className="space-y-4">
               {/* Test ID Examples */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Test ID Patterns</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Test ID Patterns
+                </Typography>
                 <div className="flex gap-3 flex-wrap">
                   <Button testId="test-primary-action" variant="primary">
                     Primary Action
@@ -690,7 +763,10 @@ export const AccessibilityFeatures: Story = {
                   <Button testId="test-secondary-action" variant="default">
                     Secondary Action
                   </Button>
-                  <Button testId="test-destructive-action" variant="destructive">
+                  <Button
+                    testId="test-destructive-action"
+                    variant="destructive"
+                  >
                     Destructive Action
                   </Button>
                 </div>
@@ -701,19 +777,23 @@ export const AccessibilityFeatures: Story = {
 
               {/* Role-based Testing */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Role-based Testing</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Role-based Testing
+                </Typography>
                 <div className="flex gap-3">
                   <Button variant="primary">Submit Form</Button>
                   <Button variant="link">Cancel</Button>
                 </div>
                 <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
-                  screen.getByRole('button', {'{ name: \'Submit Form\' }'})
+                  screen.getByRole('button', {"{ name: 'Submit Form' }"})
                 </div>
               </div>
 
               {/* Accessibility Testing */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">ARIA Testing</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  ARIA Testing
+                </Typography>
                 <Button
                   variant="default"
                   aria-label="Close notification panel"
@@ -723,7 +803,8 @@ export const AccessibilityFeatures: Story = {
                   ×
                 </Button>
                 <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
-                  expect(button).toHaveAttribute('aria-label', 'Close notification panel')
+                  expect(button).toHaveAttribute('aria-label', 'Close
+                  notification panel')
                 </div>
               </div>
             </div>

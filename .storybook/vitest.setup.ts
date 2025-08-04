@@ -11,13 +11,13 @@ if (typeof window !== 'undefined') {
   console.log = noop;
   console.info = noop;
   console.debug = noop;
-  
+
   // Suppress unhandled errors
   window.addEventListener('error', (e) => {
     e.preventDefault();
     return false;
   });
-  
+
   window.addEventListener('unhandledrejection', (e) => {
     e.preventDefault();
     return false;
@@ -26,7 +26,7 @@ if (typeof window !== 'undefined') {
   // Node environment - selective suppression
   const originalError = console.error;
   const originalWarn = console.warn;
-  
+
   console.error = (...args) => {
     const message = args[0]?.toString() || '';
     if (
@@ -42,13 +42,10 @@ if (typeof window !== 'undefined') {
     }
     originalError(...args);
   };
-  
+
   console.warn = (...args) => {
     const message = args[0]?.toString() || '';
-    if (
-      message.includes('Warning:') ||
-      message.includes('act()')
-    ) {
+    if (message.includes('Warning:') || message.includes('act()')) {
       return;
     }
     originalWarn(...args);

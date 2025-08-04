@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
+import { configure } from '@testing-library/react';
 import React from 'react';
 import { vi } from 'vitest';
-import { configure } from '@testing-library/react';
 
 // Configure testing library
 configure({ asyncUtilTimeout: 2000 });
@@ -39,10 +39,7 @@ console.error = (...args) => {
 
 console.warn = (...args) => {
   const message = args[0]?.toString() || '';
-  if (
-    message.includes('Warning:') ||
-    message.includes('act()')
-  ) {
+  if (message.includes('Warning:') || message.includes('act()')) {
     return;
   }
   originalWarn(...args);

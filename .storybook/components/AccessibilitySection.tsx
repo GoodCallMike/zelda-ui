@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface AccessibilitySectionProps {
   title: string;
@@ -34,7 +34,9 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
       <h4 className={`text-lg font-semibold ${titleStyles[variant]}`}>
         {title}
       </h4>
-      <div className={`p-4 border rounded-lg ${variantStyles[variant]} ${className}`}>
+      <div
+        className={`p-4 border rounded-lg ${variantStyles[variant]} ${className}`}
+      >
         {children}
       </div>
     </div>
@@ -45,11 +47,16 @@ interface KeyboardShortcutProps {
   shortcuts: Array<{ key: string; action: string }>;
 }
 
-export const KeyboardShortcutTable: React.FC<KeyboardShortcutProps> = ({ shortcuts }) => {
+export const KeyboardShortcutTable: React.FC<KeyboardShortcutProps> = ({
+  shortcuts,
+}) => {
   return (
     <div className="space-y-2">
       {shortcuts.map(({ key, action }) => (
-        <div key={key} className="flex justify-between items-center p-2 bg-white border rounded">
+        <div
+          key={key}
+          className="flex justify-between items-center p-2 bg-white border rounded"
+        >
           <span className="text-sm">{action}</span>
           <kbd className="px-2 py-1 bg-gray-200 rounded text-sm font-mono">
             {key}
@@ -68,7 +75,9 @@ interface ARIAAttributeProps {
   }>;
 }
 
-export const ARIAAttributeList: React.FC<ARIAAttributeProps> = ({ attributes }) => {
+export const ARIAAttributeList: React.FC<ARIAAttributeProps> = ({
+  attributes,
+}) => {
   return (
     <div className="space-y-3">
       {attributes.map(({ name, purpose, example }) => (
@@ -79,9 +88,7 @@ export const ARIAAttributeList: React.FC<ARIAAttributeProps> = ({ attributes }) 
             </code>
             <span className="text-sm text-gray-600">{purpose}</span>
           </div>
-          <code className="text-xs text-gray-500 block">
-            {example}
-          </code>
+          <code className="text-xs text-gray-500 block">{example}</code>
         </div>
       ))}
     </div>
@@ -102,9 +109,7 @@ export const TestingExample: React.FC<TestingExampleProps> = ({
   return (
     <div className="space-y-2">
       <h5 className="font-semibold text-sm">{title}</h5>
-      {description && (
-        <p className="text-sm text-gray-600">{description}</p>
-      )}
+      {description && <p className="text-sm text-gray-600">{description}</p>}
       <pre className="p-3 bg-gray-900 text-gray-100 rounded text-xs overflow-x-auto">
         <code>{code}</code>
       </pre>
@@ -150,16 +155,14 @@ interface FocusIndicatorDemoProps {
 
 export const FocusIndicatorDemo: React.FC<FocusIndicatorDemoProps> = ({
   children,
-  instructions = "Use Tab to navigate between elements and observe the focus indicators.",
+  instructions = 'Use Tab to navigate between elements and observe the focus indicators.',
 }) => {
   return (
     <AccessibilitySection title="🎯 Focus Indicators" variant="warning">
       <AccessibilityTip type="tip">
         <strong>Try this:</strong> {instructions}
       </AccessibilityTip>
-      <div className="mt-4">
-        {children}
-      </div>
+      <div className="mt-4">{children}</div>
     </AccessibilitySection>
   );
 };
@@ -171,16 +174,14 @@ interface ScreenReaderDemoProps {
 
 export const ScreenReaderDemo: React.FC<ScreenReaderDemoProps> = ({
   children,
-  description = "These examples are optimized for screen reader users with proper labeling and descriptions.",
+  description = 'These examples are optimized for screen reader users with proper labeling and descriptions.',
 }) => {
   return (
     <AccessibilitySection title="📢 Screen Reader Support" variant="info">
       <AccessibilityTip type="info">
         <strong>Screen Reader Note:</strong> {description}
       </AccessibilityTip>
-      <div className="mt-4 space-y-4">
-        {children}
-      </div>
+      <div className="mt-4 space-y-4">{children}</div>
     </AccessibilitySection>
   );
 };
@@ -192,7 +193,11 @@ interface AccessibilityDemoProps {
   children: React.ReactNode;
   keyboardShortcuts?: Array<{ key: string; action: string }>;
   ariaAttributes?: Array<{ name: string; purpose: string; example: string }>;
-  testingExamples?: Array<{ title: string; code: string; description?: string }>;
+  testingExamples?: Array<{
+    title: string;
+    code: string;
+    description?: string;
+  }>;
 }
 
 export const AccessibilityDemo: React.FC<AccessibilityDemoProps> = ({
@@ -233,9 +238,9 @@ export const AccessibilityDemo: React.FC<AccessibilityDemoProps> = ({
       {testingExamples && (
         <AccessibilitySection title="🧪 Testing Examples">
           <div className="space-y-4">
-            {testingExamples.map((example, index) => (
+            {testingExamples.map((example) => (
               <TestingExample
-                key={index}
+                key={example.title}
                 title={example.title}
                 code={example.code}
                 description={example.description}

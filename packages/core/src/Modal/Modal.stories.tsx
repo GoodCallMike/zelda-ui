@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Select } from '../Select';
@@ -542,7 +542,11 @@ export const AccessibilityFeatures: Story = {
     const [ariaModal, setAriaModal] = useState(false);
     const [screenReaderModal, setScreenReaderModal] = useState(false);
     const [announcement, setAnnouncement] = useState('');
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      message: '',
+    });
 
     const handleFormSubmit = () => {
       setAnnouncement('Form submitted successfully!');
@@ -557,15 +561,22 @@ export const AccessibilityFeatures: Story = {
             🔍 Modal Accessibility Comprehensive Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Modal's complete accessibility features including focus management, 
-            keyboard navigation, ARIA attributes, and screen reader optimizations.
+            This story demonstrates the Modal's complete accessibility features
+            including focus management, keyboard navigation, ARIA attributes,
+            and screen reader optimizations.
           </Typography>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             <Button onClick={() => setBasicModal(true)}>Basic Features</Button>
-            <Button onClick={() => setFocusModal(true)}>Focus Management</Button>
-            <Button onClick={() => setKeyboardModal(true)}>Keyboard Navigation</Button>
+            <Button onClick={() => setFocusModal(true)}>
+              Focus Management
+            </Button>
+            <Button onClick={() => setKeyboardModal(true)}>
+              Keyboard Navigation
+            </Button>
             <Button onClick={() => setAriaModal(true)}>ARIA Attributes</Button>
-            <Button onClick={() => setScreenReaderModal(true)}>Screen Reader</Button>
+            <Button onClick={() => setScreenReaderModal(true)}>
+              Screen Reader
+            </Button>
           </div>
         </div>
 
@@ -585,22 +596,34 @@ export const AccessibilityFeatures: Story = {
             <Typography variant="body1">
               This modal demonstrates fundamental accessibility features:
             </Typography>
-            
+
             <div className="space-y-3">
               <div className="p-3 bg-green-50 border border-green-200 rounded">
-                <Typography variant="body2" className="font-semibold text-green-800 mb-2">
+                <Typography
+                  variant="body2"
+                  className="font-semibold text-green-800 mb-2"
+                >
                   ✅ Semantic Structure
                 </Typography>
                 <ul className="text-sm space-y-1 text-green-700">
-                  <li>• <code>role="dialog"</code> - Identifies as dialog</li>
-                  <li>• <code>aria-modal="true"</code> - Modal behavior</li>
-                  <li>• <code>aria-labelledby</code> - References title</li>
+                  <li>
+                    • <code>role="dialog"</code> - Identifies as dialog
+                  </li>
+                  <li>
+                    • <code>aria-modal="true"</code> - Modal behavior
+                  </li>
+                  <li>
+                    • <code>aria-labelledby</code> - References title
+                  </li>
                   <li>• Semantic HTML structure</li>
                 </ul>
               </div>
 
               <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                <Typography variant="body2" className="font-semibold text-blue-800 mb-2">
+                <Typography
+                  variant="body2"
+                  className="font-semibold text-blue-800 mb-2"
+                >
                   🔒 Focus Management
                 </Typography>
                 <ul className="text-sm space-y-1 text-blue-700">
@@ -612,19 +635,35 @@ export const AccessibilityFeatures: Story = {
               </div>
 
               <div className="p-3 bg-purple-50 border border-purple-200 rounded">
-                <Typography variant="body2" className="font-semibold text-purple-800 mb-2">
+                <Typography
+                  variant="body2"
+                  className="font-semibold text-purple-800 mb-2"
+                >
                   ⌨️ Keyboard Support
                 </Typography>
                 <ul className="text-sm space-y-1 text-purple-700">
-                  <li>• <kbd className="bg-white px-1 rounded">Escape</kbd> closes modal</li>
-                  <li>• <kbd className="bg-white px-1 rounded">Tab</kbd> navigates elements</li>
-                  <li>• <kbd className="bg-white px-1 rounded">Enter/Space</kbd> activates buttons</li>
+                  <li>
+                    • <kbd className="bg-white px-1 rounded">Escape</kbd> closes
+                    modal
+                  </li>
+                  <li>
+                    • <kbd className="bg-white px-1 rounded">Tab</kbd> navigates
+                    elements
+                  </li>
+                  <li>
+                    • <kbd className="bg-white px-1 rounded">Enter/Space</kbd>{' '}
+                    activates buttons
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div className="flex gap-2 justify-end mt-6">
-              <Button variant="default" onClick={() => setBasicModal(false)} testId="basic-close">
+              <Button
+                variant="default"
+                onClick={() => setBasicModal(false)}
+                testId="basic-close"
+              >
                 Close
               </Button>
             </div>
@@ -642,12 +681,13 @@ export const AccessibilityFeatures: Story = {
             <Typography variant="body1">
               Focus is automatically managed when the modal opens and closes:
             </Typography>
-            
+
             <div className="space-y-4">
               <div className="p-3 bg-yellow-50 border border-yellow-200 rounded">
                 <Typography variant="body2" className="text-yellow-800 mb-3">
-                  <strong>Focus Trap Demo:</strong> Use Tab and Shift+Tab to navigate. 
-                  Focus will cycle through elements and cannot escape the modal.
+                  <strong>Focus Trap Demo:</strong> Use Tab and Shift+Tab to
+                  navigate. Focus will cycle through elements and cannot escape
+                  the modal.
                 </Typography>
               </div>
 
@@ -683,17 +723,26 @@ export const AccessibilityFeatures: Story = {
 
               <div className="p-3 bg-green-50 border border-green-200 rounded">
                 <Typography variant="body2" className="text-green-800">
-                  <strong>Try this:</strong> Navigate with Tab/Shift+Tab. Notice how focus 
-                  cycles through elements and returns to the first when reaching the end.
+                  <strong>Try this:</strong> Navigate with Tab/Shift+Tab. Notice
+                  how focus cycles through elements and returns to the first
+                  when reaching the end.
                 </Typography>
               </div>
             </div>
 
             <div className="flex gap-2 justify-end">
-              <Button variant="default" onClick={() => setFocusModal(false)} testId="focus-cancel">
+              <Button
+                variant="default"
+                onClick={() => setFocusModal(false)}
+                testId="focus-cancel"
+              >
                 Cancel
               </Button>
-              <Button variant="primary" onClick={() => setFocusModal(false)} testId="focus-save">
+              <Button
+                variant="primary"
+                onClick={() => setFocusModal(false)}
+                testId="focus-save"
+              >
                 Save Changes
               </Button>
             </div>
@@ -721,12 +770,27 @@ export const AccessibilityFeatures: Story = {
                   {[
                     { key: 'Escape', action: 'Close modal immediately' },
                     { key: 'Tab', action: 'Move to next focusable element' },
-                    { key: 'Shift + Tab', action: 'Move to previous focusable element' },
-                    { key: 'Enter', action: 'Activate focused button or submit form' },
-                    { key: 'Space', action: 'Activate focused button or checkbox' },
-                    { key: 'Arrow Keys', action: 'Navigate within select/radio groups' },
+                    {
+                      key: 'Shift + Tab',
+                      action: 'Move to previous focusable element',
+                    },
+                    {
+                      key: 'Enter',
+                      action: 'Activate focused button or submit form',
+                    },
+                    {
+                      key: 'Space',
+                      action: 'Activate focused button or checkbox',
+                    },
+                    {
+                      key: 'Arrow Keys',
+                      action: 'Navigate within select/radio groups',
+                    },
                   ].map(({ key, action }) => (
-                    <div key={key} className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <div
+                      key={key}
+                      className="flex justify-between items-center p-2 bg-gray-50 rounded"
+                    >
                       <span className="text-sm">{action}</span>
                       <kbd className="px-2 py-1 bg-gray-200 rounded text-sm font-mono">
                         {key}
@@ -740,15 +804,23 @@ export const AccessibilityFeatures: Story = {
               <div className="space-y-4">
                 <Typography variant="h4">🔧 Interactive Demo</Typography>
                 <div className="space-y-3">
-                  <Button variant="primary" className="w-full" testId="keyboard-primary">
+                  <Button
+                    variant="primary"
+                    className="w-full"
+                    testId="keyboard-primary"
+                  >
                     Primary Action (Enter/Space)
                   </Button>
-                  <Button variant="default" className="w-full" testId="keyboard-secondary">
+                  <Button
+                    variant="default"
+                    className="w-full"
+                    testId="keyboard-secondary"
+                  >
                     Secondary Action
                   </Button>
-                  <Input 
-                    label="Text Input" 
-                    placeholder="Type and use Tab to navigate" 
+                  <Input
+                    label="Text Input"
+                    placeholder="Type and use Tab to navigate"
                     testId="keyboard-input"
                   />
                   <Select
@@ -767,13 +839,18 @@ export const AccessibilityFeatures: Story = {
 
             <div className="p-4 bg-blue-50 border border-blue-200 rounded">
               <Typography variant="body2" className="text-blue-800">
-                <strong>Accessibility Tip:</strong> This modal demonstrates proper keyboard navigation. 
-                Try using only your keyboard to interact with all elements. Press Escape at any time to close.
+                <strong>Accessibility Tip:</strong> This modal demonstrates
+                proper keyboard navigation. Try using only your keyboard to
+                interact with all elements. Press Escape at any time to close.
               </Typography>
             </div>
 
             <div className="flex gap-2 justify-end">
-              <Button variant="default" onClick={() => setKeyboardModal(false)} testId="keyboard-close">
+              <Button
+                variant="default"
+                onClick={() => setKeyboardModal(false)}
+                testId="keyboard-close"
+              >
                 Close Guide
               </Button>
             </div>
@@ -790,7 +867,8 @@ export const AccessibilityFeatures: Story = {
         >
           <div className="space-y-6">
             <Typography variant="body1" id="aria-description">
-              This modal demonstrates proper ARIA attribute usage for enhanced accessibility:
+              This modal demonstrates proper ARIA attribute usage for enhanced
+              accessibility:
             </Typography>
 
             <div className="space-y-4">
@@ -812,7 +890,7 @@ export const AccessibilityFeatures: Story = {
                 <Typography variant="body2" className="font-semibold">
                   Form Elements with ARIA
                 </Typography>
-                
+
                 <Input
                   label="Required Field"
                   placeholder="This field is required"
@@ -821,7 +899,11 @@ export const AccessibilityFeatures: Story = {
                   aria-describedby="required-help"
                   testId="aria-required-input"
                 />
-                <Typography variant="body2" id="required-help" className="text-sm text-gray-600">
+                <Typography
+                  variant="body2"
+                  id="required-help"
+                  className="text-sm text-gray-600"
+                >
                   This field must be completed before submission
                 </Typography>
 
@@ -833,7 +915,11 @@ export const AccessibilityFeatures: Story = {
                   aria-describedby="email-help"
                   testId="aria-email-input"
                 />
-                <Typography variant="body2" id="email-help" className="text-sm text-gray-600">
+                <Typography
+                  variant="body2"
+                  id="email-help"
+                  className="text-sm text-gray-600"
+                >
                   Enter a valid email address for notifications
                 </Typography>
 
@@ -841,43 +927,55 @@ export const AccessibilityFeatures: Story = {
                   <Typography variant="body2" className="font-semibold mb-2">
                     Options Group
                   </Typography>
-                  <div role="group" aria-labelledby="options-label">
-                    <Typography variant="body2" id="options-label" className="mb-2">
-                      Notification Preferences
-                    </Typography>
+                  <fieldset>
+                    <legend className="mb-2">Notification Preferences</legend>
                     <div className="space-y-2">
                       <label className="flex items-center gap-2">
-                        <input type="checkbox" aria-describedby="email-notifications-desc" />
+                        <input
+                          type="checkbox"
+                          aria-describedby="email-notifications-desc"
+                        />
                         <span>Email notifications</span>
                       </label>
-                      <Typography variant="body2" id="email-notifications-desc" className="text-sm text-gray-600 ml-6">
+                      <Typography
+                        variant="body2"
+                        id="email-notifications-desc"
+                        className="text-sm text-gray-600 ml-6"
+                      >
                         Receive updates via email
                       </Typography>
-                      
+
                       <label className="flex items-center gap-2">
-                        <input type="checkbox" aria-describedby="sms-notifications-desc" />
+                        <input
+                          type="checkbox"
+                          aria-describedby="sms-notifications-desc"
+                        />
                         <span>SMS notifications</span>
                       </label>
-                      <Typography variant="body2" id="sms-notifications-desc" className="text-sm text-gray-600 ml-6">
+                      <Typography
+                        variant="body2"
+                        id="sms-notifications-desc"
+                        className="text-sm text-gray-600 ml-6"
+                      >
                         Receive updates via text message
                       </Typography>
                     </div>
-                  </div>
+                  </fieldset>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-2 justify-end">
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 onClick={() => setAriaModal(false)}
                 aria-label="Cancel and close ARIA demonstration modal"
                 testId="aria-cancel"
               >
                 Cancel
               </Button>
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 onClick={() => setAriaModal(false)}
                 aria-label="Save settings and close modal"
                 testId="aria-save"
@@ -897,22 +995,34 @@ export const AccessibilityFeatures: Story = {
         >
           <div className="space-y-6">
             <Typography variant="body1">
-              This modal is optimized for screen reader users with clear labels, 
+              This modal is optimized for screen reader users with clear labels,
               descriptions, and status announcements:
             </Typography>
 
-            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
+            <form
+              className="space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleFormSubmit();
+              }}
+            >
               <Input
                 label="Full Name"
                 value={formData.name}
-                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, name: e.target.value }))
+                }
                 placeholder="Enter your full name"
                 required
                 aria-required="true"
                 aria-describedby="name-help"
                 testId="sr-name-input"
               />
-              <Typography variant="body2" id="name-help" className="text-sm text-gray-600">
+              <Typography
+                variant="body2"
+                id="name-help"
+                className="text-sm text-gray-600"
+              >
                 Your name will be used for personalized communications
               </Typography>
 
@@ -920,14 +1030,20 @@ export const AccessibilityFeatures: Story = {
                 label="Email Address"
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, email: e.target.value }))
+                }
                 placeholder="your.email@example.com"
                 required
                 aria-required="true"
                 aria-describedby="email-format-help"
                 testId="sr-email-input"
               />
-              <Typography variant="body2" id="email-format-help" className="text-sm text-gray-600">
+              <Typography
+                variant="body2"
+                id="email-format-help"
+                className="text-sm text-gray-600"
+              >
                 We'll use this to send you important updates and notifications
               </Typography>
 
@@ -935,34 +1051,41 @@ export const AccessibilityFeatures: Story = {
                 type="textarea"
                 label="Message"
                 value={formData.message}
-                onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, message: e.target.value }))
+                }
                 placeholder="Tell us how we can help you..."
                 rows={4}
                 aria-describedby="message-help"
                 testId="sr-message-input"
               />
-              <Typography variant="body2" id="message-help" className="text-sm text-gray-600">
+              <Typography
+                variant="body2"
+                id="message-help"
+                className="text-sm text-gray-600"
+              >
                 Describe your inquiry or feedback in detail (optional)
               </Typography>
 
               <div className="p-3 bg-blue-50 border border-blue-200 rounded">
                 <Typography variant="body2" className="text-blue-800">
-                  <strong>Screen Reader Note:</strong> All form fields have descriptive labels 
-                  and help text. Required fields are clearly marked and announced.
+                  <strong>Screen Reader Note:</strong> All form fields have
+                  descriptive labels and help text. Required fields are clearly
+                  marked and announced.
                 </Typography>
               </div>
 
               <div className="flex gap-2 justify-end">
-                <Button 
+                <Button
                   type="button"
-                  variant="default" 
+                  variant="default"
                   onClick={() => setScreenReaderModal(false)}
                   aria-label="Cancel form submission and close modal"
                   testId="sr-cancel"
                 >
                   Cancel
                 </Button>
-                <Button 
+                <Button
                   type="submit"
                   variant="primary"
                   aria-label="Submit contact form"
@@ -977,13 +1100,12 @@ export const AccessibilityFeatures: Story = {
 
         {/* Success Announcement */}
         {announcement && (
-          <div 
-            role="status" 
-            aria-live="polite" 
+          <output
+            aria-live="polite"
             className="fixed bottom-4 right-4 bg-green-100 border border-green-200 text-green-800 px-4 py-2 rounded shadow-lg"
           >
             {announcement}
-          </div>
+          </output>
         )}
       </div>
     );

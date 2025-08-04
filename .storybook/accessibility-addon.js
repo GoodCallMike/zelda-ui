@@ -9,14 +9,14 @@ export const accessibilityConfig = {
       // Color contrast checking
       'color-contrast': { enabled: true },
       // Keyboard navigation
-      'keyboard': { enabled: true },
+      keyboard: { enabled: true },
       // Focus management
       'focus-order-semantics': { enabled: true },
       // ARIA attributes
       'aria-valid-attr': { enabled: true },
       'aria-valid-attr-value': { enabled: true },
       // Form labels
-      'label': { enabled: true },
+      label: { enabled: true },
       // Semantic HTML
       'button-name': { enabled: true },
       'link-name': { enabled: true },
@@ -29,44 +29,44 @@ export const accessibilityConfig = {
   keyboardPatterns: {
     // Universal patterns
     universal: {
-      'Tab': 'Move to next focusable element',
+      Tab: 'Move to next focusable element',
       'Shift + Tab': 'Move to previous focusable element',
-      'Enter': 'Activate buttons, links, and form controls',
-      'Space': 'Activate buttons and checkboxes',
-      'Escape': 'Close modals, dropdowns, and overlays',
+      Enter: 'Activate buttons, links, and form controls',
+      Space: 'Activate buttons and checkboxes',
+      Escape: 'Close modals, dropdowns, and overlays',
     },
-    
+
     // Component-specific patterns
     modal: {
-      'Escape': 'Close modal',
-      'Tab': 'Cycle through modal elements (focus trapped)',
+      Escape: 'Close modal',
+      Tab: 'Cycle through modal elements (focus trapped)',
     },
-    
+
     select: {
       'Arrow Up/Down': 'Navigate options',
       'Enter/Space': 'Select option',
-      'Escape': 'Close dropdown',
+      Escape: 'Close dropdown',
       'Home/End': 'First/last option',
     },
-    
+
     button: {
-      'Enter': 'Activate button',
-      'Space': 'Activate button',
+      Enter: 'Activate button',
+      Space: 'Activate button',
     },
-    
+
     input: {
-      'Tab': 'Move between form fields',
+      Tab: 'Move between form fields',
       'Arrow Keys': 'Navigate within input content',
     },
-    
+
     checkbox: {
-      'Space': 'Toggle checkbox',
-      'Tab': 'Move between checkboxes',
+      Space: 'Toggle checkbox',
+      Tab: 'Move between checkboxes',
     },
-    
+
     radio: {
       'Arrow Keys': 'Navigate radio group',
-      'Tab': 'Move between radio groups',
+      Tab: 'Move between radio groups',
     },
   },
 
@@ -75,7 +75,7 @@ export const accessibilityConfig = {
     // Common attributes
     'aria-label': {
       purpose: 'Accessible name',
-      usage: 'When visible label isn\'t sufficient',
+      usage: "When visible label isn't sufficient",
       example: 'aria-label="Close dialog"',
     },
     'aria-labelledby': {
@@ -123,7 +123,7 @@ export const accessibilityConfig = {
       usage: 'For dynamic content updates',
       example: 'aria-live="polite"',
     },
-    'role': {
+    role: {
       purpose: 'Element purpose',
       usage: 'Defines semantic meaning',
       example: 'role="dialog"',
@@ -145,7 +145,7 @@ test('Component has no accessibility violations', async () => {
   expect(results).toHaveNoViolations();
 });
     `,
-    
+
     // Keyboard testing
     keyboard: `
 import { render, screen } from '@testing-library/react';
@@ -166,7 +166,7 @@ test('Button is keyboard accessible', async () => {
   // Assert expected behavior
 });
     `,
-    
+
     // Screen reader testing
     screenReader: `
 test('Component is screen reader accessible', () => {
@@ -188,7 +188,10 @@ test('Component is screen reader accessible', () => {
 };
 
 // Helper function to create accessibility documentation
-export const createAccessibilityDocs = (componentName, specificPatterns = {}) => {
+export const createAccessibilityDocs = (
+  componentName,
+  specificPatterns = {},
+) => {
   return {
     title: `${componentName} Accessibility`,
     description: `
@@ -197,7 +200,10 @@ export const createAccessibilityDocs = (componentName, specificPatterns = {}) =>
 The ${componentName} component is fully accessible with WCAG 2.1 AA compliance:
 
 ### Keyboard Navigation
-${Object.entries({ ...accessibilityConfig.keyboardPatterns.universal, ...specificPatterns.keyboard || {} })
+${Object.entries({
+  ...accessibilityConfig.keyboardPatterns.universal,
+  ...(specificPatterns.keyboard || {}),
+})
   .map(([key, description]) => `- **${key}**: ${description}`)
   .join('\n')}
 

@@ -728,7 +728,7 @@ export const AccessibilityFeatures: Story = {
 
     const validateField = (field: string, value: string) => {
       const newErrors = { ...errors };
-      
+
       switch (field) {
         case 'name':
           if (value.length < 3) {
@@ -752,12 +752,12 @@ export const AccessibilityFeatures: Story = {
           }
           break;
       }
-      
+
       setErrors(newErrors);
     };
 
     const handleInputChange = (field: string, value: string) => {
-      setFormData(prev => ({ ...prev, [field]: value }));
+      setFormData((prev) => ({ ...prev, [field]: value }));
       validateField(field, value);
     };
 
@@ -778,8 +778,9 @@ export const AccessibilityFeatures: Story = {
             🔍 Input Accessibility Comprehensive Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Input component's complete accessibility features including 
-            keyboard navigation, screen reader support, ARIA attributes, and form validation patterns.
+            This story demonstrates the Input component's complete accessibility
+            features including keyboard navigation, screen reader support, ARIA
+            attributes, and form validation patterns.
           </Typography>
         </div>
 
@@ -788,13 +789,16 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">⌨️ Keyboard Navigation Patterns</Typography>
           <div className="p-4 bg-green-50 border border-green-200 rounded">
             <Typography variant="body2" className="text-green-800 mb-4">
-              <strong>Interactive Demo:</strong> Use keyboard to navigate and interact with these inputs.
+              <strong>Interactive Demo:</strong> Use keyboard to navigate and
+              interact with these inputs.
             </Typography>
-            
+
             <div className="space-y-4">
               {/* Basic Tab Navigation */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Basic Tab Navigation</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Basic Tab Navigation
+                </Typography>
                 <div className="space-y-3">
                   <Input
                     label="First Input"
@@ -819,21 +823,29 @@ export const AccessibilityFeatures: Story = {
 
               {/* Text Selection and Navigation */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Text Selection & Arrow Keys</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Text Selection & Arrow Keys
+                </Typography>
                 <Input
                   label="Text Navigation Demo"
                   defaultValue="Use arrow keys to navigate within this text"
                   placeholder="Arrow keys navigate within text"
                   testId="text-navigation"
                 />
-                <Typography variant="body2" className="text-sm text-gray-600 mt-1">
-                  Use arrow keys to move cursor, Ctrl+A to select all, Home/End for line navigation
+                <Typography
+                  variant="body2"
+                  className="text-sm text-gray-600 mt-1"
+                >
+                  Use arrow keys to move cursor, Ctrl+A to select all, Home/End
+                  for line navigation
                 </Typography>
               </div>
 
               {/* Textarea Navigation */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Textarea Navigation</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Textarea Navigation
+                </Typography>
                 <Input
                   type="textarea"
                   label="Multi-line Navigation"
@@ -850,10 +862,11 @@ export const AccessibilityFeatures: Story = {
         <div className="space-y-4">
           <Typography variant="h4">🏷️ ARIA Attributes in Practice</Typography>
           <div className="space-y-4">
-            
             {/* Descriptive Labels */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">aria-describedby & Help Text</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                aria-describedby & Help Text
+              </Typography>
               <div className="space-y-3">
                 <Input
                   label="Hero Name"
@@ -887,7 +900,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Required Fields */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">aria-required & Required Fields</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                aria-required & Required Fields
+              </Typography>
               <Input
                 label="Email Address"
                 type="email"
@@ -921,7 +936,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Complex ARIA Relationships */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Complex ARIA Relationships</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Complex ARIA Relationships
+              </Typography>
               <Input
                 label="Password"
                 type="password"
@@ -947,7 +964,9 @@ export const AccessibilityFeatures: Story = {
                   variant="body2"
                   id="password-strength"
                   className={`text-sm ${
-                    formData.password.length >= 8 ? 'text-green-600' : 'text-yellow-600'
+                    formData.password.length >= 8
+                      ? 'text-green-600'
+                      : 'text-yellow-600'
                   }`}
                 >
                   Strength: {formData.password.length >= 8 ? 'Strong' : 'Weak'}
@@ -970,10 +989,11 @@ export const AccessibilityFeatures: Story = {
         <div className="space-y-4">
           <Typography variant="h4">📢 Screen Reader Optimizations</Typography>
           <div className="space-y-4">
-            
             {/* Character Count Announcements */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Character Count Announcements</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Character Count Announcements
+              </Typography>
               <Input
                 label="Limited Text Input"
                 placeholder="Type to see character count"
@@ -993,7 +1013,9 @@ export const AccessibilityFeatures: Story = {
 
             {/* Search Input with Clear */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Search Input with Clear Button</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Search Input with Clear Button
+              </Typography>
               <Input
                 label="Search Items"
                 type="search"
@@ -1003,14 +1025,19 @@ export const AccessibilityFeatures: Story = {
                 aria-label="Search through available items in inventory"
                 testId="search-input"
               />
-              <Typography variant="body2" className="text-gray-600 text-sm mt-1">
+              <Typography
+                variant="body2"
+                className="text-gray-600 text-sm mt-1"
+              >
                 Clear button is announced as "Clear search" to screen readers
               </Typography>
             </div>
 
             {/* Textarea with Rich Context */}
             <div className="p-3 bg-gray-50 border rounded">
-              <Typography variant="body2" className="font-semibold mb-3">Textarea with Rich Context</Typography>
+              <Typography variant="body2" className="font-semibold mb-3">
+                Textarea with Rich Context
+              </Typography>
               <Input
                 type="textarea"
                 label="Quest Description"
@@ -1048,18 +1075,21 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🎯 Focus Management</Typography>
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
             <Typography variant="body2" className="text-yellow-800 mb-4">
-              <strong>Focus Indicators:</strong> All inputs provide clear visual focus indicators 
-              and maintain consistent focus behavior across variants.
+              <strong>Focus Indicators:</strong> All inputs provide clear visual
+              focus indicators and maintain consistent focus behavior across
+              variants.
             </Typography>
-            
+
             <div className="space-y-4">
               {/* Focus Ring Visibility */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Focus Ring Visibility</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Focus Ring Visibility
+                </Typography>
                 <div className="space-y-3">
-                  <Input 
-                    label="Default Variant" 
-                    placeholder="Clear focus ring on default variant" 
+                  <Input
+                    label="Default Variant"
+                    placeholder="Clear focus ring on default variant"
                     variant="default"
                   />
                   <Input
@@ -1077,14 +1107,31 @@ export const AccessibilityFeatures: Story = {
 
               {/* Focus Order */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Logical Focus Order</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Logical Focus Order
+                </Typography>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <Input label="First Column, First Row" placeholder="Focus order 1" />
-                  <Input label="Second Column, First Row" placeholder="Focus order 2" />
-                  <Input label="First Column, Second Row" placeholder="Focus order 3" />
-                  <Input label="Second Column, Second Row" placeholder="Focus order 4" />
+                  <Input
+                    label="First Column, First Row"
+                    placeholder="Focus order 1"
+                  />
+                  <Input
+                    label="Second Column, First Row"
+                    placeholder="Focus order 2"
+                  />
+                  <Input
+                    label="First Column, Second Row"
+                    placeholder="Focus order 3"
+                  />
+                  <Input
+                    label="Second Column, Second Row"
+                    placeholder="Focus order 4"
+                  />
                 </div>
-                <Typography variant="body2" className="text-sm text-gray-600 mt-2">
+                <Typography
+                  variant="body2"
+                  className="text-sm text-gray-600 mt-2"
+                >
                   Tab order follows reading order: left to right, top to bottom
                 </Typography>
               </div>
@@ -1097,13 +1144,16 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🧪 Automated Testing Examples</Typography>
           <div className="p-4 bg-purple-50 border border-purple-200 rounded">
             <Typography variant="body2" className="text-purple-800 mb-4">
-              <strong>Testing Patterns:</strong> Examples of how to test input accessibility features.
+              <strong>Testing Patterns:</strong> Examples of how to test input
+              accessibility features.
             </Typography>
-            
+
             <div className="space-y-4">
               {/* Test ID Examples */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Test ID Patterns</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Test ID Patterns
+                </Typography>
                 <div className="space-y-3">
                   <Input
                     testId="test-basic-input"
@@ -1131,8 +1181,13 @@ export const AccessibilityFeatures: Story = {
 
               {/* Label Testing */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">Label Association Testing</Typography>
-                <Input label="Accessible Label Test" placeholder="Test label association" />
+                <Typography variant="body2" className="font-semibold mb-2">
+                  Label Association Testing
+                </Typography>
+                <Input
+                  label="Accessible Label Test"
+                  placeholder="Test label association"
+                />
                 <div className="mt-2 p-2 bg-white rounded text-xs font-mono">
                   screen.getByLabelText('Accessible Label Test')
                 </div>
@@ -1140,7 +1195,9 @@ export const AccessibilityFeatures: Story = {
 
               {/* ARIA Testing */}
               <div>
-                <Typography variant="body2" className="font-semibold mb-2">ARIA Attribute Testing</Typography>
+                <Typography variant="body2" className="font-semibold mb-2">
+                  ARIA Attribute Testing
+                </Typography>
                 <Input
                   label="ARIA Test Input"
                   aria-label="Input for testing ARIA attributes"
