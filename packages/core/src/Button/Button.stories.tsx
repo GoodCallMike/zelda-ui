@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 import { Typography } from '../Typography';
+import { Divider } from '../Divider';
+import { Card } from '../Card';
 import { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Button> = {
@@ -288,22 +290,16 @@ export const DarkMode: Story = {
 };
 
 export const WithIcons: Story = {
-  render: () => {
-    console.log('Icons:', { SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon });
-    return (
-      <div className="space-y-4">
-        <div className="flex flex-wrap gap-3">
-          <Button variant="primary" icon={SearchLgIcon}>Search</Button>
-          <Button variant="default" icon={PlusIcon}>Add Item</Button>
-          <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
-          <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
-        </div>
-        <div className="text-sm text-gray-500 mt-2">
-          Icons loaded: {[SearchLgIcon, PlusIcon, Trash01Icon, ArrowRightIcon].map(icon => icon?.name || 'unnamed').join(', ')}
-        </div>
+  render: () => (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-3">
+        <Button variant="primary" icon={SearchLgIcon}>Search</Button>
+        <Button variant="default" icon={PlusIcon}>Add Item</Button>
+        <Button variant="destructive" icon={Trash01Icon}>Delete</Button>
+        <Button variant="primary" icon={ArrowRightIcon} iconPosition="right">Continue</Button>
       </div>
-    );
-  },
+    </div>
+  ),
   parameters: {
     docs: {
       description: {
@@ -317,15 +313,15 @@ export const RealWorldExamples: Story = {
   render: () => (
     <div className="space-y-8 max-w-4xl">
       {/* Game Menu Interface */}
-      <div className="p-6 border rounded-lg">
-        <h2 className="text-xl font-bold mb-6">Main Menu</h2>
+      <Card variant="elevated">
+        <h2 className="text-xl font-bold mb-6">🎮 Main Menu</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Adventure Awaits</h3>
             <p className="text-gray-600 mb-4">
               Begin your legendary journey through the kingdom of Hyrule. Face ancient evils, solve mystical puzzles, and become the hero of legend.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button variant="primary">New Game</Button>
               <Button variant="default">Continue</Button>
             </div>
@@ -340,17 +336,19 @@ export const RealWorldExamples: Story = {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
+
+      <Divider className="my-8" />
 
       {/* Inventory Management */}
-      <div className="p-6 border rounded-lg">
-        <h2 className="text-xl font-bold mb-4">Inventory Management</h2>
+      <Card variant="elevated">
+        <h2 className="text-xl font-bold mb-4">🎒 Inventory Management</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <h3 className="text-lg font-semibold mb-3">Items</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {['Master Sword', 'Hylian Shield', 'Bow of Light', 'Triforce Shard'].map((item) => (
-                <div key={item} className="p-3 border rounded text-center">
+                <div key={item} className="p-3 border border-gray-200 rounded bg-gray-50 text-center">
                   <p className="text-sm mb-2">{item}</p>
                   <div className="flex gap-1">
                     <Button variant="text" className="text-xs p-1">Use</Button>
@@ -362,18 +360,20 @@ export const RealWorldExamples: Story = {
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Actions</h3>
-            <div className="space-y-2">
-              <Button variant="default" className="w-full">Sort Items</Button>
-              <Button variant="dashed" className="w-full">Quick Use</Button>
-              <Button variant="text" className="w-full">Item Details</Button>
-              <Button variant="destructive" className="w-full">Drop All Junk</Button>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="default">Sort Items</Button>
+              <Button variant="dashed">Quick Use</Button>
+              <Button variant="text">Item Details</Button>
+              <Button variant="destructive">Drop All Junk</Button>
             </div>
           </div>
         </div>
-      </div>
+      </Card>
+
+      <Divider className="my-8" />
 
       {/* Confirmation Dialog */}
-      <div className="p-6 border-2 border-red-200 rounded-lg bg-red-50">
+      <Card className="border-2 border-red-200 bg-red-50">
         <h3 className="text-lg font-semibold text-red-800 mb-2">⚠️ Dangerous Action</h3>
         <p className="text-gray-700 mb-4">
           Are you sure you want to delete this save file? This action cannot be undone. All progress, items, and achievements will be permanently lost.
@@ -381,18 +381,20 @@ export const RealWorldExamples: Story = {
         <p className="text-sm text-gray-500 mb-4">
           Save file: "Hero of Time" - 45 hours played - Last saved: Temple of Time
         </p>
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <Button variant="destructive">Yes, Delete Forever</Button>
           <Button variant="default">Cancel</Button>
           <Button variant="link">Backup First</Button>
         </div>
-      </div>
+      </Card>
+      
+      <Divider className="my-8" />
       
       {/* Dark Mode Complex Examples */}
-      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
+      <Card className="dark bg-gray-900 border-gray-700 space-y-6" variant="elevated">
         <Typography variant="h2">🌙 Night Mode Interface</Typography>
         
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">⚔️ Combat Actions</Typography>
           <div className="grid grid-cols-2 gap-4">
             <Button variant="primary">Attack</Button>
@@ -402,21 +404,21 @@ export const RealWorldExamples: Story = {
           </div>
         </div>
         
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">🎒 Quick Actions</Typography>
           <div className="space-y-3">
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <Button variant="text">Equip Weapon</Button>
               <Button variant="link">View Stats</Button>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <Button variant="default">Save Game</Button>
               <Button variant="destructive">Delete Save</Button>
             </div>
           </div>
         </div>
         
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
+        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800 shadow-sm">
           <Typography variant="h4">🗺️ Navigation</Typography>
           <div className="grid grid-cols-1 gap-3">
             <Button variant="primary">Continue Quest</Button>
@@ -424,7 +426,7 @@ export const RealWorldExamples: Story = {
             <Button variant="text">Settings</Button>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   ),
   parameters: {

@@ -53,3 +53,21 @@ zeldaColors.forEach(color => {
     });
   });
 });
+
+// Dark mode utilities
+globalStyle('.dark .dark\\:bg-white', { backgroundColor: 'var(--gray-800)' });
+globalStyle('.dark .dark\\:bg-transparent', { backgroundColor: 'transparent' });
+
+zeldaColors.forEach(color => {
+  shades.forEach(shade => {
+    globalStyle(`.dark .dark\\:bg-${color}-${shade}`, {
+      backgroundColor: colors[color][shade],
+    });
+    globalStyle(`.dark .dark\\:text-${color}-${shade}`, {
+      color: colors[color][shade],
+    });
+    globalStyle(`.dark .dark\\:border-${color}-${shade}`, {
+      borderColor: colors[color][shade],
+    });
+  });
+});

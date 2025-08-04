@@ -105,9 +105,8 @@ export const Modal = ({
                   onClick={onClose}
                   className={styles.closeButton}
                   aria-label="Close modal"
-                >
-                  <XIcon className="w-5 h-5" />
-                </Button>
+                  icon={XIcon}
+                />
               )}
             </div>
           )}

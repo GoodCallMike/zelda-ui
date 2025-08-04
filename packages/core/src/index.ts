@@ -1,5 +1,7 @@
 export { Button } from './Button/Button';
 export type { ButtonProps } from './Button/Button';
+export { Card } from './Card/Card';
+export type { CardProps } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
 export type { CheckboxProps } from './Checkbox/Checkbox';
 export { Divider } from './Divider/Divider';

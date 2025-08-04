@@ -42,10 +42,10 @@ export const Button = ({
       data-testid={testId}
       {...props}
     >
-      {Icon && iconPosition === 'left' && !loading && <Icon className="w-4 h-4 flex-shrink-0" />}
-      {loading && <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin flex-shrink-0" />}
+      {Icon && iconPosition === 'left' && !loading && <Icon className="w-4 h-4 flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
+      {loading && <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
       {children}
-      {Icon && iconPosition === 'right' && !loading && <Icon className="w-4 h-4 flex-shrink-0" />}
+      {Icon && iconPosition === 'right' && !loading && <Icon className="w-4 h-4 flex-shrink-0" style={{ width: '1rem', height: '1rem' }} />}
     </button>
   );
 };

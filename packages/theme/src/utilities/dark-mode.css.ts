@@ -18,3 +18,8 @@ globalStyle('.dark .text-gray-600', { color: 'var(--gray-400) !important' });
 globalStyle('.dark .border-gray-300', { borderColor: 'var(--gray-600) !important' });
 globalStyle('.dark .bg-gray-50', { backgroundColor: 'var(--gray-800) !important' });
 globalStyle('.dark .bg-white', { backgroundColor: 'var(--gray-900) !important' });
+
+// Card component dark mode overrides
+globalStyle('.dark .bg-white', { backgroundColor: 'var(--gray-800) !important' });
+globalStyle('.dark .border-gray-300', { borderColor: 'var(--gray-700) !important' });
+globalStyle('.dark .border-gray-200', { borderColor: 'var(--gray-700) !important' });
