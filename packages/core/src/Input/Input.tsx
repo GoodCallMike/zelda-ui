@@ -1,7 +1,5 @@
-import React, {
-  type JSX,
-  useState,
-} from 'react';
+import React, { useState } from 'react';
+import type { JSX } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';
