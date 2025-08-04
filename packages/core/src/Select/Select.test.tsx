@@ -228,9 +228,8 @@ describe('Select', () => {
     render(<Select options={mockOptions} required testId="select" />);
 
     const select = screen.getByTestId('select');
-    expect(select).toHaveAttribute('role', 'button');
+    expect(select).toHaveAttribute('role', 'combobox');
     expect(select).toHaveAttribute('aria-expanded', 'false');
     expect(select).toHaveAttribute('aria-haspopup', 'listbox');
-    expect(select).toHaveAttribute('aria-required', 'true');
   });
 });

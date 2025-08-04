@@ -1,7 +1,7 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { cn } from '../styles';
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Card content */
   children: ReactNode;
   /** Card variant */

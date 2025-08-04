@@ -36,13 +36,13 @@ colorNames.forEach((color) => {
     if (colors[color]?.[shade]) {
       globalStyle(`.from-${color}-${shade}`, {
         '--tw-gradient-from': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.via-${color}-${shade}`, {
         '--tw-gradient-via': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.to-${color}-${shade}`, {
         '--tw-gradient-to': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
     }
   });
 });
@@ -53,13 +53,13 @@ colorNames.forEach((color) => {
     if (colors[color]?.[shade]) {
       globalStyle(`.hover\\:from-${color}-${shade}:hover`, {
         '--tw-gradient-from': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.hover\\:via-${color}-${shade}:hover`, {
         '--tw-gradient-via': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.hover\\:to-${color}-${shade}:hover`, {
         '--tw-gradient-to': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
     }
   });
 });
@@ -70,13 +70,13 @@ colorNames.forEach((color) => {
     if (colors[color]?.[shade]) {
       globalStyle(`.active\\:from-${color}-${shade}:active`, {
         '--tw-gradient-from': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.active\\:via-${color}-${shade}:active`, {
         '--tw-gradient-via': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
       globalStyle(`.active\\:to-${color}-${shade}:active`, {
         '--tw-gradient-to': colors[color][shade],
-      } as any);
+      } as Record<string, string>);
     }
   });
 });

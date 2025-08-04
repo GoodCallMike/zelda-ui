@@ -101,10 +101,10 @@ globalStyle('.snap-both', {
 });
 globalStyle('.snap-mandatory', {
   '--tw-scroll-snap-strictness': 'mandatory',
-} as any);
+} as Record<string, string>);
 globalStyle('.snap-proximity', {
   '--tw-scroll-snap-strictness': 'proximity',
-} as any);
+} as Record<string, string>);
 
 globalStyle('.snap-start', { scrollSnapAlign: 'start' });
 globalStyle('.snap-end', { scrollSnapAlign: 'end' });

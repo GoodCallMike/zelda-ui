@@ -46,7 +46,7 @@ export const Divider = ({
           />
         )}
         <Typography
-          variant="body2"
+          variant="body"
           className="text-gray-500 dark:text-gray-400 whitespace-nowrap"
         >
           {children}

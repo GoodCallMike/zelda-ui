@@ -18,6 +18,7 @@ export default defineConfig({
     alias: {
       '@zelda/core': path.resolve(dirname, 'packages/core/src'),
       '@zelda/icons': path.resolve(dirname, 'packages/icons/src'),
+      '@zelda/theme': path.resolve(dirname, 'packages/theme/src'),
     },
   },
   test: {

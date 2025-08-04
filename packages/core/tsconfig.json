@@ -5,7 +5,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "strict": false,
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES2017", "DOM"],
     "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*", "src/types/css-modules.d.ts"],

@@ -3,19 +3,19 @@ import { twMerge } from 'tailwind-merge';
 
 // Import variables and essential utilities
 import './variables.css';
-import './fonts.css';
-import './utilities/spacing.css';
-import './utilities/layout.css';
-import './utilities/colors.css';
-import './utilities/typography.css';
-import './utilities/sizing.css';
-import './utilities/borders.css';
-import './utilities/shadows.css';
-import './utilities/transforms.css';
-import './utilities/animations.css';
-import './utilities/interactivity.css';
-import './utilities/flex-advanced.css';
-import './utilities/effects.css';
+import './fonts.css.ts';
+import './utilities/spacing.css.ts';
+import './utilities/layout.css.ts';
+import './utilities/colors.css.ts';
+import './utilities/typography.css.ts';
+import './utilities/sizing.css.ts';
+import './utilities/borders.css.ts';
+import './utilities/shadows.css.ts';
+import './utilities/transforms.css.ts';
+import './utilities/animations.css.ts';
+import './utilities/interactivity.css.ts';
+import './utilities/flex-advanced.css.ts';
+import './utilities/effects.css.ts';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

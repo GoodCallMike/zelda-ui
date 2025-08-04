@@ -4,11 +4,11 @@ import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 
 export interface ButtonProps
-  extends BaseButtonProps,
-    Omit<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      'size' | 'type' | 'children'
-    > {}
+  extends Omit<BaseButtonProps, 'children'>,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type'> {
+  /** Button content */
+  children?: React.ReactNode;
+}
 
 export const Button = ({
   children,

@@ -151,6 +151,7 @@ export const Select = <T extends string = string>({
         </Typography>
       )}
 
+      {/** biome-ignore lint/a11y/useSemanticElements: Button would not be the correct element */}
       <div
         className={cn(
           'relative w-full cursor-pointer font-medium text-base border-0 outline-none transition-all duration-100 ease-linear',

@@ -182,4 +182,6 @@ export interface ThemeContextValue {
 }
 
 // CSS-in-JS style object type
-export type StyleObject = Record<string, string | number | StyleObject>;
+export interface StyleObject {
+  [key: string]: string | number | StyleObject;
+}

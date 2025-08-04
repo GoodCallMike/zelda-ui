@@ -33,5 +33,4 @@ export { Typography } from './Typography/Typography';
 export type * from './types';
 export type * from './types/components';
 export type * from './types/theme';
-export type * from './types/utilities';
 export * from './types/validation';
