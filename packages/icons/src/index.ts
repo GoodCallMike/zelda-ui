@@ -1170,3 +1170,6 @@ export { WavesIcon } from './WavesIcon';
 export { Wind01Icon } from './Wind01Icon';
 export { Wind02Icon } from './Wind02Icon';
 export { Wind03Icon } from './Wind03Icon';
+
+// Type exports
+export type * from './types';

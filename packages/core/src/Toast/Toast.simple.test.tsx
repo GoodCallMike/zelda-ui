@@ -1,23 +1,24 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import { vi } from 'vitest';
 import { ToastProvider, useToast } from './ToastManager';
 
 // Mock the dependencies to avoid theme issues
-jest.mock('../styles', () => ({
+vi.mock('../styles', () => ({
   cn: (...classes: any[]) => classes.filter(Boolean).join(' ')
 }));
 
-jest.mock('../Typography', () => ({
+vi.mock('../Typography', () => ({
   Typography: ({ children, ...props }: any) => <div {...props}>{children}</div>
 }));
 
-jest.mock('../Button', () => ({
+vi.mock('../Button', () => ({
   Button: ({ children, onClick, ...props }: any) => (
     <button onClick={onClick} {...props}>{children}</button>
   )
 }));
 
-jest.mock('@zelda/icons', () => ({
+vi.mock('@zelda/icons', () => ({
   XIcon: () => <span>X</span>,
   CheckCircleIcon: () => <span>✓</span>,
   AlertTriangleIcon: () => <span>⚠</span>,
@@ -25,19 +26,21 @@ jest.mock('@zelda/icons', () => ({
   XCircleIcon: () => <span>✗</span>,
 }));
 
-jest.mock('./Toast.module.css', () => ({
-  toast: 'toast',
-  success: 'success',
-  error: 'error',
-  warning: 'warning',
-  info: 'info',
-  entering: 'entering',
-  exiting: 'exiting',
-  progressBar: 'progressBar',
-  successProgress: 'successProgress',
-  errorProgress: 'errorProgress',
-  warningProgress: 'warningProgress',
-  infoProgress: 'infoProgress',
+vi.mock('./Toast.module.css', () => ({
+  default: {
+    toast: 'toast',
+    success: 'success',
+    error: 'error',
+    warning: 'warning',
+    info: 'info',
+    entering: 'entering',
+    exiting: 'exiting',
+    progressBar: 'progressBar',
+    successProgress: 'successProgress',
+    errorProgress: 'errorProgress',
+    warningProgress: 'warningProgress',
+    infoProgress: 'infoProgress',
+  }
 }));
 
 describe('ToastProvider - Multiple Toast Behavior', () => {
@@ -63,13 +66,13 @@ describe('ToastProvider - Multiple Toast Behavior', () => {
   };
 
   beforeEach(() => {
-    jest.clearAllTimers();
-    jest.useFakeTimers();
+    vi.clearAllTimers();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
-    jest.useRealTimers();
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
   });
 
   it('dismisses multiple toasts independently based on their durations', () => {
@@ -88,12 +91,16 @@ describe('ToastProvider - Multiple Toast Behavior', () => {
     expect(screen.getByTestId('toast-2')).toBeInTheDocument();
 
     // After 1 second, only toast-1 should be dismissed
-    jest.advanceTimersByTime(1000);
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
     expect(screen.queryByTestId('toast-1')).not.toBeInTheDocument();
     expect(screen.getByTestId('toast-2')).toBeInTheDocument();
 
     // After 3 seconds total, toast-2 should also be dismissed
-    jest.advanceTimersByTime(2000);
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
     expect(screen.queryByTestId('toast-1')).not.toBeInTheDocument();
     expect(screen.queryByTestId('toast-2')).not.toBeInTheDocument();
   });

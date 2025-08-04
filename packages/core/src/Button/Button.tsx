@@ -1,57 +1,46 @@
-import type { ReactNode } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '../styles';
+import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 
-type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
-
-export interface ButtonProps {
-  /** Button content */
-  children: ReactNode;
-  /** Button variant */
-  variant?: 'primary' | 'default' | 'dashed' | 'text' | 'link' | 'destructive';
-  /** Click handler function */
-  onClick?: () => void;
-  /** Whether button is disabled */
-  disabled?: boolean;
-  /** Icon component to display */
-  icon?: IconComponent;
-  /** Icon position */
-  iconPosition?: 'left' | 'right';
-  /** Additional CSS classes */
-  className?: string;
-  /** Test identifier */
-  testId?: string;
-}
+export interface ButtonProps extends BaseButtonProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type'> {}
 
 export const Button = ({
   children,
   variant = 'primary',
-  onClick,
-  disabled,
+  size = 'medium',
+  disabled = false,
+  loading = false,
   icon: Icon,
   iconPosition = 'left',
   className,
   testId,
+  type = 'button',
   ...props
 }: ButtonProps) => {
+  const isDisabled = disabled || loading;
+  
   return (
     <button
-      type="button"
+      type={type}
       className={cn(
-        'inline-flex items-center justify-center font-bold text-sm uppercase tracking-wide px-5 py-3 border-0 cursor-pointer select-none outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2',
+        'inline-flex items-center justify-center font-bold text-sm uppercase tracking-wide border-0 cursor-pointer select-none outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2',
         Icon && 'gap-2',
         styles[variant],
-        disabled && 'opacity-60 cursor-not-allowed pointer-events-none',
+        styles[size],
+        isDisabled && 'opacity-60 cursor-not-allowed pointer-events-none',
+        loading && 'cursor-wait',
         className
       )}
-      onClick={onClick}
-      disabled={disabled}
+      disabled={isDisabled}
       data-testid={testId}
       {...props}
     >
-      {Icon && iconPosition === 'left' && <Icon className="w-4 h-4 flex-shrink-0" />}
+      {Icon && iconPosition === 'left' && !loading && <Icon className="w-4 h-4 flex-shrink-0" />}
+      {loading && <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin flex-shrink-0" />}
       {children}
-      {Icon && iconPosition === 'right' && <Icon className="w-4 h-4 flex-shrink-0" />}
+      {Icon && iconPosition === 'right' && !loading && <Icon className="w-4 h-4 flex-shrink-0" />}
     </button>
   );
+};
 };

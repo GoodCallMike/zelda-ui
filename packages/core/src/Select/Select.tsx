@@ -1,47 +1,14 @@
-import type { ReactNode } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { useFloating, autoUpdate, offset, flip, shift, size } from '@floating-ui/react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import { ChevronDownIcon } from '@zelda/icons';
+import type { SelectProps, Option } from '../types/components';
 import styles from './Select.module.css';
 
-export interface SelectOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
+export type { SelectProps, Option as SelectOption };
 
-export interface SelectProps {
-  /** Select label */
-  label?: string;
-  /** Select variant */
-  variant?: 'default' | 'filled' | 'borderless';
-  /** Select size */
-  size?: 'small' | 'medium' | 'large';
-  /** Status state */
-  status?: 'error' | 'warning';
-  /** Placeholder text */
-  placeholder?: string;
-  /** Options array */
-  options: SelectOption[];
-  /** Selected value */
-  value?: string;
-  /** Default selected value */
-  defaultValue?: string;
-  /** Change handler */
-  onChange?: (value: string) => void;
-  /** Whether select is disabled */
-  disabled?: boolean;
-  /** Whether select is required */
-  required?: boolean;
-  /** Test identifier */
-  testId?: string;
-  /** Additional CSS classes */
-  className?: string;
-}
-
-export const Select = ({
+export const Select = <T = string>({
   label,
   variant = 'default',
   size = 'medium',
@@ -55,7 +22,7 @@ export const Select = ({
   required = false,
   testId,
   className
-}: SelectProps) => {
+}: SelectProps<T>) => {
   const [internalValue, setInternalValue] = useState(defaultValue || '');
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);

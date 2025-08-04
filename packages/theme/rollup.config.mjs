@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
+import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin';
 
 export default [
   {
@@ -19,6 +20,7 @@ export default [
       },
     ],
     plugins: [
+      vanillaExtractPlugin(),
       resolve(),
       commonjs(),
       typescript({
@@ -27,6 +29,18 @@ export default [
       }),
     ],
     external: ['clsx', 'tailwind-merge'],
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'es',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/index.cjs',
+        format: 'cjs',
+        sourcemap: true,
+      },
+    ],
   },
   {
     input: 'src/index.ts',

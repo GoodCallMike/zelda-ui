@@ -1,55 +1,12 @@
-import type { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
 import { useState } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
+import type { InputProps, TextareaProps } from '../types/components';
 import styles from './Input.module.css';
 
-type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+export type { InputProps, TextareaProps };
 
-interface BaseInputProps {
-  /** Input label */
-  label?: string;
-  /** Input variant */
-  variant?: 'default' | 'filled' | 'borderless';
-  /** Input size */
-  size?: 'small' | 'medium' | 'large';
-  /** Status state */
-  status?: 'error' | 'warning';
-  /** Prefix content (icon or text) inside input */
-  prefix?: ReactNode;
-  /** Suffix content (icon or text) inside input */
-  suffix?: ReactNode;
-  /** Addon before input (outside border) */
-  addonBefore?: ReactNode;
-  /** Addon after input (outside border) */
-  addonAfter?: ReactNode;
-  /** Show clear button when input has value */
-  allowClear?: boolean;
-  /** Show character count */
-  showCount?: boolean;
-  /** Maximum character count */
-  maxLength?: number;
-  /** Test identifier */
-  testId?: string;
-}
-
-interface InputModeProps extends BaseInputProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
-  /** Input type - use 'textarea' for multiline input */
-  type?: 'text' | 'password' | 'email' | 'search' | 'url' | 'tel' | 'number';
-}
-
-interface TextareaModeProps extends BaseInputProps, Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix'> {
-  /** Input type - use 'textarea' for multiline input */
-  type: 'textarea';
-  /** Number of visible text lines */
-  rows?: number;
-  /** Whether textarea can be resized */
-  resize?: 'none' | 'vertical' | 'horizontal' | 'both';
-}
-
-export type InputProps = InputModeProps | TextareaModeProps;
-
-export const Input = (props: InputProps) => {
+export const Input = (props: InputProps | TextareaProps) => {
   const {
     label,
     variant = 'default',

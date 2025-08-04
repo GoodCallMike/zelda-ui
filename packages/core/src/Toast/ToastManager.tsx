@@ -33,6 +33,7 @@ export interface ToastProviderProps {
 export const ToastProvider = ({ children, position = 'top-right', maxToasts = 5 }: ToastProviderProps) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const nextIdRef = useRef(1);
+  const closeCallbacksRef = useRef<Map<string, () => void>>(new Map());
 
   const showToast = useCallback((toast: Omit<ToastItem, 'id'>) => {
     const id = `toast-${nextIdRef.current++}`;
@@ -44,20 +45,26 @@ export const ToastProvider = ({ children, position = 'top-right', maxToasts = 5 
 
   const hideToast = useCallback((id: string) => {
     setToasts(prev => prev.filter(toast => toast.id !== id));
+    closeCallbacksRef.current.delete(id);
   }, []);
 
   return (
     <ToastContext.Provider value={{ showToast, hideToast }}>
       {children}
       <ToastContainer position={position}>
-        {toasts.map(toast => (
-          <Toast
-            key={toast.id}
-            {...toast}
-            visible={true}
-            onClose={() => hideToast(toast.id)}
-          />
-        ))}
+        {toasts.map(toast => {
+          if (!closeCallbacksRef.current.has(toast.id)) {
+            closeCallbacksRef.current.set(toast.id, () => hideToast(toast.id));
+          }
+          return (
+            <Toast
+              key={toast.id}
+              {...toast}
+              visible={true}
+              onClose={closeCallbacksRef.current.get(toast.id)!}
+            />
+          );
+        })}
       </ToastContainer>
     </ToastContext.Provider>
   );

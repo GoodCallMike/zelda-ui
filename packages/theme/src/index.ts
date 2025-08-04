@@ -1,5 +1,9 @@
-export * from './fonts.css';
-export * from './tokens.css';
-export * from './theme.css';
-export * from './utilities/index.css';
-export { cn } from './utils';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Type exports
+export type * from './types';
