@@ -1,0 +1,279 @@
+/* Toast base */
+.toast {
+  background: var(--white);
+  border: 3px solid var(--gray-300);
+  border-radius: 8px;
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--white) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-500) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--gray-600) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--gray-900) 10%, transparent);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  position: relative;
+  overflow: hidden;
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast.entering {
+  animation: magicalEnter 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast.exiting {
+  animation: magicalExit 0.3s ease-in forwards;
+}
+
+/* Toast types */
+.success {
+  border-color: var(--rupee-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--rupee-100) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--rupee-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--rupee-700) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--rupee-400) 20%, transparent),
+    0 0 30px color-mix(in srgb, var(--triforce-400) 10%, transparent);
+}
+
+.error {
+  border-color: var(--ganon-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--ganon-100) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--ganon-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--ganon-700) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--ganon-400) 20%, transparent);
+}
+
+.warning {
+  border-color: var(--triforce-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--triforce-100) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--triforce-700) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--triforce-400) 20%, transparent),
+    0 0 30px color-mix(in srgb, var(--rupee-400) 8%, transparent);
+}
+
+.info {
+  border-color: var(--hyrule-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--hyrule-100) 80%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--hyrule-600) 30%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--hyrule-700) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--hyrule-400) 20%, transparent);
+}
+
+/* Icons */
+.icon {
+  color: var(--gray-600);
+}
+
+.success .icon {
+  color: var(--rupee-600);
+}
+
+.error .icon {
+  color: var(--ganon-600);
+}
+
+.warning .icon {
+  color: var(--triforce-600);
+}
+
+.info .icon {
+  color: var(--hyrule-600);
+}
+
+/* Message */
+.message {
+  color: var(--gray-900);
+  margin: 0;
+}
+
+/* Close button */
+.closeButton {
+  color: var(--gray-500);
+  padding: 4px;
+  min-width: auto;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  color: var(--gray-700);
+  background: var(--gray-100);
+}
+
+/* Progress bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform-origin: left;
+  animation: countdown linear forwards;
+}
+
+.successProgress {
+  background: linear-gradient(90deg, 
+    var(--rupee-400) 0%, 
+    var(--triforce-400) 50%, 
+    var(--rupee-500) 100%
+  );
+}
+
+.errorProgress {
+  background: var(--ganon-500);
+}
+
+.warningProgress {
+  background: linear-gradient(90deg, 
+    var(--triforce-400) 0%, 
+    var(--rupee-400) 50%, 
+    var(--triforce-500) 100%
+  );
+}
+
+.infoProgress {
+  background: var(--hyrule-500);
+}
+
+@keyframes countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Animations */
+@keyframes magicalEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-20px) rotateX(-15deg);
+    filter: brightness(2) blur(3px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05) translateY(5px) rotateX(5deg);
+    filter: brightness(1.3) blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateX(0deg);
+    filter: brightness(1) blur(0px);
+  }
+}
+
+@keyframes magicalExit {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+}
+
+
+
+/* Dark mode */
+:global(.dark) .toast {
+  background: var(--gray-800);
+  border-color: var(--gray-600);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--gray-700) 50%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--gray-900) 60%, transparent),
+    4px 4px 0 var(--black),
+    0 0 25px color-mix(in srgb, var(--gray-100) 15%, transparent);
+}
+
+:global(.dark) .success {
+  border-color: #22c55e;
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, #16a34a 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, #14532d 60%, transparent),
+    4px 4px 0 var(--black),
+    0 0 25px color-mix(in srgb, #22c55e 25%, transparent),
+    0 0 35px color-mix(in srgb, #6b46c1 15%, transparent);
+}
+
+:global(.dark) .error {
+  border-color: var(--ganon-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--ganon-400) 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--ganon-800) 60%, transparent),
+    4px 4px 0 var(--black),
+    0 0 25px color-mix(in srgb, var(--ganon-400) 25%, transparent);
+}
+
+:global(.dark) .warning {
+  border-color: #7c3aed;
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, #a78bfa 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, #312e81 60%, transparent),
+    4px 4px 0 var(--black),
+    0 0 25px color-mix(in srgb, #7c3aed 25%, transparent),
+    0 0 35px color-mix(in srgb, #22c55e 12%, transparent);
+}
+
+:global(.dark) .info {
+  border-color: var(--hyrule-500);
+  box-shadow: 
+    inset 2px 2px 0 color-mix(in srgb, var(--hyrule-400) 30%, transparent),
+    inset -2px -2px 0 color-mix(in srgb, var(--hyrule-800) 60%, transparent),
+    4px 4px 0 var(--black),
+    0 0 25px color-mix(in srgb, var(--hyrule-400) 25%, transparent);
+}
+
+:global(.dark) .message {
+  color: var(--gray-100);
+}
+
+:global(.dark) .closeButton {
+  color: var(--gray-400);
+}
+
+:global(.dark) .closeButton:hover {
+  color: var(--gray-100);
+  background: var(--gray-700);
+}
+
+:global(.dark) .progressBar {
+  background: linear-gradient(90deg, 
+    #6b46c1 0%, 
+    #22c55e 20%, 
+    #7c3aed 40%, 
+    #16a34a 60%, 
+    #6b46c1 100%
+  );
+}
+
+:global(.dark) .success .progressBar {
+  background: linear-gradient(90deg, 
+    #22c55e 0%, 
+    #6b46c1 50%, 
+    #16a34a 100%
+  );
+}
+
+:global(.dark) .error .progressBar {
+  background: var(--ganon-500);
+}
+
+:global(.dark) .warning .progressBar {
+  background: linear-gradient(90deg, 
+    #7c3aed 0%, 
+    #22c55e 50%, 
+    #6b46c1 100%
+  );
+}
+
+:global(.dark) .info .progressBar {
+  background: var(--hyrule-500);
+}

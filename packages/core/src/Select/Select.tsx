@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { useFloating, autoUpdate, offset, flip, shift, size } from '@floating-ui/react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import { ChevronDownIcon } from '@zelda/icons';
@@ -59,21 +59,26 @@ export const Select = ({
   const [internalValue, setInternalValue] = useState(defaultValue || '');
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
   
-  const selectRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   
-  const updateDropdownPosition = () => {
-    if (selectRef.current) {
-      const rect = selectRef.current.getBoundingClientRect();
-      setDropdownPosition({
-        top: rect.bottom + 4,
-        left: rect.left,
-        width: rect.width
-      });
-    }
-  };
+  const { refs, floatingStyles } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+      offset(4),
+      flip(),
+      shift({ padding: 8 }),
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+          });
+        },
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
   
   const currentValue = value !== undefined ? value : internalValue;
   const selectedOption = options.find(option => option.value === currentValue);
@@ -100,7 +105,6 @@ export const Select = ({
             handleSelect(option.value);
           }
         } else {
-          updateDropdownPosition();
           setIsOpen(!isOpen);
         }
         break;
@@ -111,7 +115,6 @@ export const Select = ({
       case 'ArrowDown':
         e.preventDefault();
         if (!isOpen) {
-          updateDropdownPosition();
           setIsOpen(true);
         } else {
           const nextIndex = focusedIndex < options.length - 1 ? focusedIndex + 1 : 0;
@@ -121,7 +124,6 @@ export const Select = ({
       case 'ArrowUp':
         e.preventDefault();
         if (!isOpen) {
-          updateDropdownPosition();
           setIsOpen(true);
         } else {
           const prevIndex = focusedIndex > 0 ? focusedIndex - 1 : options.length - 1;
@@ -134,7 +136,8 @@ export const Select = ({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+      if (refs.reference.current && !refs.reference.current.contains(event.target as Node) &&
+          refs.floating.current && !refs.floating.current.contains(event.target as Node)) {
         setIsOpen(false);
         setFocusedIndex(-1);
       }
@@ -142,7 +145,7 @@ export const Select = ({
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [refs.reference, refs.floating]);
 
   // Scroll focused option into view
   useEffect(() => {
@@ -155,7 +158,7 @@ export const Select = ({
   }, [focusedIndex, isOpen]);
 
   return (
-    <div className={cn('relative', className)} ref={selectRef}>
+    <div className={cn('relative', className)} ref={refs.setReference}>
       {label && (
         <Typography variant="label" className="mb-1">
           {label}
@@ -172,14 +175,7 @@ export const Select = ({
           disabled && styles.disabled,
           styles[size]
         )}
-        onClick={() => {
-          if (!disabled) {
-            if (!isOpen) {
-              updateDropdownPosition();
-            }
-            setIsOpen(!isOpen);
-          }
-        }}
+        onClick={() => !disabled && setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         tabIndex={disabled ? -1 : 0}
         role="combobox"
@@ -203,18 +199,14 @@ export const Select = ({
         </div>
       </div>
 
-      {isOpen && createPortal(
+      {isOpen && (
         <div 
+          ref={refs.setFloating}
+          style={floatingStyles}
           className={cn(
-            'fixed bg-white dark:bg-gray-800 border-3 border-gray-300 dark:border-gray-600 rounded-lg shadow-lg max-h-60 overflow-auto',
+            'bg-white dark:bg-gray-800 border-3 border-gray-300 dark:border-gray-600 rounded-lg shadow-lg max-h-60 overflow-auto z-popover',
             styles.dropdown
           )}
-          style={{
-            top: dropdownPosition.top,
-            left: dropdownPosition.left,
-            width: dropdownPosition.width,
-            zIndex: 1100
-          }}
         >
           <ul
             ref={listRef}
@@ -239,8 +231,7 @@ export const Select = ({
               </li>
             ))}
           </ul>
-        </div>,
-        document.body
+        </div>
       )}
     </div>
   );
