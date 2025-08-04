@@ -547,12 +547,16 @@ export const AccessibilityFeatures: Story = {
             🔍 Accessibility Features Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Modal's comprehensive accessibility features including focus management, keyboard navigation, and ARIA attributes.
+            This story demonstrates the Modal's comprehensive accessibility
+            features including focus management, keyboard navigation, and ARIA
+            attributes.
           </Typography>
           <div className="flex gap-3">
             <Button onClick={() => setOpen(true)}>Basic Accessibility</Button>
             <Button onClick={() => setFocusDemo(true)}>Focus Management</Button>
-            <Button onClick={() => setKeyboardDemo(true)}>Keyboard Navigation</Button>
+            <Button onClick={() => setKeyboardDemo(true)}>
+              Keyboard Navigation
+            </Button>
           </div>
         </div>
 
@@ -565,13 +569,24 @@ export const AccessibilityFeatures: Story = {
         >
           <div className="space-y-4">
             <Typography variant="body1">
-              This modal demonstrates proper ARIA attributes and semantic structure:
+              This modal demonstrates proper ARIA attributes and semantic
+              structure:
             </Typography>
             <ul className="space-y-2 text-sm list-disc pl-6">
-              <li><code>role="dialog"</code> - Identifies the modal as a dialog</li>
-              <li><code>aria-modal="true"</code> - Indicates this is a modal dialog</li>
-              <li><code>aria-labelledby</code> - References the modal title</li>
-              <li><code>aria-label</code> - Provides accessible names for interactive elements</li>
+              <li>
+                <code>role="dialog"</code> - Identifies the modal as a dialog
+              </li>
+              <li>
+                <code>aria-modal="true"</code> - Indicates this is a modal
+                dialog
+              </li>
+              <li>
+                <code>aria-labelledby</code> - References the modal title
+              </li>
+              <li>
+                <code>aria-label</code> - Provides accessible names for
+                interactive elements
+              </li>
               <li>Focus trap - Keeps focus within the modal</li>
               <li>Body scroll lock - Prevents background scrolling</li>
             </ul>
@@ -595,8 +610,14 @@ export const AccessibilityFeatures: Story = {
               Focus is automatically managed when the modal opens and closes:
             </Typography>
             <div className="space-y-3">
-              <Input label="First Input" placeholder="Focus starts here when modal opens" />
-              <Input label="Second Input" placeholder="Tab to navigate between elements" />
+              <Input
+                label="First Input"
+                placeholder="Focus starts here when modal opens"
+              />
+              <Input
+                label="Second Input"
+                placeholder="Tab to navigate between elements"
+              />
               <Select
                 label="Select Option"
                 options={[
@@ -607,7 +628,9 @@ export const AccessibilityFeatures: Story = {
             </div>
             <div className="p-3 bg-green-50 border border-green-200 rounded">
               <Typography variant="body2" className="text-green-800">
-                <strong>Try this:</strong> Use Tab and Shift+Tab to navigate. Focus is trapped within this modal and will cycle through interactive elements.
+                <strong>Try this:</strong> Use Tab and Shift+Tab to navigate.
+                Focus is trapped within this modal and will cycle through
+                interactive elements.
               </Typography>
             </div>
             <div className="flex gap-2 justify-end">
@@ -636,23 +659,31 @@ export const AccessibilityFeatures: Story = {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                     <span>Close Modal</span>
-                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Escape</kbd>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">
+                      Escape
+                    </kbd>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                     <span>Next Element</span>
-                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Tab</kbd>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">
+                      Tab
+                    </kbd>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                     <span>Previous Element</span>
-                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Shift + Tab</kbd>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">
+                      Shift + Tab
+                    </kbd>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                     <span>Activate Button</span>
-                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Enter / Space</kbd>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">
+                      Enter / Space
+                    </kbd>
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <Typography variant="h4">🔧 Interactive Elements</Typography>
                 <div className="space-y-3">
@@ -673,13 +704,16 @@ export const AccessibilityFeatures: Story = {
                 </div>
               </div>
             </div>
-            
+
             <div className="p-4 bg-blue-50 border border-blue-200 rounded">
               <Typography variant="body2" className="text-blue-800">
-                <strong>Accessibility Tip:</strong> Press Escape to close this modal, or use Tab to navigate to the close button. The modal maintains focus trap and will return focus to the trigger button when closed.
+                <strong>Accessibility Tip:</strong> Press Escape to close this
+                modal, or use Tab to navigate to the close button. The modal
+                maintains focus trap and will return focus to the trigger button
+                when closed.
               </Typography>
             </div>
-            
+
             <div className="flex gap-2 justify-end">
               <Button variant="default" onClick={() => setKeyboardDemo(false)}>
                 Close
@@ -736,19 +770,19 @@ export const TestingExamples: Story = {
             Examples with proper testId attributes for automated testing.
           </Typography>
           <div className="flex gap-3 flex-wrap">
-            <Button 
+            <Button
               testId="open-basic-modal"
               onClick={() => setModalType('basic')}
             >
               Basic Modal
             </Button>
-            <Button 
+            <Button
               testId="open-form-modal"
               onClick={() => setModalType('form')}
             >
               Form Modal
             </Button>
-            <Button 
+            <Button
               testId="open-confirmation-modal"
               onClick={() => setModalType('confirmation')}
             >
@@ -769,16 +803,16 @@ export const TestingExamples: Story = {
               This modal has testId attributes for reliable testing.
             </Typography>
             <div className="flex gap-2 justify-end">
-              <Button 
+              <Button
                 testId="cancel-button"
-                variant="default" 
+                variant="default"
                 onClick={() => setModalType(null)}
               >
                 Cancel
               </Button>
-              <Button 
+              <Button
                 testId="confirm-button"
-                variant="primary" 
+                variant="primary"
                 onClick={() => setModalType(null)}
               >
                 Confirm
@@ -795,16 +829,12 @@ export const TestingExamples: Story = {
           testId="form-test-modal"
         >
           <form className="space-y-4">
-            <Input 
-              testId="name-input"
-              label="Name" 
-              placeholder="Enter name" 
-            />
-            <Input 
+            <Input testId="name-input" label="Name" placeholder="Enter name" />
+            <Input
               testId="email-input"
-              label="Email" 
-              type="email" 
-              placeholder="Enter email" 
+              label="Email"
+              type="email"
+              placeholder="Enter email"
             />
             <Select
               testId="role-select"
@@ -815,16 +845,16 @@ export const TestingExamples: Story = {
               ]}
             />
             <div className="flex gap-2 justify-end">
-              <Button 
+              <Button
                 testId="form-cancel"
-                variant="default" 
+                variant="default"
                 onClick={() => setModalType(null)}
               >
                 Cancel
               </Button>
-              <Button 
+              <Button
                 testId="form-submit"
-                variant="primary" 
+                variant="primary"
                 onClick={() => setModalType(null)}
               >
                 Submit
@@ -847,16 +877,16 @@ export const TestingExamples: Story = {
               Are you sure you want to proceed with this action?
             </Typography>
             <div className="flex gap-2 justify-end">
-              <Button 
+              <Button
                 testId="confirmation-cancel"
-                variant="default" 
+                variant="default"
                 onClick={() => setModalType(null)}
               >
                 Cancel
               </Button>
-              <Button 
+              <Button
                 testId="confirmation-confirm"
-                variant="destructive" 
+                variant="destructive"
                 onClick={() => setModalType(null)}
               >
                 Confirm

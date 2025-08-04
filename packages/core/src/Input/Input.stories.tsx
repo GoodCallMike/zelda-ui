@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import {
   CurrencyDollarIcon,
   EyeIcon,
@@ -7,6 +6,7 @@ import {
   SearchLgIcon,
   User01Icon,
 } from '@zelda/icons';
+import { useState } from 'react';
 import { Typography } from '../Typography';
 import { Input } from './Input';
 
@@ -735,7 +735,9 @@ export const AccessibilityFeatures: Story = {
             🔍 Accessibility Features Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Input's comprehensive accessibility features including keyboard navigation, screen reader support, and ARIA attributes.
+            This story demonstrates the Input's comprehensive accessibility
+            features including keyboard navigation, screen reader support, and
+            ARIA attributes.
           </Typography>
         </div>
 
@@ -744,7 +746,8 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
           <div className="p-4 bg-green-50 border border-green-200 rounded">
             <Typography variant="body2" className="text-green-800 mb-3">
-              <strong>Try this:</strong> Use Tab to navigate between inputs, arrow keys in select-like inputs.
+              <strong>Try this:</strong> Use Tab to navigate between inputs,
+              arrow keys in select-like inputs.
             </Typography>
             <div className="space-y-3">
               <Input
@@ -778,10 +781,14 @@ export const AccessibilityFeatures: Story = {
               aria-describedby="hero-name-help"
               testId="hero-name-input"
             />
-            <Typography variant="body2" id="hero-name-help" className="text-gray-600">
+            <Typography
+              variant="body2"
+              id="hero-name-help"
+              className="text-gray-600"
+            >
               Choose a unique name for your character (3-20 characters)
             </Typography>
-            
+
             <Input
               label="Email Address"
               type="email"
@@ -790,7 +797,7 @@ export const AccessibilityFeatures: Story = {
               required
               testId="email-input"
             />
-            
+
             <Input
               label="Password"
               type="password"
@@ -798,7 +805,11 @@ export const AccessibilityFeatures: Story = {
               aria-describedby="password-requirements"
               testId="password-input"
             />
-            <Typography variant="body2" id="password-requirements" className="text-gray-600">
+            <Typography
+              variant="body2"
+              id="password-requirements"
+              className="text-gray-600"
+            >
               Must be at least 8 characters with numbers and symbols
             </Typography>
           </div>
@@ -822,9 +833,9 @@ export const AccessibilityFeatures: Story = {
               testId="validated-input"
             />
             {error && (
-              <Typography 
-                variant="body2" 
-                id="validation-error" 
+              <Typography
+                variant="body2"
+                id="validation-error"
                 className="text-red-600"
                 role="alert"
                 aria-live="polite"
@@ -832,7 +843,7 @@ export const AccessibilityFeatures: Story = {
                 {error}
               </Typography>
             )}
-            
+
             <Input
               label="Required Field"
               placeholder="This field is required"
@@ -859,10 +870,14 @@ export const AccessibilityFeatures: Story = {
               aria-describedby="char-count-help"
               testId="char-count-input"
             />
-            <Typography variant="body2" id="char-count-help" className="text-gray-600">
+            <Typography
+              variant="body2"
+              id="char-count-help"
+              className="text-gray-600"
+            >
               Character count is announced as you type
             </Typography>
-            
+
             <Input
               label="Search Input"
               type="search"
@@ -870,10 +885,9 @@ export const AccessibilityFeatures: Story = {
               placeholder="Search items..."
               allowClear
               aria-label="Search through available items"
-              role="searchbox"
               testId="search-input"
             />
-            
+
             <Input
               type="textarea"
               label="Message"
@@ -882,7 +896,11 @@ export const AccessibilityFeatures: Story = {
               aria-describedby="message-help"
               testId="message-textarea"
             />
-            <Typography variant="body2" id="message-help" className="text-gray-600">
+            <Typography
+              variant="body2"
+              id="message-help"
+              className="text-gray-600"
+            >
               Describe your quest or ask for help from other heroes
             </Typography>
           </div>
@@ -893,12 +911,21 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🎯 Focus Management</Typography>
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
             <Typography variant="body2" className="text-yellow-800 mb-3">
-              <strong>Focus Indicators:</strong> All inputs have clear focus states for keyboard users.
+              <strong>Focus Indicators:</strong> All inputs have clear focus
+              states for keyboard users.
             </Typography>
             <div className="space-y-3">
               <Input label="Focus me first" placeholder="Clear focus ring" />
-              <Input label="Then focus me" placeholder="Visible focus state" variant="filled" />
-              <Input label="Finally me" placeholder="Consistent focus behavior" variant="borderless" />
+              <Input
+                label="Then focus me"
+                placeholder="Visible focus state"
+                variant="filled"
+              />
+              <Input
+                label="Finally me"
+                placeholder="Consistent focus behavior"
+                variant="borderless"
+              />
             </div>
           </div>
         </div>
@@ -908,7 +935,8 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🧪 Testing Examples</Typography>
           <div className="p-4 bg-purple-50 border border-purple-200 rounded">
             <Typography variant="body2" className="text-purple-800 mb-3">
-              <strong>Testing:</strong> All inputs include testId attributes for reliable automated testing.
+              <strong>Testing:</strong> All inputs include testId attributes for
+              reliable automated testing.
             </Typography>
             <div className="space-y-3">
               <Input

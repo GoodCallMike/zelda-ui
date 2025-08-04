@@ -139,7 +139,7 @@ export const Slider = ({
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={currentValue}
-      aria-disabled={disabled}
+      aria-disabled={disabled ? 'true' : 'false'}
       tabIndex={disabled ? -1 : 0}
       onKeyDown={handleKeyDown}
       data-testid={testId}
@@ -161,10 +161,7 @@ export const Slider = ({
           isDragging && styles.thumbActive,
         )}
         style={{ left: `${percentage}%` }}
-        role="button"
-        tabIndex={disabled ? -1 : 0}
-        aria-disabled={disabled}
-        onKeyDown={handleKeyDown}
+        aria-disabled={disabled ? 'true' : 'false'}
       />
     </div>
   );

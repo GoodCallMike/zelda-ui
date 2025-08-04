@@ -35,7 +35,7 @@ export const Select = <T extends string = string>({
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
 
-  const listRef = useRef<HTMLUListElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const { refs, floatingStyles } = useFloating({
     open: isOpen,
@@ -163,10 +163,9 @@ export const Select = <T extends string = string>({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         tabIndex={disabled ? -1 : 0}
-        role="button"
+        role="combobox"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
-        aria-required={required}
         data-testid={testId}
       >
         <div className="flex items-center justify-between px-4 py-2">
@@ -197,9 +196,11 @@ export const Select = <T extends string = string>({
             styles.dropdown,
           )}
         >
-          <ul ref={listRef} role="listbox" className="py-2">
+          {/* biome-ignore lint/a11y/useSemanticElements: Custom select dropdown needs listbox role */}
+          <div ref={listRef} role="listbox" className="py-2">
             {options.map((option, index) => (
-              <li
+              // biome-ignore lint/a11y/noStaticElementInteractions: Select option needs click handler
+              <div
                 key={option.value as string}
                 className={cn(
                   'px-4 py-2 cursor-pointer transition-colors duration-150 text-gray-900 dark:text-gray-100',
@@ -219,9 +220,9 @@ export const Select = <T extends string = string>({
                 tabIndex={-1}
               >
                 {option.label}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

@@ -29,12 +29,16 @@ describe('Modal', () => {
 
   it('renders close button by default', () => {
     render(<Modal {...defaultProps} title="Test Modal" />);
-    expect(screen.getByRole('button', { name: 'Close modal' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Close modal' }),
+    ).toBeInTheDocument();
   });
 
   it('hides close button when closable is false', () => {
     render(<Modal {...defaultProps} title="Test Modal" closable={false} />);
-    expect(screen.queryByRole('button', { name: 'Close modal' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: 'Close modal' }),
+    ).not.toBeInTheDocument();
   });
 
   it('calls onClose when close button is clicked', () => {

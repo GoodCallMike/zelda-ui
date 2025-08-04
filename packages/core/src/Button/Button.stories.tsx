@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import {
   ArrowRightIcon,
   PlusIcon,
   SearchLgIcon,
   Trash01Icon,
 } from '@zelda/icons';
+import { useState } from 'react';
 import { Card } from '../Card';
 import { Divider } from '../Divider';
 import { Typography } from '../Typography';
@@ -400,7 +400,9 @@ export const AccessibilityFeatures: Story = {
             🔍 Accessibility Features Demo
           </Typography>
           <Typography variant="body2" className="mb-4">
-            This story demonstrates the Button's comprehensive accessibility features including keyboard navigation, screen reader support, and ARIA attributes.
+            This story demonstrates the Button's comprehensive accessibility
+            features including keyboard navigation, screen reader support, and
+            ARIA attributes.
           </Typography>
         </div>
 
@@ -409,7 +411,8 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
           <div className="p-4 bg-green-50 border border-green-200 rounded">
             <Typography variant="body2" className="text-green-800 mb-3">
-              <strong>Try this:</strong> Use Tab to navigate between buttons, Enter or Space to activate them.
+              <strong>Try this:</strong> Use Tab to navigate between buttons,
+              Enter or Space to activate them.
             </Typography>
             <div className="flex gap-3 flex-wrap">
               <Button variant="primary" testId="keyboard-primary">
@@ -433,46 +436,54 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🏷️ ARIA Attributes</Typography>
           <div className="space-y-3">
             <div className="flex gap-3 items-center">
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 onClick={() => setCount(count + 1)}
                 aria-describedby="counter-help"
                 testId="counter-button"
               >
                 Increment Counter ({count})
               </Button>
-              <Typography variant="body2" id="counter-help" className="text-gray-600">
+              <Typography
+                variant="body2"
+                id="counter-help"
+                className="text-gray-600"
+              >
                 Current count: {count}
               </Typography>
             </div>
-            
+
             <div className="flex gap-3 items-center">
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 onClick={handleAsyncAction}
                 disabled={loading}
-                aria-describedby={loading ? "loading-status" : undefined}
+                aria-describedby={loading ? 'loading-status' : undefined}
                 testId="async-button"
               >
                 {loading ? 'Processing...' : 'Start Process'}
               </Button>
               {loading && (
-                <Typography variant="body2" id="loading-status" className="text-blue-600" role="status" aria-live="polite">
+                <div
+                  id="loading-status"
+                  className="text-blue-600 text-sm"
+                  aria-live="polite"
+                >
                   Operation in progress, please wait...
-                </Typography>
+                </div>
               )}
             </div>
 
             <div className="flex gap-3">
-              <Button 
-                variant="destructive" 
+              <Button
+                variant="destructive"
                 aria-label="Delete selected items permanently"
                 testId="delete-with-aria"
               >
                 Delete
               </Button>
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 aria-expanded="false"
                 aria-haspopup="menu"
                 testId="menu-button"
@@ -488,7 +499,8 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🎯 Focus Management</Typography>
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
             <Typography variant="body2" className="text-yellow-800 mb-3">
-              <strong>Focus Indicators:</strong> All buttons have clear focus states for keyboard users.
+              <strong>Focus Indicators:</strong> All buttons have clear focus
+              states for keyboard users.
             </Typography>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <Button variant="primary">Focus me</Button>
@@ -513,7 +525,7 @@ export const AccessibilityFeatures: Story = {
                 Semantic Button
               </Button>
             </div>
-            
+
             <div className="p-3 bg-gray-50 border rounded">
               <Typography variant="body2" className="mb-2">
                 <strong>Descriptive Label:</strong> Clear action description
@@ -522,12 +534,17 @@ export const AccessibilityFeatures: Story = {
                 Save Game Progress
               </Button>
             </div>
-            
+
             <div className="p-3 bg-gray-50 border rounded">
               <Typography variant="body2" className="mb-2">
-                <strong>Icon with Text:</strong> Icon enhances but doesn't replace text
+                <strong>Icon with Text:</strong> Icon enhances but doesn't
+                replace text
               </Typography>
-              <Button variant="primary" icon={PlusIcon} testId="icon-text-button">
+              <Button
+                variant="primary"
+                icon={PlusIcon}
+                testId="icon-text-button"
+              >
                 Add New Item
               </Button>
             </div>
@@ -539,7 +556,8 @@ export const AccessibilityFeatures: Story = {
           <Typography variant="h4">🧪 Testing Examples</Typography>
           <div className="p-4 bg-purple-50 border border-purple-200 rounded">
             <Typography variant="body2" className="text-purple-800 mb-3">
-              <strong>Testing:</strong> All buttons include testId attributes for reliable automated testing.
+              <strong>Testing:</strong> All buttons include testId attributes
+              for reliable automated testing.
             </Typography>
             <div className="space-y-2">
               <div className="flex gap-3">
