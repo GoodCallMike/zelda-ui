@@ -4,6 +4,8 @@
   border: 3px solid var(--gray-300);
   color: var(--gray-700);
   border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent);
@@ -11,6 +13,7 @@
 
 .default:hover {
   border-color: var(--triforce-500);
+  transform: scale(1.02);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
@@ -19,6 +22,8 @@
 
 .default:focus {
   border-color: var(--triforce-600);
+  transform: scale(1.03);
+  animation: magicalFocus 0.3s ease-out;
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
@@ -46,6 +51,7 @@
 
 :global(.dark) .default:hover {
   border-color: #7c3aed;
+  transform: scale(1.02);
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
@@ -54,6 +60,8 @@
 
 :global(.dark) .default:focus {
   border-color: #7c3aed;
+  transform: scale(1.03);
+  animation: magicalFocusDark 0.3s ease-out;
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
@@ -70,6 +78,8 @@
   border: 3px solid transparent;
   color: var(--gray-700);
   border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 80%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--gray-400) 40%, transparent);
@@ -78,6 +88,7 @@
 .filled:hover {
   background: var(--gray-50);
   border-color: var(--triforce-500);
+  transform: scale(1.02);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
@@ -87,6 +98,8 @@
 .filled:focus {
   background: var(--white);
   border-color: var(--triforce-600);
+  transform: scale(1.03);
+  animation: magicalFocus 0.3s ease-out;
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
@@ -115,6 +128,7 @@
 :global(.dark) .filled:hover {
   background: var(--gray-600);
   border-color: #7c3aed;
+  transform: scale(1.02);
   box-shadow: 
     inset 2px 2px 0 var(--gray-500),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
@@ -124,6 +138,8 @@
 :global(.dark) .filled:focus {
   background: var(--gray-800);
   border-color: #7c3aed;
+  transform: scale(1.03);
+  animation: magicalFocusDark 0.3s ease-out;
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
@@ -140,17 +156,22 @@
   border: 3px solid transparent;
   color: var(--gray-700);
   border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
   box-shadow: none;
 }
 
 .borderless:hover {
   background: var(--gray-50);
+  transform: scale(1.02);
   box-shadow: 0 0 4px color-mix(in srgb, var(--triforce-400) 8%, transparent);
 }
 
 .borderless:focus {
   background: var(--white);
   border-color: var(--triforce-600);
+  transform: scale(1.03);
+  animation: magicalFocus 0.3s ease-out;
   box-shadow: 0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
 }
 
@@ -170,12 +191,15 @@
 
 :global(.dark) .borderless:hover {
   background: var(--gray-800);
+  transform: scale(1.02);
   box-shadow: 0 0 10px color-mix(in srgb, #7c3aed 20%, transparent);
 }
 
 :global(.dark) .borderless:focus {
   background: var(--gray-800);
   border-color: #7c3aed;
+  transform: scale(1.03);
+  animation: magicalFocusDark 0.3s ease-out;
   box-shadow: 0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
 }
 
@@ -273,7 +297,7 @@
 
 /* Dropdown styling */
 .dropdown {
-  animation: dropdownOpen 0.15s ease-out;
+  animation: magicalDropdown 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transform-origin: top;
 }
 
@@ -299,14 +323,70 @@
   background-color: #7c3aed !important; /* purple-700 */
 }
 
-@keyframes dropdownOpen {
-  from {
-    opacity: 0;
-    transform: scaleY(0.95) translateY(-4px);
+@keyframes magicalFocus {
+  0% {
+    box-shadow: 
+      inset 2px 2px 0 var(--white),
+      inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
+      0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
   }
-  to {
+  50% {
+    box-shadow: 
+      inset 2px 2px 0 var(--white),
+      inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
+      0 0 15px color-mix(in srgb, var(--triforce-400) 50%, transparent),
+      0 0 25px color-mix(in srgb, var(--triforce-300) 30%, transparent);
+  }
+  100% {
+    box-shadow: 
+      inset 2px 2px 0 var(--white),
+      inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 30%, transparent),
+      0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+  }
+}
+
+@keyframes magicalFocusDark {
+  0% {
+    box-shadow: 
+      inset 2px 2px 0 var(--gray-700),
+      inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
+      0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
+  }
+  50% {
+    box-shadow: 
+      inset 2px 2px 0 var(--gray-700),
+      inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
+      0 0 30px color-mix(in srgb, #7c3aed 70%, transparent),
+      0 0 40px color-mix(in srgb, #6b46c1 50%, transparent);
+  }
+  100% {
+    box-shadow: 
+      inset 2px 2px 0 var(--gray-700),
+      inset -2px -2px 0 color-mix(in srgb, #553c9a 50%, transparent),
+      0 0 20px color-mix(in srgb, #7c3aed 50%, transparent);
+  }
+}
+
+@keyframes magicalDropdown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.3) translateY(-10px) rotateX(-15deg);
+    filter: brightness(2) blur(2px);
+  }
+  30% {
+    opacity: 0.7;
+    transform: scaleY(1.05) translateY(2px) rotateX(5deg);
+    filter: brightness(1.5) blur(1px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: scaleY(0.98) translateY(-1px) rotateX(-2deg);
+    filter: brightness(1.2) blur(0.5px);
+  }
+  100% {
     opacity: 1;
-    transform: scaleY(1) translateY(0);
+    transform: scaleY(1) translateY(0) rotateX(0deg);
+    filter: brightness(1) blur(0px);
   }
 }
 

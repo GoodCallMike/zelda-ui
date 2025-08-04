@@ -7,6 +7,8 @@
   border: 3px solid var(--gray-400);
   border-radius: 50%;
   position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
   box-shadow: 
     inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
     inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent);
@@ -14,6 +16,7 @@
 
 .radio:hover {
   border-color: var(--triforce-500);
+  transform: scale(1.05);
   box-shadow: 
     inset 2px 2px 0 var(--white),
     inset -2px -2px 0 color-mix(in srgb, var(--triforce-600) 20%, transparent),
@@ -21,28 +24,60 @@
 }
 
 .radio:checked {
-  background: var(--triforce-500);
-  border-color: var(--triforce-600);
+  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+  border-color: var(--triforce-700);
+  transform: scale(1.1);
+  animation: magicalFill 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 
-    inset 2px 2px 0 var(--triforce-300),
+    inset 2px 2px 0 var(--triforce-100),
     inset -2px -2px 0 var(--triforce-700),
     0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
 }
 
-.radio:checked::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  background: var(--white);
-  border-radius: 50%;
-}
-
 .radio:focus-visible {
   outline-color: var(--triforce-400);
+  animation: focusRing 0.3s ease-out;
+}
+
+@keyframes focusRing {
+  0% {
+    outline-width: 0;
+    outline-offset: 0;
+  }
+  100% {
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes magicalFill {
+  0% {
+    transform: scale(0.8);
+    background: var(--white);
+    border-color: var(--gray-400);
+    box-shadow: 
+      inset 2px 2px 0 color-mix(in srgb, var(--white) 50%, transparent),
+      inset -2px -2px 0 color-mix(in srgb, var(--gray-600) 30%, transparent);
+  }
+  50% {
+    transform: scale(1.2);
+    background: linear-gradient(135deg, var(--triforce-300) 0%, var(--triforce-400) 50%, var(--triforce-500) 100%);
+    border-color: var(--triforce-600);
+    box-shadow: 
+      inset 2px 2px 0 var(--triforce-100),
+      inset -2px -2px 0 var(--triforce-700),
+      0 0 25px color-mix(in srgb, var(--triforce-400) 80%, transparent),
+      0 0 35px color-mix(in srgb, var(--triforce-300) 60%, transparent);
+  }
+  100% {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
+    border-color: var(--triforce-700);
+    box-shadow: 
+      inset 2px 2px 0 var(--triforce-100),
+      inset -2px -2px 0 var(--triforce-700),
+      0 0 8px color-mix(in srgb, var(--triforce-400) 25%, transparent);
+  }
 }
 
 /* Dark mode */
@@ -56,6 +91,7 @@
 
 :global(.dark) .radio:hover {
   border-color: #7c3aed;
+  transform: scale(1.05);
   box-shadow: 
     inset 2px 2px 0 var(--gray-700),
     inset -2px -2px 0 color-mix(in srgb, #553c9a 40%, transparent),
@@ -65,6 +101,8 @@
 :global(.dark) .radio:checked {
   background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
   border-color: #312e81;
+  transform: scale(1.1);
+  animation: magicalFillDark 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 
     inset 2px 2px 0 #a78bfa,
     inset -2px -2px 0 #312e81,
@@ -73,6 +111,37 @@
 
 :global(.dark) .radio:focus-visible {
   outline-color: #7c3aed;
+  animation: focusRing 0.3s ease-out;
+}
+
+@keyframes magicalFillDark {
+  0% {
+    transform: scale(0.8);
+    background: var(--gray-800);
+    border-color: var(--gray-600);
+    box-shadow: 
+      inset 2px 2px 0 color-mix(in srgb, var(--gray-400) 30%, transparent),
+      inset -2px -2px 0 color-mix(in srgb, var(--gray-800) 50%, transparent);
+  }
+  50% {
+    transform: scale(1.2);
+    background: linear-gradient(135deg, #7c3aed 0%, #6b46c1 50%, #553c9a 100%);
+    border-color: #44337a;
+    box-shadow: 
+      inset 2px 2px 0 #a78bfa,
+      inset -2px -2px 0 #312e81,
+      0 0 35px color-mix(in srgb, #6b46c1 90%, transparent),
+      0 0 45px color-mix(in srgb, #7c3aed 70%, transparent);
+  }
+  100% {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #6b46c1 0%, #553c9a 50%, #44337a 100%);
+    border-color: #312e81;
+    box-shadow: 
+      inset 2px 2px 0 #a78bfa,
+      inset -2px -2px 0 #312e81,
+      0 0 20px color-mix(in srgb, #6b46c1 50%, transparent);
+  }
 }
 
 /* Error state */
@@ -107,27 +176,12 @@
   height: 20px;
 }
 
-.small:checked::after {
-  width: 6px;
-  height: 6px;
-}
-
 .middle {
   width: 26.4px;
   height: 26.4px;
 }
 
-.middle:checked::after {
-  width: 8px;
-  height: 8px;
-}
-
 .large {
   width: 32px;
   height: 32px;
-}
-
-.large:checked::after {
-  width: 10px;
-  height: 10px;
 }

@@ -12,7 +12,8 @@ This folder contains context files and templates for maintaining consistency acr
 **Need to know what colors to use?** → [THEME_CONTEXT.md](./THEME_CONTEXT.md)  
 **Confused about CSS/styling approach?** → [STYLING_CONTEXT.md](./STYLING_CONTEXT.md)  
 **Looking for icons?** → [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)  
-**Writing component documentation?** → [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)
+**Writing component documentation?** → [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)  
+**Working with AI assistant?** → [AI_CONTEXT.md](./AI_CONTEXT.md)
 
 ## Context Files
 

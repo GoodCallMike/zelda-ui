@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
+
 import styles from './Checkbox.module.css';
 
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
