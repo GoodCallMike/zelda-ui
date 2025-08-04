@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import {
   CurrencyDollarIcon,
   EyeIcon,
@@ -6,6 +7,7 @@ import {
   SearchLgIcon,
   User01Icon,
 } from '@zelda/icons';
+import { Typography } from '../Typography';
 import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
@@ -69,29 +71,83 @@ The Input component automatically adapts to dark mode with Hyrule's mystical nig
 
 ## Accessibility
 
-The Input component is fully accessible with:
+The Input component is fully accessible with WCAG 2.1 AA compliance:
 
-- **Keyboard Navigation**: Full keyboard support with proper focus management
-- **Screen Reader Support**: Semantic elements with proper labeling
-- **Focus Indicators**: Clear visual focus states for keyboard users
-- **High Contrast**: Maintains accessibility in both light and dark modes
+### Keyboard Navigation
+- **Tab Navigation**: Navigate between inputs using Tab/Shift+Tab
+- **Arrow Keys**: Navigate within input content and selections
+- **Focus Management**: Clear visual focus indicators for keyboard users
+- **Focus Order**: Logical tab order in form layouts
+
+### Screen Reader Support
+- **Semantic Elements**: Uses proper HTML input elements
+- **Label Association**: Proper label-input relationships
+- **State Announcements**: Error, warning, and validation states are announced
+- **Character Count**: Live announcements for character counting
+- **Clear Button**: Accessible clear functionality
+
+### ARIA Attributes
+- **aria-label**: Provides accessible names when labels aren't visible
+- **aria-describedby**: Links to help text and error messages
+- **aria-required**: Indicates required fields
+- **aria-invalid**: Indicates validation state
+- **role="alert"**: For error message announcements
+
+### Visual Accessibility
+- **High Contrast**: Supports high contrast mode
+- **Color Independence**: Validation states use icons and text, not just color
+- **Focus Indicators**: Clear focus rings for keyboard navigation
+- **Text Scaling**: Readable at 200% zoom level
 
 \`\`\`tsx
-// Accessibility example
-<Input testId="hero-name" aria-label="Enter your hero name" label="Hero Name" />
+// Comprehensive accessibility example
+<Input 
+  label="Hero Name"
+  aria-describedby="hero-help"
+  aria-required="true"
+  testId="hero-name"
+/>
+<div id="hero-help">Choose a unique name (3-20 characters)</div>
 \`\`\`
 
 ## Testing
 
-Built-in testing support with \`testId\` prop:
+Built-in testing support with comprehensive \`testId\` props:
 
+### Test Identifiers
 \`\`\`tsx
-<Input testId="input-test" placeholder="Test input" />
+<Input testId="hero-name-input" label="Hero Name" />
+// Results in: data-testid="hero-name-input"
 \`\`\`
 
+### Testing Examples
 \`\`\`tsx
-// Test queries
-screen.getByTestId('input-test');
+// Query input
+screen.getByTestId('hero-name-input');
+
+// Test input value
+fireEvent.change(screen.getByTestId('hero-name-input'), {
+  target: { value: 'Link' }
+});
+
+// Test validation
+expect(screen.getByTestId('hero-name-input')).toHaveAttribute('aria-invalid', 'false');
+
+// Test required fields
+expect(screen.getByTestId('hero-name-input')).toHaveAttribute('aria-required', 'true');
+\`\`\`
+
+### Accessibility Testing
+\`\`\`tsx
+// Test label association
+const input = screen.getByLabelText('Hero Name');
+expected(input).toBeInTheDocument();
+
+// Test ARIA attributes
+expected(input).toHaveAttribute('aria-describedby', 'hero-help');
+
+// Test error states
+expected(screen.getByRole('alert')).toHaveTextContent('Name is required');
 \`\`\`
 
 ## Best Practices
@@ -654,6 +710,262 @@ export const HyruleInterface: Story = {
       description: {
         story:
           'Adventure-themed interface examples showing castle access, Sheikah Slate functionality, and ancient technology controls with authentic Hyrule styling.',
+      },
+    },
+  },
+};
+
+export const AccessibilityFeatures: Story = {
+  render: () => {
+    const [value, setValue] = useState('');
+    const [error, setError] = useState('');
+
+    const handleValidation = (inputValue: string) => {
+      if (inputValue.length < 3) {
+        setError('Name must be at least 3 characters');
+      } else {
+        setError('');
+      }
+    };
+
+    return (
+      <div className="space-y-6 max-w-md">
+        <div className="p-4 border rounded-lg bg-blue-50">
+          <Typography variant="h4" className="mb-3">
+            🔍 Accessibility Features Demo
+          </Typography>
+          <Typography variant="body2" className="mb-4">
+            This story demonstrates the Input's comprehensive accessibility features including keyboard navigation, screen reader support, and ARIA attributes.
+          </Typography>
+        </div>
+
+        {/* Keyboard Navigation */}
+        <div className="space-y-4">
+          <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
+          <div className="p-4 bg-green-50 border border-green-200 rounded">
+            <Typography variant="body2" className="text-green-800 mb-3">
+              <strong>Try this:</strong> Use Tab to navigate between inputs, arrow keys in select-like inputs.
+            </Typography>
+            <div className="space-y-3">
+              <Input
+                label="First Input"
+                placeholder="Tab to navigate here first"
+                testId="keyboard-first"
+              />
+              <Input
+                label="Second Input"
+                placeholder="Then tab here"
+                testId="keyboard-second"
+              />
+              <Input
+                type="textarea"
+                label="Textarea Input"
+                placeholder="Finally tab here"
+                rows={3}
+                testId="keyboard-textarea"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* ARIA Attributes and Labels */}
+        <div className="space-y-4">
+          <Typography variant="h4">🏷️ ARIA Attributes & Labels</Typography>
+          <div className="space-y-3">
+            <Input
+              label="Hero Name"
+              placeholder="Enter your hero name"
+              aria-describedby="hero-name-help"
+              testId="hero-name-input"
+            />
+            <Typography variant="body2" id="hero-name-help" className="text-gray-600">
+              Choose a unique name for your character (3-20 characters)
+            </Typography>
+            
+            <Input
+              label="Email Address"
+              type="email"
+              placeholder="hero@hyrule.com"
+              aria-label="Enter your email address for account notifications"
+              required
+              testId="email-input"
+            />
+            
+            <Input
+              label="Password"
+              type="password"
+              placeholder="Enter secure password"
+              aria-describedby="password-requirements"
+              testId="password-input"
+            />
+            <Typography variant="body2" id="password-requirements" className="text-gray-600">
+              Must be at least 8 characters with numbers and symbols
+            </Typography>
+          </div>
+        </div>
+
+        {/* Error States and Validation */}
+        <div className="space-y-4">
+          <Typography variant="h4">⚠️ Error States & Validation</Typography>
+          <div className="space-y-3">
+            <Input
+              label="Validated Input"
+              value={value}
+              onChange={(e) => {
+                setValue(e.target.value);
+                handleValidation(e.target.value);
+              }}
+              status={error ? 'error' : undefined}
+              placeholder="Type at least 3 characters"
+              aria-describedby={error ? 'validation-error' : undefined}
+              aria-invalid={error ? 'true' : 'false'}
+              testId="validated-input"
+            />
+            {error && (
+              <Typography 
+                variant="body2" 
+                id="validation-error" 
+                className="text-red-600"
+                role="alert"
+                aria-live="polite"
+              >
+                {error}
+              </Typography>
+            )}
+            
+            <Input
+              label="Required Field"
+              placeholder="This field is required"
+              required
+              aria-required="true"
+              status="error"
+              testId="required-input"
+            />
+            <Typography variant="body2" className="text-red-600" role="alert">
+              This field is required
+            </Typography>
+          </div>
+        </div>
+
+        {/* Screen Reader Support */}
+        <div className="space-y-4">
+          <Typography variant="h4">📢 Screen Reader Support</Typography>
+          <div className="space-y-3">
+            <Input
+              label="Character Count Input"
+              placeholder="Type something..."
+              showCount
+              maxLength={50}
+              aria-describedby="char-count-help"
+              testId="char-count-input"
+            />
+            <Typography variant="body2" id="char-count-help" className="text-gray-600">
+              Character count is announced as you type
+            </Typography>
+            
+            <Input
+              label="Search Input"
+              type="search"
+              prefix={<SearchLgIcon className="w-4 h-4" />}
+              placeholder="Search items..."
+              allowClear
+              aria-label="Search through available items"
+              role="searchbox"
+              testId="search-input"
+            />
+            
+            <Input
+              type="textarea"
+              label="Message"
+              placeholder="Enter your message..."
+              rows={4}
+              aria-describedby="message-help"
+              testId="message-textarea"
+            />
+            <Typography variant="body2" id="message-help" className="text-gray-600">
+              Describe your quest or ask for help from other heroes
+            </Typography>
+          </div>
+        </div>
+
+        {/* Focus Management */}
+        <div className="space-y-4">
+          <Typography variant="h4">🎯 Focus Management</Typography>
+          <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
+            <Typography variant="body2" className="text-yellow-800 mb-3">
+              <strong>Focus Indicators:</strong> All inputs have clear focus states for keyboard users.
+            </Typography>
+            <div className="space-y-3">
+              <Input label="Focus me first" placeholder="Clear focus ring" />
+              <Input label="Then focus me" placeholder="Visible focus state" variant="filled" />
+              <Input label="Finally me" placeholder="Consistent focus behavior" variant="borderless" />
+            </div>
+          </div>
+        </div>
+
+        {/* Testing Examples */}
+        <div className="space-y-4">
+          <Typography variant="h4">🧪 Testing Examples</Typography>
+          <div className="p-4 bg-purple-50 border border-purple-200 rounded">
+            <Typography variant="body2" className="text-purple-800 mb-3">
+              <strong>Testing:</strong> All inputs include testId attributes for reliable automated testing.
+            </Typography>
+            <div className="space-y-3">
+              <Input
+                testId="test-basic-input"
+                label="Basic Test Input"
+                placeholder="Test me"
+              />
+              <Input
+                testId="test-email-input"
+                label="Email Test Input"
+                type="email"
+                placeholder="test@example.com"
+              />
+              <Input
+                testId="test-textarea-input"
+                type="textarea"
+                label="Textarea Test Input"
+                placeholder="Test textarea"
+                rows={2}
+              />
+            </div>
+            <Typography variant="body2" className="text-sm text-gray-600 mt-2">
+              Test with: screen.getByTestId('test-basic-input')
+            </Typography>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Demonstrates comprehensive accessibility features:
+
+**Keyboard Navigation:**
+- \`Tab/Shift+Tab\` - Navigate between inputs
+- \`Arrow keys\` - Navigate within input content
+- Clear focus indicators
+
+**ARIA Attributes:**
+- \`aria-label\` - Accessible input names
+- \`aria-describedby\` - Additional descriptions
+- \`aria-required\` - Required field indication
+- \`aria-invalid\` - Validation state
+- \`role="alert"\` - Error announcements
+
+**Screen Reader Support:**
+- Semantic input elements
+- Proper label associations
+- Status announcements
+- Character count announcements
+
+**Testing Support:**
+- \`testId\` attributes for reliable testing
+- Consistent naming conventions
+        `,
       },
     },
   },

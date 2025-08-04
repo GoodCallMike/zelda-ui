@@ -57,7 +57,43 @@ The Modal component is fully accessible with:
 
 ## Testing
 
-Built-in testing support with \`testId\` prop for reliable automated testing.
+Built-in testing support with comprehensive \`testId\` props:
+
+### Test Identifiers
+\`\`\`tsx
+<Modal testId="user-settings-modal" />
+// Results in: data-testid="user-settings-modal"
+\`\`\`
+
+### Testing Examples
+\`\`\`tsx
+// Query modal
+screen.getByTestId('user-settings-modal');
+
+// Test modal opening
+fireEvent.click(screen.getByText('Open Settings'));
+expect(screen.getByTestId('user-settings-modal')).toBeInTheDocument();
+
+// Test keyboard navigation
+fireEvent.keyDown(document, { key: 'Escape' });
+expect(screen.queryByTestId('user-settings-modal')).not.toBeInTheDocument();
+
+// Test focus management
+const modal = screen.getByTestId('user-settings-modal');
+expect(modal).toHaveFocus();
+\`\`\`
+
+### Accessibility Testing
+\`\`\`tsx
+// Test ARIA attributes
+const modal = screen.getByRole('dialog');
+expected(modal).toHaveAttribute('aria-modal', 'true');
+expected(modal).toHaveAttribute('aria-labelledby');
+
+// Test focus trap
+fireEvent.keyDown(modal, { key: 'Tab' });
+// Focus should remain within modal
+\`\`\`
 
 ## Best Practices
 
@@ -493,6 +529,368 @@ export const DarkMode: Story = {
       description: {
         story:
           'Dark mode transforms the modal with purple mystical theming and enhanced glow effects.',
+      },
+    },
+  },
+};
+
+export const AccessibilityFeatures: Story = {
+  render: () => {
+    const [open, setOpen] = useState(false);
+    const [focusDemo, setFocusDemo] = useState(false);
+    const [keyboardDemo, setKeyboardDemo] = useState(false);
+
+    return (
+      <div className="space-y-6">
+        <div className="p-4 border rounded-lg bg-blue-50">
+          <Typography variant="h4" className="mb-3">
+            🔍 Accessibility Features Demo
+          </Typography>
+          <Typography variant="body2" className="mb-4">
+            This story demonstrates the Modal's comprehensive accessibility features including focus management, keyboard navigation, and ARIA attributes.
+          </Typography>
+          <div className="flex gap-3">
+            <Button onClick={() => setOpen(true)}>Basic Accessibility</Button>
+            <Button onClick={() => setFocusDemo(true)}>Focus Management</Button>
+            <Button onClick={() => setKeyboardDemo(true)}>Keyboard Navigation</Button>
+          </div>
+        </div>
+
+        {/* Basic Accessibility Modal */}
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          title="Accessibility Features"
+          testId="accessibility-modal"
+        >
+          <div className="space-y-4">
+            <Typography variant="body1">
+              This modal demonstrates proper ARIA attributes and semantic structure:
+            </Typography>
+            <ul className="space-y-2 text-sm list-disc pl-6">
+              <li><code>role="dialog"</code> - Identifies the modal as a dialog</li>
+              <li><code>aria-modal="true"</code> - Indicates this is a modal dialog</li>
+              <li><code>aria-labelledby</code> - References the modal title</li>
+              <li><code>aria-label</code> - Provides accessible names for interactive elements</li>
+              <li>Focus trap - Keeps focus within the modal</li>
+              <li>Body scroll lock - Prevents background scrolling</li>
+            </ul>
+            <div className="flex gap-2 justify-end mt-4">
+              <Button variant="default" onClick={() => setOpen(false)}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </Modal>
+
+        {/* Focus Management Demo */}
+        <Modal
+          open={focusDemo}
+          onClose={() => setFocusDemo(false)}
+          title="Focus Management Demo"
+          testId="focus-demo-modal"
+        >
+          <div className="space-y-4">
+            <Typography variant="body1">
+              Focus is automatically managed when the modal opens and closes:
+            </Typography>
+            <div className="space-y-3">
+              <Input label="First Input" placeholder="Focus starts here when modal opens" />
+              <Input label="Second Input" placeholder="Tab to navigate between elements" />
+              <Select
+                label="Select Option"
+                options={[
+                  { value: 'option1', label: 'Option 1' },
+                  { value: 'option2', label: 'Option 2' },
+                ]}
+              />
+            </div>
+            <div className="p-3 bg-green-50 border border-green-200 rounded">
+              <Typography variant="body2" className="text-green-800">
+                <strong>Try this:</strong> Use Tab and Shift+Tab to navigate. Focus is trapped within this modal and will cycle through interactive elements.
+              </Typography>
+            </div>
+            <div className="flex gap-2 justify-end">
+              <Button variant="default" onClick={() => setFocusDemo(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setFocusDemo(false)}>
+                Save
+              </Button>
+            </div>
+          </div>
+        </Modal>
+
+        {/* Keyboard Navigation Demo */}
+        <Modal
+          open={keyboardDemo}
+          onClose={() => setKeyboardDemo(false)}
+          title="Keyboard Navigation Guide"
+          size="large"
+          testId="keyboard-demo-modal"
+        >
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <Typography variant="h4">🎹 Keyboard Shortcuts</Typography>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Close Modal</span>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Escape</kbd>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Next Element</span>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Tab</kbd>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Previous Element</span>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Shift + Tab</kbd>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Activate Button</span>
+                    <kbd className="px-2 py-1 bg-gray-200 rounded text-sm">Enter / Space</kbd>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <Typography variant="h4">🔧 Interactive Elements</Typography>
+                <div className="space-y-3">
+                  <Button variant="primary" className="w-full">
+                    Primary Action
+                  </Button>
+                  <Button variant="default" className="w-full">
+                    Secondary Action
+                  </Button>
+                  <Input label="Text Input" placeholder="Type here" />
+                  <Select
+                    label="Dropdown"
+                    options={[
+                      { value: 'a', label: 'Option A' },
+                      { value: 'b', label: 'Option B' },
+                    ]}
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded">
+              <Typography variant="body2" className="text-blue-800">
+                <strong>Accessibility Tip:</strong> Press Escape to close this modal, or use Tab to navigate to the close button. The modal maintains focus trap and will return focus to the trigger button when closed.
+              </Typography>
+            </div>
+            
+            <div className="flex gap-2 justify-end">
+              <Button variant="default" onClick={() => setKeyboardDemo(false)}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Demonstrates comprehensive accessibility features:
+
+**ARIA Attributes:**
+- \`role="dialog"\` - Identifies modal as dialog
+- \`aria-modal="true"\` - Indicates modal behavior
+- \`aria-labelledby\` - References title element
+- \`aria-label\` - Provides accessible names
+
+**Keyboard Navigation:**
+- \`Escape\` - Closes modal
+- \`Tab/Shift+Tab\` - Navigate elements
+- \`Enter/Space\` - Activate buttons
+
+**Focus Management:**
+- Focus trap within modal
+- Focus restoration on close
+- Logical tab order
+
+**Screen Reader Support:**
+- Semantic HTML structure
+- Descriptive labels
+- Status announcements
+        `,
+      },
+    },
+  },
+};
+
+export const TestingExamples: Story = {
+  render: () => {
+    const [modalType, setModalType] = useState<string | null>(null);
+
+    return (
+      <div className="space-y-6">
+        <div className="p-4 border rounded-lg bg-purple-50">
+          <Typography variant="h4" className="mb-3">
+            🧪 Testing Examples
+          </Typography>
+          <Typography variant="body2" className="mb-4">
+            Examples with proper testId attributes for automated testing.
+          </Typography>
+          <div className="flex gap-3 flex-wrap">
+            <Button 
+              testId="open-basic-modal"
+              onClick={() => setModalType('basic')}
+            >
+              Basic Modal
+            </Button>
+            <Button 
+              testId="open-form-modal"
+              onClick={() => setModalType('form')}
+            >
+              Form Modal
+            </Button>
+            <Button 
+              testId="open-confirmation-modal"
+              onClick={() => setModalType('confirmation')}
+            >
+              Confirmation Modal
+            </Button>
+          </div>
+        </div>
+
+        {/* Basic Modal */}
+        <Modal
+          open={modalType === 'basic'}
+          onClose={() => setModalType(null)}
+          title="Basic Test Modal"
+          testId="basic-test-modal"
+        >
+          <div className="space-y-4">
+            <Typography variant="body1" testId="modal-content">
+              This modal has testId attributes for reliable testing.
+            </Typography>
+            <div className="flex gap-2 justify-end">
+              <Button 
+                testId="cancel-button"
+                variant="default" 
+                onClick={() => setModalType(null)}
+              >
+                Cancel
+              </Button>
+              <Button 
+                testId="confirm-button"
+                variant="primary" 
+                onClick={() => setModalType(null)}
+              >
+                Confirm
+              </Button>
+            </div>
+          </div>
+        </Modal>
+
+        {/* Form Modal */}
+        <Modal
+          open={modalType === 'form'}
+          onClose={() => setModalType(null)}
+          title="Form Test Modal"
+          testId="form-test-modal"
+        >
+          <form className="space-y-4">
+            <Input 
+              testId="name-input"
+              label="Name" 
+              placeholder="Enter name" 
+            />
+            <Input 
+              testId="email-input"
+              label="Email" 
+              type="email" 
+              placeholder="Enter email" 
+            />
+            <Select
+              testId="role-select"
+              label="Role"
+              options={[
+                { value: 'admin', label: 'Administrator' },
+                { value: 'user', label: 'User' },
+              ]}
+            />
+            <div className="flex gap-2 justify-end">
+              <Button 
+                testId="form-cancel"
+                variant="default" 
+                onClick={() => setModalType(null)}
+              >
+                Cancel
+              </Button>
+              <Button 
+                testId="form-submit"
+                variant="primary" 
+                onClick={() => setModalType(null)}
+              >
+                Submit
+              </Button>
+            </div>
+          </form>
+        </Modal>
+
+        {/* Confirmation Modal */}
+        <Modal
+          open={modalType === 'confirmation'}
+          onClose={() => setModalType(null)}
+          title="Confirm Action"
+          size="small"
+          testId="confirmation-test-modal"
+          maskClosable={false}
+        >
+          <div className="space-y-4">
+            <Typography variant="body1" testId="confirmation-message">
+              Are you sure you want to proceed with this action?
+            </Typography>
+            <div className="flex gap-2 justify-end">
+              <Button 
+                testId="confirmation-cancel"
+                variant="default" 
+                onClick={() => setModalType(null)}
+              >
+                Cancel
+              </Button>
+              <Button 
+                testId="confirmation-confirm"
+                variant="destructive" 
+                onClick={() => setModalType(null)}
+              >
+                Confirm
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Testing examples with proper testId attributes:
+
+\`\`\`tsx
+// Test queries
+screen.getByTestId('basic-test-modal');
+screen.getByTestId('modal-content');
+screen.getByTestId('confirm-button');
+
+// User interactions
+await user.click(screen.getByTestId('open-basic-modal'));
+await user.click(screen.getByTestId('confirm-button'));
+
+// Form testing
+await user.type(screen.getByTestId('name-input'), 'John Doe');
+await user.selectOptions(screen.getByTestId('role-select'), 'admin');
+
+// Keyboard testing
+await user.keyboard('{Escape}'); // Close modal
+\`\`\`
+        `,
       },
     },
   },
