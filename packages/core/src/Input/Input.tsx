@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, type ChangeEvent, type InputHTMLAttributes, type TextareaHTMLAttributes } from 'react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';
 import styles from './Input.module.css';
+
+type TextareaModeProps = TextareaProps;
 
 export type { InputProps, TextareaProps };
 

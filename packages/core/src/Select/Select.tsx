@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useFloating, autoUpdate, offset, flip, shift, size } from '@floating-ui/react';
+import { useFloating, autoUpdate, offset, flip, shift, size as floatingSize } from '@floating-ui/react';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import { ChevronDownIcon } from '@zelda/icons';
@@ -8,7 +8,7 @@ import styles from './Select.module.css';
 
 export type { SelectProps, Option as SelectOption };
 
-export const Select = <T = string>({
+export const Select = <T extends string = string>({
   label,
   variant = 'default',
   size = 'medium',
@@ -36,7 +36,7 @@ export const Select = <T = string>({
       offset(4),
       flip(),
       shift({ padding: 8 }),
-      size({
+      floatingSize({
         apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
@@ -50,9 +50,9 @@ export const Select = <T = string>({
   const currentValue = value !== undefined ? value : internalValue;
   const selectedOption = options.find(option => option.value === currentValue);
   
-  const handleSelect = (optionValue: string) => {
+  const handleSelect = (optionValue: T) => {
     if (value === undefined) {
-      setInternalValue(optionValue);
+      setInternalValue(optionValue as string);
     }
     onChange?.(optionValue);
     setIsOpen(false);
@@ -103,7 +103,7 @@ export const Select = <T = string>({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (refs.reference.current && !refs.reference.current.contains(event.target as Node) &&
+      if (refs.reference.current && !(refs.reference.current as Element).contains(event.target as Node) &&
           refs.floating.current && !refs.floating.current.contains(event.target as Node)) {
         setIsOpen(false);
         setFocusedIndex(-1);
@@ -182,7 +182,7 @@ export const Select = <T = string>({
           >
             {options.map((option, index) => (
               <li
-                key={option.value}
+                key={option.value as string}
                 role="option"
                 aria-selected={option.value === currentValue}
                 className={cn(

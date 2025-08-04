@@ -3,7 +3,7 @@ import { cn } from '../styles';
 import { useRadioGroup } from './RadioGroup';
 import styles from './RadioButton.module.css';
 
-export interface RadioButtonProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface RadioButtonProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /** Radio button label */
   children: React.ReactNode;
   /** Button style variant */

@@ -1,6 +1,8 @@
 import type { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import type { BaseComponentProps, Size, Status, IconComponent, Option, ChangeHandler, FormFieldProps } from './index';
 
+export type { Option };
+
 // Button types
 export interface ButtonProps extends BaseComponentProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
   /** Button content */
@@ -82,7 +84,7 @@ export interface SelectProps<T = string> extends FormFieldProps {
 }
 
 // Checkbox types
-export interface CheckboxProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface CheckboxProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
   /** Checkbox label */
   children?: ReactNode;
   /** Whether checkbox is checked */
@@ -182,7 +184,7 @@ export interface ToastProps extends BaseComponentProps {
 }
 
 // Slider types
-export interface SliderProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface SliderProps extends BaseComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
   /** Slider value */
   value?: number | number[];
   /** Default value */

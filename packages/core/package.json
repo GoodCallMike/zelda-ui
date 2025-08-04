@@ -31,6 +31,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@storybook/react": "^9.0.18"
+    "@storybook/react": "^9.0.18",
+    "rollup-plugin-postcss": "^4.0.2"
   }
 }

@@ -4,7 +4,7 @@ import { Typography } from '../Typography';
 import { useRadioGroup } from './RadioGroup';
 import styles from './Radio.module.css';
 
-export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /** Radio label */
   label?: string;
   /** Radio size */

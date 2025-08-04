@@ -3,7 +3,7 @@ import { cn } from '../styles';
 import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 
-export interface ButtonProps extends BaseButtonProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type'> {}
+export interface ButtonProps extends BaseButtonProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type' | 'children'> {}
 
 export const Button = ({
   children,
@@ -42,5 +42,4 @@ export const Button = ({
       {Icon && iconPosition === 'right' && !loading && <Icon className="w-4 h-4 flex-shrink-0" />}
     </button>
   );
-};
 };
