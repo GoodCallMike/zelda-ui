@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import { cn } from '../styles';
+import { cn } from '@zelda/theme';
 import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 
@@ -20,14 +20,20 @@ export const Button = ({
 }: ButtonProps) => {
   const isDisabled = disabled || loading;
   
+  const sizeClasses = {
+    small: 'px-4 py-2 text-xs min-h-8',
+    medium: 'px-6 py-3 text-sm min-h-10', 
+    large: 'px-8 py-4 text-base min-h-12'
+  };
+
   return (
     <button
       type={type}
       className={cn(
-        'inline-flex items-center justify-center font-bold text-sm uppercase tracking-wide border-0 cursor-pointer select-none outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2',
+        'inline-flex items-center justify-center font-bold uppercase tracking-wide border-0 cursor-pointer select-none outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 rounded-lg',
         Icon && 'gap-2',
+        sizeClasses[size],
         styles[variant],
-        styles[size],
         isDisabled && 'opacity-60 cursor-not-allowed pointer-events-none',
         loading && 'cursor-wait',
         className

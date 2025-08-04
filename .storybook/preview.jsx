@@ -1,6 +1,5 @@
 import React from 'react';
-import '../packages/core/src/styles';
-import '../packages/theme/src';
+import '@zelda/theme';
 import './preview.css';
 import { ThemeDecorator } from './decorators/ThemeDecorator';
 

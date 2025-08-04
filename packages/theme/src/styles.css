@@ -1,0 +1,117 @@
+/* Zelda UI Theme Styles */
+@import './reset.css';
+
+/* CSS Custom Properties */
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --black: #000000;
+  
+  /* Gray scale */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Triforce Gold */
+  --triforce-100: #fef3c7;
+  --triforce-400: #fbbf24;
+  --triforce-500: #f59e0b;
+  --triforce-600: #d97706;
+  --triforce-700: #b45309;
+  --triforce-900: #78350f;
+  
+  /* Rupee Green */
+  --rupee-400: #4ade80;
+  
+  /* Ganon Red */
+  --ganon-500: #ef4444;
+  --ganon-600: #dc2626;
+  --ganon-700: #b91c1c;
+  --ganon-800: #991b1b;
+  --ganon-900: #7f1d1d;
+}
+
+/* Basic utility classes */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.rounded { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.border { border-width: 1px; }
+/* Typography utilities */
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-normal { line-height: 1.5; }
+.leading-relaxed { line-height: 1.625; }
+.w-full { width: 100%; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+
+/* Button base styles */
+.inline-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 0.5rem 1rem;
+}
+
+.inline-flex:focus-visible {
+  outline: 2px solid var(--triforce-500);
+  outline-offset: 2px;
+}
+
+.inline-flex:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Color utilities */
+.text-gray-500 { color: var(--gray-500); }
+.text-gray-600 { color: var(--gray-600); }
+.text-gray-900 { color: var(--gray-900); }
+.text-triforce-600 { color: var(--triforce-600); }
+.text-hyrule-600 { color: var(--triforce-600); }
+.text-rupee-600 { color: var(--rupee-400); }
+.text-ganon-600 { color: var(--ganon-600); }
+.bg-gray-50 { background-color: var(--gray-50); }
+.bg-gray-100 { background-color: var(--gray-100); }
+.border-gray-300 { border-color: var(--gray-300); }
+
+/* Dark mode */
+.dark .text-gray-600 { color: var(--gray-400); }
+.dark .text-gray-900 { color: var(--gray-50); }
+.dark .bg-gray-50 { background-color: var(--gray-800); }
+.dark .bg-gray-100 { background-color: var(--gray-700); }
+.dark .border-gray-300 { border-color: var(--gray-600); }

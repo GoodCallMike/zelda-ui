@@ -1,4 +1,5 @@
 import '@zelda/theme';
+import '../packages/theme/src/variables.css';
 import './preview.css';
 
 export const parameters = {

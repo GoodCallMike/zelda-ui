@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "style": "dist/variables.css",
   "files": [
-    "dist",
-    "src/**/*.css.ts"
+    "dist"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
@@ -25,6 +25,7 @@
     "@vanilla-extract/recipes": "^0.5.7",
     "@vanilla-extract/rollup-plugin": "^1.4.0",
     "rollup": "^4.28.1",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-dts": "^6.1.1",
     "tslib": "^2.6.0",
     "typescript": "^5.0.0"
