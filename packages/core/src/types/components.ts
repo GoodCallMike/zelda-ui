@@ -55,6 +55,7 @@ interface BaseInputProps extends FormFieldProps {
   showCount?: boolean;
   /** Maximum character count */
   maxLength?: number;
+  defaultValue?: string;
 }
 
 export interface InputProps
