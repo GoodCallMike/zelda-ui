@@ -15,11 +15,7 @@ const dirname =
 export default defineConfig({
   plugins: [vanillaExtractPlugin()],
   optimizeDeps: {
-    include: [
-      '@mdx-js/react',
-      'markdown-to-jsx',
-      'react/jsx-dev-runtime'
-    ]
+    exclude: ['@mdx-js/react', 'markdown-to-jsx']
   },
   resolve: {
     alias: {
@@ -41,6 +37,8 @@ export default defineConfig({
           globals: true,
           environment: 'jsdom',
           setupFiles: ['./vitest.setup.ts'],
+          pool: 'forks',
+          isolate: true,
         },
       },
       {

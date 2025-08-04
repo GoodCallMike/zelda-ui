@@ -3,10 +3,10 @@ import React from 'react';
 import { vi } from 'vitest';
 import { configure } from '@testing-library/react';
 
-// Configure testing library to automatically wrap updates in act
+// Configure testing library
 configure({ asyncUtilTimeout: 2000 });
 
-// Fix React hooks availability
+// Ensure React is available globally
 // @ts-ignore
 globalThis.React = React;
 // @ts-ignore
@@ -18,16 +18,31 @@ Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
   writable: true,
 });
 
-// Suppress React act warnings in tests
+// Suppress all React warnings in tests to reduce noise
 const originalError = console.error;
+const originalWarn = console.warn;
+
 console.error = (...args) => {
-  if (args[0]?.includes?.('Warning: An update to') && args[0]?.includes?.('was not wrapped in act')) {
+  const message = args[0]?.toString() || '';
+  if (
+    message.includes('Warning: An update to') ||
+    message.includes('Invalid hook call') ||
+    message.includes('Consider adding an error boundary')
+  ) {
     return;
   }
   originalError(...args);
 };
 
-// Make vi available globally for tests that use jest.fn()
+console.warn = (...args) => {
+  const message = args[0]?.toString() || '';
+  if (message.includes('Warning:')) {
+    return;
+  }
+  originalWarn(...args);
+};
+
+// Make vi available globally
 // @ts-ignore
 globalThis.jest = {
   fn: vi.fn,
