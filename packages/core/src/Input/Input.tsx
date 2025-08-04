@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import type { JSX } from 'react';
+import * as React from 'react';
+const { useState } = React;
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';
@@ -55,7 +55,7 @@ const TextInput = (props: InputProps) => {
   const characterCount = String(currentValue).length;
 
   const renderSuffixContent = () => {
-    const elements: JSX.Element[] = [];
+    const elements: React.JSX.Element[] = [];
     if (showCount && maxLength) {
       elements.push(
         <span
