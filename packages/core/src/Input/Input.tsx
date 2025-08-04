@@ -1,8 +1,8 @@
 import React, {
   type InputHTMLAttributes,
   type TextareaHTMLAttributes,
+  useState,
 } from 'react';
-const { useState } = React;
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { InputProps, TextareaProps } from '../types/components';
