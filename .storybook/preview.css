@@ -1,6 +1,19 @@
+/* Theme-aware Storybook styling */
+:root {
+  --sb-background: var(--color-background);
+  --sb-foreground: var(--color-foreground);
+}
+
+/* Storybook canvas background */
+.sb-show-main {
+  background: var(--color-background);
+  transition: background-color 0.2s ease;
+}
+
 /* Storybook documentation dark mode fixes */
 .dark .sbdocs-content {
   color: var(--color-foreground);
+  background: var(--color-background);
 }
 
 .dark .sbdocs-content h1,
@@ -10,4 +23,25 @@
 .dark .sbdocs-content h5,
 .dark .sbdocs-content h6 {
   color: var(--color-foreground);
+}
+
+.dark .sbdocs-content p,
+.dark .sbdocs-content li {
+  color: var(--gray-300);
+}
+
+.dark .sbdocs-content code {
+  background: var(--gray-800);
+  color: var(--triforce-400);
+  border: 1px solid var(--gray-700);
+}
+
+.dark .sbdocs-content pre {
+  background: var(--gray-900);
+  border: 1px solid var(--gray-700);
+}
+
+/* Theme transition animations */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import '@zelda/theme';
 import '../packages/theme/src/variables.css';
 import './preview.css';
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 // Ensure React is available globally
 if (typeof globalThis !== 'undefined') {
@@ -13,6 +14,16 @@ if (typeof global !== 'undefined') {
 if (typeof window !== 'undefined') {
   window.React = React;
 }
+
+export const decorators = [
+  withThemeByClassName({
+    themes: {
+      'Zelda (Light)': '',
+      'Ganon (Dark)': 'dark',
+    },
+    defaultTheme: 'Zelda (Light)',
+  }),
+];
 
 export const parameters = {
   options: {
@@ -37,5 +48,9 @@ export const parameters = {
     // 'error' - fail CI on a11y violations
     // 'off' - skip a11y checks entirely
     test: 'todo',
+  },
+
+  backgrounds: {
+    disable: true,
   },
 };

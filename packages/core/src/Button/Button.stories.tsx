@@ -326,12 +326,23 @@ export const HyruleInterface: Story = {
   },
 };
 
-export const DarkMode: Story = {
+export const GanonTheme: Story = {
+  parameters: {
+    themes: {
+      themeOverride: 'Ganon (Dark)',
+    },
+    docs: {
+      description: {
+        story:
+          'Dark theme transforms the colors from Zelda/Triforce-focused to Ganon-focused with purple primary colors.',
+      },
+    },
+  },
   render: () => (
-    <div className="dark bg-gray-900 p-6 rounded">
+    <div className="p-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-white mb-4">
-          Ganon's Domain (Dark Mode)
+        <h3 className="text-lg font-bold mb-4">
+          Ganon's Domain (Dark Theme)
         </h3>
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
@@ -344,14 +355,37 @@ export const DarkMode: Story = {
       </div>
     </div>
   ),
+};
+
+export const ZeldaTheme: Story = {
   parameters: {
+    themes: {
+      themeOverride: 'Zelda (Light)',
+    },
     docs: {
       description: {
         story:
-          'Dark mode transforms the theme from Zelda/Triforce-focused to Ganon-focused with purple primary and red destructive variants.',
+          'Light theme featuring Triforce Gold as the primary color with warm, heroic tones.',
       },
     },
   },
+  render: () => (
+    <div className="p-6">
+      <div className="space-y-4">
+        <h3 className="text-lg font-bold mb-4">
+          Hyrule Kingdom (Light Theme)
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          <Button variant="primary">Primary</Button>
+          <Button variant="default">Default</Button>
+          <Button variant="dashed">Dashed</Button>
+          <Button variant="text">Text</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="destructive">Destructive</Button>
+        </div>
+      </div>
+    </div>
+  ),
 };
 
 export const WithIcons: Story = {
