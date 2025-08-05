@@ -3,7 +3,8 @@ import type { ReactNode } from 'react';
 import { cn } from '../styles';
 import styles from './Typography.module.css';
 
-export interface TypographyProps extends Omit<React.ComponentProps<'p'>, 'className' | 'id'> {
+export interface TypographyProps
+  extends Omit<React.ComponentProps<'p'>, 'className' | 'id'> {
   /** Typography content */
   children: ReactNode;
   /** Typography variant */

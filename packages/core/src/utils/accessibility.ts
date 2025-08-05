@@ -264,7 +264,9 @@ export const runAccessibilityTestSuite = async (
     results.axeResults = await axe(results.renderResult.container);
     // Check for violations manually since toHaveNoViolations might not be available
     if (results.axeResults.violations.length > 0) {
-      throw new Error(`Accessibility violations found: ${JSON.stringify(results.axeResults.violations, null, 2)}`);
+      throw new Error(
+        `Accessibility violations found: ${JSON.stringify(results.axeResults.violations, null, 2)}`,
+      );
     }
   }
 

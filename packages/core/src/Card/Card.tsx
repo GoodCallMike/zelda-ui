@@ -2,7 +2,8 @@ import type * as React from 'react';
 import type { ReactNode } from 'react';
 import { cn } from '../styles';
 
-export interface CardProps extends Omit<React.ComponentProps<'div'>, 'className'> {
+export interface CardProps
+  extends Omit<React.ComponentProps<'div'>, 'className'> {
   /** Card content */
   children: ReactNode;
   /** Card variant */

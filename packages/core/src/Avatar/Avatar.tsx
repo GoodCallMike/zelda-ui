@@ -3,7 +3,8 @@ import type * as React from 'react';
 import { useState } from 'react';
 import styles from './Avatar.module.css';
 
-export interface AvatarProps extends Omit<React.ComponentProps<'div'>, 'className'> {
+export interface AvatarProps
+  extends Omit<React.ComponentProps<'div'>, 'className'> {
   /** Additional CSS classes */
   className?: string;
   /** Image source URL */
@@ -61,7 +62,9 @@ export const Avatar = ({
         <img
           src={src}
           alt={alt || name || 'Avatar'}
-          onError={handleImageError as React.ReactEventHandler<HTMLImageElement>}
+          onError={
+            handleImageError as React.ReactEventHandler<HTMLImageElement>
+          }
           className={styles.image}
         />
       ) : name ? (

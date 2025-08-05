@@ -3,7 +3,8 @@ import type * as React from 'react';
 import type { ReactNode } from 'react';
 import styles from './Badge.module.css';
 
-export interface BadgeProps extends Omit<React.ComponentProps<'span'>, 'className'> {
+export interface BadgeProps
+  extends Omit<React.ComponentProps<'span'>, 'className'> {
   /** Additional CSS classes */
   className?: string;
   /** Badge content */

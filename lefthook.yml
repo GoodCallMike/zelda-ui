@@ -3,8 +3,6 @@ pre-commit:
   commands:
     check:
       run: pnpm check
-    lint-a11y:
-      run: pnpm lint:a11y
     test:
       run: pnpm test:run
     test-a11y:

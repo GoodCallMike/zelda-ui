@@ -21,8 +21,6 @@
     "test:a11y": "vitest run --testNamePattern='Accessibility|a11y'",
     "test:a11y:full": "vitest run --testNamePattern='Accessibility|a11y' && playwright test --config=playwright.a11y.config.ts",
     "lint": "biome check",
-    "lint:fix": "biome check --write",
-    "lint:a11y": "biome check",
     "format": "biome format --write",
     "generate:component": "node scripts/generate-component.js",
     "postinstall": "lefthook install"
