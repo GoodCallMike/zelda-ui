@@ -45,6 +45,7 @@ export const RadioButton = ({
 
   return (
     <label
+      {...({} as React.LabelHTMLAttributes<HTMLLabelElement>)}
       className={cn(
         'inline-flex items-center justify-center cursor-pointer transition-all duration-100 ease-linear border font-medium select-none',
         styles.radioButton,
@@ -55,6 +56,7 @@ export const RadioButton = ({
       )}
     >
       <input
+        {...({} as React.InputHTMLAttributes<HTMLInputElement>)}
         type="radio"
         className="absolute opacity-0 w-0 h-0"
         name={finalName}

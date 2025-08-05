@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { cn } from '../styles';
 import styles from './Typography.module.css';
 
-export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
+export interface TypographyProps extends Omit<React.ComponentProps<'p'>, 'className' | 'id'> {
   /** Typography content */
   children: ReactNode;
   /** Typography variant */
@@ -12,6 +12,8 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   color?: 'default' | 'muted' | 'triforce' | 'hyrule' | 'rupee' | 'ganon';
   /** Additional CSS classes */
   className?: string;
+  /** Element ID */
+  id?: string;
   /** Test identifier */
   testId?: string;
 }
@@ -21,6 +23,7 @@ export const Typography = ({
   variant = 'body',
   color = 'default',
   className,
+  id,
   testId,
   ...props
 }: TypographyProps) => {
@@ -72,6 +75,7 @@ export const Typography = ({
         styles.typography,
         className,
       )}
+      id={id}
       data-testid={testId}
       {...props}
     >

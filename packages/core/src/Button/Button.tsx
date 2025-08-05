@@ -24,7 +24,7 @@ export const Button = ({
   className,
   testId,
   type = 'button',
-  ...props
+  ...buttonProps
 }: ButtonProps) => {
   const isDisabled = disabled || loading;
 
@@ -48,7 +48,7 @@ export const Button = ({
       )}
       disabled={isDisabled}
       data-testid={testId}
-      {...props}
+      {...buttonProps}
     >
       {Icon && iconPosition === 'left' && !loading && (
         <Icon

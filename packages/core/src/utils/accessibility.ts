@@ -2,6 +2,7 @@ import { type RenderResult, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type AxeResults, axe } from 'jest-axe';
 import type { ReactElement } from 'react';
+import '@testing-library/jest-dom';
 
 type AccessibilityTestOptions = {
   skipAxe?: boolean;
@@ -70,12 +71,12 @@ export const testKeyboardNavigation = async (
   }
 
   if (options?.testEnterKey && focusableElements.length > 0) {
-    focusableElements[0]?.focus();
+    (focusableElements[0] as HTMLElement)?.focus();
     await user.keyboard('{Enter}');
   }
 
   if (options?.testSpaceKey && focusableElements.length > 0) {
-    focusableElements[0]?.focus();
+    (focusableElements[0] as HTMLElement)?.focus();
     await user.keyboard(' ');
   }
 
@@ -261,7 +262,10 @@ export const runAccessibilityTestSuite = async (
   // Run axe accessibility tests
   if (!options?.skipAxe) {
     results.axeResults = await axe(results.renderResult.container);
-    expect(results.axeResults).toHaveNoViolations();
+    // Check for violations manually since toHaveNoViolations might not be available
+    if (results.axeResults.violations.length > 0) {
+      throw new Error(`Accessibility violations found: ${JSON.stringify(results.axeResults.violations, null, 2)}`);
+    }
   }
 
   // Test keyboard navigation using the same render result

@@ -58,8 +58,7 @@ export type SymbolKeys<T> = Extract<keyof T, symbol>;
 // Create a type for CSS properties
 export type CSSProperties = React.CSSProperties;
 
-// Create a type for HTML attributes
-export type HTMLAttributes<T = HTMLElement> = React.HTMLAttributes<T>;
+// HTML attributes type removed - use React.ComponentProps<'element'> directly
 
 // Create a type for component refs
 export type ComponentRef<T> = React.Ref<T>;

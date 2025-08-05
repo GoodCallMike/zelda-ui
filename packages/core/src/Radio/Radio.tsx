@@ -67,12 +67,14 @@ export const Radio = ({
   };
   return (
     <label
+      {...({} as React.LabelHTMLAttributes<HTMLLabelElement>)}
       className={cn(
         'inline-flex items-center gap-2 cursor-pointer p-2',
         className,
       )}
     >
       <input
+        {...({} as React.InputHTMLAttributes<HTMLInputElement>)}
         type="radio"
         className={cn(
           'border-0 outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2',
