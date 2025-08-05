@@ -1,44 +1,46 @@
-import type * as React from 'react';
+import { cn } from '@zelda/theme';
 import type { ReactNode } from 'react';
-import { cn } from '../styles';
+import { useState } from 'react';
 import styles from './Tooltip.module.css';
 
-export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps {
   /** Tooltip content */
-  children?: ReactNode;
-  /** Tooltip variant */
-  variant?: 'default' | 'primary' | 'secondary';
-  /** Tooltip size */
-  size?: 'small' | 'medium' | 'large';
-  /** Whether Tooltip is disabled */
-  disabled?: boolean;
+  content: string;
+  /** Element that triggers the tooltip */
+  children: ReactNode;
+  /** Tooltip position */
+  position?: 'top' | 'bottom' | 'left' | 'right';
+  /** Delay before showing tooltip (ms) */
+  delay?: number;
   /** Test identifier */
   testId?: string;
 }
 
 export const Tooltip = ({
+  content,
   children,
-  variant = 'default',
-  size = 'medium',
-  disabled = false,
-  className,
+  position = 'top',
   testId,
-  ...props
 }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: Tooltip wrapper needs mouse events for hover functionality
     <div
-      className={cn(
-        'inline-flex items-center justify-center',
-        styles.tooltip,
-        styles[variant],
-        styles[size],
-        disabled && styles.disabled,
-        className,
-      )}
-      data-testid={testId}
-      {...props}
+      className="relative inline-block"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
     >
       {children}
+      {isVisible && (
+        <div
+          className={cn('absolute z-50', styles.tooltip, styles[position])}
+          data-testid={testId}
+          role="tooltip"
+        >
+          {content}
+        </div>
+      )}
     </div>
   );
 };

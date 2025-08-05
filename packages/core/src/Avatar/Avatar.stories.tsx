@@ -9,16 +9,9 @@ const meta: Meta<typeof Avatar> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: ['default', 'primary', 'secondary'],
-    },
     size: {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
-    },
-    disabled: {
-      control: 'boolean',
     },
   },
 };
@@ -28,33 +21,24 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Avatar',
+    name: 'John Doe',
   },
 };
 
-export const Variants: Story = {
-  render: () => (
-    <div className="flex gap-4">
-      <Avatar variant="default">Default</Avatar>
-      <Avatar variant="primary">Primary</Avatar>
-      <Avatar variant="secondary">Secondary</Avatar>
-    </div>
-  ),
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <Avatar size="small">Small</Avatar>
-      <Avatar size="medium">Medium</Avatar>
-      <Avatar size="large">Large</Avatar>
-    </div>
-  ),
-};
-
-export const Disabled: Story = {
+export const WithImage: Story = {
   args: {
-    children: 'Disabled Avatar',
-    disabled: true,
+    src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    alt: 'User avatar',
+    name: 'John Doe',
   },
+};
+
+export const Initials: Story = {
+  args: {
+    name: 'Jane Smith',
+  },
+};
+
+export const Fallback: Story = {
+  args: {},
 };

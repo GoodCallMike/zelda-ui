@@ -1,44 +1,68 @@
+import { cn } from '@zelda/theme';
 import type * as React from 'react';
-import type { ReactNode } from 'react';
-import { cn } from '../styles';
+import { useState } from 'react';
 import styles from './Avatar.module.css';
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Avatar content */
-  children?: ReactNode;
-  /** Avatar variant */
-  variant?: 'default' | 'primary' | 'secondary';
+  /** Image source URL */
+  src?: string;
+  /** Image alt text */
+  alt?: string;
+  /** Name for generating initials */
+  name?: string;
   /** Avatar size */
   size?: 'small' | 'medium' | 'large';
-  /** Whether Avatar is disabled */
-  disabled?: boolean;
   /** Test identifier */
   testId?: string;
 }
 
 export const Avatar = ({
-  children,
-  variant = 'default',
+  src,
+  alt,
+  name,
   size = 'medium',
-  disabled = false,
   className,
   testId,
   ...props
 }: AvatarProps) => {
+  const [imageError, setImageError] = useState(false);
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <div
       className={cn(
         'inline-flex items-center justify-center',
         styles.avatar,
-        styles[variant],
         styles[size],
-        disabled && styles.disabled,
         className,
       )}
       data-testid={testId}
       {...props}
     >
-      {children}
+      {src && !imageError ? (
+        <img
+          src={src}
+          alt={alt || name || 'Avatar'}
+          onError={handleImageError}
+          className={styles.image}
+        />
+      ) : name ? (
+        <span>{getInitials(name)}</span>
+      ) : (
+        <span>?</span>
+      )}
     </div>
   );
 };
