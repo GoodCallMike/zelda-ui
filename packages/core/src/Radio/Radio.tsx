@@ -8,12 +8,16 @@ export interface RadioProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /** Radio label */
   label?: string;
+  /** Radio value */
+  value?: string | number;
   /** Radio size */
   size?: 'small' | 'middle' | 'large';
   /** Whether radio has error state */
   error?: boolean;
   /** Test identifier */
   testId?: string;
+  /** Custom className */
+  className?: string;
 }
 
 export interface RadioButtonProps extends RadioProps {
@@ -57,8 +61,8 @@ export const Radio = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.onChange?.(e);
-    if (groupContext.onChange && props.value) {
-      groupContext.onChange(props.value);
+    if (groupContext.onChange && props.value !== undefined) {
+      groupContext.onChange(String(props.value));
     }
   };
   return (

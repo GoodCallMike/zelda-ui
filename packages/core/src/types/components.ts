@@ -35,6 +35,8 @@ export interface ButtonProps
   iconPosition?: 'left' | 'right';
   /** Button type */
   type?: 'button' | 'submit' | 'reset';
+  /** Click handler */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 // Input types
@@ -113,9 +115,18 @@ export interface SelectProps<T = string> extends FormFieldProps {
 // Checkbox types
 export interface CheckboxProps
   extends BaseComponentProps,
-    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
+    Omit<
+      InputHTMLAttributes<HTMLInputElement>,
+      'size' | 'onChange' | 'children'
+    > {
   /** Checkbox label */
   children?: ReactNode;
+  /** Checkbox label text */
+  label?: ReactNode;
+  /** Error message */
+  error?: string;
+  /** Loading state */
+  loading?: boolean;
   /** Whether checkbox is checked */
   checked?: boolean;
   /** Default checked state */
@@ -136,11 +147,11 @@ export interface CheckboxProps
 // Radio types
 export interface RadioProps
   extends BaseComponentProps,
-    Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'children'> {
   /** Radio label */
   children?: ReactNode;
   /** Radio value */
-  value: string;
+  value: string | number;
   /** Whether radio is checked */
   checked?: boolean;
   /** Whether radio is disabled */
@@ -148,6 +159,8 @@ export interface RadioProps
   /** Radio size */
   size?: Size;
 }
+
+export interface RadioButtonProps extends RadioProps {}
 
 export interface RadioGroupProps extends BaseComponentProps {
   /** Radio group name */
@@ -220,7 +233,7 @@ export interface ToastProps extends BaseComponentProps {
 // Slider types
 export interface SliderProps
   extends BaseComponentProps,
-    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'onChange'> {
   /** Slider value */
   value?: number | number[];
   /** Default value */
@@ -283,6 +296,8 @@ export interface TypographyProps extends BaseComponentProps {
     | 'div'
     | 'label'
     | 'code';
+  /** Element id */
+  id?: string;
 }
 
 // Divider types

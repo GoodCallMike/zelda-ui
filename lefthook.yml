@@ -1,8 +1,8 @@
 pre-commit:
   parallel: true
   commands:
-    lint:
-      run: pnpm lint
+    check:
+      run: pnpm check
     lint-a11y:
       run: pnpm lint:a11y
     test:

@@ -5,7 +5,10 @@ import styles from './Button.module.css';
 
 export interface ButtonProps
   extends Omit<BaseButtonProps, 'children'>,
-    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'type'> {
+    Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      'size' | 'type' | 'children' | 'className' | 'disabled'
+    > {
   /** Button content */
   children?: React.ReactNode;
 }

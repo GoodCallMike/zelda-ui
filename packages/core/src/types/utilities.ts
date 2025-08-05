@@ -1,4 +1,5 @@
 // Utility types for common patterns
+import type * as React from 'react';
 
 // Make specific properties optional
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
@@ -58,7 +59,7 @@ export type SymbolKeys<T> = Extract<keyof T, symbol>;
 export type CSSProperties = React.CSSProperties;
 
 // Create a type for HTML attributes
-export type HTMLAttributes<T = HTMLElement> = import('react').HTMLAttributes<T>;
+export type HTMLAttributes<T = HTMLElement> = React.HTMLAttributes<T>;
 
 // Create a type for component refs
 export type ComponentRef<T> = React.Ref<T>;
