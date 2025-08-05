@@ -1,3 +1,7 @@
+export type { AvatarProps } from './Avatar/Avatar';
+export { Avatar } from './Avatar/Avatar';
+export type { BadgeProps } from './Badge/Badge';
+export { Badge } from './Badge/Badge';
 export type { ButtonProps } from './Button/Button';
 export { Button } from './Button/Button';
 export type { CardProps } from './Card/Card';
@@ -26,6 +30,8 @@ export type { ToastContainerProps } from './Toast/ToastContainer';
 export { ToastContainer } from './Toast/ToastContainer';
 export type { ToastProviderProps } from './Toast/ToastManager';
 export { ToastProvider, useToast } from './Toast/ToastManager';
+export type { TooltipProps } from './Tooltip/Tooltip';
+export { Tooltip } from './Tooltip/Tooltip';
 export type { TypographyProps } from './Typography/Typography';
 export { Typography } from './Typography/Typography';
 // Type exports
