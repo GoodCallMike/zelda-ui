@@ -4,7 +4,7 @@ import { Typography } from '../Typography';
 import { Slider } from './Slider';
 
 const meta: Meta<typeof Slider> = {
-  title: 'General/Slider',
+  title: 'Data Entry/Slider',
   component: Slider,
   parameters: {
     layout: 'padded',

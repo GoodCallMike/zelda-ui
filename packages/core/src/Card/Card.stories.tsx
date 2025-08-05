@@ -4,7 +4,7 @@ import { Typography } from '../Typography';
 import { Card } from './Card';
 
 const meta: Meta<typeof Card> = {
-  title: 'Layout/Card',
+  title: 'Data Display/Card',
   component: Card,
   parameters: {
     layout: 'centered',

@@ -7,7 +7,7 @@ import { Typography } from '../Typography';
 import { Modal } from './Modal';
 
 const meta: Meta<typeof Modal> = {
-  title: 'General/Modal',
+  title: 'Feedback/Modal',
   component: Modal,
   parameters: {
     layout: 'padded',

@@ -6,7 +6,7 @@ import { Typography } from '../Typography';
 import { Divider } from './Divider';
 
 const meta: Meta<typeof Divider> = {
-  title: 'General/Divider',
+  title: 'Layout/Divider',
   component: Divider,
   parameters: {
     layout: 'padded',
