@@ -8,33 +8,73 @@
 }
 
 .default {
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
 }
 
 .primary {
-  background-color: #3b82f6;
-  color: white;
+  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 100%);
+  color: var(--white);
+  border: 1px solid var(--triforce-600);
 }
 
 .secondary {
-  background-color: #6b7280;
-  color: white;
+  background: linear-gradient(135deg, var(--rupee-400) 0%, var(--rupee-500) 100%);
+  color: var(--white);
+  border: 1px solid var(--rupee-600);
 }
 
 .success {
-  background-color: #10b981;
-  color: white;
+  background: linear-gradient(135deg, var(--rupee-400) 0%, var(--rupee-500) 100%);
+  color: var(--white);
+  border: 1px solid var(--rupee-600);
 }
 
 .warning {
-  background-color: #f59e0b;
-  color: white;
+  background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 100%);
+  color: var(--white);
+  border: 1px solid var(--triforce-600);
 }
 
 .error {
-  background-color: #ef4444;
-  color: white;
+  background: linear-gradient(135deg, var(--ganon-400) 0%, var(--ganon-500) 100%);
+  color: var(--white);
+  border: 1px solid var(--ganon-600);
+}
+
+/* Dark mode styles */
+:global(.dark) .default {
+  background-color: var(--gray-800);
+  color: var(--gray-200);
+  border-color: var(--gray-600);
+}
+
+:global(.dark) .primary {
+  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 100%);
+  border-color: #312e81;
+  color: #e0e7ff;
+}
+
+:global(.dark) .secondary {
+  background: linear-gradient(135deg, var(--rupee-500) 0%, var(--rupee-600) 100%);
+  border-color: var(--rupee-700);
+}
+
+:global(.dark) .success {
+  background: linear-gradient(135deg, var(--rupee-500) 0%, var(--rupee-600) 100%);
+  border-color: var(--rupee-700);
+}
+
+:global(.dark) .warning {
+  background: linear-gradient(135deg, #6b46c1 0%, #553c9a 100%);
+  border-color: #312e81;
+  color: #e0e7ff;
+}
+
+:global(.dark) .error {
+  background: linear-gradient(135deg, var(--ganon-400) 0%, var(--ganon-500) 100%);
+  border-color: var(--ganon-600);
 }
 
 .small {
