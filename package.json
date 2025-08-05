@@ -24,6 +24,7 @@
     "lint:fix": "biome check --write",
     "lint:a11y": "biome check",
     "format": "biome format --write",
+    "generate:component": "node scripts/generate-component.js",
     "postinstall": "lefthook install"
   },
   "dependencies": {
