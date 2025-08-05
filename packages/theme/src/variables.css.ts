@@ -66,6 +66,30 @@ globalStyle(':root', {
     '--ganon-800': '#991b1b',
     '--ganon-900': '#7f1d1d',
 
+    // Warning (Orange)
+    '--warning-50': '#fff7ed',
+    '--warning-100': '#ffedd5',
+    '--warning-200': '#fed7aa',
+    '--warning-300': '#fdba74',
+    '--warning-400': '#fb923c',
+    '--warning-500': '#f97316',
+    '--warning-600': '#ea580c',
+    '--warning-700': '#c2410c',
+    '--warning-800': '#9a3412',
+    '--warning-900': '#7c2d12',
+
+    // Info (Purple)
+    '--info-50': '#faf5ff',
+    '--info-100': '#f3e8ff',
+    '--info-200': '#e9d5ff',
+    '--info-300': '#d8b4fe',
+    '--info-400': '#c084fc',
+    '--info-500': '#a855f7',
+    '--info-600': '#9333ea',
+    '--info-700': '#7c3aed',
+    '--info-800': '#6b21a8',
+    '--info-900': '#581c87',
+
     // Typography
     '--text-xs': '0.75rem',
     '--text-sm': '0.875rem',

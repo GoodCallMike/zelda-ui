@@ -69,4 +69,30 @@ export const colors = {
     800: 'var(--ganon-800)',
     900: 'var(--ganon-900)',
   },
+
+  warning: {
+    50: 'var(--warning-50)',
+    100: 'var(--warning-100)',
+    200: 'var(--warning-200)',
+    300: 'var(--warning-300)',
+    400: 'var(--warning-400)',
+    500: 'var(--warning-500)',
+    600: 'var(--warning-600)',
+    700: 'var(--warning-700)',
+    800: 'var(--warning-800)',
+    900: 'var(--warning-900)',
+  },
+
+  info: {
+    50: 'var(--info-50)',
+    100: 'var(--info-100)',
+    200: 'var(--info-200)',
+    300: 'var(--info-300)',
+    400: 'var(--info-400)',
+    500: 'var(--info-500)',
+    600: 'var(--info-600)',
+    700: 'var(--info-700)',
+    800: 'var(--info-800)',
+    900: 'var(--info-900)',
+  },
 } as const;

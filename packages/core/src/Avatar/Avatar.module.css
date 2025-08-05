@@ -3,10 +3,17 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--gray-100);
+  color: var(--gray-700);
   font-weight: 500;
   overflow: hidden;
+  border: 2px solid var(--gray-200);
+}
+
+:global(.dark) .avatar {
+  background-color: var(--gray-700);
+  color: var(--gray-200);
+  border-color: var(--gray-600);
 }
 
 .small {

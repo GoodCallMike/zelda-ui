@@ -48,6 +48,10 @@ export const Avatar = ({
         styles[size],
         className,
       )}
+      {...(!(src && !imageError) && {
+        role: 'img',
+        'aria-label': alt || (name ? `Avatar for ${name}` : 'Avatar'),
+      })}
       data-testid={testId}
       {...props}
     >
@@ -59,9 +63,9 @@ export const Avatar = ({
           className={styles.image}
         />
       ) : name ? (
-        <span>{getInitials(name)}</span>
+        <span aria-hidden="true">{getInitials(name)}</span>
       ) : (
-        <span>?</span>
+        <span aria-hidden="true">?</span>
       )}
     </div>
   );
