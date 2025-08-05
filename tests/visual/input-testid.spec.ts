@@ -5,30 +5,34 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input variants using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--variants');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--test-id-naming-conventions',
+    );
 
     // Test each variant using testId
     await helpers.visual.screenshotComponent(
-      'input-default-example',
-      'input-default-testid',
+      'input-email-signup',
+      'input-email-signup-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-error-example',
-      'input-error-testid',
+      'input-password-login',
+      'input-password-login-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-disabled-example',
-      'input-disabled-testid',
+      'input-username-profile',
+      'input-username-profile-testid',
     );
   });
 
   test('Input states using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--user-interactions');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--basic-input-testing',
+    );
 
     // Test interactive states
-    await helpers.visual.testComponentStates('input-focus-example', [
+    await helpers.visual.testComponentStates('test-text-input', [
       {
         name: 'default',
         action: async () => {
@@ -38,56 +42,58 @@ test.describe('Input Visual Tests with testId', () => {
       {
         name: 'focus',
         action: async () => {
-          await helpers.locators.byTestId('input-focus-example').focus();
+          await helpers.locators.byTestId('test-text-input').focus();
         },
       },
       {
         name: 'filled',
         action: async () => {
-          await helpers.locators
-            .byTestId('input-focus-example')
-            .fill('Test value');
+          await helpers.locators.byTestId('test-text-input').fill('Test value');
         },
       },
     ]);
   });
 
-  test('Input with icons using testId selectors', async ({ page }) => {
+  test('Input with features using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--features');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--basic-input-testing',
+    );
 
-    // Test input with different icons
+    // Test input with different features
     await helpers.visual.screenshotComponent(
-      'input-search-icon',
-      'input-search-icon-testid',
+      'test-clearable-input',
+      'input-clearable-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-user-icon',
-      'input-user-icon-testid',
+      'test-counted-input',
+      'input-counted-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-mail-icon',
-      'input-mail-icon-testid',
+      'test-textarea-input',
+      'input-textarea-testid',
     );
   });
 
   test('Input validation states using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--validation');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--form-validation-testing',
+    );
 
     // Test validation states
     await helpers.visual.screenshotComponent(
-      'input-valid-example',
+      'input-valid-state',
       'input-valid-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-invalid-example',
-      'input-invalid-testid',
+      'input-error-state',
+      'input-error-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-warning-example',
+      'input-warning-state',
       'input-warning-testid',
     );
   });
@@ -95,29 +101,33 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input responsive behavior', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--variants');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--test-id-naming-conventions',
+    );
 
     // Test responsive behavior
-    await helpers.visual.testResponsive('input-default-example', [
+    await helpers.visual.testResponsive('input-email-signup', [
       { name: 'mobile', width: 375, height: 667 },
       { name: 'tablet', width: 768, height: 1024 },
       { name: 'desktop', width: 1200, height: 800 },
     ]);
   });
 
-  test('Input dark mode using testId selectors', async ({ page }) => {
+  test('Input accessibility using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-input-testid-examples--dark-mode');
+    await helpers.gotoStory(
+      'data-entry-input-testing-examples--accessibility-testing',
+    );
 
-    // Test dark mode variants
+    // Test accessibility features
     await helpers.visual.screenshotComponent(
-      'input-default-dark',
-      'input-default-dark-testid',
+      'input-with-label',
+      'input-with-label-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-error-dark',
-      'input-error-dark-testid',
+      'input-with-aria-label',
+      'input-with-aria-label-testid',
     );
   });
 });

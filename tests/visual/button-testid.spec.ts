@@ -5,24 +5,26 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button variants using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-button-testid-examples--variants');
+    await helpers.gotoStory(
+      'general-button-testing-examples--test-id-naming-conventions',
+    );
 
-    // Test each variant using testId
+    // Test each variant using testId from the actual story
     await helpers.visual.screenshotComponent(
-      'btn-primary-example',
-      'button-primary-testid',
+      'btn-save-game',
+      'button-save-game-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-secondary-example',
-      'button-secondary-testid',
+      'btn-load-game',
+      'button-load-game-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-tertiary-example',
-      'button-tertiary-testid',
+      'btn-delete-save',
+      'button-delete-save-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-destructive-example',
-      'button-destructive-testid',
+      'btn-cancel-action',
+      'button-cancel-action-testid',
     );
   });
 
@@ -30,11 +32,11 @@ test.describe('Button Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'general-button-testid-examples--user-interactions',
+      'general-button-testing-examples--user-interaction-testing',
     );
 
-    // Test interactive states
-    await helpers.visual.testComponentStates('btn-hover-example', [
+    // Test interactive states using actual testIds from story
+    await helpers.visual.testComponentStates('btn-click-test', [
       {
         name: 'default',
         action: async () => {
@@ -44,13 +46,13 @@ test.describe('Button Visual Tests with testId', () => {
       {
         name: 'hover',
         action: async () => {
-          await helpers.locators.byTestId('btn-hover-example').hover();
+          await helpers.locators.byTestId('btn-click-test').hover();
         },
       },
       {
         name: 'focus',
         action: async () => {
-          await helpers.locators.byTestId('btn-hover-example').focus();
+          await helpers.locators.byTestId('btn-click-test').focus();
         },
       },
     ]);
@@ -59,50 +61,56 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button sizes using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-button-testid-examples--variants');
+    await helpers.gotoStory(
+      'general-button-testing-examples--user-interaction-testing',
+    );
 
-    // Test different sizes
+    // Test different button types from the story
     await helpers.visual.screenshotComponent(
-      'btn-small-example',
-      'button-small-testid',
+      'btn-keyboard-focus',
+      'button-keyboard-focus-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-medium-example',
-      'button-medium-testid',
+      'btn-keyboard-enter',
+      'button-keyboard-enter-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-large-example',
-      'button-large-testid',
+      'btn-keyboard-space',
+      'button-keyboard-space-testid',
     );
   });
 
   test('Icon buttons using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-button-testid-examples--icon-buttons');
+    await helpers.gotoStory(
+      'general-button-testing-examples--icon-button-testing',
+    );
 
-    // Test icon button variants
+    // Test icon button variants from the actual story
     await helpers.visual.screenshotComponent(
-      'btn-icon-search',
-      'button-icon-search-testid',
+      'btn-search-icon',
+      'button-search-icon-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-icon-user',
-      'button-icon-user-testid',
+      'btn-add-icon',
+      'button-add-icon-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-icon-mail',
-      'button-icon-mail-testid',
+      'btn-delete-icon',
+      'button-delete-icon-testid',
     );
   });
 
   test('Button responsive behavior', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-button-testid-examples--variants');
+    await helpers.gotoStory(
+      'general-button-testing-examples--test-id-naming-conventions',
+    );
 
-    // Test responsive behavior
-    await helpers.visual.testResponsive('btn-primary-example', [
+    // Test responsive behavior using actual testId
+    await helpers.visual.testResponsive('btn-save-game', [
       { name: 'mobile', width: 375, height: 667 },
       { name: 'tablet', width: 768, height: 1024 },
       { name: 'desktop', width: 1200, height: 800 },
@@ -112,16 +120,18 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button dark mode using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory('general-button-testid-examples--dark-mode');
+    await helpers.gotoStory(
+      'general-button-testing-examples--integration-testing',
+    );
 
-    // Test dark mode variants
+    // Test integration examples from the story
     await helpers.visual.screenshotComponent(
-      'btn-primary-dark',
-      'button-primary-dark-testid',
+      'game-menu-new-game',
+      'button-new-game-testid',
     );
     await helpers.visual.screenshotComponent(
-      'btn-secondary-dark',
-      'button-secondary-dark-testid',
+      'game-menu-continue',
+      'button-continue-testid',
     );
   });
 });

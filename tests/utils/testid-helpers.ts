@@ -187,6 +187,13 @@ export class VisualTestHelpers {
         width: viewport.width,
         height: viewport.height,
       });
+
+      // Force layout reflow and wait for stability
+      await this.page.evaluate(() => {
+        document.body.offsetHeight; // Force reflow
+        return new Promise((resolve) => requestAnimationFrame(resolve));
+      });
+
       await expect(component).toHaveScreenshot(
         `${testId}-${viewport.name}.png`,
       );
