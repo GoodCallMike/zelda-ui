@@ -43,22 +43,15 @@ import { [Component] } from '@zelda/core';
 <[Component] variant="destructive">[content]</[Component]>
 \`\`\`
 
-## Dark Mode
+## Theme Support
 
-The [Component] component automatically adapts to dark mode with Hyrule's mystical night theme:
+The [Component] component automatically adapts to both light and dark themes. Use the Storybook theme switcher to preview different appearances.
 
 \`\`\`tsx
-// Automatic dark mode support
-<div className="dark">
-  <[Component] variant="primary">[content]</[Component]>
-  <[Component] variant="secondary">[content]</[Component]>
-</div>
+// Component automatically responds to theme changes
+<[Component] variant="primary">[content]</[Component]>
+<[Component] variant="secondary">[content]</[Component]>
 \`\`\`
-
-### Dark Mode Colors
-- **Primary**: Mystic purple with ethereal glow
-- **Secondary**: Deep forest green with moonlight accents
-- **Destructive**: Crimson red with shadow effects
 
 ## Real World Examples
 
@@ -114,46 +107,7 @@ The [Component] component automatically adapts to dark mode with Hyrule's mystic
 </div>
 \`\`\`
 
-### Dark Mode Real World Examples
-\`\`\`tsx
-// Complex night mode interface with themed panels
-<div className="dark p-6 bg-gray-900 space-y-6">
-  <Typography variant="h2" className="text-purple-300">🌙 Night Mode Interface</Typography>
-  
-  {/* Purple-themed panel */}
-  <div className="space-y-4 p-4 border border-purple-700 rounded-lg bg-purple-950">
-    <Typography variant="h4" className="text-purple-300 flex items-center gap-2">
-      ⚔️ Combat Settings
-    </Typography>
-    <div className="grid grid-cols-2 gap-4">
-      <[Component] variant="primary">Attack Mode</[Component]>
-      <[Component] variant="secondary">Defend</[Component]>
-    </div>
-  </div>
-  
-  {/* Gray-themed panel with validation states */}
-  <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-    <Typography variant="h4" className="text-gray-300 flex items-center gap-2">
-      🎒 Quick Inventory
-    </Typography>
-    <div className="space-y-3">
-      <[Component] status="warning" variant="primary">Equipped Item</[Component]>
-      <[Component] status="error" variant="destructive">Broken Item</[Component]>
-    </div>
-  </div>
-  
-  {/* Blue-themed panel */}
-  <div className="space-y-4 p-4 border border-blue-700 rounded-lg bg-blue-950">
-    <Typography variant="h4" className="text-blue-300 flex items-center gap-2">
-      🗺️ Map Settings
-    </Typography>
-    <div className="grid grid-cols-1 gap-3">
-      <[Component] variant="tertiary">Detailed View</[Component]>
-      <[Component] variant="primary">Show Markers</[Component]>
-    </div>
-  </div>
-</div>
-\`\`\`
+
 
 ## Accessibility
 
@@ -162,7 +116,7 @@ The [Component] component is fully accessible with:
 - **Keyboard Navigation**: Full keyboard support with proper focus management
 - **Screen Reader Support**: Semantic elements with proper labeling
 - **Focus Indicators**: Clear visual focus states for keyboard users
-- **High Contrast**: Maintains accessibility in both light and dark modes
+- **High Contrast**: Maintains accessibility across all themes
 
 \`\`\`tsx
 // Accessibility example
@@ -202,7 +156,7 @@ screen.getByTestId('component-test');
 1. **Default** - Basic component usage with primary variant
 2. **Variants** - All Hyrule-themed variants (primary, secondary, tertiary, destructive)
 3. **States** - Normal, hover, active, and disabled states
-4. **Dark Mode** - Component appearance in dark theme with mystical styling
+4. **Theme Variants** - Component appearance across different themes (use theme switcher)
 5. **Real World Examples** - Integration with other components (forms, dialogs, menus)
 6. **Hyrule Interface** - Adventure-themed usage scenarios
 7. **Examples** - Comprehensive component demonstrations

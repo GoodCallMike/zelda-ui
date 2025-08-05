@@ -8,7 +8,17 @@ export interface TypographyProps
   /** Typography content */
   children: ReactNode;
   /** Typography variant */
-  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'label';
+  variant?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'body'
+    | 'body2'
+    | 'caption'
+    | 'label';
   /** Text color theme */
   color?: 'default' | 'muted' | 'triforce' | 'hyrule' | 'rupee' | 'ganon';
   /** Additional CSS classes */
@@ -36,8 +46,16 @@ export const Typography = ({
         return 'text-2xl font-semibold leading-tight';
       case 'h3':
         return 'text-xl font-semibold leading-snug';
+      case 'h4':
+        return 'text-lg font-semibold leading-snug';
+      case 'h5':
+        return 'text-base font-semibold leading-normal';
+      case 'h6':
+        return 'text-sm font-semibold leading-normal';
       case 'body':
         return 'text-base leading-relaxed';
+      case 'body2':
+        return 'text-sm leading-relaxed';
       case 'caption':
         return 'text-sm leading-normal';
       case 'label':
@@ -65,7 +83,14 @@ export const Typography = ({
   };
 
   const Component =
-    variant === 'h1' || variant === 'h2' || variant === 'h3' ? variant : 'p';
+    variant === 'h1' ||
+    variant === 'h2' ||
+    variant === 'h3' ||
+    variant === 'h4' ||
+    variant === 'h5' ||
+    variant === 'h6'
+      ? variant
+      : 'p';
 
   return (
     <Component
