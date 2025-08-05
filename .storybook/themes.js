@@ -6,7 +6,7 @@ export const zeldaTheme = {
 };
 
 export const ganonTheme = {
-  name: 'Ganon (Dark)', 
+  name: 'Ganon (Dark)',
   class: 'dark',
   color: '#6b46c1', // Mystic Purple
   background: '#0f0f23',

@@ -341,9 +341,7 @@ export const GanonTheme: Story = {
   render: () => (
     <div className="p-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-bold mb-4">
-          Ganon's Domain (Dark Theme)
-        </h3>
+        <h3 className="text-lg font-bold mb-4">Ganon's Domain (Dark Theme)</h3>
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
           <Button variant="default">Default</Button>
@@ -372,9 +370,7 @@ export const ZeldaTheme: Story = {
   render: () => (
     <div className="p-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-bold mb-4">
-          Hyrule Kingdom (Light Theme)
-        </h3>
+        <h3 className="text-lg font-bold mb-4">Hyrule Kingdom (Light Theme)</h3>
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
           <Button variant="default">Default</Button>

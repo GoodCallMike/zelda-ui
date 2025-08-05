@@ -26,6 +26,7 @@ export const decorators = [
 ];
 
 export const parameters = {
+
   options: {
     storySort: {
       order: [

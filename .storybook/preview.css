@@ -4,6 +4,36 @@
   --sb-foreground: var(--color-foreground);
 }
 
+/* Make entire Storybook interface switch themes */
+body {
+  background-color: var(--color-background) !important;
+  color: var(--color-foreground) !important;
+}
+
+/* Sidebar theming */
+.sidebar-container,
+[data-side="left"] {
+  background: var(--color-background) !important;
+  border-right: 1px solid var(--gray-200) !important;
+}
+
+.dark .sidebar-container,
+.dark [data-side="left"] {
+  border-right-color: var(--gray-700) !important;
+}
+
+/* Toolbar theming */
+.toolbar,
+[data-testid="toolbar"] {
+  background: var(--color-background) !important;
+  border-bottom: 1px solid var(--gray-200) !important;
+}
+
+.dark .toolbar,
+.dark [data-testid="toolbar"] {
+  border-bottom-color: var(--gray-700) !important;
+}
+
 /* Storybook canvas background */
 .sb-show-main {
   background: var(--color-background);
@@ -44,4 +74,10 @@
 /* Theme transition animations */
 * {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Ensure theme variables are available globally */
+html, body, #storybook-root {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
