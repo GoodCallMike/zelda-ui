@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Avatar } from './Avatar';
 import styles from './Avatar.module.css';
 
@@ -35,10 +35,10 @@ describe('Avatar', () => {
   it('handles image error gracefully', async () => {
     render(<Avatar src="invalid.jpg" name="John Doe" testId="avatar" />);
     const img = screen.getByRole('img');
-    
+
     // Simulate image error
     fireEvent.error(img);
-    
+
     // Wait for state update and check for initials
     expect(await screen.findByText('JD')).toBeInTheDocument();
   });

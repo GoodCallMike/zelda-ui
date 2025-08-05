@@ -8,7 +8,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip text">
         <button type="button">Trigger</button>
-      </Tooltip>
+      </Tooltip>,
     );
     expect(screen.getByText('Trigger')).toBeInTheDocument();
   });
@@ -18,12 +18,12 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip text" testId="tooltip">
         <button type="button">Trigger</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const trigger = screen.getByText('Trigger');
     await user.hover(trigger);
-    
+
     expect(screen.getByText('Tooltip text')).toBeInTheDocument();
     expect(screen.getByTestId('tooltip')).toBeInTheDocument();
   });
@@ -33,7 +33,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip text" testId="tooltip">
         <button type="button">Trigger</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const trigger = screen.getByText('Trigger');
@@ -49,12 +49,12 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip text" position="bottom" testId="tooltip">
         <button type="button">Trigger</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const trigger = screen.getByText('Trigger');
     await user.hover(trigger);
-    
+
     const tooltip = screen.getByTestId('tooltip');
     expect(tooltip).toHaveClass(styles.bottom);
   });
@@ -64,12 +64,12 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip text" testId="tooltip">
         <button type="button">Trigger</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const trigger = screen.getByText('Trigger');
     await user.hover(trigger);
-    
+
     const tooltip = screen.getByTestId('tooltip');
     expect(tooltip).toHaveAttribute('role', 'tooltip');
   });
@@ -77,20 +77,24 @@ describe('Tooltip', () => {
   it('supports all positions', async () => {
     const user = userEvent.setup();
     const positions = ['top', 'bottom', 'left', 'right'] as const;
-    
+
     for (const position of positions) {
       render(
-        <Tooltip content="Test" position={position} testId={`tooltip-${position}`}>
+        <Tooltip
+          content="Test"
+          position={position}
+          testId={`tooltip-${position}`}
+        >
           <button type="button">Trigger {position}</button>
-        </Tooltip>
+        </Tooltip>,
       );
 
       const trigger = screen.getByText(`Trigger ${position}`);
       await user.hover(trigger);
-      
+
       const tooltip = screen.getByTestId(`tooltip-${position}`);
       expect(tooltip).toHaveClass(styles[position]);
-      
+
       await user.unhover(trigger);
     }
   });
