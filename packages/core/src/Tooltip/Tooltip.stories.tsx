@@ -117,23 +117,30 @@ export const Default: Story = {
 export const Positions: Story = {
   name: 'All Positions',
   render: () => (
-    <div className="grid grid-cols-2 gap-8 p-8">
-      <div className="flex justify-center">
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '2rem',
+        padding: '2rem',
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Tooltip content="Tooltip on top" position="top">
           <Button>Top</Button>
         </Tooltip>
       </div>
-      <div className="flex justify-center">
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Tooltip content="Tooltip on bottom" position="bottom">
           <Button>Bottom</Button>
         </Tooltip>
       </div>
-      <div className="flex justify-center">
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Tooltip content="Tooltip on left" position="left">
           <Button>Left</Button>
         </Tooltip>
       </div>
-      <div className="flex justify-center">
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Tooltip content="Tooltip on right" position="right">
           <Button>Right</Button>
         </Tooltip>
@@ -151,12 +158,26 @@ export const Positions: Story = {
 
 export const DarkMode: Story = {
   render: () => (
-    <div className="dark bg-gray-900 p-6 rounded">
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold text-white mb-4">
+    <div
+      className="dark"
+      style={{
+        backgroundColor: '#111827',
+        padding: '1.5rem',
+        borderRadius: '0.5rem',
+      }}
+    >
+      <div style={{ marginBottom: '1rem' }}>
+        <h3
+          style={{
+            fontSize: '1.125rem',
+            fontWeight: 'bold',
+            color: 'white',
+            marginBottom: '1rem',
+          }}
+        >
           Dark Mode Tooltips
         </h3>
-        <div className="flex gap-4">
+        <div style={{ display: 'flex', gap: '1rem' }}>
           <Tooltip content="Dark mode tooltip" position="top">
             <Button>Top</Button>
           </Tooltip>
@@ -184,11 +205,26 @@ export const DarkMode: Story = {
 
 export const RealWorldExamples: Story = {
   render: () => (
-    <div className="space-y-8 max-w-2xl">
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold">Game Interface Examples</h3>
+    <div style={{ maxWidth: '32rem' }}>
+      <div style={{ marginBottom: '2rem' }}>
+        <h3
+          style={{
+            fontSize: '1.125rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+          }}
+        >
+          Game Interface Examples
+        </h3>
 
-        <div className="flex gap-4 items-center">
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            marginBottom: '1rem',
+          }}
+        >
           <Tooltip content="Start a new adventure in Hyrule">
             <Button variant="primary">New Game</Button>
           </Tooltip>
@@ -206,10 +242,25 @@ export const RealWorldExamples: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold">Action Buttons</h3>
+      <div style={{ marginBottom: '2rem' }}>
+        <h3
+          style={{
+            fontSize: '1.125rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+          }}
+        >
+          Action Buttons
+        </h3>
 
-        <div className="flex gap-4 items-center">
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            marginBottom: '1rem',
+          }}
+        >
           <Tooltip
             content="Permanently delete this save file - cannot be undone!"
             position="top"
@@ -230,10 +281,18 @@ export const RealWorldExamples: Story = {
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold">Help & Navigation</h3>
+      <div>
+        <h3
+          style={{
+            fontSize: '1.125rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+          }}
+        >
+          Help & Navigation
+        </h3>
 
-        <div className="flex gap-4 items-center">
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Tooltip content="Open the world map to see your current location">
             <Button variant="link">View Map</Button>
           </Tooltip>
