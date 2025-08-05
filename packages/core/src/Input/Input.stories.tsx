@@ -1321,6 +1321,630 @@ test('Input validation is accessible', async () => {
   },
 };
 
+export const KeyboardNavigation: Story = {
+  render: () => {
+    const [announcement, setAnnouncement] = useState('');
+
+    const announceNavigation = (message: string) => {
+      setAnnouncement(message);
+      setTimeout(() => setAnnouncement(''), 2000);
+    };
+
+    return (
+      <div className="space-y-8 max-w-2xl">
+        <div aria-live="polite" className="sr-only">
+          {announcement}
+        </div>
+
+        <div className="p-4 border rounded-lg bg-green-50 border-green-200">
+          <Typography variant="h4" className="mb-3 text-green-800">
+            ⌨️ Keyboard Navigation Patterns
+          </Typography>
+          <Typography variant="body2" className="text-green-700">
+            Use keyboard to navigate and interact with these inputs. Focus indicators and navigation patterns are demonstrated.
+          </Typography>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Tab Navigation Order</Typography>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              label="First Input (Tab Order 1)"
+              placeholder="Tab here first"
+              testId="tab-order-1"
+              onFocus={() => announceNavigation('Focused on first input')}
+            />
+            <Input
+              label="Second Input (Tab Order 2)"
+              placeholder="Tab here second"
+              testId="tab-order-2"
+              onFocus={() => announceNavigation('Focused on second input')}
+            />
+            <Input
+              label="Third Input (Tab Order 3)"
+              placeholder="Tab here third"
+              testId="tab-order-3"
+              onFocus={() => announceNavigation('Focused on third input')}
+            />
+            <Input
+              label="Fourth Input (Tab Order 4)"
+              placeholder="Tab here fourth"
+              testId="tab-order-4"
+              onFocus={() => announceNavigation('Focused on fourth input')}
+            />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Arrow Key Text Navigation</Typography>
+          <Input
+            label="Text Navigation Demo"
+            defaultValue="Use arrow keys to navigate within this text content"
+            testId="arrow-navigation"
+          />
+          <div className="text-sm text-gray-600 space-y-1">
+            <div>• <kbd className="px-1 bg-gray-200 rounded">←→</kbd> Move cursor left/right</div>
+            <div>• <kbd className="px-1 bg-gray-200 rounded">Home/End</kbd> Jump to start/end</div>
+            <div>• <kbd className="px-1 bg-gray-200 rounded">Ctrl+A</kbd> Select all text</div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Textarea Multi-line Navigation</Typography>
+          <Input
+            type="textarea"
+            label="Multi-line Text Navigation"
+            defaultValue="Line 1: Use arrow keys to navigate\nLine 2: Up/Down arrows move between lines\nLine 3: Ctrl+Home/End for document navigation"
+            rows={4}
+            testId="textarea-navigation"
+          />
+          <div className="text-sm text-gray-600 space-y-1">
+            <div>• <kbd className="px-1 bg-gray-200 rounded">↑↓</kbd> Move between lines</div>
+            <div>• <kbd className="px-1 bg-gray-200 rounded">Ctrl+Home/End</kbd> Document start/end</div>
+            <div>• <kbd className="px-1 bg-gray-200 rounded">Shift+Arrow</kbd> Select text</div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Clear Button Keyboard Access</Typography>
+          <Input
+            label="Input with Clear Button"
+            defaultValue="Clear me with keyboard"
+            allowClear
+            testId="clear-button-demo"
+          />
+          <div className="text-sm text-gray-600">
+            • Tab to input, then Tab to clear button, press Enter to clear
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Keyboard Navigation Patterns
+
+Demonstrates comprehensive keyboard navigation support:
+
+### Tab Navigation
+- **Tab** - Move to next focusable element
+- **Shift+Tab** - Move to previous focusable element
+- **Logical Order** - Focus follows visual layout
+
+### Text Navigation
+- **Arrow Keys** - Move cursor within text
+- **Home/End** - Jump to line start/end
+- **Ctrl+Home/End** - Jump to document start/end
+- **Ctrl+A** - Select all text
+
+### Textarea Navigation
+- **Up/Down Arrows** - Move between lines
+- **Ctrl+Arrow Keys** - Word-by-word navigation
+- **Shift+Arrow Keys** - Text selection
+
+### Interactive Elements
+- **Clear Button** - Accessible via Tab navigation
+- **Enter** - Activate clear functionality
+- **Focus Indicators** - Clear visual feedback
+
+\`\`\`tsx
+// Test keyboard navigation
+test('Input supports keyboard navigation', async () => {
+  const user = userEvent.setup();
+  render(<Input label="Test" testId="keyboard-test" />);
+  
+  const input = screen.getByTestId('keyboard-test');
+  
+  // Test tab navigation
+  await user.tab();
+  expect(input).toHaveFocus();
+  
+  // Test text input
+  await user.type(input, 'test text');
+  expect(input).toHaveValue('test text');
+  
+  // Test arrow key navigation
+  await user.keyboard('{ArrowLeft}{ArrowLeft}');
+  await user.type(input, 'X');
+  expect(input).toHaveValue('test teXxt');
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const ARIAAttributes: Story = {
+  render: () => {
+    const [formData, setFormData] = useState({
+      username: '',
+      email: '',
+      password: '',
+    });
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const validateField = (field: string, value: string) => {
+      const newErrors = { ...errors };
+      switch (field) {
+        case 'username':
+          if (value.length < 3) newErrors.username = 'Username must be at least 3 characters';
+          else delete newErrors.username;
+          break;
+        case 'email':
+          if (value && !value.includes('@')) newErrors.email = 'Please enter a valid email';
+          else delete newErrors.email;
+          break;
+        case 'password':
+          if (value.length > 0 && value.length < 8) newErrors.password = 'Password must be at least 8 characters';
+          else delete newErrors.password;
+          break;
+      }
+      setErrors(newErrors);
+    };
+
+    return (
+      <div className="space-y-8 max-w-2xl">
+        <div className="p-4 border rounded-lg bg-blue-50 border-blue-200">
+          <Typography variant="h4" className="mb-3 text-blue-800">
+            🏷️ ARIA Attributes Usage
+          </Typography>
+          <Typography variant="body2" className="text-blue-700">
+            Demonstrates proper ARIA attribute implementation for accessibility.
+          </Typography>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-describedby Implementation</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <Input
+              label="Username"
+              value={formData.username}
+              onChange={(e) => {
+                const value = e.target.value;
+                setFormData(prev => ({ ...prev, username: value }));
+                validateField('username', value);
+              }}
+              placeholder="Enter username"
+              aria-describedby="username-help username-requirements"
+              aria-invalid={errors.username ? 'true' : 'false'}
+              status={errors.username ? 'error' : undefined}
+              testId="username-aria"
+            />
+            <Typography variant="body2" id="username-help" className="text-gray-600 mt-1">
+              Choose a unique username for your account
+            </Typography>
+            <Typography variant="body2" id="username-requirements" className="text-sm text-gray-500 mt-1">
+              Must be 3-20 characters, letters and numbers only
+            </Typography>
+            {errors.username && (
+              <Typography variant="body2" className="text-red-600 mt-1" role="alert">
+                {errors.username}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-required for Required Fields</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <Input
+              label="Email Address *"
+              type="email"
+              value={formData.email}
+              onChange={(e) => {
+                const value = e.target.value;
+                setFormData(prev => ({ ...prev, email: value }));
+                validateField('email', value);
+              }}
+              placeholder="hero@hyrule.com"
+              required
+              aria-required="true"
+              aria-describedby="email-help"
+              aria-invalid={errors.email ? 'true' : 'false'}
+              status={errors.email ? 'error' : undefined}
+              testId="email-required"
+            />
+            <Typography variant="body2" id="email-help" className="text-gray-600 mt-1">
+              Required for account notifications and password recovery
+            </Typography>
+            {errors.email && (
+              <Typography variant="body2" className="text-red-600 mt-1" role="alert">
+                {errors.email}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-invalid and Error Announcements</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <Input
+              label="Password"
+              type="password"
+              value={formData.password}
+              onChange={(e) => {
+                const value = e.target.value;
+                setFormData(prev => ({ ...prev, password: value }));
+                validateField('password', value);
+              }}
+              placeholder="Enter secure password"
+              aria-describedby="password-requirements password-strength"
+              aria-invalid={errors.password ? 'true' : 'false'}
+              status={errors.password ? 'error' : undefined}
+              showCount
+              maxLength={50}
+              testId="password-validation"
+            />
+            <Typography variant="body2" id="password-requirements" className="text-gray-600 mt-1">
+              Must contain at least 8 characters with numbers and symbols
+            </Typography>
+            <Typography 
+              variant="body2" 
+              id="password-strength" 
+              className={`text-sm mt-1 ${
+                formData.password.length >= 8 ? 'text-green-600' : 'text-yellow-600'
+              }`}
+            >
+              Strength: {formData.password.length >= 8 ? 'Strong' : 'Weak'}
+            </Typography>
+            {errors.password && (
+              <Typography 
+                variant="body2" 
+                className="text-red-600 mt-1" 
+                role="alert"
+                aria-live="polite"
+              >
+                {errors.password}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-label for Additional Context</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <Input
+              label="Search"
+              type="search"
+              prefix={<SearchLgIcon className="w-4 h-4" />}
+              placeholder="Search items..."
+              aria-label="Search through inventory items and equipment"
+              allowClear
+              testId="search-aria-label"
+            />
+            <Typography variant="body2" className="text-gray-600 mt-1">
+              aria-label provides additional context beyond the visible label
+            </Typography>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## ARIA Attributes Implementation
+
+Demonstrates proper ARIA attribute usage for enhanced accessibility:
+
+### aria-describedby
+- Links inputs to help text and additional descriptions
+- Supports multiple IDs for complex relationships
+- Screen readers announce linked content when input receives focus
+
+### aria-required
+- Indicates required form fields to assistive technology
+- Works alongside visual indicators (asterisks, styling)
+- Announced when field receives focus
+
+### aria-invalid
+- Communicates validation state to screen readers
+- Set to "true" when field has validation errors
+- Set to "false" or omitted when field is valid
+
+### role="alert"
+- Immediately announces error messages to screen readers
+- Used for critical validation feedback
+- Combined with aria-live for dynamic updates
+
+### aria-label
+- Provides accessible names when visual labels need enhancement
+- Useful for search inputs and contextual fields
+- Overrides visible label text for screen readers
+
+\`\`\`tsx
+// Test ARIA attributes
+test('Input has proper ARIA attributes', () => {
+  render(
+    <Input 
+      label="Username" 
+      required 
+      aria-describedby="help-text"
+      testId="aria-input"
+    />
+  );
+  
+  const input = screen.getByTestId('aria-input');
+  expect(input).toHaveAttribute('aria-required', 'true');
+  expect(input).toHaveAttribute('aria-describedby', 'help-text');
+  expect(input).toHaveAttribute('aria-invalid', 'false');
+});
+
+// Test error state ARIA
+test('Input announces validation errors', () => {
+  render(<InputWithValidation />);
+  
+  const input = screen.getByLabelText('Email');
+  fireEvent.change(input, { target: { value: 'invalid' } });
+  
+  expect(input).toHaveAttribute('aria-invalid', 'true');
+  expect(screen.getByRole('alert')).toHaveTextContent('Invalid email');
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const TestingExamples: Story = {
+  render: () => (
+    <div className="space-y-8 max-w-2xl">
+      <div className="p-4 border rounded-lg bg-purple-50 border-purple-200">
+        <Typography variant="h4" className="mb-3 text-purple-800">
+          🧪 Testing Examples
+        </Typography>
+        <Typography variant="body2" className="text-purple-700">
+          Examples showing how to test Input components with proper testId attributes and accessibility features.
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Basic Input Testing</Typography>
+        <div className="space-y-3">
+          <Input
+            testId="test-basic-input"
+            label="Basic Test Input"
+            placeholder="Test basic functionality"
+          />
+          <Input
+            testId="test-email-input"
+            label="Email Test Input"
+            type="email"
+            placeholder="test@example.com"
+          />
+          <Input
+            testId="test-textarea-input"
+            type="textarea"
+            label="Textarea Test Input"
+            placeholder="Test textarea functionality"
+            rows={3}
+          />
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Query inputs by testId
+screen.getByTestId('test-basic-input')
+screen.getByTestId('test-email-input')
+screen.getByTestId('test-textarea-input')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Accessibility Testing</Typography>
+        <div className="space-y-3">
+          <Input
+            testId="test-accessible-input"
+            label="Accessible Test Input"
+            aria-describedby="test-help"
+            required
+            aria-required="true"
+            placeholder="Test accessibility features"
+          />
+          <Typography variant="body2" id="test-help" className="text-gray-600">
+            This help text is linked via aria-describedby
+          </Typography>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test label association
+screen.getByLabelText('Accessible Test Input')
+
+// Test ARIA attributes
+expect(input).toHaveAttribute('aria-required', 'true')
+expect(input).toHaveAttribute('aria-describedby', 'test-help')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">User Interaction Testing</Typography>
+        <div className="space-y-3">
+          <Input
+            testId="test-interaction-input"
+            label="Interaction Test Input"
+            allowClear
+            showCount
+            maxLength={50}
+            placeholder="Test user interactions"
+          />
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test typing
+const user = userEvent.setup()
+const input = screen.getByTestId('test-interaction-input')
+await user.type(input, 'test value')
+expect(input).toHaveValue('test value')
+
+// Test clear button
+const clearButton = screen.getByLabelText('Clear input')
+await user.click(clearButton)
+expect(input).toHaveValue('')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Form Validation Testing</Typography>
+        <div className="space-y-3">
+          <Input
+            testId="test-validation-input"
+            label="Validation Test Input"
+            status="error"
+            aria-invalid="true"
+            defaultValue="Invalid value"
+            placeholder="Test validation states"
+          />
+          <Typography variant="body2" className="text-red-600" role="alert">
+            This field has an error
+          </Typography>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test validation state
+const input = screen.getByTestId('test-validation-input')
+expect(input).toHaveAttribute('aria-invalid', 'true')
+
+// Test error message
+expect(screen.getByRole('alert')).toHaveTextContent('This field has an error')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Keyboard Navigation Testing</Typography>
+        <div className="space-y-3">
+          <Input
+            testId="test-keyboard-first"
+            label="First Keyboard Test"
+            placeholder="Tab to me first"
+          />
+          <Input
+            testId="test-keyboard-second"
+            label="Second Keyboard Test"
+            placeholder="Tab to me second"
+          />
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test keyboard navigation
+const user = userEvent.setup()
+const firstInput = screen.getByTestId('test-keyboard-first')
+const secondInput = screen.getByTestId('test-keyboard-second')
+
+// Test tab navigation
+await user.tab()
+expect(firstInput).toHaveFocus()
+
+await user.tab()
+expect(secondInput).toHaveFocus()`}
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Testing Examples with testId Attributes
+
+Comprehensive testing patterns for Input components:
+
+### Basic Testing Patterns
+\`\`\`tsx
+// Query by testId
+const input = screen.getByTestId('test-basic-input');
+expect(input).toBeInTheDocument();
+
+// Test input value
+fireEvent.change(input, { target: { value: 'test' } });
+expect(input).toHaveValue('test');
+\`\`\`
+
+### Accessibility Testing
+\`\`\`tsx
+// Test label association
+const input = screen.getByLabelText('Username');
+expect(input).toBeInTheDocument();
+
+// Test ARIA attributes
+expect(input).toHaveAttribute('aria-required', 'true');
+expect(input).toHaveAttribute('aria-describedby', 'help-text');
+\`\`\`
+
+### User Interaction Testing
+\`\`\`tsx
+// Test user typing
+const user = userEvent.setup();
+const input = screen.getByTestId('interaction-input');
+
+await user.type(input, 'Hello World');
+expect(input).toHaveValue('Hello World');
+
+// Test clear functionality
+const clearButton = screen.getByLabelText('Clear input');
+await user.click(clearButton);
+expect(input).toHaveValue('');
+\`\`\`
+
+### Form Validation Testing
+\`\`\`tsx
+// Test validation states
+const input = screen.getByTestId('validation-input');
+expect(input).toHaveAttribute('aria-invalid', 'true');
+
+// Test error announcements
+expect(screen.getByRole('alert')).toHaveTextContent('Error message');
+\`\`\`
+
+### Keyboard Navigation Testing
+\`\`\`tsx
+// Test tab order
+const user = userEvent.setup();
+const inputs = screen.getAllByRole('textbox');
+
+await user.tab();
+expect(inputs[0]).toHaveFocus();
+
+await user.tab();
+expect(inputs[1]).toHaveFocus();
+\`\`\`
+
+### Automated Accessibility Testing
+\`\`\`tsx
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+test('Input has no accessibility violations', async () => {
+  const { container } = render(<Input label="Test" />);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
 export const FormIntegration: Story = {
   render: () => (
     <div className="space-y-6 max-w-md">

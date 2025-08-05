@@ -27,6 +27,9 @@ const TextInput = (props: InputProps) => {
     defaultValue = '',
     onChange,
     disabled,
+    id,
+    name,
+    placeholder,
   } = props;
 
   const [internalValue, setInternalValue] = useState(defaultValue);
@@ -144,6 +147,9 @@ const TextInput = (props: InputProps) => {
 
           {React.createElement('input', {
             type,
+            id,
+            name,
+            placeholder,
             className: cn(
               'w-full bg-transparent border-0 outline-none py-2 focus-visible:outline-2 focus-visible:outline-offset-2 whitespace-nowrap overflow-hidden text-ellipsis',
               hasPrefix ? 'pl-12' : 'pl-4',
@@ -202,6 +208,9 @@ const Textarea = (props: TextareaProps) => {
     onChange,
     rows = 4,
     resize = 'vertical',
+    id,
+    name,
+    placeholder,
   } = props;
 
   const [internalValue, setInternalValue] = useState(defaultValue ?? '');
@@ -242,6 +251,9 @@ const Textarea = (props: TextareaProps) => {
         )}
       >
         {React.createElement('textarea', {
+          id,
+          name,
+          placeholder,
           className: cn(
             'w-full bg-transparent border-0 outline-none py-2 px-4 focus-visible:outline-2 focus-visible:outline-offset-2 overflow-x-hidden',
             showClearButton || suffix ? 'pr-12' : 'pr-4',

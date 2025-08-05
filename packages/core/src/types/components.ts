@@ -63,6 +63,10 @@ export interface InputProps
     Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   /** Input type */
   type?: 'text' | 'password' | 'email' | 'search' | 'url' | 'tel' | 'number';
+  /** Input id attribute */
+  id?: string;
+  /** Input name attribute */
+  name?: string;
 }
 
 export interface TextareaProps
@@ -74,6 +78,10 @@ export interface TextareaProps
   rows?: number;
   /** Whether textarea can be resized */
   resize?: 'none' | 'vertical' | 'horizontal' | 'both';
+  /** Textarea id attribute */
+  id?: string;
+  /** Textarea name attribute */
+  name?: string;
 }
 
 // Select types

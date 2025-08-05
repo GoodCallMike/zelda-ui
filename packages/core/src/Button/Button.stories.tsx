@@ -383,6 +383,435 @@ export const WithIcons: Story = {
   },
 };
 
+export const KeyboardNavigation: Story = {
+  render: () => {
+    const [announcement, setAnnouncement] = useState('');
+    const [count, setCount] = useState(0);
+
+    const announceNavigation = (message: string) => {
+      setAnnouncement(message);
+      setTimeout(() => setAnnouncement(''), 2000);
+    };
+
+    return (
+      <div className="space-y-8 max-w-2xl">
+        <div aria-live="polite" className="sr-only">
+          {announcement}
+        </div>
+        
+        <div className="p-4 border rounded-lg bg-green-50 border-green-200">
+          <Typography variant="h4" className="mb-3 text-green-800">
+            ⌨️ Keyboard Navigation Patterns
+          </Typography>
+          <Typography variant="body2" className="text-green-700">
+            Use keyboard to navigate and interact with buttons.
+          </Typography>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Tab Navigation Order</Typography>
+          <div className="flex gap-3 flex-wrap">
+            <Button 
+              variant="primary" 
+              testId="tab-order-1"
+              onFocus={() => announceNavigation('Focused on first button')}
+            >
+              First Button
+            </Button>
+            <Button 
+              variant="default" 
+              testId="tab-order-2"
+              onFocus={() => announceNavigation('Focused on second button')}
+            >
+              Second Button
+            </Button>
+            <Button 
+              variant="dashed" 
+              testId="tab-order-3"
+              onFocus={() => announceNavigation('Focused on third button')}
+            >
+              Third Button
+            </Button>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Enter/Space Activation</Typography>
+          <div className="flex gap-3 items-center">
+            <Button
+              variant="primary"
+              onClick={() => {
+                setCount(count + 1);
+                announceNavigation(`Button activated ${count + 1} times`);
+              }}
+              testId="activation-demo"
+            >
+              Activate Me ({count})
+            </Button>
+            <Typography variant="body2" className="text-gray-600">
+              Press Enter or Space to activate
+            </Typography>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Skip Links Pattern</Typography>
+          <div className="flex gap-3">
+            <Button
+              variant="link"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-white p-2 border"
+            >
+              Skip to main content
+            </Button>
+            <Button variant="default">Regular Button</Button>
+            <Button variant="primary">Main Action</Button>
+          </div>
+          <Typography variant="body2" className="text-sm text-gray-600">
+            Tab to reveal skip link (screen reader users)
+          </Typography>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Keyboard Navigation Patterns
+
+### Universal Shortcuts
+- **Tab/Shift+Tab** - Navigate between buttons
+- **Enter/Space** - Activate buttons (both keys work)
+- **Skip Links** - Allow bypassing repetitive navigation
+
+### Testing Examples
+\`\`\`tsx
+// Test keyboard navigation
+test('Button supports keyboard navigation', async () => {
+  const user = userEvent.setup();
+  render(<Button testId="keyboard-test">Test</Button>);
+  
+  const button = screen.getByTestId('keyboard-test');
+  
+  await user.tab();
+  expect(button).toHaveFocus();
+  
+  await user.keyboard('{Enter}');
+  // Assert expected behavior
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const ARIAAttributes: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [announcement, setAnnouncement] = useState('');
+
+    const handleAsyncAction = () => {
+      setLoading(true);
+      setAnnouncement('Processing started...');
+      setTimeout(() => {
+        setLoading(false);
+        setAnnouncement('Processing completed successfully!');
+        setTimeout(() => setAnnouncement(''), 3000);
+      }, 2000);
+    };
+
+    return (
+      <div className="space-y-8 max-w-2xl">
+        <div className="p-4 border rounded-lg bg-blue-50 border-blue-200">
+          <Typography variant="h4" className="mb-3 text-blue-800">
+            🏷️ ARIA Attributes Usage
+          </Typography>
+          <Typography variant="body2" className="text-blue-700">
+            Demonstrates proper ARIA attribute implementation for buttons.
+          </Typography>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-label for Context</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <div className="flex gap-3 items-center flex-wrap">
+              <Button
+                variant="destructive"
+                aria-label="Delete user account permanently"
+                testId="delete-account"
+              >
+                Delete
+              </Button>
+              <Typography variant="body2" className="text-red-600">
+                ⚠️ aria-label provides clear context
+              </Typography>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-expanded & aria-controls</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <div className="space-y-3">
+              <Button
+                variant="default"
+                onClick={() => setExpanded(!expanded)}
+                aria-expanded={expanded}
+                aria-controls="expandable-content"
+                testId="expand-button"
+              >
+                {expanded ? 'Hide' : 'Show'} Advanced Options ▼
+              </Button>
+              {expanded && (
+                <div
+                  id="expandable-content"
+                  className="p-3 bg-white border rounded"
+                >
+                  <Typography variant="body2">
+                    Advanced configuration options appear here.
+                  </Typography>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">aria-busy & Live Regions</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <div className="flex gap-3 items-center">
+              <Button
+                variant="primary"
+                onClick={handleAsyncAction}
+                disabled={loading}
+                aria-busy={loading}
+                testId="async-action"
+              >
+                {loading ? 'Processing...' : 'Start Process'}
+              </Button>
+              <div
+                aria-live="polite"
+                aria-atomic="true"
+                className="text-sm text-blue-600"
+              >
+                {announcement}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <Typography variant="h5">Button Groups with Fieldset</Typography>
+          <div className="p-3 bg-gray-50 border rounded">
+            <fieldset className="flex gap-2">
+              <legend className="sr-only">File actions</legend>
+              <Button variant="default" aria-label="Save file">
+                Save
+              </Button>
+              <Button variant="default" aria-label="Copy file">
+                Copy
+              </Button>
+              <Button variant="destructive" aria-label="Delete file">
+                Delete
+              </Button>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## ARIA Attributes Implementation
+
+### Essential ARIA Attributes
+- **aria-label** - Provides accessible names when visual text isn't sufficient
+- **aria-expanded** - Indicates expandable content state
+- **aria-controls** - References controlled elements
+- **aria-busy** - Indicates loading/processing states
+- **fieldset/legend** - Groups related buttons semantically
+
+### Testing Examples
+\`\`\`tsx
+// Test ARIA attributes
+test('Button has proper ARIA attributes', () => {
+  render(
+    <Button 
+      aria-label="Delete account" 
+      aria-expanded="false"
+      testId="aria-button"
+    >
+      Delete
+    </Button>
+  );
+  
+  const button = screen.getByTestId('aria-button');
+  expect(button).toHaveAttribute('aria-label', 'Delete account');
+  expect(button).toHaveAttribute('aria-expanded', 'false');
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const TestingExamples: Story = {
+  render: () => (
+    <div className="space-y-8 max-w-2xl">
+      <div className="p-4 border rounded-lg bg-purple-50 border-purple-200">
+        <Typography variant="h4" className="mb-3 text-purple-800">
+          🧪 Testing Examples
+        </Typography>
+        <Typography variant="body2" className="text-purple-700">
+          Examples showing how to test Button components with testId attributes.
+        </Typography>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Basic Button Testing</Typography>
+        <div className="flex gap-3 flex-wrap">
+          <Button testId="test-primary-action" variant="primary">
+            Primary Action
+          </Button>
+          <Button testId="test-secondary-action" variant="default">
+            Secondary Action
+          </Button>
+          <Button testId="test-destructive-action" variant="destructive">
+            Destructive Action
+          </Button>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Query buttons by testId
+screen.getByTestId('test-primary-action')
+screen.getByTestId('test-secondary-action')
+screen.getByTestId('test-destructive-action')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">User Interaction Testing</Typography>
+        <div className="flex gap-3">
+          <Button testId="test-click-button" variant="primary">
+            Click Me
+          </Button>
+          <Button testId="test-disabled-button" variant="default" disabled>
+            Disabled Button
+          </Button>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test button interactions
+const user = userEvent.setup()
+const button = screen.getByTestId('test-click-button')
+
+// Test clicking
+await user.click(button)
+
+// Test keyboard activation
+await user.keyboard('{Enter}')
+await user.keyboard(' ')
+
+// Test disabled state
+expect(screen.getByTestId('test-disabled-button')).toBeDisabled()`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">Role-based Testing</Typography>
+        <div className="flex gap-3">
+          <Button variant="primary">Submit Form</Button>
+          <Button variant="link">Cancel</Button>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test by role and accessible name
+screen.getByRole('button', { name: 'Submit Form' })
+screen.getByRole('button', { name: 'Cancel' })
+
+// Test button type
+expect(screen.getByRole('button')).toHaveAttribute('type', 'button')`}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h5">ARIA Attribute Testing</Typography>
+        <div className="flex gap-3">
+          <Button
+            variant="default"
+            aria-label="Close notification panel"
+            aria-expanded="false"
+            testId="close-panel"
+          >
+            ×
+          </Button>
+        </div>
+        <div className="p-3 bg-gray-900 text-gray-100 rounded text-sm font-mono">
+          {`// Test ARIA attributes
+const button = screen.getByTestId('close-panel')
+expect(button).toHaveAttribute('aria-label', 'Close notification panel')
+expect(button).toHaveAttribute('aria-expanded', 'false')`}
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Testing Examples with testId Attributes
+
+### Basic Testing Patterns
+\`\`\`tsx
+// Query by testId
+const button = screen.getByTestId('test-button');
+expect(button).toBeInTheDocument();
+
+// Test button state
+expect(button).toBeEnabled();
+expect(button).toBeDisabled();
+\`\`\`
+
+### User Interaction Testing
+\`\`\`tsx
+// Test user interactions
+const user = userEvent.setup();
+const button = screen.getByTestId('click-button');
+
+await user.click(button);
+
+// Test keyboard activation
+await user.keyboard('{Enter}');
+await user.keyboard(' ');
+\`\`\`
+
+### Role-based Testing
+\`\`\`tsx
+// Test by role and accessible name
+screen.getByRole('button', { name: 'Submit Form' });
+
+// Test button attributes
+expect(button).toHaveAttribute('type', 'button');
+\`\`\`
+
+### Automated Accessibility Testing
+\`\`\`tsx
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+test('Button has no accessibility violations', async () => {
+  const { container } = render(<Button>Test</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
 export const AccessibilityFeatures: Story = {
   render: () => {
     const [loading, setLoading] = useState(false);
