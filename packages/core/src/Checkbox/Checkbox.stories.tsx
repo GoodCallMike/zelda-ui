@@ -141,7 +141,7 @@ export const KeyboardNavigation: Story = {
         <div aria-live="polite" className="sr-only">
           {announcement}
         </div>
-        
+
         <div className="p-4 border rounded-lg bg-green-50 border-green-200">
           <Typography variant="h4" className="mb-3 text-green-800">
             ⌨️ Keyboard Navigation Patterns
@@ -154,17 +154,17 @@ export const KeyboardNavigation: Story = {
         <div className="space-y-4">
           <Typography variant="h5">Tab Navigation Order</Typography>
           <div className="space-y-3">
-            <Checkbox 
+            <Checkbox
               label="First Checkbox (Tab Order 1)"
               testId="tab-order-1"
               onFocus={() => announceNavigation('Focused on first checkbox')}
             />
-            <Checkbox 
+            <Checkbox
               label="Second Checkbox (Tab Order 2)"
               testId="tab-order-2"
               onFocus={() => announceNavigation('Focused on second checkbox')}
             />
-            <Checkbox 
+            <Checkbox
               label="Third Checkbox (Tab Order 3)"
               testId="tab-order-3"
               onFocus={() => announceNavigation('Focused on third checkbox')}
@@ -175,10 +175,7 @@ export const KeyboardNavigation: Story = {
         <div className="space-y-4">
           <Typography variant="h5">Space Key Activation</Typography>
           <div className="space-y-3">
-            <Checkbox 
-              label="Press Space to toggle"
-              testId="space-toggle"
-            />
+            <Checkbox label="Press Space to toggle" testId="space-toggle" />
             <Typography variant="body2" className="text-gray-600">
               • Focus with Tab, toggle with Space key
             </Typography>
@@ -256,24 +253,32 @@ export const ARIAAttributes: Story = {
             <Checkbox
               label="Enable notifications"
               checked={formData.notifications}
-              onChange={(checked) => setFormData(prev => ({ ...prev, notifications: checked }))}
+              onChange={(checked) =>
+                setFormData((prev) => ({ ...prev, notifications: checked }))
+              }
               aria-describedby="notifications-help"
               testId="notifications-checkbox"
             />
-            <Typography variant="body2" id="notifications-help" className="text-gray-600 mt-1">
+            <Typography
+              variant="body2"
+              id="notifications-help"
+              className="text-gray-600 mt-1"
+            >
               Receive updates about your quest progress and new adventures
             </Typography>
           </div>
         </div>
 
         <div className="space-y-4">
-          <Typography variant="h5">aria-required for Required Fields</Typography>
+          <Typography variant="h5">
+            aria-required for Required Fields
+          </Typography>
           <div className="p-3 bg-gray-50 border rounded">
             <Checkbox
               label="Accept Terms and Conditions *"
               checked={formData.terms}
               onChange={(checked) => {
-                setFormData(prev => ({ ...prev, terms: checked }));
+                setFormData((prev) => ({ ...prev, terms: checked }));
                 validateField('terms', checked);
               }}
               required
@@ -283,11 +288,19 @@ export const ARIAAttributes: Story = {
               error={!!errors.terms}
               testId="terms-required"
             />
-            <Typography variant="body2" id="terms-help" className="text-gray-600 mt-1">
+            <Typography
+              variant="body2"
+              id="terms-help"
+              className="text-gray-600 mt-1"
+            >
               Required to begin your adventure
             </Typography>
             {errors.terms && (
-              <Typography variant="body2" className="text-red-600 mt-1" role="alert">
+              <Typography
+                variant="body2"
+                className="text-red-600 mt-1"
+                role="alert"
+              >
                 {errors.terms}
               </Typography>
             )}
@@ -295,12 +308,16 @@ export const ARIAAttributes: Story = {
         </div>
 
         <div className="space-y-4">
-          <Typography variant="h5">aria-label for Additional Context</Typography>
+          <Typography variant="h5">
+            aria-label for Additional Context
+          </Typography>
           <div className="p-3 bg-gray-50 border rounded">
             <Checkbox
               label="Newsletter"
               checked={formData.newsletter}
-              onChange={(checked) => setFormData(prev => ({ ...prev, newsletter: checked }))}
+              onChange={(checked) =>
+                setFormData((prev) => ({ ...prev, newsletter: checked }))
+              }
               aria-label="Subscribe to weekly adventure newsletter with tips and updates"
               testId="newsletter-context"
             />
@@ -357,17 +374,15 @@ export const TestingExamples: Story = {
           🧪 Testing Examples
         </Typography>
         <Typography variant="body2" className="text-purple-700">
-          Examples showing how to test Checkbox components with testId attributes.
+          Examples showing how to test Checkbox components with testId
+          attributes.
         </Typography>
       </div>
 
       <div className="space-y-4">
         <Typography variant="h5">Basic Checkbox Testing</Typography>
         <div className="space-y-3">
-          <Checkbox
-            testId="test-basic-checkbox"
-            label="Basic Test Checkbox"
-          />
+          <Checkbox testId="test-basic-checkbox" label="Basic Test Checkbox" />
           <Checkbox
             testId="test-checked-checkbox"
             label="Pre-checked Test Checkbox"

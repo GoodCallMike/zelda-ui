@@ -398,7 +398,7 @@ export const KeyboardNavigation: Story = {
         <div aria-live="polite" className="sr-only">
           {announcement}
         </div>
-        
+
         <div className="p-4 border rounded-lg bg-green-50 border-green-200">
           <Typography variant="h4" className="mb-3 text-green-800">
             ⌨️ Keyboard Navigation Patterns
@@ -411,22 +411,22 @@ export const KeyboardNavigation: Story = {
         <div className="space-y-4">
           <Typography variant="h5">Tab Navigation Order</Typography>
           <div className="flex gap-3 flex-wrap">
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               testId="tab-order-1"
               onFocus={() => announceNavigation('Focused on first button')}
             >
               First Button
             </Button>
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               testId="tab-order-2"
               onFocus={() => announceNavigation('Focused on second button')}
             >
               Second Button
             </Button>
-            <Button 
-              variant="dashed" 
+            <Button
+              variant="dashed"
               testId="tab-order-3"
               onFocus={() => announceNavigation('Focused on third button')}
             >

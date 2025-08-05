@@ -28,9 +28,10 @@ export type { ToastProviderProps } from './Toast/ToastManager';
 export { ToastProvider, useToast } from './Toast/ToastManager';
 export type { TypographyProps } from './Typography/Typography';
 export { Typography } from './Typography/Typography';
-
 // Type exports
 export type * from './types';
 export type * from './types/components';
 export type * from './types/theme';
 export * from './types/validation';
+// Utilities
+export * from './utils';

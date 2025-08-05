@@ -22,7 +22,11 @@ jobs:
       - run: pnpm test:run
         env:
           CI: true
+      - run: pnpm test:a11y
+        env:
+          CI: true
       - run: pnpm lint
+      - run: pnpm lint:a11y
 
   build:
     runs-on: ubuntu-latest

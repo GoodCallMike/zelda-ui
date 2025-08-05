@@ -28,12 +28,17 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
+    css: {
+      modules: {
+        classNameStrategy: 'non-scoped',
+      },
+    },
     projects: [
       {
         test: {
           name: 'unit',
           include: ['packages/**/*.test.{ts,tsx}'],
-          exclude: ['**/*.stories.*'],
+          exclude: ['**/*.stories.*', 'tests/**/*'],
           globals: true,
           environment: 'jsdom',
           setupFiles: ['./vitest.setup.ts'],

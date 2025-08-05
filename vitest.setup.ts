@@ -3,6 +3,20 @@ import { configure } from '@testing-library/react';
 import React from 'react';
 import { vi } from 'vitest';
 
+// Mock CSS modules
+vi.mock('*.css', () => ({
+  default: {},
+}));
+
+vi.mock('*.module.css', () => ({
+  default: new Proxy(
+    {},
+    {
+      get: (_target, prop) => prop,
+    },
+  ),
+}));
+
 // Configure testing library
 configure({ asyncUtilTimeout: 2000 });
 

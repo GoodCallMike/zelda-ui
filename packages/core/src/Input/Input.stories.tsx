@@ -1341,7 +1341,8 @@ export const KeyboardNavigation: Story = {
             ⌨️ Keyboard Navigation Patterns
           </Typography>
           <Typography variant="body2" className="text-green-700">
-            Use keyboard to navigate and interact with these inputs. Focus indicators and navigation patterns are demonstrated.
+            Use keyboard to navigate and interact with these inputs. Focus
+            indicators and navigation patterns are demonstrated.
           </Typography>
         </div>
 
@@ -1383,9 +1384,18 @@ export const KeyboardNavigation: Story = {
             testId="arrow-navigation"
           />
           <div className="text-sm text-gray-600 space-y-1">
-            <div>• <kbd className="px-1 bg-gray-200 rounded">←→</kbd> Move cursor left/right</div>
-            <div>• <kbd className="px-1 bg-gray-200 rounded">Home/End</kbd> Jump to start/end</div>
-            <div>• <kbd className="px-1 bg-gray-200 rounded">Ctrl+A</kbd> Select all text</div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">←→</kbd> Move cursor
+              left/right
+            </div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">Home/End</kbd> Jump to
+              start/end
+            </div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">Ctrl+A</kbd> Select
+              all text
+            </div>
           </div>
         </div>
 
@@ -1399,9 +1409,18 @@ export const KeyboardNavigation: Story = {
             testId="textarea-navigation"
           />
           <div className="text-sm text-gray-600 space-y-1">
-            <div>• <kbd className="px-1 bg-gray-200 rounded">↑↓</kbd> Move between lines</div>
-            <div>• <kbd className="px-1 bg-gray-200 rounded">Ctrl+Home/End</kbd> Document start/end</div>
-            <div>• <kbd className="px-1 bg-gray-200 rounded">Shift+Arrow</kbd> Select text</div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">↑↓</kbd> Move between
+              lines
+            </div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">Ctrl+Home/End</kbd>{' '}
+              Document start/end
+            </div>
+            <div>
+              • <kbd className="px-1 bg-gray-200 rounded">Shift+Arrow</kbd>{' '}
+              Select text
+            </div>
           </div>
         </div>
 
@@ -1490,15 +1509,18 @@ export const ARIAAttributes: Story = {
       const newErrors = { ...errors };
       switch (field) {
         case 'username':
-          if (value.length < 3) newErrors.username = 'Username must be at least 3 characters';
+          if (value.length < 3)
+            newErrors.username = 'Username must be at least 3 characters';
           else delete newErrors.username;
           break;
         case 'email':
-          if (value && !value.includes('@')) newErrors.email = 'Please enter a valid email';
+          if (value && !value.includes('@'))
+            newErrors.email = 'Please enter a valid email';
           else delete newErrors.email;
           break;
         case 'password':
-          if (value.length > 0 && value.length < 8) newErrors.password = 'Password must be at least 8 characters';
+          if (value.length > 0 && value.length < 8)
+            newErrors.password = 'Password must be at least 8 characters';
           else delete newErrors.password;
           break;
       }
@@ -1524,7 +1546,7 @@ export const ARIAAttributes: Story = {
               value={formData.username}
               onChange={(e) => {
                 const value = e.target.value;
-                setFormData(prev => ({ ...prev, username: value }));
+                setFormData((prev) => ({ ...prev, username: value }));
                 validateField('username', value);
               }}
               placeholder="Enter username"
@@ -1533,14 +1555,26 @@ export const ARIAAttributes: Story = {
               status={errors.username ? 'error' : undefined}
               testId="username-aria"
             />
-            <Typography variant="body2" id="username-help" className="text-gray-600 mt-1">
+            <Typography
+              variant="body2"
+              id="username-help"
+              className="text-gray-600 mt-1"
+            >
               Choose a unique username for your account
             </Typography>
-            <Typography variant="body2" id="username-requirements" className="text-sm text-gray-500 mt-1">
+            <Typography
+              variant="body2"
+              id="username-requirements"
+              className="text-sm text-gray-500 mt-1"
+            >
               Must be 3-20 characters, letters and numbers only
             </Typography>
             {errors.username && (
-              <Typography variant="body2" className="text-red-600 mt-1" role="alert">
+              <Typography
+                variant="body2"
+                className="text-red-600 mt-1"
+                role="alert"
+              >
                 {errors.username}
               </Typography>
             )}
@@ -1548,7 +1582,9 @@ export const ARIAAttributes: Story = {
         </div>
 
         <div className="space-y-4">
-          <Typography variant="h5">aria-required for Required Fields</Typography>
+          <Typography variant="h5">
+            aria-required for Required Fields
+          </Typography>
           <div className="p-3 bg-gray-50 border rounded">
             <Input
               label="Email Address *"
@@ -1556,7 +1592,7 @@ export const ARIAAttributes: Story = {
               value={formData.email}
               onChange={(e) => {
                 const value = e.target.value;
-                setFormData(prev => ({ ...prev, email: value }));
+                setFormData((prev) => ({ ...prev, email: value }));
                 validateField('email', value);
               }}
               placeholder="hero@hyrule.com"
@@ -1567,11 +1603,19 @@ export const ARIAAttributes: Story = {
               status={errors.email ? 'error' : undefined}
               testId="email-required"
             />
-            <Typography variant="body2" id="email-help" className="text-gray-600 mt-1">
+            <Typography
+              variant="body2"
+              id="email-help"
+              className="text-gray-600 mt-1"
+            >
               Required for account notifications and password recovery
             </Typography>
             {errors.email && (
-              <Typography variant="body2" className="text-red-600 mt-1" role="alert">
+              <Typography
+                variant="body2"
+                className="text-red-600 mt-1"
+                role="alert"
+              >
                 {errors.email}
               </Typography>
             )}
@@ -1579,7 +1623,9 @@ export const ARIAAttributes: Story = {
         </div>
 
         <div className="space-y-4">
-          <Typography variant="h5">aria-invalid and Error Announcements</Typography>
+          <Typography variant="h5">
+            aria-invalid and Error Announcements
+          </Typography>
           <div className="p-3 bg-gray-50 border rounded">
             <Input
               label="Password"
@@ -1587,7 +1633,7 @@ export const ARIAAttributes: Story = {
               value={formData.password}
               onChange={(e) => {
                 const value = e.target.value;
-                setFormData(prev => ({ ...prev, password: value }));
+                setFormData((prev) => ({ ...prev, password: value }));
                 validateField('password', value);
               }}
               placeholder="Enter secure password"
@@ -1598,22 +1644,28 @@ export const ARIAAttributes: Story = {
               maxLength={50}
               testId="password-validation"
             />
-            <Typography variant="body2" id="password-requirements" className="text-gray-600 mt-1">
+            <Typography
+              variant="body2"
+              id="password-requirements"
+              className="text-gray-600 mt-1"
+            >
               Must contain at least 8 characters with numbers and symbols
             </Typography>
-            <Typography 
-              variant="body2" 
-              id="password-strength" 
+            <Typography
+              variant="body2"
+              id="password-strength"
               className={`text-sm mt-1 ${
-                formData.password.length >= 8 ? 'text-green-600' : 'text-yellow-600'
+                formData.password.length >= 8
+                  ? 'text-green-600'
+                  : 'text-yellow-600'
               }`}
             >
               Strength: {formData.password.length >= 8 ? 'Strong' : 'Weak'}
             </Typography>
             {errors.password && (
-              <Typography 
-                variant="body2" 
-                className="text-red-600 mt-1" 
+              <Typography
+                variant="body2"
+                className="text-red-600 mt-1"
                 role="alert"
                 aria-live="polite"
               >
@@ -1624,7 +1676,9 @@ export const ARIAAttributes: Story = {
         </div>
 
         <div className="space-y-4">
-          <Typography variant="h5">aria-label for Additional Context</Typography>
+          <Typography variant="h5">
+            aria-label for Additional Context
+          </Typography>
           <div className="p-3 bg-gray-50 border rounded">
             <Input
               label="Search"
@@ -1719,7 +1773,8 @@ export const TestingExamples: Story = {
           🧪 Testing Examples
         </Typography>
         <Typography variant="body2" className="text-purple-700">
-          Examples showing how to test Input components with proper testId attributes and accessibility features.
+          Examples showing how to test Input components with proper testId
+          attributes and accessibility features.
         </Typography>
       </div>
 

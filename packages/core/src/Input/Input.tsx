@@ -32,6 +32,10 @@ const TextInput = (props: InputProps) => {
     placeholder,
   } = props;
 
+  const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
+  const labelId = `${inputId}-label`;
+  const countId = showCount ? `${inputId}-count` : undefined;
+
   const [internalValue, setInternalValue] = useState(defaultValue);
   const currentValue = value !== undefined ? value : internalValue;
 
@@ -63,10 +67,12 @@ const TextInput = (props: InputProps) => {
       elements.push(
         <span
           key="count"
+          id={countId}
           className={cn(
             'text-xs whitespace-nowrap',
             characterCount > maxLength ? 'text-ganon-600' : 'text-gray-500',
           )}
+          aria-live="polite"
         >
           {characterCount}/{maxLength}
         </span>,
@@ -105,7 +111,11 @@ const TextInput = (props: InputProps) => {
 
   return (
     <div className={cn('space-y-1', className)}>
-      {label && <Typography variant="label">{label}</Typography>}
+      {label && (
+        <Typography variant="label" id={labelId}>
+          {label}
+        </Typography>
+      )}
       <div className="flex w-full items-stretch">
         {hasAddonBefore && (
           <div
@@ -147,7 +157,7 @@ const TextInput = (props: InputProps) => {
 
           {React.createElement('input', {
             type,
-            id,
+            id: inputId,
             name,
             placeholder,
             className: cn(
@@ -162,6 +172,10 @@ const TextInput = (props: InputProps) => {
             maxLength,
             disabled,
             'data-testid': testId,
+            'aria-labelledby': label ? labelId : undefined,
+            'aria-label': !label ? placeholder || 'Input field' : undefined,
+            'aria-describedby': countId,
+            'aria-invalid': status === 'error' ? 'true' : undefined,
           })}
 
           {hasSuffix && (
@@ -213,6 +227,11 @@ const Textarea = (props: TextareaProps) => {
     placeholder,
   } = props;
 
+  const textareaId =
+    id || `textarea-${Math.random().toString(36).substr(2, 9)}`;
+  const labelId = `${textareaId}-label`;
+  const countId = showCount ? `${textareaId}-count` : undefined;
+
   const [internalValue, setInternalValue] = useState(defaultValue ?? '');
   const currentValue = value !== undefined ? value : internalValue;
 
@@ -240,7 +259,11 @@ const Textarea = (props: TextareaProps) => {
 
   return (
     <div className={cn('space-y-1', className)}>
-      {label && <Typography variant="label">{label}</Typography>}
+      {label && (
+        <Typography variant="label" id={labelId}>
+          {label}
+        </Typography>
+      )}
       <div
         className={cn(
           'relative font-medium text-base border-0 outline-none transition-all duration-100 ease-linear overflow-hidden',
@@ -251,7 +274,7 @@ const Textarea = (props: TextareaProps) => {
         )}
       >
         {React.createElement('textarea', {
-          id,
+          id: textareaId,
           name,
           placeholder,
           className: cn(
@@ -279,6 +302,10 @@ const Textarea = (props: TextareaProps) => {
           maxLength,
           rows,
           'data-testid': testId,
+          'aria-labelledby': label ? labelId : undefined,
+          'aria-label': !label ? placeholder || 'Text area' : undefined,
+          'aria-describedby': countId,
+          'aria-invalid': status === 'error' ? 'true' : undefined,
         })}
 
         {(showClearButton || suffix) && (
@@ -302,10 +329,12 @@ const Textarea = (props: TextareaProps) => {
       {showCount && maxLength && (
         <div className="text-right mt-1">
           <span
+            id={countId}
             className={cn(
               'text-xs whitespace-nowrap',
               characterCount > maxLength ? 'text-ganon-600' : 'text-gray-500',
             )}
+            aria-live="polite"
           >
             {characterCount}/{maxLength}
           </span>

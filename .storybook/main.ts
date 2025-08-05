@@ -8,6 +8,7 @@ const config: StorybookConfig = {
   stories: [
     '../packages/core/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../packages/theme/src/Colors.stories.tsx',
+    '../.storybook/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-docs'),

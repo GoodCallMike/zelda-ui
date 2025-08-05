@@ -35,14 +35,42 @@ pnpm build
 # Run tests
 pnpm test
 
+# Run accessibility tests
+pnpm test:a11y
+
 # Run visual tests
 pnpm test:visual
 
 # Lint code
 pnpm lint
 
+# Lint accessibility issues
+pnpm lint:a11y
+
 # Format code
 pnpm format
+```
+
+## ♿ Accessibility
+
+Zelda UI is built with accessibility as a core principle. All components follow WCAG 2.1 guidelines and include comprehensive testing utilities.
+
+- **[Developer Guide](docs/ACCESSIBILITY_DEVELOPER_GUIDE.md)** - Complete guide for building accessible applications
+- **[Quick Reference](docs/ACCESSIBILITY_QUICK_REFERENCE.md)** - Essential accessibility checklist and patterns
+- **[Best Practices](docs/ACCESSIBILITY_BEST_PRACTICES.md)** - Detailed implementation guidelines
+
+### Testing Utilities
+```typescript
+import { quickA11yTest, runAccessibilityTestSuite } from '@zelda/core/utils';
+
+// Quick accessibility test
+await quickA11yTest(<YourComponent />);
+
+// Comprehensive testing
+await runAccessibilityTestSuite(<YourComponent />, {
+  expectedFocusableElements: 2,
+  ariaAttributes: { 'button': 'Submit form' },
+});
 ```
 
 ## 📄 License
