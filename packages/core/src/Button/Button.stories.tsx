@@ -328,7 +328,7 @@ export const Accessibility: Story = {
 
       <div className="space-y-4">
         <Typography variant="h4">🧪 Testing Examples</Typography>
-        <div className="p-3 dark:bg-gray-900 dark:text-gray-100 rounded text-sm font-mono">
+        <div className="p-3 text-sm">
           <pre className="p-4">{`// Test button accessibility
 const button = screen.getByTestId('save-button');
 expect(button).toBeEnabled();

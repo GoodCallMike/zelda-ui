@@ -22,3 +22,17 @@
 .dark .sbdocs-content [style*="color: var(--gray-900)"] {
   color: var(--gray-900) !important;
 }
+
+/* Fix anchor border colors to be more visible */
+.sb-anchor {
+  border-color: var(--sb-border-light) !important;
+}
+
+.dark .sb-anchor {
+  border-color: #4b5563 !important; /* Gray-600 instead of white */
+}
+
+/* Fix story container border in dark mode */
+.dark .sb-story {
+  border-color: #4b5563 !important; /* Gray-600 instead of white */
+}
