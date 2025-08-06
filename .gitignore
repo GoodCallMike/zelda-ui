@@ -30,6 +30,5 @@ storybook-static
 coverage
 test-results
 playwright-report
-tests/**/*.spec.ts-snapshots/
 playwright/.cache/
 .turbo

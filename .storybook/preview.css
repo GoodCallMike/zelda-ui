@@ -39,7 +39,8 @@ body.dark {
 .addon-panel,
 [data-side="bottom"],
 .sb-show-main,
-.sb-main-padded {
+.sb-main-padded,
+.sb-bar {
   background-color: var(--sb-bg-light) !important;
   color: var(--sb-fg-light) !important;
   border-color: var(--sb-border-light) !important;
@@ -53,7 +54,14 @@ body.dark {
 .dark .addon-panel,
 .dark [data-side="bottom"],
 .dark .sb-show-main,
-.dark .sb-main-padded {
+.dark .sb-main-padded,
+.dark .sb-bar,
+html.dark .sidebar-container,
+html.dark [data-side="left"],
+html.dark .sb-bar,
+[data-theme="dark"] .sidebar-container,
+[data-theme="dark"] [data-side="left"],
+[data-theme="dark"] .sb-bar {
   background-color: var(--sb-bg-dark) !important;
   color: var(--sb-fg-dark) !important;
   border-color: var(--sb-border-dark) !important;
@@ -203,8 +211,16 @@ html.dark .sb-bar [role="button"],
 .dark .docs-story,
 .dark [data-testid="story-canvas"],
 .dark .story-wrapper,
+html.dark .sb-story,
 html.dark .sb-bar,
-[data-theme="dark"] .sb-bar {
+html.dark .docs-story,
+html.dark [data-testid="story-canvas"],
+html.dark .story-wrapper,
+[data-theme="dark"] .sb-story,
+[data-theme="dark"] .sb-bar,
+[data-theme="dark"] .docs-story,
+[data-theme="dark"] [data-testid="story-canvas"],
+[data-theme="dark"] .story-wrapper {
   background-color: var(--sb-bg-dark) !important;
   border-color: var(--sb-border-dark) !important;
 }
@@ -220,6 +236,39 @@ html.dark .sb-bar,
 
 .dark .sbdocs-content * {
   color: var(--sb-fg-dark) !important;
+}
+
+/* Additional Storybook UI element targeting */
+.sb-bar,
+.sidebar-container,
+[data-side="left"] {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+  border-color: var(--sb-border-light) !important;
+}
+
+/* Dark mode for all possible theme selectors */
+.dark .sb-bar,
+.dark .sidebar-container,
+.dark [data-side="left"],
+html.dark .sb-bar,
+html.dark .sidebar-container,
+html.dark [data-side="left"],
+body.dark .sb-bar,
+body.dark .sidebar-container,
+body.dark [data-side="left"],
+[data-theme="dark"] .sb-bar,
+[data-theme="dark"] .sidebar-container,
+[data-theme="dark"] [data-side="left"],
+html[data-theme="dark"] .sb-bar,
+html[data-theme="dark"] .sidebar-container,
+html[data-theme="dark"] [data-side="left"],
+body[data-theme="dark"] .sb-bar,
+body[data-theme="dark"] .sidebar-container,
+body[data-theme="dark"] [data-side="left"] {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+  border-color: var(--sb-border-dark) !important;
 }
 
 /* Ensure smooth transitions */

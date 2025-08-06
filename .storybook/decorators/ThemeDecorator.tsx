@@ -1,5 +1,4 @@
 import type { Decorator } from '@storybook/react';
-import { ThemeProvider } from '@zelda/core';
 import { useEffect } from 'react';
 
 const _DARK_BACKGROUND = 'var(--gray-900)';
@@ -18,15 +17,41 @@ const _isDarkColor = (rgbString: string): boolean => {
 export const ThemeDecorator: Decorator = (Story, context) => {
   const theme = context.globals.theme || 'light';
 
-  // Apply theme to document root
+  // Apply theme to document root and Storybook UI
   useEffect(() => {
     const root = document.documentElement;
+    const body = document.body;
+
     root.setAttribute('data-theme', theme);
+    body.setAttribute('data-theme', theme);
+
     if (theme === 'dark') {
       root.classList.add('dark');
+      body.classList.add('dark');
     } else {
       root.classList.remove('dark');
+      body.classList.remove('dark');
     }
+
+    // Force update Storybook UI elements
+    const storybookElements = [
+      '.sidebar-container',
+      '.sb-bar',
+      '[data-side="left"]',
+      '.toolbar',
+      '[data-testid="toolbar"]',
+    ];
+
+    storybookElements.forEach((selector) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach((element) => {
+        if (theme === 'dark') {
+          element.classList.add('dark');
+        } else {
+          element.classList.remove('dark');
+        }
+      });
+    });
   }, [theme]);
 
   // Skip decorator for ThemeProvider stories
@@ -35,10 +60,8 @@ export const ThemeDecorator: Decorator = (Story, context) => {
   }
 
   return (
-    <ThemeProvider defaultTheme={theme} storageKey={`storybook-${context.id}`}>
-      <div className={theme === 'dark' ? 'dark' : ''}>
-        <Story />
-      </div>
-    </ThemeProvider>
+    <div className={theme === 'dark' ? 'dark' : ''} data-theme={theme}>
+      <Story />
+    </div>
   );
 };
