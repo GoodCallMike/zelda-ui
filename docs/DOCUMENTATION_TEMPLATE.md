@@ -1,212 +1,206 @@
 # 🗡️ Zelda UI Documentation Template
 
+## Documentation Philosophy
+
+Documentation is not an afterthought—it's a critical feature that drives adoption, reduces bugs, and fosters collaboration. Every component story is both documentation and a test case.
+
 ## Component Description Structure
 
 ```tsx
-component: `[Component] component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
-
-## Overview
-
-The [Component] component provides [main functionality] with authentic Zelda-inspired styling. It supports [key features] and maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+component: `[One sentence describing function and primary benefit].
 
 \`\`\`tsx
 import { [Component] } from '@zelda/core';
 
-// Basic usage
-<[Component] [basicProps]>[content]</[Component]>
+// Primary usage pattern
+<[Component]>[Most common example]</[Component]>
 
-// With Hyrule theming
-<[Component] [commonProps]>[content]</[Component]>
+// Key variant
+<[Component] variant="primary">[Enhanced example]</[Component]>
 \`\`\`
 
 ## Variants
+- **primary** - [When to use] ([visual indicator])
+- **destructive** - [When to use] ([visual indicator])
 
-### Primary (Triforce Gold)
-\`\`\`tsx
-<[Component] variant="primary">[content]</[Component]>
-\`\`\`
-
-### Secondary (Rupee Green)
-\`\`\`tsx
-<[Component] variant="secondary">[content]</[Component]>
-\`\`\`
-
-### Tertiary (Hyrule Blue)
-\`\`\`tsx
-<[Component] variant="tertiary">[content]</[Component]>
-\`\`\`
-
-### Destructive (Ganon Red)
-\`\`\`tsx
-<[Component] variant="destructive">[content]</[Component]>
-\`\`\`
-
-## Theme Support
-
-The [Component] component automatically adapts to both light and dark themes. Use the Storybook theme switcher to preview different appearances.
+## Accessibility & Testing
+- [Key keyboard interactions]
+- [ARIA implementation]
+- [Consumer responsibilities]
 
 \`\`\`tsx
-// Component automatically responds to theme changes
-<[Component] variant="primary">[content]</[Component]>
-<[Component] variant="secondary">[content]</[Component]>
-\`\`\`
-
-## Real World Examples
-
-### Adventure Interface
-\`\`\`tsx
-// Game menu interface
-<div className="adventure-menu">
-  <[Component] variant="primary">Start Adventure</[Component]>
-  <[Component] variant="secondary">Load Game</[Component]>
-  <[Component] variant="tertiary">Settings</[Component]>
-</div>
-\`\`\`
-
-### Inventory Management
-\`\`\`tsx
-// Item management with other components
-<div className="inventory-panel">
-  <Typography variant="h2">Hero's Inventory</Typography>
-  <div className="item-actions">
-    <[Component] size="small">Use Item</[Component]>
-    <[Component] size="small" variant="destructive">Drop Item</[Component]>
-  </div>
-</div>
-\`\`\`
-
-### Form Integration
-\`\`\`tsx
-// Character creation form
-<form className="character-form">
-  <Input label="Hero Name" placeholder="Enter your name" />
-  <RadioGroup label="Choose your path">
-    <Radio value="warrior">Warrior</Radio>
-    <Radio value="mage">Mage</Radio>
-    <Radio value="archer">Archer</Radio>
-  </RadioGroup>
-  <div className="form-actions">
-    <[Component] type="submit" variant="primary">Begin Quest</[Component]>
-    <[Component] type="button" variant="secondary">Cancel</[Component]>
-  </div>
-</form>
-\`\`\`
-
-### Dialog System
-\`\`\`tsx
-// NPC interaction dialog
-<div className="dialog-box">
-  <Typography variant="body">"Welcome, brave adventurer!"</Typography>
-  <div className="dialog-choices">
-    <[Component] variant="primary">Accept Quest</[Component]>
-    <[Component] variant="secondary">Ask for Info</[Component]>
-    <[Component] variant="tertiary">Leave</[Component]>
-  </div>
-</div>
-\`\`\`
-
-
-
-## Accessibility
-
-The [Component] component is fully accessible with:
-
-- **Keyboard Navigation**: Full keyboard support with proper focus management
-- **Screen Reader Support**: Semantic elements with proper labeling
-- **Focus Indicators**: Clear visual focus states for keyboard users
-- **High Contrast**: Maintains accessibility across all themes
-
-\`\`\`tsx
-// Accessibility example
-<[Component] testId="adventure-btn" aria-label="Start your adventure">[content]</[Component]>
-\`\`\`
-
-## Testing
-
-Built-in testing support with \`testId\` prop:
-
-\`\`\`tsx
-<[Component] testId="component-test">[content]</[Component]>
-\`\`\`
-
-\`\`\`tsx
-// Test queries
-screen.getByTestId('component-test');
-\`\`\`
-
-## Best Practices
-
-### Do
-- Use primary for main actions (like "Start Adventure")
-- Use destructive for dangerous actions (like "Delete Save")
-- Provide clear, action-oriented labels
-- Include \`testId\` for reliable testing
-
-### Don't
-- Use multiple primary variants in the same context
-- Use destructive variant for non-destructive actions
-- Make component text too long for the pixel-art styling
-`,
+// Testing approach
+const element = screen.getByTestId('component-id');
+expect(element).toBeEnabled();
+await user.click(element);
+\`\`\``,
 ```
 
-## Required Stories
+## Essential Stories
 
-1. **Default** - Basic component usage with primary variant
-2. **Variants** - All Hyrule-themed variants (primary, secondary, tertiary, destructive)
-3. **States** - Normal, hover, active, and disabled states
-4. **Theme Variants** - Component appearance across different themes (use theme switcher)
-5. **Real World Examples** - Integration with other components (forms, dialogs, menus)
-6. **Hyrule Interface** - Adventure-themed usage scenarios
-7. **Examples** - Comprehensive component demonstrations
+### 1. Default Story
+- **Purpose**: Interactive playground with primary usage
+- **Requirements**: Well-configured argTypes for optimal developer experience
+- **Controls**: Focus on props developers will actually manipulate
 
-## ArgTypes Template
+### 2. Variants Story
+- **Purpose**: Visual gallery of all component variants in one story
+- **Requirements**: Demonstrates complete range of appearances
+- **Layout**: Side-by-side comparison for easy scanning
+
+### 3. Examples Story
+- **Purpose**: Real-world integration scenarios
+- **Requirements**: Shows component working with other components
+- **Context**: Demonstrates actual usage patterns, not isolated examples
+
+## Accessibility Documentation
+
+### Keyboard Interactions Table
+Document expected keyboard behavior referencing WAI-ARIA patterns:
+
+| Key | Action |
+|-----|--------|
+| Enter/Space | [Specific behavior] |
+| Tab | [Focus behavior] |
+| Escape | [If applicable] |
+
+### ARIA Implementation
+- **Role**: [Component's semantic role]
+- **States**: [Dynamic ARIA states managed]
+- **Properties**: [Static ARIA properties]
+
+### Consumer Responsibilities
+**Critical**: Explicitly define what the consumer must provide for accessibility:
+
+> **Your Responsibility**: You must provide [specific requirement, e.g., "a descriptive aria-label"]. This component provides [what's built-in].
+
+## Testing Strategy Documentation
+
+### Multi-Layer Testing Approach
+| Test Type | Purpose | Tool | Coverage |
+|-----------|---------|------|----------|
+| Unit | Logic & rendering | Jest + RTL | Prop handling, state |
+| Interaction | User flows | Storybook play functions | Click, type, navigation |
+| Visual | UI consistency | Chromatic | Layout, styling, themes |
+| A11y | WCAG compliance | @storybook/addon-a11y | Automated violations |
+
+### Test Documentation Requirements
+- Link to unit test files and coverage reports
+- Highlight stories with play functions for interaction testing
+- Explain visual regression workflow and link to test history
+
+## ArgTypes Configuration
 
 ```tsx
 argTypes: {
+  // Most critical prop first
   variant: {
     control: 'select',
-    options: ['primary', 'secondary', 'tertiary', 'destructive'],
-    description: 'Hyrule-themed visual variant',
+    options: ['primary', 'default', 'destructive'],
+    description: 'Visual style and semantic meaning',
     table: {
       type: { summary: 'string' },
-      defaultValue: { summary: 'primary' },
+      defaultValue: { summary: 'default' },
     },
   },
+  // Behavioral props
   disabled: {
     control: 'boolean',
-    description: 'Whether the component is disabled',
-    table: {
-      type: { summary: 'boolean' },
-      defaultValue: { summary: 'false' },
-    },
+    description: 'Prevents user interaction',
   },
-  className: {
-    control: 'text',
-    description: 'Additional CSS classes for styling with utilities',
-    table: {
-      type: { summary: 'string' },
-    },
-  },
+  // Always include for testing
   testId: {
     control: 'text',
     description: 'Test identifier for automated testing',
-    table: {
-      type: { summary: 'string' },
-    },
   },
+  // Hide internal/advanced props from controls
+  className: { table: { disable: true } },
 },
 ```
 
-## Zelda Color Palette Reference
+## Advanced Topics (When Applicable)
 
-- **triforce-*** - Golden yellow (primary theme)
-- **hyrule-*** - Royal blue (kingdom colors)
-- **rupee-*** - Emerald green (currency/nature)
-- **ganon-*** - Crimson red (danger/destruction)
-- **sheikah-*** - Mystic purple (ancient tech)
-- **kokiri-*** - Forest green (nature/success)
-- **zora-*** - Aqua blue (water domain)
-- **goron-*** - Volcanic orange (fire/warnings)
-- **fairy-*** - Magical pink (healing/magic)
+### Theming Support
+- Document how component responds to theme changes
+- Include interactive theme switcher using @storybook/addon-themes
+- Explain design token usage
+
+### Performance Considerations
+For complex components, document:
+- Memoization strategies
+- Data requirements for optimal performance
+- Virtualization (for lists)
+- Lazy loading patterns
+
+### Versioning & Changes
+- Link to component's CHANGELOG.md
+- Mark deprecated props with migration guidance
+- Indicate component maturity level (Alpha, Beta, Stable)
+
+## Documentation Anti-Patterns
+
+### ❌ Avoid
+- Verbose introductions explaining obvious functionality
+- Separate testing documentation (integrate with main docs)
+- Documenting every possible prop combination
+- Generic examples ("Click me", "Hello world")
+- Academic explanations without practical guidance
+
+### ✅ Do
+- Lead with code examples
+- Use domain-specific, realistic content
+- Group related information (accessibility + testing)
+- Prioritize common use cases (80/20 rule)
+- Provide clear "when to use" guidance
+
+## Quality Checklist
+
+### Foundation
+- [ ] Component wrapped in correct providers (ThemeProvider, etc.)
+- [ ] Meta configured with `tags: ['autodocs']`
+- [ ] Clear narrative explaining purpose and use cases
+
+### Interactive Playground
+- [ ] Primary story with well-configured argTypes
+- [ ] Controls focus on developer-relevant props
+- [ ] Realistic default values and examples
+
+### Story Gallery
+- [ ] All variants demonstrated in single story
+- [ ] States story showing normal/disabled/loading
+- [ ] Examples story with real-world integration
+
+### Accessibility
+- [ ] All stories pass @storybook/addon-a11y with zero violations
+- [ ] Keyboard interactions documented in table format
+- [ ] ARIA implementation clearly explained
+- [ ] Consumer responsibilities explicitly defined
+
+### Testing
+- [ ] Testing strategy overview provided
+- [ ] Links to unit tests and coverage reports
+- [ ] Key user flows tested with play functions
+- [ ] Visual regression workflow explained
+
+### Advanced (If Applicable)
+- [ ] Theming behavior documented with interactive switcher
+- [ ] Performance considerations for complex components
+- [ ] Changelog linked and deprecations marked
+- [ ] Component maturity level indicated
+
+## Writing Guidelines
+
+### Tone
+- **Concise**: Every word adds value
+- **Practical**: Focus on implementation, not theory
+- **Authoritative**: Clear guidance on when/how to use
+
+### Structure
+- **Inverted pyramid**: Most important information first
+- **Scannable**: Use bullets, tables, and clear headings
+- **Progressive**: Build complexity gradually
+
+### Examples
+- **Realistic**: Use domain-appropriate content ("Save Game", not "Click Me")
+- **Complete**: Include necessary imports and context
+- **Purposeful**: Each example demonstrates something new

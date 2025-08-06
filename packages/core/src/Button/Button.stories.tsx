@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Typography } from '@zelda/core';
+import { Alert, Button, Card, Typography } from '@zelda/core';
 import {
   ArrowRightIcon,
   PlusIcon,
@@ -14,110 +14,37 @@ const meta: Meta<typeof Button> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Button component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
-
-## Overview
-
-The Button component provides interactive actions with authentic Zelda-inspired styling. It supports multiple functional variants, icon integration, and automatically adapts to theme changes. Maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+        component: `Triggers actions and navigation with adventure-themed styling and comprehensive accessibility.
 
 \`\`\`tsx
 import { Button } from '@zelda/core';
 
-// Basic usage
+// Primary usage pattern
 <Button>Start Adventure</Button>
 
-// With variant styling
-<Button variant="primary">Collect Triforce</Button>
+// Key variant
+<Button variant="primary">Save Game</Button>
 \`\`\`
 
 ## Variants
+- **primary** - Main actions (Triforce Gold)
+- **default** - Secondary actions (outlined)
+- **destructive** - Dangerous actions (Ganon Red)
+- **text** - Minimal emphasis
+- **link** - Navigation
+- **dashed** - Add/upload actions
 
-### Primary (Triforce Gold)
-High emphasis filled button for main actions like "Start Adventure" or "Save Game".
+## Accessibility & Testing
+- Enter/Space activation, Tab navigation
+- Semantic button element with proper ARIA
+- Consumer must provide descriptive text or aria-label
 
-### Default (Outlined)
-Medium emphasis outlined button for secondary actions like "View Inventory" or "Settings".
-
-### Dashed (Dashed Border)
-Lower emphasis for add/upload actions like "Add Item" or "Upload Save".
-
-### Text (Minimal)
-Minimal emphasis for subtle actions like "Cancel" or "Skip".
-
-### Link (Link Style)
-Link styling with underline for navigation like "View Map" or "Credits".
-
-### Destructive (Ganon Red)
-High emphasis red button for dangerous actions like "Delete Save" or "Reset Progress".
-
-## Accessibility
-
-The Button component is fully accessible with WCAG 2.1 AA compliance:
-
-### Keyboard Navigation
-- **Tab Navigation**: Navigate between buttons using Tab/Shift+Tab
-- **Activation**: Activate buttons with Enter or Space keys
-- **Focus Management**: Clear visual focus indicators for keyboard users
-- **Focus Order**: Logical tab order in button groups
-
-### Screen Reader Support
-- **Semantic Elements**: Uses proper HTML button elements
-- **Accessible Names**: Clear, descriptive button text
-- **State Announcements**: Disabled and loading states are announced
-- **ARIA Attributes**: Proper labeling with aria-label and aria-describedby
-
-### Visual Accessibility
-- **High Contrast**: Supports high contrast mode across all themes
-- **Color Independence**: Information not conveyed by color alone
-- **Focus Indicators**: Clear focus rings for keyboard navigation
-- **Text Scaling**: Readable at 200% zoom level
-
-## Testing
-
-Built-in testing support with comprehensive \`testId\` props:
-
-### Test Identifiers
 \`\`\`tsx
-<Button testId="save-button" variant="primary">
-  Save Game
-</Button>
-// Results in: data-testid="save-button"
-\`\`\`
-
-### Testing Examples
-\`\`\`tsx
-// Query button by test ID
-document.querySelector('[data-testid="save-button"]');
-
-// Test button click
-const button = document.querySelector('[data-testid="save-button"]');
-button.click();
-\`\`\`
-
-### Accessibility Testing
-\`\`\`tsx
-// Query by role and accessible name
-document.querySelector('button[aria-label="Save current game progress"]');
-
-// Check ARIA attributes
-const button = document.querySelector('[data-testid="save-button"]');
-button.getAttribute('aria-label'); // 'Save current game progress'
-\`\`\`
-
-## Best Practices
-
-### Do
-- Use primary for main actions (like "Start Adventure")
-- Use destructive for dangerous actions (like "Delete Save")
-- Provide clear, action-oriented labels
-- Include \`testId\` for reliable testing
-
-### Don't
-- Use multiple primary variants in the same context
-- Use destructive variant for non-destructive actions
-- Make button text too long for the pixel-art styling`,
+// Testing approach
+const element = screen.getByTestId('save-button');
+expect(element).toBeEnabled();
+await user.click(element);
+\`\`\``,
       },
     },
   },
@@ -126,228 +53,140 @@ button.getAttribute('aria-label'); // 'Save current game progress'
     variant: {
       control: 'select',
       options: ['primary', 'default', 'dashed', 'text', 'link', 'destructive'],
-      description: 'Functional style variant of the button',
+      description: 'Visual style and semantic meaning',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'primary' },
+        defaultValue: { summary: 'default' },
       },
     },
     disabled: {
       control: 'boolean',
-      description: 'Whether the button is disabled',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+      description: 'Prevents user interaction',
+    },
+    icon: {
+      control: false,
+      description: 'Icon component to display',
     },
     iconPosition: {
       control: 'select',
       options: ['left', 'right'],
-      description: 'Position of the icon relative to text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'left' },
-      },
+      description: 'Icon position relative to text',
     },
     testId: {
       control: 'text',
       description: 'Test identifier for automated testing',
-      table: {
-        type: { summary: 'string' },
-      },
     },
+    className: { table: { disable: true } },
+    onClick: { table: { disable: true } },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Multi-Layer Testing Documentation
+// | Test Type | Purpose | Tool | Coverage |
+// |-----------|---------|------|----------|
+// | Unit | Logic & rendering | Jest + RTL | Prop handling, state |
+// | Interaction | User flows | Storybook play functions | Click, type, navigation |
+// | Visual | UI consistency | Chromatic | Layout, styling, themes |
+// | A11y | WCAG compliance | @storybook/addon-a11y | Automated violations |
+
 export const Default: Story = {
   args: {
     children: 'Start Adventure',
     variant: 'primary',
+    testId: 'adventure-button',
   },
-};
-
-export const Primary: Story = {
-  args: {
-    children: 'Collect Triforce',
-    variant: 'primary',
-  },
-};
-
-export const Secondary: Story = {
-  name: 'Default (Outlined)',
-  args: {
-    children: 'View Inventory',
-    variant: 'default',
-  },
-};
-
-export const Dashed: Story = {
-  args: {
-    children: 'Add Item',
-    variant: 'dashed',
-  },
-};
-
-export const Text: Story = {
-  args: {
-    children: 'Cancel',
-    variant: 'text',
-  },
-};
-
-export const Link: Story = {
-  args: {
-    children: 'View Map',
-    variant: 'link',
-  },
-};
-
-export const Destructive: Story = {
-  args: {
-    children: 'Delete Save',
-    variant: 'destructive',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    children: 'Disabled Action',
-    variant: 'primary',
-    disabled: true,
-  },
+  decorators: [
+    (Story) => (
+      <div className="p-4">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Variants: Story = {
-  name: 'All Variants',
   render: () => (
-    <div className="flex flex-wrap gap-3">
-      <Button variant="primary">Primary</Button>
-      <Button variant="default">Default</Button>
-      <Button variant="dashed">Dashed</Button>
-      <Button variant="text">Text</Button>
-      <Button variant="link">Link</Button>
-      <Button variant="destructive">Destructive</Button>
+    <div className="flex flex-wrap gap-3 p-4">
+      <Button variant="primary" testId="variant-primary">
+        Primary
+      </Button>
+      <Button variant="default" testId="variant-default">
+        Default
+      </Button>
+      <Button variant="dashed" testId="variant-dashed">
+        Dashed
+      </Button>
+      <Button variant="text" testId="variant-text">
+        Text
+      </Button>
+      <Button variant="link" testId="variant-link">
+        Link
+      </Button>
+      <Button variant="destructive" testId="variant-destructive">
+        Destructive
+      </Button>
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          'All button variants showcasing the functional hierarchy from high to low emphasis.',
+          'Complete range of button variants showing functional hierarchy from high to low emphasis.',
       },
     },
   },
 };
 
-export const States: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-3">
-        <Button variant="primary">Normal</Button>
-        <Button variant="primary" disabled>
-          Disabled
-        </Button>
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <Button variant="default">Normal</Button>
-        <Button variant="default" disabled>
-          Disabled
-        </Button>
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <Button variant="destructive">Normal</Button>
-        <Button variant="destructive" disabled>
-          Disabled
-        </Button>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Button states including normal and disabled variations across different variants.',
-      },
-    },
-  },
-};
-
-export const WithIcons: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-3">
-        <Button variant="primary" icon={PlusIcon}>
-          Add Item
-        </Button>
-        <Button variant="default" icon={SearchLgIcon}>
-          Search
-        </Button>
-        <Button variant="destructive" icon={Trash01Icon}>
-          Delete
-        </Button>
-        <Button variant="link" icon={ArrowRightIcon} iconPosition="right">
-          Continue
-        </Button>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Buttons with icons in different positions and variants.',
-      },
-    },
-  },
-};
-
-export const IconOnly: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-3">
-      <Button variant="primary" icon={PlusIcon} aria-label="Add item" />
-      <Button variant="default" icon={SearchLgIcon} aria-label="Search" />
-      <Button variant="destructive" icon={Trash01Icon} aria-label="Delete" />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Icon-only buttons with proper accessibility labels.',
-      },
-    },
-  },
-};
-
-export const HyruleInterface: Story = {
-  name: 'Hyrule Interface',
+export const Examples: Story = {
   render: () => (
     <div className="space-y-6 p-6">
       <div className="space-y-3">
         <Typography variant="h3">Adventure Menu</Typography>
         <div className="flex flex-wrap gap-3">
-          <Button variant="primary">Start New Game</Button>
-          <Button variant="default">Continue Adventure</Button>
-          <Button variant="text">Load Save</Button>
+          <Button variant="primary" testId="start-game">
+            Start New Game
+          </Button>
+          <Button variant="default" testId="continue-game">
+            Continue Adventure
+          </Button>
+          <Button variant="text" testId="load-save">
+            Load Save
+          </Button>
         </div>
       </div>
 
       <div className="space-y-3">
         <Typography variant="h3">Inventory Actions</Typography>
         <div className="flex flex-wrap gap-3">
-          <Button variant="default">Use Item</Button>
-          <Button variant="dashed">Add to Inventory</Button>
-          <Button variant="destructive">Drop Item</Button>
+          <Button variant="default" icon={SearchLgIcon} testId="use-item">
+            Use Item
+          </Button>
+          <Button variant="dashed" icon={PlusIcon} testId="add-item">
+            Add to Inventory
+          </Button>
+          <Button variant="destructive" icon={Trash01Icon} testId="drop-item">
+            Drop Item
+          </Button>
         </div>
       </div>
 
       <div className="space-y-3">
-        <Typography variant="h3">Navigation</Typography>
+        <Typography variant="h3">Form Actions</Typography>
         <div className="flex flex-wrap gap-3">
-          <Button variant="link">View Map</Button>
-          <Button variant="link">Quest Log</Button>
-          <Button variant="text">Settings</Button>
+          <Button variant="text" testId="cancel-form">
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            icon={ArrowRightIcon}
+            iconPosition="right"
+            testId="save-form"
+          >
+            Save Character
+          </Button>
         </div>
       </div>
     </div>
@@ -356,36 +195,205 @@ export const HyruleInterface: Story = {
     docs: {
       description: {
         story:
-          'Real-world Zelda-themed interface examples showing proper button usage in different contexts.',
+          'Real-world integration scenarios showing buttons working with other components in adventure-themed interfaces.',
       },
     },
   },
 };
 
-export const ThemeVariants: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Button variants automatically adapt to theme changes. Use the Storybook theme switcher to see how buttons appear in different themes.',
-      },
-    },
-  },
+export const AccessibilityFeatures: Story = {
   render: () => (
     <div className="p-6">
+      <Typography variant="h3" className="mb-0">
+        🔍 Accessibility Features Demo
+      </Typography>
+      <Typography variant="body2" className="mb-4">
+        Comprehensive accessibility demonstration for Button component.
+      </Typography>
+
       <div className="space-y-4">
-        <Typography variant="h3" className="mb-4">
-          All Button Variants
-        </Typography>
-        <div className="flex flex-wrap gap-3">
-          <Button variant="primary">Primary</Button>
-          <Button variant="default">Default</Button>
-          <Button variant="dashed">Dashed</Button>
-          <Button variant="text">Text</Button>
-          <Button variant="link">Link</Button>
-          <Button variant="destructive">Destructive</Button>
+        <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
+        <Card>
+          <Typography
+            variant="body2"
+            className="text-green-800 dark:text-green-200 mb-3"
+          >
+            <strong>Try this:</strong> Use Tab to navigate between buttons,
+            Enter or Space to activate them.
+          </Typography>
+          <div className="flex gap-3 flex-wrap">
+            <Button variant="primary" testId="keyboard-primary">
+              Primary Action
+            </Button>
+            <Button variant="default" testId="keyboard-secondary">
+              Secondary Action
+            </Button>
+            <Button variant="destructive" testId="keyboard-destructive">
+              Destructive Action
+            </Button>
+          </div>
+        </Card>
+
+        <div className="space-y-2">
+          <Typography variant="h5">Keyboard Interactions</Typography>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left p-2">Key</th>
+                  <th className="text-left p-2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Enter
+                    </kbd>
+                  </td>
+                  <td className="p-2">Activates the button</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Space
+                    </kbd>
+                  </td>
+                  <td className="p-2">Activates the button</td>
+                </tr>
+                <tr>
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Tab
+                    </kbd>
+                  </td>
+                  <td className="p-2">Moves focus to next focusable element</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h4">🏷️ ARIA Implementation</Typography>
+        <Card>
+          <div>
+            <Typography variant="h5">Semantic Button Element</Typography>
+            <Button variant="primary" testId="semantic-button">
+              Semantic HTML Button
+            </Button>
+            <Typography
+              variant="body2"
+              className="text-gray-600 dark:text-gray-400 mt-1"
+            >
+              Uses semantic <code>&lt;button&gt;</code> element with proper role
+            </Typography>
+          </div>
+
+          <div>
+            <Typography variant="h5">Icon Button with aria-label</Typography>
+            <Button
+              variant="default"
+              icon={SearchLgIcon}
+              aria-label="Search inventory items"
+              testId="icon-button"
+            />
+            <Typography
+              variant="body2"
+              className="text-gray-600 dark:text-gray-400 mt-1"
+            >
+              Icon-only button with descriptive aria-label
+            </Typography>
+          </div>
+
+          <div>
+            <Typography variant="h5">Disabled State</Typography>
+            <Button variant="primary" disabled testId="disabled-button">
+              Disabled Button
+            </Button>
+            <Typography
+              variant="body2"
+              className="text-gray-600 dark:text-gray-400 mt-1"
+            >
+              Properly announces disabled state to screen readers
+            </Typography>
+          </div>
+        </Card>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h4">📢 Consumer Responsibilities</Typography>
+        <Alert
+          message="Your Responsibility"
+          description="You must provide descriptive
+            button text or aria-label for icon-only buttons. This component
+            provides semantic HTML structure and keyboard navigation."
+          type="info"
+        ></Alert>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h4">🧪 Testing Examples</Typography>
+        <div className="p-3 dark:bg-gray-900 dark:text-gray-100 rounded text-sm font-mono">
+          <pre className="p-4">{`// Test button accessibility
+const button = screen.getByTestId('save-button');
+expect(button).toBeEnabled();
+
+// Test keyboard activation
+const user = userEvent.setup();
+await user.tab();
+expect(button).toHaveFocus();
+await user.keyboard('{Enter}');
+
+// Test ARIA attributes
+expect(screen.getByRole('button', { name: 'Save Game' })).toBeInTheDocument();
+expect(iconButton).toHaveAttribute('aria-label', 'Search inventory');`}</pre>
         </div>
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Comprehensive Accessibility Features
+
+This story demonstrates all accessibility features built into the Button component.
+
+### Keyboard Navigation Patterns
+- **Enter/Space** - Activates the button
+- **Tab** - Moves focus to next focusable element
+- **Shift+Tab** - Moves focus to previous focusable element
+
+### ARIA Implementation
+- **Role**: Uses semantic button element (implicit role="button")
+- **States**: Properly announces disabled state
+- **Properties**: Supports aria-label for additional context
+
+### Screen Reader Support
+- Semantic HTML button element
+- Proper labeling and descriptions
+- State announcements for disabled buttons
+- Clear focus management
+
+### Testing Patterns
+\`\`\`tsx
+// Basic button test
+const button = screen.getByTestId('save-button');
+expect(button).toBeEnabled();
+
+// Keyboard interaction test
+const user = userEvent.setup();
+await user.tab();
+expect(button).toHaveFocus();
+await user.keyboard('{Enter}');
+
+// Accessibility test
+expect(screen.getByRole('button', { name: 'Save Game' })).toBeInTheDocument();
+\`\`\`
+        `,
+      },
+    },
+  },
 };

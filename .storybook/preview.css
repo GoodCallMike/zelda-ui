@@ -31,42 +31,6 @@ body.dark {
   color-scheme: dark !important;
 }
 
-/* Storybook UI elements - Light */
-.sidebar-container,
-[data-side="left"],
-.toolbar,
-[data-testid="toolbar"],
-.addon-panel,
-[data-side="bottom"],
-.sb-show-main,
-.sb-main-padded,
-.sb-bar {
-  background-color: var(--sb-bg-light) !important;
-  color: var(--sb-fg-light) !important;
-  border-color: var(--sb-border-light) !important;
-}
-
-/* Storybook UI elements - Dark */
-.dark .sidebar-container,
-.dark [data-side="left"],
-.dark .toolbar,
-.dark [data-testid="toolbar"],
-.dark .addon-panel,
-.dark [data-side="bottom"],
-.dark .sb-show-main,
-.dark .sb-main-padded,
-.dark .sb-bar,
-html.dark .sidebar-container,
-html.dark [data-side="left"],
-html.dark .sb-bar,
-[data-theme="dark"] .sidebar-container,
-[data-theme="dark"] [data-side="left"],
-[data-theme="dark"] .sb-bar {
-  background-color: var(--sb-bg-dark) !important;
-  color: var(--sb-fg-dark) !important;
-  border-color: var(--sb-border-dark) !important;
-}
-
 /* Story canvas */
 #storybook-preview-iframe {
   background-color: transparent !important;
@@ -238,37 +202,23 @@ html.dark .story-wrapper,
   color: var(--sb-fg-dark) !important;
 }
 
-/* Additional Storybook UI element targeting */
-.sb-bar,
-.sidebar-container,
-[data-side="left"] {
+/* Documentation sections and recommended patterns */
+.docs-story,
+.recommended-patterns,
+.docblock-source,
+.docblock-canvas-source-state,
+.css-175oi2r {
   background-color: var(--sb-bg-light) !important;
   color: var(--sb-fg-light) !important;
-  border-color: var(--sb-border-light) !important;
 }
 
-/* Dark mode for all possible theme selectors */
-.dark .sb-bar,
-.dark .sidebar-container,
-.dark [data-side="left"],
-html.dark .sb-bar,
-html.dark .sidebar-container,
-html.dark [data-side="left"],
-body.dark .sb-bar,
-body.dark .sidebar-container,
-body.dark [data-side="left"],
-[data-theme="dark"] .sb-bar,
-[data-theme="dark"] .sidebar-container,
-[data-theme="dark"] [data-side="left"],
-html[data-theme="dark"] .sb-bar,
-html[data-theme="dark"] .sidebar-container,
-html[data-theme="dark"] [data-side="left"],
-body[data-theme="dark"] .sb-bar,
-body[data-theme="dark"] .sidebar-container,
-body[data-theme="dark"] [data-side="left"] {
+.dark .docs-story,
+.dark .recommended-patterns,
+.dark .docblock-source,
+.dark .docblock-canvas-source-state,
+.dark .css-175oi2r {
   background-color: var(--sb-bg-dark) !important;
   color: var(--sb-fg-dark) !important;
-  border-color: var(--sb-border-dark) !important;
 }
 
 /* Ensure smooth transitions */

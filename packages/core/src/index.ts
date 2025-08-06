@@ -1,3 +1,5 @@
+export type { AlertProps } from './Alert/Alert';
+export { Alert } from './Alert/Alert';
 export type { AvatarProps } from './Avatar/Avatar';
 export { Avatar } from './Avatar/Avatar';
 export type { BadgeProps } from './Badge/Badge';

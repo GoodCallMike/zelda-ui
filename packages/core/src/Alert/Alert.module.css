@@ -1,0 +1,75 @@
+/* Success - Rupee green */
+.success {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--rupee-100) 80%, var(--white) 20%) 0%, 
+    var(--rupee-50) 100%
+  );
+  border-color: var(--rupee-300);
+  color: var(--rupee-800);
+}
+
+:global(.dark) .success {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--rupee-900) 60%, var(--black) 40%) 0%, 
+    var(--rupee-800) 100%
+  );
+  border-color: var(--rupee-600);
+  color: var(--rupee-200);
+}
+
+/* Info - Hyrule blue */
+.info {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--hyrule-100) 80%, var(--white) 20%) 0%, 
+    var(--hyrule-50) 100%
+  );
+  border-color: var(--hyrule-300);
+  color: var(--hyrule-800);
+}
+
+:global(.dark) .info {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--hyrule-900) 60%, var(--black) 40%) 0%, 
+    var(--hyrule-800) 100%
+  );
+  border-color: var(--hyrule-600);
+  color: var(--hyrule-200);
+}
+
+/* Warning - Triforce gold */
+.warning {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--triforce-100) 80%, var(--white) 20%) 0%, 
+    var(--triforce-50) 100%
+  );
+  border-color: var(--triforce-300);
+  color: var(--triforce-800);
+}
+
+:global(.dark) .warning {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, #553c9a 60%, var(--black) 40%) 0%, 
+    #44337a 100%
+  );
+  border-color: #6b46c1;
+  color: #c4b5fd;
+}
+
+/* Error - Ganon red */
+.error {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--ganon-100) 80%, var(--white) 20%) 0%, 
+    var(--ganon-50) 100%
+  );
+  border-color: var(--ganon-300);
+  color: var(--ganon-800);
+}
+
+:global(.dark) .error {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--ganon-900) 60%, var(--black) 40%) 0%, 
+    var(--ganon-800) 100%
+  );
+  border-color: var(--ganon-600);
+  color: var(--ganon-200);
+}
