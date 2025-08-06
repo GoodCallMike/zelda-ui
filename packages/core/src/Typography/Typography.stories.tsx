@@ -333,35 +333,47 @@ export const MonospaceExamples: Story = {
       <Typography variant="body" color="muted">
         Monospace typography for code and technical content.
       </Typography>
-      
+
       <div className="space-y-4">
         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">JavaScript Code</Typography>
+          <Typography variant="label" className="block mb-2">
+            JavaScript Code
+          </Typography>
           <code className="font-mono text-sm block">
-            const hero = &#123;<br />
-            &nbsp;&nbsp;name: 'Link',<br />
-            &nbsp;&nbsp;weapon: 'Master Sword',<br />
-            &nbsp;&nbsp;shield: 'Hylian Shield'<br />
+            const hero = &#123;
+            <br />
+            &nbsp;&nbsp;name: 'Link',
+            <br />
+            &nbsp;&nbsp;weapon: 'Master Sword',
+            <br />
+            &nbsp;&nbsp;shield: 'Hylian Shield'
+            <br />
             &#125;;
           </code>
         </div>
-        
+
         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">Configuration</Typography>
+          <Typography variant="label" className="block mb-2">
+            Configuration
+          </Typography>
           <pre className="font-mono text-sm">
-            TRIFORCE_POWER=9001<br />
-            HYRULE_CASTLE_COORDS=&#123;x: 0, y: 0, z: 100&#125;<br />
+            TRIFORCE_POWER=9001
+            <br />
+            HYRULE_CASTLE_COORDS=&#123;x: 0, y: 0, z: 100&#125;
+            <br />
             MASTER_SWORD_DAMAGE=300
           </pre>
         </div>
-        
+
         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">Terminal Output</Typography>
+          <Typography variant="label" className="block mb-2">
+            Terminal Output
+          </Typography>
           <code className="font-mono text-sm block text-green-600 dark:text-green-400">
-            $ npm run storybook<br />
-            ✓ Starting Storybook server...<br />
-            ✓ Local: http://localhost:6006<br />
-            ✓ Ready in 2.3s
+            $ npm run storybook
+            <br />✓ Starting Storybook server...
+            <br />✓ Local: http://localhost:6006
+            <br />✓ Ready in 2.3s
           </code>
         </div>
       </div>
@@ -370,10 +382,9 @@ export const MonospaceExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Examples of monospace typography for code blocks, configuration, and terminal output.',
+        story:
+          'Examples of monospace typography for code blocks, configuration, and terminal output.',
       },
     },
   },
 };
-
-
