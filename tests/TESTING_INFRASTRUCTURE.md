@@ -56,6 +56,19 @@ tests/
 'search-results-filter'
 ```
 
+### Theme-Aware Pattern
+```typescript
+// {component}-{identifier}-{theme}
+'btn-submit-light'
+'btn-submit-dark'
+'modal-login-light'
+'modal-login-dark'
+
+// Or use data attributes for theme detection
+'[data-testid="btn-submit"][data-theme="dark"]'
+'[data-testid="modal-login"].dark'
+```
+
 ## Test Utilities
 
 ### ZeldaTestHelpers
@@ -210,7 +223,8 @@ The CI pipeline includes:
 - Threshold: 0.2 (20% pixel difference tolerance)
 - Max diff pixels: 100
 - Multiple viewport testing (mobile, tablet, desktop)
-- Dark mode testing
+- **Dark mode testing** - All components tested in both light and dark themes
+- Theme-specific testId selectors for accurate targeting
 
 ### Browser Support
 - Chromium (primary)
@@ -234,8 +248,9 @@ The CI pipeline includes:
 ### Visual Testing
 1. Test component states (hover, focus, disabled)
 2. Include responsive breakpoints
-3. Test dark mode variants
+3. **Test dark mode variants** - Use theme-aware testIds
 4. Capture error states
+5. **Theme consistency** - Ensure testIds work across light/dark modes
 
 ### Integration Testing
 1. Test real user workflows

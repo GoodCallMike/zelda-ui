@@ -25,7 +25,7 @@ export const Card = ({
     default:
       'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
     outlined:
-      'bg-transparent dark:bg-transparent border-2 border-gray-200 dark:border-gray-700',
+      'bg-transparent dark:bg-transparent border border-2 border-solid border-black dark:border-white',
     elevated:
       'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg',
   };

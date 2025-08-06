@@ -1,13 +1,227 @@
-/* Storybook documentation dark mode fixes */
-.dark .sbdocs-content {
-  color: var(--color-foreground);
+/* Base theme variables */
+:root {
+  --sb-bg-light: #ffffff;
+  --sb-fg-light: #111827;
+  --sb-border-light: #e5e7eb;
+  --sb-bg-dark: #111827;
+  --sb-fg-dark: #f9fafb;
+  --sb-border-dark: #374151;
+  color-scheme: light;
 }
 
-.dark .sbdocs-content h1,
-.dark .sbdocs-content h2,
-.dark .sbdocs-content h3,
-.dark .sbdocs-content h4,
-.dark .sbdocs-content h5,
-.dark .sbdocs-content h6 {
-  color: var(--color-foreground);
+/* Light theme (default) - override system preferences */
+html, body {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+  color-scheme: light !important;
+  transition: all 0.2s ease;
+}
+
+/* Dark theme - explicit class only */
+.dark {
+  color-scheme: dark !important;
+}
+
+.dark html,
+.dark body,
+html.dark,
+body.dark {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+  color-scheme: dark !important;
+}
+
+/* Story canvas */
+#storybook-preview-iframe {
+  background-color: transparent !important;
+}
+
+/* Documentation - Main page background */
+.sb-show-main,
+.sbdocs-wrapper,
+.sbdocs-content,
+.docblock-argstable,
+.docblock-argstable-body,
+table,
+th,
+td {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+}
+
+.dark .sb-show-main,
+.dark .sbdocs-wrapper,
+.dark .sbdocs-content,
+.dark .docblock-argstable,
+.dark .docblock-argstable-body,
+.dark table,
+.dark th,
+.dark td {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+}
+
+/* Code examples and args table code */
+pre,
+code,
+span code,
+.prismjs,
+.docblock-argstable code,
+.docblock-argstable span,
+td code,
+td span {
+  background-color: #f3f4f6 !important;
+  color: var(--sb-fg-light) !important;
+}
+
+.dark pre,
+.dark code,
+.dark span code,
+.dark .prismjs,
+.dark .docblock-argstable code,
+.dark .docblock-argstable span,
+.dark td code,
+.dark td span {
+  background-color: #1f2937 !important;
+  color: var(--sb-fg-dark) !important;
+}
+
+/* Args table selects and inputs */
+select,
+input,
+textarea,
+.docblock-argstable select,
+.docblock-argstable input,
+.docblock-argstable textarea,
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+  border-color: var(--sb-border-light) !important;
+  border: 1px solid var(--sb-border-light) !important;
+}
+
+.dark select,
+.dark input,
+.dark textarea,
+.dark .docblock-argstable select,
+.dark .docblock-argstable input,
+.dark .docblock-argstable textarea,
+.dark input[type="text"],
+.dark input[type="number"],
+.dark input[type="email"] {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+  border-color: var(--sb-border-dark) !important;
+  border: 1px solid var(--sb-border-dark) !important;
+}
+
+/* Story canvas controls - header with zoom and copy/show code buttons */
+.docblock-code-toggle,
+[title="Show code"],
+[title="Copy"],
+[aria-label="Copy"],
+[title="Zoom in"],
+[title="Zoom out"],
+[title="Reset zoom"],
+.css-1wa3eu0 button,
+button[class*="css-"],
+.story-header,
+.story-controls,
+[data-testid="story-canvas-toolbar"],
+.sb-bar button,
+.sb-bar [role="button"] {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+  border-color: var(--sb-border-light) !important;
+}
+
+.dark .docblock-code-toggle,
+.dark [title="Show code"],
+.dark [title="Copy"],
+.dark [aria-label="Copy"],
+.dark [title="Zoom in"],
+.dark [title="Zoom out"],
+.dark [title="Reset zoom"],
+.dark .css-1wa3eu0 button,
+.dark button[class*="css-"],
+.dark .story-header,
+.dark .story-controls,
+.dark [data-testid="story-canvas-toolbar"],
+.dark .sb-bar button,
+.dark .sb-bar [role="button"],
+html.dark .sb-bar button,
+html.dark .sb-bar [role="button"],
+[data-theme="dark"] .sb-bar button,
+[data-theme="dark"] .sb-bar [role="button"] {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+  border-color: var(--sb-border-dark) !important;
+}
+
+/* Story canvas area and toolbar background */
+.sb-story,
+.sb-bar,
+.docs-story,
+[data-testid="story-canvas"],
+.story-wrapper {
+  background-color: var(--sb-bg-light) !important;
+  border-color: var(--sb-border-light) !important;
+}
+
+.dark .sb-story,
+.dark .sb-bar,
+.dark .docs-story,
+.dark [data-testid="story-canvas"],
+.dark .story-wrapper,
+html.dark .sb-story,
+html.dark .sb-bar,
+html.dark .docs-story,
+html.dark [data-testid="story-canvas"],
+html.dark .story-wrapper,
+[data-theme="dark"] .sb-story,
+[data-theme="dark"] .sb-bar,
+[data-theme="dark"] .docs-story,
+[data-theme="dark"] [data-testid="story-canvas"],
+[data-theme="dark"] .story-wrapper {
+  background-color: var(--sb-bg-dark) !important;
+  border-color: var(--sb-border-dark) !important;
+}
+
+/* Explicit border styling for story container */
+.sb-story {
+  border: 1px solid var(--sb-border-light) !important;
+}
+
+.dark .sb-story {
+  border: 1px solid var(--sb-border-dark) !important;
+}
+
+.dark .sbdocs-content * {
+  color: var(--sb-fg-dark) !important;
+}
+
+/* Documentation sections and recommended patterns */
+.docs-story,
+.recommended-patterns,
+.docblock-source,
+.docblock-canvas-source-state,
+.css-175oi2r {
+  background-color: var(--sb-bg-light) !important;
+  color: var(--sb-fg-light) !important;
+}
+
+.dark .docs-story,
+.dark .recommended-patterns,
+.dark .docblock-source,
+.dark .docblock-canvas-source-state,
+.dark .css-175oi2r {
+  background-color: var(--sb-bg-dark) !important;
+  color: var(--sb-fg-dark) !important;
+}
+
+/* Ensure smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }

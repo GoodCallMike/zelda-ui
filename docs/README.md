@@ -13,9 +13,11 @@ This folder contains context files and templates for maintaining consistency acr
 **Confused about CSS/styling approach?** → [STYLING_CONTEXT.md](./STYLING_CONTEXT.md)  
 **Looking for icons?** → [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)  
 **Writing component documentation?** → [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)  
+**Need accessibility guidance?** → [ACCESSIBILITY.md](./ACCESSIBILITY.md)  
+**Want usage examples?** → [USAGE_GUIDE.md](./USAGE_GUIDE.md)  
 **Working with AI assistant?** → [AI_CONTEXT.md](./AI_CONTEXT.md)
 
-## Context Files
+## Essential Files
 
 ### ⚛️ [COMPONENT_DEVELOPMENT.md](./COMPONENT_DEVELOPMENT.md)
 **When to use:** Building new components, following best practices
@@ -24,7 +26,6 @@ Comprehensive guide for creating Zelda UI components:
 - Styling strategy (utilities first, CSS modules last)
 - Component structure templates and patterns
 - Dark mode implementation approaches
-- Accessibility requirements and testing
 - Performance optimization and quality checklist
 
 ### 🎨 [THEME_CONTEXT.md](./THEME_CONTEXT.md)
@@ -34,7 +35,6 @@ Comprehensive reference for the Zelda UI theme system:
 - Light/dark mode color transformations
 - Component styling patterns with code examples
 - Dark mode purple palette specifications
-- Connected button group techniques
 - Font system and accessibility guidelines
 
 ### 🛠️ [STYLING_CONTEXT.md](./STYLING_CONTEXT.md)
@@ -45,7 +45,6 @@ Styling architecture and implementation guide:
 - CSS modules and custom properties patterns
 - Dark mode implementation with `.dark` class
 - Common styling mistakes and how to avoid them
-- File structure and build process
 
 ### 🎯 [ICONS_CONTEXT.md](./ICONS_CONTEXT.md)
 **When to use:** Adding icons to components, finding the right icon names
@@ -54,7 +53,6 @@ Comprehensive icon reference and usage guide:
 - Common icons organized by category (search, user, actions, etc.)
 - Correct icon names and import patterns
 - Icon sizing guidelines and usage patterns
-- Common mistakes and how to avoid them
 
 ### 📝 [DOCUMENTATION_TEMPLATE.md](./DOCUMENTATION_TEMPLATE.md)
 **When to use:** Writing Storybook stories, documenting components
@@ -63,7 +61,24 @@ Template for consistent component documentation:
 - Component description structure
 - Required Storybook stories (Default, Variants, Dark Mode, Real World Examples)
 - ArgTypes templates with proper descriptions
-- Zelda color palette reference
+
+### ♿ [ACCESSIBILITY.md](./ACCESSIBILITY.md)
+**When to use:** Implementing accessibility, writing tests, Storybook stories
+
+Complete accessibility guide:
+- Testing utilities and development commands
+- Component implementation guidelines
+- Storybook accessibility story patterns
+- Common patterns and solutions
+
+### 🎮 [USAGE_GUIDE.md](./USAGE_GUIDE.md)
+**When to use:** Learning how to use components, integration examples
+
+Practical usage guide:
+- Installation and setup
+- Adventure-themed interface patterns
+- Component integration examples
+- Best practices and testing
 
 ## When to Reference Each File
 
@@ -74,6 +89,8 @@ Template for consistent component documentation:
 | **Writing component styles** | STYLING_CONTEXT.md | THEME_CONTEXT.md |
 | **Choosing colors/themes** | THEME_CONTEXT.md | - |
 | **Adding icons to components** | ICONS_CONTEXT.md | - |
-| **Writing Storybook docs** | DOCUMENTATION_TEMPLATE.md | THEME_CONTEXT.md |
+| **Writing Storybook docs** | DOCUMENTATION_TEMPLATE.md | ACCESSIBILITY.md |
+| **Implementing accessibility** | ACCESSIBILITY.md | COMPONENT_DEVELOPMENT.md |
+| **Learning component usage** | USAGE_GUIDE.md | INTEGRATION_EXAMPLES.md |
 | **Debugging CSS issues** | STYLING_CONTEXT.md | - |
 | **Understanding theme system** | THEME_CONTEXT.md | - |

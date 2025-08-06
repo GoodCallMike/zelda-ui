@@ -6,6 +6,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  updateSnapshots: process.env.CI ? 'missing' : 'none',
   reporter: [
     ['html'],
     ['json', { outputFile: 'test-results/visual-results.json' }],

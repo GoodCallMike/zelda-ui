@@ -15,6 +15,26 @@ import type {
 
 export type { Option };
 
+// Alert types
+export interface AlertProps extends BaseComponentProps {
+  /** Alert message content */
+  message: ReactNode;
+  /** Alert description (optional) */
+  description?: ReactNode;
+  /** Alert type */
+  type?: 'success' | 'info' | 'warning' | 'error';
+  /** Whether alert can be closed */
+  closable?: boolean;
+  /** Close handler */
+  onClose?: () => void;
+  /** Custom icon */
+  icon?: ReactNode;
+  /** Whether to show default icon */
+  showIcon?: boolean;
+  /** Custom close text */
+  closeText?: ReactNode;
+}
+
 // Button types
 export interface ButtonProps
   extends BaseComponentProps,

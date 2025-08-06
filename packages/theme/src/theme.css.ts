@@ -18,8 +18,8 @@ globalStyle(':root', {
   '--color-destructive-foreground': colors.white,
 } as Record<string, string>);
 
-// Dark theme
-globalStyle('[data-theme="dark"]', {
+// Dark theme (both data-theme and class selectors)
+const darkThemeVars = {
   '--color-background': colors.gray[900],
   '--color-foreground': colors.gray[50],
   '--color-muted': colors.gray[400],
@@ -33,7 +33,10 @@ globalStyle('[data-theme="dark"]', {
   '--color-accent-foreground': colors.gray[50],
   '--color-destructive': colors.ganon[500],
   '--color-destructive-foreground': colors.white,
-} as Record<string, string>);
+} as Record<string, string>;
+
+globalStyle('[data-theme="dark"]', darkThemeVars);
+globalStyle('.dark', darkThemeVars);
 
 // Secret Zelda theme (activated with data-theme="hyrule")
 globalStyle('[data-theme="hyrule"]', {
