@@ -10,7 +10,7 @@ globalStyle('.font-serif', {
 });
 globalStyle('.font-mono', {
   fontFamily:
-    'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    '"Noto Sans Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 });
 
 // Font size utilities

@@ -29,6 +29,10 @@ pnpm build
 - **@zelda/date-picker** - Date picker components
 - **@zelda/utilities** - Utility functions
 
+## 🎨 Typography
+
+Zelda UI uses premium fonts for optimal readability.
+
 ## 🛠️ Development
 
 ```bash
@@ -71,6 +75,13 @@ await runAccessibilityTestSuite(<YourComponent />, {
   expectedFocusableElements: 2,
   ariaAttributes: { 'button': 'Submit form' },
 });
+```
+
+### Monospace Typography
+```tsx
+// Use monospace for code
+<code className="font-mono">const hero = 'Link';</code>
+<pre className="font-mono">CONFIG_VALUE=123</pre>
 ```
 
 ## 📄 License
