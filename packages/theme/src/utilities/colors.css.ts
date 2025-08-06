@@ -2,7 +2,15 @@ import { globalStyle } from '@vanilla-extract/css';
 import { colors } from '../tokens.css';
 
 // Zelda theme colors only
-const zeldaColors = ['gray', 'triforce', 'hyrule', 'rupee', 'ganon'] as const;
+const zeldaColors = [
+  'gray',
+  'triforce',
+  'hyrule',
+  'rupee',
+  'ganon',
+  'info',
+  'warning',
+] as const;
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
 
 // Background colors

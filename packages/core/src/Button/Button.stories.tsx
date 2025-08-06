@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Triggers actions and navigation with adventure-themed styling and comprehensive accessibility.
+        component: `Button component triggers actions and navigation with Zelda-themed styling and comprehensive accessibility.
 
 \`\`\`tsx
 import { Button } from '@zelda/core';
@@ -27,23 +27,23 @@ import { Button } from '@zelda/core';
 \`\`\`
 
 ## Variants
-- **primary** - Main actions (Triforce Gold)
-- **default** - Secondary actions (outlined)
-- **destructive** - Dangerous actions (Ganon Red)
-- **text** - Minimal emphasis
-- **link** - Navigation
-- **dashed** - Add/upload actions
+- **primary** - Main actions (Triforce Gold styling)
+- **default** - Secondary actions (outlined appearance)
+- **destructive** - Dangerous actions (Ganon Red warning)
+- **text** - Minimal emphasis (text-only)
+- **link** - Navigation actions (link styling)
+- **dashed** - Add/upload actions (dashed border)
 
 ## Accessibility & Testing
-- Enter/Space activation, Tab navigation
-- Semantic button element with proper ARIA
-- Consumer must provide descriptive text or aria-label
+- Uses semantic button element with proper ARIA
+- Supports Enter/Space activation and Tab navigation
+- Maintains WCAG AA contrast ratios in all themes
 
 \`\`\`tsx
 // Testing approach
-const element = screen.getByTestId('save-button');
-expect(element).toBeEnabled();
-await user.click(element);
+const button = screen.getByTestId('save-button');
+expect(button).toBeEnabled();
+await user.click(button);
 \`\`\``,
       },
     },
@@ -78,19 +78,12 @@ await user.click(element);
     },
     className: { table: { disable: true } },
     onClick: { table: { disable: true } },
+    children: { table: { disable: true } },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// Multi-Layer Testing Documentation
-// | Test Type | Purpose | Tool | Coverage |
-// |-----------|---------|------|----------|
-// | Unit | Logic & rendering | Jest + RTL | Prop handling, state |
-// | Interaction | User flows | Storybook play functions | Click, type, navigation |
-// | Visual | UI consistency | Chromatic | Layout, styling, themes |
-// | A11y | WCAG compliance | @storybook/addon-a11y | Automated violations |
 
 export const Default: Story = {
   args: {
@@ -201,7 +194,7 @@ export const Examples: Story = {
   },
 };
 
-export const AccessibilityFeatures: Story = {
+export const Accessibility: Story = {
   render: () => (
     <div className="p-6">
       <Typography variant="h3" className="mb-0">

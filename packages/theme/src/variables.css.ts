@@ -90,15 +90,15 @@ globalStyle(':root', {
     '--info-800': '#6b21a8',
     '--info-900': '#581c87',
 
-    // Typography
-    '--text-xs': '0.75rem',
-    '--text-sm': '0.875rem',
-    '--text-base': '1rem',
-    '--text-lg': '1.125rem',
-    '--text-xl': '1.25rem',
-    '--text-2xl': '1.5rem',
-    '--text-3xl': '1.875rem',
-    '--text-4xl': '2.25rem',
+    // Typography (1.333 Perfect Fourth scale)
+    '--text-xs': '0.75rem', // 12px
+    '--text-sm': '0.875rem', // 14px
+    '--text-base': '1rem', // 16px (base)
+    '--text-lg': '1.333rem', // 21.33px (16 * 1.333)
+    '--text-xl': '1.777rem', // 28.44px (16 * 1.333²)
+    '--text-2xl': '2.369rem', // 37.90px (16 * 1.333³)
+    '--text-3xl': '3.157rem', // 50.51px (16 * 1.333⁴)
+    '--text-4xl': '4.209rem', // 67.34px (16 * 1.333⁵)
 
     // Font Weights
     '--font-normal': '400',
@@ -118,5 +118,16 @@ globalStyle(':root', {
     '--shadow-base': '0 1px 3px 0 rgb(0 0 0 / 0.1)',
     '--shadow-md': '0 4px 6px -1px rgb(0 0 0 / 0.1)',
     '--shadow-lg': '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+  },
+});
+
+globalStyle('.dark', {
+  vars: {
+    '--triforce-600': '#a855f7', // Purple in dark mode
+    '--gray-500': '#9ca3af',
+    '--gray-900': '#f3f4f6',
+    '--hyrule-600': '#38bdf8',
+    '--rupee-600': '#4ade80',
+    '--ganon-600': '#f87171',
   },
 });

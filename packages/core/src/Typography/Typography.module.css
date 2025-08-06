@@ -1,7 +1,0 @@
-.typography {
-  color: var(--gray-900);
-}
-
-:global(.dark) .typography {
-  color: var(--gray-100);
-}

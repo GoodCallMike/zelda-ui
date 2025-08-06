@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 // Import variables and essential utilities
-import './variables.css';
+import './variables.css.ts';
 import './fonts.css.ts';
 import './utilities/spacing.css.ts';
 import './utilities/layout.css.ts';

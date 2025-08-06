@@ -13,26 +13,37 @@ const meta: Meta<typeof Radio> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `Radio component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
-
-## Overview
-
-The Radio component provides single-choice selection with authentic Zelda-inspired styling. It supports grouped selections, button-style variants, and maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+        component: `Single-choice selection with adventure-themed styling and comprehensive accessibility.
 
 \`\`\`tsx
-import { Radio, RadioGroup, RadioButton } from '@zelda/core';
+import { Radio, RadioGroup } from '@zelda/core';
 
-// Basic usage
+// Primary usage pattern
 <Radio label="Warrior" value="warrior" />
 
-// With Hyrule theming
-<RadioGroup defaultValue="triforce">
-  <Radio label="Triforce of Power" value="power" />
-  <Radio label="Triforce of Wisdom" value="wisdom" />
+// Grouped selection
+<RadioGroup defaultValue="courage">
   <Radio label="Triforce of Courage" value="courage" />
+  <Radio label="Triforce of Wisdom" value="wisdom" />
 </RadioGroup>
+\`\`\`
+
+## Variants
+- **default** - Standard radio with label
+- **button** - Button-style radio for compact layouts
+- **sizes** - Small, middle, large variants
+
+## Accessibility & Testing
+- Arrow key navigation within groups, Tab between groups
+- Semantic radio elements with proper ARIA
+- Consumer must provide descriptive labels
+
+\`\`\`tsx
+// Testing approach
+const radio = screen.getByLabelText('Warrior');
+expect(radio).not.toBeChecked();
+await user.click(radio);
+expect(radio).toBeChecked();
 \`\`\``,
       },
     },
@@ -287,6 +298,115 @@ export const DarkMode: Story = {
       description: {
         story:
           'Radio components automatically adapt to dark mode with mystical purple theming. Use the `dark` CSS class to enable dark mode styling.',
+      },
+    },
+  },
+};
+
+export const AccessibilityFeatures: Story = {
+  render: () => (
+    <div className="p-6">
+      <Typography variant="h3" className="mb-0">
+        🔍 Accessibility Features Demo
+      </Typography>
+      <Typography variant="body2" className="mb-4">
+        Comprehensive accessibility demonstration for Radio component.
+      </Typography>
+
+      <div className="space-y-4">
+        <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
+        <div className="p-4 border rounded-lg">
+          <Typography
+            variant="body2"
+            className="text-green-800 dark:text-green-200 mb-3"
+          >
+            <strong>Try this:</strong> Use Tab to focus the group, then Arrow
+            keys to navigate between options.
+          </Typography>
+          <RadioGroup defaultValue="courage">
+            <Radio
+              label="Triforce of Courage"
+              value="courage"
+              testId="courage-radio"
+            />
+            <Radio
+              label="Triforce of Wisdom"
+              value="wisdom"
+              testId="wisdom-radio"
+            />
+            <Radio
+              label="Triforce of Power"
+              value="power"
+              testId="power-radio"
+            />
+          </RadioGroup>
+        </div>
+
+        <div className="space-y-2">
+          <Typography variant="h5">Keyboard Interactions</Typography>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left p-2">Key</th>
+                  <th className="text-left p-2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Tab
+                    </kbd>
+                  </td>
+                  <td className="p-2">Moves focus to radio group</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Arrow Keys
+                    </kbd>
+                  </td>
+                  <td className="p-2">Navigate between radio options</td>
+                </tr>
+                <tr>
+                  <td className="p-2">
+                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                      Space
+                    </kbd>
+                  </td>
+                  <td className="p-2">Selects the focused radio option</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h4">🏷️ ARIA Implementation</Typography>
+        <div className="p-4 border rounded-lg">
+          <Typography variant="h5">Semantic Radio Elements</Typography>
+          <RadioGroup defaultValue="warrior">
+            <Radio label="Warrior - Master of combat" value="warrior" />
+            <Radio label="Mage - Wielder of magic" value="mage" />
+          </RadioGroup>
+          <Typography
+            variant="body2"
+            className="text-gray-600 dark:text-gray-400 mt-2"
+          >
+            Uses semantic <code>&lt;input type="radio"&gt;</code> elements with
+            proper labels and grouping
+          </Typography>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Interactive demonstration of Radio accessibility features including keyboard navigation and ARIA implementation.',
       },
     },
   },

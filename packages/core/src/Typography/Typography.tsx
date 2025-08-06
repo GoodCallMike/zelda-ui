@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import type { ReactNode } from 'react';
 import { cn } from '../styles';
-import styles from './Typography.module.css';
+import '@zelda/theme';
 
 export interface TypographyProps
   extends Omit<React.ComponentProps<'p'>, 'className' | 'id'> {
@@ -41,17 +41,17 @@ export const Typography = ({
   const getVariantStyles = () => {
     switch (variant) {
       case 'h1':
-        return 'text-3xl font-bold leading-tight';
+        return 'text-4xl font-bold leading-tight';
       case 'h2':
-        return 'text-2xl font-semibold leading-tight';
+        return 'text-3xl font-semibold leading-tight';
       case 'h3':
-        return 'text-xl font-semibold leading-snug';
+        return 'text-2xl font-semibold leading-snug';
       case 'h4':
-        return 'text-lg font-semibold leading-snug';
+        return 'text-xl font-semibold leading-snug';
       case 'h5':
-        return 'text-base font-semibold leading-normal';
+        return 'text-lg font-semibold leading-normal';
       case 'h6':
-        return 'text-sm font-semibold leading-normal';
+        return 'text-base font-semibold leading-normal';
       case 'body':
         return 'text-base leading-relaxed';
       case 'body2':
@@ -65,21 +65,16 @@ export const Typography = ({
     }
   };
 
-  const getColorStyles = () => {
-    switch (color) {
-      case 'muted':
-        return 'text-gray-500';
-      case 'triforce':
-        return 'text-triforce-600';
-      case 'hyrule':
-        return 'text-hyrule-600';
-      case 'rupee':
-        return 'text-rupee-600';
-      case 'ganon':
-        return 'text-ganon-600';
-      default:
-        return ''; // Use CSS module for default colors
-    }
+  const getColorStyle = () => {
+    const colorMap = {
+      muted: 'var(--gray-500)',
+      triforce: 'var(--triforce-600)',
+      hyrule: 'var(--hyrule-600)',
+      rupee: 'var(--rupee-600)',
+      ganon: 'var(--ganon-600)',
+      default: 'var(--gray-900)',
+    };
+    return { color: colorMap[color] || colorMap.default };
   };
 
   const Component =
@@ -94,13 +89,11 @@ export const Typography = ({
 
   return (
     <Component
-      className={cn(
-        'font-sans',
-        getVariantStyles(),
-        getColorStyles(),
-        styles.typography,
-        className,
-      )}
+      className={cn('font-sans', getVariantStyles(), className)}
+      style={{
+        ...getColorStyle(),
+        ...props.style,
+      }}
       id={id}
       data-testid={testId}
       {...props}

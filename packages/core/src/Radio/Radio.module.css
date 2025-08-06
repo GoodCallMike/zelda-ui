@@ -26,7 +26,7 @@
 
 .radio:checked {
   background: linear-gradient(135deg, var(--triforce-400) 0%, var(--triforce-500) 50%, var(--triforce-600) 100%);
-  border-color: var(--triforce-700);
+  border-color: var(--triforce-700) !important;
   transform: scale(1.1);
   animation: magicalFill 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 

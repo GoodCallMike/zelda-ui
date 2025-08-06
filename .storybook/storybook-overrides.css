@@ -1,0 +1,24 @@
+/* Override Storybook's aggressive dark mode color forcing */
+.dark .sbdocs-content [style*="color: var(--triforce-600)"] {
+  color: var(--triforce-600) !important;
+}
+
+.dark .sbdocs-content [style*="color: var(--hyrule-600)"] {
+  color: var(--hyrule-600) !important;
+}
+
+.dark .sbdocs-content [style*="color: var(--rupee-600)"] {
+  color: var(--rupee-600) !important;
+}
+
+.dark .sbdocs-content [style*="color: var(--ganon-600)"] {
+  color: var(--ganon-600) !important;
+}
+
+.dark .sbdocs-content [style*="color: var(--gray-500)"] {
+  color: var(--gray-500) !important;
+}
+
+.dark .sbdocs-content [style*="color: var(--gray-900)"] {
+  color: var(--gray-900) !important;
+}

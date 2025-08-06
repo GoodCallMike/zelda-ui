@@ -1,7 +1,8 @@
 import React from 'react';
 import '@zelda/theme';
-import '../packages/theme/src/variables.css';
+import '../packages/theme/src/variables.css.ts';
 import './preview.css';
+import './storybook-overrides.css';
 
 // Ensure React is available globally
 if (typeof globalThis !== 'undefined') {

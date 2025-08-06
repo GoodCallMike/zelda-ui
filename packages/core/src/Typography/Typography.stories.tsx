@@ -1,32 +1,64 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Radio, RadioGroup } from '../Radio';
-import { Typography } from './Typography';
+import {
+  Button,
+  Card,
+  Input,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@zelda/core';
 
 const meta: Meta<typeof Typography> = {
   title: 'General/Typography',
   component: Typography,
+  decorators: [
+    (Story) => (
+      <div className="p-4">
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: `Typography component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
-
-## Overview
-
-The Typography component provides consistent text styling with authentic Zelda-inspired theming. It supports multiple variants, themed colors, and maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+        component: `Typography component provides consistent text styling with Zelda-themed colors and semantic variants.
 
 \`\`\`tsx
 import { Typography } from '@zelda/core';
 
-// Basic usage
+// Primary usage pattern
 <Typography>Welcome to Hyrule</Typography>
 
-// With Hyrule theming
+// Key variant
 <Typography variant="h1" color="triforce">The Legend of Zelda</Typography>
+\`\`\`
+
+## Variants
+- **h1-h6** - Semantic headings with proper hierarchy (larger, bolder)
+- **body** - Standard paragraph text (default)
+- **caption** - Smaller descriptive text (metadata, timestamps)
+- **label** - Form labels and UI text (medium weight)
+
+## Colors
+- **triforce** - Primary brand color (automatically adapts to theme)
+- **hyrule** - Secondary blue theme
+- **rupee** - Success/nature green
+- **ganon** - Destructive red
+- **muted** - Secondary text (gray)
+
+## Theming
+Colors automatically adapt to light/dark themes using CSS custom properties. No additional configuration required.
+
+## Accessibility & Testing
+- Uses semantic HTML elements (h1-h6, p)
+- Maintains WCAG AA contrast ratios in all themes
+- Supports screen readers with proper heading hierarchy
+
+\`\`\`tsx
+// Testing approach
+const heading = screen.getByRole('heading', { level: 1 });
+expect(heading).toHaveTextContent('The Legend of Zelda');
 \`\`\``,
       },
     },
@@ -35,8 +67,19 @@ import { Typography } from '@zelda/core';
   argTypes: {
     variant: {
       control: 'select',
-      options: ['h1', 'h2', 'h3', 'body', 'caption', 'label'],
-      description: 'Typography variant for different text hierarchies',
+      options: [
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'body',
+        'body2',
+        'caption',
+        'label',
+      ],
+      description: 'Semantic variant for text hierarchy and styling',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'body' },
@@ -45,7 +88,7 @@ import { Typography } from '@zelda/core';
     color: {
       control: 'select',
       options: ['default', 'muted', 'triforce', 'hyrule', 'rupee', 'ganon'],
-      description: 'Themed color variants',
+      description: 'Zelda-themed color variants',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'default' },
@@ -58,6 +101,8 @@ import { Typography } from '@zelda/core';
         type: { summary: 'string' },
       },
     },
+    className: { table: { disable: true } },
+    id: { table: { disable: true } },
   },
 };
 
@@ -70,116 +115,42 @@ export const Default: Story = {
   },
 };
 
-export const Heading1: Story = {
-  args: {
-    variant: 'h1',
-    children: 'The Legend of Zelda',
-  },
-};
-
-export const Heading2: Story = {
-  args: {
-    variant: 'h2',
-    children: 'Breath of the Wild',
-  },
-};
-
-export const Heading3: Story = {
-  args: {
-    variant: 'h3',
-    children: 'Tears of the Kingdom',
-  },
-};
-
-export const Body: Story = {
-  args: {
-    variant: 'body',
-    children: 'Link awakens from a deep slumber to the voice of Zelda.',
-  },
-};
-
-export const Caption: Story = {
-  args: {
-    variant: 'caption',
-    children: 'Nintendo Switch Exclusive',
-  },
-};
-
-export const Label: Story = {
-  args: {
-    variant: 'label',
-    children: 'Form Label',
-  },
-};
-
-export const ThemedColors: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <Typography color="triforce">
-        Triforce Gold - Primary theme color
-      </Typography>
-      <Typography color="hyrule">Hyrule Blue - Kingdom colors</Typography>
-      <Typography color="rupee">Rupee Green - Currency and nature</Typography>
-      <Typography color="ganon">Ganon Red - Danger and destruction</Typography>
-      <Typography color="muted">Muted Gray - Secondary text</Typography>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Typography with Zelda-themed color variants for different contexts.',
-      },
-    },
-  },
-};
-
-export const DarkMode: Story = {
+export const Variants: Story = {
   render: () => (
     <div className="space-y-6">
-      <div className="dark p-6 bg-gray-900 rounded-lg">
-        <div className="space-y-4 text-white">
-          <Typography variant="h1">Dark Mode Typography</Typography>
-          <Typography variant="h2">Mystical Night Theme</Typography>
-          <Typography variant="h3">Enhanced Readability</Typography>
-          <Typography variant="body">
-            Body text maintains excellent contrast in dark mode with
-            purple-tinted whites for better readability during long gaming
-            sessions.
-          </Typography>
-          <Typography variant="caption">
-            Caption text remains clear and accessible
-          </Typography>
-          <Typography variant="label">Form labels stay prominent</Typography>
-          <div className="space-y-2 mt-4">
-            <Typography color="triforce">
-              Triforce elements glow with mystical energy
-            </Typography>
-            <Typography color="hyrule">
-              Hyrule symbols shine with ethereal light
-            </Typography>
-            <Typography color="rupee">
-              Rupee text maintains its magical essence
-            </Typography>
-            <Typography color="ganon">
-              Ganon warnings remain clearly visible
-            </Typography>
-          </div>
-        </div>
+      <div className="space-y-2">
+        <Typography variant="h1">Heading 1 - Page Title</Typography>
+        <Typography variant="h2">Heading 2 - Section Title</Typography>
+        <Typography variant="h3">Heading 3 - Subsection</Typography>
+        <Typography variant="h4">Heading 4 - Sub-subsection</Typography>
+        <Typography variant="h5">Heading 5 - Minor heading</Typography>
+        <Typography variant="h6">Heading 6 - Smallest heading</Typography>
+        <Typography variant="body">
+          Body text for paragraphs and content
+        </Typography>
+        <Typography variant="body2">Body 2 - Smaller body text</Typography>
+        <Typography variant="caption">Caption text for metadata</Typography>
+        <Typography variant="label">Label text for forms</Typography>
+      </div>
+      <div className="space-y-2">
+        <Typography color="triforce">Triforce Gold - Primary brand</Typography>
+        <Typography color="hyrule">Hyrule Blue - Secondary theme</Typography>
+        <Typography color="rupee">Rupee Green - Success states</Typography>
+        <Typography color="ganon">Ganon Red - Destructive actions</Typography>
+        <Typography color="muted">Muted Gray - Secondary text</Typography>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'Typography automatically adapts to dark mode with enhanced contrast and purple-tinted colors.',
+        story: 'All typography variants and themed colors in one view.',
       },
     },
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => (
     <div className="space-y-8 max-w-4xl">
       {/* Game Interface */}
@@ -209,17 +180,17 @@ export const RealWorldExamples: Story = {
             <Typography variant="caption" color="muted">
               Last played: Temple of Time
             </Typography>
-            <Button variant="secondary">Load Game</Button>
+            <Button variant="default">Load Game</Button>
           </div>
         </div>
       </div>
 
       {/* Character Creation */}
-      <div className="p-6 border rounded-lg bg-gray-50">
+      <Card>
         <Typography variant="h2" className="mb-4">
           Create Your Hero
         </Typography>
-        <form className="space-y-4">
+        <div className="space-y-4">
           <div>
             <Typography variant="label" className="block mb-2">
               Hero Name
@@ -244,10 +215,10 @@ export const RealWorldExamples: Story = {
           </div>
           <div className="flex gap-2 pt-4">
             <Button variant="primary">Begin Quest</Button>
-            <Button variant="secondary">Back to Menu</Button>
+            <Button variant="default">Back to Menu</Button>
           </div>
-        </form>
-      </div>
+        </div>
+      </Card>
 
       {/* Story Content */}
       <div className="p-6 border rounded-lg">
@@ -298,35 +269,13 @@ export const RealWorldExamples: Story = {
     docs: {
       description: {
         story:
-          'Real-world examples showing Typography integrated with other Zelda UI components in game interfaces, character creation, story content, and warning messages.',
+          'Typography integrated with other components in realistic game interface scenarios.',
       },
     },
   },
 };
 
-export const ZeldaColors: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <Typography variant="h2" color="triforce">
-        Triforce Golden
-      </Typography>
-      <Typography variant="h2" color="hyrule">
-        Hyrule Royal Blue
-      </Typography>
-      <Typography variant="h2" color="rupee">
-        Rupee Emerald
-      </Typography>
-      <Typography variant="h2" color="ganon">
-        Ganon Crimson
-      </Typography>
-      <Typography variant="body" color="muted">
-        Muted text for descriptions
-      </Typography>
-    </div>
-  ),
-};
-
-export const MonospaceExamples: Story = {
+export const Monospace: Story = {
   render: () => (
     <div className="space-y-6 max-w-4xl">
       <Typography variant="h2">Monospace Examples</Typography>
@@ -382,8 +331,7 @@ export const MonospaceExamples: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'Examples of monospace typography for code blocks, configuration, and terminal output.',
+        story: 'Monospace typography for code blocks and technical content.',
       },
     },
   },
