@@ -66,6 +66,11 @@ export const Typography = ({
   };
 
   const getColorStyle = () => {
+    // Don't apply inline color if className contains text color utility
+    if (className && /text-\w+(-\d+)?/.test(className)) {
+      return {};
+    }
+
     const colorMap = {
       muted: 'var(--gray-500)',
       primary: 'var(--triforce-600)',

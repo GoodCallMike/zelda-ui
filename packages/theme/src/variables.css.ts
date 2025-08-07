@@ -209,7 +209,7 @@ globalStyle('.dark', {
   vars: {
     '--triforce-600': '#a855f7', // Purple in dark mode
     '--gray-500': '#9ca3af',
-    '--gray-900': '#f3f4f6',
+    '--gray-900': '#111827',
     '--hyrule-600': '#38bdf8',
     '--rupee-600': '#4ade80',
     '--ganon-600': '#f87171',
