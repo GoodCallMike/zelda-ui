@@ -45,7 +45,13 @@ const config: StorybookConfig = {
         },
       },
       optimizeDeps: {
-        include: ['react', 'react-dom', 'react/jsx-runtime', '@mdx-js/react', 'markdown-to-jsx'],
+        include: [
+          'react',
+          'react-dom',
+          'react/jsx-runtime',
+          '@mdx-js/react',
+          'markdown-to-jsx',
+        ],
       },
       define: {
         global: 'globalThis',
