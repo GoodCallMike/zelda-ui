@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Introduction" />
+
+# Zelda UI
+
+A modern React component library built with TypeScript, featuring accessible components with beautiful design.
+
+## 🚀 Quick Start
+
+### Installation
+
+Install the packages you need:
+
+```bash
+# Core components and theme (required)
+npm install @zelda/core @zelda/theme
+
+# Icons (optional)
+npm install @zelda/icons
+```
+
+### Basic Usage
+
+```tsx
+import { Button, Input } from '@zelda/core';
+import { SearchLgIcon } from '@zelda/icons';
+import '@zelda/theme/dist/theme.css';
+
+function App() {
+  return (
+    <div>
+      <Button variant="primary" icon={SearchLgIcon}>
+        Search
+      </Button>
+      <Input placeholder="Enter your quest..." />
+    </div>
+  );
+}
+```
+
+## 📦 Packages
+
+- **@zelda/core** - Core UI components (Button, Input, Modal, etc.)
+- **@zelda/icons** - 500+ SVG icons
+- **@zelda/theme** - Design system and CSS variables
+
+## 🎨 Design System
+
+Zelda UI uses a cohesive design system with:
+
+- **Primary colors** that adapt automatically in dark mode
+- **Secondary colors** for success states
+- **Tertiary colors** for information
+- **Destructive colors** for errors
+- Premium typography with carefully selected font families
+- Consistent spacing, shadows, and border radius scales
+
+## ♿ Accessibility
+
+All components are built with accessibility as a core principle:
+
+- WCAG 2.1 AA compliance
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+- High contrast support
+
+## 🌙 Dark Mode
+
+Dark mode is supported out of the box. Add the `dark` class to your root element:
+
+```tsx
+<html className="dark">
+  {/* Your app */}
+</html>
+```
+
+## 🧪 Testing
+
+Zelda UI includes comprehensive testing utilities:
+
+```tsx
+import { quickA11yTest, runAccessibilityTestSuite } from '@zelda/core/utils';
+
+// Quick accessibility test
+await quickA11yTest(<YourComponent />);
+
+// Comprehensive testing
+await runAccessibilityTestSuite(<YourComponent />, {
+  expectedFocusableElements: 2,
+  ariaAttributes: { 'button': 'Submit form' },
+});
+```
+
+## 📚 Documentation
+
+- **Component Gallery** - Browse all available components
+- **API Reference** - Detailed prop documentation
+- **Examples** - Real-world usage patterns
+- **Accessibility Guide** - Implementation best practices
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/goodcallmike/zelda-ui)
+- [NPM Packages](https://www.npmjs.com/search?q=%40zelda)
+- [Documentation Site](https://goodcallmike.github.io/zelda-ui/)
+
+## 🆘 Support
+
+- Create an issue on [GitHub](https://github.com/goodcallmike/zelda-ui/issues)
+- Check the [documentation](https://goodcallmike.github.io/zelda-ui/)
+- Review component examples in this Storybook
+
+---
+
+**Version:** 0.0.1 (Pre-release)  
+**License:** MIT  
+**React Support:** 18.x, 19.x

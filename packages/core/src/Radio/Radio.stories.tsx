@@ -1,46 +1,55 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Typography } from '../Typography';
-import { Radio } from './Radio';
-import { RadioButton } from './RadioButton';
-import { RadioGroup } from './RadioGroup';
+import {
+  Button,
+  Card,
+  Radio,
+  RadioButton,
+  RadioGroup,
+  Typography,
+} from '@zelda/core';
+import { useState } from 'react';
 
 const meta: Meta<typeof Radio> = {
   title: 'Data Entry/Radio',
   component: Radio,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
-        component: `Single-choice selection with adventure-themed styling and comprehensive accessibility.
+        component: `Radio component provides single-choice selection with comprehensive accessibility support.
 
 \`\`\`tsx
 import { Radio, RadioGroup } from '@zelda/core';
 
 // Primary usage pattern
-<Radio label="Warrior" value="warrior" />
+<Radio label="Option 1" value="option1" />
 
-// Grouped selection
-<RadioGroup defaultValue="courage">
-  <Radio label="Triforce of Courage" value="courage" />
-  <Radio label="Triforce of Wisdom" value="wisdom" />
+// Key variant
+<RadioGroup defaultValue="option1">
+  <Radio label="Option 1" value="option1" />
+  <Radio label="Option 2" value="option2" />
 </RadioGroup>
 \`\`\`
 
-## Variants
-- **default** - Standard radio with label
-- **button** - Button-style radio for compact layouts
-- **sizes** - Small, middle, large variants
+## Components
+- **Radio** - Individual radio button with label
+- **RadioGroup** - Container for managing radio button groups
+- **RadioButton** - Button-style radio for compact layouts
+
+## Sizes
+- **small** - Compact radio buttons for dense layouts
+- **middle** - Standard size for most use cases (default)
+- **large** - Prominent radio buttons for key selections
 
 ## Accessibility & Testing
-- Arrow key navigation within groups, Tab between groups
-- Semantic radio elements with proper ARIA
-- Consumer must provide descriptive labels
+- Uses semantic radio input elements with proper labeling
+- Supports arrow key navigation within groups, Tab between groups
+- Maintains WCAG AA contrast ratios in all themes
+- Comprehensive testId support for automated testing
 
 \`\`\`tsx
 // Testing approach
-const radio = screen.getByLabelText('Warrior');
+const radio = screen.getByLabelText('Option 1');
 expect(radio).not.toBeChecked();
 await user.click(radio);
 expect(radio).toBeChecked();
@@ -59,14 +68,6 @@ expect(radio).toBeChecked();
         defaultValue: { summary: 'middle' },
       },
     },
-    error: {
-      control: 'boolean',
-      description: 'Whether the radio has error state',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
     disabled: {
       control: 'boolean',
       description: 'Whether the radio is disabled',
@@ -75,13 +76,23 @@ expect(radio).toBeChecked();
         defaultValue: { summary: 'false' },
       },
     },
+    error: {
+      control: 'boolean',
+      description: 'Whether the radio has error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     testId: {
       control: 'text',
       description: 'Test identifier for automated testing',
-      table: {
-        type: { summary: 'string' },
-      },
     },
+    className: { table: { disable: true } },
+    onChange: { table: { disable: true } },
+    label: { table: { disable: true } },
+    value: { table: { disable: true } },
+    name: { table: { disable: true } },
   },
 };
 
@@ -90,203 +101,105 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Option 1',
-    name: 'option',
+    label: 'Select this option',
+    value: 'option1',
+    name: 'default-radio',
+    testId: 'default-radio',
   },
 };
 
-export const WithoutLabel: Story = {
-  args: {
-    name: 'option',
-  },
-};
-
-export const Checked: Story = {
-  args: {
-    label: 'Selected option',
-    name: 'option',
-    defaultChecked: true,
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    label: 'Required option',
-    name: 'option',
-    error: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled option',
-    name: 'option',
-    disabled: true,
-  },
-};
-
-export const DisabledChecked: Story = {
-  args: {
-    label: 'Disabled and selected',
-    name: 'option',
-    disabled: true,
-    defaultChecked: true,
-  },
-};
-
-export const BasicGroup: Story = {
+export const Variants: Story = {
   render: () => (
-    <RadioGroup defaultValue="medium">
-      <Radio label="Small rupee" value="small" />
-      <Radio label="Medium rupee" value="medium" />
-      <Radio label="Large rupee" value="large" />
-    </RadioGroup>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Radio buttons grouped together using RadioGroup component.',
-      },
-    },
-  },
-};
-
-export const ButtonStyle: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex">
-        <RadioButton name="style1" value="option1">
-          Option 1
-        </RadioButton>
-        <RadioButton name="style1" value="option2" defaultChecked>
-          Option 2
-        </RadioButton>
-        <RadioButton name="style1" value="option3">
-          Option 3
-        </RadioButton>
-      </div>
-      <div className="flex">
-        <RadioButton name="style2" value="solid1" buttonStyle="solid">
-          Solid 1
-        </RadioButton>
-        <RadioButton
-          name="style2"
-          value="solid2"
-          buttonStyle="solid"
-          defaultChecked
-        >
-          Solid 2
-        </RadioButton>
-        <RadioButton name="style2" value="solid3" buttonStyle="solid">
-          Solid 3
-        </RadioButton>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Button-style radio buttons with outline and solid variants.',
-      },
-    },
-  },
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="space-y-2">
-        <h4>Small</h4>
-        <RadioGroup size="small" defaultValue="small2">
-          <Radio label="Small 1" value="small1" />
-          <Radio label="Small 2" value="small2" />
-        </RadioGroup>
-      </div>
-      <div className="space-y-2">
-        <h4>Middle (Default)</h4>
-        <RadioGroup size="middle" defaultValue="middle2">
-          <Radio label="Middle 1" value="middle1" />
-          <Radio label="Middle 2" value="middle2" />
-        </RadioGroup>
-      </div>
-      <div className="space-y-2">
-        <h4>Large</h4>
-        <RadioGroup size="large" defaultValue="large2">
-          <Radio label="Large 1" value="large1" />
-          <Radio label="Large 2" value="large2" />
-        </RadioGroup>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Radio buttons in different sizes: small, middle, and large.',
-      },
-    },
-  },
-};
-
-export const ButtonSizes: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div className="flex items-center">
-        <RadioButton name="btnSmall" value="1" size="small">
-          Small
-        </RadioButton>
-        <RadioButton name="btnSmall" value="2" size="small">
-          Small
-        </RadioButton>
-      </div>
-      <div className="flex items-center">
-        <RadioButton name="btnMiddle" value="1" size="middle">
-          Middle
-        </RadioButton>
-        <RadioButton name="btnMiddle" value="2" size="middle">
-          Middle
-        </RadioButton>
-      </div>
-      <div className="flex items-center">
-        <RadioButton name="btnLarge" value="1" size="large">
-          Large
-        </RadioButton>
-        <RadioButton name="btnLarge" value="2" size="large">
-          Large
-        </RadioButton>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Button-style radio buttons in different sizes.',
-      },
-    },
-  },
-};
-
-export const DarkMode: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div className="dark p-6 bg-gray-900 rounded-lg">
-        <Typography variant="h3" className="text-white mb-4">
-          Dark Mode
+    <div className="space-y-6 p-4">
+      <div className="space-y-4">
+        <Typography variant="h3" testId="radio-variants-title">
+          Radio Variants
         </Typography>
-        <div className="space-y-4 text-white">
-          <RadioGroup defaultValue="mystic">
-            <Radio label="Mystic Power" value="mystic" />
-            <Radio label="Shadow Magic" value="shadow" />
-            <Radio label="Ancient Wisdom" value="ancient" />
-          </RadioGroup>
+        <div className="space-y-3">
+          <Radio
+            label="Default radio"
+            value="default"
+            name="variants"
+            testId="variant-default"
+          />
+          <Radio
+            label="Checked radio"
+            value="checked"
+            name="variants"
+            defaultChecked
+            testId="variant-checked"
+          />
+          <Radio
+            label="Disabled radio"
+            value="disabled"
+            name="variants"
+            disabled
+            testId="variant-disabled"
+          />
+          <Radio
+            label="Error radio"
+            value="error"
+            name="variants"
+            error
+            testId="variant-error"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3" testId="button-variants-title">
+          Button Style Variants
+        </Typography>
+        <div className="space-y-3">
           <div className="flex">
-            <RadioButton name="darkBtn" value="night" defaultChecked>
-              Night Theme
+            <RadioButton
+              name="button-outline"
+              value="option1"
+              testId="button-outline-1"
+            >
+              Option 1
             </RadioButton>
-            <RadioButton name="darkBtn" value="twilight">
-              Twilight
+            <RadioButton
+              name="button-outline"
+              value="option2"
+              defaultChecked
+              testId="button-outline-2"
+            >
+              Option 2
             </RadioButton>
-            <RadioButton name="darkBtn" value="shadow">
-              Shadow
+            <RadioButton
+              name="button-outline"
+              value="option3"
+              testId="button-outline-3"
+            >
+              Option 3
+            </RadioButton>
+          </div>
+          <div className="flex">
+            <RadioButton
+              name="button-solid"
+              value="solid1"
+              buttonStyle="solid"
+              testId="button-solid-1"
+            >
+              Solid 1
+            </RadioButton>
+            <RadioButton
+              name="button-solid"
+              value="solid2"
+              buttonStyle="solid"
+              defaultChecked
+              testId="button-solid-2"
+            >
+              Solid 2
+            </RadioButton>
+            <RadioButton
+              name="button-solid"
+              value="solid3"
+              buttonStyle="solid"
+              testId="button-solid-3"
+            >
+              Solid 3
             </RadioButton>
           </div>
         </div>
@@ -297,108 +210,311 @@ export const DarkMode: Story = {
     docs: {
       description: {
         story:
-          'Radio components automatically adapt to dark mode with mystical purple theming. Use the `dark` CSS class to enable dark mode styling.',
+          'Radio variants showing different styles including standard radios and button-style options.',
       },
     },
   },
 };
 
-export const AccessibilityFeatures: Story = {
+export const Examples: Story = {
+  render: () => {
+    const [formData, setFormData] = useState({
+      plan: 'standard',
+      billing: 'monthly',
+      support: 'email',
+    });
+
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const handleSubmit = () => {
+      const newErrors: Record<string, string> = {};
+      if (!formData.plan) newErrors.plan = 'Please select a plan';
+      if (!formData.billing)
+        newErrors.billing = 'Please select billing frequency';
+      setErrors(newErrors);
+    };
+
+    return (
+      <div className="space-y-8 max-w-2xl p-6">
+        <div className="space-y-4">
+          <Typography variant="h1" color="primary" testId="subscription-title">
+            Choose Your Plan
+          </Typography>
+          <Typography variant="body" testId="subscription-description">
+            Select the plan that best fits your needs.
+          </Typography>
+        </div>
+
+        <Card>
+          <Typography
+            variant="h2"
+            className="mb-4"
+            testId="plan-selection-title"
+          >
+            Plan Selection
+          </Typography>
+          <div className="space-y-6">
+            <div>
+              <Typography
+                variant="label"
+                className="block mb-3"
+                testId="plan-label"
+              >
+                Choose Plan
+              </Typography>
+              <RadioGroup
+                value={formData.plan}
+                onChange={(value) =>
+                  setFormData((prev) => ({ ...prev, plan: value }))
+                }
+              >
+                <Radio
+                  label="Basic - $9/month - Essential features"
+                  value="basic"
+                  testId="plan-basic"
+                />
+                <Radio
+                  label="Standard - $19/month - Most popular choice"
+                  value="standard"
+                  testId="plan-standard"
+                />
+                <Radio
+                  label="Premium - $39/month - All features included"
+                  value="premium"
+                  testId="plan-premium"
+                />
+              </RadioGroup>
+              {errors.plan && (
+                <Typography
+                  variant="caption"
+                  color="danger"
+                  testId="plan-error"
+                >
+                  {errors.plan}
+                </Typography>
+              )}
+            </div>
+
+            <div>
+              <Typography
+                variant="label"
+                className="block mb-3"
+                testId="billing-label"
+              >
+                Billing Frequency
+              </Typography>
+              <div className="flex">
+                <RadioButton
+                  name="billing"
+                  value="monthly"
+                  checked={formData.billing === 'monthly'}
+                  onChange={() =>
+                    setFormData((prev) => ({ ...prev, billing: 'monthly' }))
+                  }
+                  testId="billing-monthly"
+                >
+                  Monthly
+                </RadioButton>
+                <RadioButton
+                  name="billing"
+                  value="yearly"
+                  checked={formData.billing === 'yearly'}
+                  onChange={() =>
+                    setFormData((prev) => ({ ...prev, billing: 'yearly' }))
+                  }
+                  testId="billing-yearly"
+                >
+                  Yearly (Save 20%)
+                </RadioButton>
+              </div>
+            </div>
+
+            <div>
+              <Typography
+                variant="label"
+                className="block mb-3"
+                testId="support-label"
+              >
+                Support Level
+              </Typography>
+              <RadioGroup
+                value={formData.support}
+                onChange={(value) =>
+                  setFormData((prev) => ({ ...prev, support: value }))
+                }
+              >
+                <Radio
+                  label="Email support"
+                  value="email"
+                  testId="support-email"
+                />
+                <Radio
+                  label="Priority support"
+                  value="priority"
+                  testId="support-priority"
+                />
+                <Radio
+                  label="Dedicated support"
+                  value="dedicated"
+                  testId="support-dedicated"
+                />
+              </RadioGroup>
+            </div>
+
+            <div className="flex gap-2 pt-4">
+              <Button
+                variant="primary"
+                onClick={handleSubmit}
+                testId="subscribe-button"
+              >
+                Subscribe Now
+              </Button>
+              <Button variant="default" testId="cancel-button">
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </Card>
+
+        <div className="p-4 bg-rupee-50 dark:bg-rupee-900/20 border-rupee-200 dark:border-rupee-600 border rounded">
+          <Typography
+            variant="h3"
+            color="success"
+            className="mb-2"
+            testId="success-title"
+          >
+            Subscription Confirmed
+          </Typography>
+          <Typography variant="body" color="success" testId="success-message">
+            Welcome! Your subscription has been activated and you now have
+            access to all features.
+          </Typography>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Radio components integrated with other components in realistic subscription form scenarios.',
+      },
+    },
+  },
+};
+
+export const States: Story = {
   render: () => (
-    <div className="p-6">
-      <Typography variant="h3" className="mb-0">
-        🔍 Accessibility Features Demo
-      </Typography>
-      <Typography variant="body2" className="mb-4">
-        Comprehensive accessibility demonstration for Radio component.
-      </Typography>
+    <div className="space-y-6 p-4">
+      <div className="space-y-4">
+        <Typography variant="h3" testId="sizes-title">
+          Sizes
+        </Typography>
+        <div className="space-y-4">
+          <div>
+            <Typography variant="label" className="block mb-2">
+              Small
+            </Typography>
+            <RadioGroup size="small" defaultValue="small2">
+              <Radio label="Small option 1" value="small1" testId="small-1" />
+              <Radio label="Small option 2" value="small2" testId="small-2" />
+            </RadioGroup>
+          </div>
+          <div>
+            <Typography variant="label" className="block mb-2">
+              Middle (Default)
+            </Typography>
+            <RadioGroup size="middle" defaultValue="middle2">
+              <Radio
+                label="Middle option 1"
+                value="middle1"
+                testId="middle-1"
+              />
+              <Radio
+                label="Middle option 2"
+                value="middle2"
+                testId="middle-2"
+              />
+            </RadioGroup>
+          </div>
+          <div>
+            <Typography variant="label" className="block mb-2">
+              Large
+            </Typography>
+            <RadioGroup size="large" defaultValue="large2">
+              <Radio label="Large option 1" value="large1" testId="large-1" />
+              <Radio label="Large option 2" value="large2" testId="large-2" />
+            </RadioGroup>
+          </div>
+        </div>
+      </div>
 
       <div className="space-y-4">
-        <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
-        <div className="p-4 border rounded-lg">
+        <Typography variant="h3" testId="interactive-title">
+          Interactive States
+        </Typography>
+        <div className="space-y-3">
+          <Radio
+            label="Normal state"
+            value="normal"
+            name="states"
+            testId="normal-radio"
+          />
+          <Radio
+            label="Checked state"
+            value="checked"
+            name="states"
+            defaultChecked
+            testId="checked-radio"
+          />
+          <Radio
+            label="Disabled state"
+            value="disabled"
+            name="states"
+            disabled
+            testId="disabled-radio"
+          />
+          <Radio
+            label="Error state"
+            value="error"
+            name="states"
+            error
+            testId="error-radio"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Typography variant="h3" testId="keyboard-title">
+          Keyboard Navigation
+        </Typography>
+        <Card>
           <Typography
             variant="body2"
-            className="text-green-800 dark:text-green-200 mb-3"
+            className="mb-3"
+            testId="keyboard-instructions"
           >
             <strong>Try this:</strong> Use Tab to focus the group, then Arrow
             keys to navigate between options.
           </Typography>
-          <RadioGroup defaultValue="courage">
+          <RadioGroup defaultValue="option2">
             <Radio
-              label="Triforce of Courage"
-              value="courage"
-              testId="courage-radio"
+              label="First option (Arrow key navigation)"
+              value="option1"
+              testId="keyboard-1"
             />
             <Radio
-              label="Triforce of Wisdom"
-              value="wisdom"
-              testId="wisdom-radio"
+              label="Second option (Arrow key navigation)"
+              value="option2"
+              testId="keyboard-2"
             />
             <Radio
-              label="Triforce of Power"
-              value="power"
-              testId="power-radio"
+              label="Third option (Arrow key navigation)"
+              value="option3"
+              testId="keyboard-3"
             />
           </RadioGroup>
-        </div>
-
-        <div className="space-y-2">
-          <Typography variant="h5">Keyboard Interactions</Typography>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-2">Key</th>
-                  <th className="text-left p-2">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-2">
-                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
-                      Tab
-                    </kbd>
-                  </td>
-                  <td className="p-2">Moves focus to radio group</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-2">
-                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
-                      Arrow Keys
-                    </kbd>
-                  </td>
-                  <td className="p-2">Navigate between radio options</td>
-                </tr>
-                <tr>
-                  <td className="p-2">
-                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
-                      Space
-                    </kbd>
-                  </td>
-                  <td className="p-2">Selects the focused radio option</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <Typography variant="h4">🏷️ ARIA Implementation</Typography>
-        <div className="p-4 border rounded-lg">
-          <Typography variant="h5">Semantic Radio Elements</Typography>
-          <RadioGroup defaultValue="warrior">
-            <Radio label="Warrior - Master of combat" value="warrior" />
-            <Radio label="Mage - Wielder of magic" value="mage" />
-          </RadioGroup>
-          <Typography
-            variant="body2"
-            className="text-gray-600 dark:text-gray-400 mt-2"
-          >
-            Uses semantic <code>&lt;input type="radio"&gt;</code> elements with
-            proper labels and grouping
-          </Typography>
-        </div>
+        </Card>
       </div>
     </div>
   ),
@@ -406,169 +522,7 @@ export const AccessibilityFeatures: Story = {
     docs: {
       description: {
         story:
-          'Interactive demonstration of Radio accessibility features including keyboard navigation and ARIA implementation.',
-      },
-    },
-  },
-};
-
-export const RealWorldExamples: Story = {
-  render: () => (
-    <div className="space-y-8 max-w-2xl">
-      {/* Character Creation Form */}
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">
-          Character Creation
-        </Typography>
-        <form className="space-y-4">
-          <Input label="Hero Name" placeholder="Enter your name" />
-          <div>
-            <Typography variant="label" className="block mb-2">
-              Choose your class:
-            </Typography>
-            <RadioGroup defaultValue="warrior">
-              <Radio
-                label="Warrior - Master of sword and shield"
-                value="warrior"
-              />
-              <Radio label="Mage - Wielder of ancient magic" value="mage" />
-              <Radio label="Archer - Swift and precise hunter" value="archer" />
-              <Radio label="Rogue - Silent shadow assassin" value="rogue" />
-            </RadioGroup>
-          </div>
-          <div>
-            <Typography variant="label" className="block mb-2">
-              Difficulty:
-            </Typography>
-            <div className="flex">
-              <RadioButton name="difficulty" value="easy">
-                Easy
-              </RadioButton>
-              <RadioButton name="difficulty" value="normal" defaultChecked>
-                Normal
-              </RadioButton>
-              <RadioButton name="difficulty" value="hard">
-                Hard
-              </RadioButton>
-              <RadioButton name="difficulty" value="master">
-                Master
-              </RadioButton>
-            </div>
-          </div>
-          <div className="flex gap-2 pt-4">
-            <Button variant="primary">Begin Quest</Button>
-            <Button variant="secondary">Cancel</Button>
-          </div>
-        </form>
-      </div>
-
-      {/* Game Settings */}
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">
-          Game Settings
-        </Typography>
-        <div className="space-y-4">
-          <div>
-            <Typography variant="label" className="block mb-2">
-              Graphics Quality:
-            </Typography>
-            <div className="flex">
-              <RadioButton name="graphics" value="low">
-                Low
-              </RadioButton>
-              <RadioButton name="graphics" value="medium" defaultChecked>
-                Medium
-              </RadioButton>
-              <RadioButton name="graphics" value="high">
-                High
-              </RadioButton>
-              <RadioButton name="graphics" value="ultra">
-                Ultra
-              </RadioButton>
-            </div>
-          </div>
-          <div>
-            <Typography variant="label" className="block mb-2">
-              Audio Output:
-            </Typography>
-            <RadioGroup defaultValue="stereo">
-              <Radio label="Mono" value="mono" />
-              <Radio label="Stereo" value="stereo" />
-              <Radio label="Surround 5.1" value="surround" />
-              <Radio label="Surround 7.1" value="surround71" />
-            </RadioGroup>
-          </div>
-        </div>
-      </div>
-
-      {/* NPC Dialog */}
-      <div className="p-6 border rounded-lg bg-gray-50">
-        <Typography variant="h3" className="mb-4">
-          NPC Interaction
-        </Typography>
-        <div className="space-y-4">
-          <Typography variant="body" className="italic">
-            "Greetings, traveler! I have a quest for you. What say you?"
-          </Typography>
-          <RadioGroup>
-            <Radio label="Accept the quest eagerly" value="accept" />
-            <Radio label="Ask for more details" value="details" />
-            <Radio label="Politely decline" value="decline" />
-            <Radio label="Ignore and walk away" value="ignore" />
-          </RadioGroup>
-          <Button variant="primary" size="small">
-            Continue
-          </Button>
-        </div>
-      </div>
-
-      {/* Dark Mode Complex Examples */}
-      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
-        <Typography variant="h2">🌙 Night Mode Interface</Typography>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">⚔️ Combat Style</Typography>
-          <RadioGroup defaultValue="aggressive">
-            <Radio
-              label="Aggressive - High damage, high risk"
-              value="aggressive"
-            />
-            <Radio label="Defensive - Balanced approach" value="defensive" />
-            <Radio label="Stealth - Avoid direct combat" value="stealth" />
-          </RadioGroup>
-        </div>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">🎒 Equipment Loadout</Typography>
-          <div className="flex">
-            <RadioButton name="loadout" value="light">
-              Light
-            </RadioButton>
-            <RadioButton name="loadout" value="medium" defaultChecked>
-              Medium
-            </RadioButton>
-            <RadioButton name="loadout" value="heavy">
-              Heavy
-            </RadioButton>
-          </div>
-        </div>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">🗺️ Quest Priority</Typography>
-          <RadioGroup defaultValue="main">
-            <Radio label="Main Quest - Follow the story" value="main" />
-            <Radio label="Side Quests - Explore and discover" value="side" />
-            <Radio label="Free Roam - No specific goals" value="roam" />
-          </RadioGroup>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Real-world examples showing Radio components integrated with other Zelda UI components in character creation, settings, dialog systems, and complex dark mode interfaces.',
+          'Radio sizes, interactive states, and keyboard navigation demonstration.',
       },
     },
   },

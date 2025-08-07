@@ -1,0 +1,181 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Installation" />
+
+# Installation Guide
+
+## Prerequisites
+
+- **Node.js** 18+ or 20+
+- **React** 18.0.0+ or 19.0.0+
+- **TypeScript** 5.0+ (optional but recommended)
+
+## Package Installation
+
+### Core Setup (Required)
+
+```bash
+# Using npm
+npm install @zelda/core @zelda/theme
+
+# Using pnpm
+pnpm add @zelda/core @zelda/theme
+
+# Using yarn
+yarn add @zelda/core @zelda/theme
+```
+
+### Icons (Optional)
+
+```bash
+# Using npm
+npm install @zelda/icons
+
+# Using pnpm  
+pnpm add @zelda/icons
+
+# Using yarn
+yarn add @zelda/icons
+```
+
+## CSS Import
+
+Import the theme CSS in your app's root file:
+
+```tsx
+// In your main App.tsx or index.tsx
+import '@zelda/theme/dist/theme.css';
+```
+
+## TypeScript Setup
+
+If using TypeScript, the types are included automatically. No additional setup required.
+
+## Framework Integration
+
+### Next.js
+
+```tsx
+// pages/_app.tsx or app/layout.tsx
+import '@zelda/theme/dist/theme.css';
+import type { AppProps } from 'next/app';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+### Vite
+
+```tsx
+// src/main.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@zelda/theme/dist/theme.css';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+### Create React App
+
+```tsx
+// src/index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@zelda/theme/dist/theme.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<App />);
+```
+
+## Dark Mode Setup
+
+Add dark mode support by toggling the `dark` class:
+
+```tsx
+// Toggle dark mode
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+}
+
+// Set initial theme based on user preference
+useEffect(() => {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+  }
+}, []);
+```
+
+## Bundle Size Optimization
+
+### Tree Shaking
+
+Import only what you need:
+
+```tsx
+// ✅ Good - tree-shakable
+import { Button, Input } from '@zelda/core';
+import { SearchLgIcon, User01Icon } from '@zelda/icons';
+
+// ❌ Avoid - imports everything
+import * as ZeldaCore from '@zelda/core';
+```
+
+### Icon Optimization
+
+Icons are automatically tree-shaken when imported individually:
+
+```tsx
+// ✅ Only includes the icons you import
+import { 
+  SearchLgIcon, 
+  User01Icon, 
+  Mail01Icon 
+} from '@zelda/icons';
+```
+
+## Troubleshooting
+
+### CSS Not Loading
+
+Make sure you've imported the theme CSS:
+```tsx
+import '@zelda/theme/dist/theme.css';
+```
+
+### TypeScript Errors
+
+Ensure you have compatible React types:
+```bash
+npm install --save-dev @types/react @types/react-dom
+```
+
+### Build Errors
+
+Check that your bundler supports CSS imports. Most modern bundlers (Vite, Next.js, CRA) support this by default.
+
+## Verification
+
+Test your installation with a simple component:
+
+```tsx
+import { Button } from '@zelda/core';
+import { CheckIcon } from '@zelda/icons';
+
+function TestComponent() {
+  return (
+    <Button variant="primary" icon={CheckIcon}>
+      Installation Complete!
+    </Button>
+  );
+}
+```
+
+If the button renders with proper styling, your installation is successful! 🎉

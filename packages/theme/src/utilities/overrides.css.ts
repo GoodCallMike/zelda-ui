@@ -10,7 +10,28 @@ const zeldaColors = [
   'ganon',
   'info',
   'warning',
+  'pink',
+  'rose',
+  'indigo',
+  'violet',
+  'cyan',
+  'teal',
+  'lime',
 ] as const;
+
+// Standard color aliases
+const colorAliases = {
+  yellow: 'triforce',
+  blue: 'hyrule',
+  green: 'rupee',
+  red: 'ganon',
+  primary: 'triforce',
+  secondary: 'hyrule',
+  success: 'rupee',
+  danger: 'ganon',
+  destructive: 'ganon',
+} as const;
+
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
 
 // Background colors in overrides layer
@@ -46,6 +67,35 @@ zeldaColors.forEach((color) => {
       '@layer': {
         [overrideLayer]: {
           borderColor: colors[color][shade],
+        },
+      },
+    });
+  });
+});
+
+// Standard color aliases
+Object.entries(colorAliases).forEach(([alias, zeldaColor]) => {
+  shades.forEach((shade) => {
+    globalStyle(`.bg-${alias}-${shade}`, {
+      '@layer': {
+        [overrideLayer]: {
+          backgroundColor: colors[zeldaColor][shade],
+        },
+      },
+    });
+
+    globalStyle(`.text-${alias}-${shade}`, {
+      '@layer': {
+        [overrideLayer]: {
+          color: colors[zeldaColor][shade],
+        },
+      },
+    });
+
+    globalStyle(`.border-${alias}-${shade}`, {
+      '@layer': {
+        [overrideLayer]: {
+          borderColor: colors[zeldaColor][shade],
         },
       },
     });

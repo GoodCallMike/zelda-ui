@@ -20,7 +20,7 @@ export interface TypographyProps
     | 'caption'
     | 'label';
   /** Text color theme */
-  color?: 'default' | 'muted' | 'triforce' | 'hyrule' | 'rupee' | 'ganon';
+  color?: 'default' | 'muted' | 'primary' | 'secondary' | 'success' | 'danger';
   /** Additional CSS classes */
   className?: string;
   /** Element ID */
@@ -68,10 +68,10 @@ export const Typography = ({
   const getColorStyle = () => {
     const colorMap = {
       muted: 'var(--gray-500)',
-      triforce: 'var(--triforce-600)',
-      hyrule: 'var(--hyrule-600)',
-      rupee: 'var(--rupee-600)',
-      ganon: 'var(--ganon-600)',
+      primary: 'var(--triforce-600)',
+      secondary: 'var(--hyrule-600)',
+      success: 'var(--rupee-600)',
+      danger: 'var(--ganon-600)',
       default: 'var(--gray-900)',
     };
     return { color: colorMap[color] || colorMap.default };

@@ -90,6 +90,90 @@ globalStyle(':root', {
     '--info-800': '#6b21a8',
     '--info-900': '#581c87',
 
+    // Pink
+    '--pink-50': '#fdf2f8',
+    '--pink-100': '#fce7f3',
+    '--pink-200': '#fbcfe8',
+    '--pink-300': '#f9a8d4',
+    '--pink-400': '#f472b6',
+    '--pink-500': '#ec4899',
+    '--pink-600': '#db2777',
+    '--pink-700': '#be185d',
+    '--pink-800': '#9d174d',
+    '--pink-900': '#831843',
+
+    // Rose
+    '--rose-50': '#fff1f2',
+    '--rose-100': '#ffe4e6',
+    '--rose-200': '#fecdd3',
+    '--rose-300': '#fda4af',
+    '--rose-400': '#fb7185',
+    '--rose-500': '#f43f5e',
+    '--rose-600': '#e11d48',
+    '--rose-700': '#be123c',
+    '--rose-800': '#9f1239',
+    '--rose-900': '#881337',
+
+    // Indigo
+    '--indigo-50': '#eef2ff',
+    '--indigo-100': '#e0e7ff',
+    '--indigo-200': '#c7d2fe',
+    '--indigo-300': '#a5b4fc',
+    '--indigo-400': '#818cf8',
+    '--indigo-500': '#6366f1',
+    '--indigo-600': '#4f46e5',
+    '--indigo-700': '#4338ca',
+    '--indigo-800': '#3730a3',
+    '--indigo-900': '#312e81',
+
+    // Violet
+    '--violet-50': '#f5f3ff',
+    '--violet-100': '#ede9fe',
+    '--violet-200': '#ddd6fe',
+    '--violet-300': '#c4b5fd',
+    '--violet-400': '#a78bfa',
+    '--violet-500': '#8b5cf6',
+    '--violet-600': '#7c3aed',
+    '--violet-700': '#6d28d9',
+    '--violet-800': '#5b21b6',
+    '--violet-900': '#4c1d95',
+
+    // Cyan
+    '--cyan-50': '#ecfeff',
+    '--cyan-100': '#cffafe',
+    '--cyan-200': '#a5f3fc',
+    '--cyan-300': '#67e8f9',
+    '--cyan-400': '#22d3ee',
+    '--cyan-500': '#06b6d4',
+    '--cyan-600': '#0891b2',
+    '--cyan-700': '#0e7490',
+    '--cyan-800': '#155e75',
+    '--cyan-900': '#164e63',
+
+    // Teal
+    '--teal-50': '#f0fdfa',
+    '--teal-100': '#ccfbf1',
+    '--teal-200': '#99f6e4',
+    '--teal-300': '#5eead4',
+    '--teal-400': '#2dd4bf',
+    '--teal-500': '#14b8a6',
+    '--teal-600': '#0d9488',
+    '--teal-700': '#0f766e',
+    '--teal-800': '#115e59',
+    '--teal-900': '#134e4a',
+
+    // Lime
+    '--lime-50': '#f7fee7',
+    '--lime-100': '#ecfccb',
+    '--lime-200': '#d9f99d',
+    '--lime-300': '#bef264',
+    '--lime-400': '#a3e635',
+    '--lime-500': '#84cc16',
+    '--lime-600': '#65a30d',
+    '--lime-700': '#4d7c0f',
+    '--lime-800': '#365314',
+    '--lime-900': '#1a2e05',
+
     // Typography (1.333 Perfect Fourth scale)
     '--text-xs': '0.75rem', // 12px
     '--text-sm': '0.875rem', // 14px

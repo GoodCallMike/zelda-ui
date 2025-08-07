@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'Documentation/Accessibility',
+  title: 'Getting Started/Accessibility',
   tags: ['autodocs'],
   parameters: {
     docs: {

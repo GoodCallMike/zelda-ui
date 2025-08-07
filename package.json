@@ -12,7 +12,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build --output-dir storybook-static",
     "build-storybook:gh-pages": "BASE_PATH=/zelda-ui/ storybook build --output-dir storybook-static",
-
     "test:visual": "playwright test",
     "test:visual:ui": "playwright test --ui",
     "test:visual:update": "playwright test --update-snapshots",
@@ -20,7 +19,6 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
-
     "lint": "biome check",
     "format": "biome format --write",
     "generate:component": "node scripts/generate-component.js",
@@ -54,6 +52,7 @@
     "@storybook/addon-docs": "^9.1.1",
     "@storybook/addon-themes": "^9.1.1",
     "@storybook/addon-vitest": "^9.1.1",
+    "@storybook/blocks": "^8.6.14",
     "@storybook/react-vite": "^9.1.1",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
@@ -63,7 +62,7 @@
     "@types/react-dom": "^18.3.1",
     "@vanilla-extract/vite-plugin": "^5.1.1",
     "@vitejs/plugin-react": "^4.7.0",
-
+    "@vitest/ui": "^3.2.4",
     "axe-playwright": "^2.1.0",
     "concurrently": "^9.2.0",
     "globals": "^16.3.0",
@@ -77,9 +76,7 @@
     "turbo": "^2.5.5",
     "typescript": "~5.8.3",
     "vite": "^7.1.0",
-
     "vitest": "^3.2.4",
-    "@vitest/ui": "^3.2.4",
     "wait-on": "^8.0.4"
   }
 }

@@ -5,9 +5,14 @@ Core UI components for the Zelda design system.
 ## Installation
 
 ```bash
-npm install @zelda/core @zelda/theme
-# or
-pnpm add @zelda/core @zelda/theme
+# Install core packages
+npm install @zelda/core @zelda/theme @zelda/icons
+
+# Install peer dependencies
+npm install @floating-ui/react clsx tailwind-merge
+
+# Or with pnpm
+pnpm add @zelda/core @zelda/theme @zelda/icons @floating-ui/react clsx tailwind-merge
 ```
 
 ## Usage

@@ -6,13 +6,13 @@ const customRequire = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
+    '../.storybook/*.mdx',
     '../packages/core/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../packages/theme/src/Colors.stories.tsx',
     '../.storybook/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-docs'),
-    getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-themes'),
   ],
@@ -23,6 +23,10 @@ const config: StorybookConfig = {
   },
 
   staticDirs: ['../public'],
+
+  docs: {
+    defaultName: 'Documentation',
+  },
 
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
@@ -54,6 +58,7 @@ const config: StorybookConfig = {
       },
       define: {
         global: 'globalThis',
+        expect: 'globalThis.expect',
       },
     });
   },

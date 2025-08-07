@@ -1,54 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  Button,
-  Card,
-  Input,
-  Radio,
-  RadioGroup,
-  Typography,
-} from '@zelda/core';
+import { Button, Card, Input, Typography } from '@zelda/core';
 
 const meta: Meta<typeof Typography> = {
   title: 'General/Typography',
   component: Typography,
-  decorators: [
-    (Story) => (
-      <div className="p-4">
-        <Story />
-      </div>
-    ),
-  ],
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
-        component: `Typography component provides consistent text styling with Zelda-themed colors and semantic variants.
+        component: `Typography component provides consistent text styling with semantic variants and theme-aware colors.
 
 \`\`\`tsx
 import { Typography } from '@zelda/core';
 
 // Primary usage pattern
-<Typography>Welcome to Hyrule</Typography>
+<Typography>Welcome to our platform</Typography>
 
 // Key variant
-<Typography variant="h1" color="triforce">The Legend of Zelda</Typography>
+<Typography variant="h1" color="primary">Dashboard Overview</Typography>
 \`\`\`
 
 ## Variants
 - **h1-h6** - Semantic headings with proper hierarchy (larger, bolder)
 - **body** - Standard paragraph text (default)
+- **body2** - Smaller body text for secondary content
 - **caption** - Smaller descriptive text (metadata, timestamps)
 - **label** - Form labels and UI text (medium weight)
 
 ## Colors
-- **triforce** - Primary brand color (automatically adapts to theme)
-- **hyrule** - Secondary blue theme
-- **rupee** - Success/nature green
-- **ganon** - Destructive red
+- **primary** - Primary brand color (golden yellow)
+- **secondary** - Secondary theme color (blue)
+- **success** - Success states (green)
+- **danger** - Error and destructive actions (red)
 - **muted** - Secondary text (gray)
-
-## Theming
-Colors automatically adapt to light/dark themes using CSS custom properties. No additional configuration required.
 
 ## Accessibility & Testing
 - Uses semantic HTML elements (h1-h6, p)
@@ -58,7 +42,7 @@ Colors automatically adapt to light/dark themes using CSS custom properties. No 
 \`\`\`tsx
 // Testing approach
 const heading = screen.getByRole('heading', { level: 1 });
-expect(heading).toHaveTextContent('The Legend of Zelda');
+expect(heading).toHaveTextContent('Dashboard Overview');
 \`\`\``,
       },
     },
@@ -87,8 +71,15 @@ expect(heading).toHaveTextContent('The Legend of Zelda');
     },
     color: {
       control: 'select',
-      options: ['default', 'muted', 'triforce', 'hyrule', 'rupee', 'ganon'],
-      description: 'Zelda-themed color variants',
+      options: [
+        'default',
+        'muted',
+        'primary',
+        'secondary',
+        'success',
+        'danger',
+      ],
+      description: 'Theme-aware color variants',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'default' },
@@ -97,12 +88,10 @@ expect(heading).toHaveTextContent('The Legend of Zelda');
     testId: {
       control: 'text',
       description: 'Test identifier for automated testing',
-      table: {
-        type: { summary: 'string' },
-      },
     },
     className: { table: { disable: true } },
     id: { table: { disable: true } },
+    children: { table: { disable: true } },
   },
 };
 
@@ -111,40 +100,54 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'The Legend of Zelda',
+    children: 'Welcome to our platform',
+    testId: 'welcome-text',
   },
 };
 
 export const Variants: Story = {
   render: () => (
-    <div className="space-y-6">
+    <div className="space-y-4 p-4">
       <div className="space-y-2">
-        <Typography variant="h1">Heading 1 - Page Title</Typography>
-        <Typography variant="h2">Heading 2 - Section Title</Typography>
-        <Typography variant="h3">Heading 3 - Subsection</Typography>
-        <Typography variant="h4">Heading 4 - Sub-subsection</Typography>
-        <Typography variant="h5">Heading 5 - Minor heading</Typography>
-        <Typography variant="h6">Heading 6 - Smallest heading</Typography>
-        <Typography variant="body">
-          Body text for paragraphs and content
+        <Typography variant="h1" testId="heading-1">
+          Heading 1 - Page Title
         </Typography>
-        <Typography variant="body2">Body 2 - Smaller body text</Typography>
-        <Typography variant="caption">Caption text for metadata</Typography>
-        <Typography variant="label">Label text for forms</Typography>
+        <Typography variant="h2" testId="heading-2">
+          Heading 2 - Section Title
+        </Typography>
+        <Typography variant="h3" testId="heading-3">
+          Heading 3 - Subsection
+        </Typography>
+        <Typography variant="h4" testId="heading-4">
+          Heading 4 - Sub-subsection
+        </Typography>
+        <Typography variant="h5" testId="heading-5">
+          Heading 5 - Minor heading
+        </Typography>
+        <Typography variant="h6" testId="heading-6">
+          Heading 6 - Smallest heading
+        </Typography>
       </div>
       <div className="space-y-2">
-        <Typography color="triforce">Triforce Gold - Primary brand</Typography>
-        <Typography color="hyrule">Hyrule Blue - Secondary theme</Typography>
-        <Typography color="rupee">Rupee Green - Success states</Typography>
-        <Typography color="ganon">Ganon Red - Destructive actions</Typography>
-        <Typography color="muted">Muted Gray - Secondary text</Typography>
+        <Typography variant="body" testId="body-text">
+          Body text for paragraphs and content
+        </Typography>
+        <Typography variant="body2" testId="body2-text">
+          Body 2 - Smaller body text
+        </Typography>
+        <Typography variant="caption" testId="caption-text">
+          Caption text for metadata
+        </Typography>
+        <Typography variant="label" testId="label-text">
+          Label text for forms
+        </Typography>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'All typography variants and themed colors in one view.',
+        story: 'Complete range of typography variants showing text hierarchy.',
       },
     },
   },
@@ -152,115 +155,89 @@ export const Variants: Story = {
 
 export const Examples: Story = {
   render: () => (
-    <div className="space-y-8 max-w-4xl">
-      {/* Game Interface */}
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h1" color="triforce" className="mb-4">
-          The Legend of Zelda
+    <div className="space-y-8 max-w-4xl p-6">
+      <div className="space-y-4">
+        <Typography variant="h1" color="primary" testId="dashboard-title">
+          Dashboard Overview
         </Typography>
-        <Typography variant="h2" className="mb-4">
-          Choose Your Adventure
+        <Typography variant="body" testId="dashboard-description">
+          Monitor your application performance, user engagement, and system
+          health from this central hub.
         </Typography>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-3">
-            <Typography variant="h3">New Game</Typography>
-            <Typography variant="body">
-              Begin your journey as Link, the legendary hero of Hyrule. Explore
-              vast kingdoms, solve ancient puzzles, and save Princess Zelda from
-              the forces of darkness.
-            </Typography>
-            <Button variant="primary">Start Adventure</Button>
-          </div>
-          <div className="space-y-3">
-            <Typography variant="h3">Continue</Typography>
-            <Typography variant="body">
-              Resume your quest from where you left off. Your progress has been
-              saved at the last shrine you visited.
-            </Typography>
-            <Typography variant="caption" color="muted">
-              Last played: Temple of Time
-            </Typography>
-            <Button variant="default">Load Game</Button>
-          </div>
-        </div>
       </div>
 
-      {/* Character Creation */}
       <Card>
-        <Typography variant="h2" className="mb-4">
-          Create Your Hero
+        <Typography variant="h2" className="mb-4" testId="form-title">
+          Account Settings
         </Typography>
         <div className="space-y-4">
           <div>
-            <Typography variant="label" className="block mb-2">
-              Hero Name
+            <Typography
+              variant="label"
+              className="block mb-2"
+              testId="email-label"
+            >
+              Email Address
             </Typography>
-            <Input placeholder="Enter your hero's name" />
-            <Typography variant="caption" color="muted">
-              Choose a name worthy of legend
+            <Input placeholder="Enter your email" testId="email-input" />
+            <Typography variant="caption" color="muted" testId="email-help">
+              We'll never share your email with third parties
             </Typography>
-          </div>
-          <div>
-            <Typography variant="label" className="block mb-2">
-              Starting Region
-            </Typography>
-            <RadioGroup defaultValue="central">
-              <Radio
-                label="Central Hyrule - Balanced adventure"
-                value="central"
-              />
-              <Radio label="Hebra Region - Icy challenges" value="hebra" />
-              <Radio label="Gerudo Desert - Scorching trials" value="gerudo" />
-            </RadioGroup>
           </div>
           <div className="flex gap-2 pt-4">
-            <Button variant="primary">Begin Quest</Button>
-            <Button variant="default">Back to Menu</Button>
+            <Button variant="primary" testId="save-button">
+              Save Changes
+            </Button>
+            <Button variant="default" testId="cancel-button">
+              Cancel
+            </Button>
           </div>
         </div>
       </Card>
 
-      {/* Story Content */}
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h2" color="hyrule" className="mb-4">
-          The Ancient Prophecy
+      <div className="p-4 bg-ganon-50 dark:bg-ganon-900/20 border-ganon-200 dark:border-ganon-600 border rounded">
+        <Typography
+          variant="h3"
+          color="danger"
+          className="mb-2"
+          testId="error-title"
+        >
+          Action Required
         </Typography>
-        <div className="space-y-4">
-          <Typography variant="body">
-            Long ago, when the world was young and magic flowed freely through
-            the land, three golden goddesses descended upon the chaos that was
-            Hyrule. Din, the goddess of power, with her strong flaming arms,
-            cultivated the land and created the red earth.
-          </Typography>
-          <Typography variant="body">
-            Nayru, the goddess of wisdom, poured her wisdom onto the earth and
-            gave the spirit of law to the world. Farore, the goddess of courage,
-            with her rich soul, produced all life forms who would uphold the
-            law.
-          </Typography>
-          <Typography variant="body" color="triforce">
-            These three great goddesses left behind the Triforce - three sacred
-            golden triangles that represent the essence of the goddesses. When
-            united, the Triforce grants the wish of whoever touches it.
-          </Typography>
-          <Typography variant="caption" color="muted" className="italic">
-            - From the Ancient Texts of Hyrule
-          </Typography>
-        </div>
+        <Typography variant="body" color="danger" testId="error-message">
+          Your subscription expires in 3 days. Please update your payment method
+          to continue using our services.
+        </Typography>
+        <Typography
+          variant="caption"
+          color="danger"
+          className="mt-2 block"
+          testId="error-details"
+        >
+          Last payment failed on December 15, 2024
+        </Typography>
       </div>
 
-      {/* Warning Message */}
-      <div className="p-6 border-2 border-red-200 rounded-lg bg-red-50">
-        <Typography variant="h3" color="ganon" className="mb-2">
-          ⚠️ Danger Ahead
+      <div className="p-4 bg-rupee-50 dark:bg-rupee-900/20 border-rupee-200 dark:border-rupee-600 border rounded">
+        <Typography
+          variant="h3"
+          color="success"
+          className="mb-2"
+          testId="success-title"
+        >
+          Deployment Successful
         </Typography>
-        <Typography variant="body" color="ganon">
-          The path you have chosen leads through the Shadow Temple. Ancient
-          evils lurk within its cursed halls. Only the bravest heroes dare to
-          enter.
+        <Typography variant="body" color="success" testId="success-message">
+          Your application has been successfully deployed to production
+          environment.
         </Typography>
-        <Typography variant="caption" color="ganon" className="mt-2 block">
-          Recommended level: 45+ | Required items: Hover Boots, Silver Gauntlets
+        <Typography
+          variant="caption"
+          color="success"
+          className="mt-2 block"
+          testId="success-details"
+        >
+          Build #1247 completed in 2m 34s
         </Typography>
       </div>
     </div>
@@ -269,69 +246,41 @@ export const Examples: Story = {
     docs: {
       description: {
         story:
-          'Typography integrated with other components in realistic game interface scenarios.',
+          'Typography integrated with other components in realistic interface scenarios.',
       },
     },
   },
 };
 
-export const Monospace: Story = {
+export const States: Story = {
   render: () => (
-    <div className="space-y-6 max-w-4xl">
-      <Typography variant="h2">Monospace Examples</Typography>
-      <Typography variant="body" color="muted">
-        Monospace typography for code and technical content.
-      </Typography>
-
-      <div className="space-y-4">
-        <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">
-            JavaScript Code
-          </Typography>
-          <code className="font-mono text-sm block">
-            const hero = &#123;
-            <br />
-            &nbsp;&nbsp;name: 'Link',
-            <br />
-            &nbsp;&nbsp;weapon: 'Master Sword',
-            <br />
-            &nbsp;&nbsp;shield: 'Hylian Shield'
-            <br />
-            &#125;;
-          </code>
-        </div>
-
-        <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">
-            Configuration
-          </Typography>
-          <pre className="font-mono text-sm">
-            TRIFORCE_POWER=9001
-            <br />
-            HYRULE_CASTLE_COORDS=&#123;x: 0, y: 0, z: 100&#125;
-            <br />
-            MASTER_SWORD_DAMAGE=300
-          </pre>
-        </div>
-
-        <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <Typography variant="label" className="block mb-2">
-            Terminal Output
-          </Typography>
-          <code className="font-mono text-sm block text-green-600 dark:text-green-400">
-            $ npm run storybook
-            <br />✓ Starting Storybook server...
-            <br />✓ Local: http://localhost:6006
-            <br />✓ Ready in 2.3s
-          </code>
-        </div>
+    <div className="space-y-4 p-4">
+      <div className="space-y-2">
+        <Typography variant="h3" testId="colors-title">
+          Color Variants
+        </Typography>
+        <Typography color="primary" testId="primary-text">
+          Primary - Brand color (golden yellow)
+        </Typography>
+        <Typography color="secondary" testId="secondary-text">
+          Secondary - Theme color (blue)
+        </Typography>
+        <Typography color="success" testId="success-text">
+          Success - Positive actions (green)
+        </Typography>
+        <Typography color="danger" testId="danger-text">
+          Danger - Errors and warnings (red)
+        </Typography>
+        <Typography color="muted" testId="muted-text">
+          Muted - Secondary information
+        </Typography>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Monospace typography for code blocks and technical content.',
+        story: 'Typography color variants for different semantic meanings.',
       },
     },
   },

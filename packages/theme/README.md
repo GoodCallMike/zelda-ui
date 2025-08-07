@@ -5,9 +5,14 @@ Theme system and design tokens for the Zelda UI library.
 ## Installation
 
 ```bash
+# Install theme package
 npm install @zelda/theme
-# or
-pnpm add @zelda/theme
+
+# Install peer dependencies
+npm install clsx tailwind-merge
+
+# Or with pnpm
+pnpm add @zelda/theme clsx tailwind-merge
 ```
 
 ## Usage
