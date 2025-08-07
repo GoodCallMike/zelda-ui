@@ -35,9 +35,6 @@
     "pnpm": ">=9.0.0"
   },
   "pnpm": {
-    "overrides": {
-      "@vanilla-extract/vite-plugin>vite": "^7.0.0"
-    },
     "onlyBuiltDependencies": [
       "esbuild",
       "lefthook"
