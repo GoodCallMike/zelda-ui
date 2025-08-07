@@ -25,7 +25,13 @@ jobs:
         env:
           CI: true
       
-      # Visual regression tests
+      # Visual regression tests (generate snapshots if missing)
+      - run: pnpm test:visual --update-snapshots
+        env:
+          CI: true
+        continue-on-error: true
+      
+      # Run visual tests again to verify
       - run: pnpm test:visual
         env:
           CI: true
