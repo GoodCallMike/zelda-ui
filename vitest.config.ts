@@ -15,7 +15,7 @@ const dirname =
 export default defineConfig({
   plugins: [vanillaExtractPlugin()],
   optimizeDeps: {
-    include: ['react/jsx-dev-runtime'],
+    include: ['react/jsx-dev-runtime', '@mdx-js/react', 'markdown-to-jsx'],
   },
   resolve: {
     alias: {

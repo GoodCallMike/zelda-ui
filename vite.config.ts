@@ -5,6 +5,6 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['react/jsx-dev-runtime'],
+    include: ['react/jsx-dev-runtime', '@mdx-js/react', 'markdown-to-jsx'],
   },
 });
