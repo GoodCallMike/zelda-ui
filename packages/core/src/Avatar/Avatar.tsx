@@ -62,9 +62,7 @@ export const Avatar = ({
         <img
           src={src}
           alt={alt || name || 'Avatar'}
-          onError={
-            handleImageError as React.ReactEventHandler<HTMLImageElement>
-          }
+          onError={handleImageError}
           className={styles.image}
         />
       ) : name ? (

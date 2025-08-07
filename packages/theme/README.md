@@ -1,4 +1,4 @@
-# @zelda/theme 🎨
+# @zelda/theme
 
 Theme system and design tokens for the Zelda UI library.
 
@@ -12,89 +12,54 @@ pnpm add @zelda/theme
 
 ## Usage
 
-### Design Tokens
+### CSS Import
 
 ```tsx
-import { colors, spacing, typography } from '@zelda/theme';
-
-// Use design tokens
-const styles = {
-  color: colors.blue[600],
-  padding: spacing[4],
-  fontSize: typography.fontSize.lg,
-};
+import '@zelda/theme/dist/theme.css';
 ```
 
-### Utility Function
+### Utility Functions
 
 ```tsx
 import { cn } from '@zelda/theme';
 
-// Combine classes with conditional logic
-const buttonClass = cn(
-  'px-4 py-2 rounded',
-  isActive && 'bg-blue-600',
-  disabled && 'opacity-50'
-);
-```
-
-### Theme Activation
-
-```tsx
-// Default theme (automatic)
-document.documentElement.setAttribute('data-theme', 'light');
-
-// Dark theme
-document.documentElement.setAttribute('data-theme', 'dark');
-
-// Secret Hyrule theme
-document.documentElement.setAttribute('data-theme', 'hyrule');
-```
-
-## Available Themes
-
-### Light Theme (Default)
-Standard light theme with blue primary colors.
-
-### Dark Theme
-Dark theme with adjusted colors for low-light environments.
-
-### Hyrule Theme (Secret) 🗡️
-Zelda-inspired theme with mystical colors:
-- **Forest Night**: Deep background
-- **Hyrule Green**: Primary actions
-- **Triforce Gold**: Accent elements
-- **Rupee Colors**: Success/info variants
-- **Master Sword Blue**: Secondary accent
-
-## Design Tokens
-
-### Colors
-- **Gray Scale**: 50-900 variants
-- **Blue**: Primary color palette
-- **Red**: Error/destructive states
-- **Green**: Success states
-- **Yellow**: Warning states
-
-### Spacing
-Consistent spacing scale from 0.5 to 96.
-
-### Typography
-Font sizes, weights, and line heights.
-
-## CSS Variables
-
-The theme system uses CSS custom properties:
-
-```css
-:root {
-  --color-primary: #2563eb;
-  --color-background: #ffffff;
-  --color-foreground: #111827;
-  /* ... more variables */
+function MyComponent({ className }) {
+  return (
+    <div className={cn('base-styles', 'conditional-styles', className)}>
+      Content
+    </div>
+  );
 }
 ```
 
-## License
+## Features
 
-MIT
+- **Design tokens** - Consistent colors, spacing, typography
+- **CSS variables** - Runtime theme customization
+- **Utility functions** - Class name merging and conditional styling
+- **Vanilla Extract** - Type-safe CSS-in-JS
+- **Dark mode ready** - Built-in dark theme support
+
+## Design Tokens
+
+- **Colors** - Primary, secondary, semantic colors
+- **Typography** - Font families, sizes, weights
+- **Spacing** - Consistent spacing scale
+- **Shadows** - Elevation and depth
+- **Border radius** - Consistent corner rounding
+- **Animations** - Smooth transitions and effects
+
+## Customization
+
+The theme can be customized by overriding CSS variables:
+
+```css
+:root {
+  --color-primary: #your-color;
+  --font-family-sans: 'Your Font', sans-serif;
+}
+```
+
+## Documentation
+
+Visit [https://goodcallmike.github.io/zelda-ui/](https://goodcallmike.github.io/zelda-ui/) for theming guides and customization examples.

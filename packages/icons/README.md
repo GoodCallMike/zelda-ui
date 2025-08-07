@@ -1,32 +1,52 @@
 # @zelda/icons
 
-Icon components for the Zelda design system.
+Icon library for the Zelda design system.
+
+## Installation
+
+```bash
+npm install @zelda/icons
+# or
+pnpm add @zelda/icons
+```
 
 ## Usage
 
 ```tsx
-import { CalendarIcon } from '@zelda/icons';
+import { CheckIcon, XIcon, ArrowRightIcon } from '@zelda/icons';
 
-<CalendarIcon className="w-4 h-4" />
+function App() {
+  return (
+    <div>
+      <CheckIcon className="w-5 h-5 text-green-500" />
+      <XIcon className="w-4 h-4" />
+      <ArrowRightIcon style={{ width: 20, height: 20 }} />
+    </div>
+  );
+}
 ```
 
-## Adding New Icons
+## Features
 
-1. Drop your SVG files into `assets/svg/`
-2. Run `pnpm generate` to create React components
-3. Build the package with `pnpm build`
+- **500+ icons** - Comprehensive icon set
+- **SVG-based** - Scalable vector graphics
+- **TypeScript** - Full type support
+- **Tree-shakable** - Import only what you need
+- **Customizable** - Style with CSS classes or inline styles
 
-### SVG Requirements
+## Icon Categories
 
-- Use kebab-case filenames (e.g., `calendar-days.svg`)
-- SVGs should have a 24x24 viewBox
-- Use stroke-based icons for consistency
-- Avoid hardcoded colors (use `currentColor`)
+- Actions (save, edit, delete, etc.)
+- Navigation (arrows, chevrons, etc.)
+- Communication (mail, phone, chat, etc.)
+- Media (play, pause, volume, etc.)
+- Files (document, folder, download, etc.)
+- And many more...
 
-### Generated Components
+## Requirements
 
-- `calendar.svg` → `CalendarIcon`
-- `arrow-left.svg` → `ArrowLeftIcon`
-- `user-profile.svg` → `UserProfileIcon`
+- React 18.0.0 or higher
 
-All icons are 16x16px by default but can be customized via props.
+## Documentation
+
+Visit [https://goodcallmike.github.io/zelda-ui/](https://goodcallmike.github.io/zelda-ui/) for the complete icon gallery.

@@ -36,6 +36,7 @@ export const Button = ({
 
   return (
     <button
+      {...buttonProps}
       type={type}
       className={cn(
         'inline-flex items-center justify-center font-bold uppercase tracking-wide border-0 cursor-pointer select-none outline-none transition-all duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 rounded-lg',
@@ -48,7 +49,6 @@ export const Button = ({
       )}
       disabled={isDisabled}
       data-testid={testId}
-      {...buttonProps}
     >
       {Icon && iconPosition === 'left' && !loading && (
         <Icon
