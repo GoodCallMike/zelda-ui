@@ -13,101 +13,44 @@ const meta: Meta<typeof Modal> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Modal component for Hyrule-themed interfaces with magical animations and comprehensive accessibility support.
-
-## Overview
-
-The Modal component provides overlay dialogs with authentic Zelda-inspired styling and magical entrance animations. It supports multiple sizes, customizable content, and maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+        component: `Overlay dialogs that focus user attention on critical tasks while blocking interaction with the background content.
 
 \`\`\`tsx
 import { Modal } from '@zelda/core';
 
-// Basic usage
+// Essential usage
 const [open, setOpen] = useState(false);
 
-<Modal open={open} onClose={() => setOpen(false)} title="Adventure Awaits">
-  <p>Your quest begins here...</p>
+<Modal open={open} onClose={() => setOpen(false)} title="Confirm Action">
+  <p>Are you sure you want to proceed?</p>
+  <div className="flex gap-2 justify-end mt-4">
+    <Button onClick={() => setOpen(false)}>Cancel</Button>
+    <Button variant="primary" onClick={() => setOpen(false)}>Confirm</Button>
+  </div>
 </Modal>
 \`\`\`
 
-## Features
+## Sizes
+- **small** - Confirmations and simple dialogs
+- **medium** - Standard forms and content (default)
+- **large** - Complex forms and detailed content
+- **fullscreen** - Maximum content display
 
-### Magical Animations
-- **3D Entrance**: Scale, rotation, and blur effects for dramatic appearance
-- **Backdrop Blur**: Mystical backdrop with smooth blur animation
-- **Shimmer Header**: Animated gradient border on the header
-- **Bounce Effect**: Overshoots then settles for satisfying interaction
+## Accessibility & Testing
+- Traps focus within modal and restores on close
+- Escape key closes modal, proper tab order maintained
+- Uses semantic \`role="dialog"\` and \`aria-modal="true"\`
+- Prevents background scrolling when open
 
-### Sizes
-- **Small**: Confirmations and simple dialogs
-- **Medium**: Standard forms and content (default)
-- **Large**: Complex forms and detailed content
-- **Fullscreen**: Maximum content display
+> **Your Responsibility**: Provide clear modal titles and proper action buttons. This component handles focus management and keyboard navigation.
 
-## Accessibility
-
-The Modal component is fully accessible with:
-
-- **Focus Management**: Traps focus within modal and restores on close
-- **Keyboard Navigation**: Escape key closes modal, proper tab order
-- **Screen Reader Support**: Proper ARIA attributes and semantic structure
-- **Body Scroll Lock**: Prevents background scrolling when modal is open
-
-## Testing
-
-Built-in testing support with comprehensive \`testId\` props:
-
-### Test Identifiers
 \`\`\`tsx
-<Modal testId="user-settings-modal" />
-// Results in: data-testid="user-settings-modal"
-\`\`\`
-
-### Testing Examples
-\`\`\`tsx
-// Query modal
-screen.getByTestId('user-settings-modal');
-
-// Test modal opening
-fireEvent.click(screen.getByText('Open Settings'));
-expect(screen.getByTestId('user-settings-modal')).toBeInTheDocument();
-
-// Test keyboard navigation
-fireEvent.keyDown(document, { key: 'Escape' });
-expect(screen.queryByTestId('user-settings-modal')).not.toBeInTheDocument();
-
-// Test focus management
-const modal = screen.getByTestId('user-settings-modal');
-expect(modal).toHaveFocus();
-\`\`\`
-
-### Accessibility Testing
-\`\`\`tsx
-// Test ARIA attributes
+// Testing approach
 const modal = screen.getByRole('dialog');
-expected(modal).toHaveAttribute('aria-modal', 'true');
-expected(modal).toHaveAttribute('aria-labelledby');
-
-// Test focus trap
-fireEvent.keyDown(modal, { key: 'Tab' });
-// Focus should remain within modal
-\`\`\`
-
-## Best Practices
-
-### Do
-- Use appropriate size for content (small for confirmations, large for forms)
-- Provide clear, descriptive titles
-- Include proper action buttons in content
-- Use \`maskClosable={false}\` for critical confirmations
-
-### Don't
-- Stack multiple modals without proper UX consideration
-- Make modals too wide for mobile screens
-- Use modals for simple notifications (use Toast instead)
-- Forget to handle the onClose callback`,
+expect(modal).toHaveAttribute('aria-modal', 'true');
+fireEvent.keyDown(document, { key: 'Escape' });
+expect(modal).not.toBeInTheDocument();
+\`\`\``,
       },
     },
   },
@@ -183,7 +126,7 @@ export const Default: Story = {
   },
 };
 
-export const Basic: Story = {
+export const Examples: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
 
@@ -193,18 +136,17 @@ export const Basic: Story = {
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-          title="Adventure Awaits"
+          title="Confirm Changes"
         >
           <Typography variant="body1" className="mb-4">
-            Your journey through Hyrule begins with a single step. Are you ready
-            to face the challenges ahead?
+            Your changes will be saved and applied immediately. Are you ready to proceed?
           </Typography>
           <div className="flex gap-2 justify-end">
             <Button variant="default" onClick={() => setOpen(false)}>
-              Not Yet
+              Cancel
             </Button>
             <Button variant="primary" onClick={() => setOpen(false)}>
-              Begin Adventure
+              Save Changes
             </Button>
           </div>
         </Modal>
@@ -214,7 +156,7 @@ export const Basic: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Basic modal with title, content, and action buttons.',
+        story: 'Modal with title, content, and action buttons for user confirmation.',
       },
     },
   },
@@ -287,252 +229,9 @@ export const Sizes: Story = {
   },
 };
 
-export const Confirmation: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
 
-    return (
-      <>
-        <Button variant="destructive" onClick={() => setOpen(true)}>
-          Delete Save File
-        </Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title="⚠️ Delete Save File"
-          size="small"
-          maskClosable={false}
-        >
-          <Typography variant="body1" className="mb-4">
-            Are you sure you want to delete "Hero's Journey"? This action cannot
-            be undone.
-          </Typography>
-          <div className="flex gap-2 justify-end">
-            <Button variant="default" onClick={() => setOpen(false)}>
-              Cancel
-            </Button>
-            <Button variant="destructive" onClick={() => setOpen(false)}>
-              Delete Forever
-            </Button>
-          </div>
-        </Modal>
-      </>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Confirmation modal for destructive actions. Uses small size and prevents accidental closure.',
-      },
-    },
-  },
-};
 
-export const AsyncClose: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
 
-    const handleSave = () => {
-      setLoading(true);
-      setTimeout(() => {
-        setOpen(false);
-        setLoading(false);
-      }, 2000);
-    };
-
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Save Game Progress</Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title="Save Game"
-          closable={!loading}
-          maskClosable={!loading}
-        >
-          <Typography variant="body1" className="mb-4">
-            Your progress will be saved to the selected slot. This may take a
-            moment.
-          </Typography>
-          <div className="flex gap-2 justify-end">
-            <Button
-              variant="default"
-              onClick={() => setOpen(false)}
-              disabled={loading}
-            >
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleSave} disabled={loading}>
-              {loading ? 'Saving...' : 'Save Game'}
-            </Button>
-          </div>
-        </Modal>
-      </>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Modal with async operations. Prevents closure during loading state.',
-      },
-    },
-  },
-};
-
-export const Information: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <>
-        <Button variant="default" onClick={() => setOpen(true)}>
-          Quest Details
-        </Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title="🗡️ The Master Sword Quest"
-          size="medium"
-        >
-          <div className="space-y-4">
-            <Typography variant="body1">
-              <strong>Objective:</strong> Retrieve the legendary Master Sword
-              from the Lost Woods
-            </Typography>
-            <Typography variant="body2">
-              The Master Sword has been sleeping in the Lost Woods for
-              centuries, waiting for a hero worthy enough to wield it. Only one
-              pure of heart can draw the blade from its pedestal.
-            </Typography>
-            <Typography variant="body2">
-              <strong>Requirements:</strong> Complete the three trials of
-              courage, wisdom, and power.
-            </Typography>
-          </div>
-          <div className="flex justify-end mt-6">
-            <Button variant="primary" onClick={() => setOpen(false)}>
-              Accept Quest
-            </Button>
-          </div>
-        </Modal>
-      </>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Information modal for displaying detailed content with single action.',
-      },
-    },
-  },
-};
-
-export const CustomizedFooter: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Inventory Actions</Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title="Item Management"
-        >
-          <Typography variant="body1" className="mb-4">
-            What would you like to do with the selected items?
-          </Typography>
-          <div className="flex gap-2 justify-end">
-            <Button variant="text" onClick={() => setOpen(false)}>
-              Cancel
-            </Button>
-            <Button variant="default" onClick={() => setOpen(false)}>
-              Move to Storage
-            </Button>
-            <Button variant="dashed" onClick={() => setOpen(false)}>
-              Sell Items
-            </Button>
-            <Button variant="destructive" onClick={() => setOpen(false)}>
-              Drop Items
-            </Button>
-          </div>
-        </Modal>
-      </>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Modal with multiple action buttons showing different variants and purposes.',
-      },
-    },
-  },
-};
-
-export const DarkMode: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-      document.body.classList.add('dark');
-      setOpen(true);
-    };
-
-    const handleClose = () => {
-      // amazonq-ignore-next-line
-      // eslint-disable-next-line security/detect-object-injection
-      document.body.classList.remove('dark');
-      setOpen(false);
-    };
-
-    return (
-      <div className="dark bg-gray-900 p-6 rounded">
-        <Typography variant="h3" className="mb-4">
-          🌙 Ganon's Domain
-        </Typography>
-        <Button onClick={handleOpen}>Enter Shadow Realm</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          title="⚡ Shadow Magic Portal"
-          size="medium"
-        >
-          <div className="space-y-4">
-            <Typography variant="body1">
-              You stand before a portal crackling with dark energy. The air
-              itself seems to whisper with malevolent power.
-            </Typography>
-            <Typography variant="body2">
-              Entering this realm will test your courage against Ganon's
-              minions. Are you prepared for the darkness ahead?
-            </Typography>
-          </div>
-          <div className="flex gap-2 justify-end mt-6">
-            <Button variant="default" onClick={handleClose}>
-              Retreat
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Enter Portal
-            </Button>
-          </div>
-        </Modal>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Dark mode transforms the modal with purple mystical theming and enhanced glow effects.',
-      },
-    },
-  },
-};
 
 export const AccessibilityFeatures: Story = {
   render: () => {

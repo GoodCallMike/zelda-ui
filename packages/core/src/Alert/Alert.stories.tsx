@@ -9,67 +9,95 @@ const meta: Meta<typeof Alert> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Display important messages and notifications with adventure-themed styling.
+        component: `Prominent messages that communicate important information and require user attention.
 
 \`\`\`tsx
 import { Alert } from '@zelda/core';
 
-// Basic usage
-<Alert message="Quest completed successfully!" type="success" />
+// Essential feedback
+<Alert message="Operation completed successfully" type="success" />
 
-// With description
+// Detailed information
 <Alert 
-  message="New item discovered"
-  description="You found a Master Sword in the treasure chest."
-  type="info"
+  message="Upload failed"
+  description="Unable to upload file. Check your connection and try again."
+  type="error"
   closable
 />
 \`\`\`
 
 ## Types
-- **success** - Positive feedback (Rupee Green)
-- **info** - Informational messages (Hyrule Blue)  
-- **warning** - Caution messages (Triforce Gold/Purple)
-- **error** - Error messages (Ganon Red)
+- **success** - Positive outcomes and confirmations
+- **info** - Neutral information and updates
+- **warning** - Cautions that need attention
+- **error** - Problems requiring immediate action
 
-## Accessibility
-- Uses semantic \`role="alert"\` for screen readers
-- Keyboard accessible close button
-- Proper ARIA labels for interactive elements`,
+## Accessibility & Testing
+- Uses semantic \`role="alert"\` for immediate screen reader announcement
+- Close button accessible via keyboard (Tab + Enter/Space)
+- Automatically focuses when dynamically added
+
+> **Your Responsibility**: Provide clear, actionable message text. This component handles ARIA announcements and keyboard navigation.
+
+\`\`\`tsx
+// Testing approach
+const alert = screen.getByRole('alert');
+expect(alert).toHaveTextContent('Operation completed');
+fireEvent.click(screen.getByRole('button', { name: /close/i }));
+\`\`\``,
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
+    type: {
+      control: 'select',
+      options: ['success', 'info', 'warning', 'error'],
+      description: 'Alert semantic type and visual style',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'info' },
+      },
+    },
     message: {
       control: 'text',
-      description: 'Main alert message',
+      description: 'Primary alert message',
+      table: {
+        type: { summary: 'string' },
+      },
     },
     description: {
       control: 'text',
       description: 'Optional detailed description',
-    },
-    type: {
-      control: 'select',
-      options: ['success', 'info', 'warning', 'error'],
-      description: 'Alert type and visual style',
+      table: {
+        type: { summary: 'string' },
+      },
     },
     closable: {
       control: 'boolean',
-      description: 'Whether alert can be dismissed',
+      description: 'Enable dismiss functionality',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     showIcon: {
       control: 'boolean',
-      description: 'Whether to show type icon',
+      description: 'Display type-specific icon',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
     },
-    icon: {
-      control: false,
-      description: 'Custom icon component',
+    testId: {
+      control: 'text',
+      description: 'Test identifier for automated testing',
+      table: {
+        type: { summary: 'string' },
+      },
     },
-    closeText: {
-      control: false,
-      description: 'Custom close button content',
-    },
+    icon: { table: { disable: true } },
+    closeText: { table: { disable: true } },
     onClose: { table: { disable: true } },
     className: { table: { disable: true } },
   },
@@ -80,183 +108,86 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    message: 'Quest completed successfully!',
+    message: 'Changes saved successfully',
     type: 'success',
-    testId: 'quest-alert',
+    description: 'Your changes have been saved and are now live',
+    closable: true,
   },
 };
 
 export const Variants: Story = {
   render: () => (
     <div className="space-y-4">
-      <Alert
-        message="Quest completed successfully!"
-        type="success"
-        testId="success-alert"
-      />
-      <Alert
-        message="New area discovered in Hyrule"
-        type="info"
-        testId="info-alert"
-      />
-      <Alert
-        message="Low health - find a fairy fountain"
-        type="warning"
-        testId="warning-alert"
-      />
-      <Alert
-        message="Game over - you have been defeated"
-        type="error"
-        testId="error-alert"
-      />
+      <Alert message="Operation completed successfully" type="success" />
+      <Alert message="New feature available" type="info" />
+      <Alert message="Storage space running low" type="warning" />
+      <Alert message="Connection failed" type="error" />
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'All alert types showing different semantic meanings and visual styles.',
+        story: 'All alert types showing semantic meaning and visual hierarchy.',
       },
     },
   },
 };
 
-export const WithDescription: Story = {
+export const Examples: Story = {
   render: () => (
-    <div className="space-y-4">
-      <Alert
-        message="Master Sword obtained!"
-        description="The legendary blade that seals the darkness. Your attack power has increased significantly."
-        type="success"
-        testId="sword-alert"
-      />
-      <Alert
-        message="New quest available"
-        description="Princess Zelda needs your help to collect the three sacred stones before Ganon awakens."
-        type="info"
-        testId="quest-alert"
-      />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Alerts with detailed descriptions for more context.',
-      },
-    },
-  },
-};
-
-export const Closable: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <Alert
-        message="Inventory full"
-        description="You cannot carry any more items. Consider selling or dropping some items."
-        type="warning"
-        closable
-        testId="inventory-alert"
-      />
-      <Alert
-        message="Connection lost"
-        description="Unable to save game progress. Check your internet connection."
-        type="error"
-        closable
-        closeText="Dismiss"
-        testId="connection-alert"
-      />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Dismissible alerts with close functionality.',
-      },
-    },
-  },
-};
-
-export const CustomIcon: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <Alert
-        message="Heart container found!"
-        description="Your maximum health has increased."
-        type="success"
-        icon={<HeartIcon className="w-4 h-4" />}
-        testId="heart-alert"
-      />
-      <Alert
-        message="Shield equipped"
-        description="You are now protected from enemy attacks."
-        type="info"
-        icon={<ShieldTickIcon className="w-4 h-4" />}
-        testId="shield-alert"
-      />
-      <Alert
-        message="No icon alert"
-        description="This alert doesn't show any icon."
-        type="warning"
-        showIcon={false}
-        testId="no-icon-alert"
-      />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Alerts with custom icons or no icons.',
-      },
-    },
-  },
-};
-
-export const RealWorldExamples: Story = {
-  render: () => (
-    <div className="space-y-6 p-6">
-      <div className="space-y-3">
-        <Typography variant="h3">Game Interface</Typography>
-        <div className="space-y-3">
-          <Alert
-            message="Save complete"
-            description="Your progress has been saved to slot 1."
-            type="success"
-            closable
-            testId="save-complete"
-          />
-          <Alert
-            message="New update available"
-            description="Version 2.1.0 includes bug fixes and new content."
-            type="info"
-            testId="update-available"
-          />
-        </div>
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <Alert
+          message="Profile updated successfully"
+          description="Your profile changes have been saved and are now visible."
+          type="success"
+          closable
+        />
+        <Alert
+          message="New update available"
+          description="Version 2.1.0 includes bug fixes and new features."
+          type="info"
+        />
+        <Alert
+          message="Storage limit reached"
+          description="You're using 95% of your storage. Consider upgrading your plan."
+          type="warning"
+          closable
+        />
+        <Alert
+          message="Upload failed"
+          description="Unable to upload file. Check your connection and try again."
+          type="error"
+          closable
+        />
       </div>
 
-      <div className="space-y-3">
-        <Typography variant="h3">Form Validation</Typography>
-        <div className="space-y-3">
-          <Alert
-            message="Character name too short"
-            description="Character names must be at least 3 characters long."
-            type="warning"
-            testId="name-validation"
-          />
-          <Alert
-            message="Failed to create character"
-            description="Server error occurred. Please try again later."
-            type="error"
-            closable
-            testId="create-error"
-          />
-        </div>
+      <div className="space-y-4">
+        <Alert
+          message="Backup completed"
+          description="Your data has been successfully backed up."
+          type="success"
+          icon={<HeartIcon className="w-4 h-4" />}
+        />
+        <Alert
+          message="Security enabled"
+          type="info"
+          icon={<ShieldTickIcon className="w-4 h-4" />}
+          showIcon={true}
+        />
+        <Alert
+          message="System maintenance"
+          description="This alert has no icon."
+          type="warning"
+          showIcon={false}
+        />
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Real-world usage examples in game interfaces and forms.',
+        story: 'Practical examples showing descriptions, dismissible alerts, and custom icons.',
       },
     },
   },

@@ -9,80 +9,68 @@ const meta: Meta<typeof Tooltip> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `Tooltip component for displaying contextual information on hover with Hyrule-themed styling.
-
-## Overview
-
-The Tooltip component provides contextual information when users hover over or focus on elements. It supports multiple positioning options and maintains accessibility standards.
-
-## Quick Start
+        component: `Contextual information overlay that appears on hover or focus to provide helpful guidance without cluttering the interface.
 
 \`\`\`tsx
 import { Tooltip } from '@zelda/core';
 
-// Basic usage
-<Tooltip content="This is helpful information">
-  <Button>Hover me</Button>
+// Essential usage pattern
+<Tooltip content="Save your changes">
+  <Button>Save</Button>
 </Tooltip>
 
-// With positioning
-<Tooltip content="Tooltip content" position="bottom">
-  <Button>Bottom tooltip</Button>
+// Positioned for optimal visibility
+<Tooltip content="Delete permanently" position="bottom">
+  <Button variant="destructive">Delete</Button>
 </Tooltip>
 \`\`\`
 
-## Positioning
+## Positions
+- **top** - Default position above trigger element
+- **bottom** - Below trigger for top-heavy layouts
+- **left** - Left side for right-aligned content
+- **right** - Right side for left-aligned content
 
-The tooltip supports four positions:
-- **top** (default) - Appears above the trigger element
-- **bottom** - Appears below the trigger element  
-- **left** - Appears to the left of the trigger element
-- **right** - Appears to the right of the trigger element
+## Accessibility & Testing
+- Appears on both hover and keyboard focus
+- Uses semantic \`role="tooltip"\` for screen readers
+- Automatically positioned to stay within viewport
+- Dismissible with Escape key when focused
 
-## Accessibility
-
-The Tooltip component is fully accessible:
-
-### Keyboard Support
-- **Focus**: Tooltip appears when trigger element receives focus
-- **Blur**: Tooltip disappears when trigger element loses focus
-- **Escape**: Can be dismissed with Escape key (when focused)
-
-### Screen Reader Support
-- Uses proper \`role="tooltip"\` attribute
-- Provides accessible content through ARIA
-- Maintains focus management for keyboard users
-
-## Testing
-
-Built-in testing support with \`testId\` props:
+> **Your Responsibility**: Provide clear, concise tooltip content. This component handles positioning and accessibility.
 
 \`\`\`tsx
-<Tooltip content="Test tooltip" testId="help-tooltip">
-  <Button>Help</Button>
-</Tooltip>
-// Results in: data-testid="help-tooltip"
+// Testing approach
+const trigger = screen.getByRole('button', { name: 'Save' });
+fireEvent.mouseEnter(trigger);
+expect(screen.getByRole('tooltip')).toBeInTheDocument();
 \`\`\``,
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
+    content: {
+      control: 'text',
+      description: 'Tooltip message content',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
     position: {
-      control: { type: 'select' },
+      control: 'select',
       options: ['top', 'bottom', 'left', 'right'],
-      description: 'Position of the tooltip relative to the trigger element',
+      description: 'Tooltip position relative to trigger element',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'top' },
       },
     },
     delay: {
-      control: { type: 'number' },
-      description: 'Delay in milliseconds before showing the tooltip',
+      control: { type: 'number', min: 0, max: 2000, step: 100 },
+      description: 'Show delay in milliseconds',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: '500' },
       },
     },
     testId: {
@@ -92,11 +80,7 @@ Built-in testing support with \`testId\` props:
         type: { summary: 'string' },
       },
     },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
+    children: { table: { disable: true } },
   },
 };
 
@@ -104,221 +88,115 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => (
-    <Tooltip {...args}>
-      <Button>Hover me</Button>
-    </Tooltip>
-  ),
   args: {
-    content: 'This is a helpful tooltip',
+    content: 'Save your changes to continue later',
+    children: <Button>Save</Button>,
   },
 };
 
 export const Positions: Story = {
-  name: 'All Positions',
   render: () => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '2rem',
-        padding: '2rem',
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Tooltip content="Tooltip on top" position="top">
-          <Button>Top</Button>
-        </Tooltip>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Tooltip content="Tooltip on bottom" position="bottom">
-          <Button>Bottom</Button>
-        </Tooltip>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Tooltip content="Tooltip on left" position="left">
-          <Button>Left</Button>
-        </Tooltip>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Tooltip content="Tooltip on right" position="right">
-          <Button>Right</Button>
-        </Tooltip>
-      </div>
+    <div className="grid grid-cols-2 gap-8 p-8">
+      <Tooltip content="Default position above" position="top">
+        <Button>Top</Button>
+      </Tooltip>
+      <Tooltip content="Appears below trigger" position="bottom">
+        <Button>Bottom</Button>
+      </Tooltip>
+      <Tooltip content="Left side placement" position="left">
+        <Button>Left</Button>
+      </Tooltip>
+      <Tooltip content="Right side placement" position="right">
+        <Button>Right</Button>
+      </Tooltip>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Tooltip positioning options: top, bottom, left, and right.',
+        story: 'All four positioning options for optimal tooltip placement.',
       },
     },
   },
 };
 
 export const DarkMode: Story = {
-  render: () => (
-    <div
-      className="dark"
-      style={{
-        backgroundColor: '#111827',
-        padding: '1.5rem',
-        borderRadius: '0.5rem',
-      }}
-    >
-      <div style={{ marginBottom: '1rem' }}>
-        <h3
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 'bold',
-            color: 'white',
-            marginBottom: '1rem',
-          }}
-        >
-          Dark Mode Tooltips
-        </h3>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <Tooltip content="Dark mode tooltip" position="top">
-            <Button>Top</Button>
-          </Tooltip>
-          <Tooltip content="Another dark tooltip" position="bottom">
-            <Button>Bottom</Button>
-          </Tooltip>
-          <Tooltip content="Left positioned" position="left">
-            <Button>Left</Button>
-          </Tooltip>
-          <Tooltip content="Right positioned" position="right">
-            <Button>Right</Button>
-          </Tooltip>
-        </div>
+  decorators: [
+    (Story) => (
+      <div className="dark p-6 bg-gray-900 rounded-lg">
+        <Story />
       </div>
+    ),
+  ],
+  render: () => (
+    <div className="flex gap-4">
+      <Tooltip content="Save changes" position="top">
+        <Button>Save</Button>
+      </Tooltip>
+      <Tooltip content="Load file" position="bottom">
+        <Button>Load</Button>
+      </Tooltip>
+      <Tooltip content="Application settings" position="left">
+        <Button>Settings</Button>
+      </Tooltip>
+      <Tooltip content="Exit application" position="right">
+        <Button variant="destructive">Exit</Button>
+      </Tooltip>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Tooltips in dark mode maintain proper contrast and visibility.',
+        story: 'Tooltips maintain proper contrast and readability in dark mode.',
       },
     },
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => (
-    <div style={{ maxWidth: '32rem' }}>
-      <div style={{ marginBottom: '2rem' }}>
-        <h3
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-          }}
-        >
-          Game Interface Examples
-        </h3>
-
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'center',
-            marginBottom: '1rem',
-          }}
-        >
-          <Tooltip content="Start a new adventure in Hyrule">
-            <Button variant="primary">New Game</Button>
-          </Tooltip>
-
-          <Tooltip content="Continue your existing save file">
-            <Button variant="default">Continue</Button>
-          </Tooltip>
-
-          <Tooltip
-            content="View your collection of items and equipment"
-            position="bottom"
-          >
-            <Button variant="default">Inventory</Button>
-          </Tooltip>
-        </div>
+    <div className="space-y-6 max-w-2xl">
+      <div className="flex gap-4 items-center">
+        <Tooltip content="Create a new project">
+          <Button variant="primary">New Project</Button>
+        </Tooltip>
+        <Tooltip content="Open an existing project">
+          <Button>Open</Button>
+        </Tooltip>
+        <Tooltip content="View your recent files" position="bottom">
+          <Button>Recent</Button>
+        </Tooltip>
       </div>
 
-      <div style={{ marginBottom: '2rem' }}>
-        <h3
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-          }}
-        >
-          Action Buttons
-        </h3>
-
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'center',
-            marginBottom: '1rem',
-          }}
-        >
-          <Tooltip
-            content="Permanently delete this save file - cannot be undone!"
-            position="top"
-          >
-            <Button variant="destructive">Delete Save</Button>
-          </Tooltip>
-
-          <Tooltip
-            content="Create a backup copy of your current progress"
-            position="right"
-          >
-            <Button variant="dashed">Backup Save</Button>
-          </Tooltip>
-
-          <Tooltip content="Return to the main menu" position="left">
-            <Button variant="text">Cancel</Button>
-          </Tooltip>
-        </div>
+      <div className="flex gap-4 items-center">
+        <Tooltip content="Permanently delete - cannot be undone!" position="top">
+          <Button variant="destructive">Delete</Button>
+        </Tooltip>
+        <Tooltip content="Create backup of current work" position="right">
+          <Button variant="dashed">Backup</Button>
+        </Tooltip>
+        <Tooltip content="Return to dashboard" position="left">
+          <Button variant="text">Cancel</Button>
+        </Tooltip>
       </div>
 
-      <div>
-        <h3
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-          }}
-        >
-          Help & Navigation
-        </h3>
-
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Tooltip content="Open the world map to see your current location">
-            <Button variant="link">View Map</Button>
-          </Tooltip>
-
-          <Tooltip
-            content="Check your current quests and objectives"
-            position="bottom"
-          >
-            <Button variant="link">Quest Log</Button>
-          </Tooltip>
-
-          <Tooltip
-            content="Adjust game settings and preferences"
-            position="right"
-          >
-            <Button variant="text">Settings</Button>
-          </Tooltip>
-        </div>
+      <div className="flex gap-4 items-center">
+        <Tooltip content="View project overview">
+          <Button variant="link">Overview</Button>
+        </Tooltip>
+        <Tooltip content="Check task progress and status" position="bottom">
+          <Button variant="link">Tasks</Button>
+        </Tooltip>
+        <Tooltip content="Adjust project settings" position="right">
+          <Button variant="text">Settings</Button>
+        </Tooltip>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'Real-world examples showing tooltips in game interface contexts with helpful, descriptive content.',
+        story: 'Practical examples showing tooltips with various button types and positioning.',
       },
     },
   },

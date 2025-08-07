@@ -12,48 +12,56 @@ const meta: Meta<typeof Divider> = {
     layout: 'padded',
     docs: {
       description: {
-        component: `Divider component for separating content with Zelda-themed styling and magical effects.
-
-## Overview
-
-The Divider component provides visual separation between content sections with multiple variants including the signature magical shimmer effect from the Link-Zelda design system.
-
-## Quick Start
+        component: `Visual separators that organize content into distinct sections with clear hierarchy and spacing.
 
 \`\`\`tsx
 import { Divider } from '@zelda/core';
 
-// Basic divider
+// Essential separation
 <Divider />
 
-// Magical shimmer divider
+// Enhanced visual divider
 <Divider variant="magical" />
 
-// With text label
-<Divider>Section Title</Divider>
+// With section label
+<Divider>Settings</Divider>
 \`\`\`
 
 ## Variants
+- **solid** - Clean line for basic content separation
+- **dashed** - Subtle pattern for softer visual breaks
+- **magical** - Enhanced styling with gradient effects
 
-### Solid
-Clean, simple divider for basic content separation.
+## Orientations
+- **horizontal** - Default for vertical content flow
+- **vertical** - For side-by-side content separation
 
-### Dashed
-Subtle dashed pattern for softer visual breaks.
+## Accessibility & Testing
+- Uses semantic \`role="separator"\` for screen readers
+- Maintains proper contrast ratios in all variants
+- Text labels are announced appropriately
 
-### Magical
-Signature Link-Zelda shimmer effect with animated gold-green gradient.
+> **Your Responsibility**: Use dividers to create logical content sections. This component provides semantic separation and visual hierarchy.
 
-## Accessibility
-
-- Semantic separation using appropriate ARIA roles
-- Proper contrast ratios in all variants
-- Screen reader friendly text labels`,
+\`\`\`tsx
+// Testing approach
+const divider = screen.getByRole('separator');
+expect(divider).toBeInTheDocument();
+\`\`\``,
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
+    variant: {
+      control: 'select',
+      options: ['solid', 'dashed', 'magical'],
+      description: 'Visual style and emphasis level',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'solid' },
+      },
+    },
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],
@@ -63,15 +71,6 @@ Signature Link-Zelda shimmer effect with animated gold-green gradient.
         defaultValue: { summary: 'horizontal' },
       },
     },
-    variant: {
-      control: 'select',
-      options: ['solid', 'dashed', 'magical'],
-      description: 'Visual style variant',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'solid' },
-      },
-    },
     textAlign: {
       control: 'select',
       options: ['left', 'center', 'right'],
@@ -79,6 +78,13 @@ Signature Link-Zelda shimmer effect with animated gold-green gradient.
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'center' },
+      },
+    },
+    children: {
+      control: 'text',
+      description: 'Optional text label for the divider',
+      table: {
+        type: { summary: 'ReactNode' },
       },
     },
   },
@@ -117,8 +123,7 @@ export const Variants: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'Different visual styles: solid for clean separation, dashed for subtle breaks, and magical for the signature Link-Zelda shimmer effect.',
+        story: 'All divider variants showing different visual emphasis levels.',
       },
     },
   },
@@ -133,10 +138,10 @@ export const WithText: Story = {
         <Typography variant="body1">Content below the divider</Typography>
       </div>
       <div>
-        <Typography variant="body1">Quest Log</Typography>
-        <Divider variant="magical">⚔️ Active Quests</Divider>
-        <Typography variant="body1">• Find the Master Sword</Typography>
-        <Typography variant="body1">• Rescue Princess Zelda</Typography>
+        <Typography variant="body1">Project Overview</Typography>
+        <Divider variant="magical">Active Tasks</Divider>
+        <Typography variant="body1">• Complete user interface design</Typography>
+        <Typography variant="body1">• Implement authentication system</Typography>
       </div>
     </div>
   ),
@@ -187,180 +192,35 @@ export const Vertical: Story = {
   },
 };
 
-export const DarkMode: Story = {
+export const Examples: Story = {
   render: () => (
-    <div className="dark bg-gray-900 p-6 rounded space-y-6">
-      <Typography variant="h3" className="mb-4">
-        🌙 Dark Mode Dividers
-      </Typography>
+    <div className="space-y-6">
       <div>
-        <Typography variant="body1">Solid divider in dark mode</Typography>
+        <Typography variant="body1">Basic content separation</Typography>
         <Divider variant="solid" />
-        <Typography variant="body1">
-          Clean separation with proper contrast
-        </Typography>
+        <Typography variant="body1">Clean visual hierarchy</Typography>
       </div>
       <div>
-        <Typography variant="body1">
-          Magical shimmer transforms to purple-green
-        </Typography>
-        <Divider variant="magical">✨ Mystical Separation</Divider>
-        <Typography variant="body1">
-          Enhanced glow effects in Ganon's domain
-        </Typography>
+        <Typography variant="body1">Enhanced section breaks</Typography>
+        <Divider variant="magical">Important Section</Divider>
+        <Typography variant="body1">Emphasized content areas</Typography>
+      </div>
+      <div className="flex items-center gap-4 h-16">
+        <Typography variant="body1">Left</Typography>
+        <Divider orientation="vertical" />
+        <Typography variant="body1">Center</Typography>
+        <Divider orientation="vertical" variant="dashed" />
+        <Typography variant="body1">Right</Typography>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'Dark mode transforms dividers with proper contrast and the magical variant becomes purple-green mystical effects.',
+        story: 'Practical examples showing different divider variants and orientations.',
       },
     },
   },
 };
 
-export const RealWorldExamples: Story = {
-  render: () => (
-    <div className="space-y-8 max-w-2xl">
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">
-          🎮 Game Interface
-        </Typography>
 
-        <div className="space-y-4">
-          <Typography variant="h4">Character Stats</Typography>
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <Typography variant="body2" className="text-gray-600">
-                Health
-              </Typography>
-              <Typography variant="h4" className="text-ganon-600">
-                ❤️ 20/20
-              </Typography>
-            </div>
-            <div>
-              <Typography variant="body2" className="text-gray-600">
-                Magic
-              </Typography>
-              <Typography variant="h4" className="text-hyrule-600">
-                🔮 15/15
-              </Typography>
-            </div>
-            <div>
-              <Typography variant="body2" className="text-gray-600">
-                Rupees
-              </Typography>
-              <Typography variant="h4" className="text-rupee-600">
-                💎 999
-              </Typography>
-            </div>
-          </div>
-
-          <Divider variant="magical" />
-
-          <Typography variant="h4">Inventory</Typography>
-          <div className="grid grid-cols-4 gap-2">
-            {[
-              '⚔️ Master Sword',
-              '🛡️ Hylian Shield',
-              '🏹 Bow of Light',
-              '🗝️ Small Key',
-            ].map((item) => (
-              <div
-                key={item}
-                className="p-2 border rounded text-center text-sm"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <Divider>Quest Progress</Divider>
-
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span>🗡️ The Master Sword</span>
-              <span className="text-yellow-600">In Progress</span>
-            </div>
-            <div className="flex justify-between">
-              <span>🏰 Rescue Princess Zelda</span>
-              <span className="text-gray-500">Not Started</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="p-6 border rounded-lg">
-        <Typography variant="h3" className="mb-4">
-          📋 Settings Panel
-        </Typography>
-
-        <div className="space-y-6">
-          <div>
-            <Typography variant="h4">Audio Settings</Typography>
-            <div className="space-y-3 mt-3">
-              <div className="flex justify-between items-center">
-                <span>Master Volume</span>
-                <Slider defaultValue={75} className="w-32" />
-              </div>
-              <div className="flex justify-between items-center">
-                <span>Music Volume</span>
-                <Slider defaultValue={60} className="w-32" />
-              </div>
-            </div>
-          </div>
-
-          <Divider variant="dashed" />
-
-          <div>
-            <Typography variant="h4">Graphics Settings</Typography>
-            <div className="space-y-3 mt-3">
-              <div className="flex justify-between items-center">
-                <span>Quality</span>
-                <Select
-                  options={[
-                    { value: 'high', label: 'High' },
-                    { value: 'medium', label: 'Medium' },
-                    { value: 'low', label: 'Low' },
-                  ]}
-                  defaultValue="high"
-                  className="w-32"
-                />
-              </div>
-              <div className="flex justify-between items-center">
-                <span>Fullscreen</span>
-                <Checkbox />
-              </div>
-            </div>
-          </div>
-
-          <Divider variant="magical">⚙️ Advanced</Divider>
-
-          <div>
-            <Typography variant="h4">Developer Options</Typography>
-            <div className="space-y-2 mt-3">
-              <div className="flex items-center gap-2">
-                <Checkbox />
-                <span>Show FPS Counter</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox />
-                <span>Debug Mode</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Real-world examples showing Divider components in game interfaces and settings panels with different variants for different content hierarchy.',
-      },
-    },
-  },
-};
