@@ -17,6 +17,9 @@
     "test:visual:ui": "playwright test --ui",
     "test:visual:update": "playwright test --update-snapshots",
     "test:visual:testid": "playwright test --grep='testId'",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
 
     "lint": "biome check",
     "format": "biome format --write",
@@ -75,6 +78,8 @@
     "typescript": "~5.8.3",
     "vite": "^7.1.0",
 
+    "vitest": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "wait-on": "^8.0.4"
   }
 }

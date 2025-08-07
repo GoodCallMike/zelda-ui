@@ -3,3 +3,5 @@ pre-commit:
   commands:
     check:
       run: pnpm check
+    test:
+      run: pnpm test:run
