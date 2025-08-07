@@ -148,6 +148,8 @@ export class VisualTestHelpers {
    */
   async screenshotComponent(testId: string, name: string) {
     const component = this.page.getByTestId(testId);
+    await expect(component).toBeVisible();
+    await component.waitFor({ state: 'visible' });
     await expect(component).toHaveScreenshot(`${name}.png`);
   }
 

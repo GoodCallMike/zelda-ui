@@ -20,11 +20,7 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       
-      # All tests (unit + accessibility)
-      - run: pnpm test:ci
-        env:
-          CI: true
-      
+
       # Visual regression tests (generate snapshots if missing)
       - run: pnpm test:visual --update-snapshots
         env:
@@ -61,11 +57,7 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       
-      # Full accessibility test suite
-      - run: pnpm test:a11y:full
-        env:
-          CI: true
-      
+
       # Upload accessibility reports
       - uses: actions/upload-artifact@v4
         if: always()

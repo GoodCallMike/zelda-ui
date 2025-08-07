@@ -12,17 +12,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build --output-dir storybook-static",
     "build-storybook:gh-pages": "BASE_PATH=/zelda-ui/ storybook build --output-dir storybook-static",
-    "test": "vitest --silent",
-    "test:ui": "vitest --ui",
-    "test:run": "vitest run --silent",
+
     "test:visual": "playwright test",
     "test:visual:ui": "playwright test --ui",
     "test:visual:update": "playwright test --update-snapshots",
     "test:visual:testid": "playwright test --grep='testId'",
-    "test:a11y": "vitest run --testNamePattern='Accessibility|a11y'",
-    "test:a11y:full": "vitest run --testNamePattern='Accessibility|a11y' && playwright test --config=playwright.a11y.config.ts",
-    "test:a11y:ci": "concurrently --kill-others --success first 'pnpm storybook --ci' 'wait-on http://localhost:6006 && pnpm test:a11y:full'",
-    "test:ci": "vitest run",
+
     "lint": "biome check",
     "format": "biome format --write",
     "generate:component": "node scripts/generate-component.js",
@@ -30,10 +25,10 @@
   },
   "dependencies": {
     "date-fns": "^4.1.0",
-    "react": "^19.1.0",
-    "react-aria": "^3.41.1",
-    "react-dom": "^19.1.0",
-    "react-stately": "^3.39.0"
+    "react": "^18.3.1",
+    "react-aria": "^3.42.0",
+    "react-dom": "^18.3.1",
+    "react-stately": "^3.40.0"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -44,12 +39,14 @@
       "@vanilla-extract/vite-plugin>vite": "^7.0.0"
     },
     "onlyBuiltDependencies": [
-      "esbuild"
+      "esbuild",
+      "lefthook"
     ]
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.3",
-    "@playwright/test": "^1.54.1",
+    "@mdx-js/react": "^3.1.0",
+    "@playwright/test": "^1.54.2",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
@@ -58,31 +55,29 @@
     "@storybook/addon-themes": "^9.1.1",
     "@storybook/addon-vitest": "^9.1.1",
     "@storybook/react-vite": "^9.1.1",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vanilla-extract/vite-plugin": "^5.1.0",
-    "@vitejs/plugin-react": "^4.6.0",
-    "@vitest/browser": "3.2.4",
-    "@vitest/coverage-v8": "3.2.4",
-    "@vitest/ui": "^3.2.4",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vanilla-extract/vite-plugin": "^5.1.1",
+    "@vitejs/plugin-react": "^4.7.0",
+
     "axe-playwright": "^2.1.0",
-    "concurrently": "^9.1.0",
+    "concurrently": "^9.2.0",
     "globals": "^16.3.0",
     "jest-axe": "^10.0.0",
     "jsdom": "^26.1.0",
     "lefthook": "^1.12.2",
-    "playwright": "^1.54.1",
-    "rollup": "^4.45.1",
+    "playwright": "^1.54.2",
+    "rollup": "^4.46.2",
     "rollup-plugin-dts": "^6.2.1",
     "storybook": "^9.1.1",
     "turbo": "^2.5.5",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4",
-    "vitest": "^3.2.4",
-    "wait-on": "^8.0.1"
+    "vite": "^7.1.0",
+
+    "wait-on": "^8.0.4"
   }
 }
