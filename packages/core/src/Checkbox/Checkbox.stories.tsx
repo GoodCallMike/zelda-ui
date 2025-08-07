@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import {
+  Alert,
+  Button,
+  Card,
+  Checkbox,
+  Divider,
+  Input,
+  Typography,
+} from '@zelda/core';
 import { useState } from 'react';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Typography } from '../Typography';
-import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Data Entry/Checkbox',
@@ -12,42 +17,53 @@ const meta: Meta<typeof Checkbox> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `Checkbox component for Hyrule-themed interfaces with comprehensive accessibility and testing support.
-
-## Overview
-
-The Checkbox component provides multi-choice selection with authentic Zelda-inspired styling. It supports individual checkboxes and maintains WCAG 2.1 AA accessibility compliance.
-
-## Quick Start
+        component: `Checkbox component provides multi-choice selection with Zelda-themed styling and comprehensive accessibility.
 
 \`\`\`tsx
 import { Checkbox } from '@zelda/core';
 
-// Basic usage
+// Primary usage pattern
 <Checkbox label="Accept terms" />
 
-// With Hyrule theming
-<Checkbox label="Collect all Triforce pieces" defaultChecked />
+// Key variant
+<Checkbox label="Enable notifications" defaultChecked />
+\`\`\`
+
+## States
+- **default** - Unchecked state (empty checkbox)
+- **checked** - Selected state (checkmark visible)
+- **error** - Validation error (red styling)
+- **disabled** - Non-interactive (grayed out)
+
+## Accessibility & Testing
+- Uses semantic checkbox input with proper labeling
+- Supports Space/Enter activation and Tab navigation
+- Maintains WCAG AA contrast ratios in all themes
+
+\`\`\`tsx
+// Testing approach
+const checkbox = screen.getByTestId('terms-checkbox');
+expect(checkbox).toBeEnabled();
+await user.click(checkbox);
 \`\`\``,
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
-    error: {
+    disabled: {
       control: 'boolean',
-      description: 'Whether the checkbox has error state',
+      description: 'Prevents user interaction',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the checkbox is disabled',
+    error: {
+      control: 'text',
+      description: 'Error message to display',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        type: { summary: 'string' },
       },
     },
     testId: {
@@ -57,6 +73,8 @@ import { Checkbox } from '@zelda/core';
         type: { summary: 'string' },
       },
     },
+    className: { table: { disable: true } },
+    onChange: { table: { disable: true } },
   },
 };
 
@@ -69,51 +87,32 @@ export const Default: Story = {
   },
 };
 
-export const WithoutLabel: Story = {
-  args: {},
-};
-
-export const Checked: Story = {
-  args: {
-    label: 'I agree to the terms',
-    defaultChecked: true,
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    label: 'Required field',
-    error: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled checkbox',
-    disabled: true,
-  },
-};
-
-export const DisabledChecked: Story = {
-  args: {
-    label: 'Disabled and checked',
-    disabled: true,
-    defaultChecked: true,
-  },
-};
-
-export const DarkMode: Story = {
+export const Variants: Story = {
   render: () => (
-    <div className="space-y-6">
-      <div className="dark p-6 bg-gray-900 rounded-lg">
-        <Typography variant="h3" className="text-white mb-4">
-          Dark Mode
-        </Typography>
-        <div className="space-y-4 text-white">
-          <Checkbox label="Enable mystical powers" defaultChecked />
-          <Checkbox label="Collect ancient artifacts" />
-          <Checkbox label="Unlock secret dungeons" />
-        </div>
+    <div className="space-y-4 p-4">
+      <div className="space-y-2">
+        <Checkbox label="Default unchecked" testId="variant-default" />
+        <Checkbox
+          label="Default checked"
+          defaultChecked
+          testId="variant-checked"
+        />
+        <Checkbox
+          label="Error state"
+          error="Validation error"
+          testId="variant-error"
+        />
+        <Checkbox
+          label="Disabled unchecked"
+          disabled
+          testId="variant-disabled"
+        />
+        <Checkbox
+          label="Disabled checked"
+          disabled
+          defaultChecked
+          testId="variant-disabled-checked"
+        />
       </div>
     </div>
   ),
@@ -121,97 +120,118 @@ export const DarkMode: Story = {
     docs: {
       description: {
         story:
-          'Checkbox components automatically adapt to dark mode with mystical purple theming.',
+          'All checkbox states showing default, checked, error, and disabled variations.',
       },
     },
   },
 };
 
-export const KeyboardNavigation: Story = {
-  render: () => {
-    const [announcement, setAnnouncement] = useState('');
+export const Accessibility: Story = {
+  render: () => (
+    <div className="space-y-6 p-6">
+      <Typography variant="h3" className="mb-4">
+        🔍 Accessibility Features
+      </Typography>
 
-    const announceNavigation = (message: string) => {
-      setAnnouncement(message);
-      setTimeout(() => setAnnouncement(''), 2000);
-    };
-
-    return (
-      <div className="space-y-8 max-w-2xl">
-        <div aria-live="polite" className="sr-only">
-          {announcement}
-        </div>
-
-        <div className="p-4 border rounded-lg bg-green-50 border-green-200">
-          <Typography variant="h4" className="mb-3 text-green-800">
-            ⌨️ Keyboard Navigation Patterns
-          </Typography>
-          <Typography variant="body2" className="text-green-700">
-            Use keyboard to navigate and interact with checkboxes.
-          </Typography>
-        </div>
-
-        <div className="space-y-4">
-          <Typography variant="h5">Tab Navigation Order</Typography>
-          <div className="space-y-3">
+      <div className="space-y-4">
+        <Typography variant="h4">⌨️ Keyboard Navigation</Typography>
+        <div className="space-y-3 p-4">
+          <Alert
+            type="info"
+            message="Use Tab to navigate, Space to toggle
+            checkboxes."
+          />
+          <Card variant="default">
             <Checkbox
-              label="First Checkbox (Tab Order 1)"
-              testId="tab-order-1"
-              onFocus={() => announceNavigation('Focused on first checkbox')}
+              label="First checkbox (Tab order 1)"
+              testId="keyboard-1"
             />
             <Checkbox
-              label="Second Checkbox (Tab Order 2)"
-              testId="tab-order-2"
-              onFocus={() => announceNavigation('Focused on second checkbox')}
+              label="Second checkbox (Tab order 2)"
+              testId="keyboard-2"
             />
             <Checkbox
-              label="Third Checkbox (Tab Order 3)"
-              testId="tab-order-3"
-              onFocus={() => announceNavigation('Focused on third checkbox')}
+              label="Third checkbox (Tab order 3)"
+              testId="keyboard-3"
             />
-          </div>
+          </Card>
         </div>
 
-        <div className="space-y-4">
-          <Typography variant="h5">Space Key Activation</Typography>
-          <div className="space-y-3">
-            <Checkbox label="Press Space to toggle" testId="space-toggle" />
-            <Typography variant="body2" className="text-gray-600">
-              • Focus with Tab, toggle with Space key
-            </Typography>
-          </div>
+        <div className="space-y-2">
+          <Typography variant="h5">Keyboard Interactions</Typography>
+          <Card className="p-0 pb-2">
+            <div className="bg-gray-50 dark:bg-gray-600 rounded-t-lg mb-1">
+              <div className="flex">
+                <div className="text-left p-2 font-medium flex-1">Key</div>
+                <div className="text-left p-2 font-medium flex-1">Action</div>
+              </div>
+            </div>
+            <div>
+              <div className="flex">
+                <div className="p-2 flex-1">
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                    Space
+                  </kbd>
+                </div>
+                <div className="p-2 flex-1">Toggles checkbox state</div>
+              </div>
+              <Divider variant="solid" className="bg-gray-50" />
+              <div className="flex">
+                <div className="p-2 flex-1">
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                    Enter
+                  </kbd>
+                </div>
+                <div className="p-2 flex-1">Toggles checkbox state</div>
+              </div>
+              <Divider variant="solid" className="bg-gray-50" />
+              <div className="flex">
+                <div className="p-2 flex-1">
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                    Tab
+                  </kbd>
+                </div>
+                <div className="p-2 flex-1">Moves focus to next element</div>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
-    );
-  },
+
+      <div className="space-y-4">
+        <Typography variant="h4">🏷️ ARIA Implementation</Typography>
+        <div className="space-y-3 p-4 border rounded">
+          <Checkbox
+            label="Required checkbox"
+            required
+            aria-describedby="help-text"
+            testId="aria-example"
+          />
+          <Typography variant="body2" id="help-text" className="text-gray-600">
+            This checkbox demonstrates proper ARIA labeling and description
+          </Typography>
+        </div>
+      </div>
+
+      <div className="p-3 text-gray-100 rounded text-sm font-mono">
+        <pre className="p-4">{`// Testing approach
+const checkbox = screen.getByTestId('terms-checkbox');
+expect(checkbox).toBeEnabled();
+
+await user.click(checkbox);
+expect(checkbox).toBeChecked();
+
+// Test keyboard activation
+await user.keyboard(' ');
+expect(checkbox).not.toBeChecked();`}</pre>
+      </div>
+    </div>
+  ),
   parameters: {
     docs: {
       description: {
-        story: `
-## Keyboard Navigation Patterns
-
-### Universal Shortcuts
-- **Tab/Shift+Tab** - Navigate between checkboxes
-- **Space** - Toggle checkbox state
-- **Enter** - Activate checkbox (same as Space)
-
-### Testing Examples
-\`\`\`tsx
-// Test keyboard navigation
-test('Checkbox supports keyboard navigation', async () => {
-  const user = userEvent.setup();
-  render(<Checkbox label="Test" testId="keyboard-test" />);
-  
-  const checkbox = screen.getByTestId('keyboard-test');
-  
-  await user.tab();
-  expect(checkbox).toHaveFocus();
-  
-  await user.keyboard(' ');
-  expect(checkbox).toBeChecked();
-});
-\`\`\`
-        `,
+        story:
+          'Comprehensive accessibility features including keyboard navigation, ARIA attributes, and testing patterns.',
       },
     },
   },
@@ -237,7 +257,7 @@ export const ARIAAttributes: Story = {
     };
 
     return (
-      <div className="space-y-8 max-w-2xl">
+      <div className="space-y-8 max-w-2xl m-4">
         <div className="p-4 border rounded-lg bg-blue-50 border-blue-200">
           <Typography variant="h4" className="mb-3 text-blue-800">
             🏷️ ARIA Attributes Usage
@@ -249,7 +269,7 @@ export const ARIAAttributes: Story = {
 
         <div className="space-y-4">
           <Typography variant="h5">aria-describedby Implementation</Typography>
-          <div className="p-3 bg-gray-50 border rounded">
+          <div className="p-3 bg-gray-50 dark:bg-gray-800 border rounded">
             <Checkbox
               label="Enable notifications"
               checked={formData.notifications}
@@ -273,7 +293,7 @@ export const ARIAAttributes: Story = {
           <Typography variant="h5">
             aria-required for Required Fields
           </Typography>
-          <div className="p-3 bg-gray-50 border rounded">
+          <div className="p-3 bg-gray-50 dark:bg-gray-800 border rounded">
             <Checkbox
               label="Accept Terms and Conditions *"
               checked={formData.terms}
@@ -285,7 +305,7 @@ export const ARIAAttributes: Story = {
               aria-required="true"
               aria-describedby="terms-help"
               aria-invalid={errors.terms ? 'true' : 'false'}
-              error={!!errors.terms}
+              error={errors.terms}
               testId="terms-required"
             />
             <Typography
@@ -311,7 +331,7 @@ export const ARIAAttributes: Story = {
           <Typography variant="h5">
             aria-label for Additional Context
           </Typography>
-          <div className="p-3 bg-gray-50 border rounded">
+          <div className="p-3 bg-gray-50 dark:bg-gray-800 border rounded">
             <Checkbox
               label="Newsletter"
               checked={formData.newsletter}
@@ -431,7 +451,7 @@ expect(checkbox).not.toBeChecked()`}
           <Checkbox
             testId="test-validation-checkbox"
             label="Validation Test Checkbox"
-            error
+            error="Validation error message"
             aria-invalid="true"
           />
           <Typography variant="body2" className="text-red-600" role="alert">
@@ -495,7 +515,7 @@ expect(checkbox).toHaveAttribute('aria-required', 'true');
   },
 };
 
-export const RealWorldExamples: Story = {
+export const Examples: Story = {
   render: () => (
     <div className="space-y-8 max-w-2xl">
       {/* Settings Form */}
@@ -503,7 +523,7 @@ export const RealWorldExamples: Story = {
         <Typography variant="h3" className="mb-4">
           Game Settings
         </Typography>
-        <form className="space-y-4">
+        <div className="space-y-4">
           <Input label="Player Name" placeholder="Enter your hero name" />
           <div>
             <Typography variant="label" className="block mb-2">
@@ -528,9 +548,9 @@ export const RealWorldExamples: Story = {
           </div>
           <div className="flex gap-2 pt-4">
             <Button variant="primary">Save Settings</Button>
-            <Button variant="secondary">Reset to Default</Button>
+            <Button variant="default">Reset to Default</Button>
           </div>
-        </form>
+        </div>
       </div>
 
       {/* Quest Checklist */}
@@ -560,7 +580,7 @@ export const RealWorldExamples: Story = {
       </div>
 
       {/* Terms and Conditions */}
-      <div className="p-6 border rounded-lg bg-gray-50">
+      <div className="p-6 border rounded-lg">
         <Typography variant="h3" className="mb-4">
           Adventure Agreement
         </Typography>
@@ -572,43 +592,14 @@ export const RealWorldExamples: Story = {
             <Checkbox label="I understand that this adventure may be dangerous" />
             <Checkbox label="I agree to help NPCs in need" />
             <Checkbox label="I will not use cheats or exploits" />
-            <Checkbox label="I accept the terms of service" error />
+            <Checkbox
+              label="I accept the terms of service"
+              error="Required field"
+            />
           </div>
           <Button variant="primary" disabled>
             Begin Adventure
           </Button>
-        </div>
-      </div>
-
-      {/* Dark Mode Complex Examples */}
-      <div className="dark p-6 bg-gray-900 rounded-lg space-y-6">
-        <Typography variant="h2">🌙 Night Mode Interface</Typography>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">⚔️ Combat Preferences</Typography>
-          <div className="space-y-2">
-            <Checkbox label="Auto-target enemies" defaultChecked />
-            <Checkbox label="Show critical hit indicators" />
-            <Checkbox label="Enable combo notifications" />
-          </div>
-        </div>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">🎒 Inventory Options</Typography>
-          <div className="space-y-2">
-            <Checkbox label="Auto-sort items" />
-            <Checkbox label="Show item durability" defaultChecked />
-            <Checkbox label="Quick-use consumables" defaultChecked />
-          </div>
-        </div>
-
-        <div className="space-y-4 p-4 border border-gray-600 rounded-lg bg-gray-800">
-          <Typography variant="h4">🗺️ Map Features</Typography>
-          <div className="space-y-2">
-            <Checkbox label="Show discovered locations" defaultChecked />
-            <Checkbox label="Mark treasure chests" />
-            <Checkbox label="Display fast travel points" defaultChecked />
-          </div>
         </div>
       </div>
     </div>
@@ -617,7 +608,7 @@ export const RealWorldExamples: Story = {
     docs: {
       description: {
         story:
-          'Real-world examples showing Checkbox components integrated with other Zelda UI components in settings forms, quest tracking, agreement flows, and complex dark mode interfaces.',
+          'Checkbox components integrated with other components in game settings, quest tracking, and agreement forms.',
       },
     },
   },

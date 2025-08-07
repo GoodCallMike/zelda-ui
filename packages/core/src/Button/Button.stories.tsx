@@ -23,7 +23,7 @@ import { Button } from '@zelda/core';
 <Button>Start Adventure</Button>
 
 // Key variant
-<Button variant="primary">Save Game</Button>
+<Button>Save Game</Button>
 \`\`\`
 
 ## Variants
@@ -230,40 +230,42 @@ export const Accessibility: Story = {
         <div className="space-y-2">
           <Typography variant="h5">Keyboard Interactions</Typography>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-2">Key</th>
-                  <th className="text-left p-2">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-2">
+            <div className="w-full text-sm border rounded">
+              <div className="border-b bg-gray-50 dark:bg-gray-800">
+                <div className="flex">
+                  <div className="text-left p-2 font-medium flex-1">Key</div>
+                  <div className="text-left p-2 font-medium flex-1">Action</div>
+                </div>
+              </div>
+              <div>
+                <div className="flex border-b">
+                  <div className="p-2 flex-1">
                     <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
                       Enter
                     </kbd>
-                  </td>
-                  <td className="p-2">Activates the button</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-2">
+                  </div>
+                  <div className="p-2 flex-1">Activates the button</div>
+                </div>
+                <div className="flex border-b">
+                  <div className="p-2 flex-1">
                     <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
                       Space
                     </kbd>
-                  </td>
-                  <td className="p-2">Activates the button</td>
-                </tr>
-                <tr>
-                  <td className="p-2">
+                  </div>
+                  <div className="p-2 flex-1">Activates the button</div>
+                </div>
+                <div className="flex">
+                  <div className="p-2 flex-1">
                     <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
                       Tab
                     </kbd>
-                  </td>
-                  <td className="p-2">Moves focus to next focusable element</td>
-                </tr>
-              </tbody>
-            </table>
+                  </div>
+                  <div className="p-2 flex-1">
+                    Moves focus to next focusable element
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

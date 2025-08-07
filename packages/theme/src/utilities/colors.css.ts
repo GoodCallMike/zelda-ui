@@ -13,42 +13,7 @@ const zeldaColors = [
 ] as const;
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
 
-// Background colors
-zeldaColors.forEach((color) => {
-  shades.forEach((shade) => {
-    globalStyle(`.bg-${color}-${shade}`, {
-      backgroundColor: colors[color][shade],
-    });
-  });
-});
-
-globalStyle('.bg-white', { backgroundColor: colors.white });
-globalStyle('.bg-black', { backgroundColor: colors.black });
-globalStyle('.bg-transparent', { backgroundColor: 'transparent' });
-
-// Text colors
-zeldaColors.forEach((color) => {
-  shades.forEach((shade) => {
-    globalStyle(`.text-${color}-${shade}`, {
-      color: colors[color][shade],
-    });
-  });
-});
-
-globalStyle('.text-white', { color: colors.white });
-globalStyle('.text-black', { color: colors.black });
-
-// Border colors
-zeldaColors.forEach((color) => {
-  shades.forEach((shade) => {
-    globalStyle(`.border-${color}-${shade}`, {
-      borderColor: colors[color][shade],
-    });
-  });
-});
-
-globalStyle('.border-white', { borderColor: colors.white });
-globalStyle('.border-black', { borderColor: colors.black });
+// Note: Utility classes are now defined in overrides.css.ts with proper layer priority
 
 // Hover states for Zelda colors
 zeldaColors.forEach((color) => {
@@ -60,6 +25,27 @@ zeldaColors.forEach((color) => {
       color: colors[color][shade],
     });
   });
+});
+
+// Important utilities
+zeldaColors.forEach((color) => {
+  shades.forEach((shade) => {
+    globalStyle(`.\\!bg-${color}-${shade}`, {
+      backgroundColor: `${colors[color][shade]} !important`,
+    });
+    globalStyle(`.\\!text-${color}-${shade}`, {
+      color: `${colors[color][shade]} !important`,
+    });
+    globalStyle(`.\\!border-${color}-${shade}`, {
+      borderColor: `${colors[color][shade]} !important`,
+    });
+  });
+});
+
+globalStyle('.\\!bg-white', { backgroundColor: 'var(--white) !important' });
+globalStyle('.\\!bg-black', { backgroundColor: 'var(--black) !important' });
+globalStyle('.\\!bg-transparent', {
+  backgroundColor: 'transparent !important',
 });
 
 // Dark mode utilities

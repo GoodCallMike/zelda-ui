@@ -5,6 +5,10 @@ globalStyle('.font-sans', {
   fontFamily:
     '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
 });
+globalStyle('.font-header', {
+  fontFamily:
+    '"Hubot Sans", "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+});
 globalStyle('.font-serif', {
   fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
 });

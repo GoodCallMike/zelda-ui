@@ -1,3 +1,4 @@
+import { withOverrides } from '@zelda/theme';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import styles from './Divider.module.css';
@@ -67,11 +68,8 @@ export const Divider = ({
 
   return (
     <div
-      className={cn(
-        styles.divider,
-        styles[variant],
-        styles[orientation],
-        'my-4',
+      className={withOverrides(
+        cn(styles.divider, styles[variant], styles[orientation], 'my-4'),
         className,
       )}
       data-testid={testId}

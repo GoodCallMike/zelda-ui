@@ -87,9 +87,12 @@ export const Typography = ({
       ? variant
       : 'p';
 
+  const isHeader = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(variant);
+  const fontClass = isHeader ? 'font-header' : 'font-sans';
+
   return (
     <Component
-      className={cn('font-sans', getVariantStyles(), className)}
+      className={cn(fontClass, getVariantStyles(), className)}
       style={{
         ...getColorStyle(),
         ...props.style,
