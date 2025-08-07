@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  # Fast checks first
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,34 +18,10 @@ jobs:
           node-version: 24
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - run: pnpm exec playwright install --with-deps chromium
-      
-
-      # Visual regression tests (generate snapshots if missing)
-      - run: pnpm test:visual --update-snapshots
-        env:
-          CI: true
-        continue-on-error: true
-      
-      # Run visual tests again to verify
-      - run: pnpm test:visual
-        env:
-          CI: true
-      
-      # Upload visual test results on failure
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-      
-      # Linting
       - run: pnpm lint
-      - run: pnpm lint:a11y
 
-  accessibility:
+  # Unit tests (fastest)
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,20 +31,9 @@ jobs:
           node-version: 24
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - run: pnpm exec playwright install --with-deps chromium
-      
+      - run: pnpm test:run
 
-      # Upload accessibility reports
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: accessibility-report
-          path: |
-            playwright-report/
-            accessibility-report.json
-          retention-days: 30
-
+  # Build check
   build:
     runs-on: ubuntu-latest
     steps:
@@ -79,3 +45,51 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+
+  # Visual tests (slower, run in parallel)
+  visual-tests:
+    runs-on: ubuntu-latest
+    needs: [lint, unit-tests, build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:visual
+        env:
+          CI: true
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: visual-test-report
+          path: playwright-report/
+          retention-days: 7
+
+  # Accessibility tests (slower, run in parallel)
+  accessibility:
+    runs-on: ubuntu-latest
+    needs: [lint, unit-tests, build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm exec playwright test --config=playwright.a11y.config.ts
+        env:
+          CI: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-report
+          path: playwright-report/
+          retention-days: 7
