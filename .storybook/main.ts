@@ -49,8 +49,7 @@ const config: StorybookConfig = {
           'react',
           'react-dom',
           'react/jsx-runtime',
-          '@mdx-js/react',
-          'markdown-to-jsx',
+          'react/jsx-dev-runtime',
         ],
       },
       define: {
