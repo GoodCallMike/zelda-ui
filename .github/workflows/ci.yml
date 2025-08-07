@@ -20,13 +20,8 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       
-      # Unit tests
-      - run: pnpm test:run
-        env:
-          CI: true
-      
-      # Accessibility tests
-      - run: pnpm test:a11y
+      # All tests (unit + accessibility)
+      - run: pnpm test:ci
         env:
           CI: true
       
