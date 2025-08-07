@@ -147,7 +147,8 @@ export const DarkMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Tooltips maintain proper contrast and readability in dark mode.',
+        story:
+          'Tooltips maintain proper contrast and readability in dark mode.',
       },
     },
   },
@@ -169,7 +170,10 @@ export const Examples: Story = {
       </div>
 
       <div className="flex gap-4 items-center">
-        <Tooltip content="Permanently delete - cannot be undone!" position="top">
+        <Tooltip
+          content="Permanently delete - cannot be undone!"
+          position="top"
+        >
           <Button variant="destructive">Delete</Button>
         </Tooltip>
         <Tooltip content="Create backup of current work" position="right">
@@ -196,7 +200,8 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Practical examples showing tooltips with various button types and positioning.',
+        story:
+          'Practical examples showing tooltips with various button types and positioning.',
       },
     },
   },

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, Typography } from '@zelda/core';
+import { Alert } from '@zelda/core';
 import { HeartIcon, ShieldTickIcon } from '@zelda/icons';
 
 const meta: Meta<typeof Alert> = {
@@ -187,7 +187,8 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Practical examples showing descriptions, dismissible alerts, and custom icons.',
+        story:
+          'Practical examples showing descriptions, dismissible alerts, and custom icons.',
       },
     },
   },

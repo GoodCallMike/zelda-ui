@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useRef, useState } from 'react';
 import { Button } from '../Button';
-import { Typography } from '../Typography';
 import { Toast } from './Toast';
 import { ToastContainer } from './ToastContainer';
 import { ToastProvider, useToast } from './ToastManager';
@@ -156,9 +155,7 @@ export const Types: Story = {
           >
             Success Toast
           </Button>
-          <Button
-            onClick={() => showToast('error', 'Failed to save changes')}
-          >
+          <Button onClick={() => showToast('error', 'Failed to save changes')}>
             Error Toast
           </Button>
           <Button onClick={() => showToast('warning', 'Storage space low')}>
@@ -332,19 +329,13 @@ export const Examples: Story = {
           >
             Success
           </Button>
-          <Button
-            onClick={() => showToast('error', 'Connection failed')}
-          >
+          <Button onClick={() => showToast('error', 'Connection failed')}>
             Error
           </Button>
-          <Button
-            onClick={() => showToast('warning', 'Storage limit reached')}
-          >
+          <Button onClick={() => showToast('warning', 'Storage limit reached')}>
             Warning
           </Button>
-          <Button
-            onClick={() => showToast('info', 'New update available')}
-          >
+          <Button onClick={() => showToast('info', 'New update available')}>
             Info
           </Button>
         </div>
@@ -367,7 +358,8 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Practical examples showing different toast types with professional messaging.',
+        story:
+          'Practical examples showing different toast types with professional messaging.',
       },
     },
   },
@@ -465,5 +457,3 @@ export const WithProvider: Story = {
     },
   },
 };
-
-

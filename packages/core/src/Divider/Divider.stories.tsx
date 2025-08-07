@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '../Checkbox';
-import { Select } from '../Select';
-import { Slider } from '../Slider';
 import { Typography } from '../Typography';
 import { Divider } from './Divider';
 
@@ -140,8 +137,12 @@ export const WithText: Story = {
       <div>
         <Typography variant="body1">Project Overview</Typography>
         <Divider variant="magical">Active Tasks</Divider>
-        <Typography variant="body1">• Complete user interface design</Typography>
-        <Typography variant="body1">• Implement authentication system</Typography>
+        <Typography variant="body1">
+          • Complete user interface design
+        </Typography>
+        <Typography variant="body1">
+          • Implement authentication system
+        </Typography>
       </div>
     </div>
   ),
@@ -217,10 +218,9 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Practical examples showing different divider variants and orientations.',
+        story:
+          'Practical examples showing different divider variants and orientations.',
       },
     },
   },
 };
-
-

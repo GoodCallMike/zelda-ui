@@ -139,7 +139,8 @@ export const Examples: Story = {
           title="Confirm Changes"
         >
           <Typography variant="body1" className="mb-4">
-            Your changes will be saved and applied immediately. Are you ready to proceed?
+            Your changes will be saved and applied immediately. Are you ready to
+            proceed?
           </Typography>
           <div className="flex gap-2 justify-end">
             <Button variant="default" onClick={() => setOpen(false)}>
@@ -156,7 +157,8 @@ export const Examples: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Modal with title, content, and action buttons for user confirmation.',
+        story:
+          'Modal with title, content, and action buttons for user confirmation.',
       },
     },
   },
@@ -228,10 +230,6 @@ export const Sizes: Story = {
     },
   },
 };
-
-
-
-
 
 export const AccessibilityFeatures: Story = {
   render: () => {
