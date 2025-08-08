@@ -1,0 +1,310 @@
+import{j as a}from"./jsx-runtime-Cihbe4BQ.js";import{B as r}from"./Badge-CRde4N6t.js";import{B as t}from"./Button-D47seXth.js";import{T as e}from"./Typography-9lRHdsZv.js";import{C as s}from"./Card-wdOfiPjM.js";import"./iframe-CzqNFs5z.js";import"./preload-helper-BXl3LOEh.js";import"./index-BDV_RS0N.js";const u={title:"Data Display/Card",component:s,parameters:{layout:"centered",docs:{description:{component:`Flexible container component for grouping related content with consistent spacing and visual hierarchy.
+
+\`\`\`tsx
+import { Card } from '@zelda/core';
+
+// Basic content container
+<Card>
+  <h3>Product Title</h3>
+  <p>Product description</p>
+</Card>
+
+// With visual variants
+<Card variant="outlined">Outlined card</Card>
+<Card variant="elevated">Elevated card</Card>
+\`\`\`
+
+## Variants
+- **default** - Subtle background with minimal visual weight
+- **outlined** - Clear border for content separation
+- **elevated** - Shadow depth for emphasis and hierarchy
+
+## Accessibility & Testing
+- Uses semantic article element for content grouping
+- Supports all standard HTML attributes and ARIA properties
+- Keyboard navigation flows naturally through card content
+
+\`\`\`tsx
+// Testing approach
+const card = screen.getByTestId('product-card');
+expect(card).toBeInTheDocument();
+\`\`\``}}},tags:["autodocs"],argTypes:{variant:{control:"select",options:["default","outlined","elevated"],description:"Visual style and emphasis level",table:{type:{summary:"string"},defaultValue:{summary:"default"}}},children:{control:"text",description:"Card content (text, components, or complex layouts)",table:{type:{summary:"ReactNode"}}},testId:{control:"text",description:"Test identifier for automated testing",table:{type:{summary:"string"}}},className:{table:{disable:!0}}}},i={args:{children:"Basic card content with default styling"}},l={render:()=>a.jsxs("div",{className:"flex gap-6 flex-wrap",children:[a.jsxs(s,{className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2",children:"Default"}),a.jsx(e,{variant:"body2",children:"Subtle background for minimal visual weight"})]}),a.jsxs(s,{variant:"outlined",className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2",children:"Outlined"}),a.jsx(e,{variant:"body2",children:"Clear borders for content separation"})]}),a.jsxs(s,{variant:"elevated",className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2",children:"Elevated"}),a.jsx(e,{variant:"body2",children:"Shadow depth for emphasis and hierarchy"})]})]}),parameters:{docs:{description:{story:"All available card variants showing different visual emphasis levels."}}}},n={render:()=>a.jsxs("div",{className:"space-y-8 max-w-4xl",children:[a.jsxs("div",{children:[a.jsx(e,{variant:"h5",className:"mb-4",children:"Product Showcase"}),a.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-3 gap-4",children:[a.jsxs(s,{variant:"outlined",className:"p-4",children:[a.jsx("div",{className:"w-full h-32 bg-gray-200 rounded mb-3"}),a.jsx(e,{variant:"h6",className:"mb-2",children:"Premium Plan"}),a.jsx(e,{variant:"body2",className:"mb-3 text-gray-600",children:"Advanced features for growing teams"}),a.jsxs("div",{className:"flex items-center justify-between",children:[a.jsx(e,{variant:"h6",children:"$29/month"}),a.jsx(r,{variant:"primary",size:"small",children:"Popular"})]}),a.jsx(t,{variant:"primary",className:"w-full mt-3",children:"Get Started"})]}),a.jsxs(s,{variant:"elevated",className:"p-4",children:[a.jsx("div",{className:"w-full h-32 bg-gray-200 rounded mb-3"}),a.jsx(e,{variant:"h6",className:"mb-2",children:"Enterprise Plan"}),a.jsx(e,{variant:"body2",className:"mb-3 text-gray-600",children:"Complete solution for large organizations"}),a.jsxs("div",{className:"flex items-center justify-between",children:[a.jsx(e,{variant:"h6",children:"$99/month"}),a.jsx(r,{variant:"success",size:"small",children:"Best Value"})]}),a.jsx(t,{variant:"primary",className:"w-full mt-3",children:"Contact Sales"})]}),a.jsxs(s,{className:"p-4",children:[a.jsx("div",{className:"w-full h-32 bg-gray-200 rounded mb-3"}),a.jsx(e,{variant:"h6",className:"mb-2",children:"Starter Plan"}),a.jsx(e,{variant:"body2",className:"mb-3 text-gray-600",children:"Perfect for individuals and small projects"}),a.jsxs("div",{className:"flex items-center justify-between",children:[a.jsx(e,{variant:"h6",children:"Free"}),a.jsx(r,{variant:"default",size:"small",children:"Limited"})]}),a.jsx(t,{variant:"default",className:"w-full mt-3",children:"Start Free"})]})]})]}),a.jsxs("div",{children:[a.jsx(e,{variant:"h5",className:"mb-4",children:"Dashboard Metrics"}),a.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-4 gap-4",children:[a.jsxs(s,{className:"p-4 text-center",children:[a.jsx(e,{variant:"h4",className:"mb-1",children:"2,847"}),a.jsx(e,{variant:"body2",className:"text-gray-600",children:"Total Users"}),a.jsx(r,{variant:"success",size:"small",className:"mt-2",children:"+12%"})]}),a.jsxs(s,{className:"p-4 text-center",children:[a.jsx(e,{variant:"h4",className:"mb-1",children:"$45,210"}),a.jsx(e,{variant:"body2",className:"text-gray-600",children:"Revenue"}),a.jsx(r,{variant:"success",size:"small",className:"mt-2",children:"+8%"})]}),a.jsxs(s,{className:"p-4 text-center",children:[a.jsx(e,{variant:"h4",className:"mb-1",children:"156"}),a.jsx(e,{variant:"body2",className:"text-gray-600",children:"Orders"}),a.jsx(r,{variant:"warning",size:"small",className:"mt-2",children:"-3%"})]}),a.jsxs(s,{className:"p-4 text-center",children:[a.jsx(e,{variant:"h4",className:"mb-1",children:"98.5%"}),a.jsx(e,{variant:"body2",className:"text-gray-600",children:"Uptime"}),a.jsx(r,{variant:"success",size:"small",className:"mt-2",children:"Excellent"})]})]})]}),a.jsxs("div",{children:[a.jsx(e,{variant:"h5",className:"mb-4",children:"Article Preview"}),a.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-6",children:[a.jsxs(s,{variant:"outlined",className:"p-4",children:[a.jsx("div",{className:"w-full h-40 bg-gray-200 rounded mb-4"}),a.jsx(r,{variant:"primary",size:"small",className:"mb-2",children:"Technology"}),a.jsx(e,{variant:"h6",className:"mb-2",children:"Building Scalable React Applications"}),a.jsx(e,{variant:"body2",className:"mb-4 text-gray-600",children:"Learn best practices for architecting large-scale React applications with modern tooling and patterns."}),a.jsxs("div",{className:"flex items-center justify-between",children:[a.jsx(e,{variant:"body2",className:"text-gray-500",children:"5 min read"}),a.jsx(t,{variant:"text",size:"small",children:"Read More"})]})]}),a.jsxs(s,{variant:"outlined",className:"p-4",children:[a.jsx("div",{className:"w-full h-40 bg-gray-200 rounded mb-4"}),a.jsx(r,{variant:"success",size:"small",className:"mb-2",children:"Design"}),a.jsx(e,{variant:"h6",className:"mb-2",children:"Design Systems That Scale"}),a.jsx(e,{variant:"body2",className:"mb-4 text-gray-600",children:"Creating consistent, maintainable design systems for growing product teams and organizations."}),a.jsxs("div",{className:"flex items-center justify-between",children:[a.jsx(e,{variant:"body2",className:"text-gray-500",children:"8 min read"}),a.jsx(t,{variant:"text",size:"small",children:"Read More"})]})]})]})]})]}),parameters:{docs:{description:{story:"Real-world examples showing cards in product showcases, dashboards, and content layouts."}}}},d={parameters:{backgrounds:{default:"dark"},docs:{description:{story:"Card appearance in dark mode with proper contrast and theme adaptation."}}},decorators:[c=>a.jsx("div",{className:"dark p-6 bg-gray-900",children:a.jsx(c,{})})],render:()=>a.jsxs("div",{className:"space-y-6",children:[a.jsxs("div",{className:"flex gap-6 flex-wrap",children:[a.jsxs(s,{className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2 text-gray-50",children:"Default"}),a.jsx(e,{variant:"body2",className:"text-gray-200",children:"Dark theme adaptation"})]}),a.jsxs(s,{variant:"outlined",className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2 text-gray-50",children:"Outlined"}),a.jsx(e,{variant:"body2",className:"text-gray-200",children:"Subtle border contrast"})]}),a.jsxs(s,{variant:"elevated",className:"w-48",children:[a.jsx(e,{variant:"h6",className:"mb-2 text-gray-50",children:"Elevated"}),a.jsx(e,{variant:"body2",className:"text-gray-200",children:"Enhanced depth in dark"})]})]}),a.jsxs(s,{variant:"outlined",className:"p-4 max-w-md",children:[a.jsx(e,{variant:"h6",className:"mb-2 text-gray-50",children:"Dashboard Card"}),a.jsx(e,{variant:"body2",className:"mb-3 text-gray-200",children:"Cards maintain readability and visual hierarchy in dark environments."}),a.jsxs("div",{className:"flex gap-2",children:[a.jsx(r,{variant:"primary",size:"small",children:"Active"}),a.jsx(r,{variant:"success",size:"small",children:"Online"})]})]})]})};i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
+  args: {
+    children: 'Basic card content with default styling'
+  }
+}`,...i.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: () => <div className="flex gap-6 flex-wrap">
+      <Card className="w-48">
+        <Typography variant="h6" className="mb-2">
+          Default
+        </Typography>
+        <Typography variant="body2">
+          Subtle background for minimal visual weight
+        </Typography>
+      </Card>
+      <Card variant="outlined" className="w-48">
+        <Typography variant="h6" className="mb-2">
+          Outlined
+        </Typography>
+        <Typography variant="body2">
+          Clear borders for content separation
+        </Typography>
+      </Card>
+      <Card variant="elevated" className="w-48">
+        <Typography variant="h6" className="mb-2">
+          Elevated
+        </Typography>
+        <Typography variant="body2">
+          Shadow depth for emphasis and hierarchy
+        </Typography>
+      </Card>
+    </div>,
+  parameters: {
+    docs: {
+      description: {
+        story: 'All available card variants showing different visual emphasis levels.'
+      }
+    }
+  }
+}`,...l.parameters?.docs?.source}}};n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`{
+  render: () => <div className="space-y-8 max-w-4xl">
+      {/* Product Cards */}
+      <div>
+        <Typography variant="h5" className="mb-4">
+          Product Showcase
+        </Typography>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card variant="outlined" className="p-4">
+            <div className="w-full h-32 bg-gray-200 rounded mb-3"></div>
+            <Typography variant="h6" className="mb-2">
+              Premium Plan
+            </Typography>
+            <Typography variant="body2" className="mb-3 text-gray-600">
+              Advanced features for growing teams
+            </Typography>
+            <div className="flex items-center justify-between">
+              <Typography variant="h6">$29/month</Typography>
+              <Badge variant="primary" size="small">
+                Popular
+              </Badge>
+            </div>
+            <Button variant="primary" className="w-full mt-3">
+              Get Started
+            </Button>
+          </Card>
+
+          <Card variant="elevated" className="p-4">
+            <div className="w-full h-32 bg-gray-200 rounded mb-3"></div>
+            <Typography variant="h6" className="mb-2">
+              Enterprise Plan
+            </Typography>
+            <Typography variant="body2" className="mb-3 text-gray-600">
+              Complete solution for large organizations
+            </Typography>
+            <div className="flex items-center justify-between">
+              <Typography variant="h6">$99/month</Typography>
+              <Badge variant="success" size="small">
+                Best Value
+              </Badge>
+            </div>
+            <Button variant="primary" className="w-full mt-3">
+              Contact Sales
+            </Button>
+          </Card>
+
+          <Card className="p-4">
+            <div className="w-full h-32 bg-gray-200 rounded mb-3"></div>
+            <Typography variant="h6" className="mb-2">
+              Starter Plan
+            </Typography>
+            <Typography variant="body2" className="mb-3 text-gray-600">
+              Perfect for individuals and small projects
+            </Typography>
+            <div className="flex items-center justify-between">
+              <Typography variant="h6">Free</Typography>
+              <Badge variant="default" size="small">
+                Limited
+              </Badge>
+            </div>
+            <Button variant="default" className="w-full mt-3">
+              Start Free
+            </Button>
+          </Card>
+        </div>
+      </div>
+
+      {/* Dashboard Cards */}
+      <div>
+        <Typography variant="h5" className="mb-4">
+          Dashboard Metrics
+        </Typography>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Card className="p-4 text-center">
+            <Typography variant="h4" className="mb-1">
+              2,847
+            </Typography>
+            <Typography variant="body2" className="text-gray-600">
+              Total Users
+            </Typography>
+            <Badge variant="success" size="small" className="mt-2">
+              +12%
+            </Badge>
+          </Card>
+
+          <Card className="p-4 text-center">
+            <Typography variant="h4" className="mb-1">
+              $45,210
+            </Typography>
+            <Typography variant="body2" className="text-gray-600">
+              Revenue
+            </Typography>
+            <Badge variant="success" size="small" className="mt-2">
+              +8%
+            </Badge>
+          </Card>
+
+          <Card className="p-4 text-center">
+            <Typography variant="h4" className="mb-1">
+              156
+            </Typography>
+            <Typography variant="body2" className="text-gray-600">
+              Orders
+            </Typography>
+            <Badge variant="warning" size="small" className="mt-2">
+              -3%
+            </Badge>
+          </Card>
+
+          <Card className="p-4 text-center">
+            <Typography variant="h4" className="mb-1">
+              98.5%
+            </Typography>
+            <Typography variant="body2" className="text-gray-600">
+              Uptime
+            </Typography>
+            <Badge variant="success" size="small" className="mt-2">
+              Excellent
+            </Badge>
+          </Card>
+        </div>
+      </div>
+
+      {/* Content Cards */}
+      <div>
+        <Typography variant="h5" className="mb-4">
+          Article Preview
+        </Typography>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card variant="outlined" className="p-4">
+            <div className="w-full h-40 bg-gray-200 rounded mb-4"></div>
+            <Badge variant="primary" size="small" className="mb-2">
+              Technology
+            </Badge>
+            <Typography variant="h6" className="mb-2">
+              Building Scalable React Applications
+            </Typography>
+            <Typography variant="body2" className="mb-4 text-gray-600">
+              Learn best practices for architecting large-scale React
+              applications with modern tooling and patterns.
+            </Typography>
+            <div className="flex items-center justify-between">
+              <Typography variant="body2" className="text-gray-500">
+                5 min read
+              </Typography>
+              <Button variant="text" size="small">
+                Read More
+              </Button>
+            </div>
+          </Card>
+
+          <Card variant="outlined" className="p-4">
+            <div className="w-full h-40 bg-gray-200 rounded mb-4"></div>
+            <Badge variant="success" size="small" className="mb-2">
+              Design
+            </Badge>
+            <Typography variant="h6" className="mb-2">
+              Design Systems That Scale
+            </Typography>
+            <Typography variant="body2" className="mb-4 text-gray-600">
+              Creating consistent, maintainable design systems for growing
+              product teams and organizations.
+            </Typography>
+            <div className="flex items-center justify-between">
+              <Typography variant="body2" className="text-gray-500">
+                8 min read
+              </Typography>
+              <Button variant="text" size="small">
+                Read More
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Real-world examples showing cards in product showcases, dashboards, and content layouts.'
+      }
+    }
+  }
+}`,...n.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
+    docs: {
+      description: {
+        story: 'Card appearance in dark mode with proper contrast and theme adaptation.'
+      }
+    }
+  },
+  decorators: [Story => <div className="dark p-6 bg-gray-900">
+        <Story />
+      </div>],
+  render: () => <div className="space-y-6">
+      <div className="flex gap-6 flex-wrap">
+        <Card className="w-48">
+          <Typography variant="h6" className="mb-2 text-gray-50">
+            Default
+          </Typography>
+          <Typography variant="body2" className="text-gray-200">
+            Dark theme adaptation
+          </Typography>
+        </Card>
+        <Card variant="outlined" className="w-48">
+          <Typography variant="h6" className="mb-2 text-gray-50">
+            Outlined
+          </Typography>
+          <Typography variant="body2" className="text-gray-200">
+            Subtle border contrast
+          </Typography>
+        </Card>
+        <Card variant="elevated" className="w-48">
+          <Typography variant="h6" className="mb-2 text-gray-50">
+            Elevated
+          </Typography>
+          <Typography variant="body2" className="text-gray-200">
+            Enhanced depth in dark
+          </Typography>
+        </Card>
+      </div>
+
+      <Card variant="outlined" className="p-4 max-w-md">
+        <Typography variant="h6" className="mb-2 text-gray-50">
+          Dashboard Card
+        </Typography>
+        <Typography variant="body2" className="mb-3 text-gray-200">
+          Cards maintain readability and visual hierarchy in dark environments.
+        </Typography>
+        <div className="flex gap-2">
+          <Badge variant="primary" size="small">
+            Active
+          </Badge>
+          <Badge variant="success" size="small">
+            Online
+          </Badge>
+        </div>
+      </Card>
+    </div>
+}`,...d.parameters?.docs?.source}}};const b=["Default","Variants","Examples","DarkMode"];export{d as DarkMode,i as Default,n as Examples,l as Variants,b as __namedExportsOrder,u as default};

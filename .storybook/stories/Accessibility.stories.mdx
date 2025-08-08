@@ -1,0 +1,150 @@
+---
+title: Getting Started/Accessibility Guide
+---
+
+# Accessibility Guide
+
+Zelda UI is built with accessibility as a core principle. All components follow WCAG 2.1 guidelines and include comprehensive testing utilities.
+
+## 🚀 Quick Setup
+
+### Testing Utilities
+```typescript
+import { 
+  quickA11yTest,
+  runAccessibilityTestSuite,
+  testKeyboardNavigation,
+  testFormAccessibility 
+} from '@zelda/core/utils';
+
+// Quick accessibility test
+await quickA11yTest(<YourComponent />);
+
+// Comprehensive testing
+await runAccessibilityTestSuite(<YourComponent />, {
+  expectedFocusableElements: 2,
+  ariaAttributes: { 'button': 'Submit form' },
+});
+```
+
+### Development Commands
+```bash
+# Lint accessibility issues
+pnpm lint:a11y
+
+# Run accessibility tests
+pnpm test:a11y
+
+# Fix auto-fixable issues
+pnpm lint:fix
+```
+
+## ✅ Essential Checklist
+
+### HTML Structure
+- ✅ Use semantic HTML elements
+- ✅ Proper heading hierarchy (h1 → h2 → h3)
+- ✅ Form labels and fieldsets
+- ✅ Alt text for images
+
+### ARIA
+- ✅ `aria-label` for unlabeled elements
+- ✅ `aria-describedby` for additional context
+- ✅ `role` attributes when needed
+- ✅ `aria-live` for dynamic content
+
+### Keyboard
+- ✅ All interactive elements focusable
+- ✅ Logical tab order
+- ✅ Visible focus indicators
+- ✅ Enter/Space key support
+
+## 🎨 Design Standards
+
+### Color Contrast
+- **Normal text**: 4.5:1 minimum
+- **Large text**: 3:1 minimum
+- **UI components**: 3:1 minimum
+
+### Touch Targets
+- **Minimum size**: 44px × 44px
+- **Spacing**: 8px between targets
+
+## 🔧 Common Patterns
+
+### Button
+```tsx
+<Button
+  type="submit"
+  disabled={isLoading}
+  aria-label={isLoading ? 'Saving...' : 'Save document'}
+>
+  {isLoading ? 'Saving...' : 'Save'}
+</Button>
+```
+
+### Input
+```tsx
+<Input
+  label="Email"
+  id="email"
+  required
+  aria-describedby="email-error"
+/>
+{error && (
+  <div id="email-error" role="alert">
+    {error}
+  </div>
+)}
+```
+
+### Modal
+```tsx
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  tabIndex={-1}
+>
+  <h2 id="modal-title">Title</h2>
+  {/* Content */}
+</div>
+```
+
+## 📚 Complete Documentation
+
+For comprehensive guides and detailed implementation examples:
+
+- **[Developer Guide](https://github.com/goodcallmike/zelda-ui/blob/main/docs/ACCESSIBILITY_DEVELOPER_GUIDE.md)** - Complete development guide
+- **[Quick Reference](https://github.com/goodcallmike/zelda-ui/blob/main/docs/ACCESSIBILITY_QUICK_REFERENCE.md)** - Essential cheat sheet
+- **[Best Practices](https://github.com/goodcallmike/zelda-ui/blob/main/docs/ACCESSIBILITY_BEST_PRACTICES.md)** - Implementation guidelines
+
+## 🛠️ Testing Tools
+
+### Browser Extensions
+- [axe DevTools](https://www.deque.com/axe/devtools/)
+- [WAVE Web Accessibility Evaluator](https://wave.webaim.org/)
+- [Lighthouse Accessibility Audit](https://developers.google.com/web/tools/lighthouse)
+
+### Screen Readers
+- **macOS**: VoiceOver (Cmd + F5)
+- **Windows**: NVDA (free)
+- **Chrome**: ChromeVox extension
+
+## 🚫 Common Mistakes
+
+### ❌ Don't
+- Remove focus outlines without replacement
+- Use placeholder as label
+- Rely only on color for information
+- Use `div`/`span` for interactive elements
+- Skip heading levels
+- Use `tabindex` > 0
+
+### ✅ Do
+- Provide alternative text
+- Use semantic HTML first
+- Test with keyboard only
+- Test with screen reader
+- Maintain focus management
+- Use proper ARIA attributes
