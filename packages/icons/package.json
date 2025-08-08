@@ -1,5 +1,5 @@
 {
-  "name": "@zelda/icons",
+  "name": "zelda-ui-icons",
   "version": "0.1.0-alpha.1",
   "type": "module",
   "main": "./dist/index.js",

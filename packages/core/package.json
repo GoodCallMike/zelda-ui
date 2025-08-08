@@ -1,5 +1,5 @@
 {
-  "name": "@zelda/core",
+  "name": "zelda-ui-core",
   "version": "0.1.0-alpha.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -22,8 +22,8 @@
   },
   "peerDependencies": {
     "@floating-ui/react": "^0.26.0",
-    "@zelda/icons": "workspace:*",
-    "@zelda/theme": "workspace:*",
+    "zelda-ui-icons": "workspace:*",
+    "zelda-ui-theme": "workspace:*",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },

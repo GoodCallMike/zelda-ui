@@ -1,5 +1,5 @@
 {
-  "name": "@zelda/theme",
+  "name": "zelda-ui-theme",
   "version": "0.1.0-alpha.1",
   "description": "Theme system and design tokens for the Zelda UI library",
   "main": "dist/index.js",
