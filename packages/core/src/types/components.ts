@@ -50,7 +50,9 @@ export interface ButtonProps
   /** Whether button is loading */
   loading?: boolean;
   /** Icon component to display */
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | React.FC<React.SVGProps<SVGSVGElement>>;
+  icon?:
+    | React.ComponentType<React.SVGProps<SVGSVGElement>>
+    | React.FC<React.SVGProps<SVGSVGElement>>;
   /** Icon position */
   iconPosition?: 'left' | 'right';
   /** Button type */
