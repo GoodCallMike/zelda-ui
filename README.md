@@ -22,12 +22,24 @@ pnpm storybook
 pnpm build
 ```
 
+## 📦 Installation
+
+```bash
+# Install core components
+npm install zelda-ui-core
+
+# Install icons
+npm install zelda-ui-icons
+
+# Install theme
+npm install zelda-ui-theme
+```
+
 ## 📦 Packages
 
-- **@zelda/core** - Core UI components
-- **@zelda/icons** - Icon library
-- **@zelda/date-picker** - Date picker components
-- **@zelda/utilities** - Utility functions
+- **zelda-ui-core** - Core UI components
+- **zelda-ui-icons** - Icon library  
+- **zelda-ui-theme** - Design tokens and theming
 
 ## 🎨 Typography
 
@@ -65,7 +77,7 @@ Zelda UI is built with accessibility as a core principle. All components follow 
 
 ### Testing Utilities
 ```typescript
-import { quickA11yTest, runAccessibilityTestSuite } from '@zelda/core/utils';
+import { quickA11yTest, runAccessibilityTestSuite } from 'zelda-ui-core/utils';
 
 // Quick accessibility test
 await quickA11yTest(<YourComponent />);

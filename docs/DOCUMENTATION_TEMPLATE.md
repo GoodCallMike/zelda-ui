@@ -10,7 +10,7 @@ Documentation is not an afterthought—it's a critical feature that drives adopt
 component: `[One sentence describing function and primary benefit].
 
 \`\`\`tsx
-import { [Component] } from '@zelda/core';
+import { [Component] } from 'zelda-ui-core';
 
 // Primary usage pattern
 <[Component]>[Most common example]</[Component]>
