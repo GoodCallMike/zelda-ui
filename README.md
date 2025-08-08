@@ -72,7 +72,7 @@ pnpm format
 Zelda UI is built with accessibility as a core principle. All components follow WCAG 2.1 guidelines and include comprehensive testing utilities.
 
 - **[Accessibility Guide](docs/ACCESSIBILITY.md)** - Complete accessibility implementation guide
-- **[Usage Examples](docs/USAGE_GUIDE.md)** - Practical component usage patterns
+- **[Usage Examples](docs/USAGE_EXAMPLES.md)** - Practical component usage patterns
 - **[Integration Examples](docs/INTEGRATION_EXAMPLES.md)** - Real-world interface examples
 
 ### Testing Utilities
