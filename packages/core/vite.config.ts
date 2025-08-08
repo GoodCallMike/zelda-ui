@@ -11,6 +11,11 @@ export default defineConfig({
       rollupTypes: true,
     }),
   ],
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+    },
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -18,6 +23,7 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
+    cssCodeSplit: false,
     rollupOptions: {
       external: [
         'react',
