@@ -5,9 +5,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input variants using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--variants',
-    );
+    await helpers.gotoStory('data-entry-input--variants');
 
     // Test each variant using testId
     await helpers.visual.screenshotComponent(
@@ -27,9 +25,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input states using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--states',
-    );
+    await helpers.gotoStory('data-entry-input--states');
 
     // Test interactive states
     await helpers.visual.testComponentStates('normal-input', [
@@ -51,9 +47,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input with features using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--states',
-    );
+    await helpers.gotoStory('data-entry-input--states');
 
     // Test input with different features
     await helpers.visual.screenshotComponent(
@@ -73,9 +67,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input validation states using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--states',
-    );
+    await helpers.gotoStory('data-entry-input--states');
 
     // Test validation states
     await helpers.visual.screenshotComponent(
@@ -95,9 +87,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input responsive behavior', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--variants',
-    );
+    await helpers.gotoStory('data-entry-input--variants');
 
     // Test responsive behavior
     await helpers.visual.testResponsive('variant-default', [
@@ -110,9 +100,7 @@ test.describe('Input Visual Tests with testId', () => {
   test('Input accessibility using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--examples',
-    );
+    await helpers.gotoStory('data-entry-input--examples');
 
     // Test accessibility features
     await helpers.visual.screenshotComponent(

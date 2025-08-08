@@ -10,9 +10,7 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
   test('Login form integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--examples',
-    );
+    await helpers.gotoStory('data-entry-input--examples');
 
     // Visual test of login form using existing email input
     await helpers.visual.screenshotComponent(
@@ -30,9 +28,7 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
   test('Search interface integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--states',
-    );
+    await helpers.gotoStory('data-entry-input--states');
 
     // Visual test of search interface using existing search input
     await helpers.visual.screenshotComponent(
@@ -44,9 +40,7 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
   test('Profile form integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--examples',
-    );
+    await helpers.gotoStory('data-entry-input--examples');
 
     // Test responsive behavior using existing name input
     await helpers.visual.testResponsive('name-input', [
@@ -58,15 +52,10 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
   test('Game menu navigation integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--examples',
-    );
+    await helpers.gotoStory('general-button--examples');
 
     // Visual test of menu using existing button
-    await helpers.visual.screenshotComponent(
-      'submit-form',
-      'game-menu-testid',
-    );
+    await helpers.visual.screenshotComponent('submit-form', 'game-menu-testid');
 
     // Test menu states using existing buttons
     await helpers.visual.testComponentStates('submit-form', [
@@ -83,18 +72,14 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     // Test light mode
-    await helpers.gotoStory(
-      'data-entry-input--examples',
-    );
+    await helpers.gotoStory('data-entry-input--examples');
     await helpers.visual.screenshotComponent(
       'email-input',
       'integration-light-mode-testid',
     );
 
     // Test dark mode
-    await helpers.gotoStory(
-      'general-button--examples',
-    );
+    await helpers.gotoStory('general-button--examples');
     await helpers.visual.screenshotComponent(
       'submit-form',
       'integration-dark-mode-testid',
@@ -104,9 +89,7 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
   test('Error states integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'data-entry-input--states',
-    );
+    await helpers.gotoStory('data-entry-input--states');
 
     // Visual test of error states using existing error input
     await helpers.visual.screenshotComponent(

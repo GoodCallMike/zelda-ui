@@ -5,9 +5,7 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button variants using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--variants',
-    );
+    await helpers.gotoStory('general-button--variants');
 
     // Test each variant using testId from the actual story
     await helpers.visual.screenshotComponent(
@@ -31,9 +29,7 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button states using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--states',
-    );
+    await helpers.gotoStory('general-button--states');
 
     // Test interactive states using actual testIds from story
     await helpers.visual.testComponentStates('normal-button', [
@@ -55,9 +51,7 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button sizes using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--examples',
-    );
+    await helpers.gotoStory('general-button--examples');
 
     // Test different button types from the story
     await helpers.visual.screenshotComponent(
@@ -77,19 +71,14 @@ test.describe('Button Visual Tests with testId', () => {
   test('Icon buttons using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--examples',
-    );
+    await helpers.gotoStory('general-button--examples');
 
     // Test icon button variants from the actual story
     await helpers.visual.screenshotComponent(
       'search-data',
       'button-search-testid',
     );
-    await helpers.visual.screenshotComponent(
-      'add-item',
-      'button-add-testid',
-    );
+    await helpers.visual.screenshotComponent('add-item', 'button-add-testid');
     await helpers.visual.screenshotComponent(
       'delete-item',
       'button-delete-testid',
@@ -99,9 +88,7 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button responsive behavior', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--variants',
-    );
+    await helpers.gotoStory('general-button--variants');
 
     // Test responsive behavior using actual testId
     await helpers.visual.testResponsive('variant-primary', [
@@ -114,18 +101,13 @@ test.describe('Button Visual Tests with testId', () => {
   test('Button dark mode using testId selectors', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
-    await helpers.gotoStory(
-      'general-button--examples',
-    );
+    await helpers.gotoStory('general-button--examples');
 
     // Test integration examples from the story
     await helpers.visual.screenshotComponent(
       'continue',
       'button-continue-testid',
     );
-    await helpers.visual.screenshotComponent(
-      'go-back',
-      'button-back-testid',
-    );
+    await helpers.visual.screenshotComponent('go-back', 'button-back-testid');
   });
 });
