@@ -1,5 +1,11 @@
 # Zelda UI
 
+[![npm version](https://badge.fury.io/js/zelda-ui-core.svg)](https://www.npmjs.com/package/zelda-ui-core)
+[![downloads](https://img.shields.io/npm/dm/zelda-ui-core.svg)](https://www.npmjs.com/package/zelda-ui-core)
+[![license](https://img.shields.io/npm/l/zelda-ui-core.svg)](https://github.com/goodcallmike/zelda-ui/blob/main/LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.1-green.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
+
 A modern React component library built with TypeScript, featuring accessible components with beautiful design.
 
 ## 📚 Documentation
