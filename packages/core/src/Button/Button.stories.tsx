@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Typography } from '@zelda/core';
+import { Button, Typography } from 'zelda-ui-core';
 import {
   ArrowRightIcon,
   PlusIcon,
   SearchLgIcon,
   Trash01Icon,
-} from '@zelda/icons';
+} from 'zelda-ui-icons';
 
 const meta: Meta<typeof Button> = {
   title: 'General/Button',
@@ -17,7 +17,7 @@ const meta: Meta<typeof Button> = {
         component: `Versatile button component for triggering actions and navigation with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Button } from '@zelda/core';
+import { Button } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Button>Save Changes</Button>

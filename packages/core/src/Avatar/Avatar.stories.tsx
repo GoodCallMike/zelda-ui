@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, Card, Typography } from '@zelda/core';
+import { Avatar, Card, Typography } from 'zelda-ui-core';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Data Display/Avatar',
@@ -11,7 +11,7 @@ const meta: Meta<typeof Avatar> = {
         component: `Avatar component provides user representation with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Avatar } from '@zelda/core';
+import { Avatar } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Avatar name="John Smith" />

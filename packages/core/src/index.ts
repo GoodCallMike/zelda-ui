@@ -41,5 +41,4 @@ export type * from './types';
 export type * from './types/components';
 export type * from './types/theme';
 export * from './types/validation';
-// Utilities
-export * from './utils';
+// Utilities (testing utilities available separately)

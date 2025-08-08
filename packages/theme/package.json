@@ -1,11 +1,19 @@
 {
   "name": "zelda-ui-theme",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.10",
   "description": "Theme system and design tokens for the Zelda UI library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "style": "dist/theme.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./css": "./dist/zelda-ui-theme.css"
+  },
+  "style": "dist/zelda-ui-theme.css",
   "files": [
     "dist"
   ],
@@ -33,5 +41,8 @@
     "css",
     "vanilla-extract",
     "zelda"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

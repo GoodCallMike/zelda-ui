@@ -6,9 +6,9 @@ import {
   shift,
   useFloating,
 } from '@floating-ui/react';
-import { ChevronDownIcon } from '@zelda/icons';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { ChevronDownIcon } from 'zelda-ui-icons';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import type { Option, SelectProps } from '../types/components';
@@ -151,7 +151,6 @@ export const Select = <T extends string = string>({
         </Typography>
       )}
 
-      {/** biome-ignore lint/a11y/useSemanticElements: Button would not be the correct element */}
       <div
         className={cn(
           'relative w-full cursor-pointer font-medium text-base border-0 outline-none transition-all duration-100 ease-linear',
@@ -197,7 +196,6 @@ export const Select = <T extends string = string>({
             styles.dropdown,
           )}
         >
-          {/* biome-ignore lint/a11y/useSemanticElements: Custom select dropdown needs listbox role */}
           <div ref={listRef} role="listbox" className="py-2">
             {options.map((option, index) => (
               // biome-ignore lint/a11y/noStaticElementInteractions: Select option needs click handler

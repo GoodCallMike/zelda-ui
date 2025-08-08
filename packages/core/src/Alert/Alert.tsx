@@ -1,11 +1,11 @@
+import type { ReactNode } from 'react';
 import {
   AlertCircleIcon,
   CheckCircleIcon,
   InfoCircleIcon,
   XCloseIcon,
-} from '@zelda/icons';
-import { cn } from '@zelda/theme';
-import type { ReactNode } from 'react';
+} from 'zelda-ui-icons';
+import { cn } from 'zelda-ui-theme';
 import { Button } from '../Button/Button';
 import type { BaseComponentProps } from '../types';
 import styles from './Alert.module.css';

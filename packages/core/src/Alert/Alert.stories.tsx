@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert } from '@zelda/core';
-import { HeartIcon, ShieldTickIcon } from '@zelda/icons';
+import { Alert } from 'zelda-ui-core';
+import { HeartIcon, ShieldTickIcon } from 'zelda-ui-icons';
 
 const meta: Meta<typeof Alert> = {
   title: 'Feedback/Alert',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Alert> = {
         component: `Prominent messages that communicate important information and require user attention.
 
 \`\`\`tsx
-import { Alert } from '@zelda/core';
+import { Alert } from 'zelda-ui-core';
 
 // Essential feedback
 <Alert message="Operation completed successfully" type="success" />

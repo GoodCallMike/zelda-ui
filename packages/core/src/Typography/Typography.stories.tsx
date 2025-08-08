@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Input, Typography } from '@zelda/core';
+import { Button, Card, Input, Typography } from 'zelda-ui-core';
 
 const meta: Meta<typeof Typography> = {
   title: 'General/Typography',
@@ -11,7 +11,7 @@ const meta: Meta<typeof Typography> = {
         component: `Typography component provides consistent text styling with semantic variants and theme-aware colors.
 
 \`\`\`tsx
-import { Typography } from '@zelda/core';
+import { Typography } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Typography>Welcome to our platform</Typography>

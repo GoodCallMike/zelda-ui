@@ -15,7 +15,7 @@ const meta: Meta<typeof Toast> = {
         component: `Temporary notifications that provide immediate feedback without interrupting the user's workflow.
 
 \`\`\`tsx
-import { Toast } from '@zelda/core';
+import { Toast } from 'zelda-ui-core';
 
 // Essential feedback
 <Toast message="Changes saved successfully" type="success" />

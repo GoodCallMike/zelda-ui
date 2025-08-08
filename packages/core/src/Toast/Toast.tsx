@@ -1,11 +1,11 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AlertTriangleIcon,
   CheckCircleIcon,
   InfoCircleIcon,
   XCircleIcon,
   XIcon,
-} from '@zelda/icons';
-import { useCallback, useEffect, useRef, useState } from 'react';
+} from 'zelda-ui-icons';
 import { Button } from '../Button';
 import { cn } from '../styles';
 import { Typography } from '../Typography';

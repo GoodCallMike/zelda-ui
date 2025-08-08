@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-// Base icon props
+// Base icon props - exported as public interface
 export interface IconProps extends SVGProps<SVGSVGElement> {
   /** Icon size - can be a preset or custom size */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string;
@@ -12,7 +12,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
   description?: string;
 }
 
-// Icon component type
+// Icon component type - uses public IconProps
 export type IconComponent = React.ComponentType<IconProps>;
 
 // Icon categories for organization

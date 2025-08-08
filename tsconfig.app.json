@@ -24,7 +24,11 @@
     "baseUrl": ".",
     "paths": {
       "@zelda/core": ["./packages/core/src"],
-      "@zelda/icons": ["./packages/icons/src"]
+      "@zelda/icons": ["./packages/icons/src"],
+      "@zelda/theme": ["./packages/theme/src"],
+      "zelda-ui-core": ["./packages/core/src"],
+      "zelda-ui-icons": ["./packages/icons/src"],
+      "zelda-ui-theme": ["./packages/theme/src"]
     }
   },
   "include": ["src", "packages/*/src", "vitest.d.ts", "**/*.test.tsx"]

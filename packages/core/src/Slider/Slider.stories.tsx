@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Slider, Typography } from '@zelda/core';
 import { useState } from 'react';
+import { Button, Card, Slider, Typography } from 'zelda-ui-core';
 
 const meta: Meta<typeof Slider> = {
   title: 'Data Entry/Slider',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Slider> = {
         component: `Slider component provides intuitive numeric value selection with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Slider } from '@zelda/core';
+import { Slider } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Slider defaultValue={50} />

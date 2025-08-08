@@ -1,5 +1,5 @@
-import { cn } from '@zelda/theme';
 import type { ButtonHTMLAttributes } from 'react';
+import { cn } from 'zelda-ui-theme';
 import type { ButtonProps as BaseButtonProps } from '../types/components';
 import styles from './Button.module.css';
 

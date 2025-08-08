@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Select, Typography } from '@zelda/core';
 import { useState } from 'react';
+import { Button, Card, Select, Typography } from 'zelda-ui-core';
 
 const meta: Meta<typeof Select> = {
   title: 'Data Entry/Select',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Select> = {
         component: `Select component provides dropdown selection functionality with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Select } from '@zelda/core';
+import { Select } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Select 

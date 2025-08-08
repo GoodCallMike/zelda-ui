@@ -1,6 +1,6 @@
-import { cn } from '@zelda/theme';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
+import { cn } from 'zelda-ui-theme';
 import styles from './Tooltip.module.css';
 
 export interface TooltipProps {

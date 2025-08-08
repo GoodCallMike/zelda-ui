@@ -12,7 +12,7 @@ const meta: Meta<typeof Divider> = {
         component: `Visual separators that organize content into distinct sections with clear hierarchy and spacing.
 
 \`\`\`tsx
-import { Divider } from '@zelda/core';
+import { Divider } from 'zelda-ui-core';
 
 // Essential separation
 <Divider />

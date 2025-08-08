@@ -1,6 +1,6 @@
-import { cn } from '@zelda/theme';
 import type * as React from 'react';
 import type { ReactNode } from 'react';
+import { cn } from 'zelda-ui-theme';
 import styles from './Badge.module.css';
 
 export interface BadgeProps

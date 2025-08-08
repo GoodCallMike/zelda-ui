@@ -14,7 +14,7 @@ const meta: Meta<typeof Card> = {
         component: `Flexible container component for grouping related content with consistent spacing and visual hierarchy.
 
 \`\`\`tsx
-import { Card } from '@zelda/core';
+import { Card } from './Card';
 
 // Basic content container
 <Card>

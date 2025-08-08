@@ -1,6 +1,6 @@
-import { XIcon } from '@zelda/icons';
 import React, { type ReactNode, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { XIcon } from 'zelda-ui-icons';
 import { Button } from '../Button';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
@@ -68,7 +68,6 @@ export const Modal = ({
 
   return createPortal(
     // amazonq-ignore-next-line
-    // biome-ignore lint/a11y/useSemanticElements: This is a backdrop so having a button doesn't make sense
     <div
       className={cn(styles.backdrop, styles.backdropOpen)}
       onClick={handleBackdropClick}

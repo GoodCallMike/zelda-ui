@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Checkbox, Typography } from '@zelda/core';
 import { useState } from 'react';
+import { Button, Card, Checkbox, Typography } from 'zelda-ui-core';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Data Entry/Checkbox',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Checkbox> = {
         component: `Checkbox component provides multi-choice selection with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Checkbox } from '@zelda/core';
+import { Checkbox } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Checkbox label="Accept terms" />

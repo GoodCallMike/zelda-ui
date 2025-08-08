@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import type { ReactNode } from 'react';
 import { cn } from '../styles';
-import '@zelda/theme';
+import 'zelda-ui-theme';
 
 export interface TypographyProps
   extends Omit<React.ComponentProps<'p'>, 'className' | 'id'> {

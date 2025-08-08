@@ -12,7 +12,7 @@ const meta: Meta<typeof Tooltip> = {
         component: `Contextual information overlay that appears on hover or focus to provide helpful guidance without cluttering the interface.
 
 \`\`\`tsx
-import { Tooltip } from '@zelda/core';
+import { Tooltip } from './Tooltip';
 
 // Essential usage pattern
 <Tooltip content="Save your changes">

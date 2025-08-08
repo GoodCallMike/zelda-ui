@@ -1,1 +1,1 @@
-export { cn } from '@zelda/theme';
+export { cn } from 'zelda-ui-theme';

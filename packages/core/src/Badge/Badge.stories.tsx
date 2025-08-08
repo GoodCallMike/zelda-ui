@@ -5,7 +5,7 @@ import {
   Mail01Icon,
   Star01Icon,
   XIcon,
-} from '@zelda/icons';
+} from 'zelda-ui-icons';
 import { Typography } from '../Typography';
 import { Badge } from './Badge';
 
@@ -19,7 +19,7 @@ const meta: Meta<typeof Badge> = {
         component: `Compact status indicators and labels for displaying metadata, counts, and state information.
 
 \`\`\`tsx
-import { Badge } from '@zelda/core';
+import { Badge } from 'zelda-ui-core';
 
 // Basic status indicator
 <Badge variant="success">Active</Badge>

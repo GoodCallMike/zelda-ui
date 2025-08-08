@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import {
   Button,
   Card,
@@ -6,8 +7,7 @@ import {
   RadioButton,
   RadioGroup,
   Typography,
-} from '@zelda/core';
-import { useState } from 'react';
+} from 'zelda-ui-core';
 
 const meta: Meta<typeof Radio> = {
   title: 'Data Entry/Radio',
@@ -19,7 +19,7 @@ const meta: Meta<typeof Radio> = {
         component: `Radio component provides single-choice selection with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Radio, RadioGroup } from '@zelda/core';
+import { Radio, RadioGroup } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Radio label="Option 1" value="option1" />

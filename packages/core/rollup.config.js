@@ -20,8 +20,13 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
-      commonjs(),
+      resolve({
+        preferBuiltins: false,
+        browser: false,
+      }),
+      commonjs({
+        include: [],
+      }),
       postcss({
         modules: true,
         extract: false,
@@ -31,13 +36,15 @@ export default [
         declaration: false,
       }),
     ],
-    external: [
-      'react',
-      'react-dom',
-      'react-aria-components',
-      '@zelda/theme',
-      '@zelda/icons',
-    ],
+    external: (id) => {
+      // Externalize all React-related modules
+      if (id.startsWith('react')) return true;
+      // Externalize peer dependencies
+      if (['zelda-ui-theme', 'zelda-ui-icons'].includes(id)) return true;
+      // Externalize any node_modules
+      if (id.includes('node_modules')) return true;
+      return false;
+    },
   },
   {
     input: 'src/index.ts',

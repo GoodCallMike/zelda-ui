@@ -23,7 +23,12 @@ export default [
         tsconfig: './tsconfig.json',
       }),
     ],
-    external: ['react', 'react-dom'],
+    external: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      'react/jsx-dev-runtime',
+    ],
   },
   {
     input: 'src/index.ts',
@@ -32,5 +37,11 @@ export default [
       format: 'es',
     },
     plugins: [dts()],
+    external: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      'react/jsx-dev-runtime',
+    ],
   },
 ];

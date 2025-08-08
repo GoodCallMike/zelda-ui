@@ -16,7 +16,7 @@ const meta: Meta<typeof Modal> = {
         component: `Overlay dialogs that focus user attention on critical tasks while blocking interaction with the background content.
 
 \`\`\`tsx
-import { Modal } from '@zelda/core';
+import { Modal } from 'zelda-ui-core';
 
 // Essential usage
 const [open, setOpen] = useState(false);

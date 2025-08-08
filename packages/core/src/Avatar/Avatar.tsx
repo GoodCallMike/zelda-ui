@@ -1,6 +1,6 @@
-import { cn } from '@zelda/theme';
 import type * as React from 'react';
 import { useState } from 'react';
+import { cn } from 'zelda-ui-theme';
 import styles from './Avatar.module.css';
 
 export interface AvatarProps

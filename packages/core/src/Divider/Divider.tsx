@@ -1,4 +1,4 @@
-import { withOverrides } from '@zelda/theme';
+import { withOverrides } from 'zelda-ui-theme';
 import { cn } from '../styles';
 import { Typography } from '../Typography';
 import styles from './Divider.module.css';

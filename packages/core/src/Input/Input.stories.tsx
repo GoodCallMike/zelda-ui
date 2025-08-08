@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Card, Input, Typography } from '@zelda/core';
-import { EyeIcon, Mail01Icon, SearchLgIcon, User01Icon } from '@zelda/icons';
 import { useState } from 'react';
+import { EyeIcon, Mail01Icon, SearchLgIcon, User01Icon } from 'zelda-ui-icons';
+import { Button } from '../Button';
+import { Card } from '../Card';
+import { Typography } from '../Typography';
+import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Data Entry/Input',
@@ -13,7 +16,7 @@ const meta: Meta<typeof Input> = {
         component: `Input component provides versatile text input functionality with comprehensive accessibility support.
 
 \`\`\`tsx
-import { Input } from '@zelda/core';
+import { Input } from 'zelda-ui-core';
 
 // Primary usage pattern
 <Input placeholder="Enter text..." />
