@@ -22,7 +22,7 @@ test.describe('Button Visual Tests', () => {
   });
 
   test('Disabled Button', async ({ page }) => {
-    await page.goto('/iframe.html?id=general-button--accessibility');
+    await page.goto('/iframe.html?id=general-button--states');
     await page.waitForLoadState('networkidle');
     await expect(
       page.locator('#storybook-root button[data-testid="disabled-button"]'),

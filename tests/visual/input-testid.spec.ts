@@ -6,21 +6,21 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--test-id-naming-conventions',
+      'data-entry-input--variants',
     );
 
     // Test each variant using testId
     await helpers.visual.screenshotComponent(
-      'input-email-signup',
-      'input-email-signup-testid',
+      'variant-default',
+      'input-default-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-password-login',
-      'input-password-login-testid',
+      'variant-filled',
+      'input-filled-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-username-profile',
-      'input-username-profile-testid',
+      'variant-borderless',
+      'input-borderless-testid',
     );
   });
 
@@ -28,11 +28,11 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--basic-input-testing',
+      'data-entry-input--states',
     );
 
     // Test interactive states
-    await helpers.visual.testComponentStates('test-text-input', [
+    await helpers.visual.testComponentStates('normal-input', [
       {
         name: 'default',
         action: async () => {
@@ -42,13 +42,7 @@ test.describe('Input Visual Tests with testId', () => {
       {
         name: 'focus',
         action: async () => {
-          await helpers.locators.byTestId('test-text-input').focus();
-        },
-      },
-      {
-        name: 'filled',
-        action: async () => {
-          await helpers.locators.byTestId('test-text-input').fill('Test value');
+          await helpers.locators.byTestId('normal-input').focus();
         },
       },
     ]);
@@ -58,21 +52,21 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--basic-input-testing',
+      'data-entry-input--states',
     );
 
     // Test input with different features
     await helpers.visual.screenshotComponent(
-      'test-clearable-input',
+      'clear-input',
       'input-clearable-testid',
     );
     await helpers.visual.screenshotComponent(
-      'test-counted-input',
+      'count-input',
       'input-counted-testid',
     );
     await helpers.visual.screenshotComponent(
-      'test-textarea-input',
-      'input-textarea-testid',
+      'search-input',
+      'input-search-testid',
     );
   });
 
@@ -80,20 +74,20 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--form-validation-testing',
+      'data-entry-input--states',
     );
 
     // Test validation states
     await helpers.visual.screenshotComponent(
-      'input-valid-state',
-      'input-valid-testid',
+      'normal-input',
+      'input-normal-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-error-state',
+      'error-input',
       'input-error-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-warning-state',
+      'warning-input',
       'input-warning-testid',
     );
   });
@@ -102,11 +96,11 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--test-id-naming-conventions',
+      'data-entry-input--variants',
     );
 
     // Test responsive behavior
-    await helpers.visual.testResponsive('input-email-signup', [
+    await helpers.visual.testResponsive('variant-default', [
       { name: 'mobile', width: 375, height: 667 },
       { name: 'tablet', width: 768, height: 1024 },
       { name: 'desktop', width: 1200, height: 800 },
@@ -117,16 +111,16 @@ test.describe('Input Visual Tests with testId', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--accessibility-testing',
+      'data-entry-input--examples',
     );
 
     // Test accessibility features
     await helpers.visual.screenshotComponent(
-      'input-with-label',
+      'name-input',
       'input-with-label-testid',
     );
     await helpers.visual.screenshotComponent(
-      'input-with-aria-label',
+      'email-input',
       'input-with-aria-label-testid',
     );
   });

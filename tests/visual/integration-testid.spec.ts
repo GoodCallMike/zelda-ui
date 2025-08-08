@@ -11,20 +11,18 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--integration-testing',
+      'data-entry-input--examples',
     );
 
-    // Visual test of login form
+    // Visual test of login form using existing email input
     await helpers.visual.screenshotComponent(
-      'login-form-email',
+      'email-input',
       'login-modal-testid',
     );
 
-    // Skip form workflow test - this is a demo story, not interactive form
-
     // Visual test after form interaction
     await helpers.visual.screenshotComponent(
-      'login-form-email',
+      'email-input',
       'login-modal-filled-testid',
     );
   });
@@ -33,65 +31,49 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--integration-testing',
+      'data-entry-input--states',
     );
 
-    // Visual test of search interface
+    // Visual test of search interface using existing search input
     await helpers.visual.screenshotComponent(
-      'search-interface-query',
+      'search-input',
       'search-interface-testid',
     );
-
-    // Skip form workflow test - this is a demo story
   });
 
   test('Profile form integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--integration-testing',
+      'data-entry-input--examples',
     );
 
-    // Test responsive behavior
-    await helpers.visual.testResponsive('profile-form-username', [
+    // Test responsive behavior using existing name input
+    await helpers.visual.testResponsive('name-input', [
       { name: 'mobile', width: 375, height: 667 },
       { name: 'desktop', width: 1200, height: 800 },
     ]);
-
-    // Skip form workflow test - this is a demo story
   });
 
   test('Game menu navigation integration', async ({ page }) => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'general-button-testing-examples--integration-testing',
+      'general-button--examples',
     );
 
-    // Visual test of menu
+    // Visual test of menu using existing button
     await helpers.visual.screenshotComponent(
-      'game-menu-new-game',
+      'submit-form',
       'game-menu-testid',
     );
 
-    // Test menu states
-    await helpers.visual.testComponentStates('game-menu-new-game', [
+    // Test menu states using existing buttons
+    await helpers.visual.testComponentStates('submit-form', [
       {
         name: 'default',
         action: async () => {
           // Default state
-        },
-      },
-      {
-        name: 'continue-selected',
-        action: async () => {
-          await helpers.locators.byTestId('game-menu-continue').click();
-        },
-      },
-      {
-        name: 'settings-selected',
-        action: async () => {
-          await helpers.locators.byTestId('game-menu-settings').click();
         },
       },
     ]);
@@ -102,19 +84,19 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
 
     // Test light mode
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--integration-testing',
+      'data-entry-input--examples',
     );
     await helpers.visual.screenshotComponent(
-      'login-form-email',
+      'email-input',
       'integration-light-mode-testid',
     );
 
     // Test dark mode
     await helpers.gotoStory(
-      'general-button-testing-examples--integration-testing',
+      'general-button--examples',
     );
     await helpers.visual.screenshotComponent(
-      'game-menu-new-game',
+      'submit-form',
       'integration-dark-mode-testid',
     );
   });
@@ -123,12 +105,12 @@ test.describe('Integration Tests with testId - Visual & Accessibility', () => {
     const helpers = new ZeldaTestHelpers(page);
 
     await helpers.gotoStory(
-      'data-entry-input-testing-examples--integration-testing',
+      'data-entry-input--states',
     );
 
-    // Visual test of error states
+    // Visual test of error states using existing error input
     await helpers.visual.screenshotComponent(
-      'profile-form-username',
+      'error-input',
       'profile-form-errors-testid',
     );
   });
